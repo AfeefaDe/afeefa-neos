@@ -10,7 +10,6 @@
     </f:section>
 
 	<f:section name="stylesheets">
-		<!-- Put your stylesheet inclusions here, they will be included in your website by TypoScript -->
 
 		<!-- Latest compiled and minified CSS -->
 		<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"> -->
@@ -26,12 +25,7 @@
 		<link rel="stylesheet" href="{f:uri.resource(path: 'leaflet/leaflet.css', package: 'DDFA.dresdenfueralleDe')}" />
 
 	</f:section>
-	<f:section name="headScripts">
-
-		<!-- requirejs (module loader) handles all further js includes -->
-		<script data-main="{f:uri.resource(path: 'ddfa/js/main', package: 'DDFA.dresdenfueralleDe')}" type="text/javascript" src="{f:uri.resource(path: 'requirejs/require.js', package: 'DDFA.dresdenfueralleDe')}"></script>
-		
-	</f:section>
+	<f:section name="headScripts"></f:section>
 </head>
 <body>
 <f:section name="body">
@@ -52,7 +46,9 @@
 
 </f:section>
 <f:section name="bodyScripts">
-	<!-- Put your scripts inclusions for the end of the body here, they will be included in your website by TypoScript -->
+
+	<!-- requirejs (module loader) handles all further js includes -->
+	<script data-main="{f:uri.resource(path: 'ddfa/js/main', package: 'DDFA.dresdenfueralleDe')}" type="text/javascript" src="{f:uri.resource(path: 'requirejs/require.js', package: 'DDFA.dresdenfueralleDe')}"></script>
 
 </f:section>
 </body>

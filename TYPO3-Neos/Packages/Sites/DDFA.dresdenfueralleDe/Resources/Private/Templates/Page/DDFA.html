@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+{namespace neos=TYPO3\Neos\ViewHelpers}
+{namespace ts=TYPO3\TypoScript\ViewHelpers}
+<html>
+<head>
+
+	<f:section name="meta">
+        <!-- title already rendered by default TODO: why? -->
+        <!-- <title>{title}</title> -->
+    </f:section>
+
+	<f:section name="stylesheets">
+		<!-- Put your stylesheet inclusions here, they will be included in your website by TypoScript -->
+
+		<!-- Latest compiled and minified CSS -->
+		<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"> -->
+
+		<!-- Optional theme -->
+		<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css"> -->
+		
+		<!-- DDFA styles -->
+		<link rel="stylesheet" href="{f:uri.resource(path: 'DDFA/css/ddfa.css', package: 'DDFA.dresdenfueralleDe')}" />
+
+		<!-- leaflet -->
+		<!-- <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" /> -->
+		<link rel="stylesheet" href="{f:uri.resource(path: 'leaflet/leaflet.css', package: 'DDFA.dresdenfueralleDe')}" />
+
+	</f:section>
+	<f:section name="headScripts">
+
+		<!-- requirejs (module loader) handles all further js includes -->
+		<script data-main="{f:uri.resource(path: 'ddfa/js/main', package: 'DDFA.dresdenfueralleDe')}" type="text/javascript" src="{f:uri.resource(path: 'requirejs/require.js', package: 'DDFA.dresdenfueralleDe')}"></script>
+		
+	</f:section>
+</head>
+<body>
+<f:section name="body">
+
+	<nav class="menu">
+		<!-- <ts:render path="parts.menu" /> -->
+	</nav>
+
+	<div id="mapContainer"></div>
+
+	<div id="menuContainer">
+		<ts:render path="parts.languageMenu" />
+	</div>
+	
+	<div id="contentContainer">
+		<ts:render path="content.main" />
+	</div>
+
+</f:section>
+<f:section name="bodyScripts">
+	<!-- Put your scripts inclusions for the end of the body here, they will be included in your website by TypoScript -->
+
+</f:section>
+</body>
+</html>

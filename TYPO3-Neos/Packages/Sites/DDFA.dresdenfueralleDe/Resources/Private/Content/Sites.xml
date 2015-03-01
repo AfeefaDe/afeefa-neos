@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+ <site name="dresdenfueralle.de" state="1" siteResourcesPackageKey="DDFA.dresdenfueralleDe" siteNodeName="dresdenfuerallede">
+  <nodes formatVersion="2.0">
+   <node identifier="24edf9e6-970c-bf0d-00c3-dbfb9083d7b7" nodeName="dresdenfuerallede">
+    <variant sortingIndex="100" workspace="live" nodeType="TYPO3.Neos.NodeTypes:Page" version="1" removed="" hidden="" hiddenInIndex="">
+     <dimensions>
+      <language>de</language>
+     </dimensions>
+     <accessRoles __type="array"/>
+     <properties>
+      <title __type="string">Home</title>
+     </properties>
+    </variant>
+    <node identifier="b9b91fea-b79e-6d8d-2ce5-77d518ddd3a2" nodeName="main">
+     <variant sortingIndex="100" workspace="live" nodeType="TYPO3.Neos:ContentCollection" version="1" removed="" hidden="" hiddenInIndex="">
+      <dimensions>
+       <language>de</language>
+      </dimensions>
+      <accessRoles __type="array"/>
+      <properties/>
+     </variant>
+     <node identifier="e39ac279-f34c-5280-68af-37287d967693" nodeName="node-54f1b805168ae">
+      <variant sortingIndex="300" workspace="live" nodeType="TYPO3.Neos.NodeTypes:Text" version="4" removed="" hidden="" hiddenInIndex="">
+       <dimensions>
+        <language>ar</language>
+       </dimensions>
+       <accessRoles __type="array"/>
+       <properties>
+        <text __type="string">&lt;p&gt;للجميع Dresden&lt;/p&gt;</text>
+       </properties>
+      </variant>
+      <variant sortingIndex="300" workspace="live" nodeType="TYPO3.Neos.NodeTypes:Text" version="3" removed="" hidden="" hiddenInIndex="">
+       <dimensions>
+        <language>fa</language>
+       </dimensions>
+       <accessRoles __type="array"/>
+       <properties>
+        <text __type="string">&lt;p&gt;برای همه Dresden&lt;/p&gt;</text>
+       </properties>
+      </variant>
+      <variant sortingIndex="300" workspace="live" nodeType="TYPO3.Neos.NodeTypes:Text" version="6" removed="" hidden="" hiddenInIndex="">
+       <dimensions>
+        <language>de</language>
+       </dimensions>
+       <accessRoles __type="array"/>
+       <properties>
+        <text __type="string">&lt;p&gt;Dresden für alle&lt;/p&gt;</text>
+       </properties>
+      </variant>
+      <variant sortingIndex="300" workspace="live" nodeType="TYPO3.Neos.NodeTypes:Text" version="2" removed="" hidden="" hiddenInIndex="">
+       <dimensions>
+        <language>en</language>
+       </dimensions>
+       <accessRoles __type="array"/>
+       <properties>
+        <text __type="string">&lt;p&gt;Dresden for all&lt;/p&gt;</text>
+       </properties>
+      </variant>
+      <variant sortingIndex="300" workspace="live" nodeType="TYPO3.Neos.NodeTypes:Text" version="3" removed="" hidden="" hiddenInIndex="">
+       <dimensions>
+        <language>fr</language>
+       </dimensions>
+       <accessRoles __type="array"/>
+       <properties>
+        <text __type="string">&lt;p&gt;Dresden pour tous&lt;/p&gt;</text>
+       </properties>
+      </variant>
+     </node>
+    </node>
+   </node>
+  </nodes>
+ </site>
+</root>

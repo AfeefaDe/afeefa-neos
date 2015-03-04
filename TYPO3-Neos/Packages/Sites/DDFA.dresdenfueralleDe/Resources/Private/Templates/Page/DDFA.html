@@ -7,6 +7,12 @@
 	<f:section name="meta">
         <!-- title already rendered by default TODO: why? -->
         <!-- <title>{title}</title> -->
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
     </f:section>
 
 	<f:section name="stylesheets">
@@ -17,7 +23,7 @@
 		<!-- Optional theme -->
 		<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css"> -->
 		
-		<!-- DDFA styles -->
+		<!-- CSS styles (also containing vendor styles, all combined with SASS) -->
 		<link rel="stylesheet" href="{f:uri.resource(path: 'DDFA/css/ddfa.css', package: 'DDFA.dresdenfueralleDe')}" />
 
 		<!-- leaflet -->
@@ -25,30 +31,41 @@
 		<link rel="stylesheet" href="{f:uri.resource(path: 'leaflet/leaflet.css', package: 'DDFA.dresdenfueralleDe')}" />
 
 	</f:section>
-	<f:section name="headScripts"></f:section>
+	<f:section name="headScripts">
+
+		<!-- requirejs (module loader) handles all further js includes -->
+		<script data-main="{f:uri.resource(path: 'ddfa/js/main', package: 'DDFA.dresdenfueralleDe')}" type="text/javascript" src="{f:uri.resource(path: 'requirejs/require.js', package: 'DDFA.dresdenfueralleDe')}"></script>
+
+	</f:section>
 </head>
 <body>
 <f:section name="body">
 
-	<nav class="menu">
+	<!-- <nav class="menu"> -->
 		<!-- <ts:render path="parts.menu" /> -->
-	</nav>
+	<!-- </nav> -->
 
 	<div id="mapContainer"></div>
 
-	<div id="menuContainer">
+	<div id="mobile-menu-off-canvas">
 		<ts:render path="parts.languageMenu" />
 	</div>
 	
-	<div id="contentContainer">
-		<ts:render path="content.main" />
+	<div id="uiContainer">
+		
+		<div id="search-box">
+			<div id="menu-btn"></div>
+		</div>
+		
+		<div id="content">
+			<ts:render path="content.main" />
+		</div>
+		
 	</div>
 
 </f:section>
 <f:section name="bodyScripts">
 
-	<!-- requirejs (module loader) handles all further js includes -->
-	<script data-main="{f:uri.resource(path: 'ddfa/js/main', package: 'DDFA.dresdenfueralleDe')}" type="text/javascript" src="{f:uri.resource(path: 'requirejs/require.js', package: 'DDFA.dresdenfueralleDe')}"></script>
 
 </f:section>
 </body>

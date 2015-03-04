@@ -1,0 +1,67 @@
+/* main styles for dresdenfueralle.de */
+
+body {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+}
+#mapContainer {
+	position: fixed;
+	top: 0;
+	z-index: 0;
+	width: 100%;
+	height: 100%;
+}
+
+
+#mobile-menu-off-canvas,#search-box, #content {
+	background-color: #EEE;
+	@include box-shadow(0px 0px 5px #888888);
+}
+
+#mobile-menu-off-canvas {
+	@include transition(all 300ms);
+	position: fixed;
+	top: 0;
+	left: -80%;
+	height: 100%;
+	width: 80%;
+	z-index: 200;
+
+	&.active {
+		left: 0;
+	}
+}
+
+#uiContainer {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	
+	#search-box {
+		z-index: 200;
+		margin: 1%;
+		width: 98%;
+		height: 3em;
+		background-color: #EEE;
+
+		#menu-btn {
+			width: 2em;
+			height: 2em;
+			position: relative;
+			top: 0.5em;
+			left: 0.5em;
+			background-image: url('../img/menu-icon.svg');
+			@include background-size(contain);
+		}
+	}
+
+	#content {
+		display: none;
+		z-index: 100;
+		box-shadow: 0px 0px 5px #888888;
+		background-color: #EEE;
+		text-align: center;
+	}
+}

@@ -6,7 +6,8 @@ require.config({
         jquery: 'jquery/jquery-2.1.3',
         qx: 'qooxdoo/qx-oo-4.1.min',
         underscore: 'underscore/underscore-min',
-        leaflet: 'leaflet/leaflet'
+        leaflet: 'leaflet/leaflet',
+        hammer: 'hammerjs/hammer.min'
     }
 });
 
@@ -14,7 +15,7 @@ require( ['domReady', 'modernizr'], function(domReady) {
 
 	domReady(function(){
 
-		require( ['jquery', 'qx', 'underscore', 'leaflet'], function( $, qx, _ ){
+		require( ['jquery', 'qx', 'underscore', 'hammer', 'leaflet'], function( $, qx, _, Hammer ){
 
 			require( ['DDFA/js/Map'], function(){
 
@@ -22,8 +23,22 @@ require( ['domReady', 'modernizr'], function(domReady) {
 				// MENU //
 				//////////////
 				
+				// show menu
+				$menu = $('#mobile-menu-off-canvas');
 				$('#menu-btn').click(function(){
-					$('#mobile-menu-off-canvas').addClass('active');
+					$menu.addClass('active');
+				});
+
+				// hide menu (click the map)
+				$('#map-container').click(function(){
+					$menu.removeClass('active');
+				});
+				var myElement = document.getElementById('myElement');
+
+				// hide menu (swipe back)
+				var mc = new Hammer($menu[0]);
+				mc.on("swipeleft", function(ev) {
+					$menu.removeClass('active');
 				});
 
 

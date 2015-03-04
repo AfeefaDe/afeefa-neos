@@ -687,7 +687,7 @@ body {
 }
 
 /* line 8, sass/_ddfa-styles.scss */
-#mapContainer {
+#map-container {
   position: fixed;
   top: 0;
   z-index: 0;
@@ -717,18 +717,22 @@ body {
   z-index: 200;
 }
 /* line 31, sass/_ddfa-styles.scss */
+#mobile-menu-off-canvas ul {
+  margin: 0;
+}
+/* line 35, sass/_ddfa-styles.scss */
 #mobile-menu-off-canvas.active {
   left: 0;
 }
 
-/* line 36, sass/_ddfa-styles.scss */
+/* line 40, sass/_ddfa-styles.scss */
 #uiContainer {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
 }
-/* line 42, sass/_ddfa-styles.scss */
+/* line 46, sass/_ddfa-styles.scss */
 #uiContainer #search-box {
   z-index: 200;
   margin: 1%;
@@ -736,7 +740,7 @@ body {
   height: 3em;
   background-color: #EEE;
 }
-/* line 49, sass/_ddfa-styles.scss */
+/* line 53, sass/_ddfa-styles.scss */
 #uiContainer #search-box #menu-btn {
   width: 2em;
   height: 2em;
@@ -749,7 +753,7 @@ body {
   -o-background-size: contain;
   background-size: contain;
 }
-/* line 60, sass/_ddfa-styles.scss */
+/* line 64, sass/_ddfa-styles.scss */
 #uiContainer #content {
   display: none;
   z-index: 100;

@@ -7,11 +7,12 @@
 	  members : {
 	    render : function() {
 	      
-	    	var map = L.map('mapContainer', {
+	    	var map = L.map('map-container', {
 	    		maxBounds: [
 	    			L.latLng(50.95, 13.5), // south-west corner
 	    			L.latLng(51.2, 14.0)  // north-east corner
-    			]
+    			],
+    			zoomControl:false
 	    	}).setView([ 51.051, 13.74 ], 13);
 
 			// L.tileLayer('http://api.tiles.mapbox.com/v4/mapbox.pencil/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiZmVsaXhrYW1pbGxlIiwiYSI6Ilo1SHFOX0EifQ.pfAzun90Lj1UlVapKI3LiA', {

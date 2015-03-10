@@ -695,7 +695,13 @@ body {
   height: 100%;
 }
 
-/* line 17, sass/_ddfa-styles.scss */
+/* line 18, sass/_ddfa-styles.scss */
+a:link, a:visited, a:hover, a:active {
+  color: #333 !important;
+  text-decoration: none;
+}
+
+/* line 27, sass/_ddfa-styles.scss */
 #mobile-menu-off-canvas, #search-box, #content {
   background-color: #EEE;
   -webkit-box-shadow: 0px 0px 5px #888888;
@@ -703,7 +709,7 @@ body {
   box-shadow: 0px 0px 5px #888888;
 }
 
-/* line 22, sass/_ddfa-styles.scss */
+/* line 32, sass/_ddfa-styles.scss */
 #mobile-menu-off-canvas {
   -webkit-transition: all 300ms;
   -moz-transition: all 300ms;
@@ -716,23 +722,36 @@ body {
   width: 80%;
   z-index: 200;
 }
-/* line 31, sass/_ddfa-styles.scss */
+/* line 41, sass/_ddfa-styles.scss */
 #mobile-menu-off-canvas ul {
   margin: 0;
+  padding: 0;
+  list-style: none;
 }
-/* line 35, sass/_ddfa-styles.scss */
+/* line 46, sass/_ddfa-styles.scss */
+#mobile-menu-off-canvas ul li {
+  height: 2em;
+  padding: 0.5em;
+  background-color: #DDD;
+  margin-top: 0.1em;
+}
+/* line 52, sass/_ddfa-styles.scss */
+#mobile-menu-off-canvas ul li a {
+  display: block;
+}
+/* line 56, sass/_ddfa-styles.scss */
 #mobile-menu-off-canvas.active {
   left: 0;
 }
 
-/* line 40, sass/_ddfa-styles.scss */
+/* line 61, sass/_ddfa-styles.scss */
 #uiContainer {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
 }
-/* line 46, sass/_ddfa-styles.scss */
+/* line 67, sass/_ddfa-styles.scss */
 #uiContainer #search-box {
   z-index: 200;
   margin: 1%;
@@ -740,7 +759,7 @@ body {
   height: 3em;
   background-color: #EEE;
 }
-/* line 53, sass/_ddfa-styles.scss */
+/* line 74, sass/_ddfa-styles.scss */
 #uiContainer #search-box #menu-btn {
   width: 2em;
   height: 2em;
@@ -753,11 +772,43 @@ body {
   -o-background-size: contain;
   background-size: contain;
 }
-/* line 64, sass/_ddfa-styles.scss */
-#uiContainer #content {
-  display: none;
+
+/* line 86, sass/_ddfa-styles.scss */
+#content {
+  -webkit-transition: all 300ms;
+  -moz-transition: all 300ms;
+  -o-transition: all 300ms;
+  transition: all 300ms;
   z-index: 100;
+  width: 100%;
+  height: 3em;
+  position: fixed;
+  bottom: -3em;
   box-shadow: 0px 0px 5px #888888;
   background-color: #EEE;
   text-align: center;
+  overflow-y: scroll;
+}
+/* line 99, sass/_ddfa-styles.scss */
+#content p {
+  margin: 0;
+  padding: 0.5em 0;
+  border-top: 1px solid #ccc;
+}
+/* line 104, sass/_ddfa-styles.scss */
+#content p:first-child {
+  height: 2em;
+  background-color: #089fe1;
+  padding: 1em 0 0 0;
+  border-top: none;
+  color: #eeeeee;
+}
+/* line 113, sass/_ddfa-styles.scss */
+#content.active-small {
+  bottom: 0;
+}
+/* line 117, sass/_ddfa-styles.scss */
+#content.active-large {
+  bottom: 0;
+  height: 80%;
 }

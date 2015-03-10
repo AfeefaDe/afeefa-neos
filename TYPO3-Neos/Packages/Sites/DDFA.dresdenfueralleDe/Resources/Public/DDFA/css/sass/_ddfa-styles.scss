@@ -13,6 +13,16 @@ body {
 	height: 100%;
 }
 
+a {
+
+	&:link{
+        color: #333 !important;
+        text-decoration: none;
+    }
+    &:visited, &:hover, &:active{
+        @extend a:link;
+    }
+}
 
 #mobile-menu-off-canvas, #search-box, #content {
 	background-color: #EEE;
@@ -30,6 +40,17 @@ body {
 
 	ul { 
 		margin: 0;
+		padding: 0;
+		list-style: none;
+		
+		li {
+			height: 2em;
+			padding: 0.5em;
+			background-color: #DDD;
+			margin-top: 0.1em;
+
+			a { display: block; }
+		}
 	}
 
 	&.active {
@@ -60,12 +81,41 @@ body {
 			@include background-size(contain);
 		}
 	}
+}
 
-	#content {
-		display: none;
-		z-index: 100;
-		box-shadow: 0px 0px 5px #888888;
-		background-color: #EEE;
-		text-align: center;
+#content {
+	@include transition(all 300ms);
+	z-index: 100;
+	width: 100%;
+	height: 3em;
+	position: fixed;
+	bottom: -3em;
+	
+	box-shadow: 0px 0px 5px #888888;
+	background-color: #EEE;
+	text-align: center;
+	overflow-y: scroll;
+
+	p {
+		margin: 0;
+		padding: 0.5em 0;
+		border-top: 1px solid #ccc;
+
+		&:first-child {
+			height: 2em;
+			background-color: $blue;
+			padding: 1em 0 0 0;
+			border-top: none;
+			color: $white;
+		}
+	}
+
+	&.active-small {
+		bottom: 0;
+	}
+
+	&.active-large {
+		bottom: 0;
+		height: 80%;
 	}
 }

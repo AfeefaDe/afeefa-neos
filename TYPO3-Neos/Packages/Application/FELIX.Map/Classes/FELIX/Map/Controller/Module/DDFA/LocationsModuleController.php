@@ -1,5 +1,5 @@
 <?php
-namespace FELIX\Map\Controller;
+namespace FELIX\Map\Controller\Module\DDFA;
 
 /*                                                                        *
  * This script belongs to the TYPO3 Flow package "FELIX.Map".             *
@@ -13,7 +13,7 @@ use TYPO3\Flow\Annotations as Flow;
  *
  * @Flow\Scope("singleton")
  */
-class BackendController extends \TYPO3\Neos\Controller\Module\AbstractModuleController {
+class LocationsModuleController extends \TYPO3\Neos\Controller\Module\AbstractModuleController {
 
 	/**
 	 * @return void

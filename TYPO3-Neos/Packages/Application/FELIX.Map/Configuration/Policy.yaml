@@ -1,7 +1,7 @@
 resources:
   methods:
-    FELIX_Map_Module_simpleplugin: 'method(FELIX\Map\Controller\BackendController->.*Action())'
+    FELIX_Map_Module_ddfaLocationsModule: 'method(FELIX\Map\Controller\Module\DDFA\LocationsModuleController->.*Action())'
 acls:
   TYPO3.Neos:Administrator:
     methods:
-      FELIX_Map_Module_simpleplugin: GRANT
+      FELIX_Map_Module_ddfaLocationsModule: GRANT

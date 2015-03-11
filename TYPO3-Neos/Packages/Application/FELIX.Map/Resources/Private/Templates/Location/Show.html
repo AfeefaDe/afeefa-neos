@@ -1,0 +1,83 @@
+<f:layout name="Default" />
+
+<f:section name="Title">Show location"{location.name}"</f:section>
+
+<f:section name="Content">
+	<table>
+		<tr>
+			<th>Lon</th>
+			<td>{location.lon}</td>
+		</tr>
+	
+		<tr>
+			<th>Lat</th>
+			<td>{location.lat}</td>
+		</tr>
+	
+		<tr>
+			<th>Name</th>
+			<td>{location.name}</td>
+		</tr>
+	
+		<tr>
+			<th>Street</th>
+			<td>{location.street}</td>
+		</tr>
+	
+		<tr>
+			<th>Zip</th>
+			<td>{location.zip}</td>
+		</tr>
+	
+		<tr>
+			<th>City</th>
+			<td>{location.city}</td>
+		</tr>
+	
+		<tr>
+			<th>Rating</th>
+			<td>{location.rating}</td>
+		</tr>
+	
+		<tr>
+			<th>Range</th>
+			<td>{location.range}</td>
+		</tr>
+	
+		<tr>
+			<th>Email</th>
+			<td>{location.email}</td>
+		</tr>
+	
+		<tr>
+			<th>Website</th>
+			<td>{location.website}</td>
+		</tr>
+	
+		<tr>
+			<th>Phone</th>
+			<td>{location.phone}</td>
+		</tr>
+	
+		<tr>
+			<th>Date</th>
+			<td>{location.date -> f:format.date(format: 'Y-m-d H:i')}</td>
+		</tr>
+	
+		<tr>
+			<th>Description</th>
+			<td>{location.description}</td>
+		</tr>
+	
+		<tr>
+			<th>Tags</th>
+			<td>{location.tags}</td>
+		</tr>
+	
+		<tr>
+			<th>Opening hours</th>
+			<td>{location.openingHours}</td>
+		</tr>
+	</table>
+	<f:link.action action="index">Back</f:link.action>
+</f:section>

@@ -1,0 +1,10 @@
+TYPO3:
+  Neos:
+    modules:
+      management:
+        submodules:
+          simpleplugin:
+            label: 'Location module'
+            controller: '\FELIX\Map\Controller\BackendController'
+            description: "This is the desc of the Simpleplugin backend module."
+            resource: 'FELIX_Map_Module_simpleplugin'

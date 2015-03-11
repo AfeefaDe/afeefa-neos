@@ -1,0 +1,7 @@
+resources:
+  methods:
+    FELIX_Map_Module_simpleplugin: 'method(FELIX\Map\Controller\BackendController->.*Action())'
+acls:
+  TYPO3.Neos:Administrator:
+    methods:
+      FELIX_Map_Module_simpleplugin: GRANT

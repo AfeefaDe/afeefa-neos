@@ -1,7 +1,11 @@
 TYPO3:
   Neos:
     modules:
-      management:
+      ddfaBackendManagement:
+        label: 'DDFA Management'
+        controller: '\TYPO3\Neos\Controller\Module\ManagementController'
+        description: 'some DDFA management modules'
+        resource: 'TYPO3_Neos_Backend_Module_Management'
         submodules:
           simpleplugin:
             label: 'Location module'

@@ -1,8 +1,8 @@
 TYPO3:
   Neos:
     modules:
-      FELIX:
-        label: 'FELIX Management'
+      DDFA:
+        label: 'DDFA Management'
         controller: '\TYPO3\Neos\Controller\Module\ManagementController'
         description: 'Some DDFA backend modules'
         icon: 'icon-heart-empty'
@@ -10,7 +10,7 @@ TYPO3:
         submodules:
           ddfaLocationsModule:
             label: 'Locations'
-            controller: '\FELIX\Map\Controller\Module\DDFA\LocationsModuleController'
+            controller: '\DDFA\Map\Controller\Module\DDFA\LocationsModuleController'
             description: 'description of the "Locations backend module".'
             icon: 'icon-map-marker'
-            resource: 'FELIX_Map_Module_ddfaLocationsModule'
+            resource: 'DDFA_Map_Module_ddfaLocationsModule'

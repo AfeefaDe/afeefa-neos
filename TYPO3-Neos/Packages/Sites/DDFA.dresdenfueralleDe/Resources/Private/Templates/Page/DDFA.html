@@ -18,7 +18,7 @@
 	<f:section name="stylesheets">
 
 		<!-- Latest compiled and minified CSS -->
-		<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"> -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 
 		<!-- Optional theme -->
 		<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css"> -->
@@ -29,6 +29,14 @@
 		<!-- leaflet -->
 		<!-- <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" /> -->
 		<link rel="stylesheet" href="{f:uri.resource(path: 'leaflet/leaflet.css', package: 'DDFA.dresdenfueralleDe')}" />
+		<link href='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/MarkerCluster.css' rel='stylesheet' />
+		<link href='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/MarkerCluster.Default.css' rel='stylesheet' />
+
+		<!-- cartoDB -->
+		<link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/3.12/themes/css/cartodb.css" />
+
+		<!-- font awesome -->
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
 	</f:section>
 	<f:section name="headScripts">
@@ -48,7 +56,36 @@
 	<div id="map-container"></div>
 
 	<div id="mobile-menu-off-canvas">
-		<ts:render path="parts.languageMenu" />
+		<div class="content">
+
+			<h4>Sprache</h4>
+			<ts:render path="parts.languageMenu" />
+			
+		  <h4>Feedback</h4>
+			<form>
+			  <div class="form-group">
+			  	<div class="input-group">
+				  	<span class="input-group-addon">@</span>
+				    <input type="email" class="form-control" id="email" placeholder="Deine E-Mail">
+				  </div>
+			  </div>
+			  <div class="form-group">
+			  	<div class="input-group">
+				  	<!-- <span class="input-group-addon" id="basic-addon1">@</span> -->
+			  		<span class="input-group-addon glyphicon glyphicon-pencil" aria-hidden="true"></span>
+			    	<textarea class="form-control" id="message" rows="3" placeholder="Deine Nachricht"></textarea>
+			    </div>
+			  </div>
+			  <button type="submit" class="btn btn-default">
+			  	<span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Senden
+			  </button>
+
+			</form>
+
+			<h4>Hilfe</h4>
+			<p>Drücke den Anfangsbuchstaben deines Stadtteils, z.B. <kbd>p</kbd> für <mark>Prohlis</mark></p>
+
+		</div>
 	</div>
 	
 	<div id="uiContainer">
@@ -61,8 +98,7 @@
 	</div>
 
 	<div id="content">
-		<!-- <ts:render path="content.main" /> -->
-
+		<ts:render path="content.main" />
 	</div>
 
 </f:section>

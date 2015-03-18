@@ -11,18 +11,41 @@ body {
 	z-index: 0;
 	width: 100%;
 	height: 100%;
+
+	div.marker-station {
+		p {
+			background-color: $dvb;
+			padding: 2px;
+			text-align: center;
+			opacity: .9;
+			font-family: monospace;
+		}
+	}
+
+	div.marker-user-location {
+		background-color: $blue;
+		@include border-radius(8px);
+		@include box-shadow(0px 0px 5px #888888);
+	}
 }
 
 a {
 
-	&:link{
-        color: #333 !important;
-        text-decoration: none;
+	&:link {
+        color: #333;
+        text-decoration: underline;
     }
     &:visited, &:hover, &:active{
         @extend a:link;
     }
 }
+
+/* bootstrap fix for glyphicons inside input-group-addon */
+.input-group .glyphicon {
+	top: 0;
+}
+
+
 
 #mobile-menu-off-canvas, #search-box, #content {
 	background-color: #EEE;
@@ -38,19 +61,25 @@ a {
 	width: 80%;
 	z-index: 200;
 
-	ul { 
-		margin: 0;
-		padding: 0;
-		list-style: none;
-		
-		li {
-			height: 2em;
-			padding: 0.5em;
-			background-color: #DDD;
-			margin-top: 0.1em;
+	& > div {
 
-			a { display: block; }
+		padding: 1em;
+
+		ul { 
+			margin: 0;
+			padding: 0;
+			list-style: none;
+			
+			li {
+				height: 2em;
+				padding: 0.5em;
+				background-color: #DDD;
+				margin-top: 0.1em;
+
+				a { display: block; }
+			}
 		}
+
 	}
 
 	&.active {
@@ -93,20 +122,19 @@ a {
 	
 	box-shadow: 0px 0px 5px #888888;
 	background-color: #EEE;
-	text-align: center;
-	overflow-y: scroll;
 
 	p {
 		margin: 0;
-		padding: 0.5em 0;
-		border-top: 1px solid #ccc;
+		padding: 1em 1em;
+		/*border-top: 1px solid #ccc;*/
 
 		&:first-child {
-			height: 2em;
+			height: 3em;
 			background-color: $blue;
 			padding: 1em 0 0 0;
 			border-top: none;
 			color: $white;
+			text-align: center;
 		}
 	}
 
@@ -117,5 +145,6 @@ a {
 	&.active-large {
 		bottom: 0;
 		height: 80%;
+		overflow-y: scroll;
 	}
 }

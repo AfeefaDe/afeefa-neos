@@ -7,7 +7,11 @@ require.config({
         qx: 'qooxdoo/qx-oo-4.1.min',
         underscore: 'underscore/underscore-min',
         leaflet: 'leaflet/leaflet',
-        hammer: 'hammerjs/hammer.min'
+        leafletCluster: 'https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/leaflet.markercluster',
+        hammer: 'hammerjs/hammer.min',
+        cartodb: 'http://libs.cartocdn.com/cartodb.js/v3/3.12/cartodb',
+        bootstrap: 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min',
+        mapbox: 'https://api.tiles.mapbox.com/mapbox.js/v2.1.5/mapbox'
     }
 });
 
@@ -15,7 +19,7 @@ require( ['domReady', 'modernizr'], function(domReady) {
 
 	domReady(function(){
 
-		require( ['jquery', 'qx', 'underscore', 'hammer', 'leaflet'], function( $, qx, _, Hammer ){
+		require( ['jquery', 'qx', 'underscore', 'hammer', 'bootstrap', 'leaflet', 'mapbox', 'cartodb'], function( $, qx, _, Hammer ){
 
 			require( ['DDFA/js/Map'], function(){
 

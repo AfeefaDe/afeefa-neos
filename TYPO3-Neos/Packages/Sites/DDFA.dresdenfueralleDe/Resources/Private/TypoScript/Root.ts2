@@ -29,6 +29,7 @@ page = Page {
 			
 			languageMenu = TYPO3.Neos:DimensionMenu {
             	dimension = 'language'
+				// templatePath = 'resource://DDFA.dresdenfueralleDe/Private/Templates/TypoScriptObjects/DimensionMenu.html'
             }
 
 			menu = Menu {

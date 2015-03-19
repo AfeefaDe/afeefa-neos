@@ -29,11 +29,14 @@
 		<!-- leaflet -->
 		<!-- <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" /> -->
 		<link rel="stylesheet" href="{f:uri.resource(path: 'leaflet/leaflet.css', package: 'DDFA.dresdenfueralleDe')}" />
+
+		<!-- mapbox -->
+		<link href='https://api.tiles.mapbox.com/mapbox.js/v2.1.6/mapbox.css' rel='stylesheet' />
 		<link href='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/MarkerCluster.css' rel='stylesheet' />
 		<link href='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/MarkerCluster.Default.css' rel='stylesheet' />
 
 		<!-- cartoDB -->
-		<link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/3.12/themes/css/cartodb.css" />
+		<!-- <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/3.12/themes/css/cartodb.css" /> -->
 
 		<!-- font awesome -->
 		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
@@ -43,6 +46,9 @@
 
 		<!-- requirejs (module loader) handles all further js includes -->
 		<script data-main="{f:uri.resource(path: 'DDFA/js/main', package: 'DDFA.dresdenfueralleDe')}" type="text/javascript" src="{f:uri.resource(path: 'requirejs/require.js', package: 'DDFA.dresdenfueralleDe')}"></script>
+
+		<script src='https://api.tiles.mapbox.com/mapbox.js/v2.1.6/mapbox.js'></script>
+		<script src='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/leaflet.markercluster.js'></script>
 
 	</f:section>
 </head>
@@ -55,13 +61,13 @@
 
 	<div id="map-container"></div>
 
-	<div id="mobile-menu-off-canvas">
+	<div class="mobile-menu-off-canvas" id="mobile-menu-off-canvas-left">
 		<div class="content">
 
-			<h4>Sprache</h4>
+			<h4>Menu</h4>
 			<ts:render path="parts.languageMenu" />
 			
-		  <h4>Feedback</h4>
+		  <!-- <h4>Feedback</h4>
 			<form>
 			  <div class="form-group">
 			  	<div class="input-group">
@@ -71,7 +77,7 @@
 			  </div>
 			  <div class="form-group">
 			  	<div class="input-group">
-				  	<!-- <span class="input-group-addon" id="basic-addon1">@</span> -->
+				  	<span class="input-group-addon" id="basic-addon1">@</span>
 			  		<span class="input-group-addon glyphicon glyphicon-pencil" aria-hidden="true"></span>
 			    	<textarea class="form-control" id="message" rows="3" placeholder="Deine Nachricht"></textarea>
 			    </div>
@@ -83,15 +89,23 @@
 			</form>
 
 			<h4>Hilfe</h4>
-			<p>Drücke den Anfangsbuchstaben deines Stadtteils, z.B. <kbd>p</kbd> für <mark>Prohlis</mark></p>
+			<p>Drücke den Anfangsbuchstaben deines Stadtteils, z.B. <kbd>p</kbd> für <mark>Prohlis</mark></p> -->
 
+		</div>
+	</div>
+
+	<div class="mobile-menu-off-canvas" id="mobile-menu-off-canvas-right">
+		<div class="content">
+			<h4>Legend</h4>
 		</div>
 	</div>
 	
 	<div id="uiContainer">
 		
-		<div id="search-box">
+		<div id="navigation-top">
 			<div id="menu-btn"></div>
+			<div id="search-box">Search (disabled)</div>
+			<div id="legend-btn"></div>
 		</div>
 		
 		

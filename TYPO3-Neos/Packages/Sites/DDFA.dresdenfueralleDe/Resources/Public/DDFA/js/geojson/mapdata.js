@@ -37,7 +37,7 @@ mapdata.locations = {
 			desc: 'Bereitstellung eines bedarfsorientierten und individuellen Beratungsangebots für Migranten'
 		},
 		{
-			geo: [51.051, 13.74],
+			geo: [51.055599, 13.738482],
 			name: 'DAMF Deutschkurse für Asylsuchende',
 			cat: mapdata.categories.language,
 			street: null,
@@ -307,7 +307,7 @@ mapdata.locations = {
 		    desc:'Wir richten uns mit unserem Angebot "Interkulturelle Begegnungsstätte für junge Menschen" an Kinder, Jugendliche sowie Eltern mit und ohne Migrationshintergrund. Dabei orientieren wir uns an Bedarfen und Interessen unserer AdressatInnen. Seit dem Anstieg der Zuzugszahlen der Asylsuchenden nutzt diese Zielgruppe verstärkt unsere Angebote. Wir sind mit relevanten Fachdiensten und Akteuren im Handlungsfeld Migration vernetzt und arbeiten zusammen.'
 		  },
 		  {
-		    geo: [, ],
+		    geo: [51.055917,13.7607638],
 		    name:'Johannstädter Kulturtreff e.V.',
 		    cat: mapdata.categories.network,
 		    street:'Elisenstraße 35',
@@ -325,7 +325,7 @@ mapdata.locations = {
 		    desc:'Freizeitaktivitäten, Kunst- und Kulturangebote, Sportangebote, interkulturelle Begegnung'
 		  },
 		  {
-		    geo: [51.055917, 13.7607638],
+		    geo: [51.0794856,13.7189139],
 		    name:'Verein Pro Pieschen e.V.',
 		    cat: mapdata.categories.network,
 		    street:'Arno-Lade-Straße 9',

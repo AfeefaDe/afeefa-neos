@@ -17,7 +17,7 @@
 
 	      	// TODO define class properties in the class header; currently causing problems accessing those properties inside the class itself, because theyre not instantiated (see manual for a solution)
 	      	that.options = {
-	      		locate: true
+	      		locate: false
 	      	};
 
 	      	L.mapbox.accessToken = 'pk.eyJ1IjoiZmVsaXhrYW1pbGxlIiwiYSI6Ilo1SHFOX0EifQ.pfAzun90Lj1UlVapKI3LiA';
@@ -29,7 +29,8 @@
     			],
     			attributionControl: false
 	    	}).setView([ 51.051, 13.74 ], 13);
-			  
+			
+			that.userLocation = null;
 	    	if (that.options.locate) that.locate();
 
 			// L.mapbox.tileLayer('felixkamille.4128d9e7', {
@@ -55,43 +56,53 @@
 			// };
 			// addCartoDBLayer();
 
-			// that.markerCluster = new L.MarkerClusterGroup();
-			// that.map.addLayer(that.markerCluster);
+			that.markerCluster = new L.MarkerClusterGroup({
+				iconCreateFunction: function(cluster) {
+		          return new L.DivIcon({
+		            className: 'marker-cluster',
+		            iconSize: [30, 30],
+		            html: cluster.getChildCount()
+		          });
+		        }
+			});
 
-			var categories = {
-				advice: {id: 0, name: 'Advice', maki: 'heart'},
-				medic: {id: 1, name: 'Medical Care', maki: 'hospital'},
-				language: {id: 2, name: 'Language learning', maki: 'college'},
-				leisure: {id: 3, name: 'Leisure activities', maki: 'pitch'},
-				jobs: {id: 4, name: 'Jobs + Internships'},
-				public: {id: 5, name: 'Public offices', maki: 'town-hall'},
-				religion: {id: 6, name: 'Religious Institutions'},
-				shops: {id: 7, name: 'International shops', maki: 'shop'},
-				translation: {id: 8, name: 'Translation service'},
-				donation: {id: 9, name: 'Donation'},
-				network: {id: 10, name: 'Network', maki: 'star'}
-			}
+			that.poiMarkers = new L.LayerGroup();
+			that.map.addLayer(that.poiMarkers);
 
-			var inis = [
-				{geo: [51.0491571,13.7391965], name: 'Cabana', cat: categories.advice, address: 'Kreuzstraße 7, 01067 Dresden', phone: '0351 492 33 67', mail: 'cabana@infozentrum-dresden.de', web: 'http://www.infozentrum-dresden.de', services: 'Beratung, Integrationskurse, Information'},
-				{geo: [51.051, 13.74], cat: categories.language, name: 'DAMF Deutschkurse für Asylsuchende', address: 'Dresden', phone: '', mail: 'damf-dd@gmx.de', web: 'http://damf.blogsport.de', services: 'Deutschkurse; Niveaueinstufungen, Alphabetisierung, A1, Einstufungstests, ehrenamtlich'},
-				{geo: [51.05225,13.70205], cat: categories.advice, name: 'Kontaktgruppe Asyl e.V.', address: 'Emerich-Ambros-Ufer 42, 01159 Dresden', phone: '', mail: 'kontaktgruppe-asyl@web.de', web: 'http://kontaktgruppeasyl.blogsport.de/', services: 'Beratung, Soziokulturelle Angebote, ...'},
-				{geo: [51.10749,13.68406], cat: categories.network, name: 'Bündnis Buntes Radebeul', address: 'August-Bebel-Straße 49, 01445 Radebeul', phone: '0351-8383457', mail: 'info@buntes-radebeul.de', web: 'http://www.buntes-radebeul.de', services: 'Deutschkurse, Einzelfallhilfe und Begleitung, soziokulturelle Angebote, Sammlungen, Netzwerkarbeit'},
-				{geo: [51.0242401,13.8379731],  cat: categories.network, name: 'Laubegast ist Bunt', address: 'Österreicher Str. 54, 01279 Dresden', phone: '0157-87828576', mail: 'vitae@cvjm-dresden.de', web: 'http://www.laubegast-ist-bunt.de', services: 'Deutschkurse,Hilfen im Alltag, Freizeitangebote, Veranstaltungen für Flüchtlinge und Anwohner, Plakat-, Flyer- und Postkartenaktionen'},
-				{geo: [51.0665643,13.783502], cat: categories.advice, name: 'RAA Sachsen Opferberatung', address: 'Bautzner Str. 45, 01099 Dresden', phone: '(0351) 88 9 41 74', mail: 'opferberatung.dresden@raa-sachsen.de', web: 'http://raa-sachsen.de/index.php/dresden.html', services: 'Parteiliche, klientelorientierte, aufsuchende, vrtrauliche, mehrsprachige und kostenlose Beratung und Unterstützung Betroffener rechtsmotivierter und rassistischer Gewalt, deren Angehörige, Freunde und Freundinnen  sowie Zeug_innen eines Angriffs'}
-			];
+			// var categories = {
+			// 	advice: {id: 0, name: 'Advice', maki: 'heart'},
+			// 	medic: {id: 1, name: 'Medical Care', maki: 'hospital'},
+			// 	language: {id: 2, name: 'Language learning', maki: 'college'},
+			// 	leisure: {id: 3, name: 'Leisure activities', maki: 'pitch'},
+			// 	jobs: {id: 4, name: 'Jobs + Internships'},
+			// 	public: {id: 5, name: 'Public offices', maki: 'town-hall'},
+			// 	religion: {id: 6, name: 'Religious Institutions'},
+			// 	shops: {id: 7, name: 'International shops', maki: 'shop'},
+			// 	translation: {id: 8, name: 'Translation service'},
+			// 	donation: {id: 9, name: 'Donation'},
+			// 	network: {id: 10, name: 'Network', maki: 'star'}
+			// }
 
-			var publics = [
-				{geo: [51.04229, 13.79701], name: 'Sozialamt Dresden', cat: categories.public, address: 'Junghansstraße 2, 01277 Dresden'},
-				{geo: [51.052652, 13.730282], name: 'Ausländerbehörde Dresden', cat: categories.public, address: 'Theaterstraße 13 / Zimmer 056, 01067 Dresden'},
-			];
+			// var inis = [
+			// 	{geo: [51.0491571,13.7391965], name: 'Cabana', cat: categories.advice, address: 'Kreuzstraße 7, 01067 Dresden', phone: '0351 492 33 67', mail: 'cabana@infozentrum-dresden.de', web: 'http://www.infozentrum-dresden.de', services: 'Beratung, Integrationskurse, Information'},
+			// 	{geo: [51.051, 13.74], cat: categories.language, name: 'DAMF Deutschkurse für Asylsuchende', address: 'Dresden', phone: '', mail: 'damf-dd@gmx.de', web: 'http://damf.blogsport.de', services: 'Deutschkurse; Niveaueinstufungen, Alphabetisierung, A1, Einstufungstests, ehrenamtlich'},
+			// 	{geo: [51.05225,13.70205], cat: categories.advice, name: 'Kontaktgruppe Asyl e.V.', address: 'Emerich-Ambros-Ufer 42, 01159 Dresden', phone: '', mail: 'kontaktgruppe-asyl@web.de', web: 'http://kontaktgruppeasyl.blogsport.de/', services: 'Beratung, Soziokulturelle Angebote, ...'},
+			// 	{geo: [51.10749,13.68406], cat: categories.network, name: 'Bündnis Buntes Radebeul', address: 'August-Bebel-Straße 49, 01445 Radebeul', phone: '0351-8383457', mail: 'info@buntes-radebeul.de', web: 'http://www.buntes-radebeul.de', services: 'Deutschkurse, Einzelfallhilfe und Begleitung, soziokulturelle Angebote, Sammlungen, Netzwerkarbeit'},
+			// 	{geo: [51.0242401,13.8379731],  cat: categories.network, name: 'Laubegast ist Bunt', address: 'Österreicher Str. 54, 01279 Dresden', phone: '0157-87828576', mail: 'vitae@cvjm-dresden.de', web: 'http://www.laubegast-ist-bunt.de', services: 'Deutschkurse,Hilfen im Alltag, Freizeitangebote, Veranstaltungen für Flüchtlinge und Anwohner, Plakat-, Flyer- und Postkartenaktionen'},
+			// 	{geo: [51.0665643,13.783502], cat: categories.advice, name: 'RAA Sachsen Opferberatung', address: 'Bautzner Str. 45, 01099 Dresden', phone: '(0351) 88 9 41 74', mail: 'opferberatung.dresden@raa-sachsen.de', web: 'http://raa-sachsen.de/index.php/dresden.html', services: 'Parteiliche, klientelorientierte, aufsuchende, vrtrauliche, mehrsprachige und kostenlose Beratung und Unterstützung Betroffener rechtsmotivierter und rassistischer Gewalt, deren Angehörige, Freunde und Freundinnen  sowie Zeug_innen eines Angriffs'}
+			// ];
 
-			var stations = [
-				{geo: [51.063158, 13.746389], name: 'Albertplatz', cat: {maki: 'rail-metro'} },
-				{geo: [51.050871, 13.733557], name: 'Postplatz', cat: {maki: 'rail-metro'} },
-				// {geo: [51.04108, 13.732684], name: 'Hauptbahnhof', cat: {maki: 'rail-metro'} },
-				{geo: [51.038473, 13.746587], name: 'Lennéplatz', cat: {maki: 'rail-metro'} }
-			];
+			// var publics = [
+			// 	{geo: [51.04229, 13.79701], name: 'Sozialamt Dresden', cat: categories.public, address: 'Junghansstraße 2, 01277 Dresden'},
+			// 	{geo: [51.052652, 13.730282], name: 'Ausländerbehörde Dresden', cat: categories.public, address: 'Theaterstraße 13 / Zimmer 056, 01067 Dresden'},
+			// ];
+
+			// var stations = [
+			// 	{geo: [51.063158, 13.746389], name: 'Albertplatz', cat: {maki: 'rail-metro'} },
+			// 	{geo: [51.050871, 13.733557], name: 'Postplatz', cat: {maki: 'rail-metro'} },
+			// 	// {geo: [51.04108, 13.732684], name: 'Hauptbahnhof', cat: {maki: 'rail-metro'} },
+			// 	{geo: [51.038473, 13.746587], name: 'Lennéplatz', cat: {maki: 'rail-metro'} }
+			// ];
 
 			require( [ 'hammer' ], function( Hammer ){
 
@@ -131,17 +142,80 @@
 					}
 				});
 
-				that.addMarkers(inis);
-				that.addMarkers(publics);
-				that.addPOIs(stations, '#fdc400');
 
 	      	});
+			
+			// that.addMarkers(inis);
+			that.addMarkers(mapdata.locations.inis);
+			// that.addMarkersGeoJSON(inis);
+			that.addMarkers(mapdata.locations.publics);
+			that.stationMarkers = that.addPOIs(mapdata.locations.stations, '#fdc400');
+			that.setZoomFilter();
+
+			that.map.addLayer(that.markerCluster);
+
+            // console.debug(that.markerCluster);
+			
+			// that.map.featureLayer.setFilter(function(f) {
+	  //           return false;
+	  //       });
+
+			// that.markerCluster.eachLayer(function(layer){
+			// 	layer.setFilter(function(f) {
+		 //            return f.properties['marker-symbol'] === 'fast-food';
+		 //        });
+	  //       });
+	        
+	        that.createLegend();
+
+	        that.addEvents();
+
+	    },
+
+	    addEvents: function() {
+
+	    	var that = this;
+	    	
+	    	// that.map.on('load', function(e){
+	    	// 	that.setZoomFilter();
+	    	// });
+
+	    	that.map.on('viewreset', function(e){
+	    		that.setZoomFilter();
+	    	});
+	    	
+	    },
+	    removeEvents: function() {
+
+	    },
+
+	    createLegend: function() {
+	    	var that = this;
+
+	    	var $legend = $('#mobile-menu-off-canvas-right .content');
+	    	_.each(mapdata.categories, function(cat){
+	    		if(cat.maki)
+	    			$legend.append('<p class="legend-entry ' + cat.maki + '">' + cat.name + '</p>');
+	    		else
+	    			$legend.append('<p class="legend-entry">' + cat.name + '</p>');
+	    	});
+	    },
+
+	    addMarkersGeoJSON: function(markers, color) {
+    	 	
+    	 	var that = this;
+
+	    	var featureLayer = L.mapbox.featureLayer()
+			    .loadURL('/_Resources/Static/Packages/DDFA.dresdenfueralleDe/DDFA/js/geojson/inis.geojson')
+			    .addTo(that.map);
 
 	    },
 
 	    addMarkers: function(markers, color) {
     	 	
     	 	var that = this;
+
+    	 	var newLayer = new L.LayerGroup();
 
 	    	if(color === undefined) color = '#333';
 
@@ -151,10 +225,11 @@
 					riseOnHover: true,
 					icon: L.mapbox.marker.icon({
 				        'marker-size': 'large',
-				        'marker-symbol': (marker.cat !== undefined && marker.cat.maki !== undefined) ? marker.cat.maki : '',
+				        'marker-symbol': (marker.cat !== null && marker.cat.maki !== undefined) ? marker.cat.maki : '',
 				        'marker-color': color
 				    })
-				}).addTo(that.map);
+				// }).addTo(that.map);
+				});
 				// leafMarker.bindPopup('<b>' + marker.name + '</b>' + "<br>" + marker.address + "<br>" + marker.phone + "<br>" + marker.mail + "<br>" + marker.web + "<br>" + marker.services);
 				
 				leafMarker.on('click', function(){
@@ -178,14 +253,24 @@
 					if(marker.opening) $content.append('<p><span class="fa fa-clock-o fa-lg"></span> ' + marker.opening + '</p>');
 					if(marker.desc) $content.append('<p><span class="fa fa-info fa-lg"></span> ' + marker.desc + '</p>');
 
-					$content.append('<p><button class="btn btn-default"><span class="fa fa-location-arrow" aria-hidden="true"></span> Navigate</button></p>');
+					// $content.append('<p><a href="http://maps.google.com/?saddr=34.052222,-118.243611&daddr=37.322778,-122.031944" target="_blank"><button class="btn btn-default"><span class="fa fa-location-arrow" aria-hidden="true"></span> Navigate</button></a></p>');
+					
+					if ( that.userLocation )
+						$content.append('<p><a href="http://maps.google.com/?saddr=' + that.userLocation.lat + ',' + that.userLocation.lng + '&daddr=' + marker.geo[0] + ',' + marker.geo[1] + '" target="_blank"><button class="btn btn-default"><span class="fa fa-location-arrow" aria-hidden="true"></span> Navigate</button></a></p>');
+					else
+						$content.append('<p><a href="http://maps.google.com/?daddr=' + marker.geo[0] + ',' + marker.geo[1] + '" target="_blank"><button class="btn btn-default"><span class="fa fa-location-arrow" aria-hidden="true"></span> Navigate</button></a></p>');
+
 					$content.append('<p><button class="btn btn-default"><span class="fa fa-street-view" aria-hidden="true"></span> Show in Google Street View</button></p>');
 					
 				});
 
-				// that.markerCluster.addLayer(leafMarker);
+				that.markerCluster.addLayer(leafMarker);
+
+				newLayer.addLayer(leafMarker);
 
 			});
+
+			return newLayer;
 	    },
 
 	    addPOIs: function(markers, color) {
@@ -193,6 +278,8 @@
     	 	var that = this;
 
 	    	if(color === undefined) color = '#333';
+    	 	
+    	 	var newLayer = new L.LayerGroup();
 
 	    	_.each(markers, function(marker){
 				// var leafMarker = L.marker(marker.geo).addTo(that.map);
@@ -207,10 +294,28 @@
 		                iconSize: [100,20],
 		                iconAnchor: [50,25]
 		            })
-				}).addTo(that.map);
+				// }).addTo(that.map);
+				});
 
+				newLayer.addLayer(leafMarker);
 			});
 
+	    	return newLayer;
+	    },
+
+	    setZoomFilter: function(){
+	    	
+	    	var that = this;
+
+	    	var currentLayers = that.stationMarkers.getLayers();
+	    	var newLayers = _.filter(currentLayers, function(){
+	    		return that.map.getZoom() >= 14;
+	    	});
+	    	that.poiMarkers.clearLayers();
+	    	
+	    	_.each(newLayers, function(layer) {
+	    		that.poiMarkers.addLayer(layer);
+	    	});
 	    },
 
 	    // sample code for geocoding (finding coords by location names)
@@ -245,6 +350,8 @@
     		that.map.on('locationfound', function(e) {
 				    // alert(e.latlng);
 				    that.map.setView( e.latlng , 15);
+				    that.userLocation = e.latlng;
+
 				    var myIcon = L.icon({
 						    iconUrl: '_Resources/Static/Packages/DDFA.dresdenfueralleDe/img/noun_91817_cc.png',
 						    // iconRetinaUrl: 'my-icon@2x.png',

@@ -1,13 +1,9 @@
-/composer.json
-/composer.lock
-/Build/
 /Build/Behat/*
 /Build/BuildEssentials
 /Build/Reports
 /Build/Resources
 /Configuration/
 /Data/
-#/Packages/
 /Web/
 /bin/
 /Readme.txt

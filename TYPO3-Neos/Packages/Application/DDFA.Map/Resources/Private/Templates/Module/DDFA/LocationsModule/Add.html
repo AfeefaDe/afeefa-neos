@@ -1,9 +1,18 @@
 <f:layout name="LocationsSubModule" />
 
 <f:section name="content">
-	<div class="neos-module-container">
-		<p>
-			Add location
-		</p>
-	</div>
+	<h2 class="flow-firstHeader">Add a new location</h2>
+
+	<p>
+		<f:form method="post" action="create" object="{newLocation}" name="newLocation" enctype="multipart/form-data">
+			<label for="name">Basic information</label>
+			<f:form.textfield property="name" id="name" placeholder="Enter a name" /><br /><br />
+			<f:form.textfield property="city" id="city" placeholder="Enter a city"/><br /><br />
+
+			<label for="lat">Geo information</label>
+			<f:form.textfield property="lat" id="lat" placeholder="Enter latitude"/><br /><br />
+			<f:form.textfield property="long" id="long" placeholder="Enter longitude"/><br /><br />
+			<f:form.submit value="Create location" class="neos-button neos-button-primary"/>
+		</f:form>
+	</p>
 </f:section>

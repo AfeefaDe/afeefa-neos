@@ -2,8 +2,13 @@
 
 <f:section name="content">
 	<div class="neos-module-container">
+		<h3>All locations</h3>
+		<f:for each="{locations}" as="l">
+			<f:render partial="LocationEntry" arguments="{location: l}" />
+		</f:for>
+		<br>
 		<p>
-			This is the content of the "Locations backend module"
+			<f:link.action action="add" controller="LocationsModuleController" class="neos-button neos-button-primary">Add a new location</f:link.action>
 		</p>
 	</div>
 </f:section>

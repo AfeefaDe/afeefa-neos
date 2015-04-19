@@ -11,6 +11,6 @@ TYPO3:
           ddfaLocationsModule:
             label: 'Locations'
             controller: '\DDFA\Map\Controller\Module\DDFA\LocationsModuleController'
-            description: 'description of the "Locations backend module".'
+            description: "This is the DD4all Locations Modul to magae IniLocations - it's awesome!"
             icon: 'icon-map-marker'
             resource: 'DDFA_Map_Module_ddfaLocationsModule'

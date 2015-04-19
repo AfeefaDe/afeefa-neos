@@ -14,6 +14,8 @@ use TYPO3\Flow\Persistence\Repository;
  */
 class IniLocationRepository extends Repository {
 
-	// add customized methods here
+	public function findLocationsInScope() {
+        $query = $this->createQuery();
+    }
 
 }

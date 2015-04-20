@@ -11,6 +11,7 @@ use DDFA\Map\Domain\Model\IniLocation;
 use DDFA\Map\Domain\Repository\IniLocationRepository;
 use TYPO3\Flow\Annotations as Flow;
 use TYPO3\Neos\Controller\Module\AbstractModuleController;
+use TYPO3\Flow\Persistence\Generic\PersistenceManager;
 
 /**
  * The TYPO3 User Settings module controller
@@ -19,6 +20,11 @@ use TYPO3\Neos\Controller\Module\AbstractModuleController;
  */
 class LocationsModuleController extends AbstractModuleController
 {
+    /**
+     * @Flow\Inject
+     * @var PersistenceManager
+     */
+    protected $persistenceManager;
 
     /**
      * @Flow\Inject
@@ -38,6 +44,14 @@ class LocationsModuleController extends AbstractModuleController
     /**
      * @return void
      */
+    public function viewAction(IniLocation $location)
+    {
+        $this->view->assign('l', $location);
+    }
+
+    /**
+     * @return void
+     */
     public function addAction()
     {
 
@@ -48,8 +62,6 @@ class LocationsModuleController extends AbstractModuleController
      */
     public function createAction(IniLocation $newLocation)
     {
-        //TODO error occurs here...
-
         $this->iniLocationRepository->add($newLocation);
         $this->addFlashMessage('Created a new location. \\o/');
         $this->redirect('index');
@@ -58,24 +70,29 @@ class LocationsModuleController extends AbstractModuleController
     /**
      * @return void
      */
-    public function editAction()
+    public function editAction(IniLocation $location)
     {
-
+        $this->view->assign('updateLocation', $location);
     }
 
     /**
      * @return void
      */
-    public function updateAction()
+    public function updateAction(IniLocation $updateLocation)
     {
+        $this->iniLocationRepository->update($updateLocation);
+        $this->addFlashMessage('Updated location.');
         $this->redirect('index');
     }
 
     /**
      * @return void
      */
-    public function deleteAction()
+    public function deleteAction(IniLocation $location)
     {
+        $this->iniLocationRepository->remove($location);
+        $this->persistenceManager->persistAll();
+        $this->addFlashMessage('Removed location.');
         $this->redirect('index');
     }
 

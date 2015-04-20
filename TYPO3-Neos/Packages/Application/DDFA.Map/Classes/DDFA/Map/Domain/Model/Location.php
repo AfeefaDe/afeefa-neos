@@ -18,7 +18,7 @@ abstract class Location extends \DDFA\Main\Domain\Model\Entry {
 	/**
 	 * @var string
 	 */
-	protected $long;
+	protected $lon;
 
 	/**
 	 * @var string
@@ -55,7 +55,7 @@ abstract class Location extends \DDFA\Main\Domain\Model\Entry {
 	 * @return string
 	 */
 	public function getLong() {
-		return $this->long;
+		return $this->lon;
 	}
 
 	/**

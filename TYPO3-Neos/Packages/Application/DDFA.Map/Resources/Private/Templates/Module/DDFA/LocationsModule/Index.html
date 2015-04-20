@@ -1,14 +1,53 @@
 <f:layout name="LocationsSubModule" />
 
+<f:section name="title">Locations</f:section>
+
 <f:section name="content">
 	<div class="neos-module-container">
-		<h3>All locations</h3>
-		<f:for each="{locations}" as="l">
-			<f:render partial="LocationEntry" arguments="{location: l}" />
-		</f:for>
-		<br>
-		<p>
-			<f:link.action action="add" controller="LocationsModuleController" class="neos-button neos-button-primary">Add a new location</f:link.action>
-		</p>
+		<f:if condition="{locations}">
+			<f:then>
+				<h3>All locations</h3>
+				<table>
+					<thead>
+						<tr>
+							<th>
+								<div>Name</div>
+							</th>
+							<th>
+								<div>Street</div>
+							</th>
+							<th>
+								<div>Opening Hours</div>
+							</th>
+							<th>
+								<div>Phone</div>
+							</th>
+							<th>
+								<div>Mail</div>
+							</th>
+							<th>
+								<div>Website</div>
+							</th>
+							<th>
+								<div>Edit</div>
+							</th>
+							<th>
+								<div>Delete</div>
+							</th>
+						</tr>
+					</thead>
+					<tbody>
+						<f:for each="{locations}" as="l">
+							<f:render partial="LocationEntry" arguments="{l: l}" />
+						</f:for>
+					</tbody>
+				</table>
+			</f:then>
+			<f:else>
+				<div>Currently there is no location. Please <f:link.action action="add" controller="LocationsModuleController">add one</f:link.action>.</div>
+			</f:else>
+		</f:if>
 	</div>
+
+	<f:link.action action="add" controller="LocationsModuleController" class="neos-button neos-button-primary">Add new location</f:link.action>
 </f:section>

@@ -1,34 +1,31 @@
 <h3>Basic information</h3>
 <label for="name">Namen</label>
-<f:form.textfield property="name" id="name" placeholder="Enter name" /><br /><br />
-
+<f:form.textfield property="name" id="name" placeholder="Enter name" required="true" autofocus="true"/><br/><br/>
 <label for="description">Description</label>
-<f:form.textarea property="description" id="description" placeholder="Enter a description text here" /><br /><br />
-
+<f:form.textarea property="description" id="description" placeholder="Enter a description text..." class="neos-span6" rows="8"/><br/><br/>
 <label for="openingHours">Opening hours</label>
-<f:form.textfield property="openingHours" id="openingHours" /><br /><br />
+<f:form.textfield property="openingHours" id="openingHours" placeholder="Enter opening hours"/><br/><br/>
 <label for="rating">Rating</label>
-<f:form.textfield property="rating" id="rating" /><br /><br />
+<f:form.textfield property="rating" id="rating" required="true" value="3"/><br/><br/>
 <label for="scope">Scope</label>
-<f:form.textfield property="scope" id="scope" /><br /><br />
-
+<f:form.textfield property="scope" id="scope" required="true" value="3"/><br/><br/>
 
 <h3>Contact</h3>
 <label for="mail">Mail</label>
-<f:form.textfield property="mail" id="mail" placeholder="Enter mail address"/><br /><br />
+<f:form.textfield property="mail" id="mail" placeholder="Enter mail address"/><br/><br/>
 <label for="web">Website URL</label>
-<f:form.textfield property="web" id="web" placeholder="Enter Website URL"/><br /><br />
+<f:form.textfield property="web" id="web" placeholder="Enter Website URL"/><br/><br/>
 <label for="phone">Phone</label>
-<f:form.textfield property="phone" id="phone" placeholder="Enter phone number"/><br /><br />
+<f:form.textfield property="phone" id="phone" placeholder="Enter phone number"/><br/><br/>
 
 <h3>Geo data</h3>
 <label for="street">Street</label>
-<f:form.textfield property="street" id="street" placeholder="Enter street"/><br /><br />
+<f:form.textfield property="street" id="street" placeholder="Enter street" required="true"/><br/><br/>
 <label for="zip">ZIP</label>
-<f:form.textfield property="zip" id="zip" placeholder="Enter ZIP-Code"/><br /><br />
+<f:form.textfield property="zip" id="zip" placeholder="Enter ZIP-Code" required="true"/><br/><br/>
 <label for="city">City</label>
-<f:form.textfield property="city" id="city" placeholder="Enter city"/><br /><br />
+<f:form.textfield property="city" id="city" placeholder="Enter city" required="true" value="Dresden"/><br/><br/>
 <label for="lat">Latitude</label>
-<f:form.textfield property="lat" id="lat" placeholder="Enter latitude"/><br /><br />
-<label for="long">Logitude</label>
-<f:form.textfield property="long" id="long" placeholder="Enter longitude"/>
+<f:form.textfield property="lat" id="lat" placeholder="Enter latitude" required="true"/><br/><br/>
+<label for="lon">Logitude</label>
+<f:form.textfield property="lon" id="lon" placeholder="Enter longitude" required="true"/>

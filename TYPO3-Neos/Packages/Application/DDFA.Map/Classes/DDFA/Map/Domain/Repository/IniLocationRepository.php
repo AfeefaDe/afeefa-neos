@@ -12,10 +12,7 @@ use TYPO3\Flow\Persistence\Repository;
 /**
  * @Flow\Scope("singleton")
  */
-class IniLocationRepository extends Repository {
-
-	public function findLocationsInScope() {
-        $query = $this->createQuery();
-    }
+class IniLocationRepository extends Repository
+{
 
 }

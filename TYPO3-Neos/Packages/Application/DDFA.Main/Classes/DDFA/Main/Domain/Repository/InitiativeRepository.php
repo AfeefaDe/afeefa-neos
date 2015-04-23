@@ -12,8 +12,7 @@ use TYPO3\Flow\Persistence\Repository;
 /**
  * @Flow\Scope("singleton")
  */
-class InitativeRepository extends Repository {
-
-	// add customized methods here
+class InitiativeRepository extends Repository
+{
 
 }

@@ -1,0 +1,30 @@
+<tr>
+    <td>
+        <div>{ini.name}</div>
+    </td>
+    <td>
+        <div>{ini.speaker}</div>
+    </td>
+    <td>
+        <div>{ini.phone}</div>
+    </td>
+    <td>
+        <div>{ini.mail}</div>
+    </td>
+    <td>
+        <div>{ini.web}</div>
+    </td>
+    <td class="neos-action">
+        <div class="neos-pull-right">
+            <f:link.action action="view" controller="initiativesModuleController" arguments="{ini: ini}" class="neos-button neos-button-primary" title="View initiative">
+                <i class="icon-info-sign icon-white"></i>
+            </f:link.action>
+            <f:link.action action="edit" controller="initiativesModuleController" arguments="{ini: ini}" class="neos-button neos-button-primary" title="Edit initiative">
+                <i class="icon-pencil icon-white"></i>
+            </f:link.action>
+            <f:link.action action="delete" controller="initiativesModuleController" arguments="{ini: ini}" class="neos-button neos-button-danger" title="Delete initiative">
+                <i class="icon-trash icon-white"></i>
+            </f:link.action>
+        </div>
+    </td>
+</tr>

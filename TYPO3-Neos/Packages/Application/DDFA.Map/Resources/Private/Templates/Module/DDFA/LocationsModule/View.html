@@ -1,4 +1,4 @@
-<f:layout name="LocationsSubModule" />
+<f:layout name="LocationsSubModule"/>
 
 <f:section name="title">{l.initiative.name} - {l.name}</f:section>
 
@@ -6,6 +6,7 @@
     <div class="neos-module-container">
         <div>
             <h3>Basic information</h3>
+
             <p>{l.description}</p>
 
             Opening hours: {l.openingHours}<br>
@@ -24,9 +25,11 @@
             {l.street}<br>
             {l.zip} {l.city}<br>
             <br>
-            Lat: {l.lat}, Long: {l.long}
+            Lat: {l.lat}, Lon: {l.lon}
         </div>
     </div>
-
-    <f:link.action action="edit" controller="LocationsModuleController" arguments="{location: l}" class="neos-button neos-button-primary">Edit Location</f:link.action>
+    <div class="neos-footer">
+        <f:link.action action="edit" controller="LocationsModuleController" arguments="{location: l}" class="neos-button neos-button-primary">Edit Location
+        </f:link.action>
+    </div>
 </f:section>

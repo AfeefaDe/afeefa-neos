@@ -1,0 +1,31 @@
+<f:layout name="InitiativesSubModule"/>
+
+<f:section name="title">{ini.name}</f:section>
+
+<f:section name="content">
+    <div class="neos-module-container">
+        <div>
+            <h3>Basic information</h3>
+
+            <p>{ini.description}</p>
+
+            Speaker: {ini.speaker}<br>
+            Categories: <br>
+            Target groups: <br>
+            Locations:
+
+        </div>
+        <div>
+            <h3>Contact</h3>
+            Mail: {ini.mail}<br>
+            Website: {ini.web}<br>
+            Phone: {ini.phone}
+        </div>
+
+    </div>
+    <div class="neos-footer">
+        <f:link.action action="edit" controller="InitiativesModuleController" arguments="{ini: ini}" class="neos-button neos-button-primary">
+            Edit initiative
+        </f:link.action>
+    </div>
+</f:section>

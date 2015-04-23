@@ -1,9 +1,12 @@
 <tr>
     <td>
-        <div><f:link.action action="view" controller="LocationsModuleController" arguments="{location: l}">{l.name}</f:link.action></div>
+        <div>{l.name}</div>
     </td>
     <td>
-        <div>{l.street}</div>
+        <div>{l.initiative}</div>
+    </td>
+    <td>
+        <div>{l.street}, {l.zip} {l.city}</div>
     </td>
     <td>
         <div>{l.openingHours}</div>
@@ -17,17 +20,16 @@
     <td>
         <div>{l.web}</div>
     </td>
-    <td>
-        <div>
-            <f:link.action action="edit" controller="LocationsModuleController" arguments="{location: l}">
-                <img src="{f:uri.resource(path: 'icon-edit')}" title="Edit location" />
+    <td class="neos-action">
+        <div class="neos-pull-right">
+            <f:link.action action="view" controller="LocationsModuleController" arguments="{location: l}" class="neos-button neos-button-primary" title="View location">
+                <i class="icon-info-sign icon-white"></i>
             </f:link.action>
-        </div>
-    </td>
-    <td>
-        <div>
-            <f:link.action action="delete" controller="LocationsModuleController" arguments="{location: l}">
-                <img src="{f:uri.resource(path: 'icon-delete')}" title="Delete location" />
+            <f:link.action action="edit" controller="LocationsModuleController" arguments="{location: l}" class="neos-button neos-button-primary" title="Edit location">
+                <i class="icon-pencil icon-white"></i>
+            </f:link.action>
+            <f:link.action action="delete" controller="LocationsModuleController" arguments="{location: l}" class="neos-button neos-button-danger" title="Delete location">
+                <i class="icon-trash icon-white"></i>
             </f:link.action>
         </div>
     </td>

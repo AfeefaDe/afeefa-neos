@@ -10,8 +10,8 @@ use DDFA\Map\Controller\Module;
 use DDFA\Map\Domain\Model\IniLocation;
 use DDFA\Map\Domain\Repository\IniLocationRepository;
 use TYPO3\Flow\Annotations as Flow;
-use TYPO3\Neos\Controller\Module\AbstractModuleController;
 use TYPO3\Flow\Persistence\Generic\PersistenceManager;
+use TYPO3\Neos\Controller\Module\AbstractModuleController;
 
 /**
  * The TYPO3 User Settings module controller
@@ -42,6 +42,7 @@ class LocationsModuleController extends AbstractModuleController
     }
 
     /**
+     * @param IniLocation $location
      * @return void
      */
     public function viewAction(IniLocation $location)
@@ -58,7 +59,9 @@ class LocationsModuleController extends AbstractModuleController
     }
 
     /**
+     * @param IniLocation $newLocation
      * @return void
+     * @throws \TYPO3\Flow\Persistence\Exception\IllegalObjectTypeException
      */
     public function createAction(IniLocation $newLocation)
     {
@@ -68,6 +71,7 @@ class LocationsModuleController extends AbstractModuleController
     }
 
     /**
+     * @param IniLocation $location
      * @return void
      */
     public function editAction(IniLocation $location)
@@ -76,7 +80,9 @@ class LocationsModuleController extends AbstractModuleController
     }
 
     /**
+     * @param IniLocation $updateLocation
      * @return void
+     * @throws \TYPO3\Flow\Persistence\Exception\IllegalObjectTypeException
      */
     public function updateAction(IniLocation $updateLocation)
     {
@@ -86,7 +92,9 @@ class LocationsModuleController extends AbstractModuleController
     }
 
     /**
+     * @param IniLocation $location
      * @return void
+     * @throws \TYPO3\Flow\Persistence\Exception\IllegalObjectTypeException
      */
     public function deleteAction(IniLocation $location)
     {

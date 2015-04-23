@@ -1,14 +1,15 @@
-<f:layout name="LocationsSubModule" />
+<f:layout name="LocationsSubModule"/>
 
 <f:section name="title">Add a new location</f:section>
 
 <f:section name="content">
-	<f:flashMessages class="flashmessages"/>
-
-	<f:form method="post" action="create" object="{newLocation}" name="newLocation" enctype="multipart/form-data">
-		<div class="neos-module-container">
-			<f:render partial="LocationForm" />
-		</div>
-		<f:form.submit value="Create location" class="neos-button neos-button-primary" />
-	</f:form>
+    <f:form method="post" action="create" object="{newLocation}" name="newLocation" enctype="multipart/form-data">
+        <div class="neos-module-container">
+            <f:render partial="LocationForm"/>
+        </div>
+        </div>
+        <div class="neos-footer">
+            <f:form.submit value="Create location" class="neos-button neos-button-primary"/>
+        </div>
+    </f:form>
 </f:section>

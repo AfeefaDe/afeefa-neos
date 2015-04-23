@@ -37,8 +37,7 @@ class InitiativesModuleController extends AbstractModuleController
      */
     public function indexAction()
     {
-        $inis = $this->initiativeRepository->findAll();
-        $this->view->assign('inis', $inis);
+        $this->view->assign('inis', $this->initiativeRepository->findAll());
     }
 
     /**

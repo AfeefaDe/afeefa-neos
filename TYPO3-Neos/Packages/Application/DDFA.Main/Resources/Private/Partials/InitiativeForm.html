@@ -1,4 +1,4 @@
-<h3>Basic information</h3>
+<h3 xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers">Basic information</h3>
 <label for="name">Namen</label>
 <f:form.textfield property="name" id="name" placeholder="Enter name" required="true" autofocus="true"/><br/><br/>
 <label for="description">Description</label>
@@ -8,8 +8,8 @@
 
 <h3>Contact</h3>
 <label for="mail">Mail</label>
-<f:form.textfield property="mail" id="mail" placeholder="Enter mail address"/><br/><br/>
+<f:form.textfield property="mail" id="mail" type="email" placeholder="Enter mail address"/><br/><br/>
 <label for="web">Website URL</label>
-<f:form.textfield property="web" id="web" placeholder="Enter Website URL"/><br/><br/>
+<f:form.textfield property="web" id="web" type="url" placeholder="Enter Website URL"/><br/><br/>
 <label for="phone">Phone</label>
-<f:form.textfield property="phone" id="phone" placeholder="Enter phone number"/><br/><br/>
+<f:form.textfield property="phone" id="phone" type="tel" placeholder="Enter phone number"/><br/><br/>

@@ -9,6 +9,7 @@ namespace DDFA\Map\Controller\Module\DDFA;
 use DDFA\Map\Controller\Module;
 use DDFA\Map\Domain\Model\IniLocation;
 use DDFA\Map\Domain\Repository\IniLocationRepository;
+use DDFA\Main\Domain\Repository\InitiativeRepository;
 use TYPO3\Flow\Annotations as Flow;
 use TYPO3\Flow\Persistence\Generic\PersistenceManager;
 use TYPO3\Neos\Controller\Module\AbstractModuleController;
@@ -33,12 +34,17 @@ class LocationsModuleController extends AbstractModuleController
     protected $iniLocationRepository;
 
     /**
+     * @Flow\Inject
+     * @var InitiativeRepository
+     */
+    protected $initiativeRepository;
+
+    /**
      * @return void
      */
     public function indexAction()
     {
-        $locations = $this->iniLocationRepository->findAll();
-        $this->view->assign('locations', $locations);
+        $this->view->assign('locations', $this->iniLocationRepository->findAll());
     }
 
     /**
@@ -55,7 +61,7 @@ class LocationsModuleController extends AbstractModuleController
      */
     public function addAction()
     {
-
+        $this->view->assign('inis', $this->initiativeRepository->findAll());
     }
 
     /**
@@ -65,6 +71,8 @@ class LocationsModuleController extends AbstractModuleController
      */
     public function createAction(IniLocation $newLocation)
     {
+        //TODO sicher unsauber:
+        $newLocation->setInitiative($this->initiativeRepository->findOneByName($_POST['moduleArguments']['ini']));
         $this->iniLocationRepository->add($newLocation);
         $this->addFlashMessage('Created a new location. \\o/');
         $this->redirect('index');
@@ -99,7 +107,7 @@ class LocationsModuleController extends AbstractModuleController
     public function deleteAction(IniLocation $location)
     {
         $this->iniLocationRepository->remove($location);
-        $this->persistenceManager->persistAll();
+        //$this->persistenceManager->persistAll();
         $this->addFlashMessage('Removed location.');
         $this->redirect('index');
     }

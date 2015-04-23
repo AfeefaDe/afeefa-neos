@@ -6,6 +6,7 @@ namespace DDFA\Map\Domain\Model;
  *                                                                        *
  *                                                                        */
 
+use DDFA\Main\Domain\Model\Initiative;
 use Doctrine\ORM\Mapping as ORM;
 use TYPO3\Flow\Annotations as Flow;
 
@@ -21,7 +22,7 @@ class IniLocation extends \DDFA\Map\Domain\Model\Location
     protected $openingHours;
 
     /**
-     * @var \DDFA\Main\Domain\Model\Initiative
+     * @var Initiative
      * @ORM\ManyToOne(inversedBy="locations")
      */
     protected $initiative;
@@ -45,7 +46,7 @@ class IniLocation extends \DDFA\Map\Domain\Model\Location
     }
 
     /**
-     * @return \DDFA\Main\Domain\Model\Initiative
+     * @return Initiative
      */
     public function getInitiative()
     {
@@ -53,10 +54,10 @@ class IniLocation extends \DDFA\Map\Domain\Model\Location
     }
 
     /**
-     * @param \DDFA\Main\Domain\Model\Initiative $initiative
+     * @param Initiative $initiative
      * @return void
      */
-    public function setInitiative(\DDFA\Main\Domain\Model\Initiative $initiative)
+    public function setInitiative(Initiative $initiative)
     {
         $this->initiative = $initiative;
     }

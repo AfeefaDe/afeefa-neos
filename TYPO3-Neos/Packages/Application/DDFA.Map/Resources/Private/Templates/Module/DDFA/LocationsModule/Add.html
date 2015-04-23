@@ -3,13 +3,26 @@
 <f:section name="title">Add a new location</f:section>
 
 <f:section name="content">
-    <f:form method="post" action="create" object="{newLocation}" name="newLocation" enctype="multipart/form-data">
-        <div class="neos-module-container">
-            <f:render partial="LocationForm"/>
-        </div>
-        </div>
-        <div class="neos-footer">
-            <f:form.submit value="Create location" class="neos-button neos-button-primary"/>
-        </div>
-    </f:form>
+    <f:if condition="{inis}">
+        <f:then>
+            <f:form method="post" action="create" object="{newLocation}" name="newLocation" enctype="multipart/form-data">
+                <div class="neos-module-container">
+                    <f:render partial="LocationForm" arguments="{inis: inis}"/>
+                </div>
+                <div class="neos-footer">
+                    <f:form.submit value="Create location" class="neos-button neos-button-primary"/>
+                </div>
+            </f:form>
+        </f:then>
+        <f:else>
+            <div class="neos-module-container">
+                You need at least one initiative to add a location!
+            </div>
+            <div class="neos-footer">
+                <f:link.action action="add" controller="InitiativesModuleController" class="neos-button neos-button-primary">
+                    Add a initiative
+                </f:link.action>
+            </div>
+        </f:else>
+    </f:if>
 </f:section>

@@ -1,0 +1,11 @@
+ name: 'DD4all locations API'
+        uriPattern: 'locations/{id}'
+        defaults:
+                '@package': DDFA.Mao
+                '@controller': Frontend\Node
+                '@action': get
+                '@fprmat': json
+        routeParts:
+                id:
+                        handler: TYPO3\Neos\Routing\FrontendNodeRoutePartHandlerInterface
+        appendExceedingArguments: true

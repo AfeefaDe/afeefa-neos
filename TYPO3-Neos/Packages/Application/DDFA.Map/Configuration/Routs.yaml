@@ -1,6 +1,0 @@
- -
- name: 'DD4all locations API'
-   uriPattern: 'dd4all'
-   defaults:
-     '@controller': 'Plugin\DDFA\LocationAPI'
-     '@action': 'get'

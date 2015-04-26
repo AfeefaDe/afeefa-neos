@@ -1,8 +1,9 @@
 resources:
   methods:
     # DDFA_Map_Module_ddfaLocationsModule: 'method(DDFA\Map\Controller\Module\DDFA\LocationsModuleController->.*Action())'
-    DDFA_Map_Module_ddfaLocationsModule: 'method(DDFA\Map\Controller\Module\DDFA\LocationsModuleController->(index|add|create|view|edit|update|remove|)Action())'
-    DDFA_Main_Module_ddfaInitiativesModule: 'method(DDFA\Main\Controller\Module\DDFA\InitiativesModuleController->(index|add|create|view|edit|update|remove|)Action())'
+    DDFA_Map_Module_ddfaLocationsModule: 'method(DDFA\Map\Controller\Module\DDFA\LocationsModuleController->(index|add|create|view|edit|update|remove)Action())'
+    DDFA_Main_Module_ddfaInitiativesModule: 'method(DDFA\Main\Controller\Module\DDFA\InitiativesModuleController->(index|add|create|view|edit|update|remove)Action())'
+   # DDFA_Map_Plugin_ddfaLocationAPI: 'method(DDFA\Map\Controller\Plugin\DDFA\LocationAPIController->getAction())'
 acls:
   TYPO3.Neos:Administrator:
     methods:

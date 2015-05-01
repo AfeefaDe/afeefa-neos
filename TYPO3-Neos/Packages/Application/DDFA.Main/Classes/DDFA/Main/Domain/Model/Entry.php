@@ -6,8 +6,8 @@ namespace DDFA\Main\Domain\Model;
  *                                                                        *
  *                                                                        */
 
-use TYPO3\Flow\Annotations as Flow;
 use Doctrine\ORM\Mapping as ORM;
+use TYPO3\Flow\Annotations as Flow;
 
 /**
  * @Flow\Entity
@@ -17,6 +17,7 @@ abstract class Entry {
 
 	/**
 	 * @var string
+     * @Flow\Identity
 	 */
 	protected $name;
 
@@ -27,6 +28,7 @@ abstract class Entry {
 
 	/**
 	 * @var string
+     * @Flow\Identity
 	 */
 	protected $mail;
 

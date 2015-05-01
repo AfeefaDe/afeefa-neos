@@ -65,7 +65,7 @@ class InitiativesModuleController extends AbstractModuleController
     public function createAction(Initiative $newInitiative)
     {
         $this->initiativeRepository->add($newInitiative);
-        $this->addFlashMessage('Created a new initiative. \\o/');
+        $this->addFlashMessage('A new initiative has been created successfully.');
         $this->redirect('index');
     }
 
@@ -85,7 +85,7 @@ class InitiativesModuleController extends AbstractModuleController
     public function updateAction(Initiative $updateInitiative)
     {
         $this->initiativeRepository->update($updateInitiative);
-        $this->addFlashMessage('Updated initiative.');
+        $this->addFlashMessage('A new initiative has been updated successfully.');
         $this->redirect('index');
     }
 
@@ -98,7 +98,7 @@ class InitiativesModuleController extends AbstractModuleController
     {
         $this->initiativeRepository->remove($ini);
         $this->persistenceManager->persistAll();
-        $this->addFlashMessage('Removed initiative.');
+        $this->addFlashMessage('A new initiative has been removed successfully.');
         $this->redirect('index');
     }
 

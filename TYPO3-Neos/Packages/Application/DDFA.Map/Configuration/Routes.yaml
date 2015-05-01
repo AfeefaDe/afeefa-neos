@@ -1,6 +1,17 @@
 -
   name: 'DD4all locations API'
-  uriPattern: 'dd4all'
+  uriPattern: 'dd4all/locations/get'
   defaults:
     '@controller': 'Plugin\DDFA\LocationAPI'
     '@action': 'get'
+  appendExceedingArguments: false
+  httpMethods: ['GET']
+
+-
+  name: 'DD4all locations API'
+  uriPattern: 'dd4all/locations/get/{id}'
+  defaults:
+    '@controller': 'Plugin\DDFA\LocationAPI'
+    '@action': 'getById'
+  appendExceedingArguments: false
+  httpMethods: ['GET']

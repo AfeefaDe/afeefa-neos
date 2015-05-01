@@ -3,7 +3,9 @@
         <f:render section="title"/>
     </h1>
 
-    <f:flashMessages class="flashmessages"/>
+    <div class="neos-notification-container">
+        <f:render partial="FlashMessages"/>
+    </div>
 
     <f:render section="content"/>
 </div>

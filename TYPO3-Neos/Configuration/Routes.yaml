@@ -14,7 +14,7 @@
   uriPattern: '<dd4allSubroutes>'
   defaults:
     '@package': 'DDFA.Map'
-    '@format': 'html'
+    '@format': 'json'
   subRoutes:
     'dd4allSubroutes':
       package: 'DDFA.Map'

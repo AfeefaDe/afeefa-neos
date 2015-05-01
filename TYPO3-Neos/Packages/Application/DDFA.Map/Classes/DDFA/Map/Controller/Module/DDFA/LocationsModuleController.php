@@ -6,10 +6,10 @@ namespace DDFA\Map\Controller\Module\DDFA;
  *                                                                        *
  *                                                                        */
 
-use DDFA\Map\Controller\Module;
+use DDFA\Main\Controller\Module\DDFA\InitiativesModuleController;
+use DDFA\Main\Domain\Repository\InitiativeRepository;
 use DDFA\Map\Domain\Model\IniLocation;
 use DDFA\Map\Domain\Repository\IniLocationRepository;
-use DDFA\Main\Domain\Repository\InitiativeRepository;
 use TYPO3\Flow\Annotations as Flow;
 use TYPO3\Flow\Persistence\Generic\PersistenceManager;
 use TYPO3\Neos\Controller\Module\AbstractModuleController;
@@ -25,7 +25,7 @@ class LocationsModuleController extends AbstractModuleController
      * @Flow\Inject
      * @var PersistenceManager
      */
-    protected $persistenceManager;
+   protected $persistenceManager;
 
     /**
      * @Flow\Inject
@@ -74,7 +74,7 @@ class LocationsModuleController extends AbstractModuleController
         //TODO sicher unsauber:
         $newLocation->setInitiative($this->initiativeRepository->findOneByName($_POST['moduleArguments']['ini']));
         $this->iniLocationRepository->add($newLocation);
-        $this->addFlashMessage('Created a new location. \\o/');
+        $this->addFlashMessage('A new location has been created successfully.');
         $this->redirect('index');
     }
 
@@ -85,6 +85,7 @@ class LocationsModuleController extends AbstractModuleController
     public function editAction(IniLocation $location)
     {
         $this->view->assign('updateLocation', $location);
+        $this->view->assign('inis', $this->initiativeRepository->findAll());
     }
 
     /**
@@ -94,8 +95,10 @@ class LocationsModuleController extends AbstractModuleController
      */
     public function updateAction(IniLocation $updateLocation)
     {
+        //TODO sicher unsauber:
+        $updateLocation->setInitiative($this->initiativeRepository->findOneByName($_POST['moduleArguments']['ini']));
         $this->iniLocationRepository->update($updateLocation);
-        $this->addFlashMessage('Updated location.');
+        $this->addFlashMessage('The location has been updated successfully.');
         $this->redirect('index');
     }
 
@@ -107,8 +110,8 @@ class LocationsModuleController extends AbstractModuleController
     public function deleteAction(IniLocation $location)
     {
         $this->iniLocationRepository->remove($location);
-        //$this->persistenceManager->persistAll();
-        $this->addFlashMessage('Removed location.');
+        $this->persistenceManager->persistAll();
+        $this->addFlashMessage('The location has been removed successfully.');
         $this->redirect('index');
     }
 

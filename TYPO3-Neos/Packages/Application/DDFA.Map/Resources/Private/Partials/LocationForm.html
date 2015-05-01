@@ -2,7 +2,8 @@
 <label for="name">Namen</label>
 <f:form.textfield property="name" id="name" placeholder="Enter name" required="true" autofocus="true"/><br/><br/>
 <label for="initiative">Initiative</label>
-<f:form.select id="initiative" name="ini" options="{inis}" optionValueField="name" optionLabelField="name"/>
+<f:form.select id="initiative" name="ini" options="{inis}" optionValueField="name" optionLabelField="name"
+               value="{selectedIni}" sortByOptionLabel="true"/>
 <label for="description">Description</label>
 <f:form.textarea property="description" id="description" placeholder="Enter a description text..." class="neos-span6" rows="8"/><br/><br/>
 <label for="openingHours">Opening hours</label>

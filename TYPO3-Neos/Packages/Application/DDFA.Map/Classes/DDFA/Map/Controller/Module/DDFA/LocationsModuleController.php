@@ -6,7 +6,6 @@ namespace DDFA\Map\Controller\Module\DDFA;
  *                                                                        *
  *                                                                        */
 
-use DDFA\Main\Controller\Module\DDFA\InitiativesModuleController;
 use DDFA\Main\Domain\Repository\InitiativeRepository;
 use DDFA\Map\Domain\Model\IniLocation;
 use DDFA\Map\Domain\Repository\IniLocationRepository;

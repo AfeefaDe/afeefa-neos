@@ -6,7 +6,6 @@ namespace DDFA\Main\Controller\Module\DDFA;
  *                                                                        *
  *                                                                        */
 
-use DDFA\Main\Controller\Module;
 use DDFA\Main\Domain\Model\Initiative;
 use DDFA\Main\Domain\Repository\InitiativeRepository;
 use TYPO3\Flow\Annotations as Flow;

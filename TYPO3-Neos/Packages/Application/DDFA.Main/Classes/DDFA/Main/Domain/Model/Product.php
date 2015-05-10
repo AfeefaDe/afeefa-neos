@@ -13,8 +13,28 @@ use Doctrine\ORM\Mapping as ORM;
  * @Flow\Entity
  * @ORM\MappedSuperclass()
  */
-abstract class Owner extends \DDFA\Main\Domain\Model\Object {
+abstract class Product extends \DDFA\Main\Domain\Model\Object {
 
+    /**
+     * @var string
+     */
+    private $supportWanted;
 
+    /**
+     * @return string
+     */
+    public function getSupportWanted()
+    {
+        return $this->supportWanted;
+    }
+
+    /**
+     * @param string $supportWanted
+     * @return void
+     */
+    public function setSupportWanted($supportWanted)
+    {
+        $this->supportWanted = $supportWanted;
+    }
 
 }

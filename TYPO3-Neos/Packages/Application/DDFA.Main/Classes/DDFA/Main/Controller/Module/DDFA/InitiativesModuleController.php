@@ -96,7 +96,6 @@ class InitiativesModuleController extends AbstractModuleController
     public function deleteAction(Initiative $ini)
     {
         $this->initiativeRepository->remove($ini);
-        $this->persistenceManager->persistAll();
         $this->addFlashMessage('A new initiative has been removed successfully.');
         $this->redirect('index');
     }

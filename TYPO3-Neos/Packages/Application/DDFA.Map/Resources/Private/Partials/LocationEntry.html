@@ -1,4 +1,4 @@
-<tr>
+<tr xmlns:f="http://www.w3.org/1999/html">
     <td>
         <div>{l.name}</div>
     </td>
@@ -18,7 +18,7 @@
         <div>{l.mail}</div>
     </td>
     <td>
-        <div>{l.web}</div>
+        <div>{l.numLangs}</div>
     </td>
     <td class="neos-action">
         <div class="neos-pull-right">
@@ -28,9 +28,7 @@
             <f:link.action action="edit" controller="LocationsModuleController" arguments="{location: l}" class="neos-button neos-button-primary" title="Edit location">
                 <i class="icon-pencil icon-white"></i>
             </f:link.action>
-            <f:link.action action="delete" controller="LocationsModuleController" arguments="{location: l}" class="neos-button neos-button-danger" title="Delete location">
-                <i class="icon-trash icon-white"></i>
-            </f:link.action>
+            <f:form action="delete" arguments="{location: l}"><button type="submit" class="neos-button neos-button-danger" title="Delete location"><i class="icon-trash icon-white"></i></button></f:form>
         </div>
     </td>
 </tr>

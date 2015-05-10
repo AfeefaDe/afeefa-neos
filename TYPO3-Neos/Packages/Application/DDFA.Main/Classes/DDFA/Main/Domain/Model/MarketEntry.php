@@ -1,5 +1,5 @@
 <?php
-namespace DDFA\Main\Domain\Repository;
+namespace DDFA\Main\Domain\Model;
 
 /*                                                                        *
  * This script belongs to the TYPO3 Flow package "DDFA.Main".             *
@@ -7,11 +7,15 @@ namespace DDFA\Main\Domain\Repository;
  *                                                                        */
 
 use TYPO3\Flow\Annotations as Flow;
-use TYPO3\Flow\Persistence\Repository;
+use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @Flow\Scope("singleton")
+ * @Flow\Entity
  */
-class TargetGroupRepository extends Repository {
+class MarketEntry extends \DDFA\Main\Domain\Model\Event{
 
+    /**
+     * @var boolean
+     */
+    protected $offer;
 }

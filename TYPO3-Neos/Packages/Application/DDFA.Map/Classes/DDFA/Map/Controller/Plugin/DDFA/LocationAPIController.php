@@ -7,7 +7,7 @@ namespace DDFA\Map\Controller\Plugin\DDFA;
  *                                                                        *
  *                                                                        */
 
-use DDFA\Map\Domain\Repository\IniLocationRepository;
+use DDFA\Map\Domain\Repository\LocationRepository;
 use TYPO3\Flow\Annotations as Flow;
 use TYPO3\Flow\Mvc\Controller\ActionController;
 
@@ -15,9 +15,9 @@ class LocationAPIController extends ActionController
 {
     /**
      * @Flow\Inject
-     * @var IniLocationRepository
+     * @var LocationRepository
      */
-    protected $iniLocationRepository;
+    protected $locationRepository;
 
     /**
      * @var string
@@ -34,7 +34,7 @@ class LocationAPIController extends ActionController
      */
     public function getAction()
     {
-        $this->view->assign('value', $this->iniLocationRepository->findAll());
+        $this->view->assign('value', $this->locationRepository->findAll());
         $this->view->setConfiguration(
             array(
                 'value' => array(
@@ -60,13 +60,12 @@ class LocationAPIController extends ActionController
      */
     public function getByIdAction($id)
     {
-        $this->view->assign('value', $this->iniLocationRepository->findByIdentifier($id));
+        $this->view->assign('value', $this->locationRepository->findByIdentifier($id));
         $this->view->setConfiguration(
             array(
                 'value' => array(
                     '_descend' => array(
                         'initiative' => array(
-                            '_only' => array('name'),
                             '_exposeObjectIdentifier' => TRUE,
                             '_exposedObjectIdentifierKey' => 'id'
                         )

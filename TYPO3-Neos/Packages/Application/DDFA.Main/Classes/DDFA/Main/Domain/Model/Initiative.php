@@ -20,7 +20,7 @@ class Initiative extends \DDFA\Main\Domain\Model\Owner{
 	protected $speaker;
 
 	/**
-	 * @var \Doctrine\Common\Collections\Collection<\DDFA\Map\Domain\Model\IniLocation>
+	 * @var \Doctrine\Common\Collections\Collection<\DDFA\Map\Domain\Model\Location>
 	 * @ORM\OneToMany(mappedBy="initiative")
 	 */
 	protected $locations;

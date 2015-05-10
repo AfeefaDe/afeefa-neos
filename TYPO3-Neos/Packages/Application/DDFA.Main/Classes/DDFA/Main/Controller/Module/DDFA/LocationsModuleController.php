@@ -87,47 +87,74 @@ class LocationsModuleController extends AbstractModuleController
 
         $newLocation->setEntryId(uniqid());
         $newLocation->setLocale("de");
-        $newLocation->setType(DDConst::LOCATION_INI);
 
+        $newLocation->setType(DDConst::LOCATION_INI);
         $now = new DateTime();
         $newLocation->setCreated($now);
         $newLocation->setUpdated($now);
-
         $newLocation->setPersistenceObjectIdentifier(DDHelpers::createGuid());
 
         $this->locationRepository->add($newLocation);
         $this->addFlashMessage('A new location has been created successfully.');
 
-        if (isset($_POST['moduleArguments']['localize']))
-            $this->redirect('edit', NULL, NULL, array('location' => $newLocation));
-        else
-            $this->redirect('index');
+        if (isset($_POST['moduleArguments']['localize'])) {
+            $editLocation = new Location();
+            $editLocation->setPersistenceObjectIdentifier(DDHelpers::createGuid());
+            $editLocation->setEntryId($newLocation->getEntryId());
+            $editLocation->setLocale("en");
+            $this->redirect('edit', NULL, NULL, array('editLocation' => $editLocation, 'viewLocation' => $newLocation));
+        }
+        $this->redirect('index');
     }
 
     /**
-     * @param Location $location
+     * @param Location $editLocation
+     * @param Location $viewLocation
      * @return void
      */
-    public function editAction(Location $location)
+    public function editAction(Location $editLocation, Location $viewLocation = NULL)
     {
-        $this->locationRepository->findLocalisations($location);
+        if($viewLocation == NULL || $viewLocation->getId() == $editLocation->getId()) {
+            $this->redirect('simpleEdit', NULL, NULL, array('editLocation' => $editLocation));
+        } else {
+            $this->view->assign('viewLocation', $viewLocation);
+            $this->view->assign('editLocation', $editLocation);
+            $this->view->assign('inis', $this->initiativeRepository->findAll());
+            $this->view->assign('languages', $this->languageRepository->findAll());
+        }
+    }
 
-        $this->view->assign('updateLocation', $location);
+    public function simpleEditAction(Location $editLocation) {
+        $this->view->assign('editLocation', $editLocation);
         $this->view->assign('inis', $this->initiativeRepository->findAll());
+        $this->view->assign('languages', $this->languageRepository->findAll());
     }
 
     /**
-     * @param Location $updateLocation
+     * @param Location $editLocation
      * @return void
      * @throws \TYPO3\Flow\Persistence\Exception\IllegalObjectTypeException
      */
-    public function updateAction(Location $updateLocation)
+    public function updateAction(Location $editLocation)
     {
-        //TODO sicher unsauber:
-        $updateLocation->setInitiative($this->initiativeRepository->findOneByName($_POST['moduleArguments']['ini']));
-        $this->locationRepository->update($updateLocation);
+        //TODO unsauber:
+        $editLocation->setInitiative($this->initiativeRepository->findOneByName($_POST['moduleArguments']['ini']));
+        $this->locationRepository->update($editLocation);
         $this->addFlashMessage('The location has been updated successfully.');
         $this->redirect('index');
+    }
+
+    public function selectTranslationAction(Location $location) {
+        $editLocation = $this->locationRepository->findOneLocalized($location, $_POST['moduleArguments']['editLocale']);
+        if($editLocation == NULL) {
+            $editLocation = new Location();
+            $editLocation->setPersistenceObjectIdentifier(DDHelpers::createGuid());
+            $editLocation->setEntryId($location->getEntryId());
+            //TODO proof locale
+            $editLocation->setLocale($_POST['moduleArguments']['editLocale']);
+        }
+        $viewLocation = $this->locationRepository->findOneLocalized($location, $_POST['moduleArguments']['viewLocale']);
+        $this->redirect('edit', NULL, NULL, array('editLocation' => $editLocation, 'viewLocation' => $viewLocation));
     }
 
     /**
@@ -138,7 +165,6 @@ class LocationsModuleController extends AbstractModuleController
     public function deleteAction(Location $location)
     {
         $this->locationRepository->remove($location);
-        //$this->persistenceManager->persistAll();
         $this->addFlashMessage('The location has been removed successfully.');
         $this->redirect('index');
     }

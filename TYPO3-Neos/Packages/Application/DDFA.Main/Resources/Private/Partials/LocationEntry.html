@@ -18,7 +18,7 @@
         <div>{l.mail}</div>
     </td>
     <td>
-        <div>{l.numLangs}</div>
+      <div>{l.numLocales} ({l.locales})</div>
     </td>
     <td class="neos-action">
         <div class="neos-pull-right">
@@ -26,7 +26,7 @@
                            class="neos-button neos-button-primary" title="View location">
                 <i class="icon-info-sign icon-white"></i>
             </f:link.action>
-            <f:link.action action="edit" controller="LocationsModuleController" arguments="{location: l}"
+            <f:link.action action="simpleEdit" controller="LocationsModuleController" arguments="{editLocation: l}"
                            class="neos-button neos-button-primary" title="Edit location">
                 <i class="icon-pencil icon-white"></i>
             </f:link.action>

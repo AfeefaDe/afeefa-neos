@@ -1,0 +1,16 @@
+<f:layout name="Default" />
+
+<f:section name="title">Edit location</f:section>
+
+<f:section name="content">
+    <f:render partial="EditLanguageSelect" arguments="{languages: languages, location: editLocation}" />
+
+    <f:form method="post" action="update" object="{editLocation}" name="editLocation" enctype="multipart/form-data">
+        <div class="neos-module-container">
+            <f:render partial="LocationForm" arguments="{inis: inis, selectedIni: editLocation.initiative.name}"/>
+        </div>
+        <div class="neos-footer">
+            <f:form.submit value="Save changes" class="neos-button neos-button-primary"/>
+        </div>
+    </f:form>
+</f:section>

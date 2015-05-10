@@ -94,6 +94,8 @@ class InitiativesModuleController extends AbstractModuleController
      */
     public function updateAction(Initiative $updateInitiative)
     {
+        $updateInitiative->setUpdated(new DateTime());
+
         $this->initiativeRepository->update($updateInitiative);
         $this->addFlashMessage('A new initiative has been updated successfully.');
         $this->redirect('index');

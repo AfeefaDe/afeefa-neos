@@ -21,7 +21,10 @@ class LocationRepository extends Repository
         $query = $this->createQuery();
         $locations = $query->matching($query->equals('locale', $locale))->execute();
         foreach ($locations as $l) {
-            $l->numLangs = $this->countLocalisations($l) + 1;
+            $locales = $this->findLocales($l);
+            $l->numLocales = sizeof($locales);
+            $l->locales = join(", ", $locales);
+
         }
         return $locations;
     }
@@ -62,16 +65,33 @@ class LocationRepository extends Repository
         return $query->matching($query->equals('type', DDConst::LOCATION_EVENT))->matching($query->equals('locale', $locale))->execute();
     }
 
+    public function findOneLocalized(Location $location, $locale) {
+        $query = $this->createQuery();
+        return $query->matching($query->equals('entryId', $location->getEntryId()))
+            ->matching($query->equals('locale', $locale))->execute()->getFirst();
+    }
+
     public function findLocalisations(Location $location)
     {
         $query = $this->createQuery();
         return $query->matching($query->equals('entryId', $location->getEntryId()))
             ->matching($query->logicalNot($query->equals('Persistence_Object_Identifier', $location->getId())))->execute();
+    }
+
+    public function findAllLocalisations(Location $location)
+    {
+        $query = $this->createQuery();
+        return $query->matching($query->equals('entryId', $location->getEntryId()))->execute();
 
     }
 
-    public function countLocalisations(Location $location)
-    {
-        return $this->findLocalisations($location)->count();
+    public function findLocales(Location $location) {
+        $r = array();
+        $i = 0;
+        foreach($this->findAllLocalisations($location) as $localisation) {
+            $r[$i] = $localisation->getLocale();
+            ++$i;
+        }
+        return $r;
     }
 }

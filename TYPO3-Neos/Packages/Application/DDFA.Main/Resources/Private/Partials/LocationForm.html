@@ -11,8 +11,10 @@
 <f:form.textfield property="openingHours" id="openingHours" placeholder="Enter opening hours"/><br/><br/>
 <label for="rating">Rating</label>
 <f:form.textfield property="rating" id="rating" type="number" required="true" value="3"/><br/><br/>
-<label for="scope">Scope (citywide)</label>
-<f:form.checkbox property="scope" id="scope" checked="checked" value="scope"/><br/><br/>
+<label for="scope" class="neos-checkbox neos-inline">Scope (citywide)
+    <f:form.checkbox property="scope" id="scope" value="scope"/>
+    <span></span>
+</label><br/><br/>
 
 <h3>Contact</h3>
 <label for="mail">Mail</label>

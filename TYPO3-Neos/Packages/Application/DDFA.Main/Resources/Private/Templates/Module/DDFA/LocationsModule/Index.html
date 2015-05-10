@@ -1,10 +1,10 @@
 <f:layout name="Default"/>
 
-<f:section name="title">Overview of all Initiatives</f:section>
+<f:section name="title">Overview of all locations</f:section>
 
 <f:section name="content">
     <div class="neos-module-container">
-        <f:if condition="{inis}">
+        <f:if condition="{locations}">
             <f:then>
                 <table class="neos-table">
                     <thead>
@@ -13,7 +13,13 @@
                             <div>Name</div>
                         </th>
                         <th>
-                            <div>Speaker</div>
+                            <div>Initiative</div>
+                        </th>
+                        <th>
+                            <div>Address</div>
+                        </th>
+                        <th>
+                            <div>Opening hours</div>
                         </th>
                         <th>
                             <div>Phone</div>
@@ -22,29 +28,28 @@
                             <div>Mail</div>
                         </th>
                         <th>
-                            <div>Website</div>
+                            <div>Localisations ({numLanguages})</div>
                         </th>
                         <th></th>
                     </tr>
                     </thead>
                     <tbody>
-                    <f:for each="{inis}" as="ini">
-                        <f:render partial="InitiativeEntry" arguments="{ini: ini}"/>
+                    <f:for each="{locations}" as="l">
+                        <f:render partial="LocationEntry" arguments="{l: l}"/>
                     </f:for>
                     </tbody>
                 </table>
             </f:then>
             <f:else>
                 <div>
-                    Currently there is no Initiative. Please add one.
+                    Currently there is no location. Please add one.
                 </div>
             </f:else>
         </f:if>
     </div>
     <div class="neos-footer">
-        <f:link.action action="add" controller="InitiativesModuleController" class="neos-button neos-button-primary">Add
-            a
-            initiative
+        <f:link.action action="add" controller="LocationsModuleController" class="neos-button neos-button-primary">Add a
+            location
         </f:link.action>
     </div>
 </f:section>

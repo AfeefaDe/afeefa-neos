@@ -12,7 +12,7 @@ use TYPO3\Flow\Annotations as Flow;
 /**
  * @Flow\Entity
  */
-class TargetGroup
+class Language
 {
     /**
      * @var string
@@ -24,25 +24,45 @@ class TargetGroup
 
     /**
      * @var string
+     * @Flow\Identity
      */
-    protected $name;
+    protected $code;
 
+    /**
+     * @var string
+     */
+    protected $language;
 
     /**
      * @return string
      */
-    public function getName()
+    public function getCode()
     {
-        return $this->name;
+        return $this->code;
     }
 
     /**
-     * @param string $name
-     * @return void
+     * @param string $code
      */
-    public function setName($name)
+    public function setCode($code)
     {
-        $this->name = $name;
+        $this->code = $code;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLanguage()
+    {
+        return $this->language;
+    }
+
+    /**
+     * @param mixed $language
+     */
+    public function setLanguage($language)
+    {
+        $this->language = $language;
     }
 
     /**
@@ -60,5 +80,4 @@ class TargetGroup
     {
         $this->Persistence_Object_Identifier = $Persistence_Object_Identifier;
     }
-
 }

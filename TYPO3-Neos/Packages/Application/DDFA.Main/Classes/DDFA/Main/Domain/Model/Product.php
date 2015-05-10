@@ -13,28 +13,29 @@ use TYPO3\Flow\Annotations as Flow;
  * @Flow\Entity
  * @ORM\MappedSuperclass()
  */
-abstract class Owner extends \DDFA\Main\Domain\Model\Object
+abstract class Product extends \DDFA\Main\Domain\Model\Object
 {
 
     /**
      * @var string
      */
-    protected $languages;
+    private $supportWanted;
 
     /**
      * @return string
      */
-    public function getLanguages()
+    public function getSupportWanted()
     {
-        return $this->languages;
+        return $this->supportWanted;
     }
 
     /**
-     * @param string $languages
+     * @param string $supportWanted
+     * @return void
      */
-    public function setLanguages($languages)
+    public function setSupportWanted($supportWanted)
     {
-        $this->languages = $languages;
+        $this->supportWanted = $supportWanted;
     }
 
 }

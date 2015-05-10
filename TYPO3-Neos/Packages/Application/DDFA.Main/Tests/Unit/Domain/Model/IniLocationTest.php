@@ -2,14 +2,14 @@
 namespace DDFA\Main\Tests\Unit\Domain\Model;
 
     /*                                                                        *
-     * This script belongs to the TYPO3 Flow package "DDFA.Main".             *
+     * This script belongs to the TYPO3 Flow package "DDFA.Main".              *
      *                                                                        *
      *                                                                        */
 
 /**
- * Testcase for Category
+ * Testcase for Ini location
  */
-class CategoryTest extends \TYPO3\Flow\Tests\UnitTestCase
+class IniLocationTest extends \TYPO3\Flow\Tests\UnitTestCase
 {
 
     /**

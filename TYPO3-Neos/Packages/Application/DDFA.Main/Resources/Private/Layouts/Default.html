@@ -1,0 +1,12 @@
+<link href="{f:uri.resource(path: 'Styles/dd4all.css')}" rel="stylesheet"/>
+<div class="neos-content neos-container-fluid">
+    <h1>
+        <f:render section="title"/>
+    </h1>
+
+    <div class="neos-notification-container">
+        <f:render partial="FlashMessages"/>
+    </div>
+
+    <f:render section="content"/>
+</div>

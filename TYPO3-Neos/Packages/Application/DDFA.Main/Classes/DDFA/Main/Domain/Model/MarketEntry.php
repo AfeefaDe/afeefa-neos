@@ -1,18 +1,22 @@
 <?php
-namespace DDFA\Main\Domain\Repository;
+namespace DDFA\Main\Domain\Model;
 
 /*                                                                        *
  * This script belongs to the TYPO3 Flow package "DDFA.Main".             *
  *                                                                        *
  *                                                                        */
 
+use Doctrine\ORM\Mapping as ORM;
 use TYPO3\Flow\Annotations as Flow;
-use TYPO3\Flow\Persistence\Repository;
 
 /**
- * @Flow\Scope("singleton")
+ * @Flow\Entity
  */
-class TagRepository extends Repository
+class MarketEntry extends \DDFA\Main\Domain\Model\Event
 {
 
+    /**
+     * @var boolean
+     */
+    protected $offer;
 }

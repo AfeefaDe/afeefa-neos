@@ -1,7 +1,19 @@
 -
-  name: 'DD4all API'
-  uriPattern: 'api/locations'
+  name: 'DD4all locations API'
+  uriPattern: 'dd4all/locations'
   defaults:
-    '@controller': '\Api\LocationAPI'
+    '@controller': 'Plugin\DDFA\LocationAPI'
   appendExceedingArguments: false
   httpMethods: ['GET']
+
+-
+  name: 'DD4all locations API'
+  uriPattern: 'dd4all/locations/{inilocation}'
+  defaults:
+    '@controller': 'Plugin\DDFA\LocationAPI'
+    '@action': 'getByLocation'
+  appendExceedingArguments: false
+  httpMethods: ['GET']
+  routeParts:
+      inilocation:
+        objectType: 'DDFA\Map\Domain\Model\IniLocation'

@@ -17,6 +17,13 @@ use TYPO3\Flow\Annotations as Flow;
  */
 abstract class Object
 {
+    /**
+     * @Flow\Identity
+     * @var string
+     * @ORM\Id
+     * @ORM\Column(name="persistence_object_identifier", type="guid", length=40, unique=true, nullable=false)
+     */
+    protected $Persistence_Object_Identifier;
 
     /**
      * @var string
@@ -26,7 +33,6 @@ abstract class Object
 
     /**
      * @var string
-     * @Flow\Identity
      */
     protected $name;
 
@@ -37,7 +43,6 @@ abstract class Object
 
     /**
      * @var string
-     * @Flow\Identity
      */
     protected $mail;
 
@@ -79,6 +84,18 @@ abstract class Object
      * @var string
      */
     protected $locale;
+
+    /**
+     * @var \DateTime
+     * @ORM\Column(type="datetime")
+     */
+    protected $created;
+
+    /**
+     * @var \DateTime
+     * @ORM\Column(type="datetime")
+     */
+    protected $updated;
 
     /**
      * @return string
@@ -263,6 +280,62 @@ abstract class Object
     public function setEntryId($entryId)
     {
         $this->entryId = $entryId;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getCreated()
+    {
+        return $this->created;
+    }
+
+    /**
+     * @param \DateTime $created
+     */
+    public function setCreated($created)
+    {
+        $this->created = $created;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getUpdated()
+    {
+        return $this->updated;
+    }
+
+    /**
+     * @param \DateTime $updated
+     */
+    public function setUpdated($updated)
+    {
+        $this->updated = $updated;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPersistenceObjectIdentifier()
+    {
+        return $this->Persistence_Object_Identifier;
+    }
+
+    /**
+     * @return string
+     */
+    public function getId()
+    {
+        $this->getPersistenceObjectIdentifier();
+    }
+
+    /**
+     * @param mixed $Persistence_Object_Identifier
+     */
+    public function setPersistenceObjectIdentifier($Persistence_Object_Identifier)
+    {
+        $this->Persistence_Object_Identifier = $Persistence_Object_Identifier;
     }
 
 }

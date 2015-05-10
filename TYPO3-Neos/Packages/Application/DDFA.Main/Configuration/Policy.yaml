@@ -1,0 +1,14 @@
+resources:
+  methods:
+    # DDFA_Main_Module_ddfaLocationsModule: 'method(DDFA\Main\Controller\Module\DDFA\LocationsModuleController->.*Action())'
+    DDFA_Main_Module_ddfaLocationsModule: 'method(DDFA\Main\Controller\Module\DDFA\LocationsModuleController->(index|add|create|view|edit|update|delete)Action())'
+    DDFA_Main_Module_ddfaInitiativesModule: 'method(DDFA\Main\Controller\Module\DDFA\InitiativesModuleController->(index|add|create|view|edit|update|delete)Action())'
+    DDFA_Main_Plugin_ddfaLocationAPI: 'method(DDFA\Main\Controller\Plugin\DDFA\LocationAPIController->(get|getById)Action())'
+acls:
+  TYPO3.Neos:Administrator:
+    methods:
+      DDFA_Main_Module_ddfaLocationsModule: GRANT
+      DDFA_Main_Module_ddfaInitiativesModule: GRANT
+  Everybody:
+    methods:
+      DDFA_Main_Plugin_ddfaLocationAPI: GRANT

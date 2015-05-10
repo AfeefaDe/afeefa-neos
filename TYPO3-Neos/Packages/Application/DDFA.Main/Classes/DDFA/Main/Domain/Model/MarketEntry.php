@@ -6,13 +6,14 @@ namespace DDFA\Main\Domain\Model;
  *                                                                        *
  *                                                                        */
 
-use TYPO3\Flow\Annotations as Flow;
 use Doctrine\ORM\Mapping as ORM;
+use TYPO3\Flow\Annotations as Flow;
 
 /**
  * @Flow\Entity
  */
-class MarketEntry extends \DDFA\Main\Domain\Model\Event{
+class MarketEntry extends \DDFA\Main\Domain\Model\Event
+{
 
     /**
      * @var boolean

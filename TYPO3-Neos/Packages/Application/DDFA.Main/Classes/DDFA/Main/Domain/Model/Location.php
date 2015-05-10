@@ -1,8 +1,8 @@
 <?php
-namespace DDFA\Map\Domain\Model;
+namespace DDFA\Main\Domain\Model;
 
 /*                                                                        *
- * This script belongs to the TYPO3 Flow package "DDFA.Map".              *
+ * This script belongs to the TYPO3 Flow package "DDFA.Main".              *
  *                                                                        *
  *                                                                        */
 
@@ -285,5 +285,4 @@ class Location extends \DDFA\Main\Domain\Model\Object
     {
         $this->type = $type;
     }
-
 }

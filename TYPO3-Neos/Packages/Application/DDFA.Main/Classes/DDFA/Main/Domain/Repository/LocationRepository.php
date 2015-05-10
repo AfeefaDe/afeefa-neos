@@ -1,11 +1,12 @@
 <?php
-namespace DDFA\Map\Domain\Repository;
+namespace DDFA\Main\Domain\Repository;
 
 /*                                                                        *
- * This script belongs to the TYPO3 Flow package "DDFA.Map".              *
+ * This script belongs to the TYPO3 Flow package "DDFA.Main".              *
  *                                                                        *
  *                                                                        */
 
+use DDFA\Main\Domain\Model\Location;
 use DDFA\Main\Utility\DDConst;
 use TYPO3\Flow\Annotations as Flow;
 use TYPO3\Flow\Persistence\Repository;
@@ -20,7 +21,7 @@ class LocationRepository extends Repository
         $query = $this->createQuery();
         $locations = $query->matching($query->equals('locale', $locale))->execute();
         foreach ($locations as $l) {
-            $l->numLangs = $this->countLocalisations($l->getEntryId());
+            $l->numLangs = $this->countLocalisations($l) + 1;
         }
         return $locations;
     }
@@ -61,14 +62,16 @@ class LocationRepository extends Repository
         return $query->matching($query->equals('type', DDConst::LOCATION_EVENT))->matching($query->equals('locale', $locale))->execute();
     }
 
-    public function findLocalisations($entryID)
+    public function findLocalisations(Location $location)
     {
         $query = $this->createQuery();
-        return $query->matching($query->equals('entryId', $entryID))->execute();
+        return $query->matching($query->equals('entryId', $location->getEntryId()))
+            ->matching($query->logicalNot($query->equals('Persistence_Object_Identifier', $location->getId())))->execute();
+
     }
 
-    public function countLocalisations($entryID)
+    public function countLocalisations(Location $location)
     {
-        return $this->findLocalisations($entryID)->count();
+        return $this->findLocalisations($location)->count();
     }
 }

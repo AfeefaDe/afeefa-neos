@@ -12,6 +12,7 @@ use TYPO3\Flow\Persistence\Repository;
 /**
  * @Flow\Scope("singleton")
  */
-class TargetGroupRepository extends Repository {
+class TargetGroupRepository extends Repository
+{
 
 }

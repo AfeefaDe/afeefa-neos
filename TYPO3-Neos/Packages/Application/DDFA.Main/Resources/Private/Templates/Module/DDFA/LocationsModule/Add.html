@@ -1,16 +1,19 @@
-<f:layout name="LocationsSubModule"/>
+<f:layout name="Default"/>
 
 <f:section name="title">Add a new location</f:section>
 
 <f:section name="content">
     <f:if condition="{inis}">
         <f:then>
-            <f:form method="post" action="create" object="{newLocation}" name="newLocation" enctype="multipart/form-data">
+            <f:form method="post" action="create" object="{newLocation}" name="newLocation"
+                    enctype="multipart/form-data">
                 <div class="neos-module-container">
                     <f:render partial="LocationForm" arguments="{inis: inis}"/>
                 </div>
                 <div class="neos-footer">
-                    <f:form.submit value="Create location" class="neos-button neos-button-primary"/>
+                    <f:link.action action="index" class="neos-button">Abort</f:link.action>
+                    <f:form.submit value="Create location" class="neos-button" name="create"/>
+                    <f:form.submit value="Add localisations" class="neos-button neos-button-primary" name="localize"/>
                 </div>
             </f:form>
         </f:then>

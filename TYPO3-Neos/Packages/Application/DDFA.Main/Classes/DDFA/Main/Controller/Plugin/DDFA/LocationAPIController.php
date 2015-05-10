@@ -1,13 +1,13 @@
 <?php
 
-namespace DDFA\Map\Controller\Plugin\DDFA;
+namespace DDFA\Main\Controller\Plugin\DDFA;
 
 /*                                                                        *
- * This script belongs to the TYPO3 Flow package "DDFA.Map".              *
+ * This script belongs to the TYPO3 Flow package "DDFA.Main".              *
  *                                                                        *
  *                                                                        */
 
-use DDFA\Map\Domain\Repository\LocationRepository;
+use DDFA\Main\Domain\Repository\LocationRepository;
 use TYPO3\Flow\Annotations as Flow;
 use TYPO3\Flow\Mvc\Controller\ActionController;
 

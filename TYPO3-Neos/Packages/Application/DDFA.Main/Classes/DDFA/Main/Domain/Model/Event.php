@@ -6,21 +6,24 @@ namespace DDFA\Main\Domain\Model;
  *                                                                        *
  *                                                                        */
 
-use TYPO3\Flow\Annotations as Flow;
 use Doctrine\ORM\Mapping as ORM;
+use TYPO3\Flow\Annotations as Flow;
 
 /**
  * @Flow\Entity
  */
-class Event extends \DDFA\Main\Domain\Model\Product{
+class Event extends \DDFA\Main\Domain\Model\Product
+{
 
     /**
-     * @var DateTime
+     * @var \DateTime
+     * @ORM\Column(type="datetime")
      */
     protected $dateFrom;
 
     /**
-     * @var DateTime
+     * @var \DateTime
+     * @ORM\Column(type="datetime")
      */
     protected $dateTo;
 
@@ -35,7 +38,7 @@ class Event extends \DDFA\Main\Domain\Model\Product{
     protected $datePeriodic;
 
     /**
-     * @var \Doctrine\Common\Collections\Collection<\DDFA\Map\Domain\Model\Location>
+     * @var \Doctrine\Common\Collections\Collection<\DDFA\Main\Domain\Model\Location>
      * @ORM\OneToMany(mappedBy="event")
      */
     protected $locations;

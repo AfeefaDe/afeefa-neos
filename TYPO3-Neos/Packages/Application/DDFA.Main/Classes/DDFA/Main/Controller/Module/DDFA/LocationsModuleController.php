@@ -1,17 +1,19 @@
 <?php
-namespace DDFA\Map\Controller\Module\DDFA;
+namespace DDFA\Main\Controller\Module\DDFA;
 
 /*                                                                        *
- * This script belongs to the TYPO3 Flow package "DDFA.Map".              *
+ * This script belongs to the TYPO3 Flow package "DDFA.Main".              *
  *                                                                        *
  *                                                                        */
 
+use DateTime;
 use DDFA\Main\Domain\Model\Language;
+use DDFA\Main\Domain\Model\Location;
 use DDFA\Main\Domain\Repository\InitiativeRepository;
 use DDFA\Main\Domain\Repository\LanguageRepository;
+use DDFA\Main\Domain\Repository\LocationRepository;
 use DDFA\Main\Utility\DDConst;
-use DDFA\Map\Domain\Model\Location;
-use DDFA\Map\Domain\Repository\LocationRepository;
+use DDFA\Main\Utility\DDHelpers;
 use TYPO3\Flow\Annotations as Flow;
 use TYPO3\Flow\Persistence\Generic\PersistenceManager;
 use TYPO3\Flow\Resource\ResourceManager;
@@ -28,7 +30,7 @@ class LocationsModuleController extends AbstractModuleController
      * @Flow\Inject
      * @var PersistenceManager
      */
-   protected $persistenceManager;
+    protected $persistenceManager;
 
     /**
      * @Flow\Inject
@@ -53,8 +55,7 @@ class LocationsModuleController extends AbstractModuleController
     public function indexAction()
     {
         $this->view->assign('locations', $this->locationRepository->findAllLocalized("de"));
-        $languages = $this->languageRepository->findAll();
-        $this->view->assign('numLanguages', $languages->count());
+        $this->view->assign('numLanguages', $this->languageRepository->findAll()->count());
     }
 
     /**
@@ -64,7 +65,6 @@ class LocationsModuleController extends AbstractModuleController
     public function viewAction(Location $location)
     {
         $this->view->assign('l', $location);
-        $this->view->assign('num', $this->locationRepository->countLocalisations($location->getEntryId()));
     }
 
     /**
@@ -82,19 +82,26 @@ class LocationsModuleController extends AbstractModuleController
      */
     public function createAction(Location $newLocation)
     {
-        //TODO sicher unsauber:
+        //TODO unsauber:
         $newLocation->setInitiative($this->initiativeRepository->findOneByName($_POST['moduleArguments']['ini']));
 
-        //TODO id überdenken
         $newLocation->setEntryId(uniqid());
-
         $newLocation->setLocale("de");
-
         $newLocation->setType(DDConst::LOCATION_INI);
+
+        $now = new DateTime();
+        $newLocation->setCreated($now);
+        $newLocation->setUpdated($now);
+
+        $newLocation->setPersistenceObjectIdentifier(DDHelpers::createGuid());
 
         $this->locationRepository->add($newLocation);
         $this->addFlashMessage('A new location has been created successfully.');
-        $this->redirect('index');
+
+        if (isset($_POST['moduleArguments']['localize']))
+            $this->redirect('edit', NULL, NULL, array('location' => $newLocation));
+        else
+            $this->redirect('index');
     }
 
     /**
@@ -103,6 +110,8 @@ class LocationsModuleController extends AbstractModuleController
      */
     public function editAction(Location $location)
     {
+        $this->locationRepository->findLocalisations($location);
+
         $this->view->assign('updateLocation', $location);
         $this->view->assign('inis', $this->initiativeRepository->findAll());
     }

@@ -1,8 +1,8 @@
 <?php
-namespace DDFA\Map\Tests\Unit\Domain\Model;
+namespace DDFA\Main\Tests\Unit\Domain\Model;
 
     /*                                                                        *
-     * This script belongs to the TYPO3 Flow package "DDFA.Map".              *
+     * This script belongs to the TYPO3 Flow package "DDFA.Main".              *
      *                                                                        *
      *                                                                        */
 

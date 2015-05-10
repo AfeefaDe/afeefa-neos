@@ -7,11 +7,10 @@ namespace DDFA\Main\Controller\Api;
  *                                                                        *
  *                                                                        */
 
-use DDFA\Map\Domain\Repository\IniLocationRepository;
+use DDFA\Main\Domain\Repository\LocationRepository;
 use TYPO3\Flow\Annotations as Flow;
 use TYPO3\Flow\Mvc\Controller\ActionController;
-use \DDFA\Map\Domain\Model\IniLocation;
-use \DDFA\Map\Domain\Model\Location;
+use \DDFA\Main\Domain\Model\Location;
 use TYPO3\Flow\Mvc\View\JsonView;
 use TYPO3\Flow\Mvc\View\ViewInterface;
 
@@ -19,7 +18,7 @@ class LocationAPIController extends ActionController
 {
     /**
      * @Flow\Inject
-     * @var IniLocationRepository
+     * @var LocationRepository
      */
     protected $iniLocationRepository;
 
@@ -112,10 +111,10 @@ class LocationAPIController extends ActionController
     }
 
     /**
-     * @param IniLocation $location
+     * @param Location $location
      * @return void
      */
-    public function getByLocationAction(IniLocation $location)
+    public function getByLocationAction(Location $location)
     {
 
         $this->view->setVariablesToRender(array('iniLocation'));

@@ -1,4 +1,13 @@
 -
+  name: 'api subroutes'
+  uriPattern: 'api/locations'
+  defaults:
+    '@controller': 'Api\LocationAPI'
+    '@action': 'list'
+  appendExceedingArguments: false
+  httpMethods: ['GET']
+
+-
   name: 'DD4all locations API'
   uriPattern: 'dd4all/locations'
   defaults:

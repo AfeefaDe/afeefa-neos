@@ -1,0 +1,7 @@
+-
+  name: 'DD4all API'
+  uriPattern: 'api/locations'
+  defaults:
+    '@controller': '\Api\LocationAPI'
+  appendExceedingArguments: false
+  httpMethods: ['GET']

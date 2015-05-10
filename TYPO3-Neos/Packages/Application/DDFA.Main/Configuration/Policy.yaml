@@ -1,0 +1,7 @@
+resources:
+  methods:
+    DDFA_Main_Api_ddfaLocationAPI: 'method(DDFA\Main\Controller\Api\LocationAPIController->(get|getById|getByLocation|list|show)Action())'
+acls:
+  Everybody:
+    methods:
+      DDFA_Main_Api_ddfaLocationAPI: GRANT

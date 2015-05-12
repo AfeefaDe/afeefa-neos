@@ -1,14 +1,15 @@
 <f:layout name="Default"/>
 
-<f:section name="title">{l.initiative.name} - {l.name}</f:section>
+<f:section name="title"><i>{l.initiative.name}</i> - {l.name}</f:section>
 
 <f:section name="content">
     <div class="neos-module-container">
         <f:render partial="LocationView" arguments="{l: l}" />
     </div>
     <div class="neos-footer">
-        <f:link.action action="edit" controller="LocationsModuleController" arguments="{location: l}"
-                       class="neos-button neos-button-primary">Edit Location
+        <f:link.action action="index" class="neos-button" title="back to index">Back</f:link.action>
+        <f:link.action action="simpleEdit" arguments="{editLocation: l}" class="neos-button neos-button-primary" title="Edit this location">
+            Edit Location
         </f:link.action>
     </div>
 </f:section>

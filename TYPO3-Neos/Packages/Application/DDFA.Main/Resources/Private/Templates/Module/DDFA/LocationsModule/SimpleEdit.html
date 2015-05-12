@@ -3,14 +3,27 @@
 <f:section name="title">Edit location</f:section>
 
 <f:section name="content">
-    <f:render partial="EditLanguageSelect" arguments="{languages: languages, location: editLocation}" />
+
+    <div class="infoBox">
+        <p>Select translation to edit</p>
+        <f:form method="post" action="selectTranslation" arguments="{location: editLocation}">
+            <f:form.select id="editLocale" name="editLocale" options="{languages}" optionValueField="code" optionLabelField="language" sortByOptionLabel="true" prependOptionLabel="- select language -"/>
+            <f:form.hidden name="viewLocale" value="{editLocation.locale}" />
+            <button type="submit" class="neos-button" title="Edit this translation">
+                <i class="icon-arrow-right icon-white"></i>
+            </button>
+        </f:form>
+    </div>
 
     <f:form method="post" action="update" object="{editLocation}" name="editLocation" enctype="multipart/form-data">
+
         <div class="neos-module-container">
             <f:render partial="LocationForm" arguments="{inis: inis, selectedIni: editLocation.initiative.name}"/>
         </div>
+
         <div class="neos-footer">
-            <f:form.submit value="Save changes" class="neos-button neos-button-primary"/>
+            <f:link.action action="index" class="neos-button" title="back to index">Abort</f:link.action>
+            <f:form.submit value="Save changes" class="neos-button neos-button-primary" title="save this location" />
         </div>
     </f:form>
 </f:section>

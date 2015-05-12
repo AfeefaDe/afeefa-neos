@@ -1,8 +1,0 @@
-<f:form method="post" action="selectTranslation" arguments="{location: location}">
-    <label for="editLocale">Translation (edit)</label>
-    <f:form.select id="editLocale" name="editLocale" options="{languages}" optionValueField="code" optionLabelField="language" sortByOptionLabel="true" prependOptionLabel="- select language to edit -"/>
-    <f:form.hidden name="viewLocale" value="{location.locale}" />
-    <button type="submit" class="neos-button" title="Edit this translation">
-        <i class="icon-arrow-right icon-white"></i>
-    </button>
-</f:form>

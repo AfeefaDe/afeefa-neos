@@ -11,9 +11,9 @@
                     <f:render partial="LocationForm" arguments="{inis: inis}"/>
                 </div>
                 <div class="neos-footer">
-                    <f:link.action action="index" class="neos-button">Abort</f:link.action>
-                    <f:form.submit value="Create location" class="neos-button" name="create"/>
-                    <f:form.submit value="Add localisations" class="neos-button neos-button-primary" name="localize"/>
+                    <f:link.action action="index" class="neos-button" title="back to index">Abort</f:link.action>
+                    <f:form.submit value="Create location" class="neos-button" name="create" title="save the new location"/>
+                    <f:form.submit value="Add translation" class="neos-button neos-button-primary" name="localize" title="save and edit the english translation"/>
                 </div>
             </f:form>
         </f:then>

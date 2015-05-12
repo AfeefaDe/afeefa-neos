@@ -1,40 +1,62 @@
-<h3 xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers">Basic information</h3>
-<label for="name">Namen</label>
-<f:form.textfield property="name" id="name" placeholder="Enter name" required="true" autofocus="true"/><br/><br/>
-<label for="initiative">Initiative</label>
-<f:form.select id="initiative" name="ini" options="{inis}" optionValueField="name" optionLabelField="name"
-               value="{selectedIni}" sortByOptionLabel="true"/>
-<label for="description">Description</label>
-<f:form.textarea property="description" id="description" placeholder="Enter a description text..." class="neos-span6"
-                 rows="8"/><br/><br/>
-<label for="openingHours">Opening hours</label>
-<f:form.textfield property="openingHours" id="openingHours" placeholder="Enter opening hours"/><br/><br/>
-<label for="rating">Rating</label>
-<f:form.textfield property="rating" id="rating" type="number" required="true" value="3"/><br/><br/>
-<label for="scope" class="neos-checkbox neos-inline">Scope (citywide)
-    <f:form.checkbox property="scope" id="scope" value="scope"/>
-    <span></span>
-</label><br/><br/>
+<div class="grayBox">
+    <p>Basic information</p>
 
-<h3>Contact</h3>
-<label for="mail">Mail</label>
-<f:form.textfield property="mail" id="mail" type="email" placeholder="Enter mail address"/><br/><br/>
-<label for="web">Website URL</label>
-<f:form.textfield property="web" id="web" type="url" placeholder="Enter Website URL"/><br/><br/>
-<label for="phone">Phone</label>
-<f:form.textfield property="phone" id="phone" type="tel" placeholder="Enter phone number"/><br/><br/>
+    <label for="name">Name</label>
+    <f:form.textfield property="name" id="name" placeholder="Enter name" required="true" autofocus="true"/><br/><br/>
 
-<h3>Geo data</h3>
-<label for="street">Street</label>
-<f:form.textfield property="street" id="street" placeholder="Enter street"/><br/><br/>
-<label for="district">District</label>
-<f:form.select property="district" name="district"
-               options="{dis1: 'Albertstadt', dis2: 'Äußere Neustadt', dis3: 'Blasewitz', dis4: 'Briesnitz', dis5: 'Bühlau/Weißer Hirsch', dis6: 'Coschütz/Gittersee', dis7: 'Cossebaude/Mobschatz/Oberwartha', dis8: 'Cotta', dis9: 'Dresdner Heide', dis10: 'Flughafen/Industriegebiet Klotzsche', dis11: 'Friedrichstadt', dis12: 'Gompitz/Altfranken', dis13: 'Gönnsdorf/Pappritz', dis14: 'Gorbitz-Nord/Neuomsewitz', dis15: 'Gorbitz-Ost', dis16: 'Gorbitz-Süd', dis17: 'Großzschachwitz', dis18: 'Gruna', dis19: 'Hellerau/Wilschdorf', dis20: 'Hellerberge', dis21: 'Hosterwitz/Pillnitz', dis22: 'Oberpoyritz und Söbrigen', dis23: 'Innere Altstadt', dis24: 'Innere Neustadt', dis25: 'Johannstadt-Nord', dis26: 'Johannstadt-Süd', dis27: 'Kaditz', dis28: 'Kleinpestitz/Mockritz', dis29: 'Kleinzschachwitz', dis30: 'Klotzsche', dis31: 'Langebrück/Schönborn', dis32: 'Laubegast', dis33: 'Leipziger Vorstadt', dis34: 'Leuben', dis35: 'Leubnitz-Neuostra', dis36: 'Löbtau-Nord', dis37: 'Löbtau-Süd', dis38: 'Lockwitz', dis39: 'Loschwitz/Wachwitz', dis40: 'Mickten', dis41: 'Naußlitz', dis42: 'Niedersedlitz', dis43: 'Pieschen-Nord/Trachenberge', dis44: 'Pieschen-Süd', dis45: 'Pirnaische Vorstadt', dis46: 'Plauen', dis47: 'Prohlis-Nord', dis48: 'Prohlis-Süd', dis49: 'Räcknitz/Zschertnitz', dis50: 'Radeberger Vorstadt', dis51: 'Reick', dis52: 'Schönfeld/Schullwitz', dis53: 'Seevorstadt-Ost/Großer Garten', dis54: 'Seidnitz/Dobritz', dis55: 'Strehlen', dis56: 'Striesen-Ost', dis57: 'Striesen-Süd', dis58: 'Striesen-West', dis59: 'Südvorstadt-Ost', dis60: 'Südvorstadt-West', dis61: 'Tolkewitz/Seidnitz-Nord', dis62: 'Trachau', dis63: 'Weißig', dis64: 'Weixdorf', dis65: 'Wilsdruffer Vorstadt/Seevorstadt-West'}"/>
-<label for="zip">ZIP</label>
-<f:form.textfield property="zip" id="zip" type="number" placeholder="Enter ZIP-Code"/><br/><br/>
-<label for="city">City</label>
-<f:form.textfield property="city" id="city" placeholder="Enter city" value="Dresden"/><br/><br/>
-<label for="lat">Latitude</label>
-<f:form.textfield property="lat" id="lat" placeholder="Enter latitude" required="true"/><br/><br/>
-<label for="lon">Logitude</label>
-<f:form.textfield property="lon" id="lon" placeholder="Enter longitude" required="true"/>
+    <label for="initiative">Initiative</label>
+    <f:form.select id="initiative" name="ini" options="{inis}" optionValueField="name" optionLabelField="name"
+                   value="{selectedIni}" sortByOptionLabel="true"/><br/><br/>
+
+    <label for="description">Description</label>
+    <f:form.textarea property="description" id="description" placeholder="Enter a description text..." class="neos-span6"
+                     rows="8"/><br/><br/>
+
+    <label for="openingHours">Opening hours</label>
+    <f:form.textfield property="openingHours" id="openingHours" placeholder="Enter opening hours"/><br/><br/>
+
+    <label for="rating">Rating</label>
+    <f:form.textfield property="rating" id="rating" type="number" required="true" value="3"/><br/><br/>
+
+    <label for="scope" class="neos-checkbox neos-inline">Scope (citywide)
+        <f:form.checkbox property="scope" id="scope" value="scope"/>
+        <span></span>
+    </label><br/><br/>
+</div><br>
+
+<div class="grayBox">
+    <p>Contact</p>
+
+    <label for="mail">Mail</label>
+    <f:form.textfield property="mail" id="mail" type="email" placeholder="Enter mail address"/><br/><br/>
+
+    <label for="web">Website URL</label>
+    <f:form.textfield property="web" id="web" type="url" placeholder="Enter Website URL"/><br/><br/>
+
+    <label for="phone">Phone</label>
+    <f:form.textfield property="phone" id="phone" type="tel" placeholder="Enter phone number"/><br/><br/>
+</div><br>
+
+<div class="grayBox">
+    <p>Geo data</p>
+
+    <label for="street">Street</label>
+    <f:form.textfield property="street" id="street" placeholder="Enter street"/><br/><br/>
+
+    <!-- TODO: outsource disctricts -->
+    <label for="district">District</label>
+    <f:form.select property="district" name="district"
+                   options="{dis1: 'Albertstadt', dis2: 'Äußere Neustadt', dis3: 'Blasewitz', dis4: 'Briesnitz', dis5: 'Bühlau/Weißer Hirsch', dis6: 'Coschütz/Gittersee', dis7: 'Cossebaude/Mobschatz/Oberwartha', dis8: 'Cotta', dis9: 'Dresdner Heide', dis10: 'Flughafen/Industriegebiet Klotzsche', dis11: 'Friedrichstadt', dis12: 'Gompitz/Altfranken', dis13: 'Gönnsdorf/Pappritz', dis14: 'Gorbitz-Nord/Neuomsewitz', dis15: 'Gorbitz-Ost', dis16: 'Gorbitz-Süd', dis17: 'Großzschachwitz', dis18: 'Gruna', dis19: 'Hellerau/Wilschdorf', dis20: 'Hellerberge', dis21: 'Hosterwitz/Pillnitz', dis22: 'Oberpoyritz und Söbrigen', dis23: 'Innere Altstadt', dis24: 'Innere Neustadt', dis25: 'Johannstadt-Nord', dis26: 'Johannstadt-Süd', dis27: 'Kaditz', dis28: 'Kleinpestitz/Mockritz', dis29: 'Kleinzschachwitz', dis30: 'Klotzsche', dis31: 'Langebrück/Schönborn', dis32: 'Laubegast', dis33: 'Leipziger Vorstadt', dis34: 'Leuben', dis35: 'Leubnitz-Neuostra', dis36: 'Löbtau-Nord', dis37: 'Löbtau-Süd', dis38: 'Lockwitz', dis39: 'Loschwitz/Wachwitz', dis40: 'Mickten', dis41: 'Naußlitz', dis42: 'Niedersedlitz', dis43: 'Pieschen-Nord/Trachenberge', dis44: 'Pieschen-Süd', dis45: 'Pirnaische Vorstadt', dis46: 'Plauen', dis47: 'Prohlis-Nord', dis48: 'Prohlis-Süd', dis49: 'Räcknitz/Zschertnitz', dis50: 'Radeberger Vorstadt', dis51: 'Reick', dis52: 'Schönfeld/Schullwitz', dis53: 'Seevorstadt-Ost/Großer Garten', dis54: 'Seidnitz/Dobritz', dis55: 'Strehlen', dis56: 'Striesen-Ost', dis57: 'Striesen-Süd', dis58: 'Striesen-West', dis59: 'Südvorstadt-Ost', dis60: 'Südvorstadt-West', dis61: 'Tolkewitz/Seidnitz-Nord', dis62: 'Trachau', dis63: 'Weißig', dis64: 'Weixdorf', dis65: 'Wilsdruffer Vorstadt/Seevorstadt-West'}"/><br/><br/>
+
+    <label for="zip">ZIP</label>
+    <f:form.textfield property="zip" id="zip" type="number" placeholder="Enter ZIP-Code"/><br/><br/>
+
+    <label for="city">City</label>
+    <f:form.textfield property="city" id="city" placeholder="Enter city" value="Dresden"/><br/><br/>
+
+    <label for="lat">Latitude</label>
+    <f:form.textfield property="lat" id="lat" placeholder="Enter latitude" required="true"/><br/><br/>
+
+    <label for="lon">Logitude</label>
+    <f:form.textfield property="lon" id="lon" placeholder="Enter longitude" required="true"/>
+</div>

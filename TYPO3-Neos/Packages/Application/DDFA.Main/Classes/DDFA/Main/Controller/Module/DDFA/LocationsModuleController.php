@@ -95,6 +95,8 @@ class LocationsModuleController extends AbstractModuleController
         $newLocation->setPersistenceObjectIdentifier(DDHelpers::createGuid());
 
         $this->locationRepository->add($newLocation);
+        //$this->persistenceManager->persistAll();
+
         $this->addFlashMessage('A new location has been created successfully.');
 
         if (isset($_POST['moduleArguments']['localize'])) {
@@ -102,19 +104,52 @@ class LocationsModuleController extends AbstractModuleController
             $editLocation->setPersistenceObjectIdentifier(DDHelpers::createGuid());
             $editLocation->setEntryId($newLocation->getEntryId());
             $editLocation->setLocale("en");
+            $editLocation->setType($newLocation->getType());
+            $editLocation->setCreated($now);
+            $editLocation->setUpdated($now);
+
+            $this->locationRepository->add($editLocation);
+
             $this->redirect('edit', NULL, NULL, array('editLocation' => $editLocation, 'viewLocation' => $newLocation));
+        } else
+            $this->redirect('index');
+    }
+
+    /**
+     * @param Location $location
+     * */
+    public function selectTranslationAction(Location $location) {
+        $viewLocation = $this->locationRepository->findOneLocalized($location, $_POST['moduleArguments']['viewLocale']);
+        $editLocation = $this->locationRepository->findOneLocalized($location, $_POST['moduleArguments']['editLocale']);
+
+        if($editLocation == NULL) {
+            $editLocation = new Location();
+            $editLocation->setPersistenceObjectIdentifier(DDHelpers::createGuid());
+            $editLocation->setEntryId($location->getEntryId());
+            //TODO proof locale
+            $editLocation->setLocale($_POST['moduleArguments']['editLocale']);
+            $editLocation->setType($location->getType());
+            $now = new DateTime();
+            $editLocation->setCreated($now);
+            $editLocation->setUpdated($now);
+
+            $this->locationRepository->add($editLocation);
         }
-        $this->redirect('index');
+
+        $this->redirect('edit', NULL, NULL,
+            ['editLocation' => ['__identity' => $editLocation->getPersistenceObjectIdentifier()],
+                'viewLocation' => ['__identity' => $viewLocation->getPersistenceObjectIdentifier()]]);
     }
 
     /**
      * @param Location $editLocation
      * @param Location $viewLocation
-     * @return void
      */
     public function editAction(Location $editLocation, Location $viewLocation = NULL)
     {
-        if($viewLocation == NULL || $viewLocation->getId() == $editLocation->getId()) {
+        //die($editLocation->getLocale()." - ".$editLocation->getEntryId()." - ".$editLocation->getName());
+
+        if($viewLocation == NULL || $viewLocation->getPersistenceObjectIdentifier() == $editLocation->getPersistenceObjectIdentifier()) {
             $this->redirect('simpleEdit', NULL, NULL, array('editLocation' => $editLocation));
         } else {
             $this->view->assign('viewLocation', $viewLocation);
@@ -142,19 +177,6 @@ class LocationsModuleController extends AbstractModuleController
         $this->locationRepository->update($editLocation);
         $this->addFlashMessage('The location has been updated successfully.');
         $this->redirect('index');
-    }
-
-    public function selectTranslationAction(Location $location) {
-        $editLocation = $this->locationRepository->findOneLocalized($location, $_POST['moduleArguments']['editLocale']);
-        if($editLocation == NULL) {
-            $editLocation = new Location();
-            $editLocation->setPersistenceObjectIdentifier(DDHelpers::createGuid());
-            $editLocation->setEntryId($location->getEntryId());
-            //TODO proof locale
-            $editLocation->setLocale($_POST['moduleArguments']['editLocale']);
-        }
-        $viewLocation = $this->locationRepository->findOneLocalized($location, $_POST['moduleArguments']['viewLocale']);
-        $this->redirect('edit', NULL, NULL, array('editLocation' => $editLocation, 'viewLocation' => $viewLocation));
     }
 
     /**

@@ -1,10 +1,10 @@
 <f:layout name="Default"/>
 
-<f:section name="title">Overview of all locations</f:section>
+<f:section name="title">List of initiative locations</f:section>
 
 <f:section name="content">
     <div class="neos-module-container">
-        <f:if condition="{locations}">
+        <f:if condition="{iniLocations}">
             <f:then>
                 <table class="neos-table">
                     <thead>
@@ -42,13 +42,14 @@
             </f:then>
             <f:else>
                 <div>
-                    Currently there is no location. Please add one.
+                    Currently there is no initiative location. Please add one.
                 </div>
             </f:else>
         </f:if>
     </div>
+
     <div class="neos-footer">
-        <f:link.action action="add" controller="LocationsModuleController" class="neos-button neos-button-primary" title="add a new location">
+        <f:link.action action="add" controller="LocationsModuleController" class="neos-button neos-button-primary" title="add a new initiative location">
             Add location
         </f:link.action>
     </div>

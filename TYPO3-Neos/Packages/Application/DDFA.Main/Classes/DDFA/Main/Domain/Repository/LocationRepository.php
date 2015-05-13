@@ -91,8 +91,18 @@ class LocationRepository extends Repository
         )->execute();
     }
 
+    /**
+     * returns the one localisation in $locale of the location (or nothing if the locale does not exist)
+     *
+     * @param Location $location
+     * @param $locale
+     * @return Location
+     */
     public function findOneLocalized(Location $location, $locale)
     {
+        if($location->getLocale() == $location)
+            return $location;
+
         $query = $this->createQuery();
         return $query->matching(
             $query->logicalAnd(
@@ -102,6 +112,12 @@ class LocationRepository extends Repository
         )->execute()->getFirst();
     }
 
+    /**
+     * returns only all other localisations, without itself
+     *
+     * @param Location $location
+     * @return \TYPO3\Flow\Persistence\QueryResultInterface
+     */
     public function findLocalisations(Location $location)
     {
         $query = $this->createQuery();
@@ -115,6 +131,12 @@ class LocationRepository extends Repository
         )->execute();
     }
 
+    /**
+     * returns all localisations of this location including itself
+     *
+     * @param Location $location
+     * @return \TYPO3\Flow\Persistence\QueryResultInterface
+     */
     public function findAllLocalisations(Location $location)
     {
         $query = $this->createQuery();
@@ -124,6 +146,12 @@ class LocationRepository extends Repository
 
     }
 
+    /**
+     * returns an array containing the locale codes of all available translations
+     *
+     * @param Location $location
+     * @return array
+     */
     public function findLocales(Location $location)
     {
         $r = array();

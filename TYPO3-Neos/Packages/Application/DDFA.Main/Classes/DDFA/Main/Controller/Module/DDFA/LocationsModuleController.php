@@ -43,6 +43,7 @@ class LocationsModuleController extends AbstractModuleController
      * @var InitiativeRepository
      */
     protected $initiativeRepository;
+
     /**
      * @Flow\Inject
      * @var LanguageRepository
@@ -55,18 +56,24 @@ class LocationsModuleController extends AbstractModuleController
     public function indexAction()
     {
         $this->view->assign('iniLocations', $this->locationRepository->findAllOfInitiativeLocalized(DDConst::LOCALE_STD));
-        $this->view->assign('marketLocations', $this->locationRepository->findAllOfMarketEntryLocalized(DDConst::LOCALE_STD));
-        $this->view->assign('numLanguages', $this->languageRepository->findAll()->count());
+        $this->view->assign('numLanguages', $this->languageRepository->findAll()->count() - 1);
     }
 
     /**
-     * @param Location $location
+     * @param Location $viewLocation
      * @return void
      */
-    public function viewAction(Location $location)
+    public function viewAction(Location $viewLocation)
     {
-        //TODO view different localisations
-        $this->view->assign('l', $location);
+        if(isset($_POST['viewLocale']) && $_POST['viewLocale'] != DDConst::LOCALE_STD) {
+            $this->redirect('view', NULL, NULL, array('viewLocation' => $this->locationRepository->findOneLocalized($viewLocation, $_POST['viewLocale'])));
+        } else {
+            if ($viewLocation->getLocale() != DDConst::LOCALE_STD) {
+                $viewLocation = $this->locationRepository->hydrate($viewLocation);
+            }
+            $this->view->assign('viewLocation', $viewLocation);
+            $this->view->assign('languages', $this->locationRepository->findLocales($viewLocation));
+        }
     }
 
     /**
@@ -118,8 +125,8 @@ class LocationsModuleController extends AbstractModuleController
      * @param Location $location
      * */
     public function selectTranslationAction(Location $location) {
-        $viewLocale = $_POST['moduleArguments']['viewLocale'];
         $editLocale = $_POST['moduleArguments']['editLocale'];
+        $viewLocale = $_POST['moduleArguments']['viewLocale'];
 
         if($this->languageRepository->findByCode($viewLocale)->count() == 0 ||
             $this->languageRepository->findByCode($editLocale)->count() == 0) {
@@ -163,15 +170,16 @@ class LocationsModuleController extends AbstractModuleController
      */
     public function editAction(Location $editLocation, Location $viewLocation)
     {
-            $this->view->assign('viewLocation', $viewLocation);
-            $this->view->assign('editLocation', $editLocation);
-            $this->view->assign('languages', $this->languageRepository->findAll());
+        $this->view->assign('viewLocation', $viewLocation);
+        $this->view->assign('editLocation', $editLocation);
+        $this->view->assign('editLanguages', $this->languageRepository->findAll());
+        $this->view->assign('viewLanguages', $this->locationRepository->findLocales($viewLocation));
     }
 
     public function simpleEditAction(Location $editLocation) {
         if($editLocation->getLocale() != DDConst::LOCALE_STD) {
             $viewLocation = $this->locationRepository->findOneLocalized($editLocation, DDConst::LOCALE_STD);
-            $this->redirect('selectTranslation', NULL, NULL,
+            $this->redirect('edit', NULL, NULL,
                 ['editLocation' => ['__identity' => $editLocation->getPersistenceObjectIdentifier()],
                     'viewLocation' => ['__identity' => $viewLocation->getPersistenceObjectIdentifier()]]);
         } else {

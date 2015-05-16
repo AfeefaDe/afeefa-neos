@@ -2,12 +2,13 @@
 namespace DDFA\Main\Domain\Repository;
 
 /*                                                                        *
- * This script belongs to the TYPO3 Flow package "DDFA.Main".              *
+ * This script belongs to the TYPO3 Flow package "DDFA.Main".             *
  *                                                                        *
  *                                                                        */
 
 use DDFA\Main\Domain\Model\Location;
 use DDFA\Main\Utility\DDConst;
+use ReflectionObject;
 use TYPO3\Flow\Annotations as Flow;
 use TYPO3\Flow\Persistence\Repository;
 
@@ -24,14 +25,7 @@ class LocationRepository extends Repository
             $query->equals('locale', $locale)
         )->execute();
 
-        foreach ($locations as $l) {
-            $locales = $this->findLocales($l);
-            $l->numLocales = sizeof($locales);
-            $l->locales = join(", ", $locales);
-
-        }
-
-        return $locations;
+        return $this->addLocales($locations);
     }
 
     public function findAllOfInitiative()
@@ -61,34 +55,40 @@ class LocationRepository extends Repository
     public function findAllOfInitiativeLocalized($locale)
     {
         $query = $this->createQuery();
-        return $query->matching(
+        $locations = $query->matching(
             $query->logicalAnd(
                 $query->equals('type', DDConst::LOCATION_INI),
                 $query->equals('locale', $locale)
             )
         )->execute();
+
+        return $this->addLocales($locations);
     }
 
     public function findAllOfMarketEntryLocalized($locale)
     {
         $query = $this->createQuery();
-        return $query->matching(
+        $locations = $query->matching(
             $query->logicalAnd(
                 $query->equals('type', DDConst::LOCATION_MARKET),
                 $query->equals('locale', $locale)
             )
         )->execute();
+
+        return $this->addLocales($locations);
     }
 
     public function findAllOfEventLocalized($locale)
     {
         $query = $this->createQuery();
-        return $query->matching(
+        $locations = $query->matching(
             $query->logicalAnd(
                 $query->equals('type', DDConst::LOCATION_EVENT),
                 $query->equals('locale', $locale)
             )
         )->execute();
+
+        return $this->addLocales($locations);
     }
 
     /**
@@ -152,7 +152,7 @@ class LocationRepository extends Repository
      * @param Location $location
      * @return array
      */
-    public function findLocales(Location $location)
+    public function findAllLocales(Location $location)
     {
         $r = array();
         $i = 0;
@@ -161,5 +161,61 @@ class LocationRepository extends Repository
             ++$i;
         }
         return $r;
+    }
+
+    /**
+     * returns an array containing the locale codes of all available translations
+     *
+     * @param Location $location
+     * @return array
+     */
+    public function findLocales(Location $location)
+    {
+        $r = array();
+        $i = 0;
+        foreach ($this->findAllLocalisations($location) as $localisation) {
+            $locale = $localisation->getLocale();
+            if ($location->getLocale() != $locale) {
+                $r[$i] = $locale;
+                ++$i;
+            }
+        }
+        return $r;
+    }
+
+    /**
+     * @param $locations
+     * @return mixed
+     */
+    private function addLocales($locations)
+    {
+        foreach ($locations as $l) {
+            $locales = $this->findLocales($l);
+            $l->numLocales = sizeof($locales);
+            $l->locales = join(", ", $locales);
+        }
+        return $locations;
+    }
+
+    /**
+     * @param Location $location
+     * @return Location
+     */
+    public function hydrate(Location $location) {
+        if($location->getLocale() != DDConst::LOCALE_STD) {
+            $parentEntry = $this->findOneLocalized($location, DDConst::LOCALE_STD);
+            $parentReflection = new ReflectionObject($parentEntry);
+            $sourceReflection = new ReflectionObject($location);
+            foreach($sourceReflection->getProperties() as $property) {
+                $property->setAccessible(true);
+                $value = $property->getValue($location);
+                if($value == NULL || $value == "") {
+                    $parentProperty = $parentReflection->getProperty($property->getName());
+                    $parentProperty->setAccessible(true);
+                    $property->setValue($location, $parentProperty->getValue($parentEntry));
+                }
+            }
+        }
+        return $location;
     }
 }

@@ -28,13 +28,13 @@
                             <div>Mail</div>
                         </th>
                         <th>
-                            <div>Localisations ({numLanguages})</div>
+                            <div>Translations (of {numLanguages})</div>
                         </th>
                         <th></th>
                     </tr>
                     </thead>
                     <tbody>
-                    <f:for each="{locations}" as="l">
+                    <f:for each="{iniLocations}" as="l">
                         <f:render partial="LocationEntry" arguments="{l: l}"/>
                     </f:for>
                     </tbody>

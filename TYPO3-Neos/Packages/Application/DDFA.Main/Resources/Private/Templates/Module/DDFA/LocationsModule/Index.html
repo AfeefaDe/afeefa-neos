@@ -35,14 +35,14 @@
                     </thead>
                     <tbody>
                     <f:for each="{iniLocations}" as="l">
-                        <f:render partial="LocationEntry" arguments="{l: l}"/>
+                        <f:render partial="Location/LocationEntry" arguments="{l: l}"/>
                     </f:for>
                     </tbody>
                 </table>
             </f:then>
             <f:else>
                 <div>
-                    Currently there is no initiative location. Please add one.
+                    Currently there is no location. Please add one.
                 </div>
             </f:else>
         </f:if>

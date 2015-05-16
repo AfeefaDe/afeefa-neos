@@ -1,37 +1,45 @@
 <f:layout name="Default"/>
 
-<f:section name="title">Translate location ({editLocation.locale}|{viewLocation.locale})</f:section>
+<f:section name="title">Translate location ({editObject.locale}|{viewObject.locale})</f:section>
 
 <f:section name="content">
-    <div class="grayBox">
+    <div class="infoBox">
         <p>Select translation</p>
-        <f:form method="post" action="selectTranslation" arguments="{location: editLocation}">
+        <f:form method="post" action="selectTranslation" arguments="{object: editObject}">
             <label for="editLocale">Select edit language</label>
-            <f:form.select id="editLocale" name="editLocale" options="{editLanguages}" value="{editLocation.locale}" optionValueField="code" optionLabelField="language" sortByOptionLabel="true" /><br><br>
+            <f:form.select id="editLocale" name="editLocale" options="{editLanguages}" value="{editObject.locale}" optionValueField="code" optionLabelField="language" sortByOptionLabel="true" /><br><br>
             <label for="viewLocale">Select view language</label>
             <!-- TODO link to real languages -->
-            <!--<f:form.select id="viewLocale" name="viewLocale" options="{viewLanguages}" value="{viewLocation.locale}" optionValueField="code" optionLabelField="language" sortByOptionLabel="true" />-->
+            <!--<f:form.select id="viewLocale" name="viewLocale" options="{viewLanguages}" value="{viewObject.locale}" optionValueField="code" optionLabelField="language" sortByOptionLabel="true" />-->
             <select id="viewLocale" name="moduleArguments[viewLocale]">
                 <f:for each="{viewLanguages}" as="lan">
-                    <option value="{lan}">{lan}</option>
+                    <f:if condition="{lan} == {viewObject.locale}">
+                        <f:then>
+                            <option value="{lan}" selected>{lan}</option>
+                        </f:then>
+                        <f:else>
+                            <option value="{lan}">{lan}</option>
+                        </f:else>
+                    </f:if>
                 </f:for>
             </select>
             <button type="submit" class="neos-button" title="View and edit this translation">
                 <i class="icon-arrow-right icon-white"></i>
             </button>
         </f:form>
-    </div><br>
+    </div>
+    <div  style="clear: both"></div>
 
-    <f:form method="post" action="update" object="{editLocation}" name="editLocation" enctype="multipart/form-data">
+    <f:form method="post" action="update" object="{editObject}" name="editObject" enctype="multipart/form-data">
         <div class="neos-module-container">
             <div class="leftSide">
-                <legend>{editLocation.locale}</legend>
-                <f:render partial="LocationFormTranslate" />
+                <legend>{editObject.locale}</legend>
+                <f:render partial="Location/LocationFormTranslate" />
             </div>
             <div class="rightSide">
-                <legend>{viewLocation.locale}: <i>{viewLocation.initiative.name}</i> - {viewLocation.name}</legend>
+                <legend>{viewObject.locale}: <i>{viewObject.initiative.name}</i> - {viewObject.name}</legend>
 
-                <f:render partial="LocationView" arguments="{l: viewLocation}" />
+                <f:render partial="Location/LocationView" arguments="{l: viewObject}" />
             </div>
             <div  style="clear: both"></div>
         </div>

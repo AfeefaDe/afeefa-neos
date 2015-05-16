@@ -18,8 +18,13 @@ abstract class Owner extends \DDFA\Main\Domain\Model\Object
 
     /**
      * @var string
+     * @ORM\Column(nullable=true)
      */
     protected $languages;
+
+    public function __construct() {
+        parent::__construct();
+    }
 
     /**
      * @return string

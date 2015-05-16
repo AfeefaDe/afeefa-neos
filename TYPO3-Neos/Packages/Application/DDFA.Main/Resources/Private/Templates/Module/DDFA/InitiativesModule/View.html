@@ -1,31 +1,16 @@
 <f:layout name="Default"/>
 
-<f:section name="title">{ini.name}</f:section>
+<f:section name="title">{viewObject.locale}: {viewObject.name}</f:section>
 
 <f:section name="content">
     <div class="neos-module-container">
-        <div>
-            <h3>Basic information</h3>
+        <f:render partial="Shared/TranslationSelectView" arguments="{viewObject: viewObject, languages: languages}" />
 
-            <p>{ini.description}</p>
-
-            Speaker: {ini.speaker}<br>
-            Categories: <br>
-            Target groups: <br>
-            Locations:
-
-        </div>
-        <div>
-            <h3>Contact</h3>
-            Mail: {ini.mail}<br>
-            Website: {ini.web}<br>
-            Phone: {ini.phone}
-        </div>
-
+        <f:render partial="Initiative/InitiativeView" arguments="{ini: viewObject}" />
     </div>
     <div class="neos-footer">
-        <f:link.action action="edit" controller="InitiativesModuleController" arguments="{ini: ini}"
-                       class="neos-button neos-button-primary">
+        <f:link.action action="index" class="neos-button" title="back to index">Back</f:link.action>
+        <f:link.action action="edit" arguments="{ini: viewObject}" class="neos-button neos-button-primary" title="edit this initiative">
             Edit initiative
         </f:link.action>
     </div>

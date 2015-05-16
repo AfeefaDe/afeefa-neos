@@ -12,7 +12,7 @@ use TYPO3\Flow\Persistence\Repository;
 /**
  * @Flow\Scope("singleton")
  */
-class InitiativeRepository extends Repository
+class InitiativeRepository extends AbstractTranslationRepository
 {
 
 }

@@ -6,7 +6,10 @@ namespace DDFA\Main\Domain\Model;
  *                                                                        *
  *                                                                        */
 
+use DateTime;
 use DDFA\Main\Domain\Model\Category;
+use DDFA\Main\Utility\DDConst;
+use DDFA\Main\Utility\DDHelpers;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use TYPO3\Flow\Annotations as Flow;
@@ -102,6 +105,15 @@ abstract class Object
      * @ORM\Column(type="datetime")
      */
     protected $updated;
+
+    public function __construct() {
+        $this->setPersistenceObjectIdentifier(DDHelpers::createGuid());
+        $this->setEntryId(uniqid());
+        $this->setLocale(DDConst::LOCALE_STD);
+        $now = new DateTime();
+        $this->setCreated($now);
+        $this->setUpdated($now);
+    }
 
     /**
      * @return string

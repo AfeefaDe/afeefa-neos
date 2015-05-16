@@ -1,32 +1,16 @@
 <f:layout name="Default"/>
 
-<f:section name="title">{viewLocation.locale}: <i>{viewLocation.initiative.name}</i> - {viewLocation.name}</f:section>
+<f:section name="title">{viewObject.locale}: <i>{viewObject.initiative.name}</i> - {viewObject.name}</f:section>
 
 <f:section name="content">
     <div class="neos-module-container">
-        <f:if condition="{languages}">
-            <div class="infoBox">
-                <p>View a translation</p>
-                <f:form method="post" action="view" arguments="{viewLocation: viewLocation}">
-                    <label for="viewLocale">Select language</label>
-                    <!-- TODO link to real languages -->
-                    <select id="viewLocale" name="viewLocale">
-                        <f:for each="{languages}" as="lan">
-                            <option value="{lan}">{lan}</option>
-                        </f:for>
-                    </select>
-                    <button type="submit" class="neos-button" title="View this translation">
-                        <i class="icon-arrow-right icon-white"></i>
-                    </button>
-                </f:form>
-            </div>
-        </f:if>
+        <f:render partial="Shared/TranslationSelectView" arguments="{viewObject: viewObject, languages: languages}" />
 
-        <f:render partial="LocationView" arguments="{l: viewLocation}" />
+        <f:render partial="Location/LocationView" arguments="{l: viewObject}" />
     </div>
     <div class="neos-footer">
         <f:link.action action="index" class="neos-button" title="back to index">Back</f:link.action>
-        <f:link.action action="simpleEdit" arguments="{editLocation: viewLocation}" class="neos-button neos-button-primary" title="Edit this location">
+        <f:link.action action="simpleEdit" arguments="{editObject: viewObject}" class="neos-button neos-button-primary" title="Edit this location">
             Edit Location
         </f:link.action>
     </div>

@@ -2,41 +2,32 @@
 namespace DDFA\Main\Controller\Module\DDFA;
 
 /*                                                                        *
- * This script belongs to the TYPO3 Flow package "DDFA.Main".              *
+ * This script belongs to the TYPO3 Flow package "DDFA.Main".             *
  *                                                                        *
  *                                                                        */
 
 use DateTime;
 use DDFA\Main\Domain\Model\Language;
 use DDFA\Main\Domain\Model\Location;
+use DDFA\Main\Domain\Model\Object;
 use DDFA\Main\Domain\Repository\InitiativeRepository;
 use DDFA\Main\Domain\Repository\LanguageRepository;
 use DDFA\Main\Domain\Repository\LocationRepository;
 use DDFA\Main\Utility\DDConst;
-use DDFA\Main\Utility\DDHelpers;
 use TYPO3\Flow\Annotations as Flow;
-use TYPO3\Flow\Persistence\Generic\PersistenceManager;
-use TYPO3\Flow\Resource\ResourceManager;
-use TYPO3\Neos\Controller\Module\AbstractModuleController;
 
 /**
  * The TYPO3 User Settings module controller
  *
  * @Flow\Scope("singleton")
  */
-class LocationsModuleController extends AbstractModuleController
+class LocationsModuleController extends AbstractTranslationController
 {
-    /**
-     * @Flow\Inject
-     * @var PersistenceManager
-     */
-    protected $persistenceManager;
-
     /**
      * @Flow\Inject
      * @var LocationRepository
      */
-    protected $locationRepository;
+    protected $objectRepository;
 
     /**
      * @Flow\Inject
@@ -55,24 +46,25 @@ class LocationsModuleController extends AbstractModuleController
      */
     public function indexAction()
     {
-        $this->view->assign('iniLocations', $this->locationRepository->findAllOfInitiativeLocalized(DDConst::LOCALE_STD));
+        $this->view->assign('iniLocations', $this->objectRepository->findAllOfInitiativeLocalized(DDConst::LOCALE_STD));
         $this->view->assign('numLanguages', $this->languageRepository->findAll()->count() - 1);
     }
 
     /**
-     * @param Location $viewLocation
+     * @param Location $viewObject
      * @return void
      */
-    public function viewAction(Location $viewLocation)
+    public function viewAction(Location $viewObject)
     {
-        if(isset($_POST['viewLocale']) && $_POST['viewLocale'] != DDConst::LOCALE_STD) {
-            $this->redirect('view', NULL, NULL, array('viewLocation' => $this->locationRepository->findOneLocalized($viewLocation, $_POST['viewLocale'])));
+        if (isset($_POST['viewLocale']) && $_POST['viewLocale'] != DDConst::LOCALE_STD) {
+            $this->redirect('view', NULL, NULL, array('viewObject' => $this->objectRepository->findOneLocalized($viewObject, $_POST['viewLocale'])));
+
         } else {
-            if ($viewLocation->getLocale() != DDConst::LOCALE_STD) {
-                $viewLocation = $this->locationRepository->hydrate($viewLocation);
-            }
-            $this->view->assign('viewLocation', $viewLocation);
-            $this->view->assign('languages', $this->locationRepository->findLocales($viewLocation));
+            if ($viewObject->getLocale() != DDConst::LOCALE_STD)
+                $viewObject = $this->objectRepository->hydrate($viewObject);
+
+            $this->view->assign('viewObject', $viewObject);
+            $this->view->assign('languages', $this->objectRepository->findLocales($viewObject));
         }
     }
 
@@ -81,7 +73,7 @@ class LocationsModuleController extends AbstractModuleController
      */
     public function addAction()
     {
-        $this->view->assign('inis', $this->initiativeRepository->findAll());
+        $this->view->assign('inis', $this->initiativeRepository->findAllLocalized());
     }
 
     /**
@@ -92,118 +84,63 @@ class LocationsModuleController extends AbstractModuleController
     public function createAction(Location $newLocation)
     {
         $newLocation->setInitiative($this->initiativeRepository->findOneByName($_POST['moduleArguments']['ini']));
-
-        $newLocation->setPersistenceObjectIdentifier(DDHelpers::createGuid());
-        $newLocation->setEntryId(uniqid());
-        $newLocation->setLocale(DDConst::LOCALE_STD);
-        $newLocation->setType(DDConst::LOCATION_INI);
-        $now = new DateTime();
-        $newLocation->setCreated($now);
-        $newLocation->setUpdated($now);
-
-        $this->locationRepository->add($newLocation);
+        $this->objectRepository->add($newLocation);
         $this->addFlashMessage('A new location has been created successfully.');
 
         if (isset($_POST['moduleArguments']['localize'])) {
-            $editLocation = new Location();
-            $editLocation->setPersistenceObjectIdentifier(DDHelpers::createGuid());
-            $editLocation->setEntryId($newLocation->getEntryId());
-            $editLocation->setLocale(DDConst::LOCALE_NXT);
-            $editLocation->setType($newLocation->getType());
-            $editLocation->setCreated($now);
-            $editLocation->setUpdated($now);
-
-            $this->locationRepository->add($editLocation);
+            $editObject = $this->addTranslation($newLocation->getEntryId(), DDConst::LOCALE_NXT, $newLocation->getType());
+            $this->objectRepository->add($editObject);
             $this->addFlashMessage("A new 'en' translation has been added successfully.");
+            $this->redirect('edit', NULL, NULL, array('editObject' => $editObject, 'viewObject' => $newLocation));
 
-            $this->redirect('edit', NULL, NULL, array('editLocation' => $editLocation, 'viewLocation' => $newLocation));
         } else
             $this->redirect('index');
     }
 
     /**
-     * @param Location $location
-     * */
-    public function selectTranslationAction(Location $location) {
-        $editLocale = $_POST['moduleArguments']['editLocale'];
-        $viewLocale = $_POST['moduleArguments']['viewLocale'];
-
-        if($this->languageRepository->findByCode($viewLocale)->count() == 0 ||
-            $this->languageRepository->findByCode($editLocale)->count() == 0) {
-            $editLocation = $this->locationRepository->findOneLocalized($location, DDConst::LOCALE_STD);
-            $this->redirect('simpleEdit', NULL, NULL, array('editLocation' => $editLocation));
-        } else {
-
-            $viewLocation = $this->locationRepository->findOneLocalized($location, $viewLocale);
-
-            if ($viewLocation == NULL) {
-                $editLocation = $this->locationRepository->findOneLocalized($location, DDConst::LOCALE_STD);
-                $this->redirect('simpleEdit', NULL, NULL, array('editLocation' => $editLocation));
-            } else {
-
-                $editLocation = $this->locationRepository->findOneLocalized($location, $editLocale);
-
-                if ($editLocation == NULL) {
-                    $editLocation = new Location();
-                    $editLocation->setPersistenceObjectIdentifier(DDHelpers::createGuid());
-                    $editLocation->setEntryId($location->getEntryId());
-                    $editLocation->setLocale($editLocale);
-                    $editLocation->setType($location->getType());
-                    $now = new DateTime();
-                    $editLocation->setCreated($now);
-                    $editLocation->setUpdated($now);
-
-                    $this->locationRepository->add($editLocation);
-                    $this->addFlashMessage("A new '".$editLocale."' translation has been added successfully.");
-                }
-
-                $this->redirect('edit', NULL, NULL,
-                    ['editLocation' => ['__identity' => $editLocation->getPersistenceObjectIdentifier()],
-                        'viewLocation' => ['__identity' => $viewLocation->getPersistenceObjectIdentifier()]]);
-            }
-        }
-    }
-
-    /**
-     * @param Location $editLocation
-     * @param Location $viewLocation
+     * @param Location $editObject
+     * @param Location $viewObject
      */
-    public function editAction(Location $editLocation, Location $viewLocation)
+    public function editAction(Location $editObject, Location $viewObject)
     {
-        $this->view->assign('viewLocation', $viewLocation);
-        $this->view->assign('editLocation', $editLocation);
+        $this->view->assign('viewObject', $this->objectRepository->hydrate($viewObject));
+        $this->view->assign('editObject', $editObject);
         $this->view->assign('editLanguages', $this->languageRepository->findAll());
-        $this->view->assign('viewLanguages', $this->locationRepository->findLocales($viewLocation));
+        $this->view->assign('viewLanguages', $this->objectRepository->findAllLocales($viewObject));
     }
 
-    public function simpleEditAction(Location $editLocation) {
-        if($editLocation->getLocale() != DDConst::LOCALE_STD) {
-            $viewLocation = $this->locationRepository->findOneLocalized($editLocation, DDConst::LOCALE_STD);
+    public function simpleEditAction(Location $editObject)
+    {
+        if ($editObject->getLocale() != DDConst::LOCALE_STD) {
+            $viewObject = $this->objectRepository->findOneLocalized($editObject, DDConst::LOCALE_STD);
             $this->redirect('edit', NULL, NULL,
-                ['editLocation' => ['__identity' => $editLocation->getPersistenceObjectIdentifier()],
-                    'viewLocation' => ['__identity' => $viewLocation->getPersistenceObjectIdentifier()]]);
+                ['editObject' => ['__identity' => $editObject->getPersistenceObjectIdentifier()],
+                    'viewObject' => ['__identity' => $viewObject->getPersistenceObjectIdentifier()]]);
         } else {
-            $this->view->assign('editLocation', $editLocation);
-            $this->view->assign('inis', $this->initiativeRepository->findAll());
+            $this->view->assign('editObject', $editObject);
+            $this->view->assign('inis', $this->initiativeRepository->findAllLocalized());
             $this->view->assign('languages', $this->languageRepository->findAll());
         }
     }
 
     /**
-     * @param Location $editLocation
+     * @param Location $editObject
      * @return void
      * @throws \TYPO3\Flow\Persistence\Exception\IllegalObjectTypeException
      */
-    public function updateAction(Location $editLocation)
+    public function updateAction(Location $editObject)
     {
-        if(isset($_POST['moduleArguments']['ini'])) {
+        if (isset($_POST['moduleArguments']['ini'])) {
             $ini = $_POST['moduleArguments']['ini'];
-            $editLocation->setInitiative($this->initiativeRepository->findOneByName($ini));
+            $editObject->setInitiative($this->initiativeRepository->findOneByName($ini));
+            $editObject->setUpdated(new DateTime());
             $this->addFlashMessage('The location has been updated successfully.');
+
         } else {
             $this->addFlashMessage('The translation has been updated successfully.');
         }
-        $this->locationRepository->update($editLocation);
+
+        $this->objectRepository->update($editObject);
         $this->redirect('index');
     }
 
@@ -214,11 +151,31 @@ class LocationsModuleController extends AbstractModuleController
      */
     public function deleteAction(Location $location)
     {
-        foreach($this->locationRepository->findAllLocalisations($location) as $localisedLocation)
-            $this->locationRepository->remove($localisedLocation);
+        foreach ($this->objectRepository->findAllLocalisations($location) as $localisedLocation)
+            $this->objectRepository->remove($localisedLocation);
 
         $this->addFlashMessage('The location including all its translations has been removed successfully.');
         $this->redirect('index');
     }
 
+    protected function createTranslation()
+    {
+        return new Location();
+    }
+
+
+    /**
+     * @param \DDFA\Main\Domain\Model\Object $object
+     * @return mixed
+     */
+    protected function persistTranslation(Object $object)
+    {
+        $this->objectRepository->add($object);
+        $this->addFlashMessage("A new '" . $object . "' translation has been added successfully.");
+    }
+
+    protected function getObjectRepository()
+    {
+        return $this->objectRepository;
+    }
 }

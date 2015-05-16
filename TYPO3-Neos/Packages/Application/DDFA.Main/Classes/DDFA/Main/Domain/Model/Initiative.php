@@ -17,6 +17,7 @@ class Initiative extends \DDFA\Main\Domain\Model\Owner
 
     /**
      * @var string
+     * @ORM\Column(nullable=true)
      */
     protected $speaker;
 
@@ -25,6 +26,10 @@ class Initiative extends \DDFA\Main\Domain\Model\Owner
      * @ORM\OneToMany(mappedBy="initiative")
      */
     protected $locations;
+
+    public function __construct() {
+        parent::__construct();
+    }
 
     /**
      * @return string
@@ -50,6 +55,4 @@ class Initiative extends \DDFA\Main\Domain\Model\Owner
     {
         return $this->locations;
     }
-
-
 }

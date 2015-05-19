@@ -2,18 +2,20 @@ var mapdata = {};
 
 mapdata.categories = {
 	// "categories": {
-		"advice": {id: 0, name: 'Advice', maki: 'heart'},
-		"medic": {id: 1, name: 'Medical Care', maki: 'hospital'},
-		language: {id: 2, name: 'Language learning', maki: 'college'},
-		leisure: {id: 3, name: 'Leisure activities', maki: 'pitch'},
-		jobs: {id: 4, name: 'Jobs + Internships'},
-		public: {id: 5, name: 'Public offices', maki: 'town-hall'},
+		advice: {id: 0, name: 'Advice', symbol: 'heart'},
+		medic: {id: 1, name: 'Medical Care', symbol: 'medkit'},
+		language: {id: 2, name: 'Language learning', symbol: 'book'},
+		leisure: {id: 3, name: 'Leisure activities', symbol: 'futbol-o'},
+		jobs: {id: 4, name: 'Jobs + Internships', symbol: 'wrench'},
+		public: {id: 5, name: 'Public offices', symbol: 'institution'},
 		religion: {id: 6, name: 'Religious Institutions'},
-		shops: {id: 7, name: 'International shops', maki: 'shop'},
-		translation: {id: 8, name: 'Translation service'},
+		shops: {id: 7, name: 'International shops', symbol: 'shopping-cart'},
+		translation: {id: 8, name: 'Translation service', symbol: 'exchange'},
 		donation: {id: 9, name: 'Donation'},
-		network: {id: 10, name: 'Network', maki: 'star'},
-		sponsorship: {id: 11, name: 'Sponsorship', maki: 'school'}
+		network: {id: 10, name: 'Network', symbol: 'group'},
+		sponsorship: {id: 11, name: 'Sponsorship', symbol: 'child'},
+		wifi: {id: 12, name: 'Wifi', symbol: 'wifi'},
+		meet: {id: 12, name: 'Meet + talk', symbol: 'comments-o'}
 	};
 
 mapdata.locations = {
@@ -34,7 +36,9 @@ mapdata.locations = {
 			staff: 'Grit Gabler, Annegret Krellner, In Am Sayad Mahmood',
 			language: 'Deutsch, Englisch, Portugiesisch, Niederländisch, Russisch, Tschechisch, Arabisch, Persisch',
 			services: 'Beratung, Integrationskurse, Information',
-			desc: 'Bereitstellung eines bedarfsorientierten und individuellen Beratungsangebots für Migranten'
+			desc: 'Bereitstellung eines bedarfsorientierten und individuellen Beratungsangebots für Migranten',
+		    supportNeeded: false,
+		    districtOnly: false
 		},
 		{
 			geo: [51.055599, 13.738482],
@@ -52,7 +56,9 @@ mapdata.locations = {
 			staff: 'Kristin Kossatz, Mirjam Christ',
 			language: null,
 			services: 'Deutschkurse; Niveaueinstufungen, Alphabetisierung, A1, Einstufungstests, ehrenamtlich',
-			desc: 'Deutschkurse von Alphabetisierung bis Ende A1 in 6 Niveaustufen für Asylsuchende, die kein oder noch kein Recht auf ESF- oder Integrationskurse haben; 60 ehrenamtliche Lehrer_innen unerrichten ca. 30 Kurse; 4x pro Jahr Einstufungstests und Neustarts von Kursen'
+			desc: 'Deutschkurse von Alphabetisierung bis Ende A1 in 6 Niveaustufen für Asylsuchende, die kein oder noch kein Recht auf ESF- oder Integrationskurse haben; 60 ehrenamtliche Lehrer_innen unerrichten ca. 30 Kurse; 4x pro Jahr Einstufungstests und Neustarts von Kursen',
+		    supportNeeded: true,
+		    districtOnly: false
 		},
 		{
 			geo: [51.05225,13.70205],
@@ -70,7 +76,9 @@ mapdata.locations = {
 			staff: null,
 			language: 'Deutsch, Englisch, weitere',
 			services: 'Beratung, Soziokulturelle Angebote, ...',
-			desc: 'Wir, die Mitglieder der Kontaktgruppe Asyl (e. V.; kurz KoGA), unterstützen Asylsuchende und Geflüchtete in Dresden beim Bewältigen der vielen bürokratischen Hürden und schaffen Kontakt- und Begegnungsmöglichkeiten. Mit Respekt knüpfen wir an die Stärken und Potentiale dieser Menschen an und stellen uns als unabhängige Ansprechpartnerinnen zur Verfügung. Öffentlich engagieren wir uns gegen repressive Strukturen und rassistische Vorurteile sowie für eine solidarische und bunte Gesellschaft.'
+			desc: 'Wir, die Mitglieder der Kontaktgruppe Asyl (e. V.; kurz KoGA), unterstützen Asylsuchende und Geflüchtete in Dresden beim Bewältigen der vielen bürokratischen Hürden und schaffen Kontakt- und Begegnungsmöglichkeiten. Mit Respekt knüpfen wir an die Stärken und Potentiale dieser Menschen an und stellen uns als unabhängige Ansprechpartnerinnen zur Verfügung. Öffentlich engagieren wir uns gegen repressive Strukturen und rassistische Vorurteile sowie für eine solidarische und bunte Gesellschaft.',
+		    supportNeeded: false,
+		    districtOnly: false
 		},
 		{
 			geo: [51.10749,13.68406],
@@ -88,7 +96,9 @@ mapdata.locations = {
 			staff: 'Inge Dreißig, Martin Oehmichen',
 			language: 'Deutsch, Englisch',
 			services: 'Deutschkurse, Einzelfallhilfe und Begleitung, soziokulturelle Angebote, Sammlungen, Netzwerkarbeit',
-			desc: 'Deutschkurse durch ehrenamtliche LehrerInnen für unterschiedliche Niveaustufen, einschl. Alphabetisierungskurs, Ziel A1/A2 als Basis für staatl. gef. Sprachkurse, vertiefende Übungsgruppen; Begleitung Asylsuchender zu Behörden, Ärzten, Arbeitgebern etc.; Organisation sportlicher und kultureller Ereignisse und handwerklicher Tätigkeiten; monatlicher Treffpunkt in der zentralen Unterkunft in Radebeul zum Austausch.'
+			desc: 'Deutschkurse durch ehrenamtliche LehrerInnen für unterschiedliche Niveaustufen, einschl. Alphabetisierungskurs, Ziel A1/A2 als Basis für staatl. gef. Sprachkurse, vertiefende Übungsgruppen; Begleitung Asylsuchender zu Behörden, Ärzten, Arbeitgebern etc.; Organisation sportlicher und kultureller Ereignisse und handwerklicher Tätigkeiten; monatlicher Treffpunkt in der zentralen Unterkunft in Radebeul zum Austausch.',
+		    supportNeeded: false,
+		    districtOnly: false
 		},
 		{
 			geo: [51.0242401,13.8379731],
@@ -106,12 +116,14 @@ mapdata.locations = {
 			staff: 'Claus Dethleff',
 			language: 'Deitsch, Englisch',
 			services: 'Deutschkurse,Hilfen im Alltag, Freizeitangebote, Veranstaltungen für Flüchtlinge und Anwohner, Plakat-, Flyer- und Postkartenaktionen',
-			desc: 'Das Bürgernetzwerk Laubegast ist Bunt bemüht sich bereits seit 2010 intensiv um Demokratieförderung, Weltoffenheit und Toleranz im Stadtteil. Seit 2014 ist die Flüchtlingshilfe einer der Arbeitsschwerpunkte.'
+			desc: 'Das Bürgernetzwerk Laubegast ist Bunt bemüht sich bereits seit 2010 intensiv um Demokratieförderung, Weltoffenheit und Toleranz im Stadtteil. Seit 2014 ist die Flüchtlingshilfe einer der Arbeitsschwerpunkte.',
+		    supportNeeded: false,
+		    districtOnly: false
 		},
 		{
 			geo: [51.054539, 13.741902],
 			name: 'Das interkulturelle Sofa',
-			cat: null,
+			cat: mapdata.categories.meet,
 			street: null,
 			zip: null,
 			city: 'Dresden',
@@ -124,7 +136,9 @@ mapdata.locations = {
 			staff: 'Andreas Hempel, Emiliano Chaimite, Annna-Maria Buchgraber',
 			language: 'Deutsch, Englisch',
 			services: 'Gesprächsangebote, Vernetzung zwischen Asylbewerbern und Dresdnern, Integration durch gemeinsame Sofa-Touren, Veranstaltungen für Flüchtlinge, regelmäßige Treffen,  Öffentlichkeitsarbeit für Integration (mit dem Sofa), ehrenamtlich, Deutsch reden, interkulturell',
-			desc: null
+			desc: null,
+		    supportNeeded: false,
+		    districtOnly: false
 		},
 		{
 			geo: [51.03803,13.69432],
@@ -142,7 +156,9 @@ mapdata.locations = {
 			staff: null,
 			language: 'Deutsch, Englisch, Französisch',
 			services: null,
-			desc: 'Das Netzwerk “Willkommen in Löbtau” möchte die geflüchteten Menschen dabei unterstützen, in unserem Stadtteil anzukommen. Mit unserer Arbeit wollen wir eine Brücke schlagen zwischen neuen und alteingesessenen LöbtauerInnen. Das Netzwerk besteht aus engagierten BürgerInnen, Kirchgemeinden, Vereinen und verschiedenen Parteien.'
+			desc: 'Das Netzwerk “Willkommen in Löbtau” möchte die geflüchteten Menschen dabei unterstützen, in unserem Stadtteil anzukommen. Mit unserer Arbeit wollen wir eine Brücke schlagen zwischen neuen und alteingesessenen LöbtauerInnen. Das Netzwerk besteht aus engagierten BürgerInnen, Kirchgemeinden, Vereinen und verschiedenen Parteien.',
+		    supportNeeded: false,
+		    districtOnly: false
 		},
 		{
 			geo: [51.11203,13.77404],
@@ -160,7 +176,9 @@ mapdata.locations = {
 			staff: 'Ulrike Caspary und Anja Apel',
 			language: 'Deutsch, Englisch, Französisch',
 			services: 'Gründung von Arbeitsgruppen am 20.2.15 um 17:00 Uhr im Festspielhaus Hellerau',
-			desc: 'Die Initiative "Brücken schaffen" ist die Zusammenarbeit von Vereinen, Kirchen, Parteien, Ortsamt aus Klotzsche, Hellerau, Langebrück, mit dem Ziel, das Zusammenleben von EinwohnerInnen und Asylsuchenden und die Integration und Ankunft der Asylsuchenden harmonisch zu gestalten.'
+			desc: 'Die Initiative "Brücken schaffen" ist die Zusammenarbeit von Vereinen, Kirchen, Parteien, Ortsamt aus Klotzsche, Hellerau, Langebrück, mit dem Ziel, das Zusammenleben von EinwohnerInnen und Asylsuchenden und die Integration und Ankunft der Asylsuchenden harmonisch zu gestalten.',
+		    supportNeeded: false,
+		    districtOnly: false
 		},
 		{
 			geo: [51.056508, 13.736602],
@@ -178,7 +196,9 @@ mapdata.locations = {
 			staff: 'Julia Osten, Caroline Trübenbach, Franzika Fehst',
 			language: 'Deutsch, Englisch',
 			services: 'Patenschaftsprogramm für Resettlementflüchtlinge',
-			desc: 'Vermittlung von Patenschaften für Flüchtlinge (Resettlment und Adhoc Aufnahme) Politisches Engagement für eine Verbesserung des Resettlement Programmes der BRD und die zentrale Koordinierung alle Patenschaften in Dresden.'
+			desc: 'Vermittlung von Patenschaften für Flüchtlinge (Resettlment und Adhoc Aufnahme) Politisches Engagement für eine Verbesserung des Resettlement Programmes der BRD und die zentrale Koordinierung alle Patenschaften in Dresden.',
+		    supportNeeded: false,
+		    districtOnly: false
 		},
 		{
 			geo: [51.05871,13.72661],
@@ -196,7 +216,9 @@ mapdata.locations = {
 			staff: 'Claudia Holbe, Frank Engel',
 			language: 'Deutsch, Englisch',
 			services: 'Förderfonds Flüchtlingshilfe, Bildungsangebote für Schulen ',
-			desc: 'Wir unterstützen die Flüchtlingshilfe andere Gruppen durch Bereitstellung von Finanzen in unserem Sachmittelfonds. Wir entwickeln Bildungsangebote für Schulen zum Thema Flucht & Asyl.'
+			desc: 'Wir unterstützen die Flüchtlingshilfe andere Gruppen durch Bereitstellung von Finanzen in unserem Sachmittelfonds. Wir entwickeln Bildungsangebote für Schulen zum Thema Flucht & Asyl.',
+		    supportNeeded: false,
+		    districtOnly: false
 		},
 		{
 			geo: [51.0665643,13.783502],
@@ -214,7 +236,9 @@ mapdata.locations = {
 			staff: null,
 			language: 'Deutsch, Englisch',
 			services: 'Parteiliche, klientelorientierte, aufsuchende, vrtrauliche, mehrsprachige und kostenlose Beratung und Unterstützung Betroffener rechtsmotivierter und rassistischer Gewalt, deren Angehörige, Freunde und Freundinnen  sowie Zeug_innen eines Angriffs',
-			desc: null
+			desc: null,
+		    supportNeeded: false,
+		    districtOnly: false
 		},
 		  {
 		    geo: [51.03833, 13.85151],
@@ -232,12 +256,14 @@ mapdata.locations = {
 		    staff: null,
 		    language:'Deutsch, Englisch',
 		    services:'Angebot von Sprachkursen im  Dresdner Hochland, Übernahme  von Patenschaften, Sammlung von Spenden, Öffentlichkeits- arbeit, Freizeitaktivitäten, Dialog',
-		    desc:'Zweck des gegründeten Vereins ist die Verbesserung der Lebensbedingungen von Flüchtlingen und Asylbewerbern im Dresdner  und angrenzenden Gebieten. Dieser Zweck wird insbesondere durch unterstützende und begleitende Hilfeleistung bei der Ankunft in Dresden und zur besseren Integration von neuen Bewohnern angestrebt. Dazu gehören auch Beratung, Betreuung, Entwicklung von  Beschäftigungsmöglichkeiten, interkulturelle und sonstige Veranstaltungen. '
+		    desc:'Zweck des gegründeten Vereins ist die Verbesserung der Lebensbedingungen von Flüchtlingen und Asylbewerbern im Dresdner  und angrenzenden Gebieten. Dieser Zweck wird insbesondere durch unterstützende und begleitende Hilfeleistung bei der Ankunft in Dresden und zur besseren Integration von neuen Bewohnern angestrebt. Dazu gehören auch Beratung, Betreuung, Entwicklung von  Beschäftigungsmöglichkeiten, interkulturelle und sonstige Veranstaltungen. ',
+		    supportNeeded: false,
+		    districtOnly: false
 		  },
 		  {
 		    geo: [51.0137277, 13.7696242],
 		    name:'SPIKE Dresden',
-		    cat: mapdata.categories.network,
+		    cat: mapdata.categories.leisure,
 		    street:'Karl-Laux-Str. 5',
 		    zip:1219,
 		    city:'Dresden',
@@ -250,12 +276,14 @@ mapdata.locations = {
 		    staff:'Ellen Demnitz-Schmidt, Frank Meißner',
 		    language:'Deutsch, Englisch',
 		    services:'Freizeitaktivitäten, Deutsch lernen, Kontakte mit Ehrenamtlichen und Helfern, Ausflüge, Sammlung von Spenden, Hilfen für den Alltag, Patenschaften',
-		    desc:'Wir organisieren konkrete Hilfe für Asylbewerber in Leubnitz-Neuostra und darüber hinaus. Wir bieten einen freundlichen und offenen Ort der Begegnung, für die Freizeitgestaltung, für soziales Engagement, zur Koordinierung von Angeboten, zur Unterstützung und als Anlaufstelle für Netzwerkpartner. Unsere Räume stehen auch über die Öffnungszeiten hinaus für Aktionen zur Verfügung (z.B. vormittags). Immer sonntags und mittwochs von 16-20 Uhr können sich Engagierte und Interessierte bei uns treffen, um Kontakte zu knüpfen, Asylsuchenden zu begegnen und besondere Aktivitäten und Angebote gemeinsam zu planen.'
+		    desc:'Wir organisieren konkrete Hilfe für Asylbewerber in Leubnitz-Neuostra und darüber hinaus. Wir bieten einen freundlichen und offenen Ort der Begegnung, für die Freizeitgestaltung, für soziales Engagement, zur Koordinierung von Angeboten, zur Unterstützung und als Anlaufstelle für Netzwerkpartner. Unsere Räume stehen auch über die Öffnungszeiten hinaus für Aktionen zur Verfügung (z.B. vormittags). Immer sonntags und mittwochs von 16-20 Uhr können sich Engagierte und Interessierte bei uns treffen, um Kontakte zu knüpfen, Asylsuchenden zu begegnen und besondere Aktivitäten und Angebote gemeinsam zu planen.',
+		    supportNeeded: false,
+		    districtOnly: false
 		  },
 		  {
 		    geo: [51.00534, 13.79787],
 		    name:'AWO Sonnenstein gGmbH, Migrationsberatung für Erwachsene',
-		    cat: mapdata.categories.network,
+		    cat: mapdata.categories.advice,
 		    street:'Prohliser Allee 10',
 		    zip:1239,
 		    city:'Dresden',
@@ -268,14 +296,16 @@ mapdata.locations = {
 		    staff: null,
 		    language: null,
 		    services: null,
-		    desc: null
+		    desc: null,
+		    supportNeeded: false,
+		    districtOnly: false
 		  },
 		  {
-		    geo: [51.00534, 13.79787],
+		    geo: [51.00534, 13.7982],
 		    name:'AWO Sonnenstein gGmbH, Asylberatung',
-		    cat: mapdata.categories.network,
+		    cat: mapdata.categories.advice,
 		    street:'Prohliser Allee 10,',
-		    zip:1239,
+		    zip:'01239',
 		    city:'Dresden',
 		    opening:'Di.13:00-17:00, Fr. 09:00-12:00',
 		    phone:'0351-26068027',
@@ -286,14 +316,16 @@ mapdata.locations = {
 		    staff: null,
 		    language: null,
 		    services: null,
-		    desc: null
+		    desc: null,
+		    supportNeeded: false,
+		    districtOnly: false
 		  },
 		  {
 		    geo: [51.0382419, 13.8027707],
 		    name:'ZMO-Jugend e.V.',
-		    cat: mapdata.categories.network,
+		    cat: mapdata.categories.advice,
 		    street:'Kipsdorfer Str. 100',
-		    zip:1277,
+		    zip:'01277',
 		    city:'Dresden',
 		    opening: null,
 		    phone:'0351 / 28 99 276',
@@ -301,35 +333,39 @@ mapdata.locations = {
 		    mail:'zmo-jugend@web.de',
 		    web:'www.zmo-jugend.de',
 		    facebook:'Facebook.de/ZMO.Jugend.Dresden',
-		    staff:'Valentina Ohngemach,            Wladimir Tschurikow',
+		    staff:'Valentina Ohngemach, Wladimir Tschurikow',
 		    language:'Deutsch, Russisch',
 		    services:'Beratung-, Gesprächs- und Begleitungsangebote, offene Bildungs-, Freizeit-, Partizipationsangebote, Sport- und musische Angebote, interkulturelle Begegnungsangebote',
-		    desc:'Wir richten uns mit unserem Angebot "Interkulturelle Begegnungsstätte für junge Menschen" an Kinder, Jugendliche sowie Eltern mit und ohne Migrationshintergrund. Dabei orientieren wir uns an Bedarfen und Interessen unserer AdressatInnen. Seit dem Anstieg der Zuzugszahlen der Asylsuchenden nutzt diese Zielgruppe verstärkt unsere Angebote. Wir sind mit relevanten Fachdiensten und Akteuren im Handlungsfeld Migration vernetzt und arbeiten zusammen.'
+		    desc:'Wir richten uns mit unserem Angebot "Interkulturelle Begegnungsstätte für junge Menschen" an Kinder, Jugendliche sowie Eltern mit und ohne Migrationshintergrund. Dabei orientieren wir uns an Bedarfen und Interessen unserer AdressatInnen. Seit dem Anstieg der Zuzugszahlen der Asylsuchenden nutzt diese Zielgruppe verstärkt unsere Angebote. Wir sind mit relevanten Fachdiensten und Akteuren im Handlungsfeld Migration vernetzt und arbeiten zusammen.',
+		    supportNeeded: false,
+		    districtOnly: false
 		  },
 		  {
 		    geo: [51.055917,13.7607638],
 		    name:'Johannstädter Kulturtreff e.V.',
-		    cat: mapdata.categories.network,
+		    cat: mapdata.categories.leisure,
 		    street:'Elisenstraße 35',
-		    zip:1307,
+		    zip: '01307',
 		    city:'Dresden',
-		    opening:'Mo-Do: 9-21 Uhr',
-		    phone:' Fr: 9-17 Uhr',
-		    fax:'0351 4472823',
+		    opening:'Mo-Do: 9-21 Uhr, Fr: 9-17 Uhr',
+		    phone: '0351 4472823',
+		    fax: null,
 		    mail: null,
 		    web:'kontakt@johannstaedterkulturtreff.de',
 		    facebook:'www.johannstaedterkulturtreff.de',
 		    staff:'Matthes Blank',
-		    language: null,
-		    services:'Deutsch, Englisch',
-		    desc:'Freizeitaktivitäten, Kunst- und Kulturangebote, Sportangebote, interkulturelle Begegnung'
+		    language: 'Deutsch, Englisch',
+		    services: null,
+		    desc:'Freizeitaktivitäten, Kunst- und Kulturangebote, Sportangebote, interkulturelle Begegnung',
+		    supportNeeded: false,
+		    districtOnly: false
 		  },
 		  {
 		    geo: [51.0794856,13.7189139],
 		    name:'Verein Pro Pieschen e.V.',
 		    cat: mapdata.categories.network,
 		    street:'Arno-Lade-Straße 9',
-		    zip:1129,
+		    zip: '01129',
 		    city:'Dresden',
 		    opening: null,
 		    phone:'1778584201',
@@ -340,7 +376,9 @@ mapdata.locations = {
 		    staff: null,
 		    language: null,
 		    services:'Stadtteilnetzwerk, Informationen, Projektkoordination',
-		    desc: null
+		    desc: null,
+		    supportNeeded: false,
+		    districtOnly: false
 		  },
 		  {
 		    geo: [51.1617842, 13.4976592],
@@ -358,12 +396,14 @@ mapdata.locations = {
 		    staff: null,
 		    language: null,
 		    services:'Freizeitaktivitäten, Patenschaften, Deutschkurse,',
-		    desc: null
+		    desc: null,
+		    supportNeeded: false,
+		    districtOnly: false
 		  },
 		  {
 		    geo: [51.0691, 13.76151],
 		    name:'MEDEA Frauen-und Mädchengesundtheitszentrum e.V.',
-		    cat: mapdata.categories.network,
+		    cat: mapdata.categories.medic,
 		    street:'Prießnitzstr.55',
 		    zip:1099,
 		    city:'Dresden',
@@ -374,9 +414,11 @@ mapdata.locations = {
 		    web:'medea-m-gupte@dmx.de',
 		    facebook:'www.medea-dresden.de',
 		    staff:'Anke Müller-Gupte',
-		    language: null,
-		    services:'Dt, Engl., bei Bedarf Dolmetscher vom Gemeindedolmetscherdienst',
-		    desc:'gesundheitl. Beratung - offene Treffs'
+		    language: 'Dt, Engl., bei Bedarf Dolmetscher vom Gemeindedolmetscherdienst',
+		    services: null,
+		    desc:'gesundheitl. Beratung - offene Treffs',
+		    supportNeeded: false,
+		    districtOnly: false
 		  },
 		  {
 		    geo: [51.2912275, 13.531304],
@@ -394,12 +436,14 @@ mapdata.locations = {
 		    staff: null,
 		    language:'Deutsch, Englisch',
 		    services:'Freizeitaktivitäten mit Asylsuchenden, antirassistische Bildungsarbeit (siehe Blog)',
-		    desc: null
+		    desc: null,
+		    supportNeeded: false,
+		    districtOnly: false
 		  },
 		  {
 		    geo: [51.02687, 13.7588],
 		    name:'Ausländerrat Dresden e.V.',
-		    cat: mapdata.categories.network,
+		    cat: mapdata.categories.advice,
 		    street:'Heinrich-Zille-Straße 6 ',
 		    zip:1219,
 		    city:'Dresden',
@@ -412,7 +456,9 @@ mapdata.locations = {
 		    staff: null,
 		    language:'Deutsch, Englisch, Russisch, Arabisch',
 		    services:'Beratung, Bildungspatenschaften, Offene Treffs (Frauentreff, Vätertreff, Jugendtreff,..) , Sportförderung, Bildungsarbeit',
-		    desc: null
+		    desc: null,
+		    supportNeeded: false,
+		    districtOnly: false
 		  },
 		  {
 		    geo: [51.0040618, 13.7986901],
@@ -430,7 +476,9 @@ mapdata.locations = {
 		    staff:'Veronika Gottmann',
 		    language:'Veronika Gottmann',
 		    services:'regionales Netzwerk in Prohlis; Deutschtreffs, Patenschaften, Freizeitaktivitäten, Flyer,',
-		    desc:'regionales Netzwerk in Prohlis; Deutschtreffs, Patenschaften, Freizeitaktivitäten, Dialogangebote, Flyer'
+		    desc:'regionales Netzwerk in Prohlis; Deutschtreffs, Patenschaften, Freizeitaktivitäten, Dialogangebote, Flyer',
+		    supportNeeded: false,
+		    districtOnly: false
 		  },
 		  {
 		    geo: [51.0133598, 13.8176886],
@@ -448,7 +496,9 @@ mapdata.locations = {
 		    staff:'Katrin Baumgart',
 		    language:'Deutsch, Englisch',
 		    services:'regionales Netzwerk, Deutschkurse, Patenschaften, Sportangebot, Begegnungen, Feste',
-		    desc:'Unsere Netzwerk "Leuben ist bunt" besteht aus Institutionvertreter/innen des Stadtteils u.a. von Ortsamt, Kirche, Jugendhilfe'
+		    desc:'Unsere Netzwerk "Leuben ist bunt" besteht aus Institutionvertreter/innen des Stadtteils u.a. von Ortsamt, Kirche, Jugendhilfe',
+		    supportNeeded: false,
+		    districtOnly: false
 		  },
 		  {
 		    geo: [51.04538, 13.67288],
@@ -466,14 +516,16 @@ mapdata.locations = {
 		    staff: null,
 		    language: null,
 		    services: null,
-		    desc: null
+		    desc: null,
+		    supportNeeded: true,
+		    districtOnly: true
 		  },
 		  {
 		    geo: [51.0544847, 13.7262446],
 		    name:'LAG politisch-kulturelle Bildung Sachsen e. V.',
-		    cat: mapdata.categories.network,
+		    cat: null,
 		    street:'Schützengasse 18',
-		    zip:1067,
+		    zip:01067,
 		    city:'Dresden',
 		    opening: null,
 		    phone:'0174-8032276',
@@ -484,7 +536,11 @@ mapdata.locations = {
 		    staff:'Kerstin Knye',
 		    language:'Deutsch, Englisch, (Russisch, Ukrainisch, Spanisch, Portugiesisch nach Weiterleitung)',
 		    services:'Weiterbildung  - ehrenamtl. u. pädagogische Arbeit mit Geflüchteten - Empowerment im geschützten Raum - Rassismus / Migration',
-		    desc:'Wir beschäftigen uns seit vielen  Jahren mit den Themen Rassismus, Migration, Flucht und Asyl und bieten Weiterbildungen für haupt- und ehrenamtliche Multiplikator_innen an.  Hierbei steht die Frage, wie wir selbst möglichst rassismuskritisch agieren können im Vordergrund. Auch bieten wir Empowerment-Seminare für Menschen an, welche negativ von Rassismus betroffen sind. Termine, Inhalte, konkrete Bedarfe können abgesprochen werden.'
+		    desc:'Wir beschäftigen uns seit vielen  Jahren mit den Themen Rassismus, Migration, Flucht und Asyl und bieten Weiterbildungen für haupt- und ehrenamtliche Multiplikator_innen an.  Hierbei steht die Frage, wie wir selbst möglichst rassismuskritisch agieren können im Vordergrund. Auch bieten wir Empowerment-Seminare für Menschen an, welche negativ von Rassismus betroffen sind. Termine, Inhalte, konkrete Bedarfe können abgesprochen werden.',
+		    supportNeeded: false,
+		    districtOnly: false,
+		    supportNeeded: false,
+		    districtOnly: false
 		  }
 		// {
 		// 	geo: [],
@@ -511,10 +567,21 @@ mapdata.locations = {
 		{geo: [51.052652, 13.730282], name: 'Ausländerbehörde Dresden', cat: mapdata.categories.public, address: 'Theaterstraße 13 / Zimmer 056, 01067 Dresden'},
 	],
 
+	'wifi': [
+		{
+			geo: [51.070116, 13.755471],
+			name: 'Piraten Freifunk',
+			cat: mapdata.categories.wifi,
+			street:'Alaunplatz',
+		    zip: '01099',
+		    city:'Dresden'
+		}
+	],
+
 	'stations': [
-		{geo: [51.063158, 13.746389], name: 'Albertplatz', cat: {maki: 'rail-metro'} },
-		{geo: [51.050871, 13.733557], name: 'Postplatz', cat: {maki: 'rail-metro'} },
-		// {geo: [51.04108, 13.732684], name: 'Hauptbahnhof', cat: {maki: 'rail-metro'} },
-		{geo: [51.038473, 13.746587], name: 'Lennéplatz', cat: {maki: 'rail-metro'} }
+		{geo: [51.063158, 13.746389], name: 'Albertplatz', cat: {symbol: 'rail-metro'} },
+		{geo: [51.050871, 13.733557], name: 'Postplatz', cat: {symbol: 'rail-metro'} },
+		// {geo: [51.04108, 13.732684], name: 'Hauptbahnhof', cat: {symbol: 'rail-metro'} },
+		{geo: [51.038473, 13.746587], name: 'Lennéplatz', cat: {symbol: 'rail-metro'} }
 	]
 };

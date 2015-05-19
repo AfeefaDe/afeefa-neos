@@ -1,0 +1,12 @@
+#detailView {
+	
+	position: fixed;
+	left: 50px;
+	top: 50px;
+
+	width: 300px;
+	height: 700px;
+
+	background-color: $white;
+	@include box-shadow(0px 0px 2px #333);
+}

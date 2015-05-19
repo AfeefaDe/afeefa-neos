@@ -1,12 +1,32 @@
 #detailView {
 	
 	position: fixed;
-	left: 50px;
+	left: 4%;
 	top: 50px;
 
-	width: 300px;
-	height: 700px;
+	width: 21%;
+	/*min-width: 300px;*/
+	min-height: 200px;
 
 	background-color: $white;
 	@include box-shadow(0px 0px 2px #333);
+
+	.heading {
+		
+		height: 3em;
+		background-color: $blue_dark;
+		
+		h1 {
+			height: 100%;
+			margin: 0;
+			padding: 0;
+			overflow: hidden;
+
+
+			font-weight: 300;
+			font-size: 1em;
+			text-align: center;
+			color: $white;
+		}
+	}
 }

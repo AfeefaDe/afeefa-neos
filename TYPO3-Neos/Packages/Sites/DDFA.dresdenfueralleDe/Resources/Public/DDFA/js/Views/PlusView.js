@@ -14,23 +14,38 @@ qx.Class.define("PlusView", {
     	render: function(){
     		var that = this;
 
+            // view container
             var view = $("<div />");
             view.attr('id', 'plusView');
 
-            var plusBtn = $("<div />");
-            plusBtn.addClass('plusBtn');
-            plusBtn.append('+');
+            // add buttons
+            var addRequestBtn = $("<div />");
+            addRequestBtn.addClass('btn addRequestBtn');
+            addRequestBtn.append('R');
+            view.append(addRequestBtn);
 
+            var addOfferBtn = $("<div />");
+            addOfferBtn.addClass('btn addOfferBtn');
+            addOfferBtn.append('O');
+            view.append(addOfferBtn);
+            
+            // plus button
+            var plusBtn = $("<div />");
+            plusBtn.addClass('btn plusBtn');
+            plusBtn.append('+');
             view.append(plusBtn);
-            // for(var j = 0; j < 500; j++) {
-            //     parent.append($('<div/>').append($('<span/>', {text :'Some More Stuff'})));
-            //     parent.append($('<div/>',{ text: 'Some conditionalContent' }));
-            // }
-            // console.timeEnd('DOM'); //149ms
+            
     		
-            // $('body').append('<div id="plusView"></div>');
             $('body').append(view);
-    	}
+    	},
+
+        addEvents: function(){
+            var that = this;
+
+            // that.plusBtn.click(function(){
+            //    that.$addOfferBtn.addClass('active');
+            // });
+        }
     }
 
 });

@@ -16,7 +16,8 @@ qx.Class.define("DDFA", {
         title: {},
         DataManager: {},
         Router: {},
-        data: {}
+        data: {},
+        detailView: {}
     },
 
     members : {

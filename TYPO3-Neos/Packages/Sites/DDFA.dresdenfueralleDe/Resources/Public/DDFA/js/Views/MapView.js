@@ -242,7 +242,12 @@ qx.Class.define("MapView", {
 	            this.closePopup();
 	        });
 			
+
 			// TODO load detail view
+			marker.on('click', function(){
+				APP.getDetailView().load(location);
+			});
+
 			// var $content = $('#content');
 			// marker.on('click', function(){
 			// 	if ( !$content.hasClass('active') ){

@@ -43,7 +43,7 @@ qx.Class.define("Router", {
 
 	    navigate: function(){
 	    	new MapView();
-	    	new DetailView();
+	    	APP.setDetailView( new DetailView() );
 	    	new PlusView();
 	    },
 

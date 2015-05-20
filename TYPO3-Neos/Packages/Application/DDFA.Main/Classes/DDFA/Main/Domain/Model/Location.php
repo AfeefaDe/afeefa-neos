@@ -20,41 +20,49 @@ class Location extends \DDFA\Main\Domain\Model\Object
 
     /**
      * @var string
+     * @ORM\Column(nullable=true)
      */
     protected $lon;
 
     /**
      * @var string
+     * @ORM\Column(nullable=true)
      */
     protected $lat;
 
     /**
      * @var string
+     * @ORM\Column(nullable=true)
      */
     protected $street;
 
     /**
      * @var string
+     * @ORM\Column(nullable=true)
      */
     protected $district;
 
     /**
      * @var string
+     * @ORM\Column(nullable=true)
      */
     protected $zip;
 
     /**
      * @var string
+     * @ORM\Column(nullable=true)
      */
     protected $city;
 
     /**
      * @var boolean
+     * @ORM\Column(nullable=true)
      */
     protected $scope;
 
     /**
      * @var string
+     * @ORM\Column(nullable=true)
      */
     protected $openingHours;
 

@@ -1,37 +1,33 @@
 <f:layout name="Default"/>
 
-<f:section name="title">{l.initiative.name} - {l.name}</f:section>
+<f:section name="title">{viewLocation.locale}: <i>{viewLocation.initiative.name}</i> - {viewLocation.name}</f:section>
 
 <f:section name="content">
     <div class="neos-module-container">
-        <div>
-            <h3>Basic information</h3>
+        <f:if condition="{languages}">
+            <div class="infoBox">
+                <p>View a translation</p>
+                <f:form method="post" action="view" arguments="{viewLocation: viewLocation}">
+                    <label for="viewLocale">Select language</label>
+                    <!-- TODO link to real languages -->
+                    <select id="viewLocale" name="viewLocale">
+                        <f:for each="{languages}" as="lan">
+                            <option value="{lan}">{lan}</option>
+                        </f:for>
+                    </select>
+                    <button type="submit" class="neos-button" title="View this translation">
+                        <i class="icon-arrow-right icon-white"></i>
+                    </button>
+                </f:form>
+            </div>
+        </f:if>
 
-            <p>{l.description}</p>
-
-            Opening hours: {l.openingHours}<br>
-            Rating: {l.rating}<br>
-            Scope: {l.scope}
-
-        </div>
-        <div>
-            <h3>Contact</h3>
-            Mail: {l.mail}<br>
-            Website: {l.web}<br>
-            Phone: {l.phone}
-        </div>
-        <div>
-            <h3>Geo data</h3>
-            {l.street}<br>
-            {l.district}<br>
-            {l.zip} {l.city}<br>
-            <br>
-            Lat: {l.lat}, Lon: {l.lon}
-        </div>
+        <f:render partial="LocationView" arguments="{l: viewLocation}" />
     </div>
     <div class="neos-footer">
-        <f:link.action action="edit" controller="LocationsModuleController" arguments="{location: l}"
-                       class="neos-button neos-button-primary">Edit Location
+        <f:link.action action="index" class="neos-button" title="back to index">Back</f:link.action>
+        <f:link.action action="simpleEdit" arguments="{editLocation: viewLocation}" class="neos-button neos-button-primary" title="Edit this location">
+            Edit Location
         </f:link.action>
     </div>
 </f:section>

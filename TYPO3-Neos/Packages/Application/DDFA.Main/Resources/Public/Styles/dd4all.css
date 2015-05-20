@@ -1,3 +1,33 @@
 form.actionForm {
     float: right;
 }
+
+div.leftSide {
+    float:left;
+    width: 45%;
+    border-right: 1px solid #888;
+}
+
+div.rightSide {
+    width:50%;
+    float: right;
+}
+
+div.infoBox {
+    background-color: #2f2f2f;
+    padding: 15px;
+    float: right;
+    display: inline-block;
+}
+
+div.grayBox {
+    background-color: #2f2f2f;
+    padding: 15px;
+    margin: 10px 0;
+    display: inline-block;
+}
+
+div.infoBox p, div.grayBox p {
+    font-weight: bold;
+    margin-bottom: 10px;
+}

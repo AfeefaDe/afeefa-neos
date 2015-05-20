@@ -33,31 +33,37 @@ abstract class Object
 
     /**
      * @var string
+     * @ORM\Column(nullable=true)
      */
     protected $name;
 
     /**
      * @var string
+     * @ORM\Column(nullable=true)
      */
     protected $description;
 
     /**
      * @var string
+     * @ORM\Column(nullable=true)
      */
     protected $mail;
 
     /**
      * @var string
+     * @ORM\Column(nullable=true)
      */
     protected $web;
 
     /**
      * @var string
+     * @ORM\Column(nullable=true)
      */
     protected $phone;
 
     /**
      * @var integer
+     * @ORM\Column(nullable=true)
      */
     protected $rating;
 
@@ -322,13 +328,6 @@ abstract class Object
         return $this->Persistence_Object_Identifier;
     }
 
-    /**
-     * @return string
-     */
-    public function getId()
-    {
-        $this->getPersistenceObjectIdentifier();
-    }
 
     /**
      * @param mixed $Persistence_Object_Identifier

@@ -1,11 +1,16 @@
 -
-  name: 'api subroutes'
-  uriPattern: 'api/locations'
+  name: 'api locations'
+  uriPattern: 'api/locations<LocationSubroutes>(.{@format})'
   defaults:
     '@controller': 'Api\LocationAPI'
     '@action': 'list'
-  appendExceedingArguments: false
-  httpMethods: ['GET']
+    '@format': 'json'
+  subRoutes:
+    LocationSubroutes:
+      package: 'DDFA.Main'
+      suffix: 'Entity'
+      variables:
+        entity: 'location'
 
 -
   name: 'DD4all locations API'

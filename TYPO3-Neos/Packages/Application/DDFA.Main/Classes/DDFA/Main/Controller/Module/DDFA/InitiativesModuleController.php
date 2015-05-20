@@ -66,7 +66,7 @@ class InitiativesModuleController extends AbstractModuleController
     public function createAction(Initiative $newInitiative)
     {
         $newInitiative->setEntryId(uniqid());
-        $newInitiative->setLocale("de");
+        $newInitiative->setLocale(DDConst::DE_LOCALE);
         $newInitiative->setRating(0);
 
         $now = new DateTime();
@@ -94,6 +94,8 @@ class InitiativesModuleController extends AbstractModuleController
      */
     public function updateAction(Initiative $updateInitiative)
     {
+        $updateInitiative->setUpdated(new DateTime());
+
         $this->initiativeRepository->update($updateInitiative);
         $this->addFlashMessage('A new initiative has been updated successfully.');
         $this->redirect('index');

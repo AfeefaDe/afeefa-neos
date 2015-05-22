@@ -21,12 +21,12 @@ qx.Class.define("PlusView", {
             // add buttons
             var addRequestBtn = $("<div />");
             addRequestBtn.addClass('btn addRequestBtn');
-            addRequestBtn.append('R');
+            addRequestBtn.append('?');
             view.append(addRequestBtn);
 
             var addOfferBtn = $("<div />");
             addOfferBtn.addClass('btn addOfferBtn');
-            addOfferBtn.append('O');
+            addOfferBtn.append('!');
             view.append(addOfferBtn);
             
             // plus button

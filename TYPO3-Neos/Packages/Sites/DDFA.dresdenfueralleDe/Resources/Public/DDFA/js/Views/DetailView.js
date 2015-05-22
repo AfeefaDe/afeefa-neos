@@ -15,8 +15,8 @@ qx.Class.define("DetailView", {
     		var that = this;
 
     		// view container
-            var view = $("<div />");
-            view.attr('id', 'detailView');
+            that.view = $("<div />");
+            that.view.attr('id', 'detailView');
 
             // heading
             var headingContainer = $("<div />");
@@ -25,16 +25,27 @@ qx.Class.define("DetailView", {
             that.heading = $("<h1 />");
             headingContainer.append(that.heading);
             
-            view.append(headingContainer);
+            that.view.append(headingContainer);
 
             
-            $('body').append(view);
+            $('body').append(that.view);
     	},
 
         load: function( entry ){
             var that = this;
 
+            // already loaded > close
+            if(that.entry === entry) {
+                that.entry = null;
+                that.view.hide();
+                return;              
+            }
+            
+            that.entry = entry;
             that.heading.empty().append(entry.name);
+
+
+            that.view.show();
         }
     }
 

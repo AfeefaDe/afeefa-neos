@@ -988,6 +988,7 @@ a:link, a:visited, a:hover, a:active {
 
 /* line 1, sass/_detailView.scss */
 #detailView {
+  display: none;
   position: fixed;
   left: 4%;
   top: 50px;
@@ -999,16 +1000,16 @@ a:link, a:visited, a:hover, a:active {
   -moz-box-shadow: 0px 0px 2px #333333;
   box-shadow: 0px 0px 2px #333333;
 }
-/* line 14, sass/_detailView.scss */
+/* line 16, sass/_detailView.scss */
 #detailView .heading {
   height: 3em;
   background-color: #0074a6;
 }
-/* line 19, sass/_detailView.scss */
+/* line 21, sass/_detailView.scss */
 #detailView .heading h1 {
-  height: 100%;
+  height: 2em;
   margin: 0;
-  padding: 0;
+  padding: 1em 0 0 0;
   overflow: hidden;
   font-weight: 300;
   font-size: 1em;
@@ -1046,7 +1047,7 @@ a:link, a:visited, a:hover, a:active {
   border-radius: 30px;
   background-color: #c1272d;
   text-align: center;
-  padding-top: 10px;
+  padding-top: 8px;
   color: #f2f2f2;
   font-size: 2em;
 }

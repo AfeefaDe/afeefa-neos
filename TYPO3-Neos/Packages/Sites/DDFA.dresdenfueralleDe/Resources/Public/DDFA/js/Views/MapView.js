@@ -43,7 +43,7 @@ qx.Class.define("MapView", {
 		that.markerCluster = new L.MarkerClusterGroup({
 			iconCreateFunction: function(cluster) {
 	          return new L.DivIcon({
-	            className: 'marker-cluster',
+	            className: 'location marker-cluster',
 	            iconSize: [30, 30],
 	            iconAnchor: [15, 15],
 	            html: cluster.getChildCount()
@@ -143,7 +143,7 @@ qx.Class.define("MapView", {
 	    	// });
 
 	    	that.map.on('viewreset', function(e){
-	    		that.setZoomFilter();
+	    		// that.setZoomFilter();
 	    	});
 	    	var $locateBtn = $('#locate-btn');
 	    	$locateBtn.click(function(){
@@ -196,16 +196,23 @@ qx.Class.define("MapView", {
 				iconAnchor = [15,15];
 			}
 			else if( location.type === 1 ) {
-				iconSize = [30,30];
-				iconAnchor = [15,15];
+				iconSize = [23,23];
+				iconAnchor = [12,12];
 			}
 			else if( location.type === 2 ) {
 				iconSize = [30,30];
 				iconAnchor = [15,15];
 			}
 			else if( location.type === 3 ) {
-				iconSize = [15,15];
-				iconAnchor = [8,8];
+
+				if( location.category && location.category.name === 'housing') {
+					iconSize = [30,30];
+					iconAnchor = [15,15];
+				} else {
+					iconSize = [15,15];
+					iconSize = [15,15];
+				}
+
 			}
 			
 			// TODO: quickfix: skip locations without coodinates
@@ -213,7 +220,8 @@ qx.Class.define("MapView", {
 
 			var className = 'location';
 			className += ' type-' + location.type;
-			if(location.supportNeeded) className += ' support-needed';
+			if( location.category ) className += ' cat cat-' + location.category.name;
+			if( location.supportNeeded ) className += ' support-needed';
 
 			var marker = L.marker( [location.lat, location.lon] , {
 				riseOnHover: true,

@@ -11,6 +11,7 @@
 		@include border-radius(15px);
 		@include box-shadow(1px 1px 2px #333);
 
+		/* types: 0: IniLocation, 1: MarketLocation, 2: EventLocation, 3: SimpleLocation */
 		&.type-0 {
 			background-color: $blue_dark;
 		}
@@ -25,6 +26,49 @@
 
 		&.type-3 {
 			background-color: $black;
+			border: none;
+		}
+
+		/* categories */
+		&.cat {
+
+			/*background-size: 72%;*/
+			@include background-size(72%);
+			background-repeat: no-repeat;
+			background-position: center center;
+
+			/* type 0 + type 1 categories*/
+			&.cat-advice { background-image: url("../img/cat-10.svg"); }
+			&.cat-medic { background-image: url("../img/cat-04.svg"); }
+			&.cat-german { background-image: url("../img/cat-18.svg"); }
+			&.cat-jobs { background-image: url("../img/cat-02.svg"); }
+			&.cat-leisure { background-image: url("../img/cat-08.svg"); }
+			&.cat-translation { background-image: url("../img/cat-06.svg"); }
+			&.cat-kids { background-image: url("../img/cat-14.svg"); }
+			&.cat-donation { background-image: url("../img/cat-12.svg"); }
+			&.cat-community { background-image: url("../img/cat-16.svg"); }
+
+			/* type 3 categories*/
+			&.cat-housing {
+				border: 1px solid $white;
+				background-image: url("../img/cat-19.svg");
+				background-color: rgba(0,0,0,0) !important;
+			}
+			&.cat-church { background-image: url("../img/cat-16.svg"); }
+			&.cat-mosque { background-image: url("../img/cat-16.svg"); }
+			&.cat-synagogue { background-image: url("../img/cat-22.svg"); }
+		}
+
+		&.marker-cluster {
+			background-color: $white;
+			/*@include border-radius(20px);*/
+			/*@include box-shadow(0px 0px 5px #888888);*/
+			/*border: 2px solid $white;*/
+			/*color: $white;*/
+		  	text-align: center;
+		  	font-size: 20px;
+	  		padding-top: 4px;
+			/*opacity: .9;*/
 		}
 	}
 
@@ -59,15 +103,4 @@
 		@include box-shadow(0px 0px 5px #888888);
 	}
 
-	div.marker-cluster {
-		background-color: #333;
-		@include border-radius(20px);
-		@include box-shadow(0px 0px 5px #888888);
-		border: 2px solid $white;
-		color: $white;
-	  	text-align: center;
-	  	font-size: 20px;
-  		padding-top: 4px;
-		opacity: .9;
-	}
 }

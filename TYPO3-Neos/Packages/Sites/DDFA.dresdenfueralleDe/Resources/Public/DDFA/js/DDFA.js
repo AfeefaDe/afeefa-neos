@@ -10,6 +10,12 @@ qx.Class.define("DDFA", {
         that.setTitle('connecteDD');
         that.setDataManager(new DataManager());
         that.setRouter(new Router());
+
+        that.setConfig(
+            {
+                categories: ["advice", "medic", "german", "jobs", "leisure", "translation", "kids", "donation", "community", "housing", "church", "mosque", "synagogue"]
+            }
+        );
     },
 
     properties : {
@@ -17,7 +23,8 @@ qx.Class.define("DDFA", {
         DataManager: {},
         Router: {},
         data: {},
-        detailView: {}
+        detailView: {},
+        config: {}
     },
 
     members : {

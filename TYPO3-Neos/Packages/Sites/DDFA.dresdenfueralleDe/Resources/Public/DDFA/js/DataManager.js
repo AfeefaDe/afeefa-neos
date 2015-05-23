@@ -23,7 +23,7 @@ qx.Class.define("DataManager", {
             that.getAllLocations(function(data){
                 locations = data;
                 // var locationsFetched = true;
-                cb( {initiatives: initiatives, locations: locations});
+                cb( {locations: locations});
             });
             
             // callback

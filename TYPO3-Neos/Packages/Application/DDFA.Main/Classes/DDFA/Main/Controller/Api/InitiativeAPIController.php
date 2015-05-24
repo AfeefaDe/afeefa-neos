@@ -1,26 +1,28 @@
 <?php
+/**
+ * Created by IntelliJ IDEA.
+ * User: brego
+ * Date: 24.05.2015
+ * Time: 13:26
+ */
 
 namespace DDFA\Main\Controller\Api;
 
-/*                                                                        *
- * This script belongs to the TYPO3 Flow package "DDFA.Main".              *
- *                                                                        *
- *                                                                        */
 
-use DDFA\Main\Domain\Repository\LocationRepository;
-use TYPO3\Flow\Annotations as Flow;
+use DDFA\Main\Domain\Repository\InitiativeRepository;
 use TYPO3\Flow\Mvc\Controller\ActionController;
-use \DDFA\Main\Domain\Model\Location;
+use TYPO3\Flow\Annotations as Flow;
+use \DDFA\Main\Domain\Model\Initiative;
 use TYPO3\Flow\Mvc\View\JsonView;
 use TYPO3\Flow\Mvc\View\ViewInterface;
 
-class LocationAPIController extends ActionController
-{
+class InitiativeAPIController extends ActionController {
+
     /**
      * @Flow\Inject
-     * @var LocationRepository
+     * @var InitiativeRepository
      */
-    protected $iniLocationRepository;
+    protected $iniRepository;
 
     protected $viewFormatToObjectNameMap = ['json' => JsonView::class];
 
@@ -31,7 +33,7 @@ class LocationAPIController extends ActionController
 
     protected function initializeView(ViewInterface $view) {
         if ($view instanceof JsonView) {
-            $locationConfiguration = [
+            $iniConfiguration = [
                 '_exposeObjectIdentifier'     => TRUE,
                 '_exposedObjectIdentifierKey' => 'identifier',
                 '_descend'                    => [
@@ -44,18 +46,19 @@ class LocationAPIController extends ActionController
             ];
             $view->setConfiguration([
                 'value' => [
-                    'locations' => ['_descendAll' => $locationConfiguration],
-                    'location'  => $locationConfiguration
+                    'initiatives' => ['_descendAll' => $iniConfiguration],
+                    'initiative'  => $iniConfiguration
                 ]
             ]);
         }
     }
 
     public function listAction() {
-        $this->view->assign('value', ['locations' => $this->iniLocationRepository->findAll()]);
+        $this->view->assign('value', ['initiatives' => $this->iniRepository->findAll()]);
     }
 
-    public function showAction(Location $location) {
-        $this->view->assign('value', ['location' => $location]);
+    public function showAction(Initiative $initiative) {
+        $this->view->assign('value', ['initiative' => $initiative]);
     }
+
 }

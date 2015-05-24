@@ -13,6 +13,20 @@
         entity: 'location'
 
 -
+  name: 'api initiatives'
+  uriPattern: 'api/initiatives<InitiativeSubroutes>(.{@format})'
+  defaults:
+    '@controller': 'Api\InitiativeAPI'
+    '@action': 'list'
+    '@format': 'json'
+  subRoutes:
+    InitiativeSubroutes:
+      package: 'DDFA.Main'
+      suffix: 'Entity'
+      variables:
+        entity: 'initiative'
+
+-
   name: 'DD4all locations API'
   uriPattern: 'dd4all/locations'
   defaults:

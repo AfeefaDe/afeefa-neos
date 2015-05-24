@@ -32,7 +32,6 @@ qx.Class.define("PlusView", {
             // plus button
             var plusBtn = $("<div />");
             plusBtn.addClass('btn plusBtn');
-            plusBtn.append('+');
             view.append(plusBtn);
             
     		

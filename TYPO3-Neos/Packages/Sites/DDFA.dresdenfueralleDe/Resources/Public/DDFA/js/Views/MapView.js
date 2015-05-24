@@ -205,7 +205,7 @@ qx.Class.define("MapView", {
 			}
 			else if( location.type === 3 ) {
 
-				if( location.category && location.category.name === 'housing') {
+				if( location.category && location.category === 'housing') {
 					iconSize = [30,30];
 					iconAnchor = [15,15];
 				} else {
@@ -220,7 +220,7 @@ qx.Class.define("MapView", {
 
 			var className = 'location';
 			className += ' type-' + location.type;
-			if( location.category ) className += ' cat cat-' + location.category.name;
+			if( location.category ) className += ' cat cat-' + location.category;
 			if( location.supportNeeded ) className += ' support-needed';
 
 			var marker = L.marker( [location.lat, location.lon] , {
@@ -242,7 +242,8 @@ qx.Class.define("MapView", {
 				else if( location.type === 1 ) locationName = location.marketEntry.name;
 				else if( location.type === 2 ) locationName = location.event.name;
 			}
-			marker.bindPopup('<b>' + locationName + '</b>' + "<br>" + location.street);
+			
+			marker.bindPopup('<b>' + locationName + '</b>');
 			marker.on('mouseover', function (e) {
 	            this.openPopup();
 	        });

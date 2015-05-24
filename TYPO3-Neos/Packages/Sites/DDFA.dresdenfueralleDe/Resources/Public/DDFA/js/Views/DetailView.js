@@ -3,10 +3,14 @@ qx.Class.define("DetailView", {
     extend : qx.core.Object,
 	type: "singleton",
 
+    properties: {
+        viewId: {}
+    },
+
     construct: function(){
     	var that = this;
 
-    	that.render();
+        that.setViewId('detailView');
     },
 
     members : {
@@ -16,15 +20,15 @@ qx.Class.define("DetailView", {
 
     		// view container
             that.view = $("<div />");
-            that.view.attr('id', 'detailView');
+            that.view.attr('id', that.getViewId());
 
             // heading
-            var headingContainer = $("<div />").addClass('heading');
+            that.headingContainer = $("<div />").addClass('heading');
             
             that.heading = $("<h1 />");
-            headingContainer.append(that.heading);
+            that.headingContainer.append(that.heading);
 
-            that.view.append(headingContainer);
+            that.view.append(that.headingContainer);
 
             ////////////////////
             // image property //
@@ -40,23 +44,29 @@ qx.Class.define("DetailView", {
             // other properties //
             //////////////////////
             
-            // category
-            that.catContainer = $("<div />").addClass('property category');
-            
-            that.catIcon = $("<div />").addClass('cat-icon');
-            that.catContainer.append(that.catIcon);
+            // generic
+            var properties = _.union( ['category', 'location'], APP.getConfig().simpleProperties );
+            _.each(properties, function(prop){
 
-            var catText = $("<div />").addClass('cat-text');
-            that.catName = $("<p />").addClass('cat-name');
-            that.catInfo = $("<p />").addClass('cat-info');
-            catText.append(that.catName);
-            catText.append(that.catInfo);
-            that.catContainer.append(catText);
-            
-            that.view.append(that.catContainer)
+                that['propertyContainer'+prop] = $("<div />").addClass('property ' + prop);
+                
+                that['propertyIcon'+prop] = $("<div />").addClass('property-icon');
+                that['propertyContainer'+prop].append(that['propertyIcon'+prop]);
+                
+                var catText = $("<div />").addClass('property-text');
+                that['propertyName'+prop] = $("<p />").addClass('property-name');
+                that['propertyValue'+prop] = $("<p />").addClass('property-value');
+                catText.append(that['propertyName'+prop]);
+                catText.append(that['propertyValue'+prop]);
+                that['propertyContainer'+prop].append(catText);
+                
+                that.view.append(that['propertyContainer'+prop]);
 
+            });
 
             $('body').append(that.view);
+
+            that.addEvents();
         },
 
         load: function( record ){
@@ -78,7 +88,7 @@ qx.Class.define("DetailView", {
             that.view.addClass('type-' + record.type);
             
             // heading
-            that.heading.empty().append(record.name);
+            that.heading.append(record.name ? record.name : '');
 
             ////////////////////
             // image property //
@@ -97,11 +107,46 @@ qx.Class.define("DetailView", {
             //////////////////////
             
             // category
-            that.catIcon.addClass('cat-' + record.category.name);
-            that.catName.append(record.category.name);
-            var info = (record.type !== 1) ? 'official entry' : 'private entry';
-            that.catInfo.append(info);
-            that.catContainer.show();
+            var prop = 'category';
+            that['propertyIcon'+prop].addClass('icon-' + record[prop]);
+            that['propertyName'+prop].append(record[prop]);
+            var value = (record.type !== 1) ? 'official entry' : 'private entry';
+            that['propertyValue'+prop].append(value);
+            that['propertyContainer'+prop].show();
+
+            // location
+            var prop = 'location';
+            that['propertyIcon'+prop].addClass('icon-' + prop);
+            that['propertyName'+prop].append(prop);
+            
+            var value = buildLocation(record);
+            function buildLocation(record){
+                var location = '';
+                if( record.street ) location += record.street;
+                // if( record.district ) location += ' ' + '(' + record.district + ')';
+                if( record.zip && record.city) location += '<br>' + record.zip + ' ' + record.city;
+                else if( record.city ) location += '<br>' + record.city;
+                return location;
+            }
+            if( value.length > 0 ) {
+                that['propertyValue'+prop].append(value);
+                that['propertyContainer'+prop].show();
+            }
+
+            // generic
+            var properties = APP.getConfig().simpleProperties;
+            _.each(properties, function(prop){
+
+                // only render property if available
+                if( record[prop] ) {
+                    
+                    that['propertyIcon'+prop].addClass('icon-' + prop);
+                    that['propertyName'+prop].append(prop);
+                    that['propertyValue'+prop].append(record[prop]);
+                    that['propertyContainer'+prop].show();
+                }
+
+            });
 
             // show DetailView
             that.view.addClass('active');
@@ -110,20 +155,31 @@ qx.Class.define("DetailView", {
         reset: function() {
             var that = this;
 
+            // record type
             that.view.removeClass('type-0 type-1 type-2 type-3');
 
+            // heading
+            that.heading.empty();
+
+            // image property
             that.imageContainer.hide();
             that.imageContainer.removeClass('logo photo');
 
-            // remove category info
-            that.catContainer.hide();
-            var categories = APP.getConfig().categories;
-            _.each(categories, function(cat){
-                that.catIcon.removeClass('cat-' + cat);
-            });
-            that.catName.empty();
-            that.catInfo.empty();
+            // other properties
             
+            // generic
+            var properties = _.union( ['category', 'location'], APP.getConfig().simpleProperties );
+            // var properties = APP.getConfig().simpleProperties;
+            _.each(properties, function(prop){
+                that['propertyIcon'+prop].removeClass (function (index, css) {
+                    return (css.match (/(^|\s)icon-\S+/g) || []).join(' ');
+                });
+                that['propertyName'+prop].empty();
+                that['propertyValue'+prop].empty();
+                that['propertyContainer'+prop].hide();
+            });
+            
+            // delete current record
             that.record = null;
         },
 
@@ -140,6 +196,10 @@ qx.Class.define("DetailView", {
 
             // load new record
             that.load(recordRelocalized);
+        },
+
+        addEvents: function() {
+
         }
     }
 

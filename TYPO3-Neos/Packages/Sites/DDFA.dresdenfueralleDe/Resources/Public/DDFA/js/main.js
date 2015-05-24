@@ -6,6 +6,7 @@ require.config({
         modernizr: '../../H5BP/js/vendor/modernizr-2.8.3.min',
         domReady: '../../requirejs/domReady',
         jquery: '../../jquery/jquery-2.1.3',
+        restive: '../../restive/restive.min',
         qx: '../../qooxdoo/qx-oo-4.1.min',
         underscore: '../../underscore/underscore-min',
         leaflet: '../../leaflet/leaflet',
@@ -23,15 +24,39 @@ require( ['domReady', 'modernizr'], function(domReady) {
 
 		require( ['jquery', 'qx', 'underscore', 'hammer'], function( $, qx, _, Hammer ){
 
-			require( ['DDFA', 'DataManager', 'Router'], function(){
+			require( ['restive', 'DDFA', 'DataManager', 'Router'], function(){
 
 				APP = new DDFA();
 				
+				// initialize app (e.g. fetch data)
 				APP.init(function(){
 					
+					// var views;
+					
+					// if( APP.getUserDevice() === 'phone' ) {
+					// 	views = ['Views/MapView', 'Views/DetailView', 'Views/DetailViewMobile', 'Views/PlusView'];
+					// } else {
+					// 	views = ['Views/MapView', 'Views/DetailView', 'Views/PlusView'];
+					// }
+
+					// require( views, function(){
+					// 	APP.getRouter().navigate();
+					// });
+
 					require( ['Views/MapView', 'Views/DetailView', 'Views/PlusView'], function(){
-						APP.getRouter().navigate();
+						
+						if( APP.getUserDevice() === 'phone' ) {
+							
+							require( ['Views/DetailViewMobile'], function(){
+								APP.getRouter().navigate();
+							});
+
+						} else {
+							APP.getRouter().navigate();
+						}
+					
 					});
+				
 
 				});
 

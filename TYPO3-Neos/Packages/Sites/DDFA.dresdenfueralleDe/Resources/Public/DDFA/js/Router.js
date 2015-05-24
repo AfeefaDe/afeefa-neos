@@ -42,9 +42,27 @@ qx.Class.define("Router", {
 	    },
 
 	    navigate: function(){
-	    	new MapView();
-	    	APP.setDetailView( new DetailView() );
-	    	new PlusView();
+	    	var userDevice = APP.getUserDevice();
+
+			if( userDevice === 'phone' ) {
+
+				new MapView();
+		    	
+		    	APP.setDetailView( new DetailViewMobile() );
+
+		    	new PlusView();
+		
+			} else {
+
+		    	new MapView();
+		    	
+		    	APP.setDetailView( new DetailView() );
+		    	
+		    	new PlusView();
+
+			}
+	    	
+	    	APP.getDetailView().render();
 	    },
 
 	    _navigate: function( path ){

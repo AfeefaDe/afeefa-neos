@@ -58,6 +58,7 @@ class InitiativeAPIController extends ActionController {
     }
 
     public function showAction(Initiative $initiative) {
+        print_r($this->request->getHttpRequest()->getHeaders());
         $this->view->assign('value', ['initiative' => $initiative]);
     }
 

@@ -12,6 +12,9 @@ namespace DDFA\Main\Controller\Api;
 use DDFA\Main\Domain\Model\Event;
 use DDFA\Main\Domain\Repository\EventRepository;
 use TYPO3\Flow\Mvc\Controller\ActionController;
+use TYPO3\Flow\Annotations as Flow;
+use TYPO3\Flow\Mvc\View\JsonView;
+use TYPO3\Flow\Mvc\View\ViewInterface;
 
 class EventController extends ActionController {
 

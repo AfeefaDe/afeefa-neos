@@ -27,21 +27,16 @@
         entity: 'initiative'
 
 -
-  name: 'DD4all locations API'
-  uriPattern: 'dd4all/locations'
+  name: 'api marketentries'
+  uriPattern: 'api/marketentries<MarketEntriesSubroutes>(.{@format})'
   defaults:
-    '@controller': 'Plugin\DDFA\LocationAPI'
-  appendExceedingArguments: false
-  httpMethods: ['GET']
+    '@controller': 'Api\MarketEntryAPI'
+    '@action': 'list'
+    '@format': 'json'
+  subRoutes:
+    MarketEntriesSubroutes:
+      package: 'DDFA.Main'
+      suffix: 'Entity'
+      variables:
+        entity: 'marketentry'
 
--
-  name: 'DD4all locations API'
-  uriPattern: 'dd4all/locations/{inilocation}'
-  defaults:
-    '@controller': 'Plugin\DDFA\LocationAPI'
-    '@action': 'getByLocation'
-  appendExceedingArguments: false
-  httpMethods: ['GET']
-  routeParts:
-      inilocation:
-        objectType: 'DDFA\Map\Domain\Model\IniLocation'

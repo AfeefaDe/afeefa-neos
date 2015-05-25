@@ -1,6 +1,6 @@
 qx.Class.define("DataManager", {
     
-    extend : qx.core.Object,
+    extend : Daddy,
     type: "singleton",	
 
     construct: function(){

@@ -1,6 +1,6 @@
 qx.Class.define("MapView", {
   
-  extend : qx.core.Object,
+  extend : View,
   type: "singleton",
   
   properties : {
@@ -101,69 +101,26 @@ qx.Class.define("MapView", {
 
     	var that = this;
     	
-    	var $content = $('#content');
-			var $map = $('#map-container');
-			
-			// hide content (map click)
-			$map.click(function(){
-				if ( $content.hasClass('active-large') ){
-					$content.removeClass('active-large');
-					$content.addClass('active-small');
-				}
-				else {
-					$content.removeClass('active');
-					$content.removeClass('active-small');
-					$content.removeClass('active-large');
-				}
-			});
+		// map click (not fired on drag or marker click or sth, pure map click!)
+		that.map.on('click', function(e) {
+			that.say('mapclicked');
+		});
 
-			// hide content (swipe down)
-			// var mc = new Hammer($content[0]);
-			// mc.on("swipedown", function(ev) {
-			// 	if ( $content.hasClass('active-large') ){
-			// 		$content.removeClass('active-large');
-			// 		$content.addClass('active-small');
-			// 	}
-			// });
+    	// that.map.on('load', function(e){
+    	// 	that.setZoomFilter();
+    	// });
 
-			$content.click(function(){
-				if ( $content.hasClass('active-small') ){
-					$content.removeClass('active-small');
-					$content.addClass('active-large');
-				}
-				else if ( $content.hasClass('active-large') ){
-					$content.removeClass('active-large');
-					$content.addClass('active-small');
-				}
-			});
-
-
-	    	// that.map.on('load', function(e){
-	    	// 	that.setZoomFilter();
-	    	// });
-
-	    	that.map.on('viewreset', function(e){
-	    		// that.setZoomFilter();
-	    	});
-	    	var $locateBtn = $('#locate-btn');
-	    	$locateBtn.click(function(){
-	    		// alert('haha');
-	    		that.locate();
-	    	});
-	    	// $('#locate-btn').on('touchend', function(){
-	    	// 	that.locate();
-	    	// });
-
-    	// require( [ 'hammer' ], function( Hammer ){
-
-	    	// var $locateBtn = $('#locate-btn');
-	    	// var hammer = new Hammer($locateBtn[0]);
-	    	// hammer.on('tap press', function(ev){
-	    	// 	that.locate();
-	    	// });
-
-      	// });
-
+    	that.map.on('viewreset', function(e){
+    		// that.setZoomFilter();s
+    	});
+    	var $locateBtn = $('#locate-btn');
+    	$locateBtn.click(function(){
+    		// alert('haha');
+    		that.locate();
+    	});
+    	// $('#locate-btn').on('touchend', function(){
+    	// 	that.locate();
+    	// });
     	
     },
     removeEvents: function() {
@@ -243,12 +200,15 @@ qx.Class.define("MapView", {
 				else if( location.type === 2 ) locationName = location.event.name;
 			}
 			
-			marker.bindPopup('<b>' + locationName + '</b>');
+			var popup = L.popup( {className: 'ddfa-popup'} )
+			    .setLatLng([location.lat, location.lon])
+			    .setContent('<b>' + locationName + '</b>');
+
 			marker.on('mouseover', function (e) {
-	            this.openPopup();
+	            that.map.openPopup(popup);
 	        });
 	        marker.on('mouseout', function (e) {
-	            this.closePopup();
+	            that.map.closePopup();
 	        });
 			
 

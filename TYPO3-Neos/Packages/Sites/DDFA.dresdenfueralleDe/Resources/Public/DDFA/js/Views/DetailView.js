@@ -1,6 +1,6 @@
 qx.Class.define("DetailView", {
     
-    extend : qx.core.Object,
+    extend : View,
 	type: "singleton",
 
     properties: {
@@ -185,6 +185,7 @@ qx.Class.define("DetailView", {
 
         close: function() {
             var that = this;
+            that.reset();
             that.view.removeClass('active');
         },
 
@@ -199,6 +200,11 @@ qx.Class.define("DetailView", {
         },
 
         addEvents: function() {
+            var that = this;
+
+            that.listen('mapclicked', function(){
+                that.close();
+            });
 
         }
     }

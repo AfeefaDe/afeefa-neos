@@ -1,6 +1,6 @@
 qx.Class.define("PlusView", {
     
-    extend : qx.core.Object,
+    extend : View,
 	type: "singleton",
 
     construct: function(){

@@ -1050,7 +1050,7 @@ a:link, a:visited, a:hover, a:active {
   box-shadow: 0px 0px 5px #888888;
 }
 
-/* line 139, sass/_detailView.scss */
+/* line 141, sass/_detailView.scss */
 #detailView {
   /*display: none;*/
   visibility: hidden;
@@ -1062,10 +1062,13 @@ a:link, a:visited, a:hover, a:active {
   position: fixed;
   left: 4%;
   top: 3em;
+  display: flex;
+  flex-direction: column;
   width: 21%;
   /*min-width: 300px;*/
   min-height: 20%;
-  padding-bottom: 1em;
+  max-height: 80%;
+  /*padding-bottom: 1em;*/
   background-color: #f2f2f2;
   -webkit-box-shadow: 0px 0px 2px #333333;
   -moz-box-shadow: 0px 0px 2px #333333;
@@ -1075,16 +1078,22 @@ a:link, a:visited, a:hover, a:active {
   /* OTHER PROPERTIES */
   /* type specific overwrites */
 }
-/* line 158, sass/_detailView.scss */
+/* line 164, sass/_detailView.scss */
 #detailView.active {
   visibility: visible;
   opacity: 1;
 }
-/* line 3, sass/_detailView.scss */
+/* line 169, sass/_detailView.scss */
+#detailView .scroll-container {
+  flex-grow: 1;
+  overflow-y: auto;
+  padding-bottom: 1em;
+}
+/* line 5, sass/_detailView.scss */
 #detailView .heading {
   height: 3em;
 }
-/* line 7, sass/_detailView.scss */
+/* line 9, sass/_detailView.scss */
 #detailView .heading h1 {
   height: 2em;
   margin: 0;
@@ -1097,34 +1106,34 @@ a:link, a:visited, a:hover, a:active {
   text-align: center;
   color: #f2f2f2;
 }
-/* line 23, sass/_detailView.scss */
+/* line 25, sass/_detailView.scss */
 #detailView .image {
   /*height: 10em;*/
   text-align: center;
   overflow: hidden;
 }
-/* line 28, sass/_detailView.scss */
+/* line 30, sass/_detailView.scss */
 #detailView .image img {
   position: relative;
   top: 50%;
   transform: translateY(-50%);
 }
-/* line 34, sass/_detailView.scss */
+/* line 36, sass/_detailView.scss */
 #detailView .image.logo img {
   height: 80%;
 }
-/* line 35, sass/_detailView.scss */
+/* line 37, sass/_detailView.scss */
 #detailView .image.photo img {
   width: 100%;
 }
-/* line 39, sass/_detailView.scss */
+/* line 41, sass/_detailView.scss */
 #detailView .property {
   display: none;
   padding: 0 5%;
   margin-top: 1em;
   min-height: 2em;
 }
-/* line 47, sass/_detailView.scss */
+/* line 49, sass/_detailView.scss */
 #detailView .property .property-icon {
   width: 2.5em;
   height: 2.5em;
@@ -1136,99 +1145,99 @@ a:link, a:visited, a:hover, a:active {
   /* type 3 categories*/
   /* property icons */
 }
-/* line 57, sass/_detailView.scss */
+/* line 59, sass/_detailView.scss */
 #detailView .property .property-icon.icon-advice {
   background-image: url("../img/cat-10.svg");
 }
-/* line 58, sass/_detailView.scss */
+/* line 60, sass/_detailView.scss */
 #detailView .property .property-icon.icon-medic {
   background-image: url("../img/cat-04.svg");
 }
-/* line 59, sass/_detailView.scss */
+/* line 61, sass/_detailView.scss */
 #detailView .property .property-icon.icon-german {
   background-image: url("../img/cat-18.svg");
 }
-/* line 60, sass/_detailView.scss */
+/* line 62, sass/_detailView.scss */
 #detailView .property .property-icon.icon-jobs {
   background-image: url("../img/cat-02.svg");
 }
-/* line 61, sass/_detailView.scss */
+/* line 63, sass/_detailView.scss */
 #detailView .property .property-icon.icon-leisure {
   background-image: url("../img/cat-08.svg");
 }
-/* line 62, sass/_detailView.scss */
+/* line 64, sass/_detailView.scss */
 #detailView .property .property-icon.icon-translation {
   background-image: url("../img/cat-06.svg");
 }
-/* line 63, sass/_detailView.scss */
+/* line 65, sass/_detailView.scss */
 #detailView .property .property-icon.icon-kids {
   background-image: url("../img/cat-14.svg");
 }
-/* line 64, sass/_detailView.scss */
+/* line 66, sass/_detailView.scss */
 #detailView .property .property-icon.icon-donation {
   background-image: url("../img/cat-12.svg");
 }
-/* line 65, sass/_detailView.scss */
+/* line 67, sass/_detailView.scss */
 #detailView .property .property-icon.icon-community {
   background-image: url("../img/cat-16.svg");
 }
-/* line 68, sass/_detailView.scss */
+/* line 70, sass/_detailView.scss */
 #detailView .property .property-icon.icon-housing {
   border: 1px solid #f2f2f2;
   background-image: url("../img/cat-19.svg");
   background-color: rgba(0, 0, 0, 0) !important;
 }
-/* line 73, sass/_detailView.scss */
+/* line 75, sass/_detailView.scss */
 #detailView .property .property-icon.icon-church {
   background-image: url("../img/cat-16.svg");
 }
-/* line 74, sass/_detailView.scss */
+/* line 76, sass/_detailView.scss */
 #detailView .property .property-icon.icon-mosque {
   background-image: url("../img/cat-16.svg");
 }
-/* line 75, sass/_detailView.scss */
+/* line 77, sass/_detailView.scss */
 #detailView .property .property-icon.icon-synagogue {
   background-image: url("../img/cat-22.svg");
 }
-/* line 78, sass/_detailView.scss */
+/* line 80, sass/_detailView.scss */
 #detailView .property .property-icon.icon-location {
   background-image: url("../img/icon-35.svg");
 }
-/* line 79, sass/_detailView.scss */
+/* line 81, sass/_detailView.scss */
 #detailView .property .property-icon.icon-phone {
   background-image: url("../img/icon-23.svg");
 }
-/* line 80, sass/_detailView.scss */
+/* line 82, sass/_detailView.scss */
 #detailView .property .property-icon.icon-mail {
   background-image: url("../img/icon-25.svg");
 }
-/* line 81, sass/_detailView.scss */
+/* line 83, sass/_detailView.scss */
 #detailView .property .property-icon.icon-web {
   background-image: url("../img/icon-27.svg");
 }
-/* line 82, sass/_detailView.scss */
+/* line 84, sass/_detailView.scss */
 #detailView .property .property-icon.icon-openingHours {
   background-image: url("../img/icon-29.svg");
 }
-/* line 83, sass/_detailView.scss */
+/* line 85, sass/_detailView.scss */
 #detailView .property .property-icon.icon-description {
   background-image: url("../img/icon-31.svg");
 }
-/* line 86, sass/_detailView.scss */
+/* line 88, sass/_detailView.scss */
 #detailView .property .property-text {
   margin-left: calc(5% + 2.5em);
 }
-/* line 88, sass/_detailView.scss */
+/* line 90, sass/_detailView.scss */
 #detailView .property .property-text p {
   margin: 0;
   line-height: 1.3em;
 }
-/* line 92, sass/_detailView.scss */
+/* line 94, sass/_detailView.scss */
 #detailView .property .property-text p.property-name {
   font-weight: 500;
   text-transform: capitalize;
 }
-/* line 100, sass/_detailView.scss */
+/* line 102, sass/_detailView.scss */
 #detailView .property.category .property-icon {
   -webkit-border-radius: 2em;
   -moz-border-radius: 2em;
@@ -1241,56 +1250,61 @@ a:link, a:visited, a:hover, a:active {
   background-size: 72%;
   background-position: center center;
 }
-/* line 110, sass/_detailView.scss */
+/* line 112, sass/_detailView.scss */
 #detailView.type-0 .heading {
   background-color: #0074a6;
 }
-/* line 112, sass/_detailView.scss */
+/* line 114, sass/_detailView.scss */
 #detailView.type-0 .property.category .property-icon {
   background-color: #0074a6;
 }
-/* line 113, sass/_detailView.scss */
+/* line 115, sass/_detailView.scss */
 #detailView.type-0 .property.category .property-value {
   color: #0074a6;
 }
-/* line 117, sass/_detailView.scss */
+/* line 119, sass/_detailView.scss */
 #detailView.type-1 .heading {
   background-color: #d07c1e;
 }
-/* line 119, sass/_detailView.scss */
+/* line 121, sass/_detailView.scss */
 #detailView.type-1 .property.category .property-icon {
   background-color: #d07c1e;
 }
-/* line 120, sass/_detailView.scss */
+/* line 122, sass/_detailView.scss */
 #detailView.type-1 .property.category .property-value {
   color: #d07c1e;
 }
-/* line 124, sass/_detailView.scss */
+/* line 126, sass/_detailView.scss */
 #detailView.type-2 .heading {
   background-color: pink;
 }
-/* line 126, sass/_detailView.scss */
+/* line 128, sass/_detailView.scss */
 #detailView.type-2 .property.category .property-icon {
   background-color: pink;
 }
-/* line 130, sass/_detailView.scss */
+/* line 132, sass/_detailView.scss */
 #detailView.type-3 .heading {
   background-color: #333333;
 }
-/* line 132, sass/_detailView.scss */
+/* line 134, sass/_detailView.scss */
 #detailView.type-3 .property.category .property-icon {
   background-color: #333333;
 }
-/* line 133, sass/_detailView.scss */
+/* line 135, sass/_detailView.scss */
 #detailView.type-3 .property.category .property-name {
   line-height: 2.6em !important;
 }
-/* line 134, sass/_detailView.scss */
+/* line 136, sass/_detailView.scss */
 #detailView.type-3 .property.category .property-value {
   display: none;
 }
+/* line 177, sass/_detailView.scss */
+#detailView .heading {
+  /* ugly fix: make it 4em to be 3em in the end, dont know why */
+  height: 4em;
+}
 
-/* line 166, sass/_detailView.scss */
+/* line 184, sass/_detailView.scss */
 #detailViewMobile {
   -webkit-transition: all 200ms;
   -moz-transition: all 200ms;
@@ -1310,21 +1324,27 @@ a:link, a:visited, a:hover, a:active {
   /* OTHER PROPERTIES */
   /* type specific overwrites */
 }
-/* line 178, sass/_detailView.scss */
+/* line 196, sass/_detailView.scss */
 #detailViewMobile.active {
   bottom: 0;
 }
-/* line 182, sass/_detailView.scss */
+/* line 200, sass/_detailView.scss */
 #detailViewMobile.active-large {
   bottom: 0;
   height: 80%;
-  overflow-y: scroll;
+  /*overflow-y: scroll;*/
 }
-/* line 3, sass/_detailView.scss */
+/* line 206, sass/_detailView.scss */
+#detailViewMobile .scroll-container {
+  height: calc(100% - 4em);
+  overflow-y: auto;
+  padding-bottom: 1em;
+}
+/* line 5, sass/_detailView.scss */
 #detailViewMobile .heading {
   height: 3em;
 }
-/* line 7, sass/_detailView.scss */
+/* line 9, sass/_detailView.scss */
 #detailViewMobile .heading h1 {
   height: 2em;
   margin: 0;
@@ -1337,34 +1357,34 @@ a:link, a:visited, a:hover, a:active {
   text-align: center;
   color: #f2f2f2;
 }
-/* line 23, sass/_detailView.scss */
+/* line 25, sass/_detailView.scss */
 #detailViewMobile .image {
   /*height: 10em;*/
   text-align: center;
   overflow: hidden;
 }
-/* line 28, sass/_detailView.scss */
+/* line 30, sass/_detailView.scss */
 #detailViewMobile .image img {
   position: relative;
   top: 50%;
   transform: translateY(-50%);
 }
-/* line 34, sass/_detailView.scss */
+/* line 36, sass/_detailView.scss */
 #detailViewMobile .image.logo img {
   height: 80%;
 }
-/* line 35, sass/_detailView.scss */
+/* line 37, sass/_detailView.scss */
 #detailViewMobile .image.photo img {
   width: 100%;
 }
-/* line 39, sass/_detailView.scss */
+/* line 41, sass/_detailView.scss */
 #detailViewMobile .property {
   display: none;
   padding: 0 5%;
   margin-top: 1em;
   min-height: 2em;
 }
-/* line 47, sass/_detailView.scss */
+/* line 49, sass/_detailView.scss */
 #detailViewMobile .property .property-icon {
   width: 2.5em;
   height: 2.5em;
@@ -1376,99 +1396,99 @@ a:link, a:visited, a:hover, a:active {
   /* type 3 categories*/
   /* property icons */
 }
-/* line 57, sass/_detailView.scss */
+/* line 59, sass/_detailView.scss */
 #detailViewMobile .property .property-icon.icon-advice {
   background-image: url("../img/cat-10.svg");
 }
-/* line 58, sass/_detailView.scss */
+/* line 60, sass/_detailView.scss */
 #detailViewMobile .property .property-icon.icon-medic {
   background-image: url("../img/cat-04.svg");
 }
-/* line 59, sass/_detailView.scss */
+/* line 61, sass/_detailView.scss */
 #detailViewMobile .property .property-icon.icon-german {
   background-image: url("../img/cat-18.svg");
 }
-/* line 60, sass/_detailView.scss */
+/* line 62, sass/_detailView.scss */
 #detailViewMobile .property .property-icon.icon-jobs {
   background-image: url("../img/cat-02.svg");
 }
-/* line 61, sass/_detailView.scss */
+/* line 63, sass/_detailView.scss */
 #detailViewMobile .property .property-icon.icon-leisure {
   background-image: url("../img/cat-08.svg");
 }
-/* line 62, sass/_detailView.scss */
+/* line 64, sass/_detailView.scss */
 #detailViewMobile .property .property-icon.icon-translation {
   background-image: url("../img/cat-06.svg");
 }
-/* line 63, sass/_detailView.scss */
+/* line 65, sass/_detailView.scss */
 #detailViewMobile .property .property-icon.icon-kids {
   background-image: url("../img/cat-14.svg");
 }
-/* line 64, sass/_detailView.scss */
+/* line 66, sass/_detailView.scss */
 #detailViewMobile .property .property-icon.icon-donation {
   background-image: url("../img/cat-12.svg");
 }
-/* line 65, sass/_detailView.scss */
+/* line 67, sass/_detailView.scss */
 #detailViewMobile .property .property-icon.icon-community {
   background-image: url("../img/cat-16.svg");
 }
-/* line 68, sass/_detailView.scss */
+/* line 70, sass/_detailView.scss */
 #detailViewMobile .property .property-icon.icon-housing {
   border: 1px solid #f2f2f2;
   background-image: url("../img/cat-19.svg");
   background-color: rgba(0, 0, 0, 0) !important;
 }
-/* line 73, sass/_detailView.scss */
+/* line 75, sass/_detailView.scss */
 #detailViewMobile .property .property-icon.icon-church {
   background-image: url("../img/cat-16.svg");
 }
-/* line 74, sass/_detailView.scss */
+/* line 76, sass/_detailView.scss */
 #detailViewMobile .property .property-icon.icon-mosque {
   background-image: url("../img/cat-16.svg");
 }
-/* line 75, sass/_detailView.scss */
+/* line 77, sass/_detailView.scss */
 #detailViewMobile .property .property-icon.icon-synagogue {
   background-image: url("../img/cat-22.svg");
 }
-/* line 78, sass/_detailView.scss */
+/* line 80, sass/_detailView.scss */
 #detailViewMobile .property .property-icon.icon-location {
   background-image: url("../img/icon-35.svg");
 }
-/* line 79, sass/_detailView.scss */
+/* line 81, sass/_detailView.scss */
 #detailViewMobile .property .property-icon.icon-phone {
   background-image: url("../img/icon-23.svg");
 }
-/* line 80, sass/_detailView.scss */
+/* line 82, sass/_detailView.scss */
 #detailViewMobile .property .property-icon.icon-mail {
   background-image: url("../img/icon-25.svg");
 }
-/* line 81, sass/_detailView.scss */
+/* line 83, sass/_detailView.scss */
 #detailViewMobile .property .property-icon.icon-web {
   background-image: url("../img/icon-27.svg");
 }
-/* line 82, sass/_detailView.scss */
+/* line 84, sass/_detailView.scss */
 #detailViewMobile .property .property-icon.icon-openingHours {
   background-image: url("../img/icon-29.svg");
 }
-/* line 83, sass/_detailView.scss */
+/* line 85, sass/_detailView.scss */
 #detailViewMobile .property .property-icon.icon-description {
   background-image: url("../img/icon-31.svg");
 }
-/* line 86, sass/_detailView.scss */
+/* line 88, sass/_detailView.scss */
 #detailViewMobile .property .property-text {
   margin-left: calc(5% + 2.5em);
 }
-/* line 88, sass/_detailView.scss */
+/* line 90, sass/_detailView.scss */
 #detailViewMobile .property .property-text p {
   margin: 0;
   line-height: 1.3em;
 }
-/* line 92, sass/_detailView.scss */
+/* line 94, sass/_detailView.scss */
 #detailViewMobile .property .property-text p.property-name {
   font-weight: 500;
   text-transform: capitalize;
 }
-/* line 100, sass/_detailView.scss */
+/* line 102, sass/_detailView.scss */
 #detailViewMobile .property.category .property-icon {
   -webkit-border-radius: 2em;
   -moz-border-radius: 2em;
@@ -1481,51 +1501,51 @@ a:link, a:visited, a:hover, a:active {
   background-size: 72%;
   background-position: center center;
 }
-/* line 110, sass/_detailView.scss */
+/* line 112, sass/_detailView.scss */
 #detailViewMobile.type-0 .heading {
   background-color: #0074a6;
 }
-/* line 112, sass/_detailView.scss */
+/* line 114, sass/_detailView.scss */
 #detailViewMobile.type-0 .property.category .property-icon {
   background-color: #0074a6;
 }
-/* line 113, sass/_detailView.scss */
+/* line 115, sass/_detailView.scss */
 #detailViewMobile.type-0 .property.category .property-value {
   color: #0074a6;
 }
-/* line 117, sass/_detailView.scss */
+/* line 119, sass/_detailView.scss */
 #detailViewMobile.type-1 .heading {
   background-color: #d07c1e;
 }
-/* line 119, sass/_detailView.scss */
+/* line 121, sass/_detailView.scss */
 #detailViewMobile.type-1 .property.category .property-icon {
   background-color: #d07c1e;
 }
-/* line 120, sass/_detailView.scss */
+/* line 122, sass/_detailView.scss */
 #detailViewMobile.type-1 .property.category .property-value {
   color: #d07c1e;
 }
-/* line 124, sass/_detailView.scss */
+/* line 126, sass/_detailView.scss */
 #detailViewMobile.type-2 .heading {
   background-color: pink;
 }
-/* line 126, sass/_detailView.scss */
+/* line 128, sass/_detailView.scss */
 #detailViewMobile.type-2 .property.category .property-icon {
   background-color: pink;
 }
-/* line 130, sass/_detailView.scss */
+/* line 132, sass/_detailView.scss */
 #detailViewMobile.type-3 .heading {
   background-color: #333333;
 }
-/* line 132, sass/_detailView.scss */
+/* line 134, sass/_detailView.scss */
 #detailViewMobile.type-3 .property.category .property-icon {
   background-color: #333333;
 }
-/* line 133, sass/_detailView.scss */
+/* line 135, sass/_detailView.scss */
 #detailViewMobile.type-3 .property.category .property-name {
   line-height: 2.6em !important;
 }
-/* line 134, sass/_detailView.scss */
+/* line 136, sass/_detailView.scss */
 #detailViewMobile.type-3 .property.category .property-value {
   display: none;
 }

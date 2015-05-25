@@ -30,6 +30,10 @@ qx.Class.define("DetailView", {
 
             that.view.append(that.headingContainer);
 
+            // scrollable content container
+            var scrollContainer = $("<div />").addClass('scroll-container');
+            that.view.append(scrollContainer);
+            
             ////////////////////
             // image property //
             ////////////////////
@@ -38,7 +42,7 @@ qx.Class.define("DetailView", {
             that.image = $("<img />");
             that.imageContainer.append(that.image);
 
-            that.view.append(that.imageContainer);
+            scrollContainer.append(that.imageContainer);
             
             //////////////////////
             // other properties //
@@ -60,7 +64,7 @@ qx.Class.define("DetailView", {
                 catText.append(that['propertyValue'+prop]);
                 that['propertyContainer'+prop].append(catText);
                 
-                that.view.append(that['propertyContainer'+prop]);
+                scrollContainer.append(that['propertyContainer'+prop]);
 
             });
 

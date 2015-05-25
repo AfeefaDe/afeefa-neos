@@ -29,6 +29,10 @@ qx.Class.define("DetailViewMobile", {
                 }
             });
 
+            that.listen('mapclicked', function(){
+                that.close();
+            });
+
             // TODO: swipe down to close
             // require( [ 'hammer' ], function( Hammer ){
 
@@ -38,7 +42,14 @@ qx.Class.define("DetailViewMobile", {
             //     });
 
             // });
-        }
+        },
+
+        close: function() {
+            var that = this;
+            that.reset();
+            that.view.removeClass('active');
+            that.view.removeClass('active-large');
+        },
 
     }
 

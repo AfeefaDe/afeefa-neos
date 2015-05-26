@@ -70,7 +70,7 @@ qx.Class.define("DetailView", {
 
             $('body').append(that.view);
 
-            that.addEvents();
+            this.base(arguments);
         },
 
         load: function( record ){

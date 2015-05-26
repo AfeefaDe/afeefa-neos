@@ -19,31 +19,44 @@ qx.Class.define("PlusView", {
             view.attr('id', 'plusView');
 
             // add buttons
-            var addRequestBtn = $("<div />");
-            addRequestBtn.addClass('btn addRequestBtn');
-            addRequestBtn.append('?');
-            view.append(addRequestBtn);
+            that.addRequestBtn = $("<div />");
+            that.addRequestBtn.addClass('btn addRequestBtn');
+            that.addRequestBtn.append('?');
+            view.append(that.addRequestBtn);
 
-            var addOfferBtn = $("<div />");
-            addOfferBtn.addClass('btn addOfferBtn');
-            addOfferBtn.append('!');
-            view.append(addOfferBtn);
+            that.addOfferBtn = $("<div />");
+            that.addOfferBtn.addClass('btn addOfferBtn');
+            that.addOfferBtn.append('!');
+            view.append(that.addOfferBtn);
             
             // plus button
             var plusBtn = $("<div />");
             plusBtn.addClass('btn plusBtn');
             view.append(plusBtn);
             
-    		
             $('body').append(view);
+
+            this.base(arguments);
     	},
 
         addEvents: function(){
             var that = this;
 
+            that.listen('mapclicked', function(){
+                that.close();
+            });
+
             // that.plusBtn.click(function(){
             //    that.$addOfferBtn.addClass('active');
             // });
+        },
+
+        close: function(){
+            var that = this;
+
+            // TODO: only do in mobile version
+            // that.addRequestBtn.css('display', 'none');
+            // that.addOfferBtn.css('display', 'none');
         }
     }
 

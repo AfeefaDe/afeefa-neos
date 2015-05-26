@@ -1298,13 +1298,8 @@ a:link, a:visited, a:hover, a:active {
 #detailView.type-3 .property.category .property-value {
   display: none;
 }
-/* line 177, sass/_detailView.scss */
-#detailView .heading {
-  /* ugly fix: make it 4em to be 3em in the end, dont know why */
-  height: 4em;
-}
 
-/* line 184, sass/_detailView.scss */
+/* line 179, sass/_detailView.scss */
 #detailViewMobile {
   -webkit-transition: all 200ms;
   -moz-transition: all 200ms;
@@ -1324,17 +1319,17 @@ a:link, a:visited, a:hover, a:active {
   /* OTHER PROPERTIES */
   /* type specific overwrites */
 }
-/* line 196, sass/_detailView.scss */
+/* line 191, sass/_detailView.scss */
 #detailViewMobile.active {
   bottom: 0;
 }
-/* line 200, sass/_detailView.scss */
+/* line 195, sass/_detailView.scss */
 #detailViewMobile.active-large {
   bottom: 0;
   height: 80%;
   /*overflow-y: scroll;*/
 }
-/* line 206, sass/_detailView.scss */
+/* line 201, sass/_detailView.scss */
 #detailViewMobile .scroll-container {
   height: calc(100% - 4em);
   overflow-y: auto;

@@ -17,6 +17,9 @@ qx.Class.define("DetailViewMobile", {
     	addEvents: function(){
     		var that = this;
 
+            // call superclass
+            this.base(arguments);
+
             // enlargement steps
             that.headingContainer.click(function(){
                 if ( that.view.hasClass('active') ){
@@ -27,10 +30,6 @@ qx.Class.define("DetailViewMobile", {
                     that.view.removeClass('active-large');
                     that.view.addClass('active');
                 }
-            });
-
-            that.listen('mapclicked', function(){
-                that.close();
             });
 
             // TODO: swipe down to close
@@ -46,8 +45,10 @@ qx.Class.define("DetailViewMobile", {
 
         close: function() {
             var that = this;
-            that.reset();
-            that.view.removeClass('active');
+            
+            // call superclass
+            this.base(arguments);
+
             that.view.removeClass('active-large');
         },
 

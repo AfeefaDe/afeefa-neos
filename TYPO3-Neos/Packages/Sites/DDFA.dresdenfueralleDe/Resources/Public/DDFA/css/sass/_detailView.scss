@@ -174,11 +174,6 @@
 
 	@include detailViewBasic;
 
-	.heading {
-		
-		/* ugly fix: make it 4em to be 3em in the end, dont know why */
-		height: 4em;
-	}
 }
 
 #detailViewMobile {

@@ -9,6 +9,11 @@ qx.Class.define("View", {
 
     members : {
         
+        render: function(){
+            var that = this;
+
+            that.addEvents();
+        }
     }
 
 });

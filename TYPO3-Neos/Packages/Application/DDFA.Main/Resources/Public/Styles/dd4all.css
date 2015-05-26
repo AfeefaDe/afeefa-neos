@@ -15,9 +15,10 @@ div.rightSide {
 
 div.infoBox {
     background-color: #2f2f2f;
+    position: fixed;
     padding: 15px;
-    float: right;
-    display: inline-block;
+    right: 0;
+    opacity: .8;
 }
 
 div.grayBox {

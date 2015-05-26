@@ -6,15 +6,12 @@ namespace DDFA\Main\Domain\Repository;
  *                                                                        *
  *                                                                        */
 
-use DDFA\Main\Domain\Model\Object;
+use DDFA\Main\Domain\Model\Object as Object;
 use DDFA\Main\Utility\DDConst;
 use ReflectionObject;
 use TYPO3\Flow\Annotations as Flow;
 use TYPO3\Flow\Persistence\Repository;
 
-/**
- * @Flow\Scope("singleton")
- */
 abstract class AbstractTranslationRepository extends Repository
 {
     /**

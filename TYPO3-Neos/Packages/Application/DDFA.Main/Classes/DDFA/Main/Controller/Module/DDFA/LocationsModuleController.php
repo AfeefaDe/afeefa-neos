@@ -7,12 +7,11 @@ namespace DDFA\Main\Controller\Module\DDFA;
  *                                                                        */
 
 use DateTime;
-use DDFA\Main\Domain\Model\Language;
-use DDFA\Main\Domain\Model\Location;
-use DDFA\Main\Domain\Model\Object;
-use DDFA\Main\Domain\Repository\InitiativeRepository;
-use DDFA\Main\Domain\Repository\LanguageRepository;
-use DDFA\Main\Domain\Repository\LocationRepository;
+use DDFA\Main\Domain\Model\Location as Location;
+use DDFA\Main\Domain\Model\Object as Object;
+use DDFA\Main\Domain\Repository\InitiativeRepository as InitiativeRepository;
+use DDFA\Main\Domain\Repository\LanguageRepository as LanguageRepository;
+use DDFA\Main\Domain\Repository\LocationRepository as LocationRepository;
 use DDFA\Main\Utility\DDConst;
 use TYPO3\Flow\Annotations as Flow;
 
@@ -77,21 +76,19 @@ class LocationsModuleController extends AbstractTranslationController
     }
 
     /**
-     * @param Location $newLocation
+     * @param Location $newObject
      * @return void
      * @throws \TYPO3\Flow\Persistence\Exception\IllegalObjectTypeException
      */
-    public function createAction(Location $newLocation)
+    public function createAction(Location $newObject)
     {
-        $newLocation->setInitiative($this->initiativeRepository->findOneByName($_POST['moduleArguments']['ini']));
-        $this->objectRepository->add($newLocation);
+        $newObject->setInitiative($this->initiativeRepository->findOneByName($_POST['moduleArguments']['ini']));
+        $this->objectRepository->add($newObject);
         $this->addFlashMessage('A new location has been created successfully.');
 
         if (isset($_POST['moduleArguments']['localize'])) {
-            $editObject = $this->addTranslation($newLocation->getEntryId(), DDConst::LOCALE_NXT, $newLocation->getType());
-            $this->objectRepository->add($editObject);
-            $this->addFlashMessage("A new 'en' translation has been added successfully.");
-            $this->redirect('edit', NULL, NULL, array('editObject' => $editObject, 'viewObject' => $newLocation));
+            $editObject = $this->addTranslation($newObject->getEntryId(), DDConst::LOCALE_NXT);
+            $this->redirect('edit', NULL, NULL, array('editObject' => $editObject, 'viewObject' => $newObject));
 
         } else
             $this->redirect('index');
@@ -109,6 +106,9 @@ class LocationsModuleController extends AbstractTranslationController
         $this->view->assign('viewLanguages', $this->objectRepository->findAllLocales($viewObject));
     }
 
+    /**
+     * @param Location $editObject
+     */
     public function simpleEditAction(Location $editObject)
     {
         if ($editObject->getLocale() != DDConst::LOCALE_STD) {
@@ -133,49 +133,75 @@ class LocationsModuleController extends AbstractTranslationController
         if (isset($_POST['moduleArguments']['ini'])) {
             $ini = $_POST['moduleArguments']['ini'];
             $editObject->setInitiative($this->initiativeRepository->findOneByName($ini));
-            $editObject->setUpdated(new DateTime());
-            $this->addFlashMessage('The location has been updated successfully.');
-
-        } else {
-            $this->addFlashMessage('The translation has been updated successfully.');
         }
 
+        $this->addFlashMessage('The location has been updated successfully.');
+        $editObject->setUpdated(new DateTime());
         $this->objectRepository->update($editObject);
         $this->redirect('index');
     }
 
     /**
-     * @param Location $location
+     * @param Location $deleteObject
      * @return void
      * @throws \TYPO3\Flow\Persistence\Exception\IllegalObjectTypeException
      */
-    public function deleteAction(Location $location)
+    public function deleteAction(Location $deleteObject)
     {
-        foreach ($this->objectRepository->findAllLocalisations($location) as $localisedLocation)
-            $this->objectRepository->remove($localisedLocation);
+        foreach ($this->objectRepository->findAllLocalisations($deleteObject) as $localisedObject)
+            $this->objectRepository->remove($localisedObject);
 
         $this->addFlashMessage('The location including all its translations has been removed successfully.');
         $this->redirect('index');
     }
 
-    protected function createTranslation()
-    {
-        return new Location();
-    }
-
-
     /**
      * @param \DDFA\Main\Domain\Model\Object $object
-     * @return mixed
+     * @return void
      */
-    protected function persistTranslation(Object $object)
+    public function selectTranslationAction(Object $object)
     {
-        $this->objectRepository->add($object);
-        $this->addFlashMessage("A new '" . $object . "' translation has been added successfully.");
+        $editLocale = $_POST['moduleArguments']['editLocale'];
+        $viewLocale = $_POST['moduleArguments']['viewLocale'];
+
+        if ($this->languageRepository->findByCode($viewLocale)->count() == 0 ||
+            $this->languageRepository->findByCode($editLocale)->count() == 0) {
+            $editObject = $this->objectRepository->findOneLocalized($object, DDConst::LOCALE_STD);
+            $this->redirect('simpleEdit', NULL, NULL, array('editObject' => $editObject));
+
+        } else {
+            $viewObject = $this->objectRepository->findOneLocalized($object, $viewLocale);
+
+            if ($viewObject == NULL) {
+                $editObject = $this->objectRepository->findOneLocalized($object, DDConst::LOCALE_STD);
+                $this->redirect('simpleEdit', NULL, NULL, array('editObject' => $editObject));
+
+            } else {
+                $editObject = $this->objectRepository->findOneLocalized($object, $editLocale);
+
+                if ($editObject == NULL) {
+                    $editObject = $this->addTranslation($object->getEntryId(), $editLocale);
+                }
+
+                $this->redirect('edit', NULL, NULL,
+                    ['editObject' => ['__identity' => $editObject->getPersistenceObjectIdentifier()],
+                        'viewObject' => ['__identity' => $viewObject->getPersistenceObjectIdentifier()]]);
+            }
+        }
     }
 
-    protected function getObjectRepository()
+    /**
+     * @param $entryID
+     * @param $locale
+     * @return Location
+     */
+    protected function addTranslation($entryID, $locale)
     {
-        return $this->objectRepository;
+        $object = new Location();
+        $object->setEntryId($entryID);
+        $object->setLocale($locale);
+        $this->objectRepository->add($object);
+        $this->addFlashMessage("A new location translation has been added successfully.");
+        return $object;
     }
 }

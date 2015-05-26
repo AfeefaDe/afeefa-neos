@@ -1,6 +1,6 @@
 qx.Class.define("DataManager", {
     
-    extend : qx.core.Object,
+    extend : Daddy,
     type: "singleton",	
 
     construct: function(){
@@ -21,9 +21,9 @@ qx.Class.define("DataManager", {
 
             // fetch locations
             that.getAllLocations(function(data){
-                locations = data;
-                // var locationsFetched = true;
-                cb( {initiatives: initiatives, locations: locations});
+                // locations = data;
+                // cb( {locations: locations});
+                cb( data );
             });
             
             // callback
@@ -32,7 +32,7 @@ qx.Class.define("DataManager", {
         },
 
         // dummy version
-        getAllLocations: function( cb ){
+        _getAllLocations: function( cb ){
 
             $.ajax({
                 url: '_Resources/Static/Packages/DDFA.dresdenfueralleDe/DDFA/dummyData/locations.json',
@@ -48,10 +48,10 @@ qx.Class.define("DataManager", {
 
         },
 
-        _getAllLocations: function( cb ){
+        getAllLocations: function( cb ){
 
             $.ajax({
-                url: "dd4all/locations",
+                url: "api/locations",
                 type: 'GET',
                 dataType: 'json'
             })

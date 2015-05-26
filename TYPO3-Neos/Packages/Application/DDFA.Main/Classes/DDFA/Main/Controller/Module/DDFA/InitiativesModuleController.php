@@ -66,6 +66,15 @@ class InitiativesModuleController extends AbstractTranslationController
     }
 
     /**
+     * @param Initiative $ini
+     * @return void
+     */
+    public function editAction(Initiative $ini)
+    {
+        $this->view->assign('updateInitiative', $ini);
+    }
+
+    /**
      * @param Initiative $updateInitiative
      * @return void
      */

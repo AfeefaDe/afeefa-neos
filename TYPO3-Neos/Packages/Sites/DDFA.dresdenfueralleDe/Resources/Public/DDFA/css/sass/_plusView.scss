@@ -1,11 +1,8 @@
 #plusView {
 	
 	position: fixed;
-	right: 50px;
-	bottom: 50px;
-
-	/*width: 300px;*/
-	/*height: 700px;*/
+	right: 4%;
+	bottom: 3em;
 
 	.btn {
 
@@ -16,14 +13,18 @@
 
 
 		&.plusBtn {
-			width: 60px;
-			height: 60px;
+			width: 2em;
+			height: 2em;
 			@include border-radius(30px);
 
 			background-color: $red;
+			background-image: url("../img/icon-34.svg");
+			@include background-size(30%);
+			background-position: center center;
+			background-repeat: no-repeat;
 
 			text-align: center;
-			padding-top: 10px;
+			padding-top: 8px;
 			color: $white;
 			font-size: 2em;
 		}

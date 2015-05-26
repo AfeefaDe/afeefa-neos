@@ -49,7 +49,7 @@ class Initiative extends \DDFA\Main\Domain\Model\Owner
     }
 
     /**
-     * @return \Doctrine\Common\Collections\Collection<\DDFA\Main\Domain\Model\IniLocation>
+     * @return \Doctrine\Common\Collections\Collection<\DDFA\Main\Domain\Model\Location>
      */
     public function getLocations()
     {

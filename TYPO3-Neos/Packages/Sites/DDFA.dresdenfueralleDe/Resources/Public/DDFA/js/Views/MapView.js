@@ -1,6 +1,6 @@
 qx.Class.define("MapView", {
   
-  extend : qx.core.Object,
+  extend : View,
   type: "singleton",
   
   properties : {
@@ -43,7 +43,7 @@ qx.Class.define("MapView", {
 		that.markerCluster = new L.MarkerClusterGroup({
 			iconCreateFunction: function(cluster) {
 	          return new L.DivIcon({
-	            className: 'marker-cluster',
+	            className: 'location marker-cluster',
 	            iconSize: [30, 30],
 	            iconAnchor: [15, 15],
 	            html: cluster.getChildCount()
@@ -94,76 +94,33 @@ qx.Class.define("MapView", {
 	 //        });
   //       });
         
-        that.addEvents();
+        this.base(arguments);
     },
 
     addEvents: function() {
 
     	var that = this;
     	
-    	var $content = $('#content');
-			var $map = $('#map-container');
-			
-			// hide content (map click)
-			$map.click(function(){
-				if ( $content.hasClass('active-large') ){
-					$content.removeClass('active-large');
-					$content.addClass('active-small');
-				}
-				else {
-					$content.removeClass('active');
-					$content.removeClass('active-small');
-					$content.removeClass('active-large');
-				}
-			});
+		// map click (not fired on drag or marker click or sth, pure map click!)
+		that.map.on('click', function(e) {
+			that.say('mapclicked');
+		});
 
-			// hide content (swipe down)
-			// var mc = new Hammer($content[0]);
-			// mc.on("swipedown", function(ev) {
-			// 	if ( $content.hasClass('active-large') ){
-			// 		$content.removeClass('active-large');
-			// 		$content.addClass('active-small');
-			// 	}
-			// });
+    	// that.map.on('load', function(e){
+    	// 	that.setZoomFilter();
+    	// });
 
-			$content.click(function(){
-				if ( $content.hasClass('active-small') ){
-					$content.removeClass('active-small');
-					$content.addClass('active-large');
-				}
-				else if ( $content.hasClass('active-large') ){
-					$content.removeClass('active-large');
-					$content.addClass('active-small');
-				}
-			});
-
-
-	    	// that.map.on('load', function(e){
-	    	// 	that.setZoomFilter();
-	    	// });
-
-	    	that.map.on('viewreset', function(e){
-	    		that.setZoomFilter();
-	    	});
-	    	var $locateBtn = $('#locate-btn');
-	    	$locateBtn.click(function(){
-	    		// alert('haha');
-	    		that.locate();
-	    	});
-	    	// $('#locate-btn').on('touchend', function(){
-	    	// 	that.locate();
-	    	// });
-
-    	// require( [ 'hammer' ], function( Hammer ){
-
-	    	// var $locateBtn = $('#locate-btn');
-	    	// var hammer = new Hammer($locateBtn[0]);
-	    	// hammer.on('tap press', function(ev){
-	    	// 	that.locate();
-	    	// });
-
-      	// });
-
+    	that.map.on('viewreset', function(e){
+    		// that.setZoomFilter();s
+    	});
+    	var $locateBtn = $('#locate-btn');
+    	$locateBtn.click(function(){
+    		// alert('haha');
+    		that.locate();
+    	});
+    	// $('#locate-btn').on('touchend', function(){
+    	// 	that.locate();
+    	// });
     	
     },
     removeEvents: function() {
@@ -196,16 +153,23 @@ qx.Class.define("MapView", {
 				iconAnchor = [15,15];
 			}
 			else if( location.type === 1 ) {
-				iconSize = [30,30];
-				iconAnchor = [15,15];
+				iconSize = [23,23];
+				iconAnchor = [12,12];
 			}
 			else if( location.type === 2 ) {
 				iconSize = [30,30];
 				iconAnchor = [15,15];
 			}
 			else if( location.type === 3 ) {
-				iconSize = [15,15];
-				iconAnchor = [8,8];
+
+				if( location.category && location.category === 'housing') {
+					iconSize = [30,30];
+					iconAnchor = [15,15];
+				} else {
+					iconSize = [15,15];
+					iconSize = [15,15];
+				}
+
 			}
 			
 			// TODO: quickfix: skip locations without coodinates
@@ -213,7 +177,8 @@ qx.Class.define("MapView", {
 
 			var className = 'location';
 			className += ' type-' + location.type;
-			if(location.supportNeeded) className += ' support-needed';
+			if( location.category ) className += ' cat cat-' + location.category;
+			if( location.supportNeeded ) className += ' support-needed';
 
 			var marker = L.marker( [location.lat, location.lon] , {
 				riseOnHover: true,
@@ -234,12 +199,16 @@ qx.Class.define("MapView", {
 				else if( location.type === 1 ) locationName = location.marketEntry.name;
 				else if( location.type === 2 ) locationName = location.event.name;
 			}
-			marker.bindPopup('<b>' + locationName + '</b>' + "<br>" + location.street);
+			
+			var popup = L.popup( {className: 'ddfa-popup'} )
+			    .setLatLng([location.lat, location.lon])
+			    .setContent('<b>' + locationName + '</b>');
+
 			marker.on('mouseover', function (e) {
-	            this.openPopup();
+	            that.map.openPopup(popup);
 	        });
 	        marker.on('mouseout', function (e) {
-	            this.closePopup();
+	            that.map.closePopup();
 	        });
 			
 
@@ -247,29 +216,6 @@ qx.Class.define("MapView", {
 			marker.on('click', function(){
 				APP.getDetailView().load(location);
 			});
-
-			// var $content = $('#content');
-			// marker.on('click', function(){
-			// 	if ( !$content.hasClass('active') ){
-			// 		$content.addClass('active');
-			// 		$content.addClass('active-small');
-			// 	}
-				
-			// 	// render details
-			// 	$content.empty();
-			// 	if(marker.name) $content.append('<p class="location-title">' + marker.name + '</p>');
-			// 	if(marker.services) $content.append('<div class="location-property"><h3><span class="fa fa-cubes fa-lg fa-fw"></span> ' + 'Services' + '</h3><p>' + marker.services + '</p></div>');
-			// 	if(marker.supportNeeded) $content.append('<div class="location-property"><span class="fa fa-user-plus fa-lg fa-fw"></span> ' + 'Supporters wanted' + '</div>');
-			// 	if(marker.address) $content.append('<div class="location-property"><span class="fa fa-map-marker fa-lg fa-fw"></span> ' + 'Address' + '</h3><p>' + marker.address + '</p></div>');
-			// 	if(marker.web) $content.append('<div class="location-property"><span class="fa fa-globe fa-lg fa-fw"></span> <a target="_blank" href="' + marker.web + '">' + marker.web +'</a></div>');
-			// 	if(marker.facebook) $content.append('<div class="location-property"><span class="fa fa-facebook-square fa-lg fa-fw"></span> <a target="_blank" href="' + marker.facebook + '">' + marker.facebook +'</a></div>');
-			// 	if(marker.mail) $content.append('<div class="location-property"><span class="fa fa-at fa-lg fa-fw"></span> ' + marker.mail + '</div>');
-			// 	if(marker.phone) $content.append('<div class="location-property"><span class="fa fa-phone fa-lg fa-fw"></span> ' + marker.phone + '</div>');
-			// 	if(marker.fax) $content.append('<div class="location-property"><span class="fa fa-fax fa-lg fa-fw"></span> ' + marker.fax + '</div>');
-			// 	if(marker.staff) $content.append('<div class="location-property"><h3><span class="fa fa-user fa-lg fa-fw"></span> ' + 'Contact person' + '</h3><p>' + marker.staff + '</p></div>');
-			// 	if(marker.language) $content.append('<div class="location-property"><h3><span class="fa fa-language fa-lg fa-fw"></span> ' + 'Languages spoken' + '</h3><p>' + marker.language + '</p></div>');
-			// 	if(marker.opening) $content.append('<div class="location-property"><h3><span class="fa fa-clock-o fa-lg fa-fw"></span> ' + 'Opening hours' + '</h3><p>' + marker.opening + '</p></div>');
-			// 	if(marker.desc) $content.append('<div class="location-property"><h3><span class="fa fa-info fa-lg fa-fw"></span> ' + 'Details' + '</h3><p>' + marker.desc + '</p></div>');
 
 			// 	// $content.append('<p><a href="http://maps.google.com/?saddr=34.052222,-118.243611&daddr=37.322778,-122.031944" target="_blank"><button class="btn btn-default"><span class="fa fa-location-arrow" aria-hidden="true"></span> Navigate</button></a></p>');
 				
@@ -286,7 +232,7 @@ qx.Class.define("MapView", {
 			that.markerCluster.addLayer(marker);
 
 			// newLayer.addLayer(marker);
-marker
+			
 		});
 
 		// return newLayer;

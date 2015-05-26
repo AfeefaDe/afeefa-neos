@@ -1,0 +1,54 @@
+<fieldset class="neos-span5">
+
+    <legend xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers">Basic information</legend>
+
+    <div class="neos-control-group">
+        <label class="neos-control-label" for="name">Namen</label>
+        <div class="neos-controls">
+            <f:form.textfield class="neos-span12" property="name" id="name" placeholder="Enter name" required="true" autofocus="true"/>
+        </div>
+    </div>
+
+    <div class="neos-control-group">
+        <label class="neos-control-label" for="description">Description</label>
+        <div class="neos-controls">
+            <f:form.textarea class="neos-span12" rows="8" property="description" id="description" placeholder="Enter a description text..."/>
+        </div>
+    </div>
+
+    <div class="neos-control-group">
+        <label class="neos-control-label" for="speaker">Speaker</label>
+        <div class="neos-controls">
+            <f:form.textfield class="neos-span12" property="speaker" id="speaker" placeholder="Enter speaker" autofocus="true"/>
+        </div>
+    </div>
+
+    <div class="neos-control-group">
+        <label class="neos-control-label" for="languages">Spoken languages</label>
+        <div class="neos-controls">
+            <f:form.textfield class="neos-span12" property="languages" id="languages" placeholder="Enter languages" autofocus="true"/>
+        </div>
+    </div>
+
+    <div class="neos-control-group">
+        <label class="neos-control-label" for="mail">Mail</label>
+        <div class="neos-controls">
+            <f:form.textfield class="neos-span12" property="mail" id="mail" type="email" placeholder="Enter mail address"/>
+        </div>
+    </div>
+
+    <div class="neos-control-group">
+        <label class="neos-control-label" for="web">Website URL</label>
+        <div class="neos-controls">
+            <f:form.textfield class="neos-span12" property="web" id="web" type="url" placeholder="Enter Website URL"/>
+        </div>
+    </div>
+
+    <div class="neos-control-group">
+        <label class="neos-control-label" for="phone">Phone</label>
+        <div class="neos-controls">
+            <f:form.textfield class="neos-span12" property="phone" id="phone" type="tel" placeholder="Enter phone number"/>
+        </div>
+    </div>
+
+</fieldset>

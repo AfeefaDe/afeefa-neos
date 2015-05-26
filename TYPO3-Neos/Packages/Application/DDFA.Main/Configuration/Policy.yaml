@@ -4,6 +4,8 @@ resources:
     DDFA_Main_Module_ddfaLocationsModule: 'method(DDFA\Main\Controller\Module\DDFA\LocationsModuleController->(index|add|create|view|edit|simpleEdit|selectTranslation|update|delete)Action())'
     DDFA_Main_Module_ddfaInitiativesModule: 'method(DDFA\Main\Controller\Module\DDFA\InitiativesModuleController->(index|add|create|view|edit|simpleEdit|selectTranslation|update|delete)Action())'
     DDFA_Main_Plugin_ddfaLocationAPI: 'method(DDFA\Main\Controller\Plugin\DDFA\LocationAPIController->(get|getById)Action())'
+    DDFA_Main_Api_ddfaLocationAPI: 'method(DDFA\Main\Controller\Api\LocationAPIController->.*Action())'
+    DDFA_Main_Api_ddfaInitiativeAPI: 'method(DDFA\Main\Controller\Api\InitiativeAPIController->.*Action())'
 acls:
   TYPO3.Neos:Administrator:
     methods:
@@ -12,3 +14,6 @@ acls:
   Everybody:
     methods:
       DDFA_Main_Plugin_ddfaLocationAPI: GRANT
+      DDFA_Main_Api_ddfaLocationAPI: GRANT
+      DDFA_Main_Api_ddfaInitiativeAPI: GRANT
+

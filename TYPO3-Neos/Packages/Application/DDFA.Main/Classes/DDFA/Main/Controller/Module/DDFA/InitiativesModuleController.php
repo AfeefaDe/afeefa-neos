@@ -133,6 +133,7 @@ class InitiativesModuleController extends AbstractTranslationController
      */
     public function deleteAction(Initiative $deleteObject)
     {
+        //TODO check if locations refer to initiative
         foreach ($this->objectRepository->findAllLocalisations($deleteObject) as $localisedObject)
             $this->objectRepository->remove($localisedObject);
 
@@ -141,10 +142,10 @@ class InitiativesModuleController extends AbstractTranslationController
     }
 
     /**
-     * @param \DDFA\Main\Domain\Model\Object $object
+     * @param Initiative $object
      * @return void
      */
-    public function selectTranslationAction(Object $object)
+    public function selectTranslationAction(Initiative $object)
     {
         $editLocale = $_POST['moduleArguments']['editLocale'];
         $viewLocale = $_POST['moduleArguments']['viewLocale'];

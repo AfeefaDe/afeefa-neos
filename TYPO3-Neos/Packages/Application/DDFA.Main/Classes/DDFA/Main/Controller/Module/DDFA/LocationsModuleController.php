@@ -156,10 +156,10 @@ class LocationsModuleController extends AbstractTranslationController
     }
 
     /**
-     * @param \DDFA\Main\Domain\Model\Object $object
+     * @param Location $object
      * @return void
      */
-    public function selectTranslationAction(Object $object)
+    public function selectTranslationAction(Location $object)
     {
         $editLocale = $_POST['moduleArguments']['editLocale'];
         $viewLocale = $_POST['moduleArguments']['viewLocale'];

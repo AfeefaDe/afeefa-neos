@@ -13,11 +13,21 @@
   name: 'dd4all'
   uriPattern: '<dd4allSubroutes>'
   defaults:
-    '@package': 'DDFA.Map'
+    '@package': 'DDFA.Main'
     '@format': 'json'
   subRoutes:
     'dd4allSubroutes':
-      package: 'DDFA.Map'
+      package: 'DDFA.Main'
+
+-
+  name: 'api'
+  uriPattern: '<apiSubroutes>'
+  defaults:
+    '@package': 'DDFA.Main'
+    '@format': 'json'
+  subRoutes:
+    'apiSubroutes':
+      package: 'DDFA.Main'
 
 ##
 # TYPO3 Neos subroutes

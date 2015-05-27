@@ -17,8 +17,11 @@
 
 	<f:section name="stylesheets">
 
+		<!-- Google fonts -->
+		<link href='http://fonts.googleapis.com/css?family=Roboto:500,900italic,900,400italic,100,700italic,300,700,500italic,100italic,300italic,400&subset=latin,cyrillic-ext,greek-ext,greek,vietnamese,latin-ext,cyrillic' rel='stylesheet' type='text/css'>
+		
 		<!-- Latest compiled and minified CSS -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+		<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"> -->
 
 		<!-- Optional theme -->
 		<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css"> -->
@@ -31,7 +34,7 @@
 		<link rel="stylesheet" href="{f:uri.resource(path: 'leaflet/leaflet.css', package: 'DDFA.dresdenfueralleDe')}" />
 
 		<!-- mapbox -->
-		<link href='https://api.tiles.mapbox.com/mapbox.js/v2.1.6/mapbox.css' rel='stylesheet' />
+		<link href='https://api.tiles.mapbox.com/mapbox.js/v2.1.9/mapbox.css' rel='stylesheet' />
 		<link href='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/MarkerCluster.css' rel='stylesheet' />
 		<link href='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/MarkerCluster.Default.css' rel='stylesheet' />
 
@@ -47,7 +50,7 @@
 		<!-- requirejs (module loader) handles all further js includes -->
 		<script data-main="{f:uri.resource(path: 'DDFA/js/main', package: 'DDFA.dresdenfueralleDe')}" type="text/javascript" src="{f:uri.resource(path: 'requirejs/require.js', package: 'DDFA.dresdenfueralleDe')}"></script>
 
-		<script src='https://api.tiles.mapbox.com/mapbox.js/v2.1.6/mapbox.js'></script>
+		<script src='https://api.tiles.mapbox.com/mapbox.js/v2.1.9/mapbox.js'></script>
 		<script src='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/leaflet.markercluster.js'></script>
 
 	</f:section>
@@ -55,17 +58,13 @@
 <body>
 <f:section name="body">
 
-	<!-- <nav class="menu"> -->
-		<!-- <ts:render path="parts.menu" /> -->
-	<!-- </nav> -->
-
 	<div id="map-container"></div>
 
-	<div class="mobile-menu-off-canvas" id="mobile-menu-off-canvas-left">
-		<div class="content">
+	<!-- <div class="mobile-menu-off-canvas" id="mobile-menu-off-canvas-left"> -->
+		<!-- <div class="content"> -->
 
-			<h4>Menu</h4>
-			<ts:render path="parts.languageMenu" />
+			<!-- <h4>Menu</h4> -->
+			<!-- <ts:render path="parts.languageMenu" /> -->
 			
 		  <!-- <h4>Feedback</h4>
 			<form>
@@ -91,34 +90,31 @@
 			<h4>Hilfe</h4>
 			<p>Drücke den Anfangsbuchstaben deines Stadtteils, z.B. <kbd>p</kbd> für <mark>Prohlis</mark></p> -->
 
-		</div>
-	</div>
+		<!-- </div> -->
+	<!-- </div> -->
 
-	<div class="mobile-menu-off-canvas" id="mobile-menu-off-canvas-right">
-		<div class="content">
-			<h4>Legend</h4>
-		</div>
-	</div>
+	<!-- <div class="mobile-menu-off-canvas" id="mobile-menu-off-canvas-right"> -->
+		<!-- <div class="content"> -->
+			<!-- <h4>Legend</h4> -->
+		<!-- </div> -->
+	<!-- </div> -->
 	
-	<div id="uiContainer">
+	<!-- <div id="locate-btn"></div> -->
+	
+	<!-- <div id="uiContainer"> -->
 		
-		<div id="navigation-top">
-			<div id="menu-btn"></div>
-			<div id="search-box">Search (disabled)</div>
-			<div id="legend-btn"></div>
-		</div>
-		
-		
-	</div>
+		<!-- <div id="navigation-top"> -->
+			<!-- <div id="menu-btn"></div> -->
+			<!-- <div id="search-box">Search (disabled)</div> -->
+			<!-- <div id="legend-btn"></div> -->
+		<!-- </div> -->
 
-	<div id="content">
-		<ts:render path="content.main" />
-	</div>
+	<!-- </div> -->
 
 </f:section>
+
 <f:section name="bodyScripts">
-
-
 </f:section>
+
 </body>
 </html>

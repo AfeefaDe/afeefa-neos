@@ -6,56 +6,35 @@ namespace DDFA\Main\Domain\Model;
  *                                                                        *
  *                                                                        */
 
-use TYPO3\Flow\Annotations as Flow;
 use Doctrine\ORM\Mapping as ORM;
+use TYPO3\Flow\Annotations as Flow;
 
 /**
  * @Flow\Entity
  * @ORM\MappedSuperclass()
  */
-abstract class Owner extends \DDFA\Main\Domain\Model\Entry {
+abstract class Owner extends \DDFA\Main\Domain\Model\Object
+{
 
-	/**
-	 * @var \Doctrine\Common\Collections\Collection<\DDFA\Main\Domain\Model\Category>
-	 * @ORM\ManyToMany()
-	 */
-	protected $categories;
+    /**
+     * @var string
+     */
+    protected $languages;
 
-	/**
-	 * @var \Doctrine\Common\Collections\Collection<\DDFA\Main\Domain\Model\TargetGroup>
-	 * @ORM\ManyToMany()
-	 */
-	protected $targetGroups;
+    /**
+     * @return string
+     */
+    public function getLanguages()
+    {
+        return $this->languages;
+    }
 
-
-	/**
-	 * @return \Doctrine\Common\Collections\Collection
-	 */
-	public function getCategories() {
-		return $this->categories;
-	}
-
-	/**
-	 * @param \Doctrine\Common\Collections\Collection $categories
-	 * @return void
-	 */
-	public function setCategories(\Doctrine\Common\Collections\Collection $categories) {
-		$this->categories = $categories;
-	}
-
-	/**
-	 * @return \Doctrine\Common\Collections\Collection
-	 */
-	public function getTargetGroups() {
-		return $this->targetGroups;
-	}
-
-	/**
-	 * @param \Doctrine\Common\Collections\Collection $targetGroups
-	 * @return void
-	 */
-	public function setTargetGroups(\Doctrine\Common\Collections\Collection $targetGroups) {
-		$this->targetGroups = $targetGroups;
-	}
+    /**
+     * @param string $languages
+     */
+    public function setLanguages($languages)
+    {
+        $this->languages = $languages;
+    }
 
 }

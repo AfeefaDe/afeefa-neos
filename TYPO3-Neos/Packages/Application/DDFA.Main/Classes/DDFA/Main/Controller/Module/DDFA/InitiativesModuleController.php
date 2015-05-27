@@ -6,8 +6,11 @@ namespace DDFA\Main\Controller\Module\DDFA;
  *                                                                        *
  *                                                                        */
 
+use DateTime;
 use DDFA\Main\Domain\Model\Initiative;
 use DDFA\Main\Domain\Repository\InitiativeRepository;
+use DDFA\Main\Utility\DDHelpers;
+use DDFA\Main\Utility\DDConst;
 use TYPO3\Flow\Annotations as Flow;
 use TYPO3\Flow\Persistence\Generic\PersistenceManager;
 use TYPO3\Neos\Controller\Module\AbstractModuleController;
@@ -63,6 +66,15 @@ class InitiativesModuleController extends AbstractModuleController
      */
     public function createAction(Initiative $newInitiative)
     {
+        $newInitiative->setEntryId(uniqid());
+        $newInitiative->setLocale(DDConst::DE_LOCALE);
+        $newInitiative->setRating(0);
+
+        $now = new DateTime();
+        $newInitiative->setCreated($now);
+        $newInitiative->setUpdated($now);
+        $newInitiative->setPersistenceObjectIdentifier(DDHelpers::createGuid());
+
         $this->initiativeRepository->add($newInitiative);
         $this->addFlashMessage('A new initiative has been created successfully.');
         $this->redirect('index');
@@ -83,6 +95,8 @@ class InitiativesModuleController extends AbstractModuleController
      */
     public function updateAction(Initiative $updateInitiative)
     {
+        $updateInitiative->setUpdated(new DateTime());
+
         $this->initiativeRepository->update($updateInitiative);
         $this->addFlashMessage('A new initiative has been updated successfully.');
         $this->redirect('index');
@@ -96,7 +110,6 @@ class InitiativesModuleController extends AbstractModuleController
     public function deleteAction(Initiative $ini)
     {
         $this->initiativeRepository->remove($ini);
-        $this->persistenceManager->persistAll();
         $this->addFlashMessage('A new initiative has been removed successfully.');
         $this->redirect('index');
     }

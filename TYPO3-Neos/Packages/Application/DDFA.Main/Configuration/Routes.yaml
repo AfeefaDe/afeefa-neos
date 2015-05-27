@@ -1,0 +1,42 @@
+-
+  name: 'api locations'
+  uriPattern: 'api/locations<LocationSubroutes>(.{@format})'
+  defaults:
+    '@controller': 'Api\LocationAPI'
+    '@action': 'list'
+    '@format': 'json'
+  subRoutes:
+    LocationSubroutes:
+      package: 'DDFA.Main'
+      suffix: 'Entity'
+      variables:
+        entity: 'location'
+
+-
+  name: 'api initiatives'
+  uriPattern: 'api/initiatives<InitiativeSubroutes>(.{@format})'
+  defaults:
+    '@controller': 'Api\InitiativeAPI'
+    '@action': 'list'
+    '@format': 'json'
+  subRoutes:
+    InitiativeSubroutes:
+      package: 'DDFA.Main'
+      suffix: 'Entity'
+      variables:
+        entity: 'initiative'
+
+-
+  name: 'api marketentries'
+  uriPattern: 'api/marketentries<MarketEntriesSubroutes>(.{@format})'
+  defaults:
+    '@controller': 'Api\MarketEntryAPI'
+    '@action': 'list'
+    '@format': 'json'
+  subRoutes:
+    MarketEntriesSubroutes:
+      package: 'DDFA.Main'
+      suffix: 'Entity'
+      variables:
+        entity: 'marketentry'
+

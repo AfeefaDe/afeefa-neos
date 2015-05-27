@@ -118,6 +118,9 @@ qx.Class.define("MapView", {
     		// alert('haha');
     		that.locate();
     	});
+		
+		that.locate();
+    	
     	// $('#locate-btn').on('touchend', function(){
     	// 	that.locate();
     	// });

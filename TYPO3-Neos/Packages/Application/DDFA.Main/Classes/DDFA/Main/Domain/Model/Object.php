@@ -7,10 +7,10 @@ namespace DDFA\Main\Domain\Model;
  *                                                                        */
 
 use DateTime;
-use DDFA\Main\Domain\Model\Category;
+use DDFA\Main\Domain\Model\Category as Category;
 use DDFA\Main\Utility\DDConst;
 use DDFA\Main\Utility\DDHelpers;
-use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\Collection as Collection;
 use Doctrine\ORM\Mapping as ORM;
 use TYPO3\Flow\Annotations as Flow;
 
@@ -62,6 +62,12 @@ abstract class Object
      * @var string
      * @ORM\Column(nullable=true)
      */
+    protected $facebook;
+
+    /**
+     * @var string
+     * @ORM\Column(nullable=true)
+     */
     protected $phone;
 
     /**
@@ -93,6 +99,42 @@ abstract class Object
      * @var string
      */
     protected $locale;
+
+    /**
+     * @var string
+     * @ORM\Column(nullable=true)
+     */
+    protected $speakerPublic;
+
+    /**
+     * @var string
+     * @ORM\Column(nullable=true)
+     */
+    protected $speakerPrivate;
+
+    /**
+     * @var string
+     * @ORM\Column(nullable=true)
+     */
+    protected $image;
+
+    /**
+     * @var string
+     * @ORM\Column(nullable=true)
+     */
+    protected $imageType;
+
+    /**
+     * @var boolean
+     * @ORM\Column(nullable=true)
+     */
+    protected $supportWanted;
+
+    /**
+     * @var string
+     * @ORM\Column(nullable=true)
+     */
+    protected $spokenLanguages;
 
     /**
      * @var \DateTime
@@ -347,6 +389,118 @@ abstract class Object
     public function setPersistenceObjectIdentifier($Persistence_Object_Identifier)
     {
         $this->Persistence_Object_Identifier = $Persistence_Object_Identifier;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSpeakerPublic()
+    {
+        return $this->speakerPublic;
+    }
+
+    /**
+     * @param string $speakerPublic
+     */
+    public function setSpeakerPublic($speakerPublic)
+    {
+        $this->speakerPublic = $speakerPublic;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSpeakerPrivate()
+    {
+        return $this->speakerPrivate;
+    }
+
+    /**
+     * @param string $speakerPrivate
+     */
+    public function setSpeakerPrivate($speakerPrivate)
+    {
+        $this->speakerPrivate = $speakerPrivate;
+    }
+
+    /**
+     * @return string
+     */
+    public function getFacebook()
+    {
+        return $this->facebook;
+    }
+
+    /**
+     * @param string $facebook
+     */
+    public function setFacebook($facebook)
+    {
+        $this->facebook = $facebook;
+    }
+
+    /**
+     * @return string
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
+     * @param string $image
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
+    }
+
+    /**
+     * @return string
+     */
+    public function getImageType()
+    {
+        return $this->imageType;
+    }
+
+    /**
+     * @param string $imageType
+     */
+    public function setImageType($imageType)
+    {
+        $this->imageType = $imageType;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function isSupportWanted()
+    {
+        return $this->supportWanted;
+    }
+
+    /**
+     * @param boolean $supportWanted
+     */
+    public function setSupportWanted($supportWanted)
+    {
+        $this->supportWanted = $supportWanted;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSpokenLanguages()
+    {
+        return $this->spokenLanguages;
+    }
+
+    /**
+     * @param string $spokenLanguages
+     */
+    public function setSpokenLanguages($spokenLanguages)
+    {
+        $this->spokenLanguages = $spokenLanguages;
     }
 
 }

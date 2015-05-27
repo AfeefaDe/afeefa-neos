@@ -8,10 +8,12 @@ namespace DDFA\Main\Controller\Module\DDFA;
 
 use DateTime;
 use DDFA\Main\Domain\Model\Initiative as Initiative;
+use DDFA\Main\Domain\Model\Language;
 use DDFA\Main\Domain\Model\Object as Object;
 use DDFA\Main\Domain\Repository\InitiativeRepository as InitiativeRepository;
 use DDFA\Main\Domain\Repository\LanguageRepository as LanguageRepository;
 use DDFA\Main\Utility\DDConst;
+use DDFA\Main\Utility\DDHelpers;
 use TYPO3\Flow\Annotations as Flow;
 
 /**
@@ -40,6 +42,7 @@ class InitiativesModuleController extends AbstractTranslationController
     {
         $this->view->assign('inis', $this->objectRepository->findAllLocalized());
         $this->view->assign('numLanguages', $this->languageRepository->findAll()->count() - 1);
+
     }
 
     /**

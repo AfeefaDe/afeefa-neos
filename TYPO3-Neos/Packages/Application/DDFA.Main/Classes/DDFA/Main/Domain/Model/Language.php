@@ -34,6 +34,11 @@ class Language
     protected $language;
 
     /**
+     * @var bool
+     */
+    protected $rtl;
+
+    /**
      * @return string
      */
     public function getCode()
@@ -79,5 +84,21 @@ class Language
     public function setPersistenceObjectIdentifier($Persistence_Object_Identifier)
     {
         $this->Persistence_Object_Identifier = $Persistence_Object_Identifier;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRtl()
+    {
+        return $this->rtl;
+    }
+
+    /**
+     * @param mixed $rtl
+     */
+    public function setRtl($rtl)
+    {
+        $this->rtl = $rtl;
     }
 }

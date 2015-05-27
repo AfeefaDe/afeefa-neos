@@ -6,13 +6,14 @@ namespace DDFA\Main\Domain\Model;
  *                                                                        *
  *                                                                        */
 
+use DDFA\Main\Domain\Model\Object as Object;
 use Doctrine\ORM\Mapping as ORM;
 use TYPO3\Flow\Annotations as Flow;
 
 /**
  * @Flow\Entity
  */
-class Event extends \DDFA\Main\Domain\Model\Product
+class Event extends Object
 {
 
     /**

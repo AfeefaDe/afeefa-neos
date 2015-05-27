@@ -120,7 +120,7 @@ qx.Class.define("MapView", {
     	});
 		
 		that.locate();
-    	
+		
     	// $('#locate-btn').on('touchend', function(){
     	// 	that.locate();
     	// });

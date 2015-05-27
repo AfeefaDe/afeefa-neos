@@ -52,87 +52,10 @@ class LocationAPIController extends ActionController
     }
 
     public function listAction() {
-        $this->view->assign('value', $this->iniLocationRepository->findAll());
+        $this->view->assign('value', ['locations' => $this->iniLocationRepository->findAll()]);
     }
 
     public function showAction(Location $location) {
-        $this->view->assign('value', $this->iniLocationRepository->findAll());
-    }
-
-    /**
-     * @return void
-     */
-    public function getAction()
-    {
-        /*$this->view->assign('value', $this->iniLocationRepository->findAll());*/
-        $this->view->setConfiguration(
-            array(
-                'iniLocations' => array(
-                    '_descendAll' => array(
-                        '_descend' => array(
-                            'initiative' => array(
-                                '_only' => array('name'),
-                                '_exposeObjectIdentifier' => TRUE,
-                                '_exposedObjectIdentifierKey' => 'id'
-                            )
-                        ),
-                        '_exposeObjectIdentifier' => TRUE,
-                        '_exposedObjectIdentifierKey' => 'id'
-                    )
-                )
-            )
-        );
-        $this->view->setVariablesToRender(array('iniLocations'));
-        $this->view->assign('iniLocations', $this->iniLocationRepository->findAll());
-    }
-
-    /**
-     * @param string $id
-     * @return void
-     */
-    public function getByIdAction($id)
-    {
-        $this->view->assign('value', $this->iniLocationRepository->findByIdentifier($id));
-        $this->view->setConfiguration(
-            array(
-                'value' => array(
-                    '_descend' => array(
-                        'initiative' => array(
-                            '_only' => array('name'),
-                            '_exposeObjectIdentifier' => TRUE,
-                            '_exposedObjectIdentifierKey' => 'id'
-                        )
-                    ),
-                    '_exposeObjectIdentifier' => TRUE,
-                    '_exposedObjectIdentifierKey' => 'id'
-                )
-            )
-        );
-    }
-
-    /**
-     * @param Location $location
-     * @return void
-     */
-    public function getByLocationAction(Location $location)
-    {
-
-        $this->view->setVariablesToRender(array('iniLocation'));
-        $this->view->assign('iniLocation', $location);
-        $this->view->setConfiguration(
-            array(
-                'iniLocation' => array(
-                    '_descend' => array(
-                        'initiative' => array(
-                            '_only' => array('name'),
-                            '_exposeObjectIdentifier' => TRUE,
-                            '_exposedObjectIdentifierKey' => 'id'
-                        )
-                    ),
-                    '_exposeObjectIdentifier' => TRUE,
-                    '_exposedObjectIdentifierKey' => 'id'
-                )
-            )
-        );
+        $this->view->assign('value', ['location' => $location]);
     }
 }

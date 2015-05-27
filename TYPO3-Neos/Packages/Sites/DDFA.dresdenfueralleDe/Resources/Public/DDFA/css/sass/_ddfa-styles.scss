@@ -4,42 +4,9 @@ body {
 	margin: 0;
 	padding: 0;
 	height: 100%;
-}
-#map-container {
-	position: fixed;
-	top: 0;
-	z-index: 0;
-	width: 100%;
-	height: 100%;
 
-	div.marker-station {
-		p {
-			background-color: $dvb;
-			padding: 2px;
-			text-align: center;
-			opacity: .9;
-			font-family: monospace;
-			font-size: .9em;
-		}
-	}
-
-	div.marker-user-location {
-		background-color: $blue;
-		@include border-radius(8px);
-		@include box-shadow(0px 0px 5px #888888);
-	}
-
-	div.marker-cluster {
-		background-color: #333;
-		@include border-radius(20px);
-		@include box-shadow(0px 0px 5px #888888);
-		border: 2px solid $white;
-		color: $white;
-	  	text-align: center;
-	  	font-size: 20px;
-  		padding-top: 4px;
-		opacity: .9;
-	}
+	font-family: 'Roboto', sans-serif;
+	font-size: 11pt;
 }
 
 a {
@@ -112,41 +79,30 @@ a {
 
 		p.legend-entry {
 
-			/*height: 2em;*/
-			text-indent: 2em;
-			@include background-size(contain);
-			background-position: left;
-			background-repeat: no-repeat;
+			
 
-			&.hospital {
-				background-image: url('../img/renders/hospital-24@2x.png');
-			}
-			&.heart {
-				background-image: url('../img/renders/heart-24@2x.png');
-			}
-			&.college {
-				background-image: url('../img/renders/college-24@2x.png');
-			}
-			&.heapitchrt {
-				background-image: url('../img/renders/pitch-24@2x.png');
-			}
-			&.town-hall {
-				background-image: url('../img/renders/town-hall-24@2x.png');
-			}
-			&.shop {
-				background-image: url('../img/renders/shop-24@2x.png');
-			}
-			&.star {
-				background-image: url('../img/renders/star-24@2x.png');
-			}
-			&.school {
-				background-image: url('../img/renders/school-24@2x.png');
-			}
 		}
 		&.active {
 			right: 0;
 		}
 	}
+}
+
+#locate-btn {
+	position: fixed;
+	width: 3.5em;
+	height: 3.5em;
+	right: 1em;
+	bottom: 4em;
+	background-color: #EEE;
+	background-image: url('../img/btn-locate.svg');
+	@include background-size(70%);
+	background-position: center;
+	background-repeat: no-repeat;
+	@include box-shadow(0px 0px 5px #888888);
+	@include border-radius(1.75em);
+	cursor: pointer;
+	/*z-index: 999;*/
 }
 
 #uiContainer {
@@ -203,21 +159,38 @@ a {
 	position: fixed;
 	bottom: -3em;
 	
-	box-shadow: 0px 0px 5px #888888;
+	@include box-shadow(0px 0px 5px #888888);
 	background-color: #EEE;
 
 	p {
 		margin: 0;
-		padding: 1em 1em;
-		/*border-top: 1px solid #ccc;*/
 
-		&:first-child {
+		&.location-title {
 			height: 3em;
 			background-color: $blue;
 			padding: 1em 0 0 0;
 			border-top: none;
 			color: $white;
 			text-align: center;
+		}
+	}
+
+	.location-property {
+
+		padding: 1em 1em;
+		
+		h3 {
+			font-size: 1em;
+			font-weight: bold;
+			margin: 0;
+		}
+
+		p {
+			padding-left: 2em;
+
+			&:first-child {
+				padding-left: 0;
+			}
 		}
 	}
 

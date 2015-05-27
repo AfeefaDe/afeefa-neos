@@ -1,0 +1,189 @@
+@mixin detailViewBasic {
+	/* HEADING */
+	.heading {
+		
+		height: 3em;
+		
+		h1 {
+			height: 2em;
+			margin: 0;
+			padding: 1em 1em 0 1em;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+
+			font-weight: 300;
+			font-size: 1.1em;
+			text-align: center;
+			color: $white;
+		}
+	}
+
+	/* IMAGE PROPERTY */
+	.image {
+		/*height: 10em;*/
+		text-align: center;
+		overflow: hidden;
+
+		img {
+			position: relative;
+		  	top: 50%;
+		  	transform: translateY(-50%);
+		}
+
+		&.logo img { height: 80%; }
+		&.photo img { width: 100%; }
+	}
+
+	/* OTHER PROPERTIES */
+	.property {
+		display: none;
+		padding: 0 5%;
+		margin-top: 1em;
+		min-height: 2em;
+
+		$iconSize: 2.5em;
+
+		.property-icon {
+			width: $iconSize;
+			height: $iconSize;
+			float: left;
+			
+			/*@include background-size(72%);*/
+			background-repeat: no-repeat;
+			background-position: center 0.2em;
+
+			/* type 0 + type 1 categories*/
+			&.icon-advice { background-image: url("../img/cat-10.svg"); }
+			&.icon-medic { background-image: url("../img/cat-04.svg"); }
+			&.icon-german { background-image: url("../img/cat-18.svg"); }
+			&.icon-jobs { background-image: url("../img/cat-02.svg"); }
+			&.icon-leisure { background-image: url("../img/cat-08.svg"); }
+			&.icon-translation { background-image: url("../img/cat-06.svg"); }
+			&.icon-kids { background-image: url("../img/cat-14.svg"); }
+			&.icon-donation { background-image: url("../img/cat-12.svg"); }
+			&.icon-community { background-image: url("../img/cat-16.svg"); }
+
+			/* type 3 categories*/
+			&.icon-housing {
+				border: 1px solid $white;
+				background-image: url("../img/cat-19.svg");
+				background-color: rgba(0,0,0,0) !important;
+			}
+			&.icon-church { background-image: url("../img/cat-16.svg"); }
+			&.icon-mosque { background-image: url("../img/cat-16.svg"); }
+			&.icon-synagogue { background-image: url("../img/cat-22.svg"); }
+
+			/* property icons */
+			&.icon-location { background-image: url("../img/icon-35.svg"); }
+			&.icon-phone { background-image: url("../img/icon-23.svg"); }
+			&.icon-mail { background-image: url("../img/icon-25.svg"); }
+			&.icon-web { background-image: url("../img/icon-27.svg"); }
+			&.icon-openingHours { background-image: url("../img/icon-29.svg"); }
+			&.icon-description { background-image: url("../img/icon-31.svg"); }
+
+		}
+		.property-text {
+			margin-left: calc(5% + 2.5em);
+			p { 
+				margin: 0;
+				line-height: 1.3em;
+
+				&.property-name {
+					font-weight: 500;
+					text-transform: capitalize;
+				}
+			}
+		}
+
+		&.category {
+			.property-icon {
+				@include border-radius(2em);
+				@include background-size(72%);
+				background-position: center center;
+			}
+		}
+	}
+	
+	/* type specific overwrites */
+	&.type-0 {
+		.heading { background-color: $blue_dark; }
+		.property.category {
+			.property-icon { background-color: $blue_dark; }
+			.property-value { color: $blue_dark; }
+		}
+	}
+	&.type-1 {
+		.heading { background-color: $orange; }
+		.property.category {
+			.property-icon { background-color: $orange; }
+			.property-value { color: $orange; }
+		}
+	}
+	&.type-2 {
+		.heading { background-color: pink; }
+		.property.category {
+			.property-icon { background-color: pink; }
+		}
+	}
+	&.type-3 {
+		.heading { background-color: $black; }
+		.property.category {
+			.property-icon { background-color: $black; }
+			.property-name { line-height: 2.6em !important; }
+			.property-value { display: none; }
+		}
+	}
+}
+
+#detailView {
+	
+	/*display: none;*/
+	visibility: hidden;
+	opacity: 0;
+	@include transition(all 200ms);
+	
+	position: fixed;
+	left: 4%;
+	top: 3em;
+
+	width: 21%;
+	/*min-width: 300px;*/
+	min-height: 20%;
+	padding-bottom: 1em;
+
+	background-color: $white;
+	@include box-shadow(0px 0px 2px #333);
+
+	&.active {
+		visibility: visible;
+		opacity: 1;
+	}
+	
+	@include detailViewBasic;
+}
+
+#detailViewMobile {
+	
+	@include transition(all 200ms);
+	z-index: 100;
+	width: 100%;
+	height: 3em;
+	position: fixed;
+	bottom: -3em;
+	
+	background-color: $white;
+	@include box-shadow(0px 0px 2px #333);
+
+	&.active {
+		bottom: 0;
+	}
+
+	&.active-large {
+		bottom: 0;
+		height: 80%;
+		overflow-y: scroll;
+	}
+	
+	@include detailViewBasic;
+}

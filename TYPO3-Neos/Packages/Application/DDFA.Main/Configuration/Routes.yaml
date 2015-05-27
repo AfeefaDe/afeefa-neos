@@ -1,28 +1,42 @@
 -
-  name: 'api subroutes'
-  uriPattern: 'api/locations'
+  name: 'api locations'
+  uriPattern: 'api/locations<LocationSubroutes>(.{@format})'
   defaults:
     '@controller': 'Api\LocationAPI'
     '@action': 'list'
-  appendExceedingArguments: false
-  httpMethods: ['GET']
+    '@format': 'json'
+  subRoutes:
+    LocationSubroutes:
+      package: 'DDFA.Main'
+      suffix: 'Entity'
+      variables:
+        entity: 'location'
 
 -
-  name: 'DD4all locations API'
-  uriPattern: 'dd4all/locations'
+  name: 'api initiatives'
+  uriPattern: 'api/initiatives<InitiativeSubroutes>(.{@format})'
   defaults:
-    '@controller': 'Plugin\DDFA\LocationAPI'
-  appendExceedingArguments: false
-  httpMethods: ['GET']
+    '@controller': 'Api\InitiativeAPI'
+    '@action': 'list'
+    '@format': 'json'
+  subRoutes:
+    InitiativeSubroutes:
+      package: 'DDFA.Main'
+      suffix: 'Entity'
+      variables:
+        entity: 'initiative'
 
 -
-  name: 'DD4all locations API'
-  uriPattern: 'dd4all/locations/{inilocation}'
+  name: 'api marketentries'
+  uriPattern: 'api/marketentries<MarketEntriesSubroutes>(.{@format})'
   defaults:
-    '@controller': 'Plugin\DDFA\LocationAPI'
-    '@action': 'getByLocation'
-  appendExceedingArguments: false
-  httpMethods: ['GET']
-  routeParts:
-      inilocation:
-        objectType: 'DDFA\Map\Domain\Model\IniLocation'
+    '@controller': 'Api\MarketEntryAPI'
+    '@action': 'list'
+    '@format': 'json'
+  subRoutes:
+    MarketEntriesSubroutes:
+      package: 'DDFA.Main'
+      suffix: 'Entity'
+      variables:
+        entity: 'marketentry'
+

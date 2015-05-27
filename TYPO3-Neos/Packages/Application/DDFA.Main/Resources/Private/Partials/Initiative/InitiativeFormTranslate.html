@@ -1,24 +1,17 @@
-<div class="grayBox">
-    <p>Basic information</p>
+<fieldset>
+    <legend>Basic information</legend>
 
-    <label for="name">Name</label>
-    <f:form.textfield property="name" id="name" placeholder="Enter name" autofocus="true"/><br/><br/>
+    <div class="neos-control-group">
+        <label class="neos-control-label" for="name">Namen</label>
+        <div class="neos-controls">
+            <f:form.textfield class="neos-span12" property="name" id="name" placeholder="Enter name" autofocus="true"/>
+        </div>
+    </div>
 
-    <label for="description">Description</label>
-    <f:form.textarea property="description" id="description" placeholder="Enter a description text..."
-                     class="neos-span6" rows="8"/><br/>
-</div>
-<br>
-
-<div class="grayBox">
-    <p>Contact information</p>
-
-    <label for="mail">Mail</label>
-    <f:form.textfield property="mail" id="mail" type="email" placeholder="Enter mail address"/><br/><br/>
-
-    <label for="web">Website URL</label>
-    <f:form.textfield property="web" id="web" type="url" placeholder="Enter Website URL"/><br/><br/>
-
-    <label for="phone">Phone</label>
-    <f:form.textfield property="phone" id="phone" type="tel" placeholder="Enter phone number"/><br/><br/>
-</div><br>
+    <div class="neos-control-group">
+        <label class="neos-control-label" for="description">Description</label>
+        <div class="neos-controls">
+            <f:form.textarea class="neos-span12" rows="8" property="description" id="description" placeholder="Enter a description text..."/>
+        </div>
+    </div>
+</fieldset>

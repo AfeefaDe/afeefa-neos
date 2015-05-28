@@ -11,9 +11,6 @@ body {
 
 	background-color: $black;
 
-	&.ar, &.ur, &.fa {
-		direction: rtl;
-	}
 }
 
 a {
@@ -37,7 +34,8 @@ a {
 	height: 100%;
 
 	background-color: $black;
-	background-image: url("../img/CND.svg");
+	/*background-image: url("../img/CND.svg");*/
+	background-image: url("../img/connectedd_light.svg");
 	@include background-size(20%);
 	background-position: center center;
 	background-repeat: no-repeat;

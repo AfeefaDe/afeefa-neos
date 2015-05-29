@@ -33,6 +33,7 @@ class Category extends BasicEntity
     public function __construct()
     {
         parent::__construct();
+        $this->setEntryId(uniqid());
     }
 
     /**
@@ -67,5 +68,21 @@ class Category extends BasicEntity
     public function setDescription($description)
     {
         $this->description = $description;
+    }
+
+    /**
+     * @return string
+     */
+    public function getEntryId()
+    {
+        return $this->entryId;
+    }
+
+    /**
+     * @param string $entryId
+     */
+    public function setEntryId($entryId)
+    {
+        $this->entryId = $entryId;
     }
 }

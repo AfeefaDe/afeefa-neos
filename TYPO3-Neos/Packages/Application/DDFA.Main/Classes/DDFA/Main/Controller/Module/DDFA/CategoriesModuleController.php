@@ -41,7 +41,7 @@ class CategoriesModuleController extends AbstractModuleController
      */
     public function indexAction()
     {
-        $this->view->assign('cats', $this->objectRepository->findAllLocalized());
+        $this->view->assign('cats', $this->objectRepository->findAll());
     }
 
     /**
@@ -100,11 +100,8 @@ class CategoriesModuleController extends AbstractModuleController
      */
     public function deleteAction(Category $deleteObject)
     {
-        //TODO check if locations refer to initiative
-        foreach ($this->objectRepository->findAllLocalisations($deleteObject) as $localisedObject)
-            $this->objectRepository->remove($localisedObject);
-
-        $this->addFlashMessage('The initiative including all its translations has been removed successfully.');
+        $this->objectRepository->remove($deleteObject);
+        $this->addFlashMessage('The category has been removed successfully.');
         $this->redirect('index');
     }
 
@@ -115,11 +112,11 @@ class CategoriesModuleController extends AbstractModuleController
      */
     protected function addTranslation($entryID, $locale)
     {
-        $object = new Initiative();
-        $object->setEntryId($entryID);
-        $object->setLocale($locale);
-        $this->objectRepository->add($object);
-        $this->addFlashMessage("A new initiative translation has been added successfully.");
-        return $object;
+//        $object = new Category();
+//        $object->setEntryId($entryID);
+//        $object->setLocale($locale);
+//        $this->objectRepository->add($object);
+//        $this->addFlashMessage("A new initiative translation has been added successfully.");
+//        return $object;
     }
 }

@@ -49,7 +49,7 @@ require( ['domReady', 'modernizr'], function(domReady) {
 							
 							if( APP.getUserDevice() === 'phone' ) {
 								
-								require( ['Views/DetailViewMobile'], function(){
+								require( ['Views/DetailViewMobile', 'Views/LanguageViewMobile'], function(){
 									APP.getRouter().navigate();
 								});
 

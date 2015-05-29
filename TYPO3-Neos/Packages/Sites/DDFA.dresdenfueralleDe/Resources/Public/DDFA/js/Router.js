@@ -54,7 +54,7 @@ qx.Class.define("Router", {
 
 		    	APP.setPlusView( new PlusView() );
 		    	
-		    	APP.setLanguageView( new LanguageView() );
+		    	APP.setLanguageView( new LanguageViewMobile() );
 		
 			} else {
 

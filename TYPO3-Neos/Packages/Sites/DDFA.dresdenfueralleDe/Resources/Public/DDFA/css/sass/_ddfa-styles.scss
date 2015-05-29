@@ -41,6 +41,11 @@ a {
 	background-repeat: no-repeat;
 	@include box-shadow(0px 0px 10px #111);
 
+	/* map curtain */
+	@mixin mapCurtainActive {
+		visibility: visible;
+		opacity: 0.6;
+	}
 	#map-curtain {
 		@include transition(all 250ms);
 		background-color: $black;
@@ -50,14 +55,17 @@ a {
 		visibility: hidden;
 		opacity: 0;
 		z-index: 999;
+		
+		&.active {
+			@include mapCurtainActive;
+		}
 	}
 
 	&.shifted {
 		left: 15%;
 
 		#map-curtain {
-			visibility: visible;
-			opacity: 0.6;
+			@include mapCurtainActive;
 		}
 	}
 }

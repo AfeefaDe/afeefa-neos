@@ -31,6 +31,10 @@ qx.Class.define("View", {
             that.listen('languageChanged', function(){
                 that.changeLanguage();
             });
+        },
+
+        changeLanguage: function(){
+            
         }
     }
 

@@ -10,6 +10,7 @@ qx.Class.define("DetailView", {
     	var that = this;
 
         that.setViewId('detailView');
+        that.record = null;
     },
 
     members : {
@@ -195,10 +196,14 @@ qx.Class.define("DetailView", {
         changeLanguage: function(){
             var that = this;
 
-            var record = that.record;
-            that.reset();
-            that.load(record);
-            console.debug('change lang');
+            if( that.record !== null) {
+
+                var record = that.record;
+                that.reset();
+                that.load(record);
+                console.debug('change lang');
+                
+            }
 
             // request that.record's entryId in current locale
             // var recordRelocalized;

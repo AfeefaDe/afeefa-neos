@@ -42,6 +42,9 @@ qx.Class.define("PlusView", {
         addEvents: function(){
             var that = this;
 
+            // call superclass
+            this.base(arguments);
+            
             that.listen('mapclicked', function(){
                 that.close();
             });

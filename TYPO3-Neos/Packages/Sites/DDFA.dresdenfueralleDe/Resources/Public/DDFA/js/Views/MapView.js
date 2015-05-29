@@ -119,7 +119,7 @@ qx.Class.define("MapView", {
     		that.locate();
     	});
 		
-		that.locate();
+		// that.locate();
 		
     	// $('#locate-btn').on('touchend', function(){
     	// 	that.locate();
@@ -321,7 +321,7 @@ qx.Class.define("MapView", {
     	// update view if location found
 		that.map.on('locationfound', function(e) {
 		    // alert(e.latlng);
-		    that.map.setView( e.latlng , 15);
+		    that.map.setView( e.latlng , 13);
 		    that.setUserLocation = e.latlng;
 
 		    var myIcon = L.icon({

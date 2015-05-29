@@ -718,8 +718,9 @@ a:link, a:visited, a:hover, a:active {
   -webkit-box-shadow: 0px 0px 10px #111111;
   -moz-box-shadow: 0px 0px 10px #111111;
   box-shadow: 0px 0px 10px #111111;
+  /* map curtain */
 }
-/* line 44, sass/_ddfa-styles.scss */
+/* line 49, sass/_ddfa-styles.scss */
 #main-container #map-curtain {
   -webkit-transition: all 250ms;
   -moz-transition: all 250ms;
@@ -733,23 +734,28 @@ a:link, a:visited, a:hover, a:active {
   opacity: 0;
   z-index: 999;
 }
-/* line 55, sass/_ddfa-styles.scss */
+/* line 59, sass/_ddfa-styles.scss */
+#main-container #map-curtain.active {
+  visibility: visible;
+  opacity: 0.6;
+}
+/* line 64, sass/_ddfa-styles.scss */
 #main-container.shifted {
   left: 15%;
 }
-/* line 58, sass/_ddfa-styles.scss */
+/* line 67, sass/_ddfa-styles.scss */
 #main-container.shifted #map-curtain {
   visibility: visible;
   opacity: 0.6;
 }
 
 /* bootstrap fix for glyphicons inside input-group-addon */
-/* line 66, sass/_ddfa-styles.scss */
+/* line 74, sass/_ddfa-styles.scss */
 .input-group .glyphicon {
   top: 0;
 }
 
-/* line 72, sass/_ddfa-styles.scss */
+/* line 80, sass/_ddfa-styles.scss */
 .mobile-menu-off-canvas, #navigation-top > div, #content {
   background-color: #EEE;
   -webkit-box-shadow: 0px 0px 5px #888888;
@@ -757,7 +763,7 @@ a:link, a:visited, a:hover, a:active {
   box-shadow: 0px 0px 5px #888888;
 }
 
-/* line 77, sass/_ddfa-styles.scss */
+/* line 85, sass/_ddfa-styles.scss */
 .mobile-menu-off-canvas {
   -webkit-transition: all 300ms;
   -moz-transition: all 300ms;
@@ -769,46 +775,46 @@ a:link, a:visited, a:hover, a:active {
   width: 80%;
   z-index: 200;
 }
-/* line 85, sass/_ddfa-styles.scss */
+/* line 93, sass/_ddfa-styles.scss */
 .mobile-menu-off-canvas > div {
   padding: 1em;
 }
-/* line 89, sass/_ddfa-styles.scss */
+/* line 97, sass/_ddfa-styles.scss */
 .mobile-menu-off-canvas > div ul {
   margin: 0;
   padding: 0;
   list-style: none;
 }
-/* line 94, sass/_ddfa-styles.scss */
+/* line 102, sass/_ddfa-styles.scss */
 .mobile-menu-off-canvas > div ul li {
   height: 2em;
   padding: 0.5em;
   background-color: #DDD;
   margin-top: 0.1em;
 }
-/* line 100, sass/_ddfa-styles.scss */
+/* line 108, sass/_ddfa-styles.scss */
 .mobile-menu-off-canvas > div ul li a {
   display: block;
 }
-/* line 106, sass/_ddfa-styles.scss */
+/* line 114, sass/_ddfa-styles.scss */
 .mobile-menu-off-canvas#mobile-menu-off-canvas-left {
   left: -80%;
 }
-/* line 111, sass/_ddfa-styles.scss */
+/* line 119, sass/_ddfa-styles.scss */
 .mobile-menu-off-canvas#mobile-menu-off-canvas-left.active {
   left: 0;
 }
-/* line 117, sass/_ddfa-styles.scss */
+/* line 125, sass/_ddfa-styles.scss */
 .mobile-menu-off-canvas#mobile-menu-off-canvas-right {
   width: 60%;
   right: -60%;
 }
-/* line 127, sass/_ddfa-styles.scss */
+/* line 135, sass/_ddfa-styles.scss */
 .mobile-menu-off-canvas#mobile-menu-off-canvas-right.active {
   right: 0;
 }
 
-/* line 133, sass/_ddfa-styles.scss */
+/* line 141, sass/_ddfa-styles.scss */
 #locate-btn {
   position: fixed;
   width: 3.5em;
@@ -835,7 +841,7 @@ a:link, a:visited, a:hover, a:active {
   /*z-index: 999;*/
 }
 
-/* line 150, sass/_ddfa-styles.scss */
+/* line 158, sass/_ddfa-styles.scss */
 #uiContainer {
   position: fixed;
   top: 0;
@@ -843,12 +849,12 @@ a:link, a:visited, a:hover, a:active {
   width: 100%;
   margin-top: 1em;
 }
-/* line 159, sass/_ddfa-styles.scss */
+/* line 167, sass/_ddfa-styles.scss */
 #uiContainer #navigation-top #menu-btn, #uiContainer #navigation-top #search-box, #uiContainer #navigation-top #legend-btn {
   display: inline-block;
   position: absolute;
 }
-/* line 163, sass/_ddfa-styles.scss */
+/* line 171, sass/_ddfa-styles.scss */
 #uiContainer #navigation-top #menu-btn {
   width: 3em;
   height: 3em;
@@ -861,7 +867,7 @@ a:link, a:visited, a:hover, a:active {
   background-position: center;
   background-repeat: no-repeat;
 }
-/* line 173, sass/_ddfa-styles.scss */
+/* line 181, sass/_ddfa-styles.scss */
 #uiContainer #navigation-top #search-box {
   left: 4em;
   z-index: 200;
@@ -870,7 +876,7 @@ a:link, a:visited, a:hover, a:active {
   padding: .7em;
   color: #999;
 }
-/* line 182, sass/_ddfa-styles.scss */
+/* line 190, sass/_ddfa-styles.scss */
 #uiContainer #navigation-top #legend-btn {
   width: 3em;
   height: 3em;
@@ -885,7 +891,7 @@ a:link, a:visited, a:hover, a:active {
   background-repeat: no-repeat;
 }
 
-/* line 196, sass/_ddfa-styles.scss */
+/* line 204, sass/_ddfa-styles.scss */
 #content {
   -webkit-transition: all 300ms;
   -moz-transition: all 300ms;
@@ -901,11 +907,11 @@ a:link, a:visited, a:hover, a:active {
   box-shadow: 0px 0px 5px #888888;
   background-color: #EEE;
 }
-/* line 207, sass/_ddfa-styles.scss */
+/* line 215, sass/_ddfa-styles.scss */
 #content p {
   margin: 0;
 }
-/* line 210, sass/_ddfa-styles.scss */
+/* line 218, sass/_ddfa-styles.scss */
 #content p.location-title {
   height: 3em;
   background-color: #089fe1;
@@ -914,29 +920,29 @@ a:link, a:visited, a:hover, a:active {
   color: #f2f2f2;
   text-align: center;
 }
-/* line 220, sass/_ddfa-styles.scss */
+/* line 228, sass/_ddfa-styles.scss */
 #content .location-property {
   padding: 1em 1em;
 }
-/* line 224, sass/_ddfa-styles.scss */
+/* line 232, sass/_ddfa-styles.scss */
 #content .location-property h3 {
   font-size: 1em;
   font-weight: bold;
   margin: 0;
 }
-/* line 230, sass/_ddfa-styles.scss */
+/* line 238, sass/_ddfa-styles.scss */
 #content .location-property p {
   padding-left: 2em;
 }
-/* line 233, sass/_ddfa-styles.scss */
+/* line 241, sass/_ddfa-styles.scss */
 #content .location-property p:first-child {
   padding-left: 0;
 }
-/* line 239, sass/_ddfa-styles.scss */
+/* line 247, sass/_ddfa-styles.scss */
 #content.active-small {
   bottom: 0;
 }
-/* line 243, sass/_ddfa-styles.scss */
+/* line 251, sass/_ddfa-styles.scss */
 #content.active-large {
   bottom: 0;
   height: 80%;
@@ -1706,24 +1712,21 @@ a:link, a:visited, a:hover, a:active {
   display: block;
 }
 
-/* line 1, sass/_languageView.scss */
+/* line 34, sass/_languageView.scss */
 #languageView {
   position: absolute;
-  left: 7em;
   top: 2em;
   direction: ltr;
+  left: 7em;
 }
-/* line 8, sass/_languageView.scss */
+/* line 7, sass/_languageView.scss */
 #languageView .btn {
-  display: none;
   -webkit-box-shadow: 0px 0px 2px #333333;
   -moz-box-shadow: 0px 0px 2px #333333;
   box-shadow: 0px 0px 2px #333333;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  cursor: pointer;
-  margin: 0 auto;
   width: 3em;
   height: 3em;
   -webkit-border-radius: 2em;
@@ -1731,56 +1734,69 @@ a:link, a:visited, a:hover, a:active {
   -ms-border-radius: 2em;
   -o-border-radius: 2em;
   border-radius: 2em;
-  margin-left: 1em;
-  background-color: #c1272d;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
-  -webkit-filter: grayscale(0.5);
-  -moz-filter: grayscale(0.5);
-  filter: grayscale(0.5);
 }
-/* line 30, sass/_languageView.scss */
+/* line 20, sass/_languageView.scss */
 #languageView .btn.de {
   background-image: url("../img/flag_de.svg");
 }
-/* line 31, sass/_languageView.scss */
+/* line 21, sass/_languageView.scss */
 #languageView .btn.en {
   background-image: url("../img/flag_en.svg");
 }
-/* line 32, sass/_languageView.scss */
+/* line 22, sass/_languageView.scss */
 #languageView .btn.ar {
   background-image: url("../img/flag_ar.svg");
 }
-/* line 33, sass/_languageView.scss */
+/* line 23, sass/_languageView.scss */
 #languageView .btn.fa {
   background-image: url("../img/flag_fa.svg");
 }
-/* line 34, sass/_languageView.scss */
+/* line 24, sass/_languageView.scss */
 #languageView .btn.fr {
   background-image: url("../img/flag_fr.svg");
 }
-/* line 35, sass/_languageView.scss */
+/* line 25, sass/_languageView.scss */
 #languageView .btn.sr {
   background-image: url("../img/flag_sr.svg");
 }
-/* line 36, sass/_languageView.scss */
+/* line 26, sass/_languageView.scss */
 #languageView .btn.ru {
   background-image: url("../img/flag_ru.svg");
 }
-/* line 37, sass/_languageView.scss */
+/* line 27, sass/_languageView.scss */
 #languageView .btn.ti {
   background-image: url("../img/flag_ti.svg");
 }
-/* line 38, sass/_languageView.scss */
+/* line 28, sass/_languageView.scss */
 #languageView .btn.ur {
   background-image: url("../img/flag_ur.svg");
 }
 /* line 40, sass/_languageView.scss */
-#languageView .btn:hover {
+#languageView .btn {
+  display: none;
+  cursor: pointer;
+  /*margin: 0 auto;*/
+  margin-left: 1em;
+  -webkit-filter: grayscale(0.5);
+  -moz-filter: grayscale(0.5);
+  filter: grayscale(0.5);
+}
+/* line 47, sass/_languageView.scss */
+#languageView .btn.active {
+  display: block;
+}
+/* line 54, sass/_languageView.scss */
+#languageView:hover .btn {
+  display: inline-block;
+}
+/* line 58, sass/_languageView.scss */
+#languageView:hover .btn:hover {
   -webkit-box-shadow: 0px 0px 5px #111111;
   -moz-box-shadow: 0px 0px 5px #111111;
   box-shadow: 0px 0px 5px #111111;
@@ -1788,18 +1804,113 @@ a:link, a:visited, a:hover, a:active {
   -moz-filter: grayscale(0.2);
   filter: grayscale(0.2);
 }
-/* line 45, sass/_languageView.scss */
-#languageView .btn.root-btn {
-  display: block;
+
+/* line 68, sass/_languageView.scss */
+#languageViewMobile {
+  position: absolute;
+  top: 2em;
+  direction: ltr;
+  left: 6em;
 }
-/* line 52, sass/_languageView.scss */
-#languageView:hover .btn {
-  display: inline-block;
+/* line 7, sass/_languageView.scss */
+#languageViewMobile .btn {
+  -webkit-box-shadow: 0px 0px 2px #333333;
+  -moz-box-shadow: 0px 0px 2px #333333;
+  box-shadow: 0px 0px 2px #333333;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 3em;
+  height: 3em;
+  -webkit-border-radius: 2em;
+  -moz-border-radius: 2em;
+  -ms-border-radius: 2em;
+  -o-border-radius: 2em;
+  border-radius: 2em;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+/* line 20, sass/_languageView.scss */
+#languageViewMobile .btn.de {
+  background-image: url("../img/flag_de.svg");
+}
+/* line 21, sass/_languageView.scss */
+#languageViewMobile .btn.en {
+  background-image: url("../img/flag_en.svg");
+}
+/* line 22, sass/_languageView.scss */
+#languageViewMobile .btn.ar {
+  background-image: url("../img/flag_ar.svg");
+}
+/* line 23, sass/_languageView.scss */
+#languageViewMobile .btn.fa {
+  background-image: url("../img/flag_fa.svg");
+}
+/* line 24, sass/_languageView.scss */
+#languageViewMobile .btn.fr {
+  background-image: url("../img/flag_fr.svg");
+}
+/* line 25, sass/_languageView.scss */
+#languageViewMobile .btn.sr {
+  background-image: url("../img/flag_sr.svg");
+}
+/* line 26, sass/_languageView.scss */
+#languageViewMobile .btn.ru {
+  background-image: url("../img/flag_ru.svg");
+}
+/* line 27, sass/_languageView.scss */
+#languageViewMobile .btn.ti {
+  background-image: url("../img/flag_ti.svg");
+}
+/* line 28, sass/_languageView.scss */
+#languageViewMobile .btn.ur {
+  background-image: url("../img/flag_ur.svg");
+}
+/* line 74, sass/_languageView.scss */
+#languageViewMobile .shiftMenu {
+  -webkit-transition: all 200ms;
+  -moz-transition: all 200ms;
+  -o-transition: all 200ms;
+  transition: all 200ms;
+  position: fixed;
+  left: -4em;
+  top: 0;
+  background-color: rgba(30, 30, 30, 0.6);
+  width: 3em;
+  padding: 0 0.5em;
+  height: 100%;
+}
+/* line 85, sass/_languageView.scss */
+#languageViewMobile.open {
+  height: 100%;
+  z-index: 9999;
+}
+/* line 90, sass/_languageView.scss */
+#languageViewMobile.open .shiftMenu {
+  left: 0;
+}
+/* line 94, sass/_languageView.scss */
+#languageViewMobile.open .btn {
+  display: block !important;
+  margin-bottom: 1em;
 }
 
 /* line 5, sass/_mobileAdaptions.scss */
 body.phone #main-container.shifted {
   left: 80%;
+}
+/* line 10, sass/_mobileAdaptions.scss */
+body.phone #menuBtnView {
+  left: 2em;
+}
+/* line 14, sass/_mobileAdaptions.scss */
+body.phone #plusView {
+  right: 2em;
+  bottom: 2em;
 }
 
 /* line 1, sass/_languageAdaptions.scss */

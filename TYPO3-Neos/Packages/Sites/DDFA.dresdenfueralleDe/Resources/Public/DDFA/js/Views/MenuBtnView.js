@@ -31,6 +31,9 @@ qx.Class.define("MenuBtnView", {
         addEvents: function(){
             var that = this;
 
+            // call superclass
+            this.base(arguments);
+            
             that.menuBtn.click(function(){
                 $('#main-container').toggleClass('shifted');
             });

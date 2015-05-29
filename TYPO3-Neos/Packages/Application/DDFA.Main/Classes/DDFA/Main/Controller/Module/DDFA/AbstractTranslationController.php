@@ -11,7 +11,7 @@ use TYPO3\Neos\Controller\Module\AbstractModuleController;
 use TYPO3\Flow\Annotations as Flow;
 
 //TODO improve abstraction of translatable entity controller
-abstract class AbstractTranslationController extends AbstractModuleController{
+abstract class AbstractTranslationController extends AbstractModuleController {
 
     /**
      * @param $entryID

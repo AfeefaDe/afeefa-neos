@@ -6,7 +6,7 @@ namespace DDFA\Main\Domain\Repository;
  *                                                                        *
  *                                                                        */
 
-use DDFA\Main\Domain\Model\Object as Object;
+use DDFA\Main\Domain\Model\Actor as Object;
 use DDFA\Main\Utility\DDConst;
 use ReflectionObject;
 use TYPO3\Flow\Annotations as Flow;
@@ -28,7 +28,7 @@ abstract class AbstractTranslationRepository extends Repository
             $query->equals('locale', $locale)
         )->execute();
 
-        return $this->addLocales($objects);
+        return $this->includeLocales($objects);
     }
 
     /**
@@ -36,7 +36,7 @@ abstract class AbstractTranslationRepository extends Repository
      * @param $objects
      * @return mixed
      */
-    protected function addLocales($objects)
+    protected function includeLocales($objects)
     {
         foreach ($objects as $o) {
             $locales = $this->findLocales($o);
@@ -54,7 +54,7 @@ abstract class AbstractTranslationRepository extends Repository
      */
     //TODO sophisticate
     //TODO include real languages
-    public function findLocales(Object $object)
+    public function findLocales(Actor $object)
     {
         $r = array();
         $i = 0;
@@ -75,7 +75,7 @@ abstract class AbstractTranslationRepository extends Repository
      * @param \DDFA\Main\Domain\Model\Object $object
      * @return array
      */
-    public function findAllLocales(Object $object)
+    public function findAllLocales(Actor $object)
     {
         $r = array();
         $i = 0;
@@ -93,7 +93,7 @@ abstract class AbstractTranslationRepository extends Repository
      * @param $locale
      * @return Object
      */
-    public function findOneLocalized(Object $object, $locale)
+    public function findOneLocalized(Actor $object, $locale)
     {
         if($object->getLocale() == $object)
             return $object;
@@ -113,7 +113,7 @@ abstract class AbstractTranslationRepository extends Repository
      * @param \DDFA\Main\Domain\Model\Object $object
      * @return \TYPO3\Flow\Persistence\QueryResultInterface
      */
-    public function findLocalisations(Object $object)
+    public function findLocalisations(Actor $object)
     {
         $query = $this->createQuery();
         return $query->matching(
@@ -132,7 +132,7 @@ abstract class AbstractTranslationRepository extends Repository
      * @param \DDFA\Main\Domain\Model\Object $object
      * @return \TYPO3\Flow\Persistence\QueryResultInterface
      */
-    public function findAllLocalisations(Object $object)
+    public function findAllLocalisations(Actor $object)
     {
         $query = $this->createQuery();
         return $query->matching(
@@ -142,12 +142,12 @@ abstract class AbstractTranslationRepository extends Repository
     }
 
     /**
-     * hydrated the object, that means this method fills all the empty properties of a translation object with values of the original entry
+     * hydrated the object, meaning this method fills all empty properties of a translation object with values of the original entry
      *
      * @param \DDFA\Main\Domain\Model\Object $object
      * @return Object
      */
-    public function hydrate(Object $object) {
+    public function hydrate(Actor $object) {
         if($object->getLocale() != DDConst::LOCALE_STD) {
             $parentEntry = $this->findOneLocalized($object, DDConst::LOCALE_STD);
             $parentReflection = new ReflectionObject($parentEntry);

@@ -6,13 +6,16 @@ namespace DDFA\Main\Domain\Repository;
  *                                                                        *
  *                                                                        */
 
-use DDFA\Main\Domain\Model\Location;
+use DDFA\Main\Domain\Model\Location as Location;
 use DDFA\Main\Utility\DDConst;
+use ReflectionObject;
 use TYPO3\Flow\Annotations as Flow;
 
 /**
  * @Flow\Scope("singleton")
  */
+
+//TODO add docs
 class LocationRepository extends AbstractTranslationRepository
 {
     public function findAllOfInitiative()
@@ -49,7 +52,7 @@ class LocationRepository extends AbstractTranslationRepository
             )
         )->execute();
 
-        return $this->addLocales($locations);
+        return $this->includeLocales($locations);
     }
 
     public function findAllOfMarketEntryLocalized($locale)
@@ -62,7 +65,7 @@ class LocationRepository extends AbstractTranslationRepository
             )
         )->execute();
 
-        return $this->addLocales($locations);
+        return $this->includeLocales($locations);
     }
 
     public function findAllOfEventLocalized($locale)
@@ -75,6 +78,39 @@ class LocationRepository extends AbstractTranslationRepository
             )
         )->execute();
 
-        return $this->addLocales($locations);
+        return $this->includeLocales($locations);
+    }
+
+    public function supplement(Location $location) {
+
+        //TODO maybe better store in another place... one day
+        $LOCATION_SUPPLEMENT_PROPS = ["description", "mail", "web", "phone", "speakerPublic", "speakerPrivate", "facebook"];
+
+        $owner = $location->getInitiative();
+        $location = $this->hydrate($location);
+        $parentReflection = new ReflectionObject($owner);
+        $sourceReflection = new ReflectionObject($location);
+        foreach($sourceReflection->getProperties() as $property) {
+            if (in_array($property->getName(), $LOCATION_SUPPLEMENT_PROPS)) {
+                $property->setAccessible(true);
+                $value = $property->getValue($location);
+                if ($value == NULL || $value == "") {
+                    $parentProperty = $parentReflection->getProperty($property->getName());
+                    $parentProperty->setAccessible(true);
+                    $property->setValue($location, $parentProperty->getValue($owner));
+                }
+            }
+        }
+        return $location;
+    }
+
+    public function findAllSupplemented($locale) {
+        $locations = $this->findAllLocalized($locale);
+        $result = array();
+        foreach($locations as $l) {
+            $l = $this->supplement($l);
+            array_push($result, $l);
+        }
+        return $result;
     }
 }

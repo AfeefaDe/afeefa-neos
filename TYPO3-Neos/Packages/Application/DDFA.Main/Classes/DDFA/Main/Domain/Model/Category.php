@@ -12,15 +12,13 @@ use TYPO3\Flow\Annotations as Flow;
 /**
  * @Flow\Entity
  */
-class Category
+class Category extends BasicEntity
 {
     /**
      * @var string
-     * @ORM\Id
-     * @ORM\Column(name="persistence_object_identifier", type="string", length=40)
-     * @Flow\Identity
+     * @ORM\Column(name="entry_id")
      */
-    protected $Persistence_Object_Identifier;
+    protected $entryId;
 
     /**
      * @var string
@@ -32,6 +30,10 @@ class Category
      */
     protected $description;
 
+    public function __construct()
+    {
+        parent::__construct();
+    }
 
     /**
      * @return string
@@ -65,21 +67,5 @@ class Category
     public function setDescription($description)
     {
         $this->description = $description;
-    }
-
-    /**
-     * @return string
-     */
-    public function getPersistenceObjectIdentifier()
-    {
-        return $this->Persistence_Object_Identifier;
-    }
-
-    /**
-     * @param string $Persistence_Object_Identifier
-     */
-    public function setPersistenceObjectIdentifier($Persistence_Object_Identifier)
-    {
-        $this->Persistence_Object_Identifier = $Persistence_Object_Identifier;
     }
 }

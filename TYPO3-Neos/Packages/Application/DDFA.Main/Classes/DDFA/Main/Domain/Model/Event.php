@@ -6,14 +6,13 @@ namespace DDFA\Main\Domain\Model;
  *                                                                        *
  *                                                                        */
 
-use DDFA\Main\Domain\Model\Object as Object;
 use Doctrine\ORM\Mapping as ORM;
 use TYPO3\Flow\Annotations as Flow;
 
 /**
  * @Flow\Entity
  */
-class Event extends Object
+class Event extends Actor
 {
 
     /**
@@ -43,6 +42,11 @@ class Event extends Object
      * @ORM\OneToMany(mappedBy="event")
      */
     protected $locations;
+
+    public function __construct()
+    {
+        parent::__construct();
+    }
 
     /**
      * @return DateTime

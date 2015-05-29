@@ -108,8 +108,7 @@ class LocationRepository extends AbstractTranslationRepository
         $locations = $this->findAllLocalized($locale);
         $result = array();
         foreach($locations as $l) {
-            $l = $this->supplement($l);
-            array_push($result, $l);
+            array_push($result, $this->supplement($l));
         }
         return $result;
     }

@@ -26,6 +26,11 @@ class MarketEntry extends Event
      */
     protected $location;
 
+    public function __construct()
+    {
+        parent::__construct();
+    }
+
     /**
      * @return boolean
      */

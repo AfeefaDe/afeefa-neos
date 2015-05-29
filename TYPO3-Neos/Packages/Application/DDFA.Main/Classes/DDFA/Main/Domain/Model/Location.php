@@ -9,7 +9,6 @@ namespace DDFA\Main\Domain\Model;
 use DDFA\Main\Domain\Model\Event as Event;
 use DDFA\Main\Domain\Model\Initiative as Initiative;
 use DDFA\Main\Domain\Model\MarketEntry as MarketEntry;
-use DDFA\Main\Domain\Model\Object as Object;
 use DDFA\Main\Utility\DDConst;
 use Doctrine\ORM\Mapping as ORM;
 use TYPO3\Flow\Annotations as Flow;
@@ -17,7 +16,7 @@ use TYPO3\Flow\Annotations as Flow;
 /**
  * @Flow\Entity
  */
-class Location extends Object
+class Location extends Actor
 {
     /**
      * @var string
@@ -93,7 +92,8 @@ class Location extends Object
      */
     protected $event;
 
-    public function __construct() {
+    public function __construct()
+    {
         parent::__construct();
         $this->setType(DDConst::LOCATION_INI);
     }

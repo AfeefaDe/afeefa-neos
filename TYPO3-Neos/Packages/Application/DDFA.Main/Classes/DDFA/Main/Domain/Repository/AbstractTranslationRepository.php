@@ -7,6 +7,7 @@ namespace DDFA\Main\Domain\Repository;
  *                                                                        */
 
 use DDFA\Main\Domain\Model\Actor as Object;
+use DDFA\Main\Domain\Model\Actor;
 use DDFA\Main\Utility\DDConst;
 use ReflectionObject;
 use TYPO3\Flow\Annotations as Flow;
@@ -49,7 +50,7 @@ abstract class AbstractTranslationRepository extends Repository
     /**
      * returns array of all other locale codes of available translations of the object (without its locale)
      *
-     * @param \DDFA\Main\Domain\Model\Object $object
+     * @param Actor $object
      * @return array
      */
     //TODO sophisticate
@@ -72,7 +73,7 @@ abstract class AbstractTranslationRepository extends Repository
     /**
      * returns array of locale codes of all available translations of the object
      *
-     * @param \DDFA\Main\Domain\Model\Object $object
+     * @param Actor $object
      * @return array
      */
     public function findAllLocales(Actor $object)
@@ -89,7 +90,7 @@ abstract class AbstractTranslationRepository extends Repository
     /**
      * returns a specific localisation of the object (or nothing if requested locale does not exist)
      *
-     * @param \DDFA\Main\Domain\Model\Object $object
+     * @param Actor $object
      * @param $locale
      * @return Object
      */
@@ -110,7 +111,7 @@ abstract class AbstractTranslationRepository extends Repository
     /**
      * returns only all other localisations of an object, without itself
      *
-     * @param \DDFA\Main\Domain\Model\Object $object
+     * @param Actor $object
      * @return \TYPO3\Flow\Persistence\QueryResultInterface
      */
     public function findLocalisations(Actor $object)
@@ -129,7 +130,7 @@ abstract class AbstractTranslationRepository extends Repository
     /**
      * returns all localisations of an object including itself
      *
-     * @param \DDFA\Main\Domain\Model\Object $object
+     * @param Actor $object
      * @return \TYPO3\Flow\Persistence\QueryResultInterface
      */
     public function findAllLocalisations(Actor $object)
@@ -144,7 +145,7 @@ abstract class AbstractTranslationRepository extends Repository
     /**
      * hydrated the object, meaning this method fills all empty properties of a translation object with values of the original entry
      *
-     * @param \DDFA\Main\Domain\Model\Object $object
+     * @param Actor $object
      * @return Object
      */
     public function hydrate(Actor $object) {

@@ -33,7 +33,8 @@ class Initiative extends Owner
      */
     protected $entries;
 
-    public function __construct() {
+    public function __construct()
+    {
         parent::__construct();
     }
 

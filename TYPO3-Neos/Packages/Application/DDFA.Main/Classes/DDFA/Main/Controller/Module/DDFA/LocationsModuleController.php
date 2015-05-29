@@ -8,7 +8,7 @@ namespace DDFA\Main\Controller\Module\DDFA;
 
 use DateTime;
 use DDFA\Main\Domain\Model\Location as Location;
-use DDFA\Main\Domain\Model\Object as Object;
+use DDFA\Main\Domain\Model\Actor as Object;
 use DDFA\Main\Domain\Repository\InitiativeRepository as InitiativeRepository;
 use DDFA\Main\Domain\Repository\LanguageRepository as LanguageRepository;
 use DDFA\Main\Domain\Repository\LocationRepository as LocationRepository;
@@ -59,8 +59,7 @@ class LocationsModuleController extends AbstractTranslationController
             $this->redirect('view', NULL, NULL, array('viewObject' => $this->objectRepository->findOneLocalized($viewObject, $_POST['viewLocale'])));
 
         } else {
-            if ($viewObject->getLocale() != DDConst::LOCALE_STD)
-                $viewObject = $this->objectRepository->hydrate($viewObject);
+            $viewObject = $this->objectRepository->supplement($viewObject);
 
             $this->view->assign('viewObject', $viewObject);
             $this->view->assign('languages', $this->objectRepository->findLocales($viewObject));

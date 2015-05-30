@@ -123,9 +123,9 @@ abstract class AbstractTranslationRepository extends Repository {
      * @param Actor $object
      * @return \TYPO3\Flow\Persistence\QueryResultInterface
      */
-    //TODO not used
-
     public function findLocalisations(Actor $object) {
+        //TODO not used
+
         $query = $this->createQuery()->setOrderings(array('locale' => QueryInterface::ORDER_ASCENDING));
         return $query->matching(
             $query->logicalAnd(

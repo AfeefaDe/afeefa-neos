@@ -18,6 +18,15 @@
 </f:section>
 
 <f:section name="content">
+    <f:if condition="{cats}">
+        <f:then>
+        </f:then>
+        <f:else>
+            <!-- TODO add style -->
+            <div>!! There are no categories!</div>
+        </f:else>
+    </f:if>
+
     <!-- BEGIN INI LOCATION -->
     <f:if condition="{type} == '0'">
         <f:if condition="{inis}">

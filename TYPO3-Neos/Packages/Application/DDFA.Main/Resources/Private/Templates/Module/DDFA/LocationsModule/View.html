@@ -1,16 +1,36 @@
 <f:layout name="Default"/>
 
-<f:section name="title">{viewObject.locale}: <i>{viewObject.initiative.name}</i> - {viewObject.name}</f:section>
+<f:section name="title">
+    <f:if condition="{viewObject.type} == 0">
+        <f:then>
+            Initiative location<br>
+            {viewObject.locale}: <i>{viewObject.initiative.name}</i> - {viewObject.name}
+        </f:then>
+        <f:else>
+            <f:if condition="{viewObject.type} == 1">
+                Market Location
+            </f:if>
+            <f:if condition="{viewObject.type} == 2">
+                Event Location
+            </f:if>
+            <f:if condition="{viewObject.type} == 3">
+                Basic Location
+            </f:if>
+            {viewObject.name}
+        </f:else>
+    </f:if>
+</f:section>
 
 <f:section name="content">
     <div class="neos-module-container">
-        <f:render partial="Shared/TranslationSelectView" arguments="{viewObject: viewObject, languages: languages}" />
+        <f:render partial="Shared/TranslationSelectView" arguments="{viewObject: viewObject, languages: languages}"/>
 
-        <f:render partial="Location/LocationView" arguments="{l: viewObject}" />
+        <f:render partial="Location/LocationView" arguments="{l: viewObject}"/>
     </div>
     <div class="neos-footer">
         <f:link.action action="index" class="neos-button" title="back to index">Back</f:link.action>
-        <f:link.action action="simpleEdit" arguments="{editObject: viewObject}" class="neos-button neos-button-primary" title="Edit this location">
+        <f:link.action action="simpleEdit" arguments="{editObject: viewObject}" class="neos-button neos-button-primary"
+                       title="Edit this location">
             Edit Location
         </f:link.action>
     </div>

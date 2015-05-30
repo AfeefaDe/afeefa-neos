@@ -9,14 +9,12 @@ namespace DDFA\Main\Tests\Unit\Domain\Model;
 /**
  * Testcase for Ini location
  */
-class IniLocationTest extends \TYPO3\Flow\Tests\UnitTestCase
-{
+class IniLocationTest extends \TYPO3\Flow\Tests\UnitTestCase {
 
     /**
      * @test
      */
-    public function makeSureThatSomethingHolds()
-    {
+    public function makeSureThatSomethingHolds() {
         $this->markTestIncomplete('Automatically generated test case; you need to adjust this!');
 
         $expected = 'Foo';

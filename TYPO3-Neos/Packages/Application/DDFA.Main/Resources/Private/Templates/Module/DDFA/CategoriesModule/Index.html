@@ -1,0 +1,40 @@
+<f:layout name="Default"/>
+
+<f:section name="title">Overview of all Categories</f:section>
+
+<f:section name="content">
+    <div class="neos-module-container">
+        <f:if condition="{cats}">
+            <f:then>
+                <table class="neos-table">
+                    <thead>
+                    <tr>
+                        <th>
+                            <div>Name</div>
+                        </th>
+                        <th>
+                            <div>Description</div>
+                        </th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <f:for each="{cats}" as="cat">
+                        <f:render partial="Category/CategoryEntry" arguments="{cat: cat}"/>
+                    </f:for>
+                    </tbody>
+                </table>
+            </f:then>
+            <f:else>
+                <div>
+                    Currently there is no category. Please add one.
+                </div>
+            </f:else>
+        </f:if>
+    </div>
+    <div class="neos-footer">
+        <f:link.action action="add" class="neos-button neos-button-primary">
+            Add category
+        </f:link.action>
+    </div>
+</f:section>

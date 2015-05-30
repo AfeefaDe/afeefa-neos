@@ -1,0 +1,33 @@
+<tr>
+    <td>
+        <div>{l.name}</div>
+    </td>
+    <td>
+        <div>{l.street}, {l.zip} {l.city} [{l.lat},{l.lon}]</div>
+    </td>
+    <td>
+        <div>{l.openingHours}</div>
+    </td>
+    <td>
+        <div>{l.phone}</div>
+    </td>
+    <td>
+        <div>{l.mail}</div>
+    </td>
+    <td class="neos-action">
+        <div class="neos-pull-right">
+            <f:link.action action="view" arguments="{viewObject: l}"
+                           class="neos-button neos-button-primary" title="View location">
+                <i class="icon-info-sign icon-white"></i>
+            </f:link.action>
+            <f:link.action action="simpleEdit" arguments="{editObject: l}"
+                           class="neos-button neos-button-primary" title="Edit location">
+                <i class="icon-pencil icon-white"></i>
+            </f:link.action>
+            <f:form action="delete" arguments="{deleteObject: l}" class="actionForm">
+                <button type="submit" class="neos-button neos-button-danger" title="Delete location"><i
+                        class="icon-trash icon-white"></i></button>
+            </f:form>
+        </div>
+    </td>
+</tr>

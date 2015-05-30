@@ -6,15 +6,13 @@ namespace DDFA\Main\Domain\Model;
  *                                                                        *
  *                                                                        */
 
-use DDFA\Main\Domain\Model\Object as Object;
 use Doctrine\ORM\Mapping as ORM;
 use TYPO3\Flow\Annotations as Flow;
 
 /**
  * @Flow\Entity
  */
-class Event extends Object
-{
+class Event extends Actor {
 
     /**
      * @var \DateTime
@@ -44,11 +42,14 @@ class Event extends Object
      */
     protected $locations;
 
+    public function __construct() {
+        parent::__construct();
+    }
+
     /**
      * @return DateTime
      */
-    public function getDateFrom()
-    {
+    public function getDateFrom() {
         return $this->dateFrom;
     }
 
@@ -56,16 +57,14 @@ class Event extends Object
      * @param DateTime $dateFrom
      * @return void
      */
-    public function setDateFrom($dateFrom)
-    {
+    public function setDateFrom($dateFrom) {
         $this->dateFrom = $dateFrom;
     }
 
     /**
      * @return DateTime
      */
-    public function getDateTo()
-    {
+    public function getDateTo() {
         return $this->dateTo;
     }
 
@@ -73,16 +72,14 @@ class Event extends Object
      * @param DateTime $dateTo
      * @return void
      */
-    public function setDateTo($dateTo)
-    {
+    public function setDateTo($dateTo) {
         $this->dateTo = $dateTo;
     }
 
     /**
      * @return int
      */
-    public function getDateDay()
-    {
+    public function getDateDay() {
         return $this->dateDay;
     }
 
@@ -90,16 +87,14 @@ class Event extends Object
      * @param int $dateDay
      * @return void
      */
-    public function setDateDay($dateDay)
-    {
+    public function setDateDay($dateDay) {
         $this->dateDay = $dateDay;
     }
 
     /**
      * @return int
      */
-    public function getDatePeriodic()
-    {
+    public function getDatePeriodic() {
         return $this->datePeriodic;
     }
 
@@ -107,16 +102,14 @@ class Event extends Object
      * @param int $datePeriodic
      * @return void
      */
-    public function setDatePeriodic($datePeriodic)
-    {
+    public function setDatePeriodic($datePeriodic) {
         $this->datePeriodic = $datePeriodic;
     }
 
     /**
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getLocations()
-    {
+    public function getLocations() {
         return $this->locations;
     }
 
@@ -124,8 +117,7 @@ class Event extends Object
      * @param \Doctrine\Common\Collections\Collection $locations
      * @return void
      */
-    public function setLocations($locations)
-    {
+    public function setLocations($locations) {
         $this->locations = $locations;
     }
 

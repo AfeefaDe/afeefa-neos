@@ -13,8 +13,7 @@ use TYPO3\Flow\Annotations as Flow;
 /**
  * @Flow\Entity
  */
-class MarketEntry extends Event
-{
+class MarketEntry extends Event {
     /**
      * @var boolean
      */
@@ -26,35 +25,35 @@ class MarketEntry extends Event
      */
     protected $location;
 
+    public function __construct() {
+        parent::__construct();
+    }
+
     /**
      * @return boolean
      */
-    public function isOffer()
-    {
+    public function isOffer() {
         return $this->offer;
     }
 
     /**
      * @param boolean $offer
      */
-    public function setOffer($offer)
-    {
+    public function setOffer($offer) {
         $this->offer = $offer;
     }
 
     /**
      * @return Location
      */
-    public function getLocation()
-    {
+    public function getLocation() {
         return $this->location;
     }
 
     /**
      * @param Location $location
      */
-    public function setLocation($location)
-    {
+    public function setLocation($location) {
         $this->location = $location;
     }
 }

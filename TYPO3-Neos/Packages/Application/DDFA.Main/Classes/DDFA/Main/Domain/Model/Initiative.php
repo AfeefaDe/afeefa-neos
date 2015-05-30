@@ -13,8 +13,7 @@ use TYPO3\Flow\Annotations as Flow;
 /**
  * @Flow\Entity
  */
-class Initiative extends Owner
-{
+class Initiative extends Owner {
     /**
      * @var \Doctrine\Common\Collections\Collection<\DDFA\Main\Domain\Model\Location>
      * @ORM\OneToMany(mappedBy="initiative")
@@ -40,16 +39,14 @@ class Initiative extends Owner
     /**
      * @return \Doctrine\Common\Collections\Collection<\DDFA\Main\Domain\Model\Location>
      */
-    public function getLocations()
-    {
+    public function getLocations() {
         return $this->locations;
     }
 
     /**
      * @param \Doctrine\Common\Collections\Collection $locations
      */
-    public function setLocations($locations)
-    {
+    public function setLocations($locations) {
         $this->locations = $locations;
     }
 }

@@ -7,8 +7,8 @@ namespace DDFA\Main\Controller\Module\DDFA;
  *                                                                        *
  *                                                                        */
 
-use TYPO3\Neos\Controller\Module\AbstractModuleController;
 use TYPO3\Flow\Annotations as Flow;
+use TYPO3\Neos\Controller\Module\AbstractModuleController;
 
 //TODO improve abstraction of translatable entity controller
 abstract class AbstractTranslationController extends AbstractModuleController {
@@ -17,5 +17,5 @@ abstract class AbstractTranslationController extends AbstractModuleController {
      * @param $entryID
      * @param $locale
      */
-    abstract protected function addTranslation($entryID, $locale);
+    //abstract protected function addTranslation($entryID, $locale);
 }

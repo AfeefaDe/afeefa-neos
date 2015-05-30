@@ -7,22 +7,24 @@ namespace DDFA\Main\Domain\Repository;
  *                                                                        */
 
 use DDFA\Main\Domain\Model\Actor as Object;
+use DDFA\Main\Domain\Model\Actor;
 use DDFA\Main\Utility\DDConst;
-use ReflectionObject;
 use TYPO3\Flow\Annotations as Flow;
+use TYPO3\Flow\Persistence\QueryInterface;
 use TYPO3\Flow\Persistence\Repository;
 
-abstract class AbstractTranslationRepository extends Repository
-{
+abstract class AbstractTranslationRepository extends Repository {
+    public function findAll() {
+        return $this->createQuery()->setOrderings(array('name' => QueryInterface::ORDER_ASCENDING))->execute();
+    }
+
     /**
      * returns all objects with a certain locale and adds number of translations (numLocales) and a string of the according locale codes (locales)
+     * @param string $locale
      * @return mixed
      */
-    public function findAllLocalized()
-    {
-        $locale = func_num_args() > 0 ? func_get_arg(0) : DDConst::LOCALE_STD;
-
-        $query = $this->createQuery();
+    public function findAllLocalized($locale = DDConst::LOCALE_STD) {
+        $query = $this->createQuery()->setOrderings(array('name' => QueryInterface::ORDER_ASCENDING));
 
         $objects = $query->matching(
             $query->equals('locale', $locale)
@@ -36,8 +38,7 @@ abstract class AbstractTranslationRepository extends Repository
      * @param $objects
      * @return mixed
      */
-    protected function includeLocales($objects)
-    {
+    protected function includeLocales($objects) {
         foreach ($objects as $o) {
             $locales = $this->findLocales($o);
             $o->numLocales = sizeof($locales);
@@ -49,13 +50,12 @@ abstract class AbstractTranslationRepository extends Repository
     /**
      * returns array of all other locale codes of available translations of the object (without its locale)
      *
-     * @param \DDFA\Main\Domain\Model\Object $object
+     * @param Actor $object
      * @return array
      */
     //TODO sophisticate
     //TODO include real languages
-    public function findLocales(Actor $object)
-    {
+    public function findLocales(Actor $object) {
         $r = array();
         $i = 0;
         foreach ($this->findAllLocalisations($object) as $localisation) {
@@ -68,15 +68,27 @@ abstract class AbstractTranslationRepository extends Repository
         return $r;
     }
 
+    /**
+     * returns all localisations of an object including itself
+     *
+     * @param Actor $object
+     * @return \TYPO3\Flow\Persistence\QueryResultInterface
+     */
+    public function findAllLocalisations(Actor $object) {
+        $query = $this->createQuery()->setOrderings(array('locale' => QueryInterface::ORDER_ASCENDING));
+        return $query->matching(
+            $query->equals('entryId', $object->getEntryId())
+        )->execute();
+
+    }
 
     /**
      * returns array of locale codes of all available translations of the object
      *
-     * @param \DDFA\Main\Domain\Model\Object $object
+     * @param Actor $object
      * @return array
      */
-    public function findAllLocales(Actor $object)
-    {
+    public function findAllLocales(Actor $object) {
         $r = array();
         $i = 0;
         foreach ($this->findAllLocalisations($object) as $localisation) {
@@ -89,13 +101,12 @@ abstract class AbstractTranslationRepository extends Repository
     /**
      * returns a specific localisation of the object (or nothing if requested locale does not exist)
      *
-     * @param \DDFA\Main\Domain\Model\Object $object
+     * @param Actor $object
      * @param $locale
-     * @return Object
+     * @return Actor
      */
-    public function findOneLocalized(Actor $object, $locale)
-    {
-        if($object->getLocale() == $object)
+    public function findOneLocalized(Actor $object, $locale = DDConst::LOCALE_STD) {
+        if ($object->getLocale() == $object)
             return $object;
 
         $query = $this->createQuery();
@@ -110,12 +121,13 @@ abstract class AbstractTranslationRepository extends Repository
     /**
      * returns only all other localisations of an object, without itself
      *
-     * @param \DDFA\Main\Domain\Model\Object $object
+     * @param Actor $object
      * @return \TYPO3\Flow\Persistence\QueryResultInterface
      */
-    public function findLocalisations(Actor $object)
-    {
-        $query = $this->createQuery();
+    //TODO not used
+
+    public function findLocalisations(Actor $object) {
+        $query = $this->createQuery()->setOrderings(array('locale' => QueryInterface::ORDER_ASCENDING));
         return $query->matching(
             $query->logicalAnd(
                 $query->equals('entryId', $object->getEntryId()),
@@ -124,44 +136,5 @@ abstract class AbstractTranslationRepository extends Repository
                 )
             )
         )->execute();
-    }
-
-    /**
-     * returns all localisations of an object including itself
-     *
-     * @param \DDFA\Main\Domain\Model\Object $object
-     * @return \TYPO3\Flow\Persistence\QueryResultInterface
-     */
-    public function findAllLocalisations(Actor $object)
-    {
-        $query = $this->createQuery();
-        return $query->matching(
-            $query->equals('entryId', $object->getEntryId())
-        )->execute();
-
-    }
-
-    /**
-     * hydrated the object, meaning this method fills all empty properties of a translation object with values of the original entry
-     *
-     * @param \DDFA\Main\Domain\Model\Object $object
-     * @return Object
-     */
-    public function hydrate(Actor $object) {
-        if($object->getLocale() != DDConst::LOCALE_STD) {
-            $parentEntry = $this->findOneLocalized($object, DDConst::LOCALE_STD);
-            $parentReflection = new ReflectionObject($parentEntry);
-            $sourceReflection = new ReflectionObject($object);
-            foreach($sourceReflection->getProperties() as $property) {
-                $property->setAccessible(true);
-                $value = $property->getValue($object);
-                if($value == NULL || $value == "") {
-                    $parentProperty = $parentReflection->getProperty($property->getName());
-                    $parentProperty->setAccessible(true);
-                    $property->setValue($object, $parentProperty->getValue($parentEntry));
-                }
-            }
-        }
-        return $object;
     }
 }

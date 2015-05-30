@@ -6,7 +6,6 @@ namespace DDFA\Main\Domain\Repository;
  *                                                                        *
  *                                                                        */
 
-use DDFA\Main\Domain\Model\Actor as Object;
 use DDFA\Main\Domain\Model\Actor;
 use DDFA\Main\Utility\DDConst;
 use TYPO3\Flow\Annotations as Flow;

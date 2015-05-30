@@ -6,6 +6,7 @@ namespace DDFA\Main\Domain\Repository;
  *                                                                        *
  *                                                                        */
 
+use DDFA\Main\Domain\Model\Actor;
 use DDFA\Main\Domain\Model\Initiative;
 use DDFA\Main\Utility\DDConst;
 use ReflectionObject;
@@ -29,7 +30,7 @@ class InitiativeRepository extends AbstractTranslationRepository {
     /**
      * hydrated the object, meaning this method fills all empty properties of a translation object with values of the original entry
      *
-     * @param Initiative $object
+     * @param Initiative|Actor $object
      * @param string $baseLocale
      * @return Initiative
      */

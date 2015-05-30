@@ -7,7 +7,6 @@ namespace DDFA\Main\Controller\Module\DDFA;
  *                                                                        */
 
 use DateTime;
-use DDFA\Main\Domain\Model\Actor as Object;
 use DDFA\Main\Domain\Model\Location as Location;
 use DDFA\Main\Domain\Repository\CategoryRepository;
 use DDFA\Main\Domain\Repository\InitiativeRepository as InitiativeRepository;

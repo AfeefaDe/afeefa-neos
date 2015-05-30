@@ -6,9 +6,8 @@ namespace DDFA\Main\Domain\Repository;
  *                                                                        *
  *                                                                        */
 
-use DDFA\Main\Domain\Model\Initiative;
+use DDFA\Main\Domain\Model\Actor;
 use DDFA\Main\Domain\Model\Location as Location;
-use DDFA\Main\Domain\Repository\InitiativeRepository;
 use DDFA\Main\Utility\DDConst;
 use ReflectionObject;
 use TYPO3\Flow\Annotations as Flow;
@@ -149,7 +148,7 @@ class LocationRepository extends AbstractTranslationRepository {
     /**
      * hydrated the object, meaning this method fills all empty properties of a translation object with values of the original entry
      *
-     * @param Location $object
+     * @param Location|Actor $object
      * @param string $baseLocale
      * @return Location
      */

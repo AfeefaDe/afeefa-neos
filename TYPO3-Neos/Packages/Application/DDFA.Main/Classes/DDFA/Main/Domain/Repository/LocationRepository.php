@@ -10,6 +10,7 @@ use DDFA\Main\Domain\Model\Location as Location;
 use DDFA\Main\Utility\DDConst;
 use ReflectionObject;
 use TYPO3\Flow\Annotations as Flow;
+use TYPO3\Flow\Persistence\QueryInterface;
 
 /**
  * @Flow\Scope("singleton")
@@ -23,9 +24,14 @@ class LocationRepository extends AbstractTranslationRepository
      */
     protected $initiativeRepository;
 
+    public function findAll()
+    {
+        return $this->createQuery()->setOrderings(array('name' => QueryInterface::ORDER_ASCENDING))->execute();
+    }
+
     public function findAllOfInitiative()
     {
-        $query = $this->createQuery();
+        $query = $this->createQuery()->setOrderings(array('updated' => QueryInterface::ORDER_DESCENDING));
         return $query->matching(
             $query->equals('type', DDConst::LOCATION_INI)
         )->execute();
@@ -33,7 +39,7 @@ class LocationRepository extends AbstractTranslationRepository
 
     public function findAllOfMarketEntry()
     {
-        $query = $this->createQuery();
+        $query = $this->createQuery()->setOrderings(array('updated' => QueryInterface::ORDER_DESCENDING));
         return $query->matching(
             $query->equals('type', DDConst::LOCATION_MARKET)
         )->execute();
@@ -41,7 +47,7 @@ class LocationRepository extends AbstractTranslationRepository
 
     public function findAllOfEvent()
     {
-        $query = $this->createQuery();
+        $query = $this->createQuery()->setOrderings(array('updated' => QueryInterface::ORDER_DESCENDING));
         return $query->matching(
             $query->equals('type', DDConst::LOCATION_EVENT)
         )->execute();
@@ -49,7 +55,7 @@ class LocationRepository extends AbstractTranslationRepository
 
     public function findAllOfInitiativeLocalized($locale)
     {
-        $query = $this->createQuery();
+        $query = $this->createQuery()->setOrderings(array('updated' => QueryInterface::ORDER_DESCENDING));
         $locations = $query->matching(
             $query->logicalAnd(
                 $query->equals('type', DDConst::LOCATION_INI),
@@ -62,7 +68,7 @@ class LocationRepository extends AbstractTranslationRepository
 
     public function findAllOfMarketEntryLocalized($locale)
     {
-        $query = $this->createQuery();
+        $query = $this->createQuery()->setOrderings(array('updated' => QueryInterface::ORDER_DESCENDING));
         $locations = $query->matching(
             $query->logicalAnd(
                 $query->equals('type', DDConst::LOCATION_MARKET),
@@ -75,7 +81,7 @@ class LocationRepository extends AbstractTranslationRepository
 
     public function findAllOfEventLocalized($locale)
     {
-        $query = $this->createQuery();
+        $query = $this->createQuery()->setOrderings(array('updated' => QueryInterface::ORDER_DESCENDING));
         $locations = $query->matching(
             $query->logicalAnd(
                 $query->equals('type', DDConst::LOCATION_EVENT),

@@ -11,10 +11,16 @@ use DDFA\Main\Domain\Model\Actor as Object;
 use DDFA\Main\Utility\DDConst;
 use ReflectionObject;
 use TYPO3\Flow\Annotations as Flow;
+use TYPO3\Flow\Persistence\QueryInterface;
 use TYPO3\Flow\Persistence\Repository;
 
 abstract class AbstractTranslationRepository extends Repository
 {
+    public function findAll()
+    {
+        return $this->createQuery()->setOrderings(array('name' => QueryInterface::ORDER_ASCENDING))->execute();
+    }
+
     /**
      * returns all objects with a certain locale and adds number of translations (numLocales) and a string of the according locale codes (locales)
      * @param string $locale
@@ -22,7 +28,7 @@ abstract class AbstractTranslationRepository extends Repository
      */
     public function findAllLocalized($locale = DDConst::LOCALE_STD)
     {
-        $query = $this->createQuery();
+        $query = $this->createQuery()->setOrderings(array('name' => QueryInterface::ORDER_ASCENDING));
 
         $objects = $query->matching(
             $query->equals('locale', $locale)
@@ -76,7 +82,7 @@ abstract class AbstractTranslationRepository extends Repository
      */
     public function findAllLocalisations(Actor $object)
     {
-        $query = $this->createQuery();
+        $query = $this->createQuery()->setOrderings(array('locale' => QueryInterface::ORDER_ASCENDING));
         return $query->matching(
             $query->equals('entryId', $object->getEntryId())
         )->execute();
@@ -169,9 +175,11 @@ abstract class AbstractTranslationRepository extends Repository
      * @param Actor $object
      * @return \TYPO3\Flow\Persistence\QueryResultInterface
      */
+    //TODO not used
+
     public function findLocalisations(Actor $object)
     {
-        $query = $this->createQuery();
+        $query = $this->createQuery()->setOrderings(array('locale' => QueryInterface::ORDER_ASCENDING));
         return $query->matching(
             $query->logicalAnd(
                 $query->equals('entryId', $object->getEntryId()),

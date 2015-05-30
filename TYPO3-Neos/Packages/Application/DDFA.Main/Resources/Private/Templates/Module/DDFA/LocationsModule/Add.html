@@ -1,34 +1,76 @@
 <f:layout name="Default"/>
 
-<f:section name="title">Add a new location</f:section>
+<f:section name="title">
+    Add a new
+    <f:if condition="{type} == '0'">
+        initiative
+    </f:if>
+    <f:if condition="{type} == '1'">
+        market
+    </f:if>
+    <f:if condition="{type} == '2'">
+        event
+    </f:if>
+    <f:if condition="{type} == '3'">
+        basic
+    </f:if>
+    location
+</f:section>
 
 <f:section name="content">
-    <f:if condition="{inis}">
-        <f:then>
-            <f:form method="post" action="create" object="{newObject}" name="newObject"
-                    enctype="multipart/form-data">
-                <div class="neos-row-fluid neos-module-container">
-                    <f:render partial="Location/LocationForm" arguments="{inis: inis}"/>
+    <!-- BEGIN INI LOCATION -->
+    <f:if condition="{type} == '0'">
+        <f:if condition="{inis}">
+            <f:then>
+                <f:form method="post" action="create" object="{newObject}" name="newObject"
+                        enctype="multipart/form-data">
+                    <div style="display: none;">
+                        <f:form.hidden name="type" value="{type}"/>
+                    </div>
+                    <div class="neos-row-fluid neos-module-container">
+                        <f:render partial="Location/LocationForm" arguments="{inis: inis}"/>
+                    </div>
+                    <f:render partial="Location/LocationAddFooter"/>
+                </f:form>
+            </f:then>
+            <f:else>
+                <div class="neos-module-container">
+                    You need at least one initiative to add a location!
                 </div>
-                <div class="neos-footer">
-                    <f:link.action action="index" class="neos-button" title="back to index">Abort</f:link.action>
-                    <f:form.submit value="Create location" class="neos-button" name="create"
-                                   title="save the new location"/>
-                    <f:form.submit value="Add translation" class="neos-button neos-button-primary" name="localize"
-                                   title="save and edit the english translation"/>
-                </div>
-            </f:form>
-        </f:then>
-        <f:else>
-            <div class="neos-module-container">
-                You need at least one initiative to add a location!
+                <f:render partial="Location/LocationAddFooterFail"/>
+            </f:else>
+        </f:if>
+    </f:if>
+    <!-- END OF INI LOCATION -->
+
+    <f:if condition="{type} == '1'">
+        tba: market entry location form
+        <f:render partial="Shared/FooterBack"/>
+    </f:if>
+
+    <f:if condition="{type} == '2'">
+        tba: event location form
+        <f:render partial="Shared/FooterBack"/>
+    </f:if>
+
+    <!-- TODO maybe restructure conditions -->
+    <!-- BEGIN BASIC LOCATION -->
+    <f:if condition="{type} == '3'">
+        <f:form method="post" action="create" object="{newObject}" name="newObject"
+                enctype="multipart/form-data">
+            <div style="display: none;">
+                <f:form.hidden name="type" value="{type}"/>
             </div>
-            <div class="neos-footer">
-                <f:link.action action="index" class="neos-button" title="back to index">Abort</f:link.action>
-                <f:link.action action="../initiatives/add" class="neos-button neos-button-primary"
-                               title="add a initiative">Add initiative
-                </f:link.action>
+            <div class="neos-row-fluid neos-module-container">
+                <f:render partial="Location/LocationForm"/>
             </div>
-        </f:else>
+            <f:render partial="Location/LocationAddFooter"/>
+        </f:form>
+    </f:if>
+    <!-- END OF BASIC LOCATION -->
+
+    <f:if condition="{fail}">
+        please select a valid location type
+        <f:render partial="Shared/FooterBack"/>
     </f:if>
 </f:section>

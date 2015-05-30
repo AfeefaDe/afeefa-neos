@@ -45,8 +45,11 @@ class LocationsModuleController extends AbstractTranslationController
      */
     public function indexAction()
     {
-        $this->view->assign('iniLocations', $this->objectRepository->findAllOfInitiativeLocalized(DDConst::LOCALE_STD));
         $this->view->assign('numLanguages', $this->languageRepository->findAll()->count() - 1);
+        $this->view->assign('iniLocations', $this->objectRepository->findAllOfInitiativeLocalized());
+        $this->view->assign('basicLocations', $this->objectRepository->findAllOfBasicLocalized());
+        $this->view->assign('marketLocations', $this->objectRepository->findAllOfMarketLocalized());
+        //$this->view->assign('eventLocations', $this->objectRepository->findAllOfEventLocalized());
     }
 
     /**
@@ -71,7 +74,30 @@ class LocationsModuleController extends AbstractTranslationController
      */
     public function addAction()
     {
-        $this->view->assign('inis', $this->initiativeRepository->findAllLocalized());
+        if (isset($_GET['moduleArguments']['type'])) {
+            $type = $_GET['moduleArguments']['type'];
+            $this->view->assign('type', $type);
+            switch ($type) {
+                case DDConst::LOCATION_INI:
+                    $this->view->assign('inis', $this->initiativeRepository->findAllLocalized());
+                    break;
+                case DDConst::LOCATION_MARKET:
+                    //TODO assign market entries
+                    //$this->view->assign('entries', );
+                    break;
+                case DDConst::LOCATION_EVENT:
+                    //TODO assign events
+                    //$this->view->assign('events', );
+                    break;
+                case DDConst::LOCATION_BASIC:
+                    //justly empty!
+                    break;
+                default:
+                    $this->view->assign('fail', TRUE);
+            }
+        } else {
+            $this->view->assign('fail', TRUE);
+        }
     }
 
     /**
@@ -81,16 +107,32 @@ class LocationsModuleController extends AbstractTranslationController
      */
     public function createAction(Location $newObject)
     {
-        $newObject->setInitiative($this->initiativeRepository->findOneByName($_POST['moduleArguments']['ini']));
-        $this->objectRepository->add($newObject);
-        $this->addFlashMessage('A new location has been created successfully.');
+        if (isset($_POST['moduleArguments']['type'])) {
+            $type = $_POST['moduleArguments']['type'];
+            switch ($type) {
+                case DDConst::LOCATION_INI:
+                    $newObject->setInitiative($this->initiativeRepository->findOneByName($_POST['moduleArguments']['ini']));
+                case DDConst::LOCATION_MARKET:
+                case DDConst::LOCATION_EVENT:
+                case DDConst::LOCATION_BASIC:
+                    $newObject->setType($type);
+                    break;
 
-        if (isset($_POST['moduleArguments']['localize'])) {
-            $editObject = $this->addTranslation($newObject->getEntryId(), DDConst::LOCALE_NXT);
-            $this->redirect('edit', NULL, NULL, array('editObject' => $editObject, 'viewObject' => $newObject));
+            }
 
-        } else
-            $this->redirect('index');
+            $this->objectRepository->add($newObject);
+            $this->addFlashMessage('A new location has been created successfully.');
+
+            if (isset($_POST['moduleArguments']['localize'])) {
+                $editObject = $this->addTranslation($newObject->getEntryId(), DDConst::LOCALE_NXT);
+                $this->redirect('edit', NULL, NULL, array('editObject' => $editObject, 'viewObject' => $newObject));
+
+            } else
+                $this->redirect('index');
+        } else {
+            //TODO btw: general error handling
+            die("No location type selected!");
+        }
     }
 
     /**

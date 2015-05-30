@@ -37,11 +37,19 @@ class LocationRepository extends AbstractTranslationRepository
         )->execute();
     }
 
-    public function findAllOfMarketEntry()
+    public function findAllOfMarket()
     {
         $query = $this->createQuery()->setOrderings(array('updated' => QueryInterface::ORDER_DESCENDING));
         return $query->matching(
             $query->equals('type', DDConst::LOCATION_MARKET)
+        )->execute();
+    }
+
+    public function findAllOfBasic()
+    {
+        $query = $this->createQuery()->setOrderings(array('name' => QueryInterface::ORDER_DESCENDING));
+        return $query->matching(
+            $query->equals('type', DDConst::LOCATION_BASIC)
         )->execute();
     }
 
@@ -53,7 +61,7 @@ class LocationRepository extends AbstractTranslationRepository
         )->execute();
     }
 
-    public function findAllOfInitiativeLocalized($locale)
+    public function findAllOfInitiativeLocalized($locale = DDConst::LOCALE_STD)
     {
         $query = $this->createQuery()->setOrderings(array('updated' => QueryInterface::ORDER_DESCENDING));
         $locations = $query->matching(
@@ -66,7 +74,7 @@ class LocationRepository extends AbstractTranslationRepository
         return $this->includeLocales($locations);
     }
 
-    public function findAllOfMarketEntryLocalized($locale)
+    public function findAllOfMarketLocalized($locale = DDConst::LOCALE_STD)
     {
         $query = $this->createQuery()->setOrderings(array('updated' => QueryInterface::ORDER_DESCENDING));
         $locations = $query->matching(
@@ -79,7 +87,20 @@ class LocationRepository extends AbstractTranslationRepository
         return $this->includeLocales($locations);
     }
 
-    public function findAllOfEventLocalized($locale)
+    public function findAllOfBasicLocalized($locale = DDConst::LOCALE_STD)
+    {
+        $query = $this->createQuery()->setOrderings(array('name' => QueryInterface::ORDER_DESCENDING));
+        $locations = $query->matching(
+            $query->logicalAnd(
+                $query->equals('type', DDConst::LOCATION_BASIC),
+                $query->equals('locale', $locale)
+            )
+        )->execute();
+
+        return $this->includeLocales($locations);
+    }
+
+    public function findAllOfEventLocalized($locale = DDConst::LOCALE_STD)
     {
         $query = $this->createQuery()->setOrderings(array('updated' => QueryInterface::ORDER_DESCENDING));
         $locations = $query->matching(

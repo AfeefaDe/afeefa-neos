@@ -9,7 +9,6 @@ namespace DDFA\Main\Domain\Model;
 use DDFA\Main\Domain\Model\Event as Event;
 use DDFA\Main\Domain\Model\Initiative as Initiative;
 use DDFA\Main\Domain\Model\MarketEntry as MarketEntry;
-use DDFA\Main\Utility\DDConst;
 use Doctrine\ORM\Mapping as ORM;
 use TYPO3\Flow\Annotations as Flow;
 
@@ -95,7 +94,6 @@ class Location extends Actor
     public function __construct()
     {
         parent::__construct();
-        $this->setType(DDConst::LOCATION_INI);
     }
 
     /**
@@ -175,12 +173,12 @@ class Location extends Actor
     }
 
     /**
-     * @param string $zip
+     * @param string $street
      * @return void
      */
-    public function setZip($zip)
+    public function setStreet($street)
     {
-        $this->zip = $zip;
+        $this->street = $street;
     }
 
     /**
@@ -201,20 +199,20 @@ class Location extends Actor
     }
 
     /**
-     * @param string $street
-     * @return void
-     */
-    public function setStreet($street)
-    {
-        $this->street = $street;
-    }
-
-    /**
      * @return string
      */
     public function getZip()
     {
         return $this->zip;
+    }
+
+    /**
+     * @param string $zip
+     * @return void
+     */
+    public function setZip($zip)
+    {
+        $this->zip = $zip;
     }
 
     /**

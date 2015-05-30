@@ -111,7 +111,7 @@ abstract class AbstractTranslationRepository extends Repository
      * @param $locale
      * @return Actor
      */
-    public function findOneHydrated(Actor $object, $locale)
+    public function findOneHydrated(Actor $object, $locale = DDConst::LOCALE_STD)
     {
         return $this->hydrate($this->findOneLocalized($object, $locale));
     }
@@ -155,7 +155,7 @@ abstract class AbstractTranslationRepository extends Repository
      * @param $locale
      * @return Actor
      */
-    public function findOneLocalized(Actor $object, $locale)
+    public function findOneLocalized(Actor $object, $locale = DDConst::LOCALE_STD)
     {
         if ($object->getLocale() == $object)
             return $object;

@@ -1,4 +1,4 @@
-qx.Class.define("MenuBtnView", {
+qx.Class.define("MenuView", {
     
     extend : View,
 	type: "singleton",
@@ -6,7 +6,7 @@ qx.Class.define("MenuBtnView", {
     construct: function(){
     	var that = this;
 
-        that.setViewId('menuBtnView');
+        that.setViewId('menuView');
     },
 
     members : {
@@ -20,9 +20,21 @@ qx.Class.define("MenuBtnView", {
 
             // menu button
             that.menuBtn = $("<div />");
-            that.menuBtn.addClass('btn');
+            that.menuBtn.addClass('menu-btn');
             that.view.append(that.menuBtn);
 
+            // menu
+            that.menu  = $("<div />");
+            that.menu.attr('id', 'main-menu');
+            that.view.append(that.menu);
+
+            // logo
+            var a = $('<a />').attr('href', 'http://afeefa.com');
+            that.logo  = $('<img />').attr('src', APP.getConfig().imgPath + 'connectedd_light.svg');
+            that.logo.attr('id', 'logo');
+            a.append(that.logo);
+            that.menu.append(a);
+            
             $('#main-container').append(that.view);
 
             this.base(arguments);
@@ -35,7 +47,11 @@ qx.Class.define("MenuBtnView", {
             this.base(arguments);
             
             that.menuBtn.click(function(){
-                $('#main-container').toggleClass('shifted');
+                $('#main-container').addClass('shifted');
+            });
+
+            that.listen('curtainclicked', function(){
+                $('#main-container').removeClass('shifted');
             });
             
         },

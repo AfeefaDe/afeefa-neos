@@ -23,6 +23,9 @@ qx.Class.define("MapView", {
       	
       	var that = this;
 
+      	that.mapCurtain = $("<div />").attr('id', 'map-curtain');
+        $('#main-container').append(that.mapCurtain);
+
 	    //////////////////
       	// MAPBOX INIT //
 	    //////////////////
@@ -103,11 +106,21 @@ qx.Class.define("MapView", {
 
     	var that = this;
     	
+	    //////////
+    	// say //
+	    //////////
 		// map click (not fired on drag or marker click or sth, pure map click!)
 		that.map.on('click', function(e) {
 			that.say('mapclicked');
 		});
 
+		that.mapCurtain.on('click', function(e) {
+			that.say('curtainclicked');
+		});
+
+		//////////////
+		// listen //
+		//////////////
 		that.listen('mapclicked', function(){
             that.deselectMarker();
         });

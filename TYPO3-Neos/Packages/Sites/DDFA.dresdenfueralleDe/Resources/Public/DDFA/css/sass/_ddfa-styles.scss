@@ -1,4 +1,20 @@
-/* main styles for dresdenfueralle.de */
+@mixin circleBtn {
+
+	width: 3em;
+	height: 3em;
+	@include border-radius(2em);
+	@include box-sizing(border-box);
+	@include box-shadow(0px 0px 2px #333);
+	
+	@include background-size(50%);
+	background-position: center center;
+	background-repeat: no-repeat;
+	cursor: pointer;
+
+	&:hover {
+		@include box-shadow(0px 0px 5px #111);
+	}
+}
 
 body {
 	margin: 0;
@@ -62,7 +78,7 @@ a {
 	}
 
 	&.shifted {
-		left: 15%;
+		left: 15em;
 
 		#map-curtain {
 			@include mapCurtainActive;

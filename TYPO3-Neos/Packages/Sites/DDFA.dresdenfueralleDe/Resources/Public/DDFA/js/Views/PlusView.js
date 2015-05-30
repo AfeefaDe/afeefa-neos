@@ -34,7 +34,7 @@ qx.Class.define("PlusView", {
             that.plusBtn.addClass('btn plusBtn');
             that.view.append(that.plusBtn);
             
-            $('body').append(that.view);
+            $('#main-container').append(that.view);
 
             this.base(arguments);
     	},

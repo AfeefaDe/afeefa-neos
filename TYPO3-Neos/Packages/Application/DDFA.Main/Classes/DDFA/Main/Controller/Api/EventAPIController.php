@@ -16,7 +16,7 @@ use TYPO3\Flow\Annotations as Flow;
 use TYPO3\Flow\Mvc\View\JsonView;
 use TYPO3\Flow\Mvc\View\ViewInterface;
 
-class EventController extends ActionController {
+class EventAPIController extends ActionController {
 
     /**
      * @Flow\Inject

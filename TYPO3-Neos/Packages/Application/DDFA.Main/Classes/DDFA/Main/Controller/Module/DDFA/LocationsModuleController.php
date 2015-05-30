@@ -9,6 +9,7 @@ namespace DDFA\Main\Controller\Module\DDFA;
 use DateTime;
 use DDFA\Main\Domain\Model\Actor as Object;
 use DDFA\Main\Domain\Model\Location as Location;
+use DDFA\Main\Domain\Repository\CategoryRepository;
 use DDFA\Main\Domain\Repository\InitiativeRepository as InitiativeRepository;
 use DDFA\Main\Domain\Repository\LanguageRepository as LanguageRepository;
 use DDFA\Main\Domain\Repository\LocationRepository as LocationRepository;
@@ -32,6 +33,11 @@ class LocationsModuleController extends AbstractTranslationController {
      * @var InitiativeRepository
      */
     protected $initiativeRepository;
+    /**
+     * @Flow\Inject
+     * @var CategoryRepository
+     */
+    protected $categoryRepository;
 
     /**
      * @Flow\Inject
@@ -74,19 +80,20 @@ class LocationsModuleController extends AbstractTranslationController {
         if (isset($_GET['moduleArguments']['type'])) {
             $type = $_GET['moduleArguments']['type'];
             $this->view->assign('type', $type);
+            $this->view->assign('cats', $this->categoryRepository->findByType($type));
             switch ($type) {
-                case DDConst::LOCATION_INI:
+                case DDConst::OWNER_INI:
                     $this->view->assign('inis', $this->initiativeRepository->findAllLocalized());
                     break;
-                case DDConst::LOCATION_MARKET:
+                case DDConst::OWNER_MARKET:
                     //TODO assign market entries
                     //$this->view->assign('entries', );
                     break;
-                case DDConst::LOCATION_EVENT:
+                case DDConst::OWNER_EVENT:
                     //TODO assign events
                     //$this->view->assign('events', );
                     break;
-                case DDConst::LOCATION_BASIC:
+                case DDConst::OWNER_BASIC:
                     //justly empty!
                     break;
                 default:
@@ -106,15 +113,21 @@ class LocationsModuleController extends AbstractTranslationController {
         if (isset($_POST['moduleArguments']['type'])) {
             $type = $_POST['moduleArguments']['type'];
             switch ($type) {
-                case DDConst::LOCATION_INI:
+                case DDConst::OWNER_INI:
+                    //TODO make this safer, better, harder, stronger!
                     $newObject->setInitiative($this->initiativeRepository->findOneByName($_POST['moduleArguments']['ini']));
-                case DDConst::LOCATION_MARKET:
-                case DDConst::LOCATION_EVENT:
-                case DDConst::LOCATION_BASIC:
-                    $newObject->setType($type);
                     break;
-
+                case DDConst::OWNER_MARKET:
+                    break;
+                case DDConst::OWNER_EVENT:
+                    break;
+                case DDConst::OWNER_BASIC:
+                    break;
+                default:
+                    //TODO error handling
             }
+            $newObject->setType($type);
+            $newObject->setCategory($this->categoryRepository->findOneByName($_POST['moduleArguments']['cat']));
 
             $this->objectRepository->add($newObject);
             $this->addFlashMessage('A new location has been created successfully.');
@@ -171,6 +184,7 @@ class LocationsModuleController extends AbstractTranslationController {
         } else {
             $this->view->assign('editObject', $editObject);
             $this->view->assign('inis', $this->initiativeRepository->findAllLocalized());
+            $this->view->assign('cats', $this->categoryRepository->findByType($editObject->getType()));
             $this->view->assign('languages', $this->languageRepository->findAll());
         }
     }
@@ -182,8 +196,11 @@ class LocationsModuleController extends AbstractTranslationController {
      */
     public function updateAction(Location $editObject) {
         if (isset($_POST['moduleArguments']['ini'])) {
-            $ini = $_POST['moduleArguments']['ini'];
-            $editObject->setInitiative($this->initiativeRepository->findOneByName($ini));
+            $editObject->setInitiative($this->initiativeRepository->findOneByName($_POST['moduleArguments']['ini']));
+        }
+
+        if (isset($_POST['moduleArguments']['cat'])) {
+            $editObject->setCategory($this->categoryRepository->findOneByName($_POST['moduleArguments']['cat']));
         }
 
         $this->addFlashMessage('The location has been updated successfully.');

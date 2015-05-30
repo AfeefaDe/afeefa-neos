@@ -9,7 +9,6 @@ namespace DDFA\Main\Controller\Api;
 
 use DDFA\Main\Domain\Model\Location;
 use DDFA\Main\Domain\Repository\LocationRepository;
-use DDFA\Main\Utility\DDConst;
 use TYPO3\Flow\Annotations as Flow;
 use TYPO3\Flow\Mvc\Controller\ActionController;
 use TYPO3\Flow\Mvc\View\JsonView;
@@ -31,7 +30,7 @@ class LocationAPIController extends ActionController {
 
     public function listAction() {
         //TODO include language
-        $this->view->assign('value', ['locations' => $this->iniLocationRepository->findAllSupplemented(DDConst::LOCALE_STD)]);
+        $this->view->assign('value', ['locations' => $this->iniLocationRepository->findAllSupplemented()]);
     }
 
     public function showAction(Location $location) {

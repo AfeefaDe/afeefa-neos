@@ -106,6 +106,7 @@ class CategoriesModuleController extends AbstractModuleController {
      * @return Initiative
      */
     protected function addTranslation($entryID, $locale) {
+        //TODO make translatable... or delete this block
 //        $object = new Category();
 //        $object->setEntryId($entryID);
 //        $object->setLocale($locale);

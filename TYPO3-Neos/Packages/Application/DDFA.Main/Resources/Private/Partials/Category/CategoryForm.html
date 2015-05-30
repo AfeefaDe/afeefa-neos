@@ -1,16 +1,32 @@
-<fieldset class="neos-span5">
-    <legend>Name</legend>
+<fieldset xmlns:f="http://www.w3.org/1999/html" class="neos-span5">
+    <legend>Meta-Category</legend>
+
     <div class="neos-control-group">
+        <label class="neos-control-label" for="type">Type</label>
+
         <div class="neos-controls">
-            <f:form.textfield class="neos-span12" property="name" id="name" placeholder="Enter name" required="true"
-                              autofocus="true"/>
+            <f:form.select class="neos-span12" id="type" property="type"
+                           options="{0: 'Initiatives, InitiativeLocations', 1: 'MarketEntries, MarketLocations', 2: 'Events, EventLocations', 3: 'BasicLocations'}"
+                           value="{selectedType}"/>
         </div>
     </div>
 </fieldset>
 
 <fieldset class="neos-span5">
-    <legend>Description</legend>
+    <legend>Content</legend>
+
     <div class="neos-control-group">
+        <label class="neos-control-label" for="name">Name</label>
+
+        <div class="neos-controls">
+            <f:form.textfield class="neos-span12" property="name" id="name" placeholder="Enter name" required="true"
+                              autofocus="true"/>
+        </div>
+    </div>
+
+    <div class="neos-control-group">
+        <label class="neos-control-label" for="description">Description</label>
+
         <div class="neos-controls">
             <f:form.textarea class="neos-span12" rows="8" property="description" id="description"
                              placeholder="Enter a description text..."/>

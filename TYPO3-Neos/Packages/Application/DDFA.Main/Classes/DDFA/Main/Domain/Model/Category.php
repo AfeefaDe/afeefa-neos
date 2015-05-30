@@ -6,6 +6,7 @@ namespace DDFA\Main\Domain\Model;
  *                                                                        *
  *                                                                        */
 
+use DDFA\Main\Utility\DDConst;
 use Doctrine\ORM\Mapping as ORM;
 use TYPO3\Flow\Annotations as Flow;
 
@@ -23,6 +24,11 @@ class Category extends BasicEntity
     /**
      * @var string
      */
+    protected $locale;
+
+    /**
+     * @var string
+     */
     protected $name;
 
     /**
@@ -34,6 +40,7 @@ class Category extends BasicEntity
     {
         parent::__construct();
         $this->setEntryId(uniqid());
+        $this->setLocale(DDConst::LOCALE_STD);
     }
 
     /**
@@ -84,5 +91,21 @@ class Category extends BasicEntity
     public function setEntryId($entryId)
     {
         $this->entryId = $entryId;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLocale()
+    {
+        return $this->locale;
+    }
+
+    /**
+     * @param string $locale
+     */
+    public function setLocale($locale)
+    {
+        $this->locale = $locale;
     }
 }

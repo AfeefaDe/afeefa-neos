@@ -55,7 +55,7 @@ class LocationAPIController extends ActionController
 
     public function listAction() {
         //TODO include language
-        $this->view->assign('value', ['locations' => $this->iniLocationRepository->findAllSupplemented(DDConst::DE_LOCALE)]);
+        $this->view->assign('value', ['locations' => $this->iniLocationRepository->findAllSupplemented(DDConst::LOCALE_STD)]);
     }
 
     public function showAction(Location $location) {

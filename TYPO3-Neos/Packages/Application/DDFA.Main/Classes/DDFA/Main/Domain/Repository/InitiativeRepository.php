@@ -22,7 +22,8 @@ class InitiativeRepository extends AbstractTranslationRepository {
      * @return Initiative
      */
     public function findOneHydrated(Initiative $object, $locale = DDConst::LOCALE_STD) {
-        return $this->hydrate($this->findOneLocalized($object, $locale));
+        $localizedObject = $this->findOneLocalized($object, $locale);
+        return $localizedObject == NULL ? $object : $this->hydrate($localizedObject);
     }
 
     /**

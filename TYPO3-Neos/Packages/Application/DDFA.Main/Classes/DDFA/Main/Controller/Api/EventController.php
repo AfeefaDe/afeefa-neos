@@ -16,8 +16,7 @@ use TYPO3\Flow\Mvc\Controller\ActionController;
 use TYPO3\Flow\Mvc\View\JsonView;
 use TYPO3\Flow\Mvc\View\ViewInterface;
 
-class EventController extends ActionController
-{
+class EventController extends ActionController {
 
     /**
      * @Flow\Inject
@@ -32,18 +31,15 @@ class EventController extends ActionController
      */
     protected $supportedMediaTypes = array('application/json');
 
-    public function listAction()
-    {
+    public function listAction() {
         $this->view->assign('value', ['events' => $this->eventRepository->findAll()]);
     }
 
-    public function showAction(Event $event)
-    {
+    public function showAction(Event $event) {
         $this->view->assign('value', ['event' => $event]);
     }
 
-    protected function initializeView(ViewInterface $view)
-    {
+    protected function initializeView(ViewInterface $view) {
         if ($view instanceof JsonView) {
             $eventconfig = [
                 '_exposeObjectIdentifier' => TRUE,

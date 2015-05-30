@@ -16,53 +16,46 @@ use TYPO3\Flow\Persistence\QueryInterface;
  * @Flow\Scope("singleton")
  */
 //TODO add docs
-class LocationRepository extends AbstractTranslationRepository
-{
+class LocationRepository extends AbstractTranslationRepository {
     /**
      * @Flow\Inject
      * @var InitiativeRepository
      */
     protected $initiativeRepository;
 
-    public function findAll()
-    {
+    public function findAll() {
         return $this->createQuery()->setOrderings(array('name' => QueryInterface::ORDER_ASCENDING))->execute();
     }
 
-    public function findAllOfInitiative()
-    {
+    public function findAllOfInitiative() {
         $query = $this->createQuery()->setOrderings(array('updated' => QueryInterface::ORDER_DESCENDING));
         return $query->matching(
             $query->equals('type', DDConst::LOCATION_INI)
         )->execute();
     }
 
-    public function findAllOfMarket()
-    {
+    public function findAllOfMarket() {
         $query = $this->createQuery()->setOrderings(array('updated' => QueryInterface::ORDER_DESCENDING));
         return $query->matching(
             $query->equals('type', DDConst::LOCATION_MARKET)
         )->execute();
     }
 
-    public function findAllOfBasic()
-    {
+    public function findAllOfBasic() {
         $query = $this->createQuery()->setOrderings(array('name' => QueryInterface::ORDER_DESCENDING));
         return $query->matching(
             $query->equals('type', DDConst::LOCATION_BASIC)
         )->execute();
     }
 
-    public function findAllOfEvent()
-    {
+    public function findAllOfEvent() {
         $query = $this->createQuery()->setOrderings(array('updated' => QueryInterface::ORDER_DESCENDING));
         return $query->matching(
             $query->equals('type', DDConst::LOCATION_EVENT)
         )->execute();
     }
 
-    public function findAllOfInitiativeLocalized($locale = DDConst::LOCALE_STD)
-    {
+    public function findAllOfInitiativeLocalized($locale = DDConst::LOCALE_STD) {
         $query = $this->createQuery()->setOrderings(array('updated' => QueryInterface::ORDER_DESCENDING));
         $locations = $query->matching(
             $query->logicalAnd(
@@ -74,8 +67,7 @@ class LocationRepository extends AbstractTranslationRepository
         return $this->includeLocales($locations);
     }
 
-    public function findAllOfMarketLocalized($locale = DDConst::LOCALE_STD)
-    {
+    public function findAllOfMarketLocalized($locale = DDConst::LOCALE_STD) {
         $query = $this->createQuery()->setOrderings(array('updated' => QueryInterface::ORDER_DESCENDING));
         $locations = $query->matching(
             $query->logicalAnd(
@@ -87,8 +79,7 @@ class LocationRepository extends AbstractTranslationRepository
         return $this->includeLocales($locations);
     }
 
-    public function findAllOfBasicLocalized($locale = DDConst::LOCALE_STD)
-    {
+    public function findAllOfBasicLocalized($locale = DDConst::LOCALE_STD) {
         $query = $this->createQuery()->setOrderings(array('name' => QueryInterface::ORDER_DESCENDING));
         $locations = $query->matching(
             $query->logicalAnd(
@@ -100,8 +91,7 @@ class LocationRepository extends AbstractTranslationRepository
         return $this->includeLocales($locations);
     }
 
-    public function findAllOfEventLocalized($locale = DDConst::LOCALE_STD)
-    {
+    public function findAllOfEventLocalized($locale = DDConst::LOCALE_STD) {
         $query = $this->createQuery()->setOrderings(array('updated' => QueryInterface::ORDER_DESCENDING));
         $locations = $query->matching(
             $query->logicalAnd(
@@ -113,8 +103,7 @@ class LocationRepository extends AbstractTranslationRepository
         return $this->includeLocales($locations);
     }
 
-    public function findAllSupplemented($locale = DDConst::LOCALE_STD)
-    {
+    public function findAllSupplemented($locale = DDConst::LOCALE_STD) {
         $locations = $this->findAllLocalized($locale);
         $result = array();
         foreach ($locations as $l) {
@@ -123,9 +112,7 @@ class LocationRepository extends AbstractTranslationRepository
         return $result;
     }
 
-    public function supplement(Location $location)
-    {
-
+    public function supplement(Location $location) {
         //TODO maybe better store props in another place... one day
         $LOCATION_SUPPLEMENT_PROPS = ["description", "mail", "web", "phone", "speakerPublic", "speakerPrivate", "facebook"];
 

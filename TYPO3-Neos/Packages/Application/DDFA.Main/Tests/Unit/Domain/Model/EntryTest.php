@@ -9,14 +9,12 @@ namespace DDFA\Main\Tests\Unit\Domain\Model;
 /**
  * Testcase for Entry
  */
-class EntryTest extends \TYPO3\Flow\Tests\UnitTestCase
-{
+class EntryTest extends \TYPO3\Flow\Tests\UnitTestCase {
 
     /**
      * @test
      */
-    public function makeSureThatSomethingHolds()
-    {
+    public function makeSureThatSomethingHolds() {
         $this->markTestIncomplete('Automatically generated test case; you need to adjust this!');
 
         $expected = 'Foo';

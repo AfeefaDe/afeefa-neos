@@ -21,8 +21,7 @@ use TYPO3\Neos\Controller\Module\AbstractModuleController;
  *
  * @Flow\Scope("singleton")
  */
-class CategoriesModuleController extends AbstractModuleController
-{
+class CategoriesModuleController extends AbstractModuleController {
     /**
      * @Flow\Inject
      * @var CategoryRepository
@@ -38,8 +37,7 @@ class CategoriesModuleController extends AbstractModuleController
     /**
      * @return void
      */
-    public function indexAction()
-    {
+    public function indexAction() {
         $this->view->assign('cats', $this->objectRepository->findAll());
     }
 
@@ -47,16 +45,14 @@ class CategoriesModuleController extends AbstractModuleController
      * @param Category $viewObject
      * @return void
      */
-    public function viewAction(Category $viewObject)
-    {
+    public function viewAction(Category $viewObject) {
         $this->view->assign('viewObject', $viewObject);
     }
 
     /**
      * @return void
      */
-    public function addAction()
-    {
+    public function addAction() {
     }
 
     /**
@@ -64,8 +60,7 @@ class CategoriesModuleController extends AbstractModuleController
      * @return void
      * @throws \TYPO3\Flow\Persistence\Exception\IllegalObjectTypeException
      */
-    public function createAction(Category $newObject)
-    {
+    public function createAction(Category $newObject) {
         $this->objectRepository->add($newObject);
         $this->addFlashMessage('A new category has been created successfully.');
         if (isset($_POST['moduleArguments']['add'])) {
@@ -78,8 +73,7 @@ class CategoriesModuleController extends AbstractModuleController
     /**
      * @param Category $editObject
      */
-    public function editAction(Category $editObject)
-    {
+    public function editAction(Category $editObject) {
         $this->view->assign('editObject', $editObject);
     }
 
@@ -88,8 +82,7 @@ class CategoriesModuleController extends AbstractModuleController
      * @return void
      * @throws \TYPO3\Flow\Persistence\Exception\IllegalObjectTypeException
      */
-    public function updateAction(Category $editObject)
-    {
+    public function updateAction(Category $editObject) {
         $this->addFlashMessage('The category has been updated successfully.');
         $editObject->setUpdated(new DateTime());
         $this->objectRepository->update($editObject);
@@ -101,8 +94,7 @@ class CategoriesModuleController extends AbstractModuleController
      * @return void
      * @throws \TYPO3\Flow\Persistence\Exception\IllegalObjectTypeException
      */
-    public function deleteAction(Category $deleteObject)
-    {
+    public function deleteAction(Category $deleteObject) {
         $this->objectRepository->remove($deleteObject);
         $this->addFlashMessage('The category has been removed successfully.');
         $this->redirect('index');
@@ -113,8 +105,7 @@ class CategoriesModuleController extends AbstractModuleController
      * @param $locale
      * @return Initiative
      */
-    protected function addTranslation($entryID, $locale)
-    {
+    protected function addTranslation($entryID, $locale) {
 //        $object = new Category();
 //        $object->setEntryId($entryID);
 //        $object->setLocale($locale);

@@ -12,23 +12,20 @@ use TYPO3\Flow\Annotations as Flow;
 /**
  * @Flow\Entity
  */
-class Tag extends BasicEntity
-{
+class Tag extends BasicEntity {
     /**
      * @var string
      */
     protected $name;
 
-    public function __construct()
-    {
+    public function __construct() {
         parent::__construct();
     }
 
     /**
      * @return string
      */
-    public function getName()
-    {
+    public function getName() {
         return $this->name;
     }
 
@@ -36,8 +33,7 @@ class Tag extends BasicEntity
      * @param string $name
      * @return void
      */
-    public function setName($name)
-    {
+    public function setName($name) {
         $this->name = $name;
     }
 }

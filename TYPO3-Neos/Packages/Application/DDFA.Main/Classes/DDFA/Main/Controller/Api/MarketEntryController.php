@@ -16,8 +16,7 @@ use TYPO3\Flow\Mvc\Controller\ActionController;
 use TYPO3\Flow\Mvc\View\JsonView;
 use TYPO3\Flow\Mvc\View\ViewInterface;
 
-class MarketEntryController extends ActionController
-{
+class MarketEntryController extends ActionController {
 
     /**
      * @Flow\Inject
@@ -32,18 +31,15 @@ class MarketEntryController extends ActionController
      */
     protected $supportedMediaTypes = array('application/json');
 
-    public function listAction()
-    {
+    public function listAction() {
         $this->view->assign('value', ['marketentries' => $this->marketEntryRepository->findAll()]);
     }
 
-    public function showAction(MarketEntry $marketentry)
-    {
+    public function showAction(MarketEntry $marketentry) {
         $this->view->assign('value', ['marketentry' => $marketentry]);
     }
 
-    protected function initializeView(ViewInterface $view)
-    {
+    protected function initializeView(ViewInterface $view) {
         if ($view instanceof JsonView) {
             $marketentryconfig = [
                 '_exposeObjectIdentifier' => TRUE,

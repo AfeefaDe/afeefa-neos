@@ -20,8 +20,7 @@ use TYPO3\Flow\Annotations as Flow;
  *
  * @Flow\Scope("singleton")
  */
-class LocationsModuleController extends AbstractTranslationController
-{
+class LocationsModuleController extends AbstractTranslationController {
     /**
      * @Flow\Inject
      * @var LocationRepository
@@ -43,8 +42,7 @@ class LocationsModuleController extends AbstractTranslationController
     /**
      * @return void
      */
-    public function indexAction()
-    {
+    public function indexAction() {
         $this->view->assign('numLanguages', $this->languageRepository->findAll()->count() - 1);
         $this->view->assign('iniLocations', $this->objectRepository->findAllOfInitiativeLocalized());
         $this->view->assign('basicLocations', $this->objectRepository->findAllOfBasicLocalized());
@@ -56,8 +54,7 @@ class LocationsModuleController extends AbstractTranslationController
      * @param Location $viewObject
      * @return void
      */
-    public function viewAction(Location $viewObject)
-    {
+    public function viewAction(Location $viewObject) {
         if (isset($_POST['viewLocale']) && $_POST['viewLocale'] != DDConst::LOCALE_STD) {
             $this->redirect('view', NULL, NULL, array('viewObject' => $this->objectRepository->findOneLocalized($viewObject, $_POST['viewLocale'])));
 
@@ -72,8 +69,7 @@ class LocationsModuleController extends AbstractTranslationController
     /**
      * @return void
      */
-    public function addAction()
-    {
+    public function addAction() {
         if (isset($_GET['moduleArguments']['type'])) {
             $type = $_GET['moduleArguments']['type'];
             $this->view->assign('type', $type);
@@ -105,8 +101,7 @@ class LocationsModuleController extends AbstractTranslationController
      * @return void
      * @throws \TYPO3\Flow\Persistence\Exception\IllegalObjectTypeException
      */
-    public function createAction(Location $newObject)
-    {
+    public function createAction(Location $newObject) {
         if (isset($_POST['moduleArguments']['type'])) {
             $type = $_POST['moduleArguments']['type'];
             switch ($type) {
@@ -140,8 +135,7 @@ class LocationsModuleController extends AbstractTranslationController
      * @param $locale
      * @return Location
      */
-    protected function addTranslation($entryID, $locale)
-    {
+    protected function addTranslation($entryID, $locale) {
         $object = new Location();
         $object->setEntryId($entryID);
         $object->setLocale($locale);
@@ -154,8 +148,7 @@ class LocationsModuleController extends AbstractTranslationController
      * @param Location $editObject
      * @param Location $viewObject
      */
-    public function editAction(Location $editObject, Location $viewObject)
-    {
+    public function editAction(Location $editObject, Location $viewObject) {
         $this->view->assign('viewObject', $this->objectRepository->hydrate($viewObject));
         $this->view->assign('editObject', $editObject);
         $this->view->assign('editLanguages', $this->languageRepository->findAll());
@@ -165,8 +158,7 @@ class LocationsModuleController extends AbstractTranslationController
     /**
      * @param Location $editObject
      */
-    public function simpleEditAction(Location $editObject)
-    {
+    public function simpleEditAction(Location $editObject) {
         if ($editObject->getLocale() != DDConst::LOCALE_STD) {
             $viewObject = $this->objectRepository->findOneLocalized($editObject, DDConst::LOCALE_STD);
             $this->redirect('edit', NULL, NULL,
@@ -184,8 +176,7 @@ class LocationsModuleController extends AbstractTranslationController
      * @return void
      * @throws \TYPO3\Flow\Persistence\Exception\IllegalObjectTypeException
      */
-    public function updateAction(Location $editObject)
-    {
+    public function updateAction(Location $editObject) {
         if (isset($_POST['moduleArguments']['ini'])) {
             $ini = $_POST['moduleArguments']['ini'];
             $editObject->setInitiative($this->initiativeRepository->findOneByName($ini));
@@ -202,8 +193,7 @@ class LocationsModuleController extends AbstractTranslationController
      * @return void
      * @throws \TYPO3\Flow\Persistence\Exception\IllegalObjectTypeException
      */
-    public function deleteAction(Location $deleteObject)
-    {
+    public function deleteAction(Location $deleteObject) {
         foreach ($this->objectRepository->findAllLocalisations($deleteObject) as $localisedObject)
             $this->objectRepository->remove($localisedObject);
 
@@ -215,8 +205,7 @@ class LocationsModuleController extends AbstractTranslationController
      * @param Location $object
      * @return void
      */
-    public function selectTranslationAction(Location $object)
-    {
+    public function selectTranslationAction(Location $object) {
         $editLocale = $_POST['moduleArguments']['editLocale'];
         $viewLocale = $_POST['moduleArguments']['viewLocale'];
 

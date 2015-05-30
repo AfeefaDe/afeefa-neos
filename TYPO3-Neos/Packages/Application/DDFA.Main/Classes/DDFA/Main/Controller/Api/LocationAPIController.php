@@ -15,8 +15,7 @@ use TYPO3\Flow\Mvc\Controller\ActionController;
 use TYPO3\Flow\Mvc\View\JsonView;
 use TYPO3\Flow\Mvc\View\ViewInterface;
 
-class LocationAPIController extends ActionController
-{
+class LocationAPIController extends ActionController {
     /**
      * @Flow\Inject
      * @var LocationRepository
@@ -30,19 +29,16 @@ class LocationAPIController extends ActionController
      */
     protected $supportedMediaTypes = array('application/json');
 
-    public function listAction()
-    {
+    public function listAction() {
         //TODO include language
         $this->view->assign('value', ['locations' => $this->iniLocationRepository->findAllSupplemented(DDConst::LOCALE_STD)]);
     }
 
-    public function showAction(Location $location)
-    {
+    public function showAction(Location $location) {
         $this->view->assign('value', ['location' => $location]);
     }
 
-    protected function initializeView(ViewInterface $view)
-    {
+    protected function initializeView(ViewInterface $view) {
         if ($view instanceof JsonView) {
             $locationConfiguration = [
                 '_exposeObjectIdentifier' => TRUE,

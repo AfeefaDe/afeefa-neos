@@ -15,8 +15,7 @@ use TYPO3\Flow\Annotations as Flow;
  * @Flow\Entity
  * @ORM\MappedSuperclass()
  */
-abstract class BasicEntity
-{
+abstract class BasicEntity {
     /**
      * @Flow\Identity
      * @var string
@@ -37,8 +36,7 @@ abstract class BasicEntity
      */
     protected $updated;
 
-    public function __construct()
-    {
+    public function __construct() {
         $this->setPersistenceObjectIdentifier(DDHelpers::createGuid());
         $now = new DateTime();
         $this->setCreated($now);
@@ -48,40 +46,35 @@ abstract class BasicEntity
     /**
      * @return \DateTime
      */
-    public function getCreated()
-    {
+    public function getCreated() {
         return $this->created;
     }
 
     /**
      * @param \DateTime $created
      */
-    public function setCreated($created)
-    {
+    public function setCreated($created) {
         $this->created = $created;
     }
 
     /**
      * @return \DateTime
      */
-    public function getUpdated()
-    {
+    public function getUpdated() {
         return $this->updated;
     }
 
     /**
      * @param \DateTime $updated
      */
-    public function setUpdated($updated)
-    {
+    public function setUpdated($updated) {
         $this->updated = $updated;
     }
 
     /**
      * @return mixed
      */
-    public function getPersistenceObjectIdentifier()
-    {
+    public function getPersistenceObjectIdentifier() {
         return $this->Persistence_Object_Identifier;
     }
 
@@ -89,8 +82,7 @@ abstract class BasicEntity
     /**
      * @param mixed $Persistence_Object_Identifier
      */
-    public function setPersistenceObjectIdentifier($Persistence_Object_Identifier)
-    {
+    public function setPersistenceObjectIdentifier($Persistence_Object_Identifier) {
         $this->Persistence_Object_Identifier = $Persistence_Object_Identifier;
     }
 }

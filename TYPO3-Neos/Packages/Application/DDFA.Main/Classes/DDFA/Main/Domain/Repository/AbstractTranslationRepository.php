@@ -14,10 +14,8 @@ use TYPO3\Flow\Annotations as Flow;
 use TYPO3\Flow\Persistence\QueryInterface;
 use TYPO3\Flow\Persistence\Repository;
 
-abstract class AbstractTranslationRepository extends Repository
-{
-    public function findAll()
-    {
+abstract class AbstractTranslationRepository extends Repository {
+    public function findAll() {
         return $this->createQuery()->setOrderings(array('name' => QueryInterface::ORDER_ASCENDING))->execute();
     }
 
@@ -26,8 +24,7 @@ abstract class AbstractTranslationRepository extends Repository
      * @param string $locale
      * @return mixed
      */
-    public function findAllLocalized($locale = DDConst::LOCALE_STD)
-    {
+    public function findAllLocalized($locale = DDConst::LOCALE_STD) {
         $query = $this->createQuery()->setOrderings(array('name' => QueryInterface::ORDER_ASCENDING));
 
         $objects = $query->matching(
@@ -42,8 +39,7 @@ abstract class AbstractTranslationRepository extends Repository
      * @param $objects
      * @return mixed
      */
-    protected function includeLocales($objects)
-    {
+    protected function includeLocales($objects) {
         foreach ($objects as $o) {
             $locales = $this->findLocales($o);
             $o->numLocales = sizeof($locales);
@@ -60,8 +56,7 @@ abstract class AbstractTranslationRepository extends Repository
      */
     //TODO sophisticate
     //TODO include real languages
-    public function findLocales(Actor $object)
-    {
+    public function findLocales(Actor $object) {
         $r = array();
         $i = 0;
         foreach ($this->findAllLocalisations($object) as $localisation) {
@@ -80,8 +75,7 @@ abstract class AbstractTranslationRepository extends Repository
      * @param Actor $object
      * @return \TYPO3\Flow\Persistence\QueryResultInterface
      */
-    public function findAllLocalisations(Actor $object)
-    {
+    public function findAllLocalisations(Actor $object) {
         $query = $this->createQuery()->setOrderings(array('locale' => QueryInterface::ORDER_ASCENDING));
         return $query->matching(
             $query->equals('entryId', $object->getEntryId())
@@ -95,8 +89,7 @@ abstract class AbstractTranslationRepository extends Repository
      * @param Actor $object
      * @return array
      */
-    public function findAllLocales(Actor $object)
-    {
+    public function findAllLocales(Actor $object) {
         $r = array();
         $i = 0;
         foreach ($this->findAllLocalisations($object) as $localisation) {
@@ -111,8 +104,7 @@ abstract class AbstractTranslationRepository extends Repository
      * @param $locale
      * @return Actor
      */
-    public function findOneHydrated(Actor $object, $locale = DDConst::LOCALE_STD)
-    {
+    public function findOneHydrated(Actor $object, $locale = DDConst::LOCALE_STD) {
         return $this->hydrate($this->findOneLocalized($object, $locale));
     }
 
@@ -123,8 +115,7 @@ abstract class AbstractTranslationRepository extends Repository
      * @param string $baseLocale
      * @return Actor
      */
-    public function hydrate(Actor $object, $baseLocale = DDConst::LOCALE_STD)
-    {
+    public function hydrate(Actor $object, $baseLocale = DDConst::LOCALE_STD) {
         if ($object->getLocale() != $baseLocale) {
 
             //language fallback to English:
@@ -155,8 +146,7 @@ abstract class AbstractTranslationRepository extends Repository
      * @param $locale
      * @return Actor
      */
-    public function findOneLocalized(Actor $object, $locale = DDConst::LOCALE_STD)
-    {
+    public function findOneLocalized(Actor $object, $locale = DDConst::LOCALE_STD) {
         if ($object->getLocale() == $object)
             return $object;
 
@@ -177,8 +167,7 @@ abstract class AbstractTranslationRepository extends Repository
      */
     //TODO not used
 
-    public function findLocalisations(Actor $object)
-    {
+    public function findLocalisations(Actor $object) {
         $query = $this->createQuery()->setOrderings(array('locale' => QueryInterface::ORDER_ASCENDING));
         return $query->matching(
             $query->logicalAnd(

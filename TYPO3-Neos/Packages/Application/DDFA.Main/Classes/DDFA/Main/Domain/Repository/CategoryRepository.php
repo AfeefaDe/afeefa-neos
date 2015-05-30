@@ -11,7 +11,6 @@ use TYPO3\Flow\Annotations as Flow;
 /**
  * @Flow\Scope("singleton")
  */
-class CategoryRepository extends AbstractTranslationRepository
-{
+class CategoryRepository extends AbstractTranslationRepository {
 
 }

@@ -12,8 +12,7 @@ use TYPO3\Flow\Annotations as Flow;
 /**
  * @Flow\Entity
  */
-class TargetGroup extends BasicEntity
-{
+class TargetGroup extends BasicEntity {
     /**
      * @var string
      * @ORM\Column(name="entry_id")
@@ -35,8 +34,7 @@ class TargetGroup extends BasicEntity
      */
     protected $description;
 
-    public function __construct()
-    {
+    public function __construct() {
         parent::__construct();
         $this->setEntryId(uniqid());
         $this->setLocale(DDConst::LOCALE_STD);
@@ -45,8 +43,7 @@ class TargetGroup extends BasicEntity
     /**
      * @return string
      */
-    public function getName()
-    {
+    public function getName() {
         return $this->name;
     }
 
@@ -54,16 +51,14 @@ class TargetGroup extends BasicEntity
      * @param string $name
      * @return void
      */
-    public function setName($name)
-    {
+    public function setName($name) {
         $this->name = $name;
     }
 
     /**
      * @return string
      */
-    public function getDescription()
-    {
+    public function getDescription() {
         return $this->description;
     }
 
@@ -71,40 +66,35 @@ class TargetGroup extends BasicEntity
      * @param string $description
      * @return void
      */
-    public function setDescription($description)
-    {
+    public function setDescription($description) {
         $this->description = $description;
     }
 
     /**
      * @return string
      */
-    public function getEntryId()
-    {
+    public function getEntryId() {
         return $this->entryId;
     }
 
     /**
      * @param string $entryId
      */
-    public function setEntryId($entryId)
-    {
+    public function setEntryId($entryId) {
         $this->entryId = $entryId;
     }
 
     /**
      * @return string
      */
-    public function getLocale()
-    {
+    public function getLocale() {
         return $this->locale;
     }
 
     /**
      * @param string $locale
      */
-    public function setLocale($locale)
-    {
+    public function setLocale($locale) {
         $this->locale = $locale;
     }
 }

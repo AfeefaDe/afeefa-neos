@@ -13,11 +13,9 @@ use TYPO3\Flow\Annotations as Flow;
  * @Flow\Entity
  * @ORM\MappedSuperclass()
  */
-abstract class Owner extends Actor
-{
+abstract class Owner extends Actor {
 
-    public function __construct()
-    {
+    public function __construct() {
         parent::__construct();
     }
 }

@@ -16,7 +16,6 @@ use TYPO3\Flow\Persistence\QueryInterface;
 /**
  * @Flow\Scope("singleton")
  */
-//TODO add docs
 class LocationRepository extends AbstractTranslationRepository {
     /**
      * @Flow\Inject

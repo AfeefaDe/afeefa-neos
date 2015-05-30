@@ -34,7 +34,7 @@ qx.Class.define("PlusView", {
             that.plusBtn.addClass('btn plusBtn');
             that.view.append(that.plusBtn);
             
-            $('body').append(that.view);
+            $('#main-container').append(that.view);
 
             this.base(arguments);
     	},
@@ -42,6 +42,9 @@ qx.Class.define("PlusView", {
         addEvents: function(){
             var that = this;
 
+            // call superclass
+            this.base(arguments);
+            
             that.listen('mapclicked', function(){
                 that.close();
             });

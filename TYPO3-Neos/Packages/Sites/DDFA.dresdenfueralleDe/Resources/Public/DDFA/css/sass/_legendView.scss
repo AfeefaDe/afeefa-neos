@@ -1,0 +1,80 @@
+#legendView {
+	
+	@include transition(all 200ms);
+
+	position: absolute;
+	right: -11.5em;
+	top: 0;
+	
+	@include box-sizing(border-box);
+	width: 15em;
+	height: 100%;
+	padding: 2em 0.5em;
+
+	background-color: rgba(30,30,30,0.6);
+
+	/*border: 1px solid red;*/
+
+	.container {
+
+		position: relative;
+		width: 100%;
+		height: 2.5em;
+		line-height: 2.5em;
+		color: $white;
+		margin-bottom: 1em;
+		cursor: pointer;
+
+		.btn {
+			@include circleBtn;
+			@include categorySymbolsDark;
+			@include background-size(72%);
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 2.5em;
+			height: 2.5em;
+			background-color: $white;
+			background-image: url("../img/menu.svg");
+		}
+
+		p {
+			position: absolute;
+			top: 0;
+			margin: 0;
+			left: 3.5em;
+			text-transform: uppercase;
+			font-weight: 300;
+			text-overflow: ellipsis;
+			width: calc(100% - 3.5em );
+			overflow: hidden;
+			white-space: nowrap;
+		}
+
+	}
+
+}
+
+body.desktop, body.tablet {
+
+	#legendView{
+
+		&:hover {
+			right: 0;
+		}
+
+	}
+
+}
+
+body.phone {
+
+	#legendView{
+
+		.legend-btn {
+			/*right: -5em;*/
+		}
+
+	}
+
+}

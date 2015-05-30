@@ -10,6 +10,7 @@ qx.Class.define("DetailViewMobile", {
     	var that = this;
 
         that.setViewId('detailViewMobile');
+        that.record = null;
     },
 
     members : {
@@ -22,7 +23,10 @@ qx.Class.define("DetailViewMobile", {
 
             // enlargement steps
             that.headingContainer.click(function(){
-                if ( that.view.hasClass('active') ){
+                if( that.view.hasClass('active-large') && that.view.hasClass('active') ){
+                    that.view.removeClass('active-large');
+                }
+                else if ( that.view.hasClass('active') ){
                     that.view.removeClass('active');
                     that.view.addClass('active-large');
                 }

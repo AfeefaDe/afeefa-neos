@@ -1,12 +1,12 @@
-qx.Class.define("LanguageView", {
+qx.Class.define("LanguageViewMobile", {
     
-    extend : View,
+    extend : LanguageView,
 	type: "singleton",
 
     construct: function(){
     	var that = this;
 
-        that.setViewId('languageView');
+        that.setViewId('languageViewMobile');
     },
 
     members : {
@@ -17,6 +17,17 @@ qx.Class.define("LanguageView", {
             // view container
             that.view = $("<div />");
             that.view.attr('id', that.getViewId());
+
+            that.shiftMenu  = $("<div />");
+            that.shiftMenu.addClass('shiftMenu');
+            that.view.append(that.shiftMenu);
+
+            that.rootBtn  = $("<div />");
+            that.rootBtn.addClass('btn root-btn');
+            that.rootBtn.click(function(){
+                that.view.toggleClass('open');
+            });
+            that.view.append(that.rootBtn);
 
             that.buttons = [];
 
@@ -35,64 +46,52 @@ qx.Class.define("LanguageView", {
 
                 langBtn.click(function(){
                     that.say('languageChanged', lang);
+                    
+                    that.view.removeClass('open');
+                    // if( that.view.hasClass('open') ){
+
+                    //     $('#map-curtain').addClass('active');
+                    // }
+                    // else {
+                    //     $('#map-curtain').removeClass('active');
+                    // }
+
                 });
 
                 that.buttons.push(langBtn);
 
-                that.view.append(langBtn);
+                that.shiftMenu.append(langBtn);
             });
             
             $('#main-container').append(that.view);
 
-            this.base(arguments);
-
+            that.addEvents();
+            
             that.load();
         },
 
         load: function(){
             var that = this;
 
-            _.each( that.buttons, function(btn){
-                if( btn.hasClass( APP.getLM().getCurrentLang() ) )
-                    btn.addClass('active');
-            });
-
+            that.rootBtn.addClass( APP.getLM().getCurrentLang() );
         },
 
-        addEvents: function(){
-            var that = this;
+        // addEvents: function(){
+        //     var that = this;
 
-            // call superclass
-            this.base(arguments);
+        //     // call superclass
+        //     this.base(arguments);
 
-            // that.listen('mapclicked', function(){
-            //     that.close();
-            // });
-
-            // that.plusBtn.click(function(){
-            //     $('#main-container').toggleClass('shifted');
-            // });
-
-            // that.plusBtn.click(function(){
-            //    that.$addOfferBtn.addClass('active');
-            // });
-        },
+        // },
 
         reset: function(){
             var that = this;
 
-            // reset all buttons
-            _.each( that.buttons, function(btn) {
-                btn.removeClass('active');
+            // reset root btn
+            _.each( APP.getConfig().languages, function(lang){
+                that.rootBtn.removeClass(lang);
             });
 
-        },
-
-        changeLanguage: function(){
-            var that = this;
-
-            that.reset();
-            that.load();
         },
 
         close: function(){

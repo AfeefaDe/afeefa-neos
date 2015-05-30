@@ -1,6 +1,6 @@
 qx.Class.define("DetailView", {
     
-    extend : qx.core.Object,
+    extend : View,
 	type: "singleton",
 
     properties: {
@@ -30,6 +30,10 @@ qx.Class.define("DetailView", {
 
             that.view.append(that.headingContainer);
 
+            // scrollable content container
+            var scrollContainer = $("<div />").addClass('scroll-container');
+            that.view.append(scrollContainer);
+            
             ////////////////////
             // image property //
             ////////////////////
@@ -38,7 +42,7 @@ qx.Class.define("DetailView", {
             that.image = $("<img />");
             that.imageContainer.append(that.image);
 
-            that.view.append(that.imageContainer);
+            scrollContainer.append(that.imageContainer);
             
             //////////////////////
             // other properties //
@@ -60,13 +64,13 @@ qx.Class.define("DetailView", {
                 catText.append(that['propertyValue'+prop]);
                 that['propertyContainer'+prop].append(catText);
                 
-                that.view.append(that['propertyContainer'+prop]);
+                scrollContainer.append(that['propertyContainer'+prop]);
 
             });
 
             $('body').append(that.view);
 
-            that.addEvents();
+            this.base(arguments);
         },
 
         load: function( record ){
@@ -185,6 +189,7 @@ qx.Class.define("DetailView", {
 
         close: function() {
             var that = this;
+            that.reset();
             that.view.removeClass('active');
         },
 
@@ -199,6 +204,11 @@ qx.Class.define("DetailView", {
         },
 
         addEvents: function() {
+            var that = this;
+
+            that.listen('mapclicked', function(){
+                that.close();
+            });
 
         }
     }

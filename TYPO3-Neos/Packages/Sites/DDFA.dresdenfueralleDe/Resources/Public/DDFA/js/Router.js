@@ -1,6 +1,6 @@
 qx.Class.define("Router", {
     
-    extend : qx.core.Object,
+    extend : Daddy,
     type: "singleton",
 	
     properties : {

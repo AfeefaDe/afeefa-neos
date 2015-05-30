@@ -17,6 +17,10 @@ qx.Class.define("DetailViewMobile", {
     	addEvents: function(){
     		var that = this;
 
+            // call superclass
+            this.base(arguments);
+
+            // enlargement steps
             that.headingContainer.click(function(){
                 if ( that.view.hasClass('active') ){
                     that.view.removeClass('active');
@@ -27,7 +31,26 @@ qx.Class.define("DetailViewMobile", {
                     that.view.addClass('active');
                 }
             });
-        }
+
+            // TODO: swipe down to close
+            // require( [ 'hammer' ], function( Hammer ){
+
+            //     var hammer = new Hammer(that.view);
+            //     hammer.on('swipedown', function(ev){
+            //         that.close();
+            //     });
+
+            // });
+        },
+
+        close: function() {
+            var that = this;
+            
+            // call superclass
+            this.base(arguments);
+
+            that.view.removeClass('active-large');
+        },
 
     }
 

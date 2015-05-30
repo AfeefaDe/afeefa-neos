@@ -1,5 +1,5 @@
-qx.Class.define("DDFA", {
-    extend : qx.core.Object,
+qx.Class.define("APPDDFA", {
+    extend : Daddy,
     type: "singleton",
 
     // extend: "Daddy",

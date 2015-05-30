@@ -1,4 +1,6 @@
 @mixin detailViewBasic {
+	
+
 	/* HEADING */
 	.heading {
 		
@@ -147,10 +149,14 @@
 	left: 4%;
 	top: 3em;
 
+	display: flex;
+	flex-direction: column;
+
 	width: 21%;
 	/*min-width: 300px;*/
 	min-height: 20%;
-	padding-bottom: 1em;
+	max-height: 80%;
+	/*padding-bottom: 1em;*/
 
 	background-color: $white;
 	@include box-shadow(0px 0px 2px #333);
@@ -160,7 +166,14 @@
 		opacity: 1;
 	}
 	
+	.scroll-container {
+		flex-grow: 1;
+		overflow-y: auto;
+		padding-bottom: 1em;
+	}
+
 	@include detailViewBasic;
+
 }
 
 #detailViewMobile {
@@ -182,8 +195,14 @@
 	&.active-large {
 		bottom: 0;
 		height: 80%;
-		overflow-y: scroll;
+		/*overflow-y: scroll;*/
 	}
 	
+	.scroll-container {
+		height: calc(100% - 4em);
+		overflow-y: auto;
+		padding-bottom: 1em;
+	}
+
 	@include detailViewBasic;
 }

@@ -34,7 +34,7 @@
 		<link rel="stylesheet" href="{f:uri.resource(path: 'leaflet/leaflet.css', package: 'DDFA.dresdenfueralleDe')}" />
 
 		<!-- mapbox -->
-		<link href='https://api.tiles.mapbox.com/mapbox.js/v2.1.6/mapbox.css' rel='stylesheet' />
+		<link href='https://api.tiles.mapbox.com/mapbox.js/v2.1.9/mapbox.css' rel='stylesheet' />
 		<link href='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/MarkerCluster.css' rel='stylesheet' />
 		<link href='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/MarkerCluster.Default.css' rel='stylesheet' />
 
@@ -50,17 +50,13 @@
 		<!-- requirejs (module loader) handles all further js includes -->
 		<script data-main="{f:uri.resource(path: 'DDFA/js/main', package: 'DDFA.dresdenfueralleDe')}" type="text/javascript" src="{f:uri.resource(path: 'requirejs/require.js', package: 'DDFA.dresdenfueralleDe')}"></script>
 
-		<script src='https://api.tiles.mapbox.com/mapbox.js/v2.1.6/mapbox.js'></script>
+		<script src='https://api.tiles.mapbox.com/mapbox.js/v2.1.9/mapbox.js'></script>
 		<script src='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/leaflet.markercluster.js'></script>
 
 	</f:section>
 </head>
 <body>
 <f:section name="body">
-
-	<!-- <nav class="menu"> -->
-		<!-- <ts:render path="parts.menu" /> -->
-	<!-- </nav> -->
 
 	<div id="map-container"></div>
 
@@ -113,10 +109,6 @@
 			<!-- <div id="legend-btn"></div> -->
 		<!-- </div> -->
 
-	<!-- </div> -->
-
-	<!-- <div id="content"> -->
-		<!-- <ts:render path="content.main" /> -->
 	<!-- </div> -->
 
 </f:section>

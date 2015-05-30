@@ -7,12 +7,11 @@ namespace DDFA\Main\Controller\Api;
  *                                                                        *
  *                                                                        */
 
+use DDFA\Main\Domain\Model\Location;
 use DDFA\Main\Domain\Repository\LocationRepository;
 use DDFA\Main\Utility\DDConst;
-use DDFA\Main\Utility\DDHelpers;
 use TYPO3\Flow\Annotations as Flow;
 use TYPO3\Flow\Mvc\Controller\ActionController;
-use \DDFA\Main\Domain\Model\Location;
 use TYPO3\Flow\Mvc\View\JsonView;
 use TYPO3\Flow\Mvc\View\ViewInterface;
 
@@ -31,15 +30,27 @@ class LocationAPIController extends ActionController
      */
     protected $supportedMediaTypes = array('application/json');
 
-    protected function initializeView(ViewInterface $view) {
+    public function listAction()
+    {
+        //TODO include language
+        $this->view->assign('value', ['locations' => $this->iniLocationRepository->findAllSupplemented(DDConst::LOCALE_STD)]);
+    }
+
+    public function showAction(Location $location)
+    {
+        $this->view->assign('value', ['location' => $location]);
+    }
+
+    protected function initializeView(ViewInterface $view)
+    {
         if ($view instanceof JsonView) {
             $locationConfiguration = [
-                '_exposeObjectIdentifier'     => TRUE,
+                '_exposeObjectIdentifier' => TRUE,
                 '_exposedObjectIdentifierKey' => 'identifier',
-                '_descend'                    => [
+                '_descend' => [
                     'manufacturer' => [
-                        '_exclude'                    => ['__isInitialized__'],
-                        '_exposeObjectIdentifier'     => TRUE,
+                        '_exclude' => ['__isInitialized__'],
+                        '_exposeObjectIdentifier' => TRUE,
                         '_exposedObjectIdentifierKey' => 'identifier'
                     ]
                 ]
@@ -47,18 +58,9 @@ class LocationAPIController extends ActionController
             $view->setConfiguration([
                 'value' => [
                     'locations' => ['_descendAll' => $locationConfiguration],
-                    'location'  => $locationConfiguration
+                    'location' => $locationConfiguration
                 ]
             ]);
         }
-    }
-
-    public function listAction() {
-        //TODO include language
-        $this->view->assign('value', ['locations' => $this->iniLocationRepository->findAllSupplemented(DDConst::LOCALE_STD)]);
-    }
-
-    public function showAction(Location $location) {
-        $this->view->assign('value', ['location' => $location]);
     }
 }

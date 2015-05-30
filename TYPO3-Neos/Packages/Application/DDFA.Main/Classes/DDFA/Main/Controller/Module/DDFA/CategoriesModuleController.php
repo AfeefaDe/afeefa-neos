@@ -7,13 +7,12 @@ namespace DDFA\Main\Controller\Module\DDFA;
  *                                                                        */
 
 use DateTime;
+use DDFA\Main\Domain\Model\Actor as Object;
 use DDFA\Main\Domain\Model\Category;
 use DDFA\Main\Domain\Model\Initiative as Initiative;
 use DDFA\Main\Domain\Model\Language as Language;
-use DDFA\Main\Domain\Model\Actor as Object;
 use DDFA\Main\Domain\Repository\CategoryRepository as CategoryRepository;
 use DDFA\Main\Domain\Repository\LanguageRepository as LanguageRepository;
-use DDFA\Main\Utility\DDConst;
 use TYPO3\Flow\Annotations as Flow;
 use TYPO3\Neos\Controller\Module\AbstractModuleController;
 

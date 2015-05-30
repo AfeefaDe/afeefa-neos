@@ -7,9 +7,9 @@ namespace DDFA\Main\Controller\Module\DDFA;
  *                                                                        */
 
 use DateTime;
+use DDFA\Main\Domain\Model\Actor as Object;
 use DDFA\Main\Domain\Model\Initiative as Initiative;
 use DDFA\Main\Domain\Model\Language as Language;
-use DDFA\Main\Domain\Model\Actor as Object;
 use DDFA\Main\Domain\Repository\InitiativeRepository as InitiativeRepository;
 use DDFA\Main\Domain\Repository\LanguageRepository as LanguageRepository;
 use DDFA\Main\Utility\DDConst;
@@ -87,6 +87,21 @@ class InitiativesModuleController extends AbstractTranslationController
     }
 
     /**
+     * @param $entryID
+     * @param $locale
+     * @return Initiative
+     */
+    protected function addTranslation($entryID, $locale)
+    {
+        $object = new Initiative();
+        $object->setEntryId($entryID);
+        $object->setLocale($locale);
+        $this->objectRepository->add($object);
+        $this->addFlashMessage("A new initiative translation has been added successfully.");
+        return $object;
+    }
+
+    /**
      * @param Initiative $editObject
      * @param Initiative $viewObject
      */
@@ -152,7 +167,8 @@ class InitiativesModuleController extends AbstractTranslationController
         $viewLocale = $_POST['moduleArguments']['viewLocale'];
 
         if ($this->languageRepository->findByCode($viewLocale)->count() == 0 ||
-            $this->languageRepository->findByCode($editLocale)->count() == 0) {
+            $this->languageRepository->findByCode($editLocale)->count() == 0
+        ) {
             $editObject = $this->objectRepository->findOneLocalized($object, DDConst::LOCALE_STD);
             $this->redirect('simpleEdit', NULL, NULL, array('editObject' => $editObject));
 
@@ -175,20 +191,5 @@ class InitiativesModuleController extends AbstractTranslationController
                         'viewObject' => ['__identity' => $viewObject->getPersistenceObjectIdentifier()]]);
             }
         }
-    }
-
-    /**
-     * @param $entryID
-     * @param $locale
-     * @return Initiative
-     */
-    protected function addTranslation($entryID, $locale)
-    {
-        $object = new Initiative();
-        $object->setEntryId($entryID);
-        $object->setLocale($locale);
-        $this->objectRepository->add($object);
-        $this->addFlashMessage("A new initiative translation has been added successfully.");
-        return $object;
     }
 }

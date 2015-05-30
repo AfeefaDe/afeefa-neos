@@ -12,8 +12,10 @@
                 </div>
                 <div class="neos-footer">
                     <f:link.action action="index" class="neos-button" title="back to index">Abort</f:link.action>
-                    <f:form.submit value="Create location" class="neos-button" name="create" title="save the new location"/>
-                    <f:form.submit value="Add translation" class="neos-button neos-button-primary" name="localize" title="save and edit the english translation"/>
+                    <f:form.submit value="Create location" class="neos-button" name="create"
+                                   title="save the new location"/>
+                    <f:form.submit value="Add translation" class="neos-button neos-button-primary" name="localize"
+                                   title="save and edit the english translation"/>
                 </div>
             </f:form>
         </f:then>
@@ -22,7 +24,9 @@
                 You need at least one initiative to add a location!
             </div>
             <div class="neos-footer">
-                <f:link.action action="../initiatives/add" class="neos-button neos-button-primary" title="add a initiative">Add initiative</f:link.action>
+                <f:link.action action="../initiatives/add" class="neos-button neos-button-primary"
+                               title="add a initiative">Add initiative
+                </f:link.action>
             </div>
         </f:else>
     </f:if>

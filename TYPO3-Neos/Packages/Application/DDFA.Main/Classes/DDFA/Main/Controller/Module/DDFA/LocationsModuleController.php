@@ -7,8 +7,8 @@ namespace DDFA\Main\Controller\Module\DDFA;
  *                                                                        */
 
 use DateTime;
-use DDFA\Main\Domain\Model\Location as Location;
 use DDFA\Main\Domain\Model\Actor as Object;
+use DDFA\Main\Domain\Model\Location as Location;
 use DDFA\Main\Domain\Repository\InitiativeRepository as InitiativeRepository;
 use DDFA\Main\Domain\Repository\LanguageRepository as LanguageRepository;
 use DDFA\Main\Domain\Repository\LocationRepository as LocationRepository;
@@ -94,6 +94,21 @@ class LocationsModuleController extends AbstractTranslationController
     }
 
     /**
+     * @param $entryID
+     * @param $locale
+     * @return Location
+     */
+    protected function addTranslation($entryID, $locale)
+    {
+        $object = new Location();
+        $object->setEntryId($entryID);
+        $object->setLocale($locale);
+        $this->objectRepository->add($object);
+        $this->addFlashMessage("A new location translation has been added successfully.");
+        return $object;
+    }
+
+    /**
      * @param Location $editObject
      * @param Location $viewObject
      */
@@ -164,7 +179,8 @@ class LocationsModuleController extends AbstractTranslationController
         $viewLocale = $_POST['moduleArguments']['viewLocale'];
 
         if ($this->languageRepository->findByCode($viewLocale)->count() == 0 ||
-            $this->languageRepository->findByCode($editLocale)->count() == 0) {
+            $this->languageRepository->findByCode($editLocale)->count() == 0
+        ) {
             $editObject = $this->objectRepository->findOneLocalized($object, DDConst::LOCALE_STD);
             $this->redirect('simpleEdit', NULL, NULL, array('editObject' => $editObject));
 
@@ -187,20 +203,5 @@ class LocationsModuleController extends AbstractTranslationController
                         'viewObject' => ['__identity' => $viewObject->getPersistenceObjectIdentifier()]]);
             }
         }
-    }
-
-    /**
-     * @param $entryID
-     * @param $locale
-     * @return Location
-     */
-    protected function addTranslation($entryID, $locale)
-    {
-        $object = new Location();
-        $object->setEntryId($entryID);
-        $object->setLocale($locale);
-        $this->objectRepository->add($object);
-        $this->addFlashMessage("A new location translation has been added successfully.");
-        return $object;
     }
 }

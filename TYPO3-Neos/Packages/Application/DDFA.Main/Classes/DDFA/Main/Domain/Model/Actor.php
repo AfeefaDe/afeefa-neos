@@ -126,7 +126,8 @@ abstract class Actor extends BasicEntity
      */
     protected $spokenLanguages;
 
-    public function __construct() {
+    public function __construct()
+    {
         parent::__construct();
         $this->setEntryId(uniqid());
         $this->setLocale(DDConst::LOCALE_STD);
@@ -316,6 +317,7 @@ abstract class Actor extends BasicEntity
     {
         $this->entryId = $entryId;
     }
+
     /**
      * @return string
      */

@@ -37,7 +37,8 @@ abstract class BasicEntity
      */
     protected $updated;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->setPersistenceObjectIdentifier(DDHelpers::createGuid());
         $now = new DateTime();
         $this->setCreated($now);

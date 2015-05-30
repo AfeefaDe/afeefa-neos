@@ -14,7 +14,6 @@ use TYPO3\Flow\Annotations as Flow;
 /**
  * @Flow\Scope("singleton")
  */
-
 //TODO add docs
 class LocationRepository extends AbstractTranslationRepository
 {
@@ -87,7 +86,18 @@ class LocationRepository extends AbstractTranslationRepository
         return $this->includeLocales($locations);
     }
 
-    public function supplement(Location $location) {
+    public function findAllSupplemented($locale = DDConst::LOCALE_STD)
+    {
+        $locations = $this->findAllLocalized($locale);
+        $result = array();
+        foreach ($locations as $l) {
+            array_push($result, $this->supplement($l));
+        }
+        return $result;
+    }
+
+    public function supplement(Location $location)
+    {
 
         //TODO maybe better store props in another place... one day
         $LOCATION_SUPPLEMENT_PROPS = ["description", "mail", "web", "phone", "speakerPublic", "speakerPrivate", "facebook"];
@@ -96,7 +106,7 @@ class LocationRepository extends AbstractTranslationRepository
         $location = $this->hydrate($location);
         $parentReflection = new ReflectionObject($owner);
         $sourceReflection = new ReflectionObject($location);
-        foreach($sourceReflection->getProperties() as $property) {
+        foreach ($sourceReflection->getProperties() as $property) {
             if (in_array($property->getName(), $LOCATION_SUPPLEMENT_PROPS)) {
                 $property->setAccessible(true);
                 $value = $property->getValue($location);
@@ -108,14 +118,5 @@ class LocationRepository extends AbstractTranslationRepository
             }
         }
         return $location;
-    }
-
-    public function findAllSupplemented($locale = DDConst::LOCALE_STD) {
-        $locations = $this->findAllLocalized($locale);
-        $result = array();
-        foreach($locations as $l) {
-            array_push($result, $this->supplement($l));
-        }
-        return $result;
     }
 }

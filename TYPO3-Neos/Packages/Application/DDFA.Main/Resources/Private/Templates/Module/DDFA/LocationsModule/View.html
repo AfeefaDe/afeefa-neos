@@ -4,13 +4,14 @@
 
 <f:section name="content">
     <div class="neos-module-container">
-        <f:render partial="Shared/TranslationSelectView" arguments="{viewObject: viewObject, languages: languages}" />
+        <f:render partial="Shared/TranslationSelectView" arguments="{viewObject: viewObject, languages: languages}"/>
 
-        <f:render partial="Location/LocationView" arguments="{l: viewObject}" />
+        <f:render partial="Location/LocationView" arguments="{l: viewObject}"/>
     </div>
     <div class="neos-footer">
         <f:link.action action="index" class="neos-button" title="back to index">Back</f:link.action>
-        <f:link.action action="simpleEdit" arguments="{editObject: viewObject}" class="neos-button neos-button-primary" title="Edit this location">
+        <f:link.action action="simpleEdit" arguments="{editObject: viewObject}" class="neos-button neos-button-primary"
+                       title="Edit this location">
             Edit Location
         </f:link.action>
     </div>

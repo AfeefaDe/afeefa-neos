@@ -3,13 +3,13 @@ form.actionForm {
 }
 
 div.leftSide {
-    float:left;
+    float: left;
     width: 45%;
     border-right: 1px solid #888;
 }
 
 div.rightSide {
-    width:50%;
+    width: 50%;
     float: right;
 }
 

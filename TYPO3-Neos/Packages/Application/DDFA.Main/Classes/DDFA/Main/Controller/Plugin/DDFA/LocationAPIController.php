@@ -10,6 +10,7 @@ namespace DDFA\Main\Controller\Plugin\DDFA;
 use DDFA\Main\Domain\Repository\LocationRepository;
 use TYPO3\Flow\Annotations as Flow;
 use TYPO3\Flow\Mvc\Controller\ActionController;
+
 //TODO unused??
 class LocationAPIController extends ActionController
 {

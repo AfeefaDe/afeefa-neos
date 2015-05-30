@@ -6,7 +6,9 @@ namespace DDFA\Main\Domain\Repository;
  *                                                                        *
  *                                                                        */
 
+use DDFA\Main\Domain\Model\Initiative;
 use DDFA\Main\Domain\Model\Location as Location;
+use DDFA\Main\Domain\Repository\InitiativeRepository;
 use DDFA\Main\Utility\DDConst;
 use ReflectionObject;
 use TYPO3\Flow\Annotations as Flow;
@@ -23,10 +25,16 @@ class LocationRepository extends AbstractTranslationRepository {
      */
     protected $initiativeRepository;
 
+    /**
+     * @return \TYPO3\Flow\Persistence\QueryResultInterface
+     */
     public function findAll() {
         return $this->createQuery()->setOrderings(array('name' => QueryInterface::ORDER_ASCENDING))->execute();
     }
 
+    /**
+     * @return \TYPO3\Flow\Persistence\QueryResultInterface
+     */
     public function findAllOfInitiative() {
         $query = $this->createQuery()->setOrderings(array('updated' => QueryInterface::ORDER_DESCENDING));
         return $query->matching(
@@ -34,6 +42,9 @@ class LocationRepository extends AbstractTranslationRepository {
         )->execute();
     }
 
+    /**
+     * @return \TYPO3\Flow\Persistence\QueryResultInterface
+     */
     public function findAllOfMarket() {
         $query = $this->createQuery()->setOrderings(array('updated' => QueryInterface::ORDER_DESCENDING));
         return $query->matching(
@@ -41,6 +52,9 @@ class LocationRepository extends AbstractTranslationRepository {
         )->execute();
     }
 
+    /**
+     * @return \TYPO3\Flow\Persistence\QueryResultInterface
+     */
     public function findAllOfBasic() {
         $query = $this->createQuery()->setOrderings(array('name' => QueryInterface::ORDER_DESCENDING));
         return $query->matching(
@@ -48,6 +62,9 @@ class LocationRepository extends AbstractTranslationRepository {
         )->execute();
     }
 
+    /**
+     * @return \TYPO3\Flow\Persistence\QueryResultInterface
+     */
     public function findAllOfEvent() {
         $query = $this->createQuery()->setOrderings(array('updated' => QueryInterface::ORDER_DESCENDING));
         return $query->matching(
@@ -55,6 +72,10 @@ class LocationRepository extends AbstractTranslationRepository {
         )->execute();
     }
 
+    /**
+     * @param string $locale
+     * @return mixed
+     */
     public function findAllOfInitiativeLocalized($locale = DDConst::LOCALE_STD) {
         $query = $this->createQuery()->setOrderings(array('updated' => QueryInterface::ORDER_DESCENDING));
         $locations = $query->matching(
@@ -67,6 +88,10 @@ class LocationRepository extends AbstractTranslationRepository {
         return $this->includeLocales($locations);
     }
 
+    /**
+     * @param string $locale
+     * @return mixed
+     */
     public function findAllOfMarketLocalized($locale = DDConst::LOCALE_STD) {
         $query = $this->createQuery()->setOrderings(array('updated' => QueryInterface::ORDER_DESCENDING));
         $locations = $query->matching(
@@ -79,6 +104,10 @@ class LocationRepository extends AbstractTranslationRepository {
         return $this->includeLocales($locations);
     }
 
+    /**
+     * @param string $locale
+     * @return mixed
+     */
     public function findAllOfBasicLocalized($locale = DDConst::LOCALE_STD) {
         $query = $this->createQuery()->setOrderings(array('name' => QueryInterface::ORDER_DESCENDING));
         $locations = $query->matching(
@@ -91,6 +120,10 @@ class LocationRepository extends AbstractTranslationRepository {
         return $this->includeLocales($locations);
     }
 
+    /**
+     * @param string $locale
+     * @return mixed
+     */
     public function findAllOfEventLocalized($locale = DDConst::LOCALE_STD) {
         $query = $this->createQuery()->setOrderings(array('updated' => QueryInterface::ORDER_DESCENDING));
         $locations = $query->matching(
@@ -103,34 +136,84 @@ class LocationRepository extends AbstractTranslationRepository {
         return $this->includeLocales($locations);
     }
 
+    /**
+     * @param Location $object
+     * @param $locale
+     * @return Location
+     */
+    public function findOneHydrated(Location $object, $locale = DDConst::LOCALE_STD) {
+        return $this->hydrate($this->findOneLocalized($object, $locale));
+    }
+
+    /**
+     * hydrated the object, meaning this method fills all empty properties of a translation object with values of the original entry
+     *
+     * @param Location $object
+     * @param string $baseLocale
+     * @return Location
+     */
+    public function hydrate(Location $object, $baseLocale = DDConst::LOCALE_STD) {
+        if ($object->getLocale() != $baseLocale) {
+
+            //language fallback to English:
+            if ($baseLocale != DDConst::LOCALE_NXT) {
+                $object = $this->hydrate($object, DDConst::LOCALE_NXT);
+            }
+
+            $parentEntry = $this->findOneLocalized($object, $baseLocale);
+            $parentReflection = new ReflectionObject($parentEntry);
+            $sourceReflection = new ReflectionObject($object);
+            foreach ($sourceReflection->getProperties() as $property) {
+                $property->setAccessible(true);
+                $value = $property->getValue($object);
+                if ($value == NULL || $value == "") {
+                    $parentProperty = $parentReflection->getProperty($property->getName());
+                    $parentProperty->setAccessible(true);
+                    $property->setValue($object, $parentProperty->getValue($parentEntry));
+                }
+            }
+        }
+        return $object;
+    }
+
+    /**
+     * @param Location $object
+     * @return Location
+     */
+    public function supplement(Location $object) {
+        //TODO maybe better store props in another place... one day
+        $LOCATION_SUPPLEMENT_PROPS = ["description", "mail", "web", "phone", "speakerPublic", "speakerPrivate", "facebook"];
+
+        $object = $this->hydrate($object);
+        $owner = $this->initiativeRepository->findOneHydrated($object->getInitiative());
+        $parentReflection = new ReflectionObject($owner);
+        $sourceReflection = new ReflectionObject($object);
+        foreach ($sourceReflection->getProperties() as $property) {
+            if (in_array($property->getName(), $LOCATION_SUPPLEMENT_PROPS)) {
+                $property->setAccessible(true);
+
+                $value = $property->getValue($object);
+                if ($value == NULL || $value == "") {
+                    $parentProperty = $parentReflection->getProperty($property->getName());
+                    $parentProperty->setAccessible(true);
+                    $property->setValue($object, $parentProperty->getValue($owner));
+                }
+            }
+        }
+        return $object;
+    }
+
+    /**
+     * @param string $locale
+     * @return array
+     */
     public function findAllSupplemented($locale = DDConst::LOCALE_STD) {
         $locations = $this->findAllLocalized($locale);
         $result = array();
         foreach ($locations as $l) {
-            array_push($result, $this->supplement($l));
+            array_push($result, $l);
+            //array_push($result, $this->supplement($l));
         }
         return $result;
-    }
-
-    public function supplement(Location $location) {
-        //TODO maybe better store props in another place... one day
-        $LOCATION_SUPPLEMENT_PROPS = ["description", "mail", "web", "phone", "speakerPublic", "speakerPrivate", "facebook"];
-
-        $owner = $this->$initiativeRepository->findOneHydrated($location->getInitiative(), $location->getLocale());
-        $location = $this->hydrate($location);
-        $parentReflection = new ReflectionObject($owner);
-        $sourceReflection = new ReflectionObject($location);
-        foreach ($sourceReflection->getProperties() as $property) {
-            if (in_array($property->getName(), $LOCATION_SUPPLEMENT_PROPS)) {
-                $property->setAccessible(true);
-                $value = $property->getValue($location);
-                if ($value == NULL || $value == "") {
-                    $parentProperty = $parentReflection->getProperty($property->getName());
-                    $parentProperty->setAccessible(true);
-                    $property->setValue($location, $parentProperty->getValue($owner));
-                }
-            }
-        }
-        return $location;
     }
 }

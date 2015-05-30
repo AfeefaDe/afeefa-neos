@@ -17,5 +17,5 @@ abstract class AbstractTranslationController extends AbstractModuleController {
      * @param $entryID
      * @param $locale
      */
-    abstract protected function addTranslation($entryID, $locale);
+    //abstract protected function addTranslation($entryID, $locale);
 }

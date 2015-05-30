@@ -35,14 +35,12 @@ class LocationAPIController extends ActionController {
     }
 
     public function showAction(Location $location) {
-        $this->view->assign('value', ['location' => $location]);
+        $this->view->assign('value', ['location' => $this->iniLocationRepository->supplement($location)]);
     }
 
     protected function initializeView(ViewInterface $view) {
         if ($view instanceof JsonView) {
             $locationConfiguration = [
-                '_exposeObjectIdentifier' => TRUE,
-                '_exposedObjectIdentifierKey' => 'identifier',
                 '_descend' => [
                     'manufacturer' => [
                         '_exclude' => ['__isInitialized__'],

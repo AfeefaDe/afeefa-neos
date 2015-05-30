@@ -59,6 +59,7 @@ class LocationsModuleController extends AbstractTranslationController {
             $this->redirect('view', NULL, NULL, array('viewObject' => $this->objectRepository->findOneLocalized($viewObject, $_POST['viewLocale'])));
 
         } else {
+
             $viewObject = $this->objectRepository->supplement($viewObject);
 
             $this->view->assign('viewObject', $viewObject);
@@ -119,7 +120,7 @@ class LocationsModuleController extends AbstractTranslationController {
             $this->addFlashMessage('A new location has been created successfully.');
 
             if (isset($_POST['moduleArguments']['localize'])) {
-                $editObject = $this->addTranslation($newObject->getEntryId(), DDConst::LOCALE_NXT);
+                $editObject = $this->addTranslation($newObject->getEntryId(), DDConst::LOCALE_NXT, $type);
                 $this->redirect('edit', NULL, NULL, array('editObject' => $editObject, 'viewObject' => $newObject));
 
             } else
@@ -133,12 +134,15 @@ class LocationsModuleController extends AbstractTranslationController {
     /**
      * @param $entryID
      * @param $locale
+     * @param $type
      * @return Location
+     * @throws \TYPO3\Flow\Persistence\Exception\IllegalObjectTypeException
      */
-    protected function addTranslation($entryID, $locale) {
+    protected function addTranslation($entryID, $locale, $type) {
         $object = new Location();
         $object->setEntryId($entryID);
         $object->setLocale($locale);
+        $object->setType($type);
         $this->objectRepository->add($object);
         $this->addFlashMessage("A new location translation has been added successfully.");
         return $object;
@@ -226,7 +230,7 @@ class LocationsModuleController extends AbstractTranslationController {
                 $editObject = $this->objectRepository->findOneLocalized($object, $editLocale);
 
                 if ($editObject == NULL) {
-                    $editObject = $this->addTranslation($object->getEntryId(), $editLocale);
+                    $editObject = $this->addTranslation($object->getEntryId(), $editLocale, $object->getType());
                 }
 
                 $this->redirect('edit', NULL, NULL,

@@ -28,7 +28,7 @@
                         <f:form.hidden name="type" value="{type}"/>
                     </div>
                     <div class="neos-row-fluid neos-module-container">
-                        <f:render partial="Location/LocationForm" arguments="{inis: inis}"/>
+                        <f:render partial="Location/LocationForm" arguments="{inis: inis, cats: cats}"/>
                     </div>
                     <f:render partial="Location/LocationAddFooter"/>
                 </f:form>
@@ -62,7 +62,7 @@
                 <f:form.hidden name="type" value="{type}"/>
             </div>
             <div class="neos-row-fluid neos-module-container">
-                <f:render partial="Location/LocationForm"/>
+                <f:render partial="Location/LocationForm" arguments="{cats: cats}"/>
             </div>
             <f:render partial="Location/LocationAddFooter"/>
         </f:form>

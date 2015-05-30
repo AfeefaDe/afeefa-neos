@@ -22,6 +22,15 @@
     </f:if>
 
     <div class="neos-control-group">
+        <label class="neos-control-label" for="category">Category</label>
+
+        <div class="neos-controls">
+            <f:form.select class="neos-span12" id="category" name="cat" options="{cats}" optionValueField="name"
+                           optionLabelField="name" value="{selectedCat}" sortByOptionLabel="true"/>
+        </div>
+    </div>
+
+    <div class="neos-control-group">
         <label class="neos-control-label" for="description">Description</label>
 
         <div class="neos-controls">

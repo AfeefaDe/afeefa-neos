@@ -35,6 +35,11 @@ class Category extends BasicEntity {
      */
     protected $description;
 
+    /**
+     * @var int
+     */
+    protected $type;
+
     public function __construct() {
         parent::__construct();
         $this->setEntryId(uniqid());
@@ -97,5 +102,19 @@ class Category extends BasicEntity {
      */
     public function setLocale($locale) {
         $this->locale = $locale;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getType() {
+        return $this->type;
+    }
+
+    /**
+     * @param mixed $type
+     */
+    public function setType($type) {
+        $this->type = $type;
     }
 }

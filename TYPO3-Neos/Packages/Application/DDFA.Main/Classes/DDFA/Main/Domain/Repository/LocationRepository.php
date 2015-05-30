@@ -38,7 +38,7 @@ class LocationRepository extends AbstractTranslationRepository {
     public function findAllOfInitiative() {
         $query = $this->createQuery()->setOrderings(array('updated' => QueryInterface::ORDER_DESCENDING));
         return $query->matching(
-            $query->equals('type', DDConst::LOCATION_INI)
+            $query->equals('type', DDConst::OWNER_INI)
         )->execute();
     }
 
@@ -48,7 +48,7 @@ class LocationRepository extends AbstractTranslationRepository {
     public function findAllOfMarket() {
         $query = $this->createQuery()->setOrderings(array('updated' => QueryInterface::ORDER_DESCENDING));
         return $query->matching(
-            $query->equals('type', DDConst::LOCATION_MARKET)
+            $query->equals('type', DDConst::OWNER_MARKET)
         )->execute();
     }
 
@@ -58,7 +58,7 @@ class LocationRepository extends AbstractTranslationRepository {
     public function findAllOfBasic() {
         $query = $this->createQuery()->setOrderings(array('name' => QueryInterface::ORDER_DESCENDING));
         return $query->matching(
-            $query->equals('type', DDConst::LOCATION_BASIC)
+            $query->equals('type', DDConst::OWNER_BASIC)
         )->execute();
     }
 
@@ -68,7 +68,7 @@ class LocationRepository extends AbstractTranslationRepository {
     public function findAllOfEvent() {
         $query = $this->createQuery()->setOrderings(array('updated' => QueryInterface::ORDER_DESCENDING));
         return $query->matching(
-            $query->equals('type', DDConst::LOCATION_EVENT)
+            $query->equals('type', DDConst::OWNER_EVENT)
         )->execute();
     }
 
@@ -80,7 +80,7 @@ class LocationRepository extends AbstractTranslationRepository {
         $query = $this->createQuery()->setOrderings(array('updated' => QueryInterface::ORDER_DESCENDING));
         $locations = $query->matching(
             $query->logicalAnd(
-                $query->equals('type', DDConst::LOCATION_INI),
+                $query->equals('type', DDConst::OWNER_INI),
                 $query->equals('locale', $locale)
             )
         )->execute();
@@ -96,7 +96,7 @@ class LocationRepository extends AbstractTranslationRepository {
         $query = $this->createQuery()->setOrderings(array('updated' => QueryInterface::ORDER_DESCENDING));
         $locations = $query->matching(
             $query->logicalAnd(
-                $query->equals('type', DDConst::LOCATION_MARKET),
+                $query->equals('type', DDConst::OWNER_MARKET),
                 $query->equals('locale', $locale)
             )
         )->execute();
@@ -112,7 +112,7 @@ class LocationRepository extends AbstractTranslationRepository {
         $query = $this->createQuery()->setOrderings(array('name' => QueryInterface::ORDER_DESCENDING));
         $locations = $query->matching(
             $query->logicalAnd(
-                $query->equals('type', DDConst::LOCATION_BASIC),
+                $query->equals('type', DDConst::OWNER_BASIC),
                 $query->equals('locale', $locale)
             )
         )->execute();
@@ -128,7 +128,7 @@ class LocationRepository extends AbstractTranslationRepository {
         $query = $this->createQuery()->setOrderings(array('updated' => QueryInterface::ORDER_DESCENDING));
         $locations = $query->matching(
             $query->logicalAnd(
-                $query->equals('type', DDConst::LOCATION_EVENT),
+                $query->equals('type', DDConst::OWNER_EVENT),
                 $query->equals('locale', $locale)
             )
         )->execute();
@@ -142,7 +142,8 @@ class LocationRepository extends AbstractTranslationRepository {
      * @return Location
      */
     public function findOneHydrated(Location $object, $locale = DDConst::LOCALE_STD) {
-        return $this->hydrate($this->findOneLocalized($object, $locale));
+        $localizedObject = $this->findOneLocalized($object, $locale);
+        return $localizedObject == NULL ? $object : $this->hydrate($localizedObject);
     }
 
     /**
@@ -177,6 +178,19 @@ class LocationRepository extends AbstractTranslationRepository {
     }
 
     /**
+     * @param string $locale
+     * @return array
+     */
+    public function findAllSupplemented($locale = DDConst::LOCALE_STD) {
+        $locations = $this->findAllLocalized($locale);
+        $result = array();
+        foreach ($locations as $l) {
+            array_push($result, $this->supplement($l));
+        }
+        return $result;
+    }
+
+    /**
      * @param Location $object
      * @return Location
      */
@@ -201,19 +215,5 @@ class LocationRepository extends AbstractTranslationRepository {
             }
         }
         return $object;
-    }
-
-    /**
-     * @param string $locale
-     * @return array
-     */
-    public function findAllSupplemented($locale = DDConst::LOCALE_STD) {
-        $locations = $this->findAllLocalized($locale);
-        $result = array();
-        foreach ($locations as $l) {
-            array_push($result, $l);
-            //array_push($result, $this->supplement($l));
-        }
-        return $result;
     }
 }

@@ -4,10 +4,10 @@ namespace DDFA\Main\Utility;
 
 
 abstract class DDConst {
-    const LOCATION_INI = 0;
-    const LOCATION_MARKET = 1;
-    const LOCATION_EVENT = 2;
-    const LOCATION_BASIC = 3;
+    const OWNER_INI = 0;
+    const OWNER_MARKET = 1;
+    const OWNER_EVENT = 2;
+    const OWNER_BASIC = 3;
 
     const LOCALE_STD = "de";
     const LOCALE_NXT = "en"; //locale that is provided to translate first

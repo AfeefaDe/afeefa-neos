@@ -8,7 +8,9 @@
             <f:render partial="Category/CategoryForm"/>
         </div>
         <div class="neos-footer">
-            <f:form.submit value="Create category" class="neos-button neos-button-primary"/>
+            <f:link.action action="index" class="neos-button" title="back to index">Abort</f:link.action>
+            <f:form.submit value="Create category" class="neos-button neos-button-primary" name="create"/>
+            <f:form.submit value="Create and add another" class="neos-button" name="add"/>
         </div>
     </f:form>
 </f:section>

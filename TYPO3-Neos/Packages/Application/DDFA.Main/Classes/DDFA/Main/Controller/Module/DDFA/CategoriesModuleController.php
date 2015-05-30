@@ -68,7 +68,11 @@ class CategoriesModuleController extends AbstractModuleController
     {
         $this->objectRepository->add($newObject);
         $this->addFlashMessage('A new category has been created successfully.');
-        $this->redirect('index');
+        if (isset($_POST['moduleArguments']['add'])) {
+            $this->redirect('add');
+        } else {
+            $this->redirect('index');
+        }
     }
 
     /**

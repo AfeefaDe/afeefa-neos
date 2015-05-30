@@ -18,6 +18,12 @@ use TYPO3\Flow\Annotations as Flow;
 //TODO add docs
 class LocationRepository extends AbstractTranslationRepository
 {
+    /**
+     * @Flow\Inject
+     * @var InitiativeRepository
+     */
+    protected $initiativeRepository;
+
     public function findAllOfInitiative()
     {
         $query = $this->createQuery();
@@ -83,10 +89,10 @@ class LocationRepository extends AbstractTranslationRepository
 
     public function supplement(Location $location) {
 
-        //TODO maybe better store in another place... one day
+        //TODO maybe better store props in another place... one day
         $LOCATION_SUPPLEMENT_PROPS = ["description", "mail", "web", "phone", "speakerPublic", "speakerPrivate", "facebook"];
 
-        $owner = $location->getInitiative();
+        $owner = $this->$initiativeRepository->findOneHydrated($location->getInitiative(), $location->getLocale());
         $location = $this->hydrate($location);
         $parentReflection = new ReflectionObject($owner);
         $sourceReflection = new ReflectionObject($location);
@@ -104,7 +110,7 @@ class LocationRepository extends AbstractTranslationRepository
         return $location;
     }
 
-    public function findAllSupplemented($locale) {
+    public function findAllSupplemented($locale = DDConst::LOCALE_STD) {
         $locations = $this->findAllLocalized($locale);
         $result = array();
         foreach($locations as $l) {

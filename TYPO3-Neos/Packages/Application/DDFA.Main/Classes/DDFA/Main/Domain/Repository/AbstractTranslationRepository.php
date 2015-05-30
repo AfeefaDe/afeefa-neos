@@ -17,12 +17,11 @@ abstract class AbstractTranslationRepository extends Repository
 {
     /**
      * returns all objects with a certain locale and adds number of translations (numLocales) and a string of the according locale codes (locales)
+     * @param string $locale
      * @return mixed
      */
-    public function findAllLocalized()
+    public function findAllLocalized($locale = DDConst::LOCALE_STD)
     {
-        $locale = func_num_args() > 0 ? func_get_arg(0) : DDConst::LOCALE_STD;
-
         $query = $this->createQuery();
 
         $objects = $query->matching(
@@ -92,7 +91,7 @@ abstract class AbstractTranslationRepository extends Repository
      *
      * @param Actor $object
      * @param $locale
-     * @return Object
+     * @return Actor
      */
     public function findOneLocalized(Actor $object, $locale)
     {
@@ -106,6 +105,15 @@ abstract class AbstractTranslationRepository extends Repository
                 $query->equals('locale', $locale)
             )
         )->execute()->getFirst();
+    }
+
+    /**
+     * @param Actor $object
+     * @param $locale
+     * @return Actor
+     */
+    public function findOneHydrated(Actor $object, $locale) {
+        return $this->hydrate($this->findOneLocalized($object, $locale));
     }
 
     /**
@@ -146,11 +154,18 @@ abstract class AbstractTranslationRepository extends Repository
      * hydrated the object, meaning this method fills all empty properties of a translation object with values of the original entry
      *
      * @param Actor $object
-     * @return Object
+     * @param string $baseLocale
+     * @return Actor
      */
-    public function hydrate(Actor $object) {
-        if($object->getLocale() != DDConst::LOCALE_STD) {
-            $parentEntry = $this->findOneLocalized($object, DDConst::LOCALE_STD);
+    public function hydrate(Actor $object, $baseLocale = DDConst::LOCALE_STD) {
+        if($object->getLocale() != $baseLocale) {
+
+            //language fallback to English:
+            if($baseLocale != DDConst::LOCALE_NXT) {
+                $object = $this->hydrate($object, DDConst::LOCALE_NXT);
+            }
+
+            $parentEntry = $this->findOneLocalized($object, $baseLocale);
             $parentReflection = new ReflectionObject($parentEntry);
             $sourceReflection = new ReflectionObject($object);
             foreach($sourceReflection->getProperties() as $property) {

@@ -678,7 +678,7 @@ textarea {
     page-break-after: avoid;
   }
 }
-/* line 19, sass/_ddfa-styles.scss */
+/* line 69, sass/_ddfa-styles.scss */
 body {
   margin: 0;
   padding: 0;
@@ -689,13 +689,13 @@ body {
   background-color: #333333;
 }
 
-/* line 34, sass/_ddfa-styles.scss */
+/* line 84, sass/_ddfa-styles.scss */
 a:link, a:visited, a:hover, a:active {
   color: #333;
   text-decoration: underline;
 }
 
-/* line 43, sass/_ddfa-styles.scss */
+/* line 93, sass/_ddfa-styles.scss */
 #main-container {
   -webkit-transition: all 250ms;
   -moz-transition: all 250ms;
@@ -719,7 +719,7 @@ a:link, a:visited, a:hover, a:active {
   box-shadow: 0px 0px 10px #111111;
   /* map curtain */
 }
-/* line 65, sass/_ddfa-styles.scss */
+/* line 115, sass/_ddfa-styles.scss */
 #main-container #map-curtain {
   -webkit-transition: all 250ms;
   -moz-transition: all 250ms;
@@ -733,28 +733,28 @@ a:link, a:visited, a:hover, a:active {
   opacity: 0;
   z-index: 999;
 }
-/* line 75, sass/_ddfa-styles.scss */
+/* line 125, sass/_ddfa-styles.scss */
 #main-container #map-curtain.active {
   visibility: visible;
   opacity: 0.6;
 }
-/* line 80, sass/_ddfa-styles.scss */
+/* line 130, sass/_ddfa-styles.scss */
 #main-container.shifted {
   left: 15em;
 }
-/* line 83, sass/_ddfa-styles.scss */
+/* line 133, sass/_ddfa-styles.scss */
 #main-container.shifted #map-curtain {
   visibility: visible;
   opacity: 0.6;
 }
 
 /* bootstrap fix for glyphicons inside input-group-addon */
-/* line 90, sass/_ddfa-styles.scss */
+/* line 140, sass/_ddfa-styles.scss */
 .input-group .glyphicon {
   top: 0;
 }
 
-/* line 96, sass/_ddfa-styles.scss */
+/* line 146, sass/_ddfa-styles.scss */
 .mobile-menu-off-canvas, #navigation-top > div, #content {
   background-color: #EEE;
   -webkit-box-shadow: 0px 0px 5px #888888;
@@ -762,7 +762,7 @@ a:link, a:visited, a:hover, a:active {
   box-shadow: 0px 0px 5px #888888;
 }
 
-/* line 101, sass/_ddfa-styles.scss */
+/* line 151, sass/_ddfa-styles.scss */
 .mobile-menu-off-canvas {
   -webkit-transition: all 300ms;
   -moz-transition: all 300ms;
@@ -774,46 +774,46 @@ a:link, a:visited, a:hover, a:active {
   width: 80%;
   z-index: 200;
 }
-/* line 109, sass/_ddfa-styles.scss */
+/* line 159, sass/_ddfa-styles.scss */
 .mobile-menu-off-canvas > div {
   padding: 1em;
 }
-/* line 113, sass/_ddfa-styles.scss */
+/* line 163, sass/_ddfa-styles.scss */
 .mobile-menu-off-canvas > div ul {
   margin: 0;
   padding: 0;
   list-style: none;
 }
-/* line 118, sass/_ddfa-styles.scss */
+/* line 168, sass/_ddfa-styles.scss */
 .mobile-menu-off-canvas > div ul li {
   height: 2em;
   padding: 0.5em;
   background-color: #DDD;
   margin-top: 0.1em;
 }
-/* line 124, sass/_ddfa-styles.scss */
+/* line 174, sass/_ddfa-styles.scss */
 .mobile-menu-off-canvas > div ul li a {
   display: block;
 }
-/* line 130, sass/_ddfa-styles.scss */
+/* line 180, sass/_ddfa-styles.scss */
 .mobile-menu-off-canvas#mobile-menu-off-canvas-left {
   left: -80%;
 }
-/* line 135, sass/_ddfa-styles.scss */
+/* line 185, sass/_ddfa-styles.scss */
 .mobile-menu-off-canvas#mobile-menu-off-canvas-left.active {
   left: 0;
 }
-/* line 141, sass/_ddfa-styles.scss */
+/* line 191, sass/_ddfa-styles.scss */
 .mobile-menu-off-canvas#mobile-menu-off-canvas-right {
   width: 60%;
   right: -60%;
 }
-/* line 151, sass/_ddfa-styles.scss */
+/* line 201, sass/_ddfa-styles.scss */
 .mobile-menu-off-canvas#mobile-menu-off-canvas-right.active {
   right: 0;
 }
 
-/* line 157, sass/_ddfa-styles.scss */
+/* line 207, sass/_ddfa-styles.scss */
 #locate-btn {
   position: fixed;
   width: 3.5em;
@@ -840,7 +840,7 @@ a:link, a:visited, a:hover, a:active {
   /*z-index: 999;*/
 }
 
-/* line 174, sass/_ddfa-styles.scss */
+/* line 224, sass/_ddfa-styles.scss */
 #uiContainer {
   position: fixed;
   top: 0;
@@ -848,12 +848,12 @@ a:link, a:visited, a:hover, a:active {
   width: 100%;
   margin-top: 1em;
 }
-/* line 183, sass/_ddfa-styles.scss */
+/* line 233, sass/_ddfa-styles.scss */
 #uiContainer #navigation-top #menu-btn, #uiContainer #navigation-top #search-box, #uiContainer #navigation-top #legend-btn {
   display: inline-block;
   position: absolute;
 }
-/* line 187, sass/_ddfa-styles.scss */
+/* line 237, sass/_ddfa-styles.scss */
 #uiContainer #navigation-top #menu-btn {
   width: 3em;
   height: 3em;
@@ -866,7 +866,7 @@ a:link, a:visited, a:hover, a:active {
   background-position: center;
   background-repeat: no-repeat;
 }
-/* line 197, sass/_ddfa-styles.scss */
+/* line 247, sass/_ddfa-styles.scss */
 #uiContainer #navigation-top #search-box {
   left: 4em;
   z-index: 200;
@@ -875,7 +875,7 @@ a:link, a:visited, a:hover, a:active {
   padding: .7em;
   color: #999;
 }
-/* line 206, sass/_ddfa-styles.scss */
+/* line 256, sass/_ddfa-styles.scss */
 #uiContainer #navigation-top #legend-btn {
   width: 3em;
   height: 3em;
@@ -890,7 +890,7 @@ a:link, a:visited, a:hover, a:active {
   background-repeat: no-repeat;
 }
 
-/* line 220, sass/_ddfa-styles.scss */
+/* line 270, sass/_ddfa-styles.scss */
 #content {
   -webkit-transition: all 300ms;
   -moz-transition: all 300ms;
@@ -906,11 +906,11 @@ a:link, a:visited, a:hover, a:active {
   box-shadow: 0px 0px 5px #888888;
   background-color: #EEE;
 }
-/* line 231, sass/_ddfa-styles.scss */
+/* line 281, sass/_ddfa-styles.scss */
 #content p {
   margin: 0;
 }
-/* line 234, sass/_ddfa-styles.scss */
+/* line 284, sass/_ddfa-styles.scss */
 #content p.location-title {
   height: 3em;
   background-color: #089fe1;
@@ -919,29 +919,29 @@ a:link, a:visited, a:hover, a:active {
   color: #f2f2f2;
   text-align: center;
 }
-/* line 244, sass/_ddfa-styles.scss */
+/* line 294, sass/_ddfa-styles.scss */
 #content .location-property {
   padding: 1em 1em;
 }
-/* line 248, sass/_ddfa-styles.scss */
+/* line 298, sass/_ddfa-styles.scss */
 #content .location-property h3 {
   font-size: 1em;
   font-weight: bold;
   margin: 0;
 }
-/* line 254, sass/_ddfa-styles.scss */
+/* line 304, sass/_ddfa-styles.scss */
 #content .location-property p {
   padding-left: 2em;
 }
-/* line 257, sass/_ddfa-styles.scss */
+/* line 307, sass/_ddfa-styles.scss */
 #content .location-property p:first-child {
   padding-left: 0;
 }
-/* line 263, sass/_ddfa-styles.scss */
+/* line 313, sass/_ddfa-styles.scss */
 #content.active-small {
   bottom: 0;
 }
-/* line 267, sass/_ddfa-styles.scss */
+/* line 317, sass/_ddfa-styles.scss */
 #content.active-large {
   bottom: 0;
   height: 80%;
@@ -992,7 +992,6 @@ a:link, a:visited, a:hover, a:active {
 }
 /* line 38, sass/_map-styles.scss */
 #map-container div.location.cat {
-  /*background-size: 72%;*/
   -webkit-background-size: 72%;
   -moz-background-size: 72%;
   -o-background-size: 72%;
@@ -1002,61 +1001,61 @@ a:link, a:visited, a:hover, a:active {
   /* type 0 + type 1 categories*/
   /* type 3 categories*/
 }
-/* line 46, sass/_map-styles.scss */
-#map-container div.location.cat.cat-advice {
+/* line 4, sass/_ddfa-styles.scss */
+#map-container div.location.cat.cat-consultation {
   background-image: url("../img/cat-10.svg");
 }
-/* line 47, sass/_map-styles.scss */
+/* line 5, sass/_ddfa-styles.scss */
 #map-container div.location.cat.cat-medic {
   background-image: url("../img/cat-04.svg");
 }
-/* line 48, sass/_map-styles.scss */
+/* line 6, sass/_ddfa-styles.scss */
 #map-container div.location.cat.cat-german {
   background-image: url("../img/cat-18.svg");
 }
-/* line 49, sass/_map-styles.scss */
+/* line 7, sass/_ddfa-styles.scss */
 #map-container div.location.cat.cat-jobs {
   background-image: url("../img/cat-02.svg");
 }
-/* line 50, sass/_map-styles.scss */
+/* line 8, sass/_ddfa-styles.scss */
 #map-container div.location.cat.cat-leisure {
   background-image: url("../img/cat-08.svg");
 }
-/* line 51, sass/_map-styles.scss */
+/* line 9, sass/_ddfa-styles.scss */
 #map-container div.location.cat.cat-translation {
   background-image: url("../img/cat-06.svg");
 }
-/* line 52, sass/_map-styles.scss */
-#map-container div.location.cat.cat-kids {
+/* line 10, sass/_ddfa-styles.scss */
+#map-container div.location.cat.cat-children {
   background-image: url("../img/cat-14.svg");
 }
-/* line 53, sass/_map-styles.scss */
+/* line 11, sass/_ddfa-styles.scss */
 #map-container div.location.cat.cat-donation {
   background-image: url("../img/cat-12.svg");
 }
-/* line 54, sass/_map-styles.scss */
+/* line 12, sass/_ddfa-styles.scss */
 #map-container div.location.cat.cat-community {
   background-image: url("../img/cat-16.svg");
 }
-/* line 57, sass/_map-styles.scss */
+/* line 15, sass/_ddfa-styles.scss */
 #map-container div.location.cat.cat-housing {
   border: 1px solid #f2f2f2;
   background-image: url("../img/cat-19.svg");
   background-color: rgba(0, 0, 0, 0) !important;
 }
-/* line 62, sass/_map-styles.scss */
+/* line 20, sass/_ddfa-styles.scss */
 #map-container div.location.cat.cat-church {
   background-image: url("../img/cat-16.svg");
 }
-/* line 63, sass/_map-styles.scss */
+/* line 21, sass/_ddfa-styles.scss */
 #map-container div.location.cat.cat-mosque {
   background-image: url("../img/cat-16.svg");
 }
-/* line 64, sass/_map-styles.scss */
+/* line 22, sass/_ddfa-styles.scss */
 #map-container div.location.cat.cat-synagogue {
   background-image: url("../img/cat-22.svg");
 }
-/* line 67, sass/_map-styles.scss */
+/* line 47, sass/_map-styles.scss */
 #map-container div.location.marker-cluster {
   background-color: #f2f2f2;
   /*@include border-radius(20px);*/
@@ -1068,14 +1067,14 @@ a:link, a:visited, a:hover, a:active {
   padding-top: 4px;
   /*opacity: .9;*/
 }
-/* line 79, sass/_map-styles.scss */
+/* line 59, sass/_map-styles.scss */
 #map-container div.location.active {
   border: 3px solid #f2f2f2;
   -webkit-box-shadow: 1px 1px 3px black;
   -moz-box-shadow: 1px 1px 3px black;
   box-shadow: 1px 1px 3px black;
 }
-/* line 85, sass/_map-styles.scss */
+/* line 65, sass/_map-styles.scss */
 #map-container div.marker {
   background-image: url("../img/marker_icon.svg");
   -webkit-background-size: contain;
@@ -1088,11 +1087,11 @@ a:link, a:visited, a:hover, a:active {
   text-align: center;
   padding-top: 8px;
 }
-/* line 94, sass/_map-styles.scss */
+/* line 74, sass/_map-styles.scss */
 #map-container div.marker.support-needed {
   background-image: url("../img/marker_support-needed.svg");
 }
-/* line 100, sass/_map-styles.scss */
+/* line 80, sass/_map-styles.scss */
 #map-container div.marker-station p {
   background-color: #fdc400;
   padding: 2px;
@@ -1101,7 +1100,7 @@ a:link, a:visited, a:hover, a:active {
   font-family: monospace;
   font-size: .9em;
 }
-/* line 110, sass/_map-styles.scss */
+/* line 90, sass/_map-styles.scss */
 #map-container div.marker-user-location {
   background-color: #089fe1;
   -webkit-border-radius: 8px;
@@ -1628,7 +1627,7 @@ a:link, a:visited, a:hover, a:active {
   width: 15em;
   height: 100%;
   padding: 2em 0;
-  border: 1px solid red;
+  /*border: 1px solid red;*/
 }
 /* line 14, sass/_menuView.scss */
 #menuView .menu-btn {
@@ -1658,7 +1657,7 @@ a:link, a:visited, a:hover, a:active {
   background-color: #0074a6;
   background-image: url("../img/menu.svg");
 }
-/* line 14, sass/_ddfa-styles.scss */
+/* line 64, sass/_ddfa-styles.scss */
 #menuView .menu-btn:hover {
   -webkit-box-shadow: 0px 0px 5px #111111;
   -moz-box-shadow: 0px 0px 5px #111111;
@@ -1675,9 +1674,162 @@ a:link, a:visited, a:hover, a:active {
   width: 100%;
 }
 
+/* line 37, sass/_menuView.scss */
+body.phone #menuView .menu-btn {
+  right: -5em;
+}
+
+/* line 1, sass/_legendView.scss */
+#legendView {
+  -webkit-transition: all 200ms;
+  -moz-transition: all 200ms;
+  -o-transition: all 200ms;
+  transition: all 200ms;
+  position: absolute;
+  right: -11.5em;
+  top: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 15em;
+  height: 100%;
+  padding: 2em 0.5em;
+  background-color: rgba(30, 30, 30, 0.6);
+  /*border: 1px solid red;*/
+}
+/* line 18, sass/_legendView.scss */
+#legendView .container {
+  position: relative;
+  width: 100%;
+  height: 2.5em;
+  line-height: 2.5em;
+  color: #f2f2f2;
+  margin-bottom: 1em;
+  cursor: pointer;
+}
+/* line 28, sass/_legendView.scss */
+#legendView .container .btn {
+  width: 3em;
+  height: 3em;
+  -webkit-border-radius: 2em;
+  -moz-border-radius: 2em;
+  -ms-border-radius: 2em;
+  -o-border-radius: 2em;
+  border-radius: 2em;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-box-shadow: 0px 0px 2px #333333;
+  -moz-box-shadow: 0px 0px 2px #333333;
+  box-shadow: 0px 0px 2px #333333;
+  -webkit-background-size: 50%;
+  -moz-background-size: 50%;
+  -o-background-size: 50%;
+  background-size: 50%;
+  background-position: center center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  /* type 0 + type 1 categories*/
+  /* type 3 categories*/
+  -webkit-background-size: 72%;
+  -moz-background-size: 72%;
+  -o-background-size: 72%;
+  background-size: 72%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 2.5em;
+  height: 2.5em;
+  background-color: #f2f2f2;
+  background-image: url("../img/menu.svg");
+}
+/* line 64, sass/_ddfa-styles.scss */
+#legendView .container .btn:hover {
+  -webkit-box-shadow: 0px 0px 5px #111111;
+  -moz-box-shadow: 0px 0px 5px #111111;
+  box-shadow: 0px 0px 5px #111111;
+}
+/* line 29, sass/_ddfa-styles.scss */
+#legendView .container .btn.cat-consultation {
+  background-image: url("../img/cat-09.svg");
+}
+/* line 30, sass/_ddfa-styles.scss */
+#legendView .container .btn.cat-medic {
+  background-image: url("../img/cat-03.svg");
+}
+/* line 31, sass/_ddfa-styles.scss */
+#legendView .container .btn.cat-german {
+  background-image: url("../img/cat-17.svg");
+}
+/* line 32, sass/_ddfa-styles.scss */
+#legendView .container .btn.cat-jobs {
+  background-image: url("../img/cat-01.svg");
+}
+/* line 33, sass/_ddfa-styles.scss */
+#legendView .container .btn.cat-leisure {
+  background-image: url("../img/cat-07.svg");
+}
+/* line 34, sass/_ddfa-styles.scss */
+#legendView .container .btn.cat-translation {
+  background-image: url("../img/cat-05.svg");
+}
+/* line 35, sass/_ddfa-styles.scss */
+#legendView .container .btn.cat-children {
+  background-image: url("../img/cat-13.svg");
+}
+/* line 36, sass/_ddfa-styles.scss */
+#legendView .container .btn.cat-donation {
+  background-image: url("../img/cat-11.svg");
+}
+/* line 37, sass/_ddfa-styles.scss */
+#legendView .container .btn.cat-community {
+  background-image: url("../img/cat-15.svg");
+}
+/* line 40, sass/_ddfa-styles.scss */
+#legendView .container .btn.cat-housing {
+  border: 1px solid #f2f2f2;
+  background-image: url("../img/cat-19.svg");
+  background-color: rgba(0, 0, 0, 0) !important;
+}
+/* line 45, sass/_ddfa-styles.scss */
+#legendView .container .btn.cat-church {
+  background-image: url("../img/cat-15.svg");
+}
+/* line 46, sass/_ddfa-styles.scss */
+#legendView .container .btn.cat-mosque {
+  background-image: url("../img/cat-15.svg");
+}
+/* line 47, sass/_ddfa-styles.scss */
+#legendView .container .btn.cat-synagogue {
+  background-image: url("../img/cat-21.svg");
+}
+/* line 41, sass/_legendView.scss */
+#legendView .container p {
+  position: absolute;
+  top: 0;
+  margin: 0;
+  left: 3.5em;
+  text-transform: uppercase;
+  font-weight: 300;
+  text-overflow: ellipsis;
+  width: calc(100% - 3.5em );
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+/* line 62, sass/_legendView.scss */
+body.desktop #legendView:hover, body.tablet #legendView:hover {
+  right: 0;
+}
+
+/* line 74, sass/_legendView.scss */
+body.phone #legendView .legend-btn {
+  /*right: -5em;*/
+}
+
 /* line 1, sass/_plusView.scss */
 #plusView {
-  position: fixed;
+  position: absolute;
   right: 3em;
   bottom: 3em;
 }
@@ -1694,13 +1846,13 @@ a:link, a:visited, a:hover, a:active {
 }
 /* line 15, sass/_plusView.scss */
 #plusView .btn.plusBtn {
-  width: 2em;
-  height: 2em;
-  -webkit-border-radius: 30px;
-  -moz-border-radius: 30px;
-  -ms-border-radius: 30px;
-  -o-border-radius: 30px;
-  border-radius: 30px;
+  width: 3.5em;
+  height: 3.5em;
+  -webkit-border-radius: 2em;
+  -moz-border-radius: 2em;
+  -ms-border-radius: 2em;
+  -o-border-radius: 2em;
+  border-radius: 2em;
   background-color: #c1272d;
   background-image: url("../img/icon-34.svg");
   -webkit-background-size: 30%;
@@ -1709,12 +1861,8 @@ a:link, a:visited, a:hover, a:active {
   background-size: 30%;
   background-position: center center;
   background-repeat: no-repeat;
-  text-align: center;
-  padding-top: 8px;
-  color: #f2f2f2;
-  font-size: 2em;
 }
-/* line 32, sass/_plusView.scss */
+/* line 27, sass/_plusView.scss */
 #plusView .btn.addOfferBtn, #plusView .btn.addRequestBtn {
   display: none;
   width: 40px;
@@ -1731,9 +1879,14 @@ a:link, a:visited, a:hover, a:active {
   text-align: center;
   color: #f2f2f2;
 }
-/* line 52, sass/_plusView.scss */
+/* line 47, sass/_plusView.scss */
 #plusView:hover .addOfferBtn, #plusView:hover .addRequestBtn {
   display: block;
+}
+
+/* line 56, sass/_plusView.scss */
+body.phone #plusView {
+  right: calc(50% - 1.75em) !important;
 }
 
 /* line 34, sass/_languageView.scss */
@@ -1925,7 +2078,7 @@ a:link, a:visited, a:hover, a:active {
 
 /* line 5, sass/_mobileAdaptions.scss */
 body.phone #main-container.shifted {
-  left: 80%;
+  /*left: 80%;*/
 }
 /* line 10, sass/_mobileAdaptions.scss */
 body.phone #menuBtnView {

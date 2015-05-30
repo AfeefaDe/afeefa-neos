@@ -1,3 +1,53 @@
+@mixin categorySymbols {
+
+	/* type 0 + type 1 categories*/
+	&.cat-consultation { background-image: url("../img/cat-10.svg"); }
+	&.cat-medic { background-image: url("../img/cat-04.svg"); }
+	&.cat-german { background-image: url("../img/cat-18.svg"); }
+	&.cat-jobs { background-image: url("../img/cat-02.svg"); }
+	&.cat-leisure { background-image: url("../img/cat-08.svg"); }
+	&.cat-translation { background-image: url("../img/cat-06.svg"); }
+	&.cat-children { background-image: url("../img/cat-14.svg"); }
+	&.cat-donation { background-image: url("../img/cat-12.svg"); }
+	&.cat-community { background-image: url("../img/cat-16.svg"); }
+
+	/* type 3 categories*/
+	&.cat-housing {
+		border: 1px solid $white;
+		background-image: url("../img/cat-19.svg");
+		background-color: rgba(0,0,0,0) !important;
+	}
+	&.cat-church { background-image: url("../img/cat-16.svg"); }
+	&.cat-mosque { background-image: url("../img/cat-16.svg"); }
+	&.cat-synagogue { background-image: url("../img/cat-22.svg"); }
+
+}
+
+@mixin categorySymbolsDark {
+
+	/* type 0 + type 1 categories*/
+	&.cat-consultation { background-image: url("../img/cat-09.svg"); }
+	&.cat-medic { background-image: url("../img/cat-03.svg"); }
+	&.cat-german { background-image: url("../img/cat-17.svg"); }
+	&.cat-jobs { background-image: url("../img/cat-01.svg"); }
+	&.cat-leisure { background-image: url("../img/cat-07.svg"); }
+	&.cat-translation { background-image: url("../img/cat-05.svg"); }
+	&.cat-children { background-image: url("../img/cat-13.svg"); }
+	&.cat-donation { background-image: url("../img/cat-11.svg"); }
+	&.cat-community { background-image: url("../img/cat-15.svg"); }
+
+	/* type 3 categories*/
+	&.cat-housing {
+		border: 1px solid $white;
+		background-image: url("../img/cat-19.svg");
+		background-color: rgba(0,0,0,0) !important;
+	}
+	&.cat-church { background-image: url("../img/cat-15.svg"); }
+	&.cat-mosque { background-image: url("../img/cat-15.svg"); }
+	&.cat-synagogue { background-image: url("../img/cat-21.svg"); }
+
+}
+
 @mixin circleBtn {
 
 	width: 3em;

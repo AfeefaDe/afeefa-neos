@@ -9,7 +9,7 @@
 	height: 100%;
 	padding: 2em 0;
 
-	border: 1px solid red;
+	/*border: 1px solid red;*/
 
 	.menu-btn {
 		position: absolute;
@@ -27,5 +27,17 @@
 	}
 
 	img { width: 100%; }
+
+}
+
+body.phone {
+
+	#menuView{
+
+		.menu-btn {
+			right: -5em;
+		}
+
+	}
 
 }

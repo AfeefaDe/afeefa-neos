@@ -201,7 +201,6 @@ qx.Class.define("DetailView", {
                 var record = that.record;
                 that.reset();
                 that.load(record);
-                console.debug('change lang');
                 
             }
 

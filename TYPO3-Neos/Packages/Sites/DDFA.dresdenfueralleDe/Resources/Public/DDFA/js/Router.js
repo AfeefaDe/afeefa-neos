@@ -51,6 +51,8 @@ qx.Class.define("Router", {
 		    	APP.setDetailView( new DetailViewMobile() );
 		    	
 		    	APP.setMenuView( new MenuView() );
+		    	
+		    	APP.setLegendView( new LegendView() );
 
 		    	APP.setPlusView( new PlusView() );
 		    	
@@ -63,6 +65,8 @@ qx.Class.define("Router", {
 		    	APP.setDetailView( new DetailView() );
 
 		    	APP.setMenuView( new MenuView() );
+
+		    	APP.setLegendView( new LegendView() );
 		    	
 		    	APP.setPlusView( new PlusView() );
 
@@ -74,6 +78,7 @@ qx.Class.define("Router", {
 	    	APP.getPlusView().render();
 	    	APP.getLanguageView().render();
 	    	APP.getMenuView().render();
+	    	APP.getLegendView().render();
 	    },
 
 	    _navigate: function( path ){

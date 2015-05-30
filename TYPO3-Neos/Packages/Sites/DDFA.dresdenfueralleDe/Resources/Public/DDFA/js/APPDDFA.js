@@ -15,7 +15,8 @@ qx.Class.define("APPDDFA", {
         that.setConfig(
             {
                 languages: ['de', 'en', 'ar', 'fa', 'fr', 'sr', 'ru', 'ti', 'ur'],
-                categories: ["advice", "medic", "german", "jobs", "leisure", "translation", "kids", "donation", "community", "housing", "church", "mosque", "synagogue"],
+                categories: ["consultation", "medic", "german", "jobs", "leisure", "translation", "children", "donation", "community"],
+                categoriesBasic: ["housing", "church", "mosque", "synagogue"],
                 simpleProperties: ['speaker', 'spokenLanguages', 'phone', 'mail', 'web', 'openingHours', 'description'],
                 imgPath: '_Resources/Static/Packages/DDFA.dresdenfueralleDe/DDFA/img/'
             }
@@ -30,6 +31,7 @@ qx.Class.define("APPDDFA", {
         data: {},
         detailView: {},
         menuView: {},
+        legendView: {},
         plusView: {},
         languageView: {},
         userDevice: {},

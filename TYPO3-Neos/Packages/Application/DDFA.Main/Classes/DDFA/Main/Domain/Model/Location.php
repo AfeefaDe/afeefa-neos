@@ -6,9 +6,6 @@ namespace DDFA\Main\Domain\Model;
  *                                                                        *
  *                                                                        */
 
-use DDFA\Main\Domain\Model\Event as Event;
-use DDFA\Main\Domain\Model\Initiative as Initiative;
-use DDFA\Main\Domain\Model\MarketEntry as MarketEntry;
 use Doctrine\ORM\Mapping as ORM;
 use TYPO3\Flow\Annotations as Flow;
 

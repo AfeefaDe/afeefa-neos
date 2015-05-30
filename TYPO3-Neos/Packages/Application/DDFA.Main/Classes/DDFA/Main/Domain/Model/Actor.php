@@ -6,7 +6,6 @@ namespace DDFA\Main\Domain\Model;
  *                                                                        *
  *                                                                        */
 
-use DDFA\Main\Domain\Model\Category as Category;
 use DDFA\Main\Utility\DDConst;
 use Doctrine\Common\Collections\Collection as Collection;
 use Doctrine\ORM\Mapping as ORM;

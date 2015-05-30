@@ -7,9 +7,7 @@ namespace DDFA\Main\Controller\Module\DDFA;
  *                                                                        */
 
 use DateTime;
-use DDFA\Main\Domain\Model\Actor as Object;
-use DDFA\Main\Domain\Model\Initiative as Initiative;
-use DDFA\Main\Domain\Model\Language as Language;
+use DDFA\Main\Domain\Model\Initiative;
 use DDFA\Main\Domain\Repository\InitiativeRepository as InitiativeRepository;
 use DDFA\Main\Domain\Repository\LanguageRepository as LanguageRepository;
 use DDFA\Main\Utility\DDConst;

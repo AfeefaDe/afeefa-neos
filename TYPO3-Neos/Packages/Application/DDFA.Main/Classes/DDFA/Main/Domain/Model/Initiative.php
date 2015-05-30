@@ -6,20 +6,15 @@ namespace DDFA\Main\Domain\Model;
  *                                                                        *
  *                                                                        */
 
+use DDFA\Main\Domain\Model\Owner as Owner;
 use Doctrine\ORM\Mapping as ORM;
 use TYPO3\Flow\Annotations as Flow;
 
 /**
  * @Flow\Entity
  */
-class Initiative extends \DDFA\Main\Domain\Model\Owner
+class Initiative extends Owner
 {
-
-    /**
-     * @var string
-     */
-    protected $speaker;
-
     /**
      * @var \Doctrine\Common\Collections\Collection<\DDFA\Main\Domain\Model\Location>
      * @ORM\OneToMany(mappedBy="initiative")
@@ -27,20 +22,19 @@ class Initiative extends \DDFA\Main\Domain\Model\Owner
     protected $locations;
 
     /**
-     * @return string
+     * @var \Doctrine\Common\Collections\Collection<\DDFA\Main\Domain\Model\Event>
+     * @ORM\OneToMany(mappedBy="initiative")
      */
-    public function getSpeaker()
-    {
-        return $this->speaker;
-    }
+    protected $events;
 
     /**
-     * @param string $speaker
-     * @return void
+     * @var \Doctrine\Common\Collections\Collection<\DDFA\Main\Domain\Model\MarketEntry>
+     * @ORM\OneToMany(mappedBy="initiative")
      */
-    public function setSpeaker($speaker)
-    {
-        $this->speaker = $speaker;
+    protected $entries;
+
+    public function __construct() {
+        parent::__construct();
     }
 
     /**
@@ -51,5 +45,11 @@ class Initiative extends \DDFA\Main\Domain\Model\Owner
         return $this->locations;
     }
 
-
+    /**
+     * @param \Doctrine\Common\Collections\Collection $locations
+     */
+    public function setLocations($locations)
+    {
+        $this->locations = $locations;
+    }
 }

@@ -1,0 +1,56 @@
+#languageView {
+	
+	position: absolute;
+	left: 7em;
+	top: 2em;
+	direction: ltr;
+
+	.btn {
+
+		display: none;
+
+		@include box-shadow(0px 0px 2px #333);
+		@include box-sizing(border-box);
+		cursor: pointer;
+		margin: 0 auto;
+
+		width: 3em;
+		height: 3em;
+		@include border-radius(2em);
+
+		margin-left: 1em;
+
+		background-color: $red;
+
+		@include background-size(cover);
+		background-position: center center;
+		background-repeat: no-repeat;
+		@include filter(grayscale(0.5));
+		
+		&.de { background-image: url("../img/flag_de.svg"); }
+		&.en { background-image: url("../img/flag_en.svg"); }
+		&.ar { background-image: url("../img/flag_ar.svg"); }
+		&.fa { background-image: url("../img/flag_fa.svg"); }
+		&.fr { background-image: url("../img/flag_fr.svg"); }
+		&.sr { background-image: url("../img/flag_sr.svg"); }
+		&.ru { background-image: url("../img/flag_ru.svg"); }
+		&.ti { background-image: url("../img/flag_ti.svg"); }
+		&.ur { background-image: url("../img/flag_ur.svg"); }
+
+		&:hover {
+			@include box-shadow(0px 0px 5px #111);
+			@include filter(grayscale(0.2));
+		}
+		
+		&.root-btn {
+			display: block;
+		}
+
+	}
+
+	&:hover {
+		.btn {
+			display: inline-block;
+		}
+	}
+}

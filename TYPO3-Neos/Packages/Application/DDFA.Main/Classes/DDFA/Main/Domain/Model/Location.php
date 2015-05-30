@@ -2,22 +2,23 @@
 namespace DDFA\Main\Domain\Model;
 
 /*                                                                        *
- * This script belongs to the TYPO3 Flow package "DDFA.Main".              *
+ * This script belongs to the TYPO3 Flow package "DDFA.Main".             *
  *                                                                        *
  *                                                                        */
 
-use DDFA\Main\Domain\Model\Event;
-use DDFA\Main\Domain\Model\Initiative;
-use DDFA\Main\Domain\Model\MarketEntry;
+use DDFA\Main\Domain\Model\Event as Event;
+use DDFA\Main\Domain\Model\Initiative as Initiative;
+use DDFA\Main\Domain\Model\MarketEntry as MarketEntry;
+use DDFA\Main\Domain\Model\Object as Object;
+use DDFA\Main\Utility\DDConst;
 use Doctrine\ORM\Mapping as ORM;
 use TYPO3\Flow\Annotations as Flow;
 
 /**
  * @Flow\Entity
  */
-class Location extends \DDFA\Main\Domain\Model\Object
+class Location extends Object
 {
-
     /**
      * @var string
      * @ORM\Column(nullable=true)
@@ -92,6 +93,11 @@ class Location extends \DDFA\Main\Domain\Model\Object
      */
     protected $event;
 
+    public function __construct() {
+        parent::__construct();
+        $this->setType(DDConst::LOCATION_INI);
+    }
+
     /**
      * @return string
      */
@@ -125,7 +131,6 @@ class Location extends \DDFA\Main\Domain\Model\Object
     {
         $this->initiative = $initiative;
     }
-
 
     /**
      * @return string

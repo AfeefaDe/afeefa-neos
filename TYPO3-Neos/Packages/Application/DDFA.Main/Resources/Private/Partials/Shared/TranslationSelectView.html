@@ -1,0 +1,17 @@
+<f:if condition="{languages}">
+    <div class="infoBox">
+        <p>View a translation</p>
+        <f:form method="post" action="view" arguments="{viewObject: viewObject}">
+            <label for="viewLocale">Select language</label>
+            <!-- TODO link to real languages -->
+            <select id="viewLocale" name="viewLocale">
+                <f:for each="{languages}" as="lan">
+                    <option value="{lan}">{lan}</option>
+                </f:for>
+            </select>
+            <button type="submit" class="neos-button" title="View this translation">
+                <i class="icon-arrow-right icon-white"></i>
+            </button>
+        </f:form>
+    </div>
+</f:if>

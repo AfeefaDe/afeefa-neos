@@ -6,17 +6,55 @@ namespace DDFA\Main\Domain\Model;
  *                                                                        *
  *                                                                        */
 
+use DDFA\Main\Domain\Model\Event as Event;
 use Doctrine\ORM\Mapping as ORM;
 use TYPO3\Flow\Annotations as Flow;
 
 /**
  * @Flow\Entity
  */
-class MarketEntry extends \DDFA\Main\Domain\Model\Event
+class MarketEntry extends Event
 {
-
     /**
      * @var boolean
      */
     protected $offer;
+
+    /**
+     * @var Location
+     * @ORM\OneToMany(mappedBy="initiative")
+     */
+    protected $location;
+
+    /**
+     * @return boolean
+     */
+    public function isOffer()
+    {
+        return $this->offer;
+    }
+
+    /**
+     * @param boolean $offer
+     */
+    public function setOffer($offer)
+    {
+        $this->offer = $offer;
+    }
+
+    /**
+     * @return Location
+     */
+    public function getLocation()
+    {
+        return $this->location;
+    }
+
+    /**
+     * @param Location $location
+     */
+    public function setLocation($location)
+    {
+        $this->location = $location;
+    }
 }

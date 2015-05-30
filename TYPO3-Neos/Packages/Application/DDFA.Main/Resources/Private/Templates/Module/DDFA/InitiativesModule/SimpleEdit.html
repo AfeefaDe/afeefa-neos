@@ -1,0 +1,21 @@
+<f:layout name="Default"/>
+
+<f:section name="title">Edit Initiative</f:section>
+
+<f:section name="content">
+
+    <f:render partial="Shared/TranslationSelectSimpleEdit" arguments="{languages: languages, editObject: editObject}" />
+
+    <f:form method="post" action="update" object="{editObject}" name="updateInitiative" enctype="multipart/form-data">
+
+        <div class="neos-row-fluid neos-module-container">
+            <f:render partial="Initiative/InitiativeForm"/>
+        </div>
+
+        <div class="neos-footer">
+            <f:link.action action="index" class="neos-button" title="back to index">Abort</f:link.action>
+            <f:form.submit value="Save changes" class="neos-button neos-button-primary" title="save this initiative"/>
+        </div>
+    </f:form>
+
+</f:section>

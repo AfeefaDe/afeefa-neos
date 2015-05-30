@@ -6,6 +6,7 @@ namespace DDFA\Main\Domain\Model;
  *                                                                        *
  *                                                                        */
 
+use DDFA\Main\Domain\Model\Object as Object;
 use Doctrine\ORM\Mapping as ORM;
 use TYPO3\Flow\Annotations as Flow;
 
@@ -13,28 +14,10 @@ use TYPO3\Flow\Annotations as Flow;
  * @Flow\Entity
  * @ORM\MappedSuperclass()
  */
-abstract class Owner extends \DDFA\Main\Domain\Model\Object
+abstract class Owner extends Object
 {
 
-    /**
-     * @var string
-     */
-    protected $languages;
-
-    /**
-     * @return string
-     */
-    public function getLanguages()
-    {
-        return $this->languages;
+    public function __construct() {
+        parent::__construct();
     }
-
-    /**
-     * @param string $languages
-     */
-    public function setLanguages($languages)
-    {
-        $this->languages = $languages;
-    }
-
 }

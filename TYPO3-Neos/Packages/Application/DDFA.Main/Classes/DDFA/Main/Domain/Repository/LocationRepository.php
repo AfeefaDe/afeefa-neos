@@ -6,28 +6,18 @@ namespace DDFA\Main\Domain\Repository;
  *                                                                        *
  *                                                                        */
 
-use DDFA\Main\Domain\Model\Location;
+use DDFA\Main\Domain\Model\Location as Location;
 use DDFA\Main\Utility\DDConst;
 use ReflectionObject;
 use TYPO3\Flow\Annotations as Flow;
-use TYPO3\Flow\Persistence\Repository;
 
 /**
  * @Flow\Scope("singleton")
  */
-class LocationRepository extends Repository
+
+//TODO add docs
+class LocationRepository extends AbstractTranslationRepository
 {
-    public function findAllLocalized($locale)
-    {
-        $query = $this->createQuery();
-
-        $locations = $query->matching(
-            $query->equals('locale', $locale)
-        )->execute();
-
-        return $this->addLocales($locations);
-    }
-
     public function findAllOfInitiative()
     {
         $query = $this->createQuery();
@@ -62,7 +52,7 @@ class LocationRepository extends Repository
             )
         )->execute();
 
-        return $this->addLocales($locations);
+        return $this->includeLocales($locations);
     }
 
     public function findAllOfMarketEntryLocalized($locale)
@@ -75,7 +65,7 @@ class LocationRepository extends Repository
             )
         )->execute();
 
-        return $this->addLocales($locations);
+        return $this->includeLocales($locations);
     }
 
     public function findAllOfEventLocalized($locale)
@@ -88,134 +78,39 @@ class LocationRepository extends Repository
             )
         )->execute();
 
-        return $this->addLocales($locations);
+        return $this->includeLocales($locations);
     }
 
-    /**
-     * returns the one localisation in $locale of the location (or nothing if the locale does not exist)
-     *
-     * @param Location $location
-     * @param $locale
-     * @return Location
-     */
-    public function findOneLocalized(Location $location, $locale)
-    {
-        if($location->getLocale() == $location)
-            return $location;
+    public function supplement(Location $location) {
 
-        $query = $this->createQuery();
-        return $query->matching(
-            $query->logicalAnd(
-                $query->equals('entryId', $location->getEntryId()),
-                $query->equals('locale', $locale)
-            )
-        )->execute()->getFirst();
-    }
+        //TODO maybe better store in another place... one day
+        $LOCATION_SUPPLEMENT_PROPS = ["description", "mail", "web", "phone", "speakerPublic", "speakerPrivate", "facebook"];
 
-    /**
-     * returns only all other localisations, without itself
-     *
-     * @param Location $location
-     * @return \TYPO3\Flow\Persistence\QueryResultInterface
-     */
-    public function findLocalisations(Location $location)
-    {
-        $query = $this->createQuery();
-        return $query->matching(
-            $query->logicalAnd(
-                $query->equals('entryId', $location->getEntryId()),
-                $query->logicalNot(
-                    $query->equals('Persistence_Object_Identifier', $location->getPersistenceObjectIdentifier())
-                )
-            )
-        )->execute();
-    }
-
-    /**
-     * returns all localisations of this location including itself
-     *
-     * @param Location $location
-     * @return \TYPO3\Flow\Persistence\QueryResultInterface
-     */
-    public function findAllLocalisations(Location $location)
-    {
-        $query = $this->createQuery();
-        return $query->matching(
-            $query->equals('entryId', $location->getEntryId())
-        )->execute();
-
-    }
-
-    /**
-     * returns an array containing the locale codes of all available translations
-     *
-     * @param Location $location
-     * @return array
-     */
-    public function findAllLocales(Location $location)
-    {
-        $r = array();
-        $i = 0;
-        foreach ($this->findAllLocalisations($location) as $localisation) {
-            $r[$i] = $localisation->getLocale();
-            ++$i;
-        }
-        return $r;
-    }
-
-    /**
-     * returns an array containing the locale codes of all available translations
-     *
-     * @param Location $location
-     * @return array
-     */
-    public function findLocales(Location $location)
-    {
-        $r = array();
-        $i = 0;
-        foreach ($this->findAllLocalisations($location) as $localisation) {
-            $locale = $localisation->getLocale();
-            if ($location->getLocale() != $locale) {
-                $r[$i] = $locale;
-                ++$i;
-            }
-        }
-        return $r;
-    }
-
-    /**
-     * @param $locations
-     * @return mixed
-     */
-    private function addLocales($locations)
-    {
-        foreach ($locations as $l) {
-            $locales = $this->findLocales($l);
-            $l->numLocales = sizeof($locales);
-            $l->locales = join(", ", $locales);
-        }
-        return $locations;
-    }
-
-    /**
-     * @param Location $location
-     * @return Location
-     */
-    public function hydrate(Location $location) {
-        if($location->getLocale() != DDConst::LOCALE_STD) {
-            $parentEntry = $this->findOneLocalized($location, DDConst::LOCALE_STD);
-            $parentReflection = new ReflectionObject($parentEntry);
-            $sourceReflection = new ReflectionObject($location);
-            foreach($sourceReflection->getProperties() as $property) {
+        $owner = $location->getInitiative();
+        $location = $this->hydrate($location);
+        $parentReflection = new ReflectionObject($owner);
+        $sourceReflection = new ReflectionObject($location);
+        foreach($sourceReflection->getProperties() as $property) {
+            if (in_array($property->getName(), $LOCATION_SUPPLEMENT_PROPS)) {
                 $property->setAccessible(true);
                 $value = $property->getValue($location);
-                if($value == NULL || $value == "") {
+                if ($value == NULL || $value == "") {
                     $parentProperty = $parentReflection->getProperty($property->getName());
                     $parentProperty->setAccessible(true);
-                    $property->setValue($location, $parentProperty->getValue($parentEntry));
+                    $property->setValue($location, $parentProperty->getValue($owner));
                 }
             }
         }
         return $location;
+    }
+
+    public function findAllSupplemented($locale) {
+        $locations = $this->findAllLocalized($locale);
+        $result = array();
+        foreach($locations as $l) {
+            $l = $this->supplement($l);
+            array_push($result, $l);
+        }
+        return $result;
     }
 }

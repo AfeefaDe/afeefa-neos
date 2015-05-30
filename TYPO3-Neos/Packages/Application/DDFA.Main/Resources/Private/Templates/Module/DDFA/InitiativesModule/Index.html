@@ -24,12 +24,15 @@
                         <th>
                             <div>Website</div>
                         </th>
+                        <th>
+                            <div>Translations (of {numLanguages})</div>
+                        </th>
                         <th></th>
                     </tr>
                     </thead>
                     <tbody>
                     <f:for each="{inis}" as="ini">
-                        <f:render partial="InitiativeEntry" arguments="{ini: ini}"/>
+                        <f:render partial="Initiative/InitiativeEntry" arguments="{ini: ini}"/>
                     </f:for>
                     </tbody>
                 </table>
@@ -42,9 +45,8 @@
         </f:if>
     </div>
     <div class="neos-footer">
-        <f:link.action action="add" controller="InitiativesModuleController" class="neos-button neos-button-primary">Add
-            a
-            initiative
+        <f:link.action action="add" controller="InitiativesModuleController" class="neos-button neos-button-primary">
+            Add initiative
         </f:link.action>
     </div>
 </f:section>

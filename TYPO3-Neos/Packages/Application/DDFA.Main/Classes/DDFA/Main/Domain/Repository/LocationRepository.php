@@ -7,7 +7,7 @@ namespace DDFA\Main\Domain\Repository;
  *                                                                        */
 
 use DDFA\Main\Domain\Model\Actor;
-use DDFA\Main\Domain\Model\Location as Location;
+use DDFA\Main\Domain\Model\Location;
 use DDFA\Main\Utility\DDConst;
 use ReflectionObject;
 use TYPO3\Flow\Annotations as Flow;
@@ -23,6 +23,18 @@ class LocationRepository extends AbstractTranslationRepository {
      * @var InitiativeRepository
      */
     protected $initiativeRepository;
+
+    /**
+     * @Flow\Inject
+     * @var MarketEntryRepository
+     */
+    protected $marketRepository;
+
+    /**
+     * @Flow\Inject
+     * @var EventRepository
+     */
+    protected $eventRepository;
 
     /**
      * @return \TYPO3\Flow\Persistence\QueryResultInterface
@@ -198,9 +210,24 @@ class LocationRepository extends AbstractTranslationRepository {
         $LOCATION_SUPPLEMENT_PROPS = ["description", "mail", "web", "phone", "speakerPublic", "speakerPrivate", "facebook"];
 
         $object = $this->hydrate($object);
-        $owner = $this->initiativeRepository->findOneHydrated($object->getInitiative());
+
+        switch ($object->getType()) {
+            case DDConst::OWNER_INI:
+                $owner = $this->initiativeRepository->findOneHydrated($object->getInitiative());
+                break;
+            case DDConst::OWNER_MARKET:
+                $owner = $this->marketRepository->findByIdentifier($object->getMarketEntry()->getPersistenceObjectIdentifier());
+                break;
+            case DDConst::OWNER_EVENT:
+                $owner = $this->eventRepository->findByIdentifier($object->getEvent()->getPersistenceObjectIdentifier());
+                break;
+            default:
+                return $object;
+        }
+
         $parentReflection = new ReflectionObject($owner);
         $sourceReflection = new ReflectionObject($object);
+
         foreach ($sourceReflection->getProperties() as $property) {
             if (in_array($property->getName(), $LOCATION_SUPPLEMENT_PROPS)) {
                 $property->setAccessible(true);

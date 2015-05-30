@@ -4,7 +4,8 @@ qx.Class.define("MapView", {
   type: "singleton",
   
   properties : {
-    userLocation: {}
+    userLocation: {},
+    selectedMarker: {}
   },
   
   construct: function(){
@@ -13,6 +14,7 @@ qx.Class.define("MapView", {
   	that.render();
 
   	that.setUserLocation(null);
+  	that.setSelectedMarker(null);
   },
 
   members : {
@@ -106,6 +108,10 @@ qx.Class.define("MapView", {
 			that.say('mapclicked');
 		});
 
+		that.listen('mapclicked', function(){
+            that.deselectMarker();
+        });
+
     	// that.map.on('load', function(e){
     	// 	that.setZoomFilter();
     	// });
@@ -113,11 +119,12 @@ qx.Class.define("MapView", {
     	that.map.on('viewreset', function(e){
     		// that.setZoomFilter();s
     	});
-    	var $locateBtn = $('#locate-btn');
-    	$locateBtn.click(function(){
-    		// alert('haha');
-    		that.locate();
-    	});
+    	
+    	// var $locateBtn = $('#locate-btn');
+    	// $locateBtn.click(function(){
+    	// 	// alert('haha');
+    	// 	that.locate();
+    	// });
 		
 		// that.locate();
 		
@@ -217,7 +224,7 @@ qx.Class.define("MapView", {
 
 			// TODO load detail view
 			marker.on('click', function(){
-				APP.getDetailView().load(location);
+				that.selectMarker(marker, location);
 			});
 
 			// 	// $content.append('<p><a href="http://maps.google.com/?saddr=34.052222,-118.243611&daddr=37.322778,-122.031944" target="_blank"><button class="btn btn-default"><span class="fa fa-location-arrow" aria-hidden="true"></span> Navigate</button></a></p>');
@@ -239,6 +246,25 @@ qx.Class.define("MapView", {
 		});
 
 		// return newLayer;
+    },
+
+    selectMarker: function( marker, location ){
+    	var that = this;
+
+    	that.deselectMarker();
+		that.setSelectedMarker(marker);
+
+    	APP.getDetailView().load(location);
+		$(marker._icon).addClass('active');
+    },
+
+    deselectMarker: function(){
+    	var that = this;
+
+    	if( that.getSelectedMarker() ) {
+    		$( that.getSelectedMarker()._icon ).removeClass('active');
+    		that.setSelectedMarker(null);
+    	}
     },
 
     addPOIs: function(markers, color) {

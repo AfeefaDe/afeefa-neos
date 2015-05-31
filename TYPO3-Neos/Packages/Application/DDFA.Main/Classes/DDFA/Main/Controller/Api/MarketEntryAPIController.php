@@ -16,7 +16,7 @@ use TYPO3\Flow\Mvc\Controller\ActionController;
 use TYPO3\Flow\Mvc\View\JsonView;
 use TYPO3\Flow\Mvc\View\ViewInterface;
 
-class MarketEntryController extends ActionController {
+class MarketEntryAPIController extends ActionController {
 
     /**
      * @Flow\Inject

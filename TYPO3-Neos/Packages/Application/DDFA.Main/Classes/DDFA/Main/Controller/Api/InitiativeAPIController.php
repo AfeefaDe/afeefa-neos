@@ -9,12 +9,16 @@
 namespace DDFA\Main\Controller\Api;
 
 
-use DDFA\Main\Domain\Model\Initiative;
+use DateTime;
 use DDFA\Main\Domain\Repository\InitiativeRepository;
-use TYPO3\Flow\Annotations as Flow;
+use DDFA\Main\Utility\DDConst;
+use DDFA\Main\Utility\DDHelpers;
 use TYPO3\Flow\Mvc\Controller\ActionController;
+use TYPO3\Flow\Annotations as Flow;
+use \DDFA\Main\Domain\Model\Initiative;
 use TYPO3\Flow\Mvc\View\JsonView;
 use TYPO3\Flow\Mvc\View\ViewInterface;
+use TYPO3\Flow\Property\TypeConverter\PersistentObjectConverter;
 
 class InitiativeAPIController extends ActionController {
 
@@ -30,15 +34,6 @@ class InitiativeAPIController extends ActionController {
      * @var array
      */
     protected $supportedMediaTypes = array('application/json');
-
-    public function listAction() {
-        $this->view->assign('value', ['initiatives' => $this->iniRepository->findAll()]);
-    }
-
-    public function showAction(Initiative $initiative) {
-        print_r($this->request->getHttpRequest()->getHeaders());
-        $this->view->assign('value', ['initiative' => $initiative]);
-    }
 
     protected function initializeView(ViewInterface $view) {
         if ($view instanceof JsonView) {
@@ -60,6 +55,35 @@ class InitiativeAPIController extends ActionController {
                 ]
             ]);
         }
+    }
+
+    public function listAction() {
+        $this->view->assign('value', ['initiatives' => $this->iniRepository->findAll()]);
+    }
+
+    public function showAction(Initiative $initiative) {
+        print_r($this->request->getHttpRequest()->getHeaders());
+        $this->view->assign('value', ['initiative' => $initiative]);
+    }
+
+    protected function initializeCreateAction() {
+        $config = $this->arguments['initiative']->getPropertyMappingConfiguration();
+        $config->setTypeConverterOption('TYPO3\Flow\Property\TypeConverter\PersistentObjectConverter', PersistentObjectConverter::CONFIGURATION_CREATION_ALLOWED, TRUE);
+        $config->allowAllProperties();
+    }
+
+    public function createAction(Initiative $initiative) {
+        $initiative->setEntryId(uniqid());
+        $initiative->setLocale(DDConst::LOCALE_STD);
+        $initiative->setRating(0);
+
+        $now = new DateTime();
+        $initiative->setCreated($now);
+        $initiative->setUpdated($now);
+        $initiative->setPersistenceObjectIdentifier(DDHelpers::createGuid());
+        $this->iniRepository->add($initiative);
+        $this->response->setStatus(201);
+        $this->view->assign('value', ['initiative' => $initiative]);
     }
 
 }

@@ -23,7 +23,7 @@
         </f:then>
         <f:else>
             <!-- TODO add style -->
-            <div>!! There are no categories!</div>
+            <div><i>There are no categories!</i></div>
         </f:else>
     </f:if>
 
@@ -53,8 +53,16 @@
     <!-- END OF INI LOCATION -->
 
     <f:if condition="{type} == '1'">
-        tba: market entry location form
-        <f:render partial="Shared/FooterBack"/>
+        <f:form method="post" action="create" object="{newObject}" name="newObject"
+                enctype="multipart/form-data">
+            <div style="display: none;">
+                <f:form.hidden name="type" value="{type}"/>
+            </div>
+            <div class="neos-row-fluid neos-module-container">
+                <f:render partial="Location/LocationForm" arguments="{entries: entries, cats: cats}"/>
+            </div>
+            <f:render partial="Location/LocationAddFooter"/>
+        </f:form>
     </f:if>
 
     <f:if condition="{type} == '2'">

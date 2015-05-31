@@ -1,4 +1,4 @@
-INSERT INTO ddfa_main_domain_model_language (persistence_object_identifier, code, language, rtl) VALUES ('086b68a7-c101-4922-977b-7d77bb860ac8', 'ar', 'العربية (Arabic', 1);
+INSERT INTO ddfa_main_domain_model_language (persistence_object_identifier, code, language, rtl) VALUES ('086b68a7-c101-4922-977b-7d77bb860ac8', 'ar', 'العربية (Arabic)', 1);
 INSERT INTO ddfa_main_domain_model_language (persistence_object_identifier, code, language, rtl) VALUES ('1ca3f807-e755-4d0e-9382-4a59b73b559c', 'fa', 'فارسی (Persian)', 1);
 INSERT INTO ddfa_main_domain_model_language (persistence_object_identifier, code, language, rtl) VALUES ('4c9d8930-2314-46cb-81b6-85ed154d628a', 'fr', 'Français', 0);
 INSERT INTO ddfa_main_domain_model_language (persistence_object_identifier, code, language, rtl) VALUES ('521c1c80-0074-4a7f-a9c2-52c119d7b7c3', 'en', 'English', 0);

@@ -32,6 +32,7 @@ class LocationsModuleController extends AbstractTranslationController {
      * @var InitiativeRepository
      */
     protected $initiativeRepository;
+
     /**
      * @Flow\Inject
      * @var CategoryRepository
@@ -126,7 +127,11 @@ class LocationsModuleController extends AbstractTranslationController {
                     //TODO error handling
             }
             $newObject->setType($type);
-            $newObject->setCategory($this->categoryRepository->findOneByName($_POST['moduleArguments']['cat']));
+
+            //TODO refactor:
+            if (isset($_POST['moduleArguments']['cat'])) {
+                $newObject->setCategory($this->categoryRepository->findOneByName($_POST['moduleArguments']['cat']));
+            }
 
             $this->objectRepository->add($newObject);
             $this->addFlashMessage('A new location has been created successfully.');
@@ -198,6 +203,7 @@ class LocationsModuleController extends AbstractTranslationController {
             $editObject->setInitiative($this->initiativeRepository->findOneByName($_POST['moduleArguments']['ini']));
         }
 
+        //TODO refactor:
         if (isset($_POST['moduleArguments']['cat'])) {
             $editObject->setCategory($this->categoryRepository->findOneByName($_POST['moduleArguments']['cat']));
         }

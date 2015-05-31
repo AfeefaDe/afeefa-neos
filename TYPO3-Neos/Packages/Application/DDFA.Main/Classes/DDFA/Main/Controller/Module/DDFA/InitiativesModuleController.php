@@ -8,6 +8,7 @@ namespace DDFA\Main\Controller\Module\DDFA;
 
 use DateTime;
 use DDFA\Main\Domain\Model\Initiative;
+use DDFA\Main\Domain\Repository\CategoryRepository;
 use DDFA\Main\Domain\Repository\InitiativeRepository as InitiativeRepository;
 use DDFA\Main\Domain\Repository\LanguageRepository as LanguageRepository;
 use DDFA\Main\Utility\DDConst;
@@ -30,6 +31,12 @@ class InitiativesModuleController extends AbstractTranslationController {
      * @var LanguageRepository
      */
     protected $languageRepository;
+
+    /**
+     * @Flow\Inject
+     * @var CategoryRepository
+     */
+    protected $categoryRepository;
 
     /**
      * @return void
@@ -60,6 +67,7 @@ class InitiativesModuleController extends AbstractTranslationController {
      * @return void
      */
     public function addAction() {
+        $this->view->assign('cats', $this->categoryRepository->findByType(DDConst::OWNER_INI));
     }
 
     /**
@@ -68,6 +76,11 @@ class InitiativesModuleController extends AbstractTranslationController {
      * @throws \TYPO3\Flow\Persistence\Exception\IllegalObjectTypeException
      */
     public function createAction(Initiative $newObject) {
+        //TODO refactor:
+        if (isset($_POST['moduleArguments']['cat'])) {
+            $newObject->setCategory($this->categoryRepository->findOneByName($_POST['moduleArguments']['cat']));
+        }
+
         $this->objectRepository->add($newObject);
         $this->addFlashMessage('A new initiative has been created successfully.');
 
@@ -116,6 +129,7 @@ class InitiativesModuleController extends AbstractTranslationController {
         } else {
             $this->view->assign('editObject', $editObject);
             $this->view->assign('languages', $this->languageRepository->findAll());
+            $this->view->assign('cats', $this->categoryRepository->findByType(DDConst::OWNER_INI));
         }
     }
 
@@ -125,8 +139,14 @@ class InitiativesModuleController extends AbstractTranslationController {
      * @throws \TYPO3\Flow\Persistence\Exception\IllegalObjectTypeException
      */
     public function updateAction(Initiative $editObject) {
-        $this->addFlashMessage('The initiative has been updated successfully.');
         $editObject->setUpdated(new DateTime());
+
+        //TODO refactor:
+        if (isset($_POST['moduleArguments']['cat'])) {
+            $editObject->setCategory($this->categoryRepository->findOneByName($_POST['moduleArguments']['cat']));
+        }
+
+        $this->addFlashMessage('The initiative has been updated successfully.');
         $this->objectRepository->update($editObject);
         $this->redirect('index');
     }

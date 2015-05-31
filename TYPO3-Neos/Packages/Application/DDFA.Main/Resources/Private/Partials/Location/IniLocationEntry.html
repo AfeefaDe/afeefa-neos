@@ -6,16 +6,27 @@
         <div>{l.initiative.name}</div>
     </td>
     <td>
-        <div>{l.street}, {l.zip} {l.city} [{l.lat},{l.lon}]</div>
+        <p>
+            {l.street}, {l.district}<br>
+            {l.zip} {l.city}<br>
+            ({l.lat},{l.lon})
+        </p>
     </td>
     <td>
-        <div>{l.openingHours}</div>
+        <div>{l.speakerPublic}</div>
     </td>
     <td>
         <div>{l.phone}</div>
     </td>
     <td>
         <div>{l.mail}</div>
+    </td>
+    <td>
+        <div>{l.scope}</div>
+    </td>
+    <td>
+        <!-- TODO include supportWanted Property -->
+        <div>{l.supportWanted}</div>
     </td>
     <td>
         <div>{l.numLocales}

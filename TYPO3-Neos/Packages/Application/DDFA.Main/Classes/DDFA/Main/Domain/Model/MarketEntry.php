@@ -19,6 +19,11 @@ class MarketEntry extends Event {
     protected $offer;
 
     /**
+     * @var boolean
+     */
+    protected $released;
+
+    /**
      * @var Location
      * @ORM\OneToMany(mappedBy="initiative")
      */
@@ -54,5 +59,19 @@ class MarketEntry extends Event {
      */
     public function setLocation($location) {
         $this->location = $location;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getReleased() {
+        return $this->released;
+    }
+
+    /**
+     * @param mixed $released
+     */
+    public function setReleased($released) {
+        $this->released = $released;
     }
 }

@@ -7,11 +7,12 @@ namespace DDFA\Main\Controller\Module\DDFA;
  *                                                                        */
 
 use DateTime;
-use DDFA\Main\Domain\Model\Location as Location;
+use DDFA\Main\Domain\Model\Location;
 use DDFA\Main\Domain\Repository\CategoryRepository;
-use DDFA\Main\Domain\Repository\InitiativeRepository as InitiativeRepository;
-use DDFA\Main\Domain\Repository\LanguageRepository as LanguageRepository;
-use DDFA\Main\Domain\Repository\LocationRepository as LocationRepository;
+use DDFA\Main\Domain\Repository\InitiativeRepository;
+use DDFA\Main\Domain\Repository\LanguageRepository;
+use DDFA\Main\Domain\Repository\LocationRepository;
+use DDFA\Main\Domain\Repository\MarketEntryRepository;
 use DDFA\Main\Utility\DDConst;
 use TYPO3\Flow\Annotations as Flow;
 
@@ -32,6 +33,12 @@ class LocationsModuleController extends AbstractTranslationController {
      * @var InitiativeRepository
      */
     protected $initiativeRepository;
+
+    /**
+     * @Flow\Inject
+     * @var MarketEntryRepository
+     */
+    protected $marketRepository;
 
     /**
      * @Flow\Inject
@@ -86,8 +93,8 @@ class LocationsModuleController extends AbstractTranslationController {
                     $this->view->assign('inis', $this->initiativeRepository->findAllLocalized());
                     break;
                 case DDConst::OWNER_MARKET:
-                    //TODO assign market entries
-                    //$this->view->assign('entries', );
+                    //TODO localize
+                    $this->view->assign('entries', $this->marketRepository->findAll());
                     break;
                 case DDConst::OWNER_EVENT:
                     //TODO assign events
@@ -115,9 +122,12 @@ class LocationsModuleController extends AbstractTranslationController {
             switch ($type) {
                 case DDConst::OWNER_INI:
                     //TODO make this safer, better, harder, stronger!
-                    $newObject->setInitiative($this->initiativeRepository->findOneByName($_POST['moduleArguments']['ini']));
+                    if (isset($_POST['moduleArguments']['ini']))
+                        $newObject->setInitiative($this->initiativeRepository->findOneByName($_POST['moduleArguments']['ini']));
                     break;
                 case DDConst::OWNER_MARKET:
+                    if (isset($_POST['moduleArguments']['entry']))
+                        $newObject->setMarketEntry($this->marketRepository->findOneByName($_POST['moduleArguments']['entry']));
                     break;
                 case DDConst::OWNER_EVENT:
                     break;
@@ -129,9 +139,8 @@ class LocationsModuleController extends AbstractTranslationController {
             $newObject->setType($type);
 
             //TODO refactor:
-            if (isset($_POST['moduleArguments']['cat'])) {
+            if (isset($_POST['moduleArguments']['cat']))
                 $newObject->setCategory($this->categoryRepository->findOneByName($_POST['moduleArguments']['cat']));
-            }
 
             $this->objectRepository->add($newObject);
             $this->addFlashMessage('A new location has been created successfully.');
@@ -182,12 +191,30 @@ class LocationsModuleController extends AbstractTranslationController {
     public function simpleEditAction(Location $editObject) {
         if ($editObject->getLocale() != DDConst::LOCALE_STD) {
             $viewObject = $this->objectRepository->findOneLocalized($editObject, DDConst::LOCALE_STD);
+
             $this->redirect('edit', NULL, NULL,
                 ['editObject' => ['__identity' => $editObject->getPersistenceObjectIdentifier()],
                     'viewObject' => ['__identity' => $viewObject->getPersistenceObjectIdentifier()]]);
+
         } else {
+
+            switch ($editObject->getType()) {
+                case DDConst::OWNER_INI:
+                    $this->view->assign('inis', $this->initiativeRepository->findAllLocalized());
+                    break;
+                case DDConst::OWNER_MARKET:
+                    //TODO localize
+                    $this->view->assign('entries', $this->marketRepository->findAll());
+                    break;
+                case DDConst::OWNER_EVENT:
+                    break;
+                case DDConst::OWNER_BASIC:
+                    break;
+                default:
+                    //TODO error handling
+            }
+
             $this->view->assign('editObject', $editObject);
-            $this->view->assign('inis', $this->initiativeRepository->findAllLocalized());
             $this->view->assign('cats', $this->categoryRepository->findByType($editObject->getType()));
             $this->view->assign('languages', $this->languageRepository->findAll());
         }
@@ -199,14 +226,15 @@ class LocationsModuleController extends AbstractTranslationController {
      * @throws \TYPO3\Flow\Persistence\Exception\IllegalObjectTypeException
      */
     public function updateAction(Location $editObject) {
-        if (isset($_POST['moduleArguments']['ini'])) {
+        if (isset($_POST['moduleArguments']['ini']))
             $editObject->setInitiative($this->initiativeRepository->findOneByName($_POST['moduleArguments']['ini']));
-        }
+
+        if (isset($_POST['moduleArguments']['entry']))
+            $editObject->setMarketEntry($this->marketRepository->findOneByName($_POST['moduleArguments']['entry']));
 
         //TODO refactor:
-        if (isset($_POST['moduleArguments']['cat'])) {
+        if (isset($_POST['moduleArguments']['cat']))
             $editObject->setCategory($this->categoryRepository->findOneByName($_POST['moduleArguments']['cat']));
-        }
 
         $this->addFlashMessage('The location has been updated successfully.');
         $editObject->setUpdated(new DateTime());

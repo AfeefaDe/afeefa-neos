@@ -8,6 +8,7 @@ namespace DDFA\Main\Controller\Api;
  *                                                                        */
 
 use DateTime;
+use DDFA\Main\Domain\Model\Category;
 use DDFA\Main\Domain\Repository\LocationRepository;
 use DDFA\Main\Utility\DDConst;
 use DDFA\Main\Utility\DDHelpers;
@@ -32,20 +33,16 @@ class LocationAPIController extends ActionController {
      */
     protected $supportedMediaTypes = array('application/json');
 
-    public function listAction() {
-        //TODO include language
-        $this->view->assign('value', ['locations' => $this->iniLocationRepository->findAllSupplemented()]);
-    }
-
-    public function showAction(Location $location) {
-        $this->view->assign('value', ['location' => $this->iniLocationRepository->supplement($location)]);
-    }
-
     protected function initializeView(ViewInterface $view) {
         if ($view instanceof JsonView) {
             $locationConfiguration = [
                 '_descend' => [
-                    'manufacturer' => [
+                    'initiative' => [
+                        '_exclude' => ['__isInitialized__'],
+                        '_exposeObjectIdentifier' => TRUE,
+                        '_exposedObjectIdentifierKey' => 'identifier'
+                    ],
+                    'category' => [
                         '_exclude' => ['__isInitialized__'],
                         '_exposeObjectIdentifier' => TRUE,
                         '_exposedObjectIdentifierKey' => 'identifier'
@@ -63,7 +60,7 @@ class LocationAPIController extends ActionController {
 
     public function listAction() {
         //TODO include language
-        $this->view->assign('value', ['locations' => $this->iniLocationRepository->findAllSupplemented(DDConst::DE_LOCALE)]);
+        $this->view->assign('value', ['locations' => $this->iniLocationRepository->findAllSupplemented(DDConst::LOCALE_STD)]);
     }
 
     public function showAction(Location $location) {
@@ -78,7 +75,7 @@ class LocationAPIController extends ActionController {
 
     public function createAction(Location $location) {
         $location->setEntryId(uniqid());
-        $location->setLocale(DDConst::DE_LOCALE);
+        $location->setLocale(DDConst::LOCALE_STD);
         $location->setRating(0);
 
         $now = new DateTime();

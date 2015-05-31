@@ -35,15 +35,6 @@ class InitiativeAPIController extends ActionController {
      */
     protected $supportedMediaTypes = array('application/json');
 
-    public function listAction() {
-        $this->view->assign('value', ['initiatives' => $this->iniRepository->findAll()]);
-    }
-
-    public function showAction(Initiative $initiative) {
-        print_r($this->request->getHttpRequest()->getHeaders());
-        $this->view->assign('value', ['initiative' => $initiative]);
-    }
-
     protected function initializeView(ViewInterface $view) {
         if ($view instanceof JsonView) {
             $iniConfiguration = [
@@ -83,7 +74,7 @@ class InitiativeAPIController extends ActionController {
 
     public function createAction(Initiative $initiative) {
         $initiative->setEntryId(uniqid());
-        $initiative->setLocale(DDConst::DE_LOCALE);
+        $initiative->setLocale(DDConst::LOCALE_STD);
         $initiative->setRating(0);
 
         $now = new DateTime();

@@ -1,43 +1,27 @@
 <f:layout name="Default"/>
 
-<f:section name="title">Translate location ({editLocation.locale}|{viewLocation.locale})</f:section>
+<f:section name="title">Translate location ({editObject.locale}|{viewObject.locale})</f:section>
 
 <f:section name="content">
-    <div class="grayBox">
-        <p>Select translation</p>
-        <f:form method="post" action="selectTranslation" arguments="{location: editLocation}">
-            <label for="editLocale">Select edit language</label>
-            <f:form.select id="editLocale" name="editLocale" options="{editLanguages}" value="{editLocation.locale}" optionValueField="code" optionLabelField="language" sortByOptionLabel="true" /><br><br>
-            <label for="viewLocale">Select view language</label>
-            <!-- TODO link to real languages -->
-            <!--<f:form.select id="viewLocale" name="viewLocale" options="{viewLanguages}" value="{viewLocation.locale}" optionValueField="code" optionLabelField="language" sortByOptionLabel="true" />-->
-            <select id="viewLocale" name="moduleArguments[viewLocale]">
-                <f:for each="{viewLanguages}" as="lan">
-                    <option value="{lan}">{lan}</option>
-                </f:for>
-            </select>
-            <button type="submit" class="neos-button" title="View and edit this translation">
-                <i class="icon-arrow-right icon-white"></i>
-            </button>
-        </f:form>
-    </div><br>
 
-    <f:form method="post" action="update" object="{editLocation}" name="editLocation" enctype="multipart/form-data">
-        <div class="neos-module-container">
-            <div class="leftSide">
-                <legend>{editLocation.locale}</legend>
-                <f:render partial="LocationFormTranslate" />
-            </div>
-            <div class="rightSide">
-                <legend>{viewLocation.locale}: <i>{viewLocation.initiative.name}</i> - {viewLocation.name}</legend>
+    <f:render partial="Shared/TranslationSelectEdit"
+              arguments="{viewLanguages: viewLanguages, editLanguages: editLanguages, editObject: editObject}"/>
 
-                <f:render partial="LocationView" arguments="{l: viewLocation}" />
+    <f:form method="post" action="update" object="{editObject}" name="editObject" enctype="multipart/form-data">
+        <div class="neos-row-fluid neos-module-container">
+            <div class="neos-span5">
+                <legend>{editObject.locale}</legend>
+                <f:render partial="Location/LocationFormTranslate"/>
             </div>
-            <div  style="clear: both"></div>
+            <div class="neos-offset1 neos-span5">
+                <legend>{viewObject.locale}: <i>{viewObject.initiative.name}</i> - {viewObject.name}</legend>
+                <f:render partial="Location/LocationView" arguments="{l: viewObject}"/>
+            </div>
         </div>
         <div class="neos-footer">
             <f:link.action action="index" class="neos-button" title="back to index">Abort</f:link.action>
-            <f:form.submit value="Save translation" class="neos-button neos-button-primary" title="save this translation" />
+            <f:form.submit value="Save translation" class="neos-button neos-button-primary"
+                           title="save this translation"/>
         </div>
     </f:form>
 </f:section>

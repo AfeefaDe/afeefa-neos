@@ -12,14 +12,7 @@ use TYPO3\Flow\Annotations as Flow;
 /**
  * @Flow\Entity
  */
-class Initiative extends \DDFA\Main\Domain\Model\Owner
-{
-
-    /**
-     * @var string
-     */
-    protected $speaker;
-
+class Initiative extends Owner {
     /**
      * @var \Doctrine\Common\Collections\Collection<\DDFA\Main\Domain\Model\Location>
      * @ORM\OneToMany(mappedBy="initiative")
@@ -27,29 +20,32 @@ class Initiative extends \DDFA\Main\Domain\Model\Owner
     protected $locations;
 
     /**
-     * @return string
+     * @var \Doctrine\Common\Collections\Collection<\DDFA\Main\Domain\Model\Event>
+     * @ORM\OneToMany(mappedBy="initiative")
      */
-    public function getSpeaker()
-    {
-        return $this->speaker;
-    }
+    protected $events;
 
     /**
-     * @param string $speaker
-     * @return void
+     * @var \Doctrine\Common\Collections\Collection<\DDFA\Main\Domain\Model\MarketEntry>
+     * @ORM\OneToMany(mappedBy="initiative")
      */
-    public function setSpeaker($speaker)
-    {
-        $this->speaker = $speaker;
+    protected $entries;
+
+    public function __construct() {
+        parent::__construct();
     }
 
     /**
      * @return \Doctrine\Common\Collections\Collection<\DDFA\Main\Domain\Model\Location>
      */
-    public function getLocations()
-    {
+    public function getLocations() {
         return $this->locations;
     }
 
-
+    /**
+     * @param \Doctrine\Common\Collections\Collection $locations
+     */
+    public function setLocations($locations) {
+        $this->locations = $locations;
+    }
 }

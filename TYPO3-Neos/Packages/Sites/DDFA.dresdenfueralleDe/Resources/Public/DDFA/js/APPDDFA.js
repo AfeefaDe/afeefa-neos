@@ -10,11 +10,15 @@ qx.Class.define("APPDDFA", {
         that.setTitle('connecteDD');
         that.setDataManager(new DataManager());
         that.setRouter(new Router());
+        that.setLM(new LanguageManager());
 
         that.setConfig(
             {
-                categories: ["advice", "medic", "german", "jobs", "leisure", "translation", "kids", "donation", "community", "housing", "church", "mosque", "synagogue"],
-                simpleProperties: ['speaker', 'spokenLanguages', 'phone', 'mail', 'web', 'openingHours', 'description']
+                languages: ['de', 'en', 'ar', 'fa', 'fr', 'sr', 'ru', 'ti', 'ur'],
+                categories: ["consultation", "medic", "german", "jobs", "leisure", "translation", "children", "donation", "community"],
+                categoriesBasic: ["housing", "church", "mosque", "synagogue"],
+                simpleProperties: ['speaker', 'spokenLanguages', 'phone', 'mail', 'web', 'openingHours', 'description'],
+                imgPath: '_Resources/Static/Packages/DDFA.dresdenfueralleDe/DDFA/img/'
             }
         );
     },
@@ -23,10 +27,16 @@ qx.Class.define("APPDDFA", {
         title: {},
         DataManager: {},
         Router: {},
+        LM: {},
         data: {},
         detailView: {},
+        menuView: {},
+        legendView: {},
+        plusView: {},
+        languageView: {},
         userDevice: {},
-        config: {}
+        config: {},
+        currentLang: {}
     },
 
     members : {
@@ -35,7 +45,11 @@ qx.Class.define("APPDDFA", {
         init: function( cb ){
             var that = this;
             
+            // analyse user device
             that.detectUserDevice();
+
+            // analyse user language
+            that.getLM().init();
 
             // fetch necessary data
             that.getDataManager().fetchAllData(function( data ){
@@ -59,6 +73,8 @@ qx.Class.define("APPDDFA", {
             if( $('body').hasClass('768-c') ) APP.setUserDevice('phone');
             else if( $('body').hasClass('1280-c') ) APP.setUserDevice('tablet');
             else APP.setUserDevice('desktop');
+
+            $('body').addClass( APP.getUserDevice() );
         }
     }
 

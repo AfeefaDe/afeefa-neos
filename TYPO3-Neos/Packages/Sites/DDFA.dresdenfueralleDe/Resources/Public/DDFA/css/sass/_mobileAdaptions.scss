@@ -1,0 +1,18 @@
+body.phone {
+	
+	#main-container {
+		
+		&.shifted {
+			/*left: 80%;*/
+		}
+	}
+
+	#menuBtnView {
+		left: 2em;
+	}
+
+	#plusView {
+		right: 2em;
+		bottom: 2em;
+	}
+}

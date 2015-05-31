@@ -6,7 +6,7 @@ qx.Class.define("PlusView", {
     construct: function(){
     	var that = this;
 
-    	that.render();
+        that.setViewId('plusView');
     },
 
     members : {
@@ -15,26 +15,26 @@ qx.Class.define("PlusView", {
     		var that = this;
 
             // view container
-            var view = $("<div />");
-            view.attr('id', 'plusView');
+            that.view = $("<div />");
+            that.view.attr('id', that.getViewId());
 
             // add buttons
             that.addRequestBtn = $("<div />");
             that.addRequestBtn.addClass('btn addRequestBtn');
             that.addRequestBtn.append('?');
-            view.append(that.addRequestBtn);
+            that.view.append(that.addRequestBtn);
 
             that.addOfferBtn = $("<div />");
             that.addOfferBtn.addClass('btn addOfferBtn');
             that.addOfferBtn.append('!');
-            view.append(that.addOfferBtn);
+            that.view.append(that.addOfferBtn);
             
             // plus button
-            var plusBtn = $("<div />");
-            plusBtn.addClass('btn plusBtn');
-            view.append(plusBtn);
+            that.plusBtn = $("<div />");
+            that.plusBtn.addClass('btn plusBtn');
+            that.view.append(that.plusBtn);
             
-            $('body').append(view);
+            $('#main-container').append(that.view);
 
             this.base(arguments);
     	},
@@ -42,6 +42,9 @@ qx.Class.define("PlusView", {
         addEvents: function(){
             var that = this;
 
+            // call superclass
+            this.base(arguments);
+            
             that.listen('mapclicked', function(){
                 that.close();
             });

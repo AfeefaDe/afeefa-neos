@@ -4,13 +4,13 @@ qx.Class.define("DetailView", {
 	type: "singleton",
 
     properties: {
-        viewId: {}
     },
 
     construct: function(){
     	var that = this;
 
         that.setViewId('detailView');
+        that.record = null;
     },
 
     members : {
@@ -68,7 +68,7 @@ qx.Class.define("DetailView", {
 
             });
 
-            $('body').append(that.view);
+            $('#main-container').append(that.view);
 
             this.base(arguments);
         },
@@ -113,15 +113,15 @@ qx.Class.define("DetailView", {
             // category
             var prop = 'category';
             that['propertyIcon'+prop].addClass('icon-' + record[prop]);
-            that['propertyName'+prop].append(record[prop]);
-            var value = (record.type !== 1) ? 'official entry' : 'private entry';
+            that['propertyName'+prop].append( that.getWording('cat_' + record[prop]) );
+            var value = (record.type !== 1) ? that.getWording('misc_officialEntry') : that.getWording('misc_privateEntry');
             that['propertyValue'+prop].append(value);
             that['propertyContainer'+prop].show();
 
             // location
             var prop = 'location';
             that['propertyIcon'+prop].addClass('icon-' + prop);
-            that['propertyName'+prop].append(prop);
+            that['propertyName'+prop].append( that.getWording( 'prop_' + prop ) );
             
             var value = buildLocation(record);
             function buildLocation(record){
@@ -145,7 +145,7 @@ qx.Class.define("DetailView", {
                 if( record[prop] ) {
                     
                     that['propertyIcon'+prop].addClass('icon-' + prop);
-                    that['propertyName'+prop].append(prop);
+                    that['propertyName'+prop].append( that.getWording( 'prop_' + prop ) );
                     that['propertyValue'+prop].append(record[prop]);
                     that['propertyContainer'+prop].show();
                 }
@@ -194,23 +194,35 @@ qx.Class.define("DetailView", {
         },
 
         changeLanguage: function(){
+            var that = this;
+
+            if( that.record !== null) {
+
+                var record = that.record;
+                that.reset();
+                that.load(record);
+                
+            }
 
             // request that.record's entryId in current locale
-            var recordRelocalized;
+            // var recordRelocalized;
             // recordRelocalized = 
 
             // load new record
-            that.load(recordRelocalized);
+            // that.load(recordRelocalized);
         },
 
         addEvents: function() {
             var that = this;
+
+            this.base(arguments);
 
             that.listen('mapclicked', function(){
                 that.close();
             });
 
         }
+
     }
 
 });

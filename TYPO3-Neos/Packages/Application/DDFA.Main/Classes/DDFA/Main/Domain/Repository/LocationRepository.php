@@ -6,216 +6,239 @@ namespace DDFA\Main\Domain\Repository;
  *                                                                        *
  *                                                                        */
 
+use DDFA\Main\Domain\Model\Actor;
 use DDFA\Main\Domain\Model\Location;
 use DDFA\Main\Utility\DDConst;
 use ReflectionObject;
 use TYPO3\Flow\Annotations as Flow;
-use TYPO3\Flow\Persistence\Repository;
+use TYPO3\Flow\Persistence\QueryInterface;
 
 /**
  * @Flow\Scope("singleton")
  */
-class LocationRepository extends Repository
-{
-    public function findAllLocalized($locale)
-    {
-        $query = $this->createQuery();
+class LocationRepository extends AbstractTranslationRepository {
+    /**
+     * @Flow\Inject
+     * @var InitiativeRepository
+     */
+    protected $initiativeRepository;
 
-        $locations = $query->matching(
-            $query->equals('locale', $locale)
-        )->execute();
+    /**
+     * @Flow\Inject
+     * @var MarketEntryRepository
+     */
+    protected $marketRepository;
 
-        return $this->addLocales($locations);
-    }
+    /**
+     * @Flow\Inject
+     * @var EventRepository
+     */
+    protected $eventRepository;
 
-    public function findAllOfInitiative()
-    {
-        $query = $this->createQuery();
-        return $query->matching(
-            $query->equals('type', DDConst::LOCATION_INI)
-        )->execute();
-    }
-
-    public function findAllOfMarketEntry()
-    {
-        $query = $this->createQuery();
-        return $query->matching(
-            $query->equals('type', DDConst::LOCATION_MARKET)
-        )->execute();
-    }
-
-    public function findAllOfEvent()
-    {
-        $query = $this->createQuery();
-        return $query->matching(
-            $query->equals('type', DDConst::LOCATION_EVENT)
-        )->execute();
-    }
-
-    public function findAllOfInitiativeLocalized($locale)
-    {
-        $query = $this->createQuery();
-        $locations = $query->matching(
-            $query->logicalAnd(
-                $query->equals('type', DDConst::LOCATION_INI),
-                $query->equals('locale', $locale)
-            )
-        )->execute();
-
-        return $this->addLocales($locations);
-    }
-
-    public function findAllOfMarketEntryLocalized($locale)
-    {
-        $query = $this->createQuery();
-        $locations = $query->matching(
-            $query->logicalAnd(
-                $query->equals('type', DDConst::LOCATION_MARKET),
-                $query->equals('locale', $locale)
-            )
-        )->execute();
-
-        return $this->addLocales($locations);
-    }
-
-    public function findAllOfEventLocalized($locale)
-    {
-        $query = $this->createQuery();
-        $locations = $query->matching(
-            $query->logicalAnd(
-                $query->equals('type', DDConst::LOCATION_EVENT),
-                $query->equals('locale', $locale)
-            )
-        )->execute();
-
-        return $this->addLocales($locations);
+    /**
+     * @return \TYPO3\Flow\Persistence\QueryResultInterface
+     */
+    public function findAll() {
+        return $this->createQuery()->setOrderings(array('name' => QueryInterface::ORDER_ASCENDING))->execute();
     }
 
     /**
-     * returns the one localisation in $locale of the location (or nothing if the locale does not exist)
-     *
-     * @param Location $location
+     * @return \TYPO3\Flow\Persistence\QueryResultInterface
+     */
+    public function findAllOfInitiative() {
+        $query = $this->createQuery()->setOrderings(array('updated' => QueryInterface::ORDER_DESCENDING));
+        return $query->matching(
+            $query->equals('type', DDConst::OWNER_INI)
+        )->execute();
+    }
+
+    /**
+     * @return \TYPO3\Flow\Persistence\QueryResultInterface
+     */
+    public function findAllOfMarket() {
+        $query = $this->createQuery()->setOrderings(array('updated' => QueryInterface::ORDER_DESCENDING));
+        return $query->matching(
+            $query->equals('type', DDConst::OWNER_MARKET)
+        )->execute();
+    }
+
+    /**
+     * @return \TYPO3\Flow\Persistence\QueryResultInterface
+     */
+    public function findAllOfBasic() {
+        $query = $this->createQuery()->setOrderings(array('name' => QueryInterface::ORDER_DESCENDING));
+        return $query->matching(
+            $query->equals('type', DDConst::OWNER_BASIC)
+        )->execute();
+    }
+
+    /**
+     * @return \TYPO3\Flow\Persistence\QueryResultInterface
+     */
+    public function findAllOfEvent() {
+        $query = $this->createQuery()->setOrderings(array('updated' => QueryInterface::ORDER_DESCENDING));
+        return $query->matching(
+            $query->equals('type', DDConst::OWNER_EVENT)
+        )->execute();
+    }
+
+    /**
+     * @param string $locale
+     * @return mixed
+     */
+    public function findAllOfInitiativeLocalized($locale = DDConst::LOCALE_STD) {
+        $query = $this->createQuery()->setOrderings(array('updated' => QueryInterface::ORDER_DESCENDING));
+        $locations = $query->matching(
+            $query->logicalAnd(
+                $query->equals('type', DDConst::OWNER_INI),
+                $query->equals('locale', $locale)
+            )
+        )->execute();
+
+        return $this->includeLocales($locations);
+    }
+
+    /**
+     * @param string $locale
+     * @return mixed
+     */
+    public function findAllOfMarketLocalized($locale = DDConst::LOCALE_STD) {
+        $query = $this->createQuery()->setOrderings(array('updated' => QueryInterface::ORDER_DESCENDING));
+        $locations = $query->matching(
+            $query->logicalAnd(
+                $query->equals('type', DDConst::OWNER_MARKET),
+                $query->equals('locale', $locale)
+            )
+        )->execute();
+
+        return $this->includeLocales($locations);
+    }
+
+    /**
+     * @param string $locale
+     * @return mixed
+     */
+    public function findAllOfBasicLocalized($locale = DDConst::LOCALE_STD) {
+        $query = $this->createQuery()->setOrderings(array('name' => QueryInterface::ORDER_DESCENDING));
+        $locations = $query->matching(
+            $query->logicalAnd(
+                $query->equals('type', DDConst::OWNER_BASIC),
+                $query->equals('locale', $locale)
+            )
+        )->execute();
+
+        return $this->includeLocales($locations);
+    }
+
+    /**
+     * @param string $locale
+     * @return mixed
+     */
+    public function findAllOfEventLocalized($locale = DDConst::LOCALE_STD) {
+        $query = $this->createQuery()->setOrderings(array('updated' => QueryInterface::ORDER_DESCENDING));
+        $locations = $query->matching(
+            $query->logicalAnd(
+                $query->equals('type', DDConst::OWNER_EVENT),
+                $query->equals('locale', $locale)
+            )
+        )->execute();
+
+        return $this->includeLocales($locations);
+    }
+
+    /**
+     * @param Location $object
      * @param $locale
      * @return Location
      */
-    public function findOneLocalized(Location $location, $locale)
-    {
-        if($location->getLocale() == $location)
-            return $location;
-
-        $query = $this->createQuery();
-        return $query->matching(
-            $query->logicalAnd(
-                $query->equals('entryId', $location->getEntryId()),
-                $query->equals('locale', $locale)
-            )
-        )->execute()->getFirst();
+    public function findOneHydrated(Location $object, $locale = DDConst::LOCALE_STD) {
+        $localizedObject = $this->findOneLocalized($object, $locale);
+        return $localizedObject == NULL ? $object : $this->hydrate($localizedObject);
     }
 
     /**
-     * returns only all other localisations, without itself
+     * hydrated the object, meaning this method fills all empty properties of a translation object with values of the original entry
      *
-     * @param Location $location
-     * @return \TYPO3\Flow\Persistence\QueryResultInterface
-     */
-    public function findLocalisations(Location $location)
-    {
-        $query = $this->createQuery();
-        return $query->matching(
-            $query->logicalAnd(
-                $query->equals('entryId', $location->getEntryId()),
-                $query->logicalNot(
-                    $query->equals('Persistence_Object_Identifier', $location->getPersistenceObjectIdentifier())
-                )
-            )
-        )->execute();
-    }
-
-    /**
-     * returns all localisations of this location including itself
-     *
-     * @param Location $location
-     * @return \TYPO3\Flow\Persistence\QueryResultInterface
-     */
-    public function findAllLocalisations(Location $location)
-    {
-        $query = $this->createQuery();
-        return $query->matching(
-            $query->equals('entryId', $location->getEntryId())
-        )->execute();
-
-    }
-
-    /**
-     * returns an array containing the locale codes of all available translations
-     *
-     * @param Location $location
-     * @return array
-     */
-    public function findAllLocales(Location $location)
-    {
-        $r = array();
-        $i = 0;
-        foreach ($this->findAllLocalisations($location) as $localisation) {
-            $r[$i] = $localisation->getLocale();
-            ++$i;
-        }
-        return $r;
-    }
-
-    /**
-     * returns an array containing the locale codes of all available translations
-     *
-     * @param Location $location
-     * @return array
-     */
-    public function findLocales(Location $location)
-    {
-        $r = array();
-        $i = 0;
-        foreach ($this->findAllLocalisations($location) as $localisation) {
-            $locale = $localisation->getLocale();
-            if ($location->getLocale() != $locale) {
-                $r[$i] = $locale;
-                ++$i;
-            }
-        }
-        return $r;
-    }
-
-    /**
-     * @param $locations
-     * @return mixed
-     */
-    private function addLocales($locations)
-    {
-        foreach ($locations as $l) {
-            $locales = $this->findLocales($l);
-            $l->numLocales = sizeof($locales);
-            $l->locales = join(", ", $locales);
-        }
-        return $locations;
-    }
-
-    /**
-     * @param Location $location
+     * @param Location|Actor $object
+     * @param string $baseLocale
      * @return Location
      */
-    public function hydrate(Location $location) {
-        if($location->getLocale() != DDConst::LOCALE_STD) {
-            $parentEntry = $this->findOneLocalized($location, DDConst::LOCALE_STD);
+    public function hydrate(Location $object, $baseLocale = DDConst::LOCALE_STD) {
+        if ($object->getLocale() != $baseLocale) {
+
+            //language fallback to English:
+            if ($baseLocale != DDConst::LOCALE_NXT) {
+                $object = $this->hydrate($object, DDConst::LOCALE_NXT);
+            }
+
+            $parentEntry = $this->findOneLocalized($object, $baseLocale);
             $parentReflection = new ReflectionObject($parentEntry);
-            $sourceReflection = new ReflectionObject($location);
-            foreach($sourceReflection->getProperties() as $property) {
+            $sourceReflection = new ReflectionObject($object);
+            foreach ($sourceReflection->getProperties() as $property) {
                 $property->setAccessible(true);
-                $value = $property->getValue($location);
-                if($value == NULL || $value == "") {
+                $value = $property->getValue($object);
+                if ($value == NULL || $value == "") {
                     $parentProperty = $parentReflection->getProperty($property->getName());
                     $parentProperty->setAccessible(true);
-                    $property->setValue($location, $parentProperty->getValue($parentEntry));
+                    $property->setValue($object, $parentProperty->getValue($parentEntry));
                 }
             }
         }
-        return $location;
+        return $object;
+    }
+
+    /**
+     * @param string $locale
+     * @return array
+     */
+    public function findAllSupplemented($locale = DDConst::LOCALE_STD) {
+        $locations = $this->findAllLocalized($locale);
+        $result = array();
+        foreach ($locations as $l) {
+            array_push($result, $this->supplement($l));
+        }
+        return $result;
+    }
+
+    /**
+     * @param Location $object
+     * @return Location
+     */
+    public function supplement(Location $object) {
+        //TODO maybe better store props in another place... one day
+        $LOCATION_SUPPLEMENT_PROPS = ["description", "mail", "web", "phone", "speakerPublic", "speakerPrivate", "facebook"];
+
+        $object = $this->hydrate($object);
+
+        switch ($object->getType()) {
+            case DDConst::OWNER_INI:
+                $owner = $this->initiativeRepository->findOneHydrated($object->getInitiative());
+                break;
+            case DDConst::OWNER_MARKET:
+                $owner = $this->marketRepository->findByIdentifier($object->getMarketEntry()->getPersistenceObjectIdentifier());
+                break;
+            case DDConst::OWNER_EVENT:
+                $owner = $this->eventRepository->findByIdentifier($object->getEvent()->getPersistenceObjectIdentifier());
+                break;
+            default:
+                return $object;
+        }
+
+        $parentReflection = new ReflectionObject($owner);
+        $sourceReflection = new ReflectionObject($object);
+
+        foreach ($sourceReflection->getProperties() as $property) {
+            if (in_array($property->getName(), $LOCATION_SUPPLEMENT_PROPS)) {
+                $property->setAccessible(true);
+
+                $value = $property->getValue($object);
+                if ($value == NULL || $value == "") {
+                    $parentProperty = $parentReflection->getProperty($property->getName());
+                    $parentProperty->setAccessible(true);
+                    $property->setValue($object, $parentProperty->getValue($owner));
+                }
+            }
+        }
+        return $object;
     }
 }

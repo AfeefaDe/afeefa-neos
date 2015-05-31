@@ -3,10 +3,8 @@
 namespace DDFA\Main\Utility;
 
 
-abstract class DDHelpers
-{
-    public static function createGuid()
-    {
+abstract class DDHelpers {
+    public static function createGuid() {
         if (function_exists('com_create_guid') === true) {
             return trim(com_create_guid(), '{}');
         }

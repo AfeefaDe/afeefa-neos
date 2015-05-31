@@ -6,21 +6,24 @@ namespace DDFA\Main\Domain\Model;
  *                                                                        *
  *                                                                        */
 
+use DDFA\Main\Utility\DDConst;
 use Doctrine\ORM\Mapping as ORM;
 use TYPO3\Flow\Annotations as Flow;
 
 /**
  * @Flow\Entity
  */
-class Category
-{
+class Category extends BasicEntity {
     /**
      * @var string
-     * @ORM\Id
-     * @ORM\Column(name="persistence_object_identifier", type="string", length=40)
-     * @Flow\Identity
+     * @ORM\Column(name="entry_id")
      */
-    protected $Persistence_Object_Identifier;
+    protected $entryId;
+
+    /**
+     * @var string
+     */
+    protected $locale;
 
     /**
      * @var string
@@ -32,12 +35,21 @@ class Category
      */
     protected $description;
 
+    /**
+     * @var int
+     */
+    protected $type;
+
+    public function __construct() {
+        parent::__construct();
+        $this->setEntryId(uniqid());
+        $this->setLocale(DDConst::LOCALE_STD);
+    }
 
     /**
      * @return string
      */
-    public function getName()
-    {
+    public function getName() {
         return $this->name;
     }
 
@@ -45,16 +57,14 @@ class Category
      * @param string $name
      * @return void
      */
-    public function setName($name)
-    {
+    public function setName($name) {
         $this->name = $name;
     }
 
     /**
      * @return string
      */
-    public function getDescription()
-    {
+    public function getDescription() {
         return $this->description;
     }
 
@@ -62,24 +72,49 @@ class Category
      * @param string $description
      * @return void
      */
-    public function setDescription($description)
-    {
+    public function setDescription($description) {
         $this->description = $description;
     }
 
     /**
      * @return string
      */
-    public function getPersistenceObjectIdentifier()
-    {
-        return $this->Persistence_Object_Identifier;
+    public function getEntryId() {
+        return $this->entryId;
     }
 
     /**
-     * @param string $Persistence_Object_Identifier
+     * @param string $entryId
      */
-    public function setPersistenceObjectIdentifier($Persistence_Object_Identifier)
-    {
-        $this->Persistence_Object_Identifier = $Persistence_Object_Identifier;
+    public function setEntryId($entryId) {
+        $this->entryId = $entryId;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLocale() {
+        return $this->locale;
+    }
+
+    /**
+     * @param string $locale
+     */
+    public function setLocale($locale) {
+        $this->locale = $locale;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getType() {
+        return $this->type;
+    }
+
+    /**
+     * @param mixed $type
+     */
+    public function setType($type) {
+        $this->type = $type;
     }
 }

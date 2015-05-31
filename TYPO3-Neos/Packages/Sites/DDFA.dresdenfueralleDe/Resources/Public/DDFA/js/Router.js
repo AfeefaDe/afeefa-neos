@@ -1,6 +1,6 @@
 qx.Class.define("Router", {
     
-    extend : Daddy,
+    extend : Daddy	,
     type: "singleton",
 	
     properties : {
@@ -49,20 +49,36 @@ qx.Class.define("Router", {
 				new MapView();
 		    	
 		    	APP.setDetailView( new DetailViewMobile() );
+		    	
+		    	APP.setMenuView( new MenuView() );
+		    	
+		    	APP.setLegendView( new LegendView() );
 
-		    	new PlusView();
+		    	APP.setPlusView( new PlusView() );
+		    	
+		    	APP.setLanguageView( new LanguageViewMobile() );
 		
 			} else {
 
 		    	new MapView();
 		    	
 		    	APP.setDetailView( new DetailView() );
+
+		    	APP.setMenuView( new MenuView() );
+
+		    	APP.setLegendView( new LegendView() );
 		    	
-		    	new PlusView();
+		    	APP.setPlusView( new PlusView() );
+
+		    	APP.setLanguageView( new LanguageView() );
 
 			}
 	    	
 	    	APP.getDetailView().render();
+	    	APP.getPlusView().render();
+	    	APP.getLanguageView().render();
+	    	APP.getMenuView().render();
+	    	APP.getLegendView().render();
 	    },
 
 	    _navigate: function( path ){

@@ -12,8 +12,7 @@ use TYPO3\Flow\Annotations as Flow;
 /**
  * @Flow\Entity
  */
-class Language
-{
+class Language {
     /**
      * @var string
      * @ORM\Id
@@ -34,50 +33,63 @@ class Language
     protected $language;
 
     /**
+     * @var bool
+     */
+    protected $rtl;
+
+    /**
      * @return string
      */
-    public function getCode()
-    {
+    public function getCode() {
         return $this->code;
     }
 
     /**
      * @param string $code
      */
-    public function setCode($code)
-    {
+    public function setCode($code) {
         $this->code = $code;
     }
 
     /**
      * @return mixed
      */
-    public function getLanguage()
-    {
+    public function getLanguage() {
         return $this->language;
     }
 
     /**
      * @param mixed $language
      */
-    public function setLanguage($language)
-    {
+    public function setLanguage($language) {
         $this->language = $language;
     }
 
     /**
      * @return string
      */
-    public function getPersistenceObjectIdentifier()
-    {
+    public function getPersistenceObjectIdentifier() {
         return $this->Persistence_Object_Identifier;
     }
 
     /**
      * @param string $Persistence_Object_Identifier
      */
-    public function setPersistenceObjectIdentifier($Persistence_Object_Identifier)
-    {
+    public function setPersistenceObjectIdentifier($Persistence_Object_Identifier) {
         $this->Persistence_Object_Identifier = $Persistence_Object_Identifier;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRtl() {
+        return $this->rtl;
+    }
+
+    /**
+     * @param mixed $rtl
+     */
+    public function setRtl($rtl) {
+        $this->rtl = $rtl;
     }
 }

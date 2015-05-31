@@ -14,16 +14,23 @@ qx.Class.define("DataManager", {
             var that = this;
 
             // var initiativesFetched, locationsFetched = false;
-            var initiatives, locations;
+            var allData = {};
+            // var initiatives, locations;
 
             // fetch initiatives
             // initiativesFetched = true;
 
             // fetch locations
             that.getAllLocations(function(data){
-                // locations = data;
-                // cb( {locations: locations});
-                cb( data );
+                
+                allData.locations = data.locations;
+                
+                that.getLanguageBib( function(data){
+
+                    APP.getLM().setBib( data[0] );
+
+                    cb( allData );
+                });
             });
             
             // callback
@@ -51,12 +58,28 @@ qx.Class.define("DataManager", {
         getAllLocations: function( cb ){
 
             $.ajax({
-                url: "api/locations",
+                url: "api/locations?locale=" + APP.getLM().getCurrentLang(),
                 type: 'GET',
                 dataType: 'json'
             })
             .done(function( data ) {
                 cb(data);
+            })
+            .fail(function(a) {
+                console.debug(a);
+            });
+
+        },
+
+        getLanguageBib: function( cb ){
+
+            $.ajax({
+                url: '_Resources/Static/Packages/DDFA.dresdenfueralleDe/DDFA/lang/lang.json',
+                type: 'GET',
+                dataType: 'text'
+            })
+            .done(function( data ) {
+                cb( JSON.parse(data) );
             })
             .fail(function(a) {
                 console.debug(a);

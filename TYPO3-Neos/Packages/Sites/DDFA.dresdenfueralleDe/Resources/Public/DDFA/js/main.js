@@ -26,7 +26,7 @@ require( ['domReady', 'modernizr'], function(domReady) {
 
 			require( ['Daddy'], function(){
 
-				require( ['restive', 'APPDDFA', 'DataManager', 'Router', 'Views/View'], function(){
+				require( ['restive', 'APPDDFA', 'DataManager', 'Router', 'LanguageManager', 'Views/View'], function(){
 
 					APP = new APPDDFA();
 					
@@ -45,11 +45,11 @@ require( ['domReady', 'modernizr'], function(domReady) {
 						// 	APP.getRouter().navigate();
 						// });
 
-						require( ['Views/MapView', 'Views/DetailView', 'Views/PlusView'], function(){
+						require( ['Views/MapView', 'Views/DetailView', 'Views/MenuView', 'Views/LegendView', 'Views/LanguageView', 'Views/PlusView'], function(){
 							
 							if( APP.getUserDevice() === 'phone' ) {
 								
-								require( ['Views/DetailViewMobile'], function(){
+								require( ['Views/DetailViewMobile', 'Views/LanguageViewMobile'], function(){
 									APP.getRouter().navigate();
 								});
 

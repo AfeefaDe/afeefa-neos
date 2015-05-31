@@ -2,31 +2,48 @@
     <legend>Basic information</legend>
 
     <div class="neos-control-group">
-        <label class="neos-control-label" for="name">Namen</label>
+        <label class="neos-control-label" for="name">Name</label>
+
         <div class="neos-controls">
-            <f:form.textfield class="neos-span12" property="name" id="name" placeholder="Enter name" required="true" autofocus="true"/>
+            <f:form.textfield class="neos-span12" property="name" id="name" placeholder="Enter name" required="true"
+                              autofocus="true"/>
+        </div>
+    </div>
+
+    <div class="neos-control-group">
+        <label class="neos-control-label" for="category">Category</label>
+
+        <div class="neos-controls">
+            <f:form.select class="neos-span12" id="category" name="cat" options="{cats}" optionValueField="name"
+                           optionLabelField="name" value="{selectedCat}" sortByOptionLabel="true"/>
         </div>
     </div>
 
     <div class="neos-control-group">
         <label class="neos-control-label" for="description">Description</label>
+
         <div class="neos-controls">
-            <f:form.textarea class="neos-span12" rows="8" property="description" id="description" placeholder="Enter a description text..."/>
+            <f:form.textarea class="neos-span12" rows="8" property="description" id="description"
+                             placeholder="Enter a description text..."/>
         </div>
     </div>
 
     <div class="neos-control-group">
         <label class="neos-control-label" for="spokenLanguages">Spoken languages</label>
+
         <div class="neos-controls">
-            <f:form.textfield class="neos-span12" property="spokenLanguages" id="spokenLanguages" placeholder="Enter languages" autofocus="true"/>
+            <f:form.textfield class="neos-span12" property="spokenLanguages" id="spokenLanguages"
+                              placeholder="Enter languages" autofocus="true"/>
         </div>
     </div>
 
     <!-- TODO  min="1" max="5" -->
     <div class="neos-control-group">
         <label class="neos-control-label" for="rating">Rating</label>
+
         <div class="neos-controls">
-            <f:form.textfield class="neos-span12" property="rating" id="rating" type="number" required="true" value="3"/>
+            <f:form.textfield class="neos-span12" property="rating" id="rating" type="number" required="true"
+                              value="3"/>
         </div>
     </div>
 </fieldset>
@@ -36,13 +53,16 @@
 
     <div class="neos-control-group">
         <label class="neos-control-label" for="mail">Mail</label>
+
         <div class="neos-controls">
-            <f:form.textfield class="neos-span12" property="mail" id="mail" type="email" placeholder="Enter mail address"/>
+            <f:form.textfield class="neos-span12" property="mail" id="mail" type="email"
+                              placeholder="Enter mail address"/>
         </div>
     </div>
 
     <div class="neos-control-group">
         <label class="neos-control-label" for="web">Website URL</label>
+
         <div class="neos-controls">
             <f:form.textfield class="neos-span12" property="web" id="web" type="url" placeholder="Enter Website URL"/>
         </div>
@@ -50,29 +70,37 @@
 
     <div class="neos-control-group">
         <label class="neos-control-label" for="facebook">facebook URL</label>
+
         <div class="neos-controls">
-            <f:form.textfield class="neos-span12" property="facebook" id="facebook" type="url" placeholder="Enter facebook URL"/>
+            <f:form.textfield class="neos-span12" property="facebook" id="facebook" type="url"
+                              placeholder="Enter facebook URL"/>
         </div>
     </div>
 
     <div class="neos-control-group">
         <label class="neos-control-label" for="phone">Phone</label>
+
         <div class="neos-controls">
-            <f:form.textfield class="neos-span12" property="phone" id="phone" type="tel" placeholder="Enter phone number"/>
+            <f:form.textfield class="neos-span12" property="phone" id="phone" type="tel"
+                              placeholder="Enter phone number"/>
         </div>
     </div>
 
     <div class="neos-control-group">
         <label class="neos-control-label" for="speakerPrivate">Internal speaker</label>
+
         <div class="neos-controls">
-            <f:form.textfield class="neos-span12" property="speakerPrivate" id="speakerPrivate" placeholder="Enter internal speaker" autofocus="true"/>
+            <f:form.textfield class="neos-span12" property="speakerPrivate" id="speakerPrivate"
+                              placeholder="Enter internal speaker" autofocus="true"/>
         </div>
     </div>
 
     <div class="neos-control-group">
         <label class="neos-control-label" for="speakerPublic">Public speaker</label>
+
         <div class="neos-controls">
-            <f:form.textfield class="neos-span12" property="speakerPublic" id="speakerPublic" placeholder="Enter public speaker" autofocus="true"/>
+            <f:form.textfield class="neos-span12" property="speakerPublic" id="speakerPublic"
+                              placeholder="Enter public speaker" autofocus="true"/>
         </div>
     </div>
 </fieldset>

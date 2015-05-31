@@ -15,7 +15,7 @@ qx.Class.define("View", {
         
         render: function(){
             var that = this;
-
+            
             that.addEvents();
         },
 
@@ -31,6 +31,10 @@ qx.Class.define("View", {
             that.listen('languageChanged', function(){
                 that.changeLanguage();
             });
+        },
+
+        changeLanguage: function(){
+            
         }
     }
 

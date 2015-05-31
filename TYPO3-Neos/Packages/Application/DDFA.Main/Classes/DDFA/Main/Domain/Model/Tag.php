@@ -12,27 +12,20 @@ use TYPO3\Flow\Annotations as Flow;
 /**
  * @Flow\Entity
  */
-class Tag
-{
-    /**
-     * @var string
-     * @ORM\Id
-     * @ORM\Column(name="persistence_object_identifier", type="string", length=40)
-     * @Flow\Identity
-     */
-    protected $Persistence_Object_Identifier;
-
+class Tag extends BasicEntity {
     /**
      * @var string
      */
     protected $name;
 
+    public function __construct() {
+        parent::__construct();
+    }
 
     /**
      * @return string
      */
-    public function getName()
-    {
+    public function getName() {
         return $this->name;
     }
 
@@ -40,25 +33,7 @@ class Tag
      * @param string $name
      * @return void
      */
-    public function setName($name)
-    {
+    public function setName($name) {
         $this->name = $name;
     }
-
-    /**
-     * @return string
-     */
-    public function getPersistenceObjectIdentifier()
-    {
-        return $this->Persistence_Object_Identifier;
-    }
-
-    /**
-     * @param string $Persistence_Object_Identifier
-     */
-    public function setPersistenceObjectIdentifier($Persistence_Object_Identifier)
-    {
-        $this->Persistence_Object_Identifier = $Persistence_Object_Identifier;
-    }
-
 }

@@ -6,33 +6,45 @@ namespace DDFA\Main\Domain\Model;
  *                                                                        *
  *                                                                        */
 
+use DDFA\Main\Utility\DDConst;
 use Doctrine\ORM\Mapping as ORM;
 use TYPO3\Flow\Annotations as Flow;
 
 /**
  * @Flow\Entity
  */
-class TargetGroup
-{
+class TargetGroup extends BasicEntity {
     /**
      * @var string
-     * @ORM\Id
-     * @ORM\Column(name="persistence_object_identifier", type="string", length=40)
-     * @Flow\Identity
+     * @ORM\Column(name="entry_id")
      */
-    protected $Persistence_Object_Identifier;
+    protected $entryId;
+
+    /**
+     * @var string
+     */
+    protected $locale;
 
     /**
      * @var string
      */
     protected $name;
 
+    /**
+     * @var string
+     */
+    protected $description;
+
+    public function __construct() {
+        parent::__construct();
+        $this->setEntryId(uniqid());
+        $this->setLocale(DDConst::LOCALE_STD);
+    }
 
     /**
      * @return string
      */
-    public function getName()
-    {
+    public function getName() {
         return $this->name;
     }
 
@@ -40,25 +52,50 @@ class TargetGroup
      * @param string $name
      * @return void
      */
-    public function setName($name)
-    {
+    public function setName($name) {
         $this->name = $name;
     }
 
     /**
      * @return string
      */
-    public function getPersistenceObjectIdentifier()
-    {
-        return $this->Persistence_Object_Identifier;
+    public function getDescription() {
+        return $this->description;
     }
 
     /**
-     * @param string $Persistence_Object_Identifier
+     * @param string $description
+     * @return void
      */
-    public function setPersistenceObjectIdentifier($Persistence_Object_Identifier)
-    {
-        $this->Persistence_Object_Identifier = $Persistence_Object_Identifier;
+    public function setDescription($description) {
+        $this->description = $description;
     }
 
+    /**
+     * @return string
+     */
+    public function getEntryId() {
+        return $this->entryId;
+    }
+
+    /**
+     * @param string $entryId
+     */
+    public function setEntryId($entryId) {
+        $this->entryId = $entryId;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLocale() {
+        return $this->locale;
+    }
+
+    /**
+     * @param string $locale
+     */
+    public function setLocale($locale) {
+        $this->locale = $locale;
+    }
 }

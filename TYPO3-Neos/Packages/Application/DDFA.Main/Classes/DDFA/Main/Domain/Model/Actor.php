@@ -6,10 +6,7 @@ namespace DDFA\Main\Domain\Model;
  *                                                                        *
  *                                                                        */
 
-use DateTime;
-use DDFA\Main\Domain\Model\Category as Category;
 use DDFA\Main\Utility\DDConst;
-use DDFA\Main\Utility\DDHelpers;
 use Doctrine\Common\Collections\Collection as Collection;
 use Doctrine\ORM\Mapping as ORM;
 use TYPO3\Flow\Annotations as Flow;
@@ -18,16 +15,7 @@ use TYPO3\Flow\Annotations as Flow;
  * @Flow\Entity
  * @ORM\MappedSuperclass()
  */
-abstract class Object
-{
-    /**
-     * @Flow\Identity
-     * @var string
-     * @ORM\Id
-     * @ORM\Column(name="persistence_object_identifier", type="guid", length=40, unique=true, nullable=false)
-     */
-    protected $Persistence_Object_Identifier;
-
+abstract class Actor extends BasicEntity {
     /**
      * @var string
      * @ORM\Column(name="entry_id")
@@ -136,32 +124,16 @@ abstract class Object
      */
     protected $spokenLanguages;
 
-    /**
-     * @var \DateTime
-     * @ORM\Column(type="datetime")
-     */
-    protected $created;
-
-    /**
-     * @var \DateTime
-     * @ORM\Column(type="datetime")
-     */
-    protected $updated;
-
     public function __construct() {
-        $this->setPersistenceObjectIdentifier(DDHelpers::createGuid());
+        parent::__construct();
         $this->setEntryId(uniqid());
         $this->setLocale(DDConst::LOCALE_STD);
-        $now = new DateTime();
-        $this->setCreated($now);
-        $this->setUpdated($now);
     }
 
     /**
      * @return string
      */
-    public function getName()
-    {
+    public function getName() {
         return $this->name;
     }
 
@@ -169,16 +141,14 @@ abstract class Object
      * @param string $name
      * @return void
      */
-    public function setName($name)
-    {
+    public function setName($name) {
         $this->name = $name;
     }
 
     /**
      * @return string
      */
-    public function getDescription()
-    {
+    public function getDescription() {
         return $this->description;
     }
 
@@ -186,16 +156,14 @@ abstract class Object
      * @param string $description
      * @return void
      */
-    public function setDescription($description)
-    {
+    public function setDescription($description) {
         $this->description = $description;
     }
 
     /**
      * @return string
      */
-    public function getMail()
-    {
+    public function getMail() {
         return $this->mail;
     }
 
@@ -203,16 +171,14 @@ abstract class Object
      * @param string $mail
      * @return void
      */
-    public function setMail($mail)
-    {
+    public function setMail($mail) {
         $this->mail = $mail;
     }
 
     /**
      * @return string
      */
-    public function getWeb()
-    {
+    public function getWeb() {
         return $this->web;
     }
 
@@ -220,16 +186,14 @@ abstract class Object
      * @param string $web
      * @return void
      */
-    public function setWeb($web)
-    {
+    public function setWeb($web) {
         $this->web = $web;
     }
 
     /**
      * @return string
      */
-    public function getPhone()
-    {
+    public function getPhone() {
         return $this->phone;
     }
 
@@ -237,16 +201,14 @@ abstract class Object
      * @param string $phone
      * @return void
      */
-    public function setPhone($phone)
-    {
+    public function setPhone($phone) {
         $this->phone = $phone;
     }
 
     /**
      * @return string
      */
-    public function getLocale()
-    {
+    public function getLocale() {
         return $this->locale;
     }
 
@@ -254,16 +216,14 @@ abstract class Object
      * @param string $locale
      * @return void
      */
-    public function setLocale($locale)
-    {
+    public function setLocale($locale) {
         $this->locale = $locale;
     }
 
     /**
      * @return Collection
      */
-    public function getTags()
-    {
+    public function getTags() {
         return $this->tags;
     }
 
@@ -271,16 +231,14 @@ abstract class Object
      * @param Collection $tags
      * @return void
      */
-    public function setTags(Collection $tags)
-    {
+    public function setTags(Collection $tags) {
         $this->tags = $tags;
     }
 
     /**
      * @return Collection
      */
-    public function getCategory()
-    {
+    public function getCategory() {
         return $this->category;
     }
 
@@ -288,16 +246,14 @@ abstract class Object
      * @param Collection $category
      * @return void
      */
-    public function setCategory($category)
-    {
+    public function setCategory($category) {
         $this->category = $category;
     }
 
     /**
      * @return Collection
      */
-    public function getTargetGroups()
-    {
+    public function getTargetGroups() {
         return $this->targetGroups;
     }
 
@@ -305,202 +261,133 @@ abstract class Object
      * @param Collection $targetGroups
      * @return void
      */
-    public function setTargetGroups($targetGroups)
-    {
+    public function setTargetGroups($targetGroups) {
         $this->targetGroups = $targetGroups;
     }
 
     /**
      * @return int
      */
-    public function getRating()
-    {
+    public function getRating() {
         return $this->rating;
     }
 
     /**
      * @param int $rating
      */
-    public function setRating($rating)
-    {
+    public function setRating($rating) {
         $this->rating = $rating;
     }
 
     /**
      * @return string
      */
-    public function getEntryId()
-    {
+    public function getEntryId() {
         return $this->entryId;
     }
 
     /**
      * @param string $entryId
      */
-    public function setEntryId($entryId)
-    {
+    public function setEntryId($entryId) {
         $this->entryId = $entryId;
-    }
-
-    /**
-     * @return \DateTime
-     */
-    public function getCreated()
-    {
-        return $this->created;
-    }
-
-    /**
-     * @param \DateTime $created
-     */
-    public function setCreated($created)
-    {
-        $this->created = $created;
-    }
-
-    /**
-     * @return \DateTime
-     */
-    public function getUpdated()
-    {
-        return $this->updated;
-    }
-
-    /**
-     * @param \DateTime $updated
-     */
-    public function setUpdated($updated)
-    {
-        $this->updated = $updated;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getPersistenceObjectIdentifier()
-    {
-        return $this->Persistence_Object_Identifier;
-    }
-
-
-    /**
-     * @param mixed $Persistence_Object_Identifier
-     */
-    public function setPersistenceObjectIdentifier($Persistence_Object_Identifier)
-    {
-        $this->Persistence_Object_Identifier = $Persistence_Object_Identifier;
     }
 
     /**
      * @return string
      */
-    public function getSpeakerPublic()
-    {
+    public function getSpeakerPublic() {
         return $this->speakerPublic;
     }
 
     /**
      * @param string $speakerPublic
      */
-    public function setSpeakerPublic($speakerPublic)
-    {
+    public function setSpeakerPublic($speakerPublic) {
         $this->speakerPublic = $speakerPublic;
     }
 
     /**
      * @return string
      */
-    public function getSpeakerPrivate()
-    {
+    public function getSpeakerPrivate() {
         return $this->speakerPrivate;
     }
 
     /**
      * @param string $speakerPrivate
      */
-    public function setSpeakerPrivate($speakerPrivate)
-    {
+    public function setSpeakerPrivate($speakerPrivate) {
         $this->speakerPrivate = $speakerPrivate;
     }
 
     /**
      * @return string
      */
-    public function getFacebook()
-    {
+    public function getFacebook() {
         return $this->facebook;
     }
 
     /**
      * @param string $facebook
      */
-    public function setFacebook($facebook)
-    {
+    public function setFacebook($facebook) {
         $this->facebook = $facebook;
     }
 
     /**
      * @return string
      */
-    public function getImage()
-    {
+    public function getImage() {
         return $this->image;
     }
 
     /**
      * @param string $image
      */
-    public function setImage($image)
-    {
+    public function setImage($image) {
         $this->image = $image;
     }
 
     /**
      * @return string
      */
-    public function getImageType()
-    {
+    public function getImageType() {
         return $this->imageType;
     }
 
     /**
      * @param string $imageType
      */
-    public function setImageType($imageType)
-    {
+    public function setImageType($imageType) {
         $this->imageType = $imageType;
     }
 
     /**
      * @return boolean
      */
-    public function isSupportWanted()
-    {
+    public function isSupportWanted() {
         return $this->supportWanted;
     }
 
     /**
      * @param boolean $supportWanted
      */
-    public function setSupportWanted($supportWanted)
-    {
+    public function setSupportWanted($supportWanted) {
         $this->supportWanted = $supportWanted;
     }
 
     /**
      * @return string
      */
-    public function getSpokenLanguages()
-    {
+    public function getSpokenLanguages() {
         return $this->spokenLanguages;
     }
 
     /**
      * @param string $spokenLanguages
      */
-    public function setSpokenLanguages($spokenLanguages)
-    {
+    public function setSpokenLanguages($spokenLanguages) {
         $this->spokenLanguages = $spokenLanguages;
     }
-
 }

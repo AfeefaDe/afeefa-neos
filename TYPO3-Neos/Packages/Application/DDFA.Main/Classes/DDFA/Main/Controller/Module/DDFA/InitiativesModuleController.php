@@ -7,9 +7,8 @@ namespace DDFA\Main\Controller\Module\DDFA;
  *                                                                        */
 
 use DateTime;
-use DDFA\Main\Domain\Model\Initiative as Initiative;
-use DDFA\Main\Domain\Model\Language as Language;
-use DDFA\Main\Domain\Model\Actor as Object;
+use DDFA\Main\Domain\Model\Initiative;
+use DDFA\Main\Domain\Repository\CategoryRepository;
 use DDFA\Main\Domain\Repository\InitiativeRepository as InitiativeRepository;
 use DDFA\Main\Domain\Repository\LanguageRepository as LanguageRepository;
 use DDFA\Main\Utility\DDConst;
@@ -20,8 +19,7 @@ use TYPO3\Flow\Annotations as Flow;
  *
  * @Flow\Scope("singleton")
  */
-class InitiativesModuleController extends AbstractTranslationController
-{
+class InitiativesModuleController extends AbstractTranslationController {
     /**
      * @Flow\Inject
      * @var InitiativeRepository
@@ -35,10 +33,15 @@ class InitiativesModuleController extends AbstractTranslationController
     protected $languageRepository;
 
     /**
+     * @Flow\Inject
+     * @var CategoryRepository
+     */
+    protected $categoryRepository;
+
+    /**
      * @return void
      */
-    public function indexAction()
-    {
+    public function indexAction() {
         $this->view->assign('inis', $this->objectRepository->findAllLocalized());
         $this->view->assign('numLanguages', $this->languageRepository->findAll()->count() - 1);
 
@@ -48,8 +51,7 @@ class InitiativesModuleController extends AbstractTranslationController
      * @param Initiative $viewObject
      * @return void
      */
-    public function viewAction(Initiative $viewObject)
-    {
+    public function viewAction(Initiative $viewObject) {
         if (isset($_POST['viewLocale']) && $_POST['viewLocale'] != DDConst::LOCALE_STD) {
             $this->redirect('view', NULL, NULL, array('viewObject' => $this->objectRepository->findOneLocalized($viewObject, $_POST['viewLocale'])));
 
@@ -64,8 +66,8 @@ class InitiativesModuleController extends AbstractTranslationController
     /**
      * @return void
      */
-    public function addAction()
-    {
+    public function addAction() {
+        $this->view->assign('cats', $this->categoryRepository->findByType(DDConst::OWNER_INI));
     }
 
     /**
@@ -73,8 +75,12 @@ class InitiativesModuleController extends AbstractTranslationController
      * @return void
      * @throws \TYPO3\Flow\Persistence\Exception\IllegalObjectTypeException
      */
-    public function createAction(Initiative $newObject)
-    {
+    public function createAction(Initiative $newObject) {
+        //TODO refactor:
+        if (isset($_POST['moduleArguments']['cat'])) {
+            $newObject->setCategory($this->categoryRepository->findOneByName($_POST['moduleArguments']['cat']));
+        }
+
         $this->objectRepository->add($newObject);
         $this->addFlashMessage('A new initiative has been created successfully.');
 
@@ -87,11 +93,24 @@ class InitiativesModuleController extends AbstractTranslationController
     }
 
     /**
+     * @param $entryID
+     * @param $locale
+     * @return Initiative
+     */
+    protected function addTranslation($entryID, $locale) {
+        $object = new Initiative();
+        $object->setEntryId($entryID);
+        $object->setLocale($locale);
+        $this->objectRepository->add($object);
+        $this->addFlashMessage("A new initiative translation has been added successfully.");
+        return $object;
+    }
+
+    /**
      * @param Initiative $editObject
      * @param Initiative $viewObject
      */
-    public function editAction(Initiative $editObject, Initiative $viewObject)
-    {
+    public function editAction(Initiative $editObject, Initiative $viewObject) {
         $this->view->assign('viewObject', $this->objectRepository->hydrate($viewObject));
         $this->view->assign('editObject', $editObject);
         $this->view->assign('editLanguages', $this->languageRepository->findAll());
@@ -101,8 +120,7 @@ class InitiativesModuleController extends AbstractTranslationController
     /**
      * @param Initiative $editObject
      */
-    public function simpleEditAction(Initiative $editObject)
-    {
+    public function simpleEditAction(Initiative $editObject) {
         if ($editObject->getLocale() != DDConst::LOCALE_STD) {
             $viewObject = $this->objectRepository->findOneLocalized($editObject, DDConst::LOCALE_STD);
             $this->redirect('edit', NULL, NULL,
@@ -111,6 +129,7 @@ class InitiativesModuleController extends AbstractTranslationController
         } else {
             $this->view->assign('editObject', $editObject);
             $this->view->assign('languages', $this->languageRepository->findAll());
+            $this->view->assign('cats', $this->categoryRepository->findByType(DDConst::OWNER_INI));
         }
     }
 
@@ -119,10 +138,15 @@ class InitiativesModuleController extends AbstractTranslationController
      * @return void
      * @throws \TYPO3\Flow\Persistence\Exception\IllegalObjectTypeException
      */
-    public function updateAction(Initiative $editObject)
-    {
-        $this->addFlashMessage('The initiative has been updated successfully.');
+    public function updateAction(Initiative $editObject) {
         $editObject->setUpdated(new DateTime());
+
+        //TODO refactor:
+        if (isset($_POST['moduleArguments']['cat'])) {
+            $editObject->setCategory($this->categoryRepository->findOneByName($_POST['moduleArguments']['cat']));
+        }
+
+        $this->addFlashMessage('The initiative has been updated successfully.');
         $this->objectRepository->update($editObject);
         $this->redirect('index');
     }
@@ -132,8 +156,7 @@ class InitiativesModuleController extends AbstractTranslationController
      * @return void
      * @throws \TYPO3\Flow\Persistence\Exception\IllegalObjectTypeException
      */
-    public function deleteAction(Initiative $deleteObject)
-    {
+    public function deleteAction(Initiative $deleteObject) {
         //TODO check if locations refer to initiative
         foreach ($this->objectRepository->findAllLocalisations($deleteObject) as $localisedObject)
             $this->objectRepository->remove($localisedObject);
@@ -146,13 +169,13 @@ class InitiativesModuleController extends AbstractTranslationController
      * @param Initiative $object
      * @return void
      */
-    public function selectTranslationAction(Initiative $object)
-    {
+    public function selectTranslationAction(Initiative $object) {
         $editLocale = $_POST['moduleArguments']['editLocale'];
         $viewLocale = $_POST['moduleArguments']['viewLocale'];
 
         if ($this->languageRepository->findByCode($viewLocale)->count() == 0 ||
-            $this->languageRepository->findByCode($editLocale)->count() == 0) {
+            $this->languageRepository->findByCode($editLocale)->count() == 0
+        ) {
             $editObject = $this->objectRepository->findOneLocalized($object, DDConst::LOCALE_STD);
             $this->redirect('simpleEdit', NULL, NULL, array('editObject' => $editObject));
 
@@ -175,20 +198,5 @@ class InitiativesModuleController extends AbstractTranslationController
                         'viewObject' => ['__identity' => $viewObject->getPersistenceObjectIdentifier()]]);
             }
         }
-    }
-
-    /**
-     * @param $entryID
-     * @param $locale
-     * @return Initiative
-     */
-    protected function addTranslation($entryID, $locale)
-    {
-        $object = new Initiative();
-        $object->setEntryId($entryID);
-        $object->setLocale($locale);
-        $this->objectRepository->add($object);
-        $this->addFlashMessage("A new initiative translation has been added successfully.");
-        return $object;
     }
 }

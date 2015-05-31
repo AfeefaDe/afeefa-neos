@@ -35,15 +35,24 @@ class InitiativeAPIController extends ActionController {
      */
     protected $supportedMediaTypes = array('application/json');
 
+    public function listAction() {
+        $this->view->assign('value', ['initiatives' => $this->iniRepository->findAll()]);
+    }
+
+    public function showAction(Initiative $initiative) {
+        print_r($this->request->getHttpRequest()->getHeaders());
+        $this->view->assign('value', ['initiative' => $initiative]);
+    }
+
     protected function initializeView(ViewInterface $view) {
         if ($view instanceof JsonView) {
             $iniConfiguration = [
-                '_exposeObjectIdentifier'     => TRUE,
+                '_exposeObjectIdentifier' => TRUE,
                 '_exposedObjectIdentifierKey' => 'identifier',
-                '_descend'                    => [
+                '_descend' => [
                     'manufacturer' => [
-                        '_exclude'                    => ['__isInitialized__'],
-                        '_exposeObjectIdentifier'     => TRUE,
+                        '_exclude' => ['__isInitialized__'],
+                        '_exposeObjectIdentifier' => TRUE,
                         '_exposedObjectIdentifierKey' => 'identifier'
                     ]
                 ]
@@ -51,7 +60,7 @@ class InitiativeAPIController extends ActionController {
             $view->setConfiguration([
                 'value' => [
                     'initiatives' => ['_descendAll' => $iniConfiguration],
-                    'initiative'  => $iniConfiguration
+                    'initiative' => $iniConfiguration
                 ]
             ]);
         }

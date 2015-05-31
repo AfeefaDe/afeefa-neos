@@ -50,11 +50,13 @@ qx.Class.define("Router", {
 		    	
 		    	APP.setDetailView( new DetailViewMobile() );
 		    	
-		    	APP.setMenuBtnView( new MenuBtnView() );
+		    	APP.setMenuView( new MenuView() );
+		    	
+		    	APP.setLegendView( new LegendView() );
 
 		    	APP.setPlusView( new PlusView() );
 		    	
-		    	APP.setLanguageView( new LanguageView() );
+		    	APP.setLanguageView( new LanguageViewMobile() );
 		
 			} else {
 
@@ -62,7 +64,9 @@ qx.Class.define("Router", {
 		    	
 		    	APP.setDetailView( new DetailView() );
 
-		    	APP.setMenuBtnView( new MenuBtnView() );
+		    	APP.setMenuView( new MenuView() );
+
+		    	APP.setLegendView( new LegendView() );
 		    	
 		    	APP.setPlusView( new PlusView() );
 
@@ -73,7 +77,8 @@ qx.Class.define("Router", {
 	    	APP.getDetailView().render();
 	    	APP.getPlusView().render();
 	    	APP.getLanguageView().render();
-	    	APP.getMenuBtnView().render();
+	    	APP.getMenuView().render();
+	    	APP.getLegendView().render();
 	    },
 
 	    _navigate: function( path ){

@@ -11,8 +11,8 @@ namespace DDFA\Main\Controller\Api;
 
 use DDFA\Main\Domain\Model\Event;
 use DDFA\Main\Domain\Repository\EventRepository;
-use TYPO3\Flow\Mvc\Controller\ActionController;
 use TYPO3\Flow\Annotations as Flow;
+use TYPO3\Flow\Mvc\Controller\ActionController;
 use TYPO3\Flow\Mvc\View\JsonView;
 use TYPO3\Flow\Mvc\View\ViewInterface;
 
@@ -31,15 +31,23 @@ class EventAPIController extends ActionController {
      */
     protected $supportedMediaTypes = array('application/json');
 
+    public function listAction() {
+        $this->view->assign('value', ['events' => $this->eventRepository->findAll()]);
+    }
+
+    public function showAction(Event $event) {
+        $this->view->assign('value', ['event' => $event]);
+    }
+
     protected function initializeView(ViewInterface $view) {
         if ($view instanceof JsonView) {
             $eventconfig = [
-                '_exposeObjectIdentifier'     => TRUE,
+                '_exposeObjectIdentifier' => TRUE,
                 '_exposedObjectIdentifierKey' => 'identifier',
-                '_descend'                    => [
+                '_descend' => [
                     'manufacturer' => [
-                        '_exclude'                    => ['__isInitialized__'],
-                        '_exposeObjectIdentifier'     => TRUE,
+                        '_exclude' => ['__isInitialized__'],
+                        '_exposeObjectIdentifier' => TRUE,
                         '_exposedObjectIdentifierKey' => 'identifier'
                     ]
                 ]
@@ -47,18 +55,10 @@ class EventAPIController extends ActionController {
             $view->setConfiguration([
                 'value' => [
                     'events' => ['_descendAll' => $eventconfig],
-                    'event'  => $eventconfig
+                    'event' => $eventconfig
                 ]
             ]);
         }
-    }
-
-    public function listAction() {
-        $this->view->assign('value', ['events' => $this->eventRepository->findAll()]);
-    }
-
-    public function showAction(Event $event) {
-        $this->view->assign('value', ['event' => $event]);
     }
 
 

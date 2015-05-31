@@ -50,7 +50,7 @@
 			width: $iconSize;
 			height: $iconSize;
 			float: left;
-			
+
 			/*@include background-size(72%);*/
 			background-repeat: no-repeat;
 			background-position: center 0.2em;
@@ -87,6 +87,11 @@
 		}
 		.property-text {
 			margin-left: calc(5% + 2.5em);
+
+			&.ar, &.ur, &.fa {
+				margin-right: calc(5% + 2.5em);
+			}
+
 			p { 
 				margin: 0;
 				line-height: 1.3em;

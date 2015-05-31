@@ -18,8 +18,7 @@ use TYPO3\Flow\Mvc\View\JsonView;
 use TYPO3\Flow\Mvc\View\ViewInterface;
 use TYPO3\Flow\Property\TypeConverter\PersistentObjectConverter;
 
-class LocationAPIController extends ActionController
-{
+class LocationAPIController extends ActionController {
     /**
      * @Flow\Inject
      * @var LocationRepository
@@ -33,15 +32,22 @@ class LocationAPIController extends ActionController
      */
     protected $supportedMediaTypes = array('application/json');
 
+    public function listAction() {
+        //TODO include language
+        $this->view->assign('value', ['locations' => $this->iniLocationRepository->findAllSupplemented()]);
+    }
+
+    public function showAction(Location $location) {
+        $this->view->assign('value', ['location' => $this->iniLocationRepository->supplement($location)]);
+    }
+
     protected function initializeView(ViewInterface $view) {
         if ($view instanceof JsonView) {
             $locationConfiguration = [
-                '_exposeObjectIdentifier'     => TRUE,
-                '_exposedObjectIdentifierKey' => 'identifier',
-                '_descend'                    => [
+                '_descend' => [
                     'manufacturer' => [
-                        '_exclude'                    => ['__isInitialized__'],
-                        '_exposeObjectIdentifier'     => TRUE,
+                        '_exclude' => ['__isInitialized__'],
+                        '_exposeObjectIdentifier' => TRUE,
                         '_exposedObjectIdentifierKey' => 'identifier'
                     ]
                 ]
@@ -49,7 +55,7 @@ class LocationAPIController extends ActionController
             $view->setConfiguration([
                 'value' => [
                     'locations' => ['_descendAll' => $locationConfiguration],
-                    'location'  => $locationConfiguration
+                    'location' => $locationConfiguration
                 ]
             ]);
         }

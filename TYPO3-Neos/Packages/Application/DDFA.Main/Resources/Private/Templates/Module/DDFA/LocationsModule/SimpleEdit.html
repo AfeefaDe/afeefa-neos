@@ -1,20 +1,21 @@
-<f:layout name="Default" />
+<f:layout name="Default"/>
 
 <f:section name="title">Edit location</f:section>
 
 <f:section name="content">
 
-    <f:render partial="Shared/TranslationSelectSimpleEdit" arguments="{languages: languages, editObject: editObject}" />
+    <f:render partial="Shared/TranslationSelectSimpleEdit" arguments="{languages: languages, editObject: editObject}"/>
 
     <f:form method="post" action="update" object="{editObject}" name="editObject" enctype="multipart/form-data">
 
         <div class="neos-row-fluid neos-module-container">
-            <f:render partial="Location/LocationForm" arguments="{inis: inis, selectedIni: editLocation.initiative.name}"/>
+            <f:render partial="Location/LocationForm"
+                      arguments="{inis: inis, selectedIni: editObject.initiative.name, cats: cats, selectedCat: editObject.category.name}"/>
         </div>
 
         <div class="neos-footer">
             <f:link.action action="index" class="neos-button" title="back to index">Abort</f:link.action>
-            <f:form.submit value="Save changes" class="neos-button neos-button-primary" title="save this location" />
+            <f:form.submit value="Save changes" class="neos-button neos-button-primary" title="save this location"/>
         </div>
     </f:form>
 </f:section>

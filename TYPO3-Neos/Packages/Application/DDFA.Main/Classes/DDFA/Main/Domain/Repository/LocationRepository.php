@@ -206,7 +206,7 @@ class LocationRepository extends AbstractTranslationRepository {
      */
     public function supplement(Location $object) {
         //TODO maybe better store props in another place... one day
-        $LOCATION_SUPPLEMENT_PROPS = ["description", "mail", "web", "phone", "speakerPublic", "speakerPrivate", "facebook"];
+        $LOCATION_SUPPLEMENT_PROPS = ["description", "mail", "web", "facebook", "phone", "rating", "category", "speakerPublic", "speakerPrivate", "image", "imageType", "spokenLanguages"];
 
         $object = $this->hydrate($object);
 

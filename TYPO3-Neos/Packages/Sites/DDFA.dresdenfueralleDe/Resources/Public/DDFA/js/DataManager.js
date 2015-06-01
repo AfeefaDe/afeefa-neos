@@ -122,6 +122,7 @@ qx.Class.define("DataManager", {
                     
                     _.each(rows, function(row, i){
 
+                        // create initiative in basic language
                         createInitiative({
 
                             "initiative":{
@@ -148,6 +149,9 @@ qx.Class.define("DataManager", {
 
                             var parentIni = response.initiative;
 
+                            // create initiative translations (use entryId)
+
+                            // create its location in basic language (use identifier)
                             var location = createLocation({
                                 
                                 "location": {
@@ -189,15 +193,6 @@ qx.Class.define("DataManager", {
 
                 });
 
-                // d3.csv( pathToCsv + "inis_" + lang + ".csv" )
-                //     .row(function(d) { 
-                //         return {key: d.key, value: +d.value};
-                //     })
-                //     .get(function(error, rows) {
-                        
-                //         1
-                // });
-
             });
 
             function createInitiative(data, cb){
@@ -211,7 +206,7 @@ qx.Class.define("DataManager", {
                     contentType: false
                 })
                 .done(function( data ) {
-                    cb(data);
+                    if(cb) cb(data);
                 })
                 .fail(function(a) {
                     console.debug(a);
@@ -229,7 +224,7 @@ qx.Class.define("DataManager", {
                     contentType: false
                 })
                 .done(function( data ) {
-                    cb(data);
+                    if(cb) cb(data);
                 })
                 .fail(function(a) {
                     console.debug(a);

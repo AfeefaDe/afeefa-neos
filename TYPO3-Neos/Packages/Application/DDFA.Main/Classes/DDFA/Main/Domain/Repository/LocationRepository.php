@@ -12,6 +12,8 @@ use DDFA\Main\Utility\DDConst;
 use ReflectionObject;
 use TYPO3\Flow\Annotations as Flow;
 use TYPO3\Flow\Persistence\QueryInterface;
+use TYPO3\Flow\Resource\ResourceManager;
+use TYPO3\Media\Domain\Repository\AssetRepository;
 
 /**
  * @Flow\Scope("singleton")
@@ -34,6 +36,18 @@ class LocationRepository extends AbstractTranslationRepository {
      * @var EventRepository
      */
     protected $eventRepository;
+
+    /**
+     * @Flow\Inject
+     * @var ResourceManager
+     */
+    protected $resourceManager;
+
+    /**
+     * @Flow\Inject
+     * @var AssetRepository
+     */
+    protected $assetRepository;
 
     /**
      * @return \TYPO3\Flow\Persistence\QueryResultInterface
@@ -164,6 +178,7 @@ class LocationRepository extends AbstractTranslationRepository {
      * @return Location
      */
     public function hydrate(Location $object, $baseLocale = DDConst::LOCALE_STD) {
+        $sourceReflection = new ReflectionObject($object);
         if ($object->getLocale() != $baseLocale) {
 
             //language fallback to English:
@@ -173,7 +188,6 @@ class LocationRepository extends AbstractTranslationRepository {
 
             $parentEntry = $this->findOneLocalized($object, $baseLocale);
             $parentReflection = new ReflectionObject($parentEntry);
-            $sourceReflection = new ReflectionObject($object);
             foreach ($sourceReflection->getProperties() as $property) {
                 $property->setAccessible(true);
                 $value = $property->getValue($object);
@@ -183,8 +197,27 @@ class LocationRepository extends AbstractTranslationRepository {
                     $property->setValue($object, $parentProperty->getValue($parentEntry));
                 }
             }
+
         }
+
+        $img = $sourceReflection->getProperty("image");
+        $img->setAccessible(true);
+        $img->setValue($object, $this->getImgUri($object));
         return $object;
+    }
+
+
+    /**
+     * @param Location $object
+     * @return string
+     */
+    private function getImgUri(Location $object) {
+        $uri = "";
+        if ($object->getImage()) {
+            $uri = $this->resourceManager->getPersistentResourcesStorageBaseUri();
+            $uri .= $this->assetRepository->findByIdentifier($object->getImage())->getResource()->getResourcepointer();
+        }
+        return $uri;
     }
 
     /**
@@ -215,9 +248,13 @@ class LocationRepository extends AbstractTranslationRepository {
                 $owner = $this->initiativeRepository->findOneHydrated($object->getInitiative());
                 break;
             case DDConst::OWNER_MARKET:
+                if ($object->getMarketEntry() == null)
+                    return $object;
                 $owner = $this->marketRepository->findByIdentifier($object->getMarketEntry()->getPersistenceObjectIdentifier());
                 break;
             case DDConst::OWNER_EVENT:
+                if ($object->getEvent() == null)
+                    return $object;
                 $owner = $this->eventRepository->findByIdentifier($object->getEvent()->getPersistenceObjectIdentifier());
                 break;
             default:
@@ -239,6 +276,7 @@ class LocationRepository extends AbstractTranslationRepository {
                 }
             }
         }
+
         return $object;
     }
 }

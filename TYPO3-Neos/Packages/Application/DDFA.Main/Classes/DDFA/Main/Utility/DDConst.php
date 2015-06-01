@@ -11,4 +11,6 @@ abstract class DDConst {
 
     const LOCALE_STD = "de";
     const LOCALE_NXT = "en"; //locale that is provided to translate first
+
+    const MEDIA_IMAGE = "typo3_media_image";
 }

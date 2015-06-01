@@ -37,7 +37,8 @@
                         <f:form.hidden name="type" value="{type}"/>
                     </div>
                     <div class="neos-row-fluid neos-module-container">
-                        <f:render partial="Location/LocationForm" arguments="{inis: inis, cats: cats}"/>
+                        <f:render partial="Location/LocationForm"
+                                  arguments="{inis: inis, cats: cats, imgs: imgs, selectedImg: 'none'}"/>
                     </div>
                     <f:render partial="Location/LocationAddFooter"/>
                 </f:form>
@@ -52,6 +53,7 @@
     </f:if>
     <!-- END OF INI LOCATION -->
 
+    <!-- BEGIN MARKET LOCATION -->
     <f:if condition="{type} == '1'">
         <f:form method="post" action="create" object="{newObject}" name="newObject"
                 enctype="multipart/form-data">
@@ -59,11 +61,12 @@
                 <f:form.hidden name="type" value="{type}"/>
             </div>
             <div class="neos-row-fluid neos-module-container">
-                <f:render partial="Location/LocationForm" arguments="{entries: entries, cats: cats}"/>
+                <f:render partial="Location/LocationForm" arguments="{entries: entries, cats: cats, imgs: imgs}"/>
             </div>
             <f:render partial="Location/LocationAddFooter"/>
         </f:form>
     </f:if>
+    <!.. END OF MARKET LOCATION -->
 
     <f:if condition="{type} == '2'">
         tba: event location form
@@ -79,7 +82,7 @@
                 <f:form.hidden name="type" value="{type}"/>
             </div>
             <div class="neos-row-fluid neos-module-container">
-                <f:render partial="Location/LocationForm" arguments="{cats: cats}"/>
+                <f:render partial="Location/LocationForm" arguments="{cats: cats, imgs: imgs, selectedImg: 'none'}"/>
             </div>
             <f:render partial="Location/LocationAddFooter"/>
         </f:form>

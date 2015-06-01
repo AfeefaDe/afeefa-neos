@@ -42,6 +42,31 @@
     </div>
 
     <div class="neos-control-group">
+        <label class="neos-control-label" for="image">Logo / Image</label>
+
+        <div class="neos-controls">
+            <f:form.select class="neos-span12" id="image" property="image" options="{imgs}"
+                           optionValueField="identifier" optionLabelField="title" value="{selectedImg}"
+                           sortByOptionLabel="true" prependOptionLabel="- none -"/>
+        </div>
+    </div>
+
+    <div class="neos-control-group">
+        <label class="neos-control-label">Image type</label>
+
+        <div class="neos-controls">
+            <label for="typeLogo" class="neos-radio neos-inline">
+                <f:form.radio property="imageType" value="logo" checked="true" id="typeLogo"/>
+                Logo<span></span>
+            </label>
+            <label for="typeImage" class="neos-radio neos-inline">
+                <f:form.radio property="imageType" value="image" id="typeImage"/>
+                Image<span></span>
+            </label>
+        </div>
+    </div>
+
+    <div class="neos-control-group">
         <label class="neos-control-label" for="description">Description</label>
 
         <div class="neos-controls">
@@ -135,15 +160,25 @@
                               placeholder="Enter public speaker" autofocus="true"/>
         </div>
     </div>
+
+    <div class="neos-control-group">
+        <label for="supportWanted">Support wanted</label>
+        <label for="supportWanted" class="neos-checkbox neos-inline">
+            <f:form.checkbox property="supportWanted" id="supportWanted" value="supportWanted"/>
+            yes, please!<span></span>
+        </label>
+    </div>
 </fieldset>
 
 <fieldset class="neos-span3 neos-offset1">
     <legend>Geo data</legend>
 
     <div class="neos-control-group">
+        <label for="scope">Restricted Location</label>
+
         <label for="scope" class="neos-checkbox neos-inline">
             <f:form.checkbox property="scope" id="scope" value="scope"/>
-            nur Stadtteil?<span></span>
+            only in district<span></span>
         </label>
     </div>
 

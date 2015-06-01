@@ -112,6 +112,7 @@ abstract class Actor extends BasicEntity {
      */
     protected $imageType;
 
+
     /**
      * @var boolean
      * @ORM\Column(nullable=true)

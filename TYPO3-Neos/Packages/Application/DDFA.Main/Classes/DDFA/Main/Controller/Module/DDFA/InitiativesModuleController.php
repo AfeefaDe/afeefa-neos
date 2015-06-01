@@ -13,6 +13,7 @@ use DDFA\Main\Domain\Repository\InitiativeRepository as InitiativeRepository;
 use DDFA\Main\Domain\Repository\LanguageRepository as LanguageRepository;
 use DDFA\Main\Utility\DDConst;
 use TYPO3\Flow\Annotations as Flow;
+use TYPO3\Media\Domain\Repository\AssetRepository;
 
 /**
  * The TYPO3 User Settings module controller
@@ -37,6 +38,12 @@ class InitiativesModuleController extends AbstractTranslationController {
      * @var CategoryRepository
      */
     protected $categoryRepository;
+
+    /**
+     * @Flow\Inject
+     * @var AssetRepository
+     */
+    protected $assetRepository;
 
     /**
      * @return void
@@ -68,6 +75,7 @@ class InitiativesModuleController extends AbstractTranslationController {
      */
     public function addAction() {
         $this->view->assign('cats', $this->categoryRepository->findByType(DDConst::OWNER_INI));
+        $this->view->assign('imgs', $this->assetRepository->findAll());
     }
 
     /**
@@ -130,6 +138,7 @@ class InitiativesModuleController extends AbstractTranslationController {
             $this->view->assign('editObject', $editObject);
             $this->view->assign('languages', $this->languageRepository->findAll());
             $this->view->assign('cats', $this->categoryRepository->findByType(DDConst::OWNER_INI));
+            $this->view->assign('imgs', $this->assetRepository->findAll());
         }
     }
 

@@ -15,6 +15,7 @@ use DDFA\Main\Domain\Repository\LocationRepository;
 use DDFA\Main\Domain\Repository\MarketEntryRepository;
 use DDFA\Main\Utility\DDConst;
 use TYPO3\Flow\Annotations as Flow;
+use TYPO3\Media\Domain\Repository\AssetRepository;
 
 /**
  * The TYPO3 User Settings module controller
@@ -27,6 +28,12 @@ class LocationsModuleController extends AbstractTranslationController {
      * @var LocationRepository
      */
     protected $objectRepository;
+
+    /**
+     * @Flow\Inject
+     * @var AssetRepository
+     */
+    protected $assetRepository;
 
     /**
      * @Flow\Inject
@@ -74,7 +81,6 @@ class LocationsModuleController extends AbstractTranslationController {
         } else {
 
             $viewObject = $this->objectRepository->supplement($viewObject);
-
             $this->view->assign('viewObject', $viewObject);
             $this->view->assign('languages', $this->objectRepository->findLocales($viewObject));
         }
@@ -86,8 +92,11 @@ class LocationsModuleController extends AbstractTranslationController {
     public function addAction() {
         if (isset($_GET['moduleArguments']['type'])) {
             $type = $_GET['moduleArguments']['type'];
+
             $this->view->assign('type', $type);
             $this->view->assign('cats', $this->categoryRepository->findByType($type));
+            $this->view->assign('imgs', $this->assetRepository->findAll());
+
             switch ($type) {
                 case DDConst::OWNER_INI:
                     $this->view->assign('inis', $this->initiativeRepository->findAllLocalized());
@@ -216,6 +225,7 @@ class LocationsModuleController extends AbstractTranslationController {
 
             $this->view->assign('editObject', $editObject);
             $this->view->assign('cats', $this->categoryRepository->findByType($editObject->getType()));
+            $this->view->assign('imgs', $this->assetRepository->findAll());
             $this->view->assign('languages', $this->languageRepository->findAll());
         }
     }

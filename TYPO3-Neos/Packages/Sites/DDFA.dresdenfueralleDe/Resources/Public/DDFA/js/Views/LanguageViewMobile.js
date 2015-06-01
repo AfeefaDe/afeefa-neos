@@ -18,49 +18,33 @@ qx.Class.define("LanguageViewMobile", {
             that.view = $("<div />");
             that.view.attr('id', that.getViewId());
 
-            that.shiftMenu  = $("<div />");
-            that.shiftMenu.addClass('shiftMenu');
-            that.view.append(that.shiftMenu);
-
+            // menu button
             that.rootBtn  = $("<div />");
-            that.rootBtn.addClass('btn root-btn');
-            that.rootBtn.click(function(){
-                that.view.toggleClass('open');
-            });
+            that.rootBtn.addClass('root-btn');
+            // that.rootBtn.click(function(){
+            //     that.view.toggleClass('open');
+            // });
             that.view.append(that.rootBtn);
+
+            that.menu  = $("<div />");
+            that.menu.attr('id', 'lang-menu');
+            that.view.append(that.menu);
 
             that.buttons = [];
 
-            // add root button
-            // that.rootBtn = $("<div />");
-            // that.rootBtn.addClass('btn root-btn ' + APP.getLM().getCurrentLang() );
-            // that.view.append(that.rootBtn);
-            // that.buttons.push(that.rootBtn);
-
             // add other language buttons
-            // var remainingLanguages = _.without( APP.getConfig().languages, APP.getLM().getCurrentLang() );
-            // _.each( remainingLanguages, function(lang){
             _.each( APP.getConfig().languages, function(lang){
                 var langBtn = $("<div />");
                 langBtn.addClass('btn ' + lang);
 
                 langBtn.click(function(){
                     that.say('languageChanged', lang);
-                    
-                    that.view.removeClass('open');
-                    // if( that.view.hasClass('open') ){
-
-                    //     $('#map-curtain').addClass('active');
-                    // }
-                    // else {
-                    //     $('#map-curtain').removeClass('active');
-                    // }
-
+                    that.close();
                 });
 
                 that.buttons.push(langBtn);
 
-                that.shiftMenu.append(langBtn);
+                that.menu.append(langBtn);
             });
             
             $('#main-container').append(that.view);
@@ -76,13 +60,30 @@ qx.Class.define("LanguageViewMobile", {
             that.rootBtn.addClass( APP.getLM().getCurrentLang() );
         },
 
-        // addEvents: function(){
-        //     var that = this;
+        addEvents: function(){
+            var that = this;
 
-        //     // call superclass
-        //     this.base(arguments);
+            // call superclass
+            this.base(arguments);
 
-        // },
+            that.rootBtn.click(function(){
+                $('#main-container').addClass('shifted-small');
+                that.say('languageMenuOpened');
+            });
+
+            that.listen('curtainclicked', function(){
+                that.close();
+            });
+            
+            // interferring with other left shifting menus
+            that.listen('mainMenuOpened', function(){
+                that.menu.addClass('hidden');
+            });
+            that.listen('shiftMenuClosed', function(){
+                that.menu.removeClass('hidden');
+            });
+
+        },
 
         reset: function(){
             var that = this;
@@ -97,6 +98,7 @@ qx.Class.define("LanguageViewMobile", {
         close: function(){
             var that = this;
 
+            $('#main-container').removeClass('shifted-small');
             // TODO: only do in mobile version
             // that.addRequestBtn.css('display', 'none');
             // that.addOfferBtn.css('display', 'none');

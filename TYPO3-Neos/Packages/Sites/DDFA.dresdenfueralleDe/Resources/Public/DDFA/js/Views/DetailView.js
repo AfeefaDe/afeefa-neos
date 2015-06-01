@@ -112,8 +112,8 @@ qx.Class.define("DetailView", {
             
             // category
             var prop = 'category';
-            that['propertyIcon'+prop].addClass('icon-' + record[prop]);
-            that['propertyName'+prop].append( that.getWording('cat_' + record[prop]) );
+            that['propertyIcon'+prop].addClass('cat-' + record[prop].name);
+            that['propertyName'+prop].append( that.getWording('cat_' + record[prop].name) );
             var value = (record.type !== 1) ? that.getWording('misc_officialEntry') : that.getWording('misc_privateEntry');
             that['propertyValue'+prop].append(value);
             that['propertyContainer'+prop].show();
@@ -173,7 +173,11 @@ qx.Class.define("DetailView", {
             
             // generic
             var properties = _.union( ['category', 'location'], APP.getConfig().simpleProperties );
-            // var properties = APP.getConfig().simpleProperties;
+            
+            that['propertyIconcategory'].removeClass (function (index, css) {
+                return (css.match (/(^|\s)cat-\S+/g) || []).join(' ');
+            });
+            
             _.each(properties, function(prop){
                 that['propertyIcon'+prop].removeClass (function (index, css) {
                     return (css.match (/(^|\s)icon-\S+/g) || []).join(' ');

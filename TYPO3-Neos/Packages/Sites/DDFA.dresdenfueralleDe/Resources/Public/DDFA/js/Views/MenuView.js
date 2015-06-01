@@ -29,8 +29,8 @@ qx.Class.define("MenuView", {
             that.view.append(that.menu);
 
             // logo
-            var a = $('<a />').attr('href', 'http://afeefa.com');
-            that.logo  = $('<img />').attr('src', APP.getConfig().imgPath + 'connectedd_light.svg');
+            var a = $('<a />').attr('href', 'http://afeefa.de');
+            that.logo  = $('<img />').attr('src', APP.getConfig().imgPath + 'afeefa_light.svg');
             that.logo.attr('id', 'logo');
             a.append(that.logo);
             that.menu.append(a);
@@ -48,10 +48,19 @@ qx.Class.define("MenuView", {
             
             that.menuBtn.click(function(){
                 $('#main-container').addClass('shifted');
+                that.say('mainMenuOpened');
             });
-
+            
             that.listen('curtainclicked', function(){
                 $('#main-container').removeClass('shifted');
+            });
+
+            // interferring with other left shifting menus
+            that.listen('languageMenuOpened', function(){
+                that.menu.addClass('hidden');
+            });
+            that.listen('shiftMenuClosed', function(){
+                that.menu.removeClass('hidden');
             });
             
         },

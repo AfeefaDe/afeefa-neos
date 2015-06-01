@@ -6,27 +6,12 @@
 
 	.btn {
 
-		@include box-shadow(0px 0px 2px #333);
-		@include box-sizing(border-box);
-		
-		width: 3em;
-		height: 3em;
-		@include border-radius(2em);
-
+		@include circleBtn;
 		@include background-size(cover);
-		background-position: center center;
-		background-repeat: no-repeat;
 
-		&.de { background-image: url("../img/flag_de.svg"); }
-		&.en { background-image: url("../img/flag_en.svg"); }
-		&.ar { background-image: url("../img/flag_ar.svg"); }
-		&.fa { background-image: url("../img/flag_fa.svg"); }
-		&.fr { background-image: url("../img/flag_fr.svg"); }
-		&.sr { background-image: url("../img/flag_sr.svg"); }
-		&.ru { background-image: url("../img/flag_ru.svg"); }
-		&.ti { background-image: url("../img/flag_ti.svg"); }
-		&.ur { background-image: url("../img/flag_ur.svg"); }
+		@include languageFlags;
 
+		margin-bottom: 0.5em;
 	}
 
 }
@@ -69,9 +54,29 @@
 
 	@include languageViewBasic;
 
-	left: 6em;
+	/*position: absolute;*/
+	left: -4em;
+	top: 0;
 
-	.shiftMenu {
+	@include box-sizing(border-box);
+	width: 4em;
+	height: 100%;
+	padding: 2em 0.5em;
+
+	.root-btn {
+		
+		@include circleBtn;
+		@include background-size(cover);
+		
+		@include languageFlags;
+		position: absolute;
+		right: -9em;
+		top: 2em;
+		/*background-color: $blue_dark;*/
+		/*background-image: url("../img/menu.svg");*/
+	}
+
+	/*.lang-menu {
 		@include transition(all 200ms);
 		position: fixed;
 		left: -4em;
@@ -80,7 +85,7 @@
 		width: 3em;
 		padding: 0 0.5em;
 		height: 100%;
-	}
+	}*/
 
 	&.open {
 

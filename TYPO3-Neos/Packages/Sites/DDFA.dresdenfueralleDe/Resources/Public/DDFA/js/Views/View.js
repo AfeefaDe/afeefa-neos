@@ -15,7 +15,7 @@ qx.Class.define("View", {
         
         render: function(){
             var that = this;
-            
+
             that.addEvents();
         },
 

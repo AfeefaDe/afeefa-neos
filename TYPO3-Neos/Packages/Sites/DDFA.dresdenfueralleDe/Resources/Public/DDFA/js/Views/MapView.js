@@ -118,6 +118,23 @@ qx.Class.define("MapView", {
 			that.say('curtainclicked');
 		});
 
+		if( APP.getUserDevice() == 'phone' ){
+
+			// $('#main-container').bind("transitionstart webkitTransitionStart oTransitionStart MSTransitionStart", function(){
+			// 	if( $(this).hasClass('shifted') )
+			// 		$('#lang-menu').hide();
+			// 	else ( $(this).hasClass('shifted-small') )
+			// 		$('#main-menu').hide();
+			// });
+			$('#main-container').on("transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd", function(e){
+				if( e.target != e.currentTarget ) return;
+				if( !$(this).hasClass('shifted') && !$(this).hasClass('shifted-small') ){
+					that.say('shiftMenuClosed');
+				}
+			});
+
+		}
+
 		//////////////
 		// listen //
 		//////////////
@@ -200,7 +217,7 @@ qx.Class.define("MapView", {
 
 			var className = 'location';
 			className += ' type-' + location.type;
-			if( location.category ) className += ' cat cat-' + location.category;
+			if( location.category ) className += ' cat cat-' + location.category.name;
 			if( location.supportNeeded ) className += ' support-needed';
 
 			var marker = L.marker( [location.lat, location.lon] , {

@@ -64,18 +64,6 @@ qx.Class.define("LanguageView", {
 
             // call superclass
             this.base(arguments);
-
-            // that.listen('mapclicked', function(){
-            //     that.close();
-            // });
-
-            // that.plusBtn.click(function(){
-            //     $('#main-container').toggleClass('shifted');
-            // });
-
-            // that.plusBtn.click(function(){
-            //    that.$addOfferBtn.addClass('active');
-            // });
         },
 
         reset: function(){

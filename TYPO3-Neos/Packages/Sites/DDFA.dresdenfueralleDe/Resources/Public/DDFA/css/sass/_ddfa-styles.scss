@@ -17,9 +17,13 @@
 		background-image: url("../img/cat-19.svg");
 		background-color: rgba(0,0,0,0) !important;
 	}
-	&.cat-church { background-image: url("../img/cat-16.svg"); }
-	&.cat-mosque { background-image: url("../img/cat-16.svg"); }
-	&.cat-synagogue { background-image: url("../img/cat-22.svg"); }
+	&.cat-christian { background-image: url("../img/cat-16.svg"); }
+	&.cat-islam { background-image: url("../img/cat-16.svg"); }
+	&.cat-jewish { background-image: url("../img/cat-22.svg"); }
+	&.cat-shop { background-image: url("../img/cat-22.svg"); }
+	&.cat-public { background-image: url("../img/cat-22.svg"); }
+	
+	&.cat-other { background-image: none; }
 
 }
 
@@ -42,9 +46,27 @@
 		background-image: url("../img/cat-19.svg");
 		background-color: rgba(0,0,0,0) !important;
 	}
-	&.cat-church { background-image: url("../img/cat-15.svg"); }
-	&.cat-mosque { background-image: url("../img/cat-15.svg"); }
-	&.cat-synagogue { background-image: url("../img/cat-21.svg"); }
+	&.cat-christian { background-image: url("../img/cat-15.svg"); }
+	&.cat-islam { background-image: url("../img/cat-15.svg"); }
+	&.cat-jewish { background-image: url("../img/cat-21.svg"); }
+	&.cat-shop { background-image: url("../img/cat-21.svg"); }
+	&.cat-public { background-image: url("../img/cat-21.svg"); }
+
+	&.cat-other { background-image: none; }
+
+}
+
+@mixin languageFlags {
+
+	&.de { background-image: url("../img/flag_de.svg"); }
+	&.en { background-image: url("../img/flag_en.svg"); }
+	&.ar { background-image: url("../img/flag_ar.svg"); }
+	&.fa { background-image: url("../img/flag_fa.svg"); }
+	&.fr { background-image: url("../img/flag_fr.svg"); }
+	&.sr { background-image: url("../img/flag_sr.svg"); }
+	&.ru { background-image: url("../img/flag_ru.svg"); }
+	&.ti { background-image: url("../img/flag_ti.svg"); }
+	&.ur { background-image: url("../img/flag_ur.svg"); }
 
 }
 
@@ -90,6 +112,8 @@ a {
     }
 }
 
+.hidden{ display: none; }
+
 #main-container {
 	
 	@include transition(all 250ms);
@@ -101,7 +125,7 @@ a {
 
 	background-color: $black;
 	/*background-image: url("../img/CND.svg");*/
-	background-image: url("../img/connectedd_light.svg");
+	background-image: url("../img/afeefa_light.svg");
 	@include background-size(20%);
 	background-position: center center;
 	background-repeat: no-repeat;
@@ -120,7 +144,7 @@ a {
 		height: 100%;
 		visibility: hidden;
 		opacity: 0;
-		z-index: 999;
+		z-index: 9999;
 		
 		&.active {
 			@include mapCurtainActive;
@@ -133,6 +157,21 @@ a {
 		#map-curtain {
 			@include mapCurtainActive;
 		}
+
+		#menuView { z-index: 999; }
+		/*#lang-menu { display: none; }*/
+	}
+
+	&.shifted-small {
+		left: 4em;
+
+		#map-curtain {
+			@include mapCurtainActive;
+		}
+
+		#languageViewMobile { z-index: 999; }
+		/*#main-menu { display: none; }*/
+
 	}
 }
 

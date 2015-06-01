@@ -14,7 +14,8 @@ require.config({
         hammer: '../../hammerjs/hammer.min',
         cartodb: 'http://libs.cartocdn.com/cartodb.js/v3/3.12/cartodb',
         bootstrap: 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min',
-        mapbox: 'https://api.tiles.mapbox.com/mapbox.js/v2.1.9/mapbox'
+        mapbox: 'https://api.tiles.mapbox.com/mapbox.js/v2.1.9/mapbox',
+        d3: 'http://d3js.org/d3.v3.min'
     }
 });
 
@@ -22,7 +23,7 @@ require( ['domReady', 'modernizr'], function(domReady) {
 
 	domReady(function(){
 
-		require( ['jquery', 'qx', 'underscore', 'hammer'], function( $, qx, _, Hammer ){
+		require( ['jquery', 'qx', 'underscore', 'hammer', 'd3'], function( $, qx, _, Hammer ){
 
 			require( ['Daddy'], function(){
 

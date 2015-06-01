@@ -110,19 +110,37 @@ qx.Class.define("DataManager", {
 
 
             // languages = APP.getConfig().languages;
-            var languages = ['de'];
+            var languages = ['de', 'ar'];
+            var baseLang = 'de';
+            var otherLanguages = _.without( languages, baseLang );
             var pathToCsv = '_Resources/Static/Packages/DDFA.dresdenfueralleDe/DDFA/dummyData/'
 
-            _.each(languages, function(lang){
+            // _.each(languages, function(lang){
 
-                // read("inis_" + lang + ".csv", function(data){
-                
                 // var csv = d3.csv.parse( pathToCsv + "inis_" + lang + ".csv" );
-                d3.csv( pathToCsv + "inis_" + lang + ".csv", function(rows){
-                    
-                    _.each(rows, function(row, i){
+                
+                var inis = {};
+                
+                _.each( languages, function(lang, i){
+                        readCsv(lang, function(){ instantiateEverything(); });
+                });
 
-                        // create initiative in basic language
+                function readCsv(lang, cb){
+                    
+                    d3.csv( pathToCsv + "inis_" + lang + ".csv", function(rows){
+                        inis[lang] = rows;
+                        if( _.size(inis) == languages.length ) cb();
+                    });                    
+
+                }
+
+                function instantiateEverything(){
+
+                // d3.csv( pathToCsv + "inis_" + lang + ".csv", function(rows){
+                    
+                    _.each(inis[baseLang], function(row, i){
+
+                        // create initiative in base language
                         createInitiative({
 
                             "initiative":{
@@ -130,29 +148,54 @@ qx.Class.define("DataManager", {
                                 "category": null,
                                 "description": row.description? row.description : null,
                                 "facebook": row.facebook? row.facebook : null,
-                                "image": row.image? row.image : null,
+                                "image": null,
                                 "imageType": null,
-                                "locale": lang,
+                                "locale": baseLang,
                                 "mail": row.mail? row.mail : null,
-                                "name": row.name,
+                                "name": row.name? row.name : null,
                                 "phone": row.phone? row.phone : null,
                                 "rating": 3,
                                 "speakerPrivate": row.speakerPrivate? row.speakerPrivate : null,
                                 "speakerPublic": row.speakerPublic? row.speakerPublic : null,
                                 "spokenLanguages": row.spokenLanguages? row.spokenLanguages : null,
                                 "supportWanted": false,
-                                "web": row.web? row.web : null,
+                                "web": row.web? row.web : null
 
                             }
 
-                        }, function( response ){
+                        }, i, function( response, iniIndex ){
 
                             var parentIni = response.initiative;
 
                             // create initiative translations (use entryId)
+                            _.each( otherLanguages, function(lang){
+                                
+                                // _.each(inis[lang], function(row, i){
+                                    
+                                    var row = inis[lang][iniIndex];
 
-                            // create its location in basic language (use identifier)
-                            var location = createLocation({
+                                    createInitiative({
+
+                                        "initiative":{
+
+                                            "category": null,
+                                            "description": row.description? row.description : null,
+                                            "entryId": parentIni.entryId,
+                                            "locale": lang,
+                                            "name": row.name? row.name : null,
+                                            "speakerPublic": null,
+                                            "spokenLanguages": row.spokenLanguages? row.spokenLanguages : null
+
+                                        }
+
+                                    });
+
+                                // });
+
+                            });
+
+                            // create its location in base language (use identifier)
+                            createLocation({
                                 
                                 "location": {
                                     "category": null,
@@ -160,18 +203,18 @@ qx.Class.define("DataManager", {
                                     "description": null,
                                     "district": null,
                                     "event": null,
-                                    "facebook": "",
+                                    "facebook": null,
                                     "image": null,
                                     "imageType": null,
                                     "initiative": parentIni.identifier,
                                     "lat": row.lat? row.lat : null,
-                                    "locale": lang,
+                                    "locale": baseLang,
                                     "lon": row.lon? row.lon : null,
                                     "mail": null,
                                     "marketEntry": null,
-                                    "name": row.name,
+                                    "name": row.name? row.name : null,
                                     "openingHours": row.openingHours? row.openingHours : null,
-                                    "phone": "",
+                                    "phone": null,
                                     "rating": 3,
                                     "scope": false,
                                     "speakerPrivate": null,
@@ -181,21 +224,56 @@ qx.Class.define("DataManager", {
                                     "supportWanted": null,
                                     "type": 0,
                                     "web": null,
-                                    "zip": row.zip? row.zip : null,
+                                    "zip": row.zip? row.zip : null
                                 }
                                         
+
+                            }, iniIndex, function( response, iniIndex ){
+
+                                var baseLocation = response.location;
+
+                                // create location translations (use entryId)
+                                _.each( otherLanguages, function(lang){
+                                    
+                                    // _.each(inis[lang], function(row, i){
+
+                                        var row = inis[lang][iniIndex];
+
+                                        createLocation({
+                                    
+                                            "location": {
+                                                "category": null,
+                                                "description": null,
+                                                "entryId": baseLocation.entryId,
+                                                "event": null,
+                                                // "initiative": null,
+                                                "locale": lang,
+                                                "marketEntry": null,
+                                                "name": row.name? row.name : null,
+                                                "openingHours": row.openingHours? row.openingHours : null,
+                                                "speakerPublic": null,
+                                                "spokenLanguages": null,
+                                                "type": 0
+                                            }
+
+                                        });
+
+                                    // });
+
+                                });
 
                             });
 
                         });
 
-                        });
+                    });
+                }
 
-                });
+                // });
 
-            });
+            // });
 
-            function createInitiative(data, cb){
+            function createInitiative(data, i, cb){
                 $.ajax({
                     url: "api/initiatives",
                     type: 'POST',
@@ -206,14 +284,14 @@ qx.Class.define("DataManager", {
                     contentType: false
                 })
                 .done(function( data ) {
-                    if(cb) cb(data);
+                    if(cb) cb(data, i);
                 })
                 .fail(function(a) {
                     console.debug(a);
                 });
             };
 
-            function createLocation(data, cb){
+            function createLocation(data, i, cb){
                 $.ajax({
                     url: "api/locations",
                     type: 'POST',
@@ -224,7 +302,7 @@ qx.Class.define("DataManager", {
                     contentType: false
                 })
                 .done(function( data ) {
-                    if(cb) cb(data);
+                    if(cb) cb(data, i);
                 })
                 .fail(function(a) {
                     console.debug(a);

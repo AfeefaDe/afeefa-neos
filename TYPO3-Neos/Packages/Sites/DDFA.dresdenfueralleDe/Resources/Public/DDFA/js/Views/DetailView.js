@@ -112,8 +112,9 @@ qx.Class.define("DetailView", {
             
             // category
             var prop = 'category';
-            that['propertyIcon'+prop].addClass('cat-' + record[prop].name);
-            that['propertyName'+prop].append( that.getWording('cat_' + record[prop].name) );
+            var propName = record[prop] ? record[prop].name : 'nee';
+            that['propertyIcon'+prop].addClass('cat-' + propName);
+            that['propertyName'+prop].append( that.getWording('cat_' + propName) );
             var value = (record.type !== 1) ? that.getWording('misc_officialEntry') : that.getWording('misc_privateEntry');
             that['propertyValue'+prop].append(value);
             that['propertyContainer'+prop].show();

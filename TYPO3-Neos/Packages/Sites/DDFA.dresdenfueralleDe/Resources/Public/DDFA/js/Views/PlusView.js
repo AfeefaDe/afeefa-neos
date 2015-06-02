@@ -3,10 +3,35 @@ qx.Class.define("PlusView", {
     extend : View,
 	type: "singleton",
 
+    properties: {
+        propertiesMarket: {},
+        propertiesFeedback: {},
+        inputTypes: {}
+    },
+
     construct: function(){
     	var that = this;
 
         that.setViewId('plusView');
+        that.setPropertiesMarket(
+            {name: 'name', type: 'text'},
+            {name: 'category', type: 'select', values: APP.getConfig().categoriesMarket },
+            {name: 'speakerPublic', type: 'text'},
+            {name: 'mail', type: 'email'},
+            {name: 'web', type: 'url'},
+            {name: 'facebook', type: 'url'},
+            {name: 'description', type: 'textarea'},
+            {name: 'phone', type: 'tel'},
+            {name: 'spokenLanguages', type: 'text'},
+            // {name: 'supportWanted', type: 'text'},
+            // {name: 'offer', type: 'text'},
+            {name: 'datefrom', type: 'date'},
+            {name: 'dateto', type: 'date'},
+            {name: 'dateday', type: 'datetime'},
+            {name: 'datePeriodic', type: 'select', values: ['daily', 'weekly', 'monthly'] }
+        );
+
+        that.setInputTypes( ['text', 'number', 'range', 'url', 'email', 'tel', 'date', 'month', 'week', 'time', 'datetime'] );
     },
 
     members : {
@@ -48,7 +73,6 @@ qx.Class.define("PlusView", {
             var that = this;
 
             that.formContainer = $("<div />").addClass('form');
-            that.view.append(that.formContainer);
 
              // heading
             that.headingContainer = $("<div />").addClass('heading');
@@ -76,27 +100,61 @@ qx.Class.define("PlusView", {
             // other properties //
             //////////////////////
             
-            // generic
-            var properties = _.union( ['category', 'location'], APP.getConfig().simpleProperties );
-            _.each(properties, function(prop){
+            that.form = $("<form />");
+            scrollContainer.append(that.form);
 
-                that['propertyContainer'+prop] = $("<div />").addClass('property ' + prop);
+            // generic
+            _.each( that.getPropertiesMarket(), function(prop){
+
+                // html5 input types
+                if( _.contains( that.getInputTypes() , prop.type ) ){
+
+                    that['field_'+prop.name] = $("<input />").attr('type', prop.type);
+
+                } 
+                // select
+                else if( prop.type == 'select' ){
+
+                    that['field_'+prop.name] = $("<select />");
+                    _.each( pro.values, function(value){
+                        var option = $("<option />").attr('value', value);
+                        that['field_'+prop.name].append(option);
+                    });
+
+                }
+                // textarea
+                else if( prop.type == 'textarea' ){
+
+                    that['field_'+prop.name] = $("<textarea />");
+
+                }
+                else {
+
+                    that['field_'+prop.name] = $("<input />").attr('type', 'text');
+
+                }
+
+
+                // that['propertyContainer'+prop] = $("<div />").addClass('property ' + prop);
                 
-                that['propertyIcon'+prop] = $("<div />").addClass('property-icon');
-                that['propertyContainer'+prop].append(that['propertyIcon'+prop]);
+                // that['propertyIcon'+prop] = $("<div />").addClass('property-icon');
+                // that['propertyContainer'+prop].append(that['propertyIcon'+prop]);
                 
-                var catText = $("<div />").addClass('property-text');
-                that['propertyName'+prop] = $("<p />").addClass('property-name');
-                that['propertyValue'+prop] = $("<p />").addClass('property-value');
-                catText.append(that['propertyName'+prop]);
-                catText.append(that['propertyValue'+prop]);
-                that['propertyContainer'+prop].append(catText);
+                // var catText = $("<div />").addClass('property-text');
+                // that['propertyName'+prop] = $("<p />").addClass('property-name');
+                // that['propertyValue'+prop] = $("<p />").addClass('property-value');
+                // catText.append(that['propertyName'+prop]);
+                // catText.append(that['propertyValue'+prop]);
+                // that['propertyContainer'+prop].append(catText);
                 
-                scrollContainer.append(that['propertyContainer'+prop]);
+                that.form.append(that['field_'+prop.name]);
 
             });
 
-            $('#main-container').append(that.view);
+            that.sendBtn = $("<button />");
+            that.form.append(that.sendBtn);
+
+            that.view.append(that.formContainer);
         },
 
         addEvents: function(){
@@ -105,13 +163,15 @@ qx.Class.define("PlusView", {
             // call superclass
             this.base(arguments);
             
-            that.listen('mapclicked', function(){
-                that.close();
+
+            // that.listen('mapclicked', function(){
+            //     that.close();
+            // });
+            
+            that.offerBtn.click(function(){
+               that.formContainer.addClass('active');
             });
 
-            // that.plusBtn.click(function(){
-            //    that.$offerBtn.addClass('active');
-            // });
         },
 
         close: function(){

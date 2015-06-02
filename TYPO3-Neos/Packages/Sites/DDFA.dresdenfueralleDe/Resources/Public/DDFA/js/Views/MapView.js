@@ -150,6 +150,11 @@ qx.Class.define("MapView", {
     		// that.setZoomFilter();s
     	});
     	
+    	that.listen('fetchedNewData', function(){
+    		that.markerCluster.clearLayers();
+			that.addLocations(APP.getData().locations);
+    	});
+    	
     	// var $locateBtn = $('#locate-btn');
     	// $locateBtn.click(function(){
     	// 	// alert('haha');

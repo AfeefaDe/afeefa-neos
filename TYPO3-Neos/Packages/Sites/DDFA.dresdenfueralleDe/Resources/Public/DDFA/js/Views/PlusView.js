@@ -13,25 +13,26 @@ qx.Class.define("PlusView", {
     	var that = this;
 
         that.setViewId('plusView');
-        that.setPropertiesMarket(
-            {name: 'name', type: 'text'},
-            {name: 'category', type: 'select', values: APP.getConfig().categoriesMarket },
-            {name: 'speakerPublic', type: 'text'},
-            {name: 'mail', type: 'email'},
-            {name: 'web', type: 'url'},
-            {name: 'facebook', type: 'url'},
-            {name: 'description', type: 'textarea'},
-            {name: 'phone', type: 'tel'},
-            {name: 'spokenLanguages', type: 'text'},
-            // {name: 'supportWanted', type: 'text'},
-            // {name: 'offer', type: 'text'},
-            {name: 'datefrom', type: 'date'},
-            {name: 'dateto', type: 'date'},
-            {name: 'dateday', type: 'datetime'},
-            {name: 'datePeriodic', type: 'select', values: ['daily', 'weekly', 'monthly'] }
+        that.setPropertiesMarket([
+                {name: 'name', type: 'text'},
+                {name: 'category', type: 'select', values: APP.getConfig().categoriesMarket },
+                {name: 'speakerPublic', type: 'text'},
+                {name: 'mail', type: 'email'},
+                {name: 'web', type: 'url'},
+                {name: 'facebook', type: 'url'},
+                {name: 'description', type: 'textarea'},
+                {name: 'phone', type: 'tel'},
+                {name: 'spokenLanguages', type: 'text'},
+                // {name: 'supportWanted', type: 'text'},
+                // {name: 'offer', type: 'text'},
+                {name: 'datefrom', type: 'date'},
+                {name: 'dateto', type: 'date'},
+                {name: 'dateday', type: 'datetime-local'},
+                {name: 'datePeriodic', type: 'select', values: ['daily', 'weekly', 'monthly'] }
+            ]
         );
 
-        that.setInputTypes( ['text', 'number', 'range', 'url', 'email', 'tel', 'date', 'month', 'week', 'time', 'datetime'] );
+        that.setInputTypes( ['text', 'number', 'range', 'url', 'email', 'tel', 'date', 'month', 'week', 'time', 'datetime', 'datetime-local'] );
     },
 
     members : {
@@ -109,28 +110,33 @@ qx.Class.define("PlusView", {
                 // html5 input types
                 if( _.contains( that.getInputTypes() , prop.type ) ){
 
-                    that['field_'+prop.name] = $("<input />").attr('type', prop.type);
+                    that['field_'+prop.name] = $("<input />")
+                        .attr('type', prop.type)
+                        .attr('name', prop.name);
 
                 } 
                 // select
                 else if( prop.type == 'select' ){
 
                     that['field_'+prop.name] = $("<select />");
-                    _.each( pro.values, function(value){
+                    _.each( prop.values, function(value){
                         var option = $("<option />").attr('value', value);
                         that['field_'+prop.name].append(option);
+                        that['field_'+prop.name].attr('name', prop.name);
                     });
 
                 }
                 // textarea
                 else if( prop.type == 'textarea' ){
 
-                    that['field_'+prop.name] = $("<textarea />");
+                    that['field_'+prop.name] = $("<textarea />")
+                        .attr('name', prop.name);
 
                 }
                 else {
 
-                    that['field_'+prop.name] = $("<input />").attr('type', 'text');
+                    that['field_'+prop.name] = $("<input />").attr('type', 'text')
+                        .attr('name', prop.name);
 
                 }
 
@@ -169,7 +175,7 @@ qx.Class.define("PlusView", {
             // });
             
             that.offerBtn.click(function(){
-               that.formContainer.addClass('active');
+               // that.formContainer.addClass('active');
             });
 
         },

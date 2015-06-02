@@ -47,6 +47,8 @@ qx.Class.define("LanguageManager", {
 
                   APP.setData(data);
 
+                  that.say('fetchedNewData');
+
                 });
 
                 _.each(APP.getConfig().languages, function(lang){

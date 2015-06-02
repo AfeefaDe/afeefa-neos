@@ -58,8 +58,8 @@ qx.Class.define("DataManager", {
         getAllLocations: function( cb ){
 
             $.ajax({
-                // url: "api/locations?locale=" + APP.getLM().getCurrentLang(),
-                url: "api/locations",
+                url: "api/locations?locale=" + APP.getLM().getCurrentLang(),
+                // url: "api/locations",
                 type: 'GET',
                 dataType: 'json'
             })

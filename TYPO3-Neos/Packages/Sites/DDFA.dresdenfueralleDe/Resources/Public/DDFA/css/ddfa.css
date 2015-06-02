@@ -1156,7 +1156,6 @@ a:link, a:visited, a:hover, a:active {
 
 /* line 138, sass/_detailView.scss */
 #detailView {
-  /*display: none;*/
   visibility: hidden;
   opacity: 0;
   -webkit-transition: all 200ms;
@@ -1182,12 +1181,12 @@ a:link, a:visited, a:hover, a:active {
   /* OTHER PROPERTIES */
   /* type specific overwrites */
 }
-/* line 161, sass/_detailView.scss */
+/* line 160, sass/_detailView.scss */
 #detailView.active {
   visibility: visible;
   opacity: 1;
 }
-/* line 166, sass/_detailView.scss */
+/* line 165, sass/_detailView.scss */
 #detailView .scroll-container {
   flex-grow: 1;
   overflow-y: auto;
@@ -1440,7 +1439,7 @@ a:link, a:visited, a:hover, a:active {
   display: none;
 }
 
-/* line 177, sass/_detailView.scss */
+/* line 176, sass/_detailView.scss */
 #detailViewMobile {
   -webkit-transition: all 200ms;
   -moz-transition: all 200ms;
@@ -1460,17 +1459,17 @@ a:link, a:visited, a:hover, a:active {
   /* OTHER PROPERTIES */
   /* type specific overwrites */
 }
-/* line 189, sass/_detailView.scss */
+/* line 188, sass/_detailView.scss */
 #detailViewMobile.active {
   bottom: 0;
 }
-/* line 193, sass/_detailView.scss */
+/* line 192, sass/_detailView.scss */
 #detailViewMobile.active-large {
   bottom: 0;
   height: 80%;
   /*overflow-y: scroll;*/
 }
-/* line 199, sass/_detailView.scss */
+/* line 198, sass/_detailView.scss */
 #detailViewMobile .scroll-container {
   height: calc(100% - 4em);
   overflow-y: auto;
@@ -1949,13 +1948,13 @@ body.phone #legendView .legend-btn {
   /*right: -5em;*/
 }
 
-/* line 1, sass/_plusView.scss */
+/* line 138, sass/_plusView.scss */
 #plusView {
   position: absolute;
   right: 6em;
   bottom: 3em;
 }
-/* line 7, sass/_plusView.scss */
+/* line 144, sass/_plusView.scss */
 #plusView .btn {
   width: 3em;
   height: 3em;
@@ -1985,7 +1984,7 @@ body.phone #legendView .legend-btn {
   -moz-box-shadow: 0px 0px 5px #111111;
   box-shadow: 0px 0px 5px #111111;
 }
-/* line 14, sass/_plusView.scss */
+/* line 151, sass/_plusView.scss */
 #plusView .btn.plusBtn {
   width: 3.5em;
   height: 3.5em;
@@ -2001,17 +2000,17 @@ body.phone #legendView .legend-btn {
   -o-background-size: 30%;
   background-size: 30%;
 }
-/* line 24, sass/_plusView.scss */
+/* line 161, sass/_plusView.scss */
 #plusView .btn.offerBtn, #plusView .btn.requestBtn, #plusView .btn.feedbackBtn {
   display: none;
   margin-bottom: 15px;
 }
-/* line 30, sass/_plusView.scss */
+/* line 167, sass/_plusView.scss */
 #plusView .btn.offerBtn {
   background-color: #d07c1e;
   background-image: url("../img/icon_48.svg");
 }
-/* line 31, sass/_plusView.scss */
+/* line 168, sass/_plusView.scss */
 #plusView .btn.requestBtn {
   background-color: #d07c1e;
   background-image: url("../img/icon_52.svg");
@@ -2020,17 +2019,301 @@ body.phone #legendView .legend-btn {
   -o-background-size: 70%;
   background-size: 70%;
 }
-/* line 32, sass/_plusView.scss */
+/* line 169, sass/_plusView.scss */
 #plusView .btn.feedbackBtn {
   background-color: #f2f2f2;
   background-image: url("../img/icon_49.svg");
 }
-/* line 36, sass/_plusView.scss */
+/* line 173, sass/_plusView.scss */
 #plusView:hover .offerBtn, #plusView:hover .requestBtn, #plusView:hover .feedbackBtn {
   display: block;
 }
+/* line 178, sass/_plusView.scss */
+#plusView .form {
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition: all 200ms;
+  -moz-transition: all 200ms;
+  -o-transition: all 200ms;
+  transition: all 200ms;
+  position: fixed;
+  left: 3em;
+  top: 7em;
+  display: flex;
+  flex-direction: column;
+  width: 21%;
+  /*min-width: 300px;*/
+  min-height: 20%;
+  max-height: 70%;
+  /*padding-bottom: 1em;*/
+  background-color: #f2f2f2;
+  -webkit-box-shadow: 0px 0px 2px #333333;
+  -moz-box-shadow: 0px 0px 2px #333333;
+  box-shadow: 0px 0px 2px #333333;
+  /* HEADING */
+  /* IMAGE PROPERTY */
+  /* OTHER PROPERTIES */
+  /* type specific overwrites */
+}
+/* line 200, sass/_plusView.scss */
+#plusView .form.active {
+  visibility: visible;
+  opacity: 1;
+}
+/* line 205, sass/_plusView.scss */
+#plusView .form .scroll-container {
+  flex-grow: 1;
+  overflow-y: auto;
+  padding-bottom: 1em;
+  overflow-x: hidden;
+}
+/* line 5, sass/_plusView.scss */
+#plusView .form .heading {
+  height: 3em;
+}
+/* line 9, sass/_plusView.scss */
+#plusView .form .heading h1 {
+  height: 2em;
+  margin: 0;
+  padding: 1em 1em 0 1em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-weight: 300;
+  font-size: 1.1em;
+  text-align: center;
+  color: #f2f2f2;
+}
+/* line 25, sass/_plusView.scss */
+#plusView .form .image {
+  /*height: 10em;*/
+  text-align: center;
+  overflow: hidden;
+}
+/* line 30, sass/_plusView.scss */
+#plusView .form .image img {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+/* line 36, sass/_plusView.scss */
+#plusView .form .image.logo img {
+  height: 80%;
+}
+/* line 37, sass/_plusView.scss */
+#plusView .form .image.photo img {
+  width: 100%;
+}
+/* line 41, sass/_plusView.scss */
+#plusView .form .property {
+  display: none;
+  padding: 0 5%;
+  margin-top: 1em;
+  min-height: 2em;
+}
+/* line 49, sass/_plusView.scss */
+#plusView .form .property .property-icon {
+  width: 2.5em;
+  height: 2.5em;
+  float: left;
+  /*@include background-size(72%);*/
+  background-repeat: no-repeat;
+  background-position: center 0.2em;
+  /* type 0 + type 1 categories*/
+  /* type 3 categories*/
+  /* property icons */
+}
+/* line 4, sass/_ddfa-styles.scss */
+#plusView .form .property .property-icon.cat-consultation {
+  background-image: url("../img/cat-10.svg");
+}
+/* line 5, sass/_ddfa-styles.scss */
+#plusView .form .property .property-icon.cat-medic {
+  background-image: url("../img/cat-04.svg");
+}
+/* line 6, sass/_ddfa-styles.scss */
+#plusView .form .property .property-icon.cat-german {
+  background-image: url("../img/cat-18.svg");
+}
+/* line 7, sass/_ddfa-styles.scss */
+#plusView .form .property .property-icon.cat-jobs {
+  background-image: url("../img/cat-02.svg");
+}
+/* line 8, sass/_ddfa-styles.scss */
+#plusView .form .property .property-icon.cat-leisure {
+  background-image: url("../img/cat-08.svg");
+}
+/* line 9, sass/_ddfa-styles.scss */
+#plusView .form .property .property-icon.cat-translation {
+  background-image: url("../img/cat-06.svg");
+}
+/* line 10, sass/_ddfa-styles.scss */
+#plusView .form .property .property-icon.cat-children {
+  background-image: url("../img/cat-14.svg");
+}
+/* line 11, sass/_ddfa-styles.scss */
+#plusView .form .property .property-icon.cat-donation {
+  background-image: url("../img/cat-12.svg");
+}
+/* line 12, sass/_ddfa-styles.scss */
+#plusView .form .property .property-icon.cat-community {
+  background-image: url("../img/icon-40.svg");
+  -webkit-background-size: 115%;
+  -moz-background-size: 115%;
+  -o-background-size: 115%;
+  background-size: 115%;
+}
+/* line 15, sass/_ddfa-styles.scss */
+#plusView .form .property .property-icon.cat-housing {
+  border: 1px solid #f2f2f2;
+  background-image: url("../img/cat-19.svg");
+  background-color: rgba(0, 0, 0, 0) !important;
+}
+/* line 20, sass/_ddfa-styles.scss */
+#plusView .form .property .property-icon.cat-christian {
+  background-image: url("../img/cat-16.svg");
+}
+/* line 21, sass/_ddfa-styles.scss */
+#plusView .form .property .property-icon.cat-islam {
+  background-image: url("../img/cat-16.svg");
+}
+/* line 22, sass/_ddfa-styles.scss */
+#plusView .form .property .property-icon.cat-jewish {
+  background-image: url("../img/cat-22.svg");
+}
+/* line 23, sass/_ddfa-styles.scss */
+#plusView .form .property .property-icon.cat-shop {
+  background-image: url("../img/cat-22.svg");
+}
+/* line 24, sass/_ddfa-styles.scss */
+#plusView .form .property .property-icon.cat-public {
+  background-image: url("../img/cat-22.svg");
+}
+/* line 26, sass/_ddfa-styles.scss */
+#plusView .form .property .property-icon.cat-other {
+  background-image: none;
+}
+/* line 62, sass/_plusView.scss */
+#plusView .form .property .property-icon.icon-location {
+  background-image: url("../img/icon-35.svg");
+}
+/* line 63, sass/_plusView.scss */
+#plusView .form .property .property-icon.icon-phone {
+  background-image: url("../img/icon-23.svg");
+}
+/* line 64, sass/_plusView.scss */
+#plusView .form .property .property-icon.icon-mail {
+  background-image: url("../img/icon-25.svg");
+}
+/* line 65, sass/_plusView.scss */
+#plusView .form .property .property-icon.icon-web {
+  background-image: url("../img/icon-27.svg");
+}
+/* line 66, sass/_plusView.scss */
+#plusView .form .property .property-icon.icon-openingHours {
+  background-image: url("../img/icon-29.svg");
+}
+/* line 67, sass/_plusView.scss */
+#plusView .form .property .property-icon.icon-description {
+  background-image: url("../img/icon-31.svg");
+}
+/* line 68, sass/_plusView.scss */
+#plusView .form .property .property-icon.icon-facebook {
+  background-image: url("../img/icon-45.svg");
+}
+/* line 69, sass/_plusView.scss */
+#plusView .form .property .property-icon.icon-spokenLanguages {
+  background-image: url("../img/icon-43.svg");
+}
+/* line 70, sass/_plusView.scss */
+#plusView .form .property .property-icon.icon-speakerPublic {
+  background-image: url("../img/icon-41.svg");
+}
+/* line 73, sass/_plusView.scss */
+#plusView .form .property .property-text {
+  margin-left: calc(5% + 2.5em);
+}
+/* line 76, sass/_plusView.scss */
+#plusView .form .property .property-text.ar, #plusView .form .property .property-text.ur, #plusView .form .property .property-text.fa {
+  margin-right: calc(5% + 2.5em);
+}
+/* line 80, sass/_plusView.scss */
+#plusView .form .property .property-text p {
+  margin: 0;
+  line-height: 1.3em;
+}
+/* line 84, sass/_plusView.scss */
+#plusView .form .property .property-text p.property-name {
+  font-weight: 500;
+  text-transform: capitalize;
+}
+/* line 90, sass/_plusView.scss */
+#plusView .form .property .property-text a {
+  width: 100%;
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+/* line 100, sass/_plusView.scss */
+#plusView .form .property.category .property-icon {
+  -webkit-border-radius: 2em;
+  -moz-border-radius: 2em;
+  -ms-border-radius: 2em;
+  -o-border-radius: 2em;
+  border-radius: 2em;
+  background-position: center center;
+}
+/* line 109, sass/_plusView.scss */
+#plusView .form.type-0 .heading {
+  background-color: #0074a6;
+}
+/* line 111, sass/_plusView.scss */
+#plusView .form.type-0 .property.category .property-icon {
+  background-color: #0074a6;
+}
+/* line 112, sass/_plusView.scss */
+#plusView .form.type-0 .property.category .property-value {
+  color: #0074a6;
+}
+/* line 116, sass/_plusView.scss */
+#plusView .form.type-1 .heading {
+  background-color: #d07c1e;
+}
+/* line 118, sass/_plusView.scss */
+#plusView .form.type-1 .property.category .property-icon {
+  background-color: #d07c1e;
+}
+/* line 119, sass/_plusView.scss */
+#plusView .form.type-1 .property.category .property-value {
+  color: #d07c1e;
+}
+/* line 123, sass/_plusView.scss */
+#plusView .form.type-2 .heading {
+  background-color: pink;
+}
+/* line 125, sass/_plusView.scss */
+#plusView .form.type-2 .property.category .property-icon {
+  background-color: pink;
+}
+/* line 129, sass/_plusView.scss */
+#plusView .form.type-3 .heading {
+  background-color: #333333;
+}
+/* line 131, sass/_plusView.scss */
+#plusView .form.type-3 .property.category .property-icon {
+  background-color: #333333;
+}
+/* line 132, sass/_plusView.scss */
+#plusView .form.type-3 .property.category .property-name {
+  line-height: 2.6em !important;
+}
+/* line 133, sass/_plusView.scss */
+#plusView .form.type-3 .property.category .property-value {
+  display: none;
+}
 
-/* line 45, sass/_plusView.scss */
+/* line 220, sass/_plusView.scss */
 body.phone #plusView {
   right: calc(50% - 1.75em) !important;
 }

@@ -73,10 +73,6 @@ class InitiativeAPIController extends ActionController {
     }
 
     public function createAction(Initiative $initiative) {
-        $initiative->setEntryId(uniqid());
-        $initiative->setLocale(DDConst::LOCALE_STD);
-        $initiative->setRating(0);
-
         $now = new DateTime();
         $initiative->setCreated($now);
         $initiative->setUpdated($now);

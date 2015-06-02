@@ -30,7 +30,7 @@ abstract class Actor extends BasicEntity {
 
     /**
      * @var string
-     * @ORM\Column(nullable=true)
+     * @ORM\Column(nullable=true,type="text")
      */
     protected $description;
 
@@ -106,6 +106,7 @@ abstract class Actor extends BasicEntity {
      */
     protected $image;
 
+    //TODO: change to type enum
     /**
      * @var string
      * @ORM\Column(nullable=true)

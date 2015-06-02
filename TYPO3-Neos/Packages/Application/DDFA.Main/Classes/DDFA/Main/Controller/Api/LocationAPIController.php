@@ -89,7 +89,7 @@ class LocationAPIController extends ActionController {
     /**
      * @param string $locale
      */
-    public function listAction($locale) {
+    public function listAction($locale='de') {
         //TODO include language
         $this->view->assign('value', ['locations' => $this->iniLocationRepository->findAllSupplemented($locale)]);
     }

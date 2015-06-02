@@ -14,10 +14,12 @@ qx.Class.define("APPDDFA", {
 
         that.setConfig(
             {
-                languages: ['de', 'en', 'ar', 'fa', 'fr', 'sr', 'ru', 'ti', 'ur'],
-                categories: ["consultation", "medic", "german", "jobs", "leisure", "translation", "children", "donation", "community"],
+                languages: ['de', 'en', 'ar', 'fa', 'fr', 'sr', 'ru', 'ti', 'ur', 'it'],
+                categoriesIni: ["consultation", "medic", "german", "jobs", "leisure", "translation", "children", "donation", "community"],
+                categoriesMarket: ["consultation", "medic", "german", "jobs", "leisure", "translation", "children", "donation", "community"],
+                categoriesEvent: [],
                 categoriesBasic: ["housing", "christian", "islam", "jewish", 'public', 'wifi', 'shop'],
-                simpleProperties: ['speaker', 'spokenLanguages', 'phone', 'mail', 'web', 'openingHours', 'description'],
+                simpleProperties: ['speakerPublic', 'spokenLanguages', 'phone', 'mail', 'web', 'facebook', 'openingHours', 'description'],
                 imgPath: '_Resources/Static/Packages/DDFA.dresdenfueralleDe/DDFA/img/'
             }
         );

@@ -9,7 +9,7 @@
 	&.cat-translation { background-image: url("../img/cat-06.svg"); }
 	&.cat-children { background-image: url("../img/cat-14.svg"); }
 	&.cat-donation { background-image: url("../img/cat-12.svg"); }
-	&.cat-community { background-image: url("../img/cat-16.svg"); }
+	&.cat-community { background-image: url("../img/icon-40.svg"); @include background-size(115%); }
 
 	/* type 3 categories*/
 	&.cat-housing {
@@ -38,7 +38,7 @@
 	&.cat-translation { background-image: url("../img/cat-05.svg"); }
 	&.cat-children { background-image: url("../img/cat-13.svg"); }
 	&.cat-donation { background-image: url("../img/cat-11.svg"); }
-	&.cat-community { background-image: url("../img/cat-15.svg"); }
+	&.cat-community { background-image: url("../img/icon-39.svg"); @include background-size(115%); }
 
 	/* type 3 categories*/
 	&.cat-housing {
@@ -67,6 +67,7 @@
 	&.ru { background-image: url("../img/flag_ru.svg"); }
 	&.ti { background-image: url("../img/flag_ti.svg"); }
 	&.ur { background-image: url("../img/flag_ur.svg"); }
+	&.it { background-image: url("../img/cat-21.svg"); }
 
 }
 

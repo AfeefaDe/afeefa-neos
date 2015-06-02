@@ -58,7 +58,8 @@ qx.Class.define("DataManager", {
         getAllLocations: function( cb ){
 
             $.ajax({
-                url: "api/locations?locale=" + APP.getLM().getCurrentLang(),
+                // url: "api/locations?locale=" + APP.getLM().getCurrentLang(),
+                url: "api/locations",
                 type: 'GET',
                 dataType: 'json'
             })
@@ -110,7 +111,7 @@ qx.Class.define("DataManager", {
 
 
             // languages = APP.getConfig().languages;
-            var languages = ['de', 'ar'];
+            var languages = ['de', 'en', 'ar', 'fa', 'fr', 'sr', 'ru', 'ti', 'ur', 'it'];
             var baseLang = 'de';
             var otherLanguages = _.without( languages, baseLang );
             var pathToCsv = '_Resources/Static/Packages/DDFA.dresdenfueralleDe/DDFA/dummyData/'

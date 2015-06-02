@@ -127,10 +127,10 @@ qx.Class.define("DetailView", {
             var value = buildLocation(record);
             function buildLocation(record){
                 var location = '';
-                if( record.street ) location += record.street;
+                if( record.street ) location += record.street + '<br>';
                 // if( record.district ) location += ' ' + '(' + record.district + ')';
-                if( record.zip && record.city) location += '<br>' + record.zip + ' ' + record.city;
-                else if( record.city ) location += '<br>' + record.city;
+                if( record.zip && record.city) location += record.zip + ' ' + record.city + '<br>';
+                else if( record.city ) location += record.city + '<br>';
                 return location;
             }
             if( value.length > 0 ) {
@@ -147,7 +147,14 @@ qx.Class.define("DetailView", {
                     
                     that['propertyIcon'+prop].addClass('icon-' + prop);
                     that['propertyName'+prop].append( that.getWording( 'prop_' + prop ) );
-                    that['propertyValue'+prop].append(record[prop]);
+                    
+                    // may create link
+                    if( _.contains( ['web', 'facebook'], prop) ){
+                        that['propertyValue'+prop].append('<a target="_blank" href="' + record[prop] + '">' + record[prop] + '</a>');
+                    } else {
+                        that['propertyValue'+prop].append(record[prop]);
+                    }
+
                     that['propertyContainer'+prop].show();
                 }
 

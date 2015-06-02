@@ -3,10 +3,15 @@ qx.Class.define("LegendView", {
     extend : View,
 	type: "singleton",
 
+    properties: {
+        categories: {}
+    },
+
     construct: function(){
     	var that = this;
 
         that.setViewId('legendView');
+        that.setCategories( _.union( APP.getConfig().categoriesIni, APP.getConfig().categoriesMarket ) );
     },
 
     members : {
@@ -29,7 +34,7 @@ qx.Class.define("LegendView", {
             that.view.append(that.legend);
 
             // buttons
-            _.each( APP.getConfig().categories, function(cat){
+            _.each( that.getCategories(), function(cat){
                 
                 // container
                 var container = $("<div />");
@@ -58,7 +63,7 @@ qx.Class.define("LegendView", {
         load: function(){
             var that = this;
 
-            _.each( APP.getConfig().categories, function(cat){
+            _.each( that.getCategories(), function(cat){
                 that['label-' + cat].append( that.getWording('cat_' + cat) );
             });
         },
@@ -66,7 +71,7 @@ qx.Class.define("LegendView", {
         reset: function(){
             var that = this;
 
-            _.each( APP.getConfig().categories, function(cat){
+            _.each( that.getCategories(), function(cat){
                 that['label-' + cat].empty();
             });
         },

@@ -65,6 +65,9 @@
 			&.icon-web { background-image: url("../img/icon-27.svg"); }
 			&.icon-openingHours { background-image: url("../img/icon-29.svg"); }
 			&.icon-description { background-image: url("../img/icon-31.svg"); }
+			&.icon-facebook { background-image: url("../img/icon-45.svg"); }
+			&.icon-spokenLanguages { background-image: url("../img/icon-43.svg"); }
+			&.icon-speakerPublic { background-image: url("../img/icon-41.svg"); }
 
 		}
 		.property-text {
@@ -83,12 +86,19 @@
 					text-transform: capitalize;
 				}
 			}
+
+			a {
+				  width: 100%;
+				  display: inline-block;
+				  overflow: hidden;
+				  text-overflow: ellipsis;
+				  white-space: nowrap;
+			}
 		}
 
 		&.category {
 			.property-icon {
 				@include border-radius(2em);
-				@include background-size(72%);
 				background-position: center center;
 			}
 		}

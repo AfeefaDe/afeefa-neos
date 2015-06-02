@@ -238,6 +238,32 @@
             "prop_openingHours":" ",
             "misc_officialEntry":" ",
             "misc_privateEntry":" "
+        },
+
+        "it":{
+            "category":" ",
+            "cat_consultation":" ",
+            "cat_medic":" ",
+            "cat_german":" ",
+            "cat_jobs":" ",
+            "cat_leisure":" ",
+            "cat_translation":" ",
+            "cat_children":" ",
+            "cat_donation":" ",
+            "cat_community":" ",
+            "prop_location":" ",
+            "prop_description":" ",
+            "prop_speaker":" ",
+            "prop_phone":" ",
+            "prop_fax":" ",
+            "prop_mail":" ",
+            "prop_web":" ",
+            "prop_facebook":"facebook",
+            "prop_supportNeeded":" ",
+            "prop_scope":" ",
+            "prop_openingHours":" ",
+            "misc_officialEntry":" ",
+            "misc_privateEntry":" "
         }
     }
 ]

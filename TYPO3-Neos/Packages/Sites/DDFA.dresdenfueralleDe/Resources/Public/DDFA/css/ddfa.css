@@ -1957,16 +1957,35 @@ body.phone #legendView .legend-btn {
 }
 /* line 7, sass/_plusView.scss */
 #plusView .btn {
-  -webkit-box-shadow: 0px 0px 2px #333333;
-  -moz-box-shadow: 0px 0px 2px #333333;
-  box-shadow: 0px 0px 2px #333333;
+  width: 3em;
+  height: 3em;
+  -webkit-border-radius: 2em;
+  -moz-border-radius: 2em;
+  -ms-border-radius: 2em;
+  -o-border-radius: 2em;
+  border-radius: 2em;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
+  -webkit-box-shadow: 0px 0px 2px #333333;
+  -moz-box-shadow: 0px 0px 2px #333333;
+  box-shadow: 0px 0px 2px #333333;
+  -webkit-background-size: 50%;
+  -moz-background-size: 50%;
+  -o-background-size: 50%;
+  background-size: 50%;
+  background-position: center center;
+  background-repeat: no-repeat;
   cursor: pointer;
   margin: 0 auto;
 }
-/* line 15, sass/_plusView.scss */
+/* line 87, sass/_ddfa-styles.scss */
+#plusView .btn:hover {
+  -webkit-box-shadow: 0px 0px 5px #111111;
+  -moz-box-shadow: 0px 0px 5px #111111;
+  box-shadow: 0px 0px 5px #111111;
+}
+/* line 14, sass/_plusView.scss */
 #plusView .btn.plusBtn {
   width: 3.5em;
   height: 3.5em;
@@ -1981,32 +2000,37 @@ body.phone #legendView .legend-btn {
   -moz-background-size: 30%;
   -o-background-size: 30%;
   background-size: 30%;
-  background-position: center center;
-  background-repeat: no-repeat;
 }
-/* line 27, sass/_plusView.scss */
-#plusView .btn.addOfferBtn, #plusView .btn.addRequestBtn {
+/* line 24, sass/_plusView.scss */
+#plusView .btn.offerBtn, #plusView .btn.requestBtn, #plusView .btn.feedbackBtn {
   display: none;
-  width: 40px;
-  height: 40px;
-  -webkit-border-radius: 20px;
-  -moz-border-radius: 20px;
-  -ms-border-radius: 20px;
-  -o-border-radius: 20px;
-  border-radius: 20px;
-  padding-top: 10px;
   margin-bottom: 15px;
-  background-color: #d07c1e;
-  border: 1px solid #f2f2f2;
-  text-align: center;
-  color: #f2f2f2;
 }
-/* line 47, sass/_plusView.scss */
-#plusView:hover .addOfferBtn, #plusView:hover .addRequestBtn {
+/* line 30, sass/_plusView.scss */
+#plusView .btn.offerBtn {
+  background-color: #d07c1e;
+  background-image: url("../img/icon_48.svg");
+}
+/* line 31, sass/_plusView.scss */
+#plusView .btn.requestBtn {
+  background-color: #d07c1e;
+  background-image: url("../img/icon_52.svg");
+  -webkit-background-size: 70%;
+  -moz-background-size: 70%;
+  -o-background-size: 70%;
+  background-size: 70%;
+}
+/* line 32, sass/_plusView.scss */
+#plusView .btn.feedbackBtn {
+  background-color: #f2f2f2;
+  background-image: url("../img/icon_49.svg");
+}
+/* line 36, sass/_plusView.scss */
+#plusView:hover .offerBtn, #plusView:hover .requestBtn, #plusView:hover .feedbackBtn {
   display: block;
 }
 
-/* line 56, sass/_plusView.scss */
+/* line 45, sass/_plusView.scss */
 body.phone #plusView {
   right: calc(50% - 1.75em) !important;
 }
@@ -2090,7 +2114,7 @@ body.phone #plusView {
 }
 /* line 70, sass/_ddfa-styles.scss */
 #languageView .btn.it {
-  background-image: url("../img/cat-21.svg");
+  background-image: url("../img/flag_it.svg");
 }
 /* line 25, sass/_languageView.scss */
 #languageView .btn {
@@ -2217,7 +2241,7 @@ body.phone #plusView {
 }
 /* line 70, sass/_ddfa-styles.scss */
 #languageViewMobile .btn.it {
-  background-image: url("../img/cat-21.svg");
+  background-image: url("../img/flag_it.svg");
 }
 /* line 66, sass/_languageView.scss */
 #languageViewMobile .root-btn {
@@ -2295,7 +2319,7 @@ body.phone #plusView {
 }
 /* line 70, sass/_ddfa-styles.scss */
 #languageViewMobile .root-btn.it {
-  background-image: url("../img/cat-21.svg");
+  background-image: url("../img/flag_it.svg");
 }
 /* line 90, sass/_languageView.scss */
 #languageViewMobile.open {

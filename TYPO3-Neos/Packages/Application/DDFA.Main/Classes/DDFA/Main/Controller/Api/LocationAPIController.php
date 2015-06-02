@@ -102,10 +102,6 @@ class LocationAPIController extends ActionController {
     }
 
     public function createAction(Location $location) {
-        $location->setEntryId(uniqid());
-        $location->setLocale(DDConst::LOCALE_STD);
-        $location->setRating(0);
-
         $now = new DateTime();
         $location->setCreated($now);
         $location->setUpdated($now);

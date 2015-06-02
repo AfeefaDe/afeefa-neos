@@ -275,6 +275,12 @@ class LocationRepository extends AbstractTranslationRepository {
                     $property->setValue($object, $parentProperty->getValue($owner));
                 }
             }
+            //TODO: add hydrated owner in every case, not only if initiative
+            if ($object->getType() == DDConst::OWNER_INI) {
+                $iniProp = $sourceReflection->getProperty("initiative");
+                $iniProp->setAccessible(true);
+                $iniProp->setValue($object, $owner);
+            }
         }
 
         return $object;

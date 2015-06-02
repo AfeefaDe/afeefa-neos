@@ -86,12 +86,20 @@ class LocationAPIController extends ActionController {
         }
     }
 
-    public function listAction() {
+    /**
+     * @param string $locale
+     */
+    public function listAction($locale) {
         //TODO include language
-        $this->view->assign('value', ['locations' => $this->iniLocationRepository->findAllSupplemented(DDConst::LOCALE_STD)]);
+        $this->view->assign('value', ['locations' => $this->iniLocationRepository->findAllSupplemented($locale)]);
     }
 
-    public function showAction(Location $location) {
+    /**
+     * @param Location $location
+     * @param string $locale
+     */
+    public function showAction(Location $location, $locale) {
+        $location = $this->iniLocationRepository->findOneLocalized($location, $locale);
         $this->view->assign('value', ['location' => $location]);
     }
 

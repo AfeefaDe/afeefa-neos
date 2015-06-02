@@ -57,12 +57,19 @@ class InitiativeAPIController extends ActionController {
         }
     }
 
-    public function listAction() {
+    /**
+     * @param string $locale
+     */
+    public function listAction($locale) {
         $this->view->assign('value', ['initiatives' => $this->iniRepository->findAll()]);
     }
 
-    public function showAction(Initiative $initiative) {
-        print_r($this->request->getHttpRequest()->getHeaders());
+    /**
+     * @param Initiative $initiative
+     * @param string $locale
+     */
+    public function showAction(Initiative $initiative, $locale) {
+        $initiative = $this->iniRepository->findOneLocalized($initiative, $locale);
         $this->view->assign('value', ['initiative' => $initiative]);
     }
 

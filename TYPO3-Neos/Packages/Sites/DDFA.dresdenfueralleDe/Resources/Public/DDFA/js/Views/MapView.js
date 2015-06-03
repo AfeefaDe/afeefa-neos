@@ -37,8 +37,8 @@ qx.Class.define("MapView", {
     			L.latLng(50.95, 13.5), // south-west corner
     			L.latLng(51.2, 14.0)  // north-east corner
 			],
-			attributionControl: false
-			// tileLayer: {format: 'jpg70'}  // valid values are png, jpg, png32, png64, png128, png256, jpg70, jpg80, jpg90
+			attributionControl: false,
+			tileLayer: {format: 'jpg70'}  // valid values are png, jpg, png32, png64, png128, png256, jpg70, jpg80, jpg90
     	}).setView([ 51.051, 13.74 ], 13);
 		
 		//////////////////////

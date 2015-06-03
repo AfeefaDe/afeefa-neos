@@ -7,14 +7,10 @@ namespace DDFA\Main\Controller\Api;
  *                                                                        *
  *                                                                        */
 
-use DateTime;
-use DDFA\Main\Domain\Model\Category;
+use DDFA\Main\Domain\Model\Location;
 use DDFA\Main\Domain\Repository\LocationRepository;
-use DDFA\Main\Utility\DDConst;
-use DDFA\Main\Utility\DDHelpers;
 use TYPO3\Flow\Annotations as Flow;
 use TYPO3\Flow\Mvc\Controller\ActionController;
-use \DDFA\Main\Domain\Model\Location;
 use TYPO3\Flow\Mvc\View\JsonView;
 use TYPO3\Flow\Mvc\View\ViewInterface;
 use TYPO3\Flow\Property\TypeConverter\PersistentObjectConverter;
@@ -33,6 +29,33 @@ class LocationAPIController extends ActionController {
      */
     protected $supportedMediaTypes = array('application/json');
 
+    /**
+     * @param string $locale
+     */
+    public function listAction($locale = 'de') {
+        //TODO include language
+        $this->view->assign('value', ['locations' => $this->iniLocationRepository->findAllSupplemented($locale)]);
+    }
+
+    /**
+     * @param Location $location
+     * @param string $locale
+     */
+    public function showAction(Location $location, $locale) {
+        $location = $this->iniLocationRepository->findOneLocalized($location, $locale);
+        $this->view->assign('value', ['location' => $location]);
+    }
+
+    public function createAction(Location $location) {
+        /*$now = new DateTime();
+        $location->setCreated($now);
+        $location->setUpdated($now);
+        $location->setPersistenceObjectIdentifier(DDHelpers::createGuid());*/
+        $this->iniLocationRepository->add($location);
+        $this->response->setStatus(201);
+        $this->view->assign('value', ['location' => $location]);
+    }
+
     protected function initializeView(ViewInterface $view) {
         if ($view instanceof JsonView) {
             $locationConfiguration = [
@@ -45,7 +68,7 @@ class LocationAPIController extends ActionController {
                             '_exclude' => ['__isInitialized__'],
                             '_exposeObjectIdentifier' => TRUE,
                             '_exposedObjectIdentifierKey' => 'identifier'
-                            ]
+                        ]
                         ]
                     ],
                     'category' => [
@@ -61,7 +84,7 @@ class LocationAPIController extends ActionController {
                             '_exclude' => ['__isInitialized__'],
                             '_exposeObjectIdentifier' => TRUE,
                             '_exposedObjectIdentifierKey' => 'identifier'
-                           ]
+                        ]
                         ]
                     ],
                     'event' => [
@@ -72,7 +95,7 @@ class LocationAPIController extends ActionController {
                             '_exclude' => ['__isInitialized__'],
                             '_exposeObjectIdentifier' => TRUE,
                             '_exposedObjectIdentifierKey' => 'identifier'
-                            ]
+                        ]
                         ]
                     ]
                 ]
@@ -86,36 +109,9 @@ class LocationAPIController extends ActionController {
         }
     }
 
-    /**
-     * @param string $locale
-     */
-    public function listAction($locale='de') {
-        //TODO include language
-        $this->view->assign('value', ['locations' => $this->iniLocationRepository->findAllSupplemented($locale)]);
-    }
-
-    /**
-     * @param Location $location
-     * @param string $locale
-     */
-    public function showAction(Location $location, $locale) {
-        $location = $this->iniLocationRepository->findOneLocalized($location, $locale);
-        $this->view->assign('value', ['location' => $location]);
-    }
-
     protected function initializeCreateAction() {
         $config = $this->arguments['location']->getPropertyMappingConfiguration();
         $config->setTypeConverterOption('TYPO3\Flow\Property\TypeConverter\PersistentObjectConverter', PersistentObjectConverter::CONFIGURATION_CREATION_ALLOWED, TRUE);
         $config->allowAllProperties();
-    }
-
-    public function createAction(Location $location) {
-        $now = new DateTime();
-        $location->setCreated($now);
-        $location->setUpdated($now);
-        $location->setPersistenceObjectIdentifier(DDHelpers::createGuid());
-        $this->iniLocationRepository->add($location);
-        $this->response->setStatus(201);
-        $this->view->assign('value', ['location' => $location]);
     }
 }

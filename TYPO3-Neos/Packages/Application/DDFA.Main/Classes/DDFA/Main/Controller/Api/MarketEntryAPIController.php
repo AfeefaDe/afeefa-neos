@@ -9,10 +9,8 @@
 namespace DDFA\Main\Controller\Api;
 
 
-use DateTime;
 use DDFA\Main\Domain\Model\MarketEntry;
 use DDFA\Main\Domain\Repository\MarketEntryRepository;
-use DDFA\Main\Utility\DDHelpers;
 use TYPO3\Flow\Annotations as Flow;
 use TYPO3\Flow\Mvc\Controller\ActionController;
 use TYPO3\Flow\Mvc\View\JsonView;
@@ -45,6 +43,16 @@ class MarketEntryAPIController extends ActionController
         $this->view->assign('value', ['marketentry' => $marketentry]);
     }
 
+    public function createAction(MarketEntry $marketentry) {
+        /*$now = new DateTime();
+        $marketentry->setCreated($now);
+        $marketentry->setUpdated($now);
+        $marketentry->setPersistenceObjectIdentifier(DDHelpers::createGuid());*/
+        $this->marketEntryRepository->add($marketentry);
+        $this->response->setStatus(201);
+        $this->view->assign('value', ['marketentry' => $marketentry]);
+    }
+
     protected function initializeView(ViewInterface $view)
     {
         if ($view instanceof JsonView) {
@@ -73,16 +81,5 @@ class MarketEntryAPIController extends ActionController
         $config = $this->arguments['marketentry']->getPropertyMappingConfiguration();
         $config->setTypeConverterOption('TYPO3\Flow\Property\TypeConverter\PersistentObjectConverter', PersistentObjectConverter::CONFIGURATION_CREATION_ALLOWED, TRUE);
         $config->allowAllProperties();
-    }
-
-    public function createAction(MarketEntry $marketentry)
-    {
-        $now = new DateTime();
-        $marketentry->setCreated($now);
-        $marketentry->setUpdated($now);
-        $marketentry->setPersistenceObjectIdentifier(DDHelpers::createGuid());
-        $this->marketEntryRepository->add($marketentry);
-        $this->response->setStatus(201);
-        $this->view->assign('value', ['marketentry' => $marketentry]);
     }
 }

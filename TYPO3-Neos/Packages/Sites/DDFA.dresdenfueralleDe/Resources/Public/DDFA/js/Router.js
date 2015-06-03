@@ -22,7 +22,7 @@ qx.Class.define("Router", {
 	    	var that = this;
 
 	    	window.onhashchange = function(){
-	    		that.detectUrl();
+	    		// that.detectUrl();
 	    	};
 	    },
 
@@ -41,12 +41,13 @@ qx.Class.define("Router", {
 			that.navigate();
 	    },
 
-	    navigate: function(){
+	    initialNavigate: function(){
 	    	var userDevice = APP.getUserDevice();
 
 			if( userDevice === 'phone' ) {
 
-				new MapView();
+				// new MapView();
+		    	APP.setMapView( new MapView() );
 		    	
 		    	APP.setDetailView( new DetailViewMobile() );
 		    	
@@ -60,7 +61,8 @@ qx.Class.define("Router", {
 		
 			} else {
 
-		    	new MapView();
+		    	// new MapView();
+		    	APP.setMapView( new MapView() );
 		    	
 		    	APP.setDetailView( new DetailView() );
 
@@ -74,6 +76,7 @@ qx.Class.define("Router", {
 
 			}
 	    	
+	    	APP.getMapView().render();
 	    	APP.getDetailView().render();
 	    	APP.getPlusView().render();
 	    	APP.getLanguageView().render();
@@ -81,76 +84,84 @@ qx.Class.define("Router", {
 	    	APP.getLegendView().render();
 	    },
 
-	    _navigate: function( path ){
+	    navigate: function( path ){
 	    	var that = this;
 
 	    	if(!path) var path = that.currentPath;
 	    	else that.currentPath = path;
-
+			
 			console.log('navigate to: ' + path);
 
-	    	var firstLevel = path[0];
+			if(that.currentPath.length > 0){
+				APP.getMapView().selectMarkerById( that.currentPath );
+			}
 	    	
-	    	// define which (and where) views should exist on a certain route
-	    	var routes = {
-			    undefined: [
-					{ view: new StartView(), layoutArea: DL.settings.layoutAreas.mainColumn },
-					{ view: new RunnersSmallView(), layoutArea: DL.settings.layoutAreas.rightColumn }
-				],
-			    'info': [
-					{ view: new InfoView(), layoutArea: DL.settings.layoutAreas.mainColumn },
-					{ view: new RunnersSmallView(), layoutArea: DL.settings.layoutAreas.rightColumn }
-				],
-			    'laeufer': [
-					{ view: new RunnersView(), layoutArea: DL.settings.layoutAreas.mainColumn },
-					{ view: new RunnersSmallView(), layoutArea: DL.settings.layoutAreas.rightColumn }
-				],
-			    'anmeldung': [
-					{ view: new RegistrationView(), layoutArea: DL.settings.layoutAreas.mainColumn },
-					{ view: new RunnersSmallView(), layoutArea: DL.settings.layoutAreas.rightColumn }
-				],
-			    'impressum': [
-					{ view: new ImprintView(), layoutArea: DL.settings.layoutAreas.mainColumn },
-					{ view: new RunnersSmallView(), layoutArea: DL.settings.layoutAreas.rightColumn }
-				],
-			    'kontakt': [
-					{ view: new ContactView(), layoutArea: DL.settings.layoutAreas.mainColumn },
-					{ view: new RunnersSmallView(), layoutArea: DL.settings.layoutAreas.rightColumn }
-				]
-			};
+	    	
 
-			// render desired views
-			var wishlist = routes[firstLevel]? routes[firstLevel] : routes[undefined];
+			// console.log('navigate to: ' + path);
 
-		    wishlist.each(function( wish ){
+	  //   	var firstLevel = path[0];
+	    	
+	  //   	// define which (and where) views should exist on a certain route
+	  //   	var routes = {
+			//     undefined: [
+			// 		{ view: new StartView(), layoutArea: DL.settings.layoutAreas.mainColumn },
+			// 		{ view: new RunnersSmallView(), layoutArea: DL.settings.layoutAreas.rightColumn }
+			// 	],
+			//     'info': [
+			// 		{ view: new InfoView(), layoutArea: DL.settings.layoutAreas.mainColumn },
+			// 		{ view: new RunnersSmallView(), layoutArea: DL.settings.layoutAreas.rightColumn }
+			// 	],
+			//     'laeufer': [
+			// 		{ view: new RunnersView(), layoutArea: DL.settings.layoutAreas.mainColumn },
+			// 		{ view: new RunnersSmallView(), layoutArea: DL.settings.layoutAreas.rightColumn }
+			// 	],
+			//     'anmeldung': [
+			// 		{ view: new RegistrationView(), layoutArea: DL.settings.layoutAreas.mainColumn },
+			// 		{ view: new RunnersSmallView(), layoutArea: DL.settings.layoutAreas.rightColumn }
+			// 	],
+			//     'impressum': [
+			// 		{ view: new ImprintView(), layoutArea: DL.settings.layoutAreas.mainColumn },
+			// 		{ view: new RunnersSmallView(), layoutArea: DL.settings.layoutAreas.rightColumn }
+			// 	],
+			//     'kontakt': [
+			// 		{ view: new ContactView(), layoutArea: DL.settings.layoutAreas.mainColumn },
+			// 		{ view: new RunnersSmallView(), layoutArea: DL.settings.layoutAreas.rightColumn }
+			// 	]
+			// };
 
-				// render views only if not already rendered
-				var newLayoutViewObject = { layoutArea: wish.layoutArea, view: wish.view };
-				var rendered = _.find( that.renderedViews, function( layoutViewObject ){
-					return ( layoutViewObject.layoutArea == newLayoutViewObject.layoutArea && layoutViewObject.view.get('name') == newLayoutViewObject.view.get('name') );
-				});
+			// // render desired views
+			// var wishlist = routes[firstLevel]? routes[firstLevel] : routes[undefined];
 
-				if(!rendered){
-					// remove all memorized views for the certain layoutArea
-					that.renderedViews = _.reject(that.renderedViews, function( layoutViewObject ){
-						if( layoutViewObject.layoutArea == newLayoutViewObject.layoutArea ){
-							if(layoutViewObject.view.die) layoutViewObject.view.die();
-							return true;
-						} else {
-							return false;
-						}
-						// return layoutViewObject.layoutArea == newLayoutViewObject.layoutArea;
-					});
-					newLayoutViewObject.view.render(newLayoutViewObject.layoutArea);
-					that.renderedViews.push( newLayoutViewObject );
-				}
-			});
+		 //    wishlist.each(function( wish ){
 
-		    // set new hash if navigate() was invoked manually and not because of a hash change
-		    var newHash = '#' + path.join('#')
-	    	if( window.location.hash != newHash) window.location.hash = newHash;
+			// 	// render views only if not already rendered
+			// 	var newLayoutViewObject = { layoutArea: wish.layoutArea, view: wish.view };
+			// 	var rendered = _.find( that.renderedViews, function( layoutViewObject ){
+			// 		return ( layoutViewObject.layoutArea == newLayoutViewObject.layoutArea && layoutViewObject.view.get('name') == newLayoutViewObject.view.get('name') );
+			// 	});
 
-		    that.updateNavigation();
+			// 	if(!rendered){
+			// 		// remove all memorized views for the certain layoutArea
+			// 		that.renderedViews = _.reject(that.renderedViews, function( layoutViewObject ){
+			// 			if( layoutViewObject.layoutArea == newLayoutViewObject.layoutArea ){
+			// 				if(layoutViewObject.view.die) layoutViewObject.view.die();
+			// 				return true;
+			// 			} else {
+			// 				return false;
+			// 			}
+			// 			// return layoutViewObject.layoutArea == newLayoutViewObject.layoutArea;
+			// 		});
+			// 		newLayoutViewObject.view.render(newLayoutViewObject.layoutArea);
+			// 		that.renderedViews.push( newLayoutViewObject );
+			// 	}
+			// });
+
+		 //    // set new hash if navigate() was invoked manually and not because of a hash change
+		 //    var newHash = '#' + path.join('#')
+	  //   	if( window.location.hash != newHash) window.location.hash = newHash;
+
+		 //    that.updateNavigation();
 	    },
 
 	    updateNavigation: function(){
@@ -158,6 +169,8 @@ qx.Class.define("Router", {
 
 			var firstLevel = that.currentPath[0];
 	    	
+			$('a')
+
 	    	d3.selectAll('nav a').each(function(){
 	    		var aSel = d3.select(this);
 	    		if(aSel.attr('href') == '#'+firstLevel)

@@ -22,6 +22,9 @@ qx.Class.define("DetailView", {
             that.view = $("<div />");
             that.view.attr('id', that.getViewId());
 
+            // TODO: remove this IE css hack when possible
+            if( L.Browser.ie ) that.view.css('overflow', 'auto');
+
             // heading
             that.headingContainer = $("<div />").addClass('heading');
             

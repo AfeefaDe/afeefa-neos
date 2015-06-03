@@ -51,13 +51,15 @@ require( ['domReady', 'modernizr'], function(domReady) {
 							if( APP.getUserDevice() === 'phone' ) {
 								
 								require( ['Views/DetailViewMobile', 'Views/LanguageViewMobile'], function(){
-									APP.getRouter().navigate();
+									APP.getRouter().initialNavigate();
 								});
 
 							} else {
-								APP.getRouter().navigate();
+								APP.getRouter().initialNavigate();
 							}
 						
+							APP.say('appInitialized');
+
 						});
 					
 

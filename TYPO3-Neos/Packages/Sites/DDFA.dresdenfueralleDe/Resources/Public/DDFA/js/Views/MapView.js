@@ -5,16 +5,16 @@ qx.Class.define("MapView", {
   
   properties : {
     userLocation: {},
+    markerLocationLookup: {},
     selectedMarker: {}
   },
   
   construct: function(){
   	var that = this;
 
-  	that.render();
-
   	that.setUserLocation(null);
   	that.setSelectedMarker(null);
+  	that.setMarkerLocationLookup([]);
   },
 
   members : {
@@ -38,7 +38,8 @@ qx.Class.define("MapView", {
     			L.latLng(51.2, 14.0)  // north-east corner
 			],
 			attributionControl: false,
-			tileLayer: {format: 'jpg70'}  // valid values are png, jpg, png32, png64, png128, png256, jpg70, jpg80, jpg90
+			tileLayer: {format: 'jpg70'},  // valid values are png, jpg, png32, png64, png128, png256, jpg70, jpg80, jpg90
+			tapTolerance: 30
     	}).setView([ 51.051, 13.74 ], 13);
 		
 		//////////////////////
@@ -102,6 +103,36 @@ qx.Class.define("MapView", {
         this.base(arguments);
     },
 
+	// TODO: outsource in Router
+    loadFromUrl: function(){
+    	var that = this;
+
+		var url = window.location.hash.split('#');
+    	url = _.without(url, '');
+    	var entryId = url[0];
+    	
+    	if(entryId) {
+    		var lookup = that.lookupMarkerById(entryId);
+    		if(lookup){
+    			that.selectMarker(lookup.marker, lookup.location);
+    			that.map.setView( [lookup.location.lat, lookup.location.lon], 15);
+    		}
+    	}
+
+    	// if(entryId) that.selectMarkerById(entryId);
+    },
+
+    lookupMarkerById: function( id ){
+    	var that = this;
+
+    	var hit = _.find( that.getMarkerLocationLookup(), function(pair){
+    		return pair.location.entryId == id;
+    	});
+
+    	return hit;
+    	// if(hit) that.selectMarker(hit.marker, hit.location);
+    },
+
     addEvents: function() {
 
     	var that = this;
@@ -142,6 +173,10 @@ qx.Class.define("MapView", {
             that.deselectMarker();
         });
 
+		that.listen('appInitialized', function(){
+			that.loadFromUrl();
+		});
+
     	// that.map.on('load', function(e){
     	// 	that.setZoomFilter();
     	// });
@@ -152,6 +187,7 @@ qx.Class.define("MapView", {
     	
     	that.listen('fetchedNewData', function(){
     		that.markerCluster.clearLayers();
+    		that.setMarkerLocationLookup([]);
 			that.addLocations(APP.getData().locations);
     	});
     	
@@ -276,6 +312,10 @@ qx.Class.define("MapView", {
 
 			that.markerCluster.addLayer(marker);
 
+			var currentLookup = that.getMarkerLocationLookup();
+			currentLookup.push( {location: location, marker: marker} );
+			that.setMarkerLocationLookup( currentLookup );
+
 			// newLayer.addLayer(marker);
 			
 		});
@@ -291,6 +331,8 @@ qx.Class.define("MapView", {
 
     	APP.getDetailView().load(location);
 		$(marker._icon).addClass('active');
+
+		window.location.hash = location.entryId;
     },
 
     deselectMarker: function(){
@@ -299,7 +341,9 @@ qx.Class.define("MapView", {
     	if( that.getSelectedMarker() ) {
     		$( that.getSelectedMarker()._icon ).removeClass('active');
     		that.setSelectedMarker(null);
+			window.location.hash = '';
     	}
+
     },
 
     addPOIs: function(markers, color) {

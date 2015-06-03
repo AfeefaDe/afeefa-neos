@@ -18,10 +18,11 @@ qx.Class.define("LanguageManager", {
         init: function( cb ){
             var that = this;
 
-            if( _.contains(APP.getConfig().languages, navigator.language) )
-                that.setCurrentLang( navigator.language );
+            var browserLang = navigator.language.split('-')[0];
+            if( _.contains( APP.getConfig().languages, browserLang) )
+                that.setCurrentLang( browserLang );
             else
-                that.setCurrentLang( that.getConfig().languages[0] );
+                that.setCurrentLang( APP.getConfig().languages[0] );
 
             $('body').addClass(that.getCurrentLang());
             

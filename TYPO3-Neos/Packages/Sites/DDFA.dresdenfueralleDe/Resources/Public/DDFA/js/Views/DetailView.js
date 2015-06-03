@@ -204,8 +204,8 @@ qx.Class.define("DetailView", {
 
         close: function() {
             var that = this;
-            that.reset();
             that.view.removeClass('active');
+            that.reset();
         },
 
         changeLanguage: function(){

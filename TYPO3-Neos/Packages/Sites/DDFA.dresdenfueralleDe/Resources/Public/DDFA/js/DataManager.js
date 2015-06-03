@@ -89,13 +89,16 @@ qx.Class.define("DataManager", {
         },
 
         addMarketEntry: function( data, cb ){
+            
+            console.debug('POST api/marketentries', data);
+
             $.ajax({
                 url: "api/marketentries",
                 type: 'POST',
                 data: data,
                 cache: false,
                 dataType: 'json',
-                processData: false,
+                processData: true,
                 contentType: false
             })
             .done(function( data ) {
@@ -104,6 +107,51 @@ qx.Class.define("DataManager", {
             .fail(function(a) {
                 console.debug(a);
             });
+
+        },
+
+        addLocation: function( data, cb ){
+            
+            console.debug('POST api/locations', data);
+            
+            $.ajax({
+                url: "api/locations",
+                type: 'POST',
+                data: data,
+                cache: false,
+                dataType: 'json',
+                processData: true,
+                contentType: false
+            })
+            .done(function( data ) {
+                cb(data);
+            })
+            .fail(function(a) {
+                console.debug(a);
+            });
+
+        },
+
+        addFeedback: function( data, cb ){
+            
+            console.debug('POST api/feedback', data);
+
+            $.ajax({
+                url: "api/feedback",
+                type: 'POST',
+                data: data,
+                cache: false,
+                dataType: 'json',
+                processData: true,
+                contentType: false
+            })
+            .done(function( data ) {
+                cb(data);
+            })
+            .fail(function(a) {
+                console.debug(a);
+            });
+            
         },
 
         importInis: function(){
@@ -309,46 +357,7 @@ qx.Class.define("DataManager", {
                     console.debug(a);
                 });
             }
-        },
-
-        // getRunner: function( id, cb ){
-        //     $.ajax({
-        //         url: "php/api/runners/"+id,
-        //         type: 'GET',
-        //         dataType: 'json'
-        //     })
-        //     .done(function( data ) {
-        //         cb(data);
-        //     });
-        // },
-
-        // addRunner: function( data, cb ){
-        //     $.ajax({
-        //         url: "php/api/runners",
-        //         type: 'POST',
-        //         data: data,
-        //         cache: false,
-        //         dataType: 'json',
-        //         processData: false,
-        //         contentType: false
-        //     })
-        //     .done(function( data ) {
-        //         cb(data);
-        //     });
-        // },
-
-        // addRunner: function( data, cb ){
-        //     $.ajax({
-        //         url: "php/api/runners",
-        //         type: 'POST',
-        //         data: data,
-        //         dataType: 'json',
-        //         cache: false
-        //     })
-        //     .done(function( data ) {
-        //         cb(data);
-        //     });
-        // },
+        }
 
     }
 

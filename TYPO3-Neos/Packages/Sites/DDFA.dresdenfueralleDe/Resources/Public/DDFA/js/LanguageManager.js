@@ -32,7 +32,13 @@ qx.Class.define("LanguageManager", {
         resolve: function( key ){
             var that = this;
 
-            return that.getBib()[ that.getCurrentLang() ][ key ];
+            var wording = that.getBib()[ that.getCurrentLang() ][ key ];
+            
+            if(!wording) wording = that.getBib()[ APP.getConfig().languages[1] ][ key ];
+            if(!wording) wording = that.getBib()[ APP.getConfig().languages[0] ][ key ];
+            if(!wording) wording = 'XXX';
+
+            return wording;
         },
 
         addEvents: function(){

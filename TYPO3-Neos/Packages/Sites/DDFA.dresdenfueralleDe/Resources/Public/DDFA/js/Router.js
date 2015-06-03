@@ -58,6 +58,8 @@ qx.Class.define("Router", {
 		    	APP.setPlusView( new PlusView() );
 		    	
 		    	APP.setLanguageView( new LanguageViewMobile() );
+		    	
+		    	APP.setFormView( new FormView() );
 		
 			} else {
 
@@ -74,6 +76,7 @@ qx.Class.define("Router", {
 
 		    	APP.setLanguageView( new LanguageView() );
 
+		    	APP.setFormView( new FormView() );
 			}
 	    	
 	    	APP.getMapView().render();
@@ -82,6 +85,7 @@ qx.Class.define("Router", {
 	    	APP.getLanguageView().render();
 	    	APP.getMenuView().render();
 	    	APP.getLegendView().render();
+	    	APP.getFormView().render();
 	    },
 
 	    navigate: function( path ){

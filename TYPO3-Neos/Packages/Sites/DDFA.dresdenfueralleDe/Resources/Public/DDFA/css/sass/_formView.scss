@@ -1,0 +1,144 @@
+@mixin formViewBasic {
+	
+
+	/* HEADING */
+	.heading {
+		
+		height: 3em;
+	  	flex-shrink: 0;
+		
+		h1 {
+			height: 2em;
+			margin: 0;
+			padding: 1em 1em 0 1em;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+
+			font-weight: 300;
+			font-size: 1.1em;
+			text-align: center;
+			color: $white;
+		}
+	}
+
+	form {
+
+		input, textarea, select {
+			display: block;
+			@include box-sizing(border-box);
+			width: 100%;
+			padding: 0.5em;
+			border: none;
+			background-color: $gray20;
+			margin-bottom: 1em;
+
+			&:focus{
+				background-color: $white;
+			}
+		}
+
+		button {
+			padding: 0.5em;
+			border: none;
+			margin-right: 1em;
+			
+			font-weight: 100;
+			text-transform: uppercase;
+
+			&:hover { @include box-shadow(0px 0px 2px #333); }
+
+			&.sendBtn {
+				color: $white;
+			}
+
+			&.cancelBtn {
+				color: $white;
+				background-color: $gray80;
+			}
+		}
+
+	}
+
+	/* type specific overwrites */
+	&.marketOffer, &.marketRequest {
+		.heading { background-color: $orange; }
+		.sendBtn { background-color: $orange; }
+	}
+
+	&.feedback {
+		.heading { background-color: $black; }
+		.sendBtn { background-color: $black; }
+	}
+
+}
+
+#formView {
+	
+	visibility: hidden;
+	opacity: 0;
+	@include transition(all 200ms);
+	
+	width: 30%;
+	position: absolute;
+	right: 16em;
+	top: 7em;
+
+	display: flex;
+	flex-direction: column;
+
+	min-height: 20%;
+	max-height: 70%;
+
+	background-color: $white;
+	@include box-shadow(0px 0px 2px #333);
+
+	&.marketOffer, &.marketRequest {
+	}
+
+	&.active {
+		visibility: visible;
+		opacity: 1;
+	}
+	
+	.scroll-container {
+		flex-grow: 1;
+		overflow-y: auto;
+		padding: 1em;
+		overflow-x: hidden;
+	}
+
+	@include formViewBasic;
+
+}
+
+#formViewMobile {
+	
+	@include transition(all 200ms);
+	z-index: 100;
+	width: 100%;
+	height: 3em;
+	position: absolute;
+	bottom: -3em;
+	
+	background-color: $white;
+	@include box-shadow(0px 0px 2px #333);
+
+	&.active {
+		bottom: 0;
+	}
+
+	&.active-large {
+		bottom: 0;
+		height: 80%;
+		/*overflow-y: scroll;*/
+	}
+	
+	.scroll-container {
+		height: calc(100% - 4em);
+		overflow-y: auto;
+		padding-bottom: 1em;
+	}
+
+	@include formViewBasic;
+}

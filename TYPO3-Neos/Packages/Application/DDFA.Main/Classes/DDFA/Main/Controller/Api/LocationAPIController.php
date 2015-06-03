@@ -8,13 +8,11 @@ namespace DDFA\Main\Controller\Api;
  *                                                                        */
 
 use DateTime;
-use DDFA\Main\Domain\Model\Category;
+use DDFA\Main\Domain\Model\Location;
 use DDFA\Main\Domain\Repository\LocationRepository;
-use DDFA\Main\Utility\DDConst;
 use DDFA\Main\Utility\DDHelpers;
 use TYPO3\Flow\Annotations as Flow;
 use TYPO3\Flow\Mvc\Controller\ActionController;
-use \DDFA\Main\Domain\Model\Location;
 use TYPO3\Flow\Mvc\View\JsonView;
 use TYPO3\Flow\Mvc\View\ViewInterface;
 use TYPO3\Flow\Property\TypeConverter\PersistentObjectConverter;
@@ -33,59 +31,6 @@ class LocationAPIController extends ActionController {
      */
     protected $supportedMediaTypes = array('application/json');
 
-    protected function initializeView(ViewInterface $view) {
-        if ($view instanceof JsonView) {
-            $locationConfiguration = [
-                '_descend' => [
-                    'initiative' => [
-                        '_exclude' => ['__isInitialized__'],
-                        '_exposeObjectIdentifier' => TRUE,
-                        '_exposedObjectIdentifierKey' => 'identifier',
-                        '_descend' => ['category' => [
-                            '_exclude' => ['__isInitialized__'],
-                            '_exposeObjectIdentifier' => TRUE,
-                            '_exposedObjectIdentifierKey' => 'identifier'
-                            ]
-                        ]
-                    ],
-                    'category' => [
-                        '_exclude' => ['__isInitialized__'],
-                        '_exposeObjectIdentifier' => TRUE,
-                        '_exposedObjectIdentifierKey' => 'identifier'
-                    ],
-                    'marketEntry' => [
-                        '_exclude' => ['__isInitialized__'],
-                        '_exposeObjectIdentifier' => TRUE,
-                        '_exposedObjectIdentifierKey' => 'identifier',
-                        '_descend' => ['category' => [
-                            '_exclude' => ['__isInitialized__'],
-                            '_exposeObjectIdentifier' => TRUE,
-                            '_exposedObjectIdentifierKey' => 'identifier'
-                           ]
-                        ]
-                    ],
-                    'event' => [
-                        '_exclude' => ['__isInitialized__'],
-                        '_exposeObjectIdentifier' => TRUE,
-                        '_exposedObjectIdentifierKey' => 'identifier',
-                        '_descend' => ['category' => [
-                            '_exclude' => ['__isInitialized__'],
-                            '_exposeObjectIdentifier' => TRUE,
-                            '_exposedObjectIdentifierKey' => 'identifier'
-                            ]
-                        ]
-                    ]
-                ]
-            ];
-            $view->setConfiguration([
-                'value' => [
-                    'locations' => ['_descendAll' => $locationConfiguration],
-                    'location' => $locationConfiguration
-                ]
-            ]);
-        }
-    }
-
     /**
      * @param string $locale
      */
@@ -103,12 +48,6 @@ class LocationAPIController extends ActionController {
         $this->view->assign('value', ['location' => $location]);
     }
 
-    protected function initializeCreateAction() {
-        $config = $this->arguments['location']->getPropertyMappingConfiguration();
-        $config->setTypeConverterOption('TYPO3\Flow\Property\TypeConverter\PersistentObjectConverter', PersistentObjectConverter::CONFIGURATION_CREATION_ALLOWED, TRUE);
-        $config->allowAllProperties();
-    }
-
     public function createAction(Location $location) {
         $now = new DateTime();
         $location->setCreated($now);
@@ -117,5 +56,64 @@ class LocationAPIController extends ActionController {
         $this->iniLocationRepository->add($location);
         $this->response->setStatus(201);
         $this->view->assign('value', ['location' => $location]);
+    }
+
+    protected function initializeView(ViewInterface $view) {
+        if ($view instanceof JsonView) {
+            $locationConfiguration = [
+                '_descend' => [
+                    'initiative' => [
+                        '_exclude' => ['__isInitialized__'],
+                        '_exposeObjectIdentifier' => TRUE,
+                        '_exposedObjectIdentifierKey' => 'identifier',
+                        '_descend' => ['category' => [
+                            '_exclude' => ['__isInitialized__'],
+                            '_exposeObjectIdentifier' => TRUE,
+                            '_exposedObjectIdentifierKey' => 'identifier'
+                        ]
+                        ]
+                    ],
+                    'category' => [
+                        '_exclude' => ['__isInitialized__'],
+                        '_exposeObjectIdentifier' => TRUE,
+                        '_exposedObjectIdentifierKey' => 'identifier'
+                    ],
+                    'marketEntry' => [
+                        '_exclude' => ['__isInitialized__'],
+                        '_exposeObjectIdentifier' => TRUE,
+                        '_exposedObjectIdentifierKey' => 'identifier',
+                        '_descend' => ['category' => [
+                            '_exclude' => ['__isInitialized__'],
+                            '_exposeObjectIdentifier' => TRUE,
+                            '_exposedObjectIdentifierKey' => 'identifier'
+                        ]
+                        ]
+                    ],
+                    'event' => [
+                        '_exclude' => ['__isInitialized__'],
+                        '_exposeObjectIdentifier' => TRUE,
+                        '_exposedObjectIdentifierKey' => 'identifier',
+                        '_descend' => ['category' => [
+                            '_exclude' => ['__isInitialized__'],
+                            '_exposeObjectIdentifier' => TRUE,
+                            '_exposedObjectIdentifierKey' => 'identifier'
+                        ]
+                        ]
+                    ]
+                ]
+            ];
+            $view->setConfiguration([
+                'value' => [
+                    'locations' => ['_descendAll' => $locationConfiguration],
+                    'location' => $locationConfiguration
+                ]
+            ]);
+        }
+    }
+
+    protected function initializeCreateAction() {
+        $config = $this->arguments['location']->getPropertyMappingConfiguration();
+        $config->setTypeConverterOption('TYPO3\Flow\Property\TypeConverter\PersistentObjectConverter', PersistentObjectConverter::CONFIGURATION_CREATION_ALLOWED, TRUE);
+        $config->allowAllProperties();
     }
 }

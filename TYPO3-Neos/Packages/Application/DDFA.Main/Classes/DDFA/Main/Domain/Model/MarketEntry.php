@@ -19,11 +19,6 @@ class MarketEntry extends Event {
     protected $offer;
 
     /**
-     * @var boolean
-     */
-    protected $released;
-
-    /**
      * @var Location
      * @ORM\OneToMany(mappedBy="initiative")
      */

@@ -9,10 +9,8 @@
 namespace DDFA\Main\Controller\Api;
 
 
-use DateTime;
 use DDFA\Main\Domain\Model\Initiative;
 use DDFA\Main\Domain\Repository\InitiativeRepository;
-use DDFA\Main\Utility\DDHelpers;
 use TYPO3\Flow\Annotations as Flow;
 use TYPO3\Flow\Mvc\Controller\ActionController;
 use TYPO3\Flow\Mvc\View\JsonView;
@@ -51,10 +49,10 @@ class InitiativeAPIController extends ActionController {
     }
 
     public function createAction(Initiative $initiative) {
-        $now = new DateTime();
+        /*$now = new DateTime();
         $initiative->setCreated($now);
         $initiative->setUpdated($now);
-        $initiative->setPersistenceObjectIdentifier(DDHelpers::createGuid());
+        $initiative->setPersistenceObjectIdentifier(DDHelpers::createGuid());*/
         $this->iniRepository->add($initiative);
         $this->response->setStatus(201);
         $this->view->assign('value', ['initiative' => $initiative]);

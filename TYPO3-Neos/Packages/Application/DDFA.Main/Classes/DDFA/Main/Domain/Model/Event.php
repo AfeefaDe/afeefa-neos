@@ -14,7 +14,6 @@ use TYPO3\Flow\Annotations as Flow;
  * @Flow\Entity
  */
 class Event extends Actor {
-
     /**
      * @var \DateTime
      * @ORM\Column(type="datetime")
@@ -121,5 +120,4 @@ class Event extends Actor {
     public function setLocations($locations) {
         $this->locations = $locations;
     }
-
 }

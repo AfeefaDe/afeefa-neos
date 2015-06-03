@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 02. Jun 2015 um 23:22
+-- Erstellungszeit: 03. Jun 2015 um 00:02
 -- Server Version: 5.6.21
 -- PHP-Version: 5.6.3
 
@@ -53,6 +53,7 @@ INSERT INTO `ddfa_main_domain_model_category` (`persistence_object_identifier`, 
 ('85be42e3-e597-44c1-b743-bb675169d94c', '556a0e081e58e', 'de', 'consultation', '', '2015-05-30 21:22:48', '2015-05-30 21:22:48', 0),
 ('a138e755-17ec-439c-9c6b-088a6209c6a9', '556b548f65630', 'de', 'children', '', '2015-05-31 20:35:59', '2015-05-31 20:35:59', 0),
 ('a657ca53-59eb-41ad-b2eb-75d91dd6e6f5', '556b547390f6e', 'de', 'leisure', '', '2015-05-31 20:35:31', '2015-05-31 20:35:31', 0),
+('adfb2457-819c-4574-ace1-56f5b38d8f96', '556e2704b4e91', 'de', 'leisure', '', '2015-06-02 23:58:28', '2015-06-02 23:58:28', 1),
 ('b4e52b49-2e9f-4621-b3e0-a0ef8fc86bdb', '556b545130d6e', 'de', 'medic', '', '2015-05-31 20:34:57', '2015-05-31 20:34:57', 0),
 ('bbf6424c-505c-49f5-aa2b-0c3f85ac1a5d', '556b568e7915d', 'de', 'other', '', '2015-05-31 20:44:30', '2015-05-31 20:44:30', 0),
 ('bcfdac93-ea24-4ed3-bd66-7cfd1c1c99d1', '556b545c05d59', 'de', 'german', '', '2015-05-31 20:35:08', '2015-05-31 20:35:08', 0),

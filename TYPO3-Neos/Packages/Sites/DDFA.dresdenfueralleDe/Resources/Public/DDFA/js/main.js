@@ -46,7 +46,7 @@ require( ['domReady', 'modernizr'], function(domReady) {
 						// 	APP.getRouter().navigate();
 						// });
 
-						require( ['Views/MapView', 'Views/DetailView', 'Views/MenuView', 'Views/LegendView', 'Views/LanguageView', 'Views/PlusView'], function(){
+						require( ['Views/MapView', 'Views/DetailView', 'Views/MenuView', 'Views/LegendView', 'Views/LanguageView', 'Views/PlusView', 'Views/FormView'], function(){
 							
 							if( APP.getUserDevice() === 'phone' ) {
 								

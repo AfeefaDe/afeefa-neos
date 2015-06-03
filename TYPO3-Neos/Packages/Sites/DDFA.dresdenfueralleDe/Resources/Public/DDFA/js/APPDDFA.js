@@ -37,6 +37,7 @@ qx.Class.define("APPDDFA", {
         legendView: {},
         plusView: {},
         languageView: {},
+        formView: {},
         userDevice: {},
         config: {},
         currentLang: {}

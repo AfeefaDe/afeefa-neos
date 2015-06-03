@@ -78,8 +78,7 @@ qx.Class.define("MapView", {
 		// 	console.debug(data);
 		// });
 
-		// var locations = APP.getData().locations;
-		// console.debug(locations);
+
 		that.addLocations(APP.getData().locations);
 
 		// that.addMarkers(mapdata.locations.inis);
@@ -100,7 +99,9 @@ qx.Class.define("MapView", {
 	 //        });
   //       });
         
-        this.base(arguments);
+        // that.addEvents();
+       	this.base(arguments);
+        
     },
 
 	// TODO: outsource in Router
@@ -115,7 +116,7 @@ qx.Class.define("MapView", {
     		var lookup = that.lookupMarkerById(entryId);
     		if(lookup){
     			that.selectMarker(lookup.marker, lookup.location);
-    			if(options.setView) that.map.setView( [lookup.location.lat, lookup.location.lon], 15);
+    			if(options && options.setView) that.map.setView( [lookup.location.lat, lookup.location.lon], 15);
     		}
     	}
 
@@ -173,7 +174,13 @@ qx.Class.define("MapView", {
             that.deselectMarker();
         });
 
-		that.listen('appInitialized', function(){
+		// that.listen('appInitialized', function(){
+		that.listen('DetailViewMobileRendered', function(){
+		// that.listen('markersCreated', function(){
+			that.loadFromUrl( {setView: true} );
+		});
+
+		that.listen('DetailViewRendered', function(){
 			that.loadFromUrl( {setView: true} );
 		});
 
@@ -320,6 +327,8 @@ qx.Class.define("MapView", {
 			// newLayer.addLayer(marker);
 			
 		});
+		
+		that.say('markersCreated');
 
 		// return newLayer;
     },

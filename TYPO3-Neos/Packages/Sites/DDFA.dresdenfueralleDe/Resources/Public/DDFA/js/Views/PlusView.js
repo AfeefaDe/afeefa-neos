@@ -140,19 +140,6 @@ qx.Class.define("PlusView", {
 
                 }
 
-
-                // that['propertyContainer'+prop] = $("<div />").addClass('property ' + prop);
-                
-                // that['propertyIcon'+prop] = $("<div />").addClass('property-icon');
-                // that['propertyContainer'+prop].append(that['propertyIcon'+prop]);
-                
-                // var catText = $("<div />").addClass('property-text');
-                // that['propertyName'+prop] = $("<p />").addClass('property-name');
-                // that['propertyValue'+prop] = $("<p />").addClass('property-value');
-                // catText.append(that['propertyName'+prop]);
-                // catText.append(that['propertyValue'+prop]);
-                // that['propertyContainer'+prop].append(catText);
-                
                 that.form.append(that['field_'+prop.name]);
 
             });
@@ -175,7 +162,7 @@ qx.Class.define("PlusView", {
             // });
             
             that.offerBtn.click(function(){
-               // that.formContainer.addClass('active');
+               that.formContainer.addClass('active');
             });
 
         },

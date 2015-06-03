@@ -61,6 +61,7 @@ class Location extends Actor {
      */
     protected $openingHours;
 
+    //TODO: change to type enum
     /**
      * @var int
      */

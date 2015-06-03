@@ -130,7 +130,7 @@ class LocationsModuleController extends AbstractTranslationController {
             $type = $_POST['moduleArguments']['type'];
             switch ($type) {
                 case DDConst::OWNER_INI:
-                    //TODO make this safer, better, harder, stronger!
+                    //TODO refactor:
                     if (isset($_POST['moduleArguments']['ini']))
                         $newObject->setInitiative($this->initiativeRepository->findOneByName($_POST['moduleArguments']['ini']));
                     break;
@@ -144,6 +144,7 @@ class LocationsModuleController extends AbstractTranslationController {
                     break;
                 default:
                     //TODO error handling
+                    die("No valid location type, sorry.");
             }
             $newObject->setType($type);
 
@@ -161,7 +162,7 @@ class LocationsModuleController extends AbstractTranslationController {
             } else
                 $this->redirect('index');
         } else {
-            //TODO btw: general error handling
+            //TODO error handling
             die("No location type selected!");
         }
     }

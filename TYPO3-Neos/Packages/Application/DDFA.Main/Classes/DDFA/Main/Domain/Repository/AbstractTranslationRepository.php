@@ -52,8 +52,7 @@ abstract class AbstractTranslationRepository extends Repository {
      * @param Actor $object
      * @return array
      */
-    //TODO sophisticate
-    //TODO include real languages
+    //TODO sophisticate and include real languages
     public function findLocales(Actor $object) {
         $r = array();
         $i = 0;

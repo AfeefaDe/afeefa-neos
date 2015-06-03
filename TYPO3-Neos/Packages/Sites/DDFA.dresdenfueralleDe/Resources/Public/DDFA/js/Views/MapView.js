@@ -104,7 +104,7 @@ qx.Class.define("MapView", {
     },
 
 	// TODO: outsource in Router
-    loadFromUrl: function(){
+    loadFromUrl: function( options ){
     	var that = this;
 
 		var url = window.location.hash.split('#');
@@ -115,7 +115,7 @@ qx.Class.define("MapView", {
     		var lookup = that.lookupMarkerById(entryId);
     		if(lookup){
     			that.selectMarker(lookup.marker, lookup.location);
-    			that.map.setView( [lookup.location.lat, lookup.location.lon], 15);
+    			if(options.setView) that.map.setView( [lookup.location.lat, lookup.location.lon], 15);
     		}
     	}
 
@@ -174,7 +174,7 @@ qx.Class.define("MapView", {
         });
 
 		that.listen('appInitialized', function(){
-			that.loadFromUrl();
+			that.loadFromUrl( {setView: true} );
 		});
 
     	// that.map.on('load', function(e){
@@ -189,6 +189,7 @@ qx.Class.define("MapView", {
     		that.markerCluster.clearLayers();
     		that.setMarkerLocationLookup([]);
 			that.addLocations(APP.getData().locations);
+			that.loadFromUrl();
     	});
     	
     	// var $locateBtn = $('#locate-btn');

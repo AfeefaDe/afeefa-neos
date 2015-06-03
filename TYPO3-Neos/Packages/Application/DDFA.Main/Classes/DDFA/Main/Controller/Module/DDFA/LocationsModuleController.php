@@ -23,6 +23,8 @@ use TYPO3\Media\Domain\Repository\AssetRepository;
  * @Flow\Scope("singleton")
  */
 class LocationsModuleController extends AbstractTranslationController {
+    //TODO: diesen Kommentar entfernen
+
     /**
      * @Flow\Inject
      * @var LocationRepository

@@ -9,14 +9,18 @@
 namespace DDFA\Main\Controller\Api;
 
 
+use DateTime;
 use DDFA\Main\Domain\Model\MarketEntry;
 use DDFA\Main\Domain\Repository\MarketEntryRepository;
+use DDFA\Main\Utility\DDHelpers;
 use TYPO3\Flow\Annotations as Flow;
 use TYPO3\Flow\Mvc\Controller\ActionController;
 use TYPO3\Flow\Mvc\View\JsonView;
 use TYPO3\Flow\Mvc\View\ViewInterface;
+use TYPO3\Flow\Property\TypeConverter\PersistentObjectConverter;
 
-class MarketEntryAPIController extends ActionController {
+class MarketEntryAPIController extends ActionController
+{
 
     /**
      * @Flow\Inject
@@ -31,15 +35,18 @@ class MarketEntryAPIController extends ActionController {
      */
     protected $supportedMediaTypes = array('application/json');
 
-    public function listAction() {
+    public function listAction()
+    {
         $this->view->assign('value', ['marketentries' => $this->marketEntryRepository->findAll()]);
     }
 
-    public function showAction(MarketEntry $marketentry) {
+    public function showAction(MarketEntry $marketentry)
+    {
         $this->view->assign('value', ['marketentry' => $marketentry]);
     }
 
-    protected function initializeView(ViewInterface $view) {
+    protected function initializeView(ViewInterface $view)
+    {
         if ($view instanceof JsonView) {
             $marketentryconfig = [
                 '_exposeObjectIdentifier' => TRUE,
@@ -59,5 +66,23 @@ class MarketEntryAPIController extends ActionController {
                 ]
             ]);
         }
+    }
+
+    protected function initializeCreateAction()
+    {
+        $config = $this->arguments['marketentry']->getPropertyMappingConfiguration();
+        $config->setTypeConverterOption('TYPO3\Flow\Property\TypeConverter\PersistentObjectConverter', PersistentObjectConverter::CONFIGURATION_CREATION_ALLOWED, TRUE);
+        $config->allowAllProperties();
+    }
+
+    public function createAction(MarketEntry $marketentry)
+    {
+        $now = new DateTime();
+        $marketentry->setCreated($now);
+        $marketentry->setUpdated($now);
+        $marketentry->setPersistenceObjectIdentifier(DDHelpers::createGuid());
+        $this->marketEntryRepository->add($marketentry);
+        $this->response->setStatus(201);
+        $this->view->assign('value', ['marketentry' => $marketentry]);
     }
 }

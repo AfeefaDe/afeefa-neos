@@ -48,9 +48,9 @@ qx.Class.define("FormView", {
 
         that.setPropertiesFeedback(
             [
-                {name: 'name', type: 'text'},
+                {name: 'author', type: 'text'},
                 {name: 'mail', type: 'email'},
-                {name: 'text', type: 'textarea'}
+                {name: 'message', type: 'textarea'}
             ]
         );
 
@@ -318,8 +318,10 @@ qx.Class.define("FormView", {
                 });
 
                 data.marketentry.offer = true;
+                data.marketentry.released = false;
                 
                 dataLocation.location.type = 1;
+                dataLocation.location.released = false;
 
                 APP.getDataManager().addMarketEntry(data, function( response ){
                     alert('marketOffer sent, thanks');
@@ -347,7 +349,10 @@ qx.Class.define("FormView", {
                 });
 
                 data.marketentry.offer = false;
+                data.marketentry.released = false;
+                
                 dataLocation.location.type = 1;
+                dataLocation.location.released = false;
 
                 APP.getDataManager().addMarketEntry(data, function( response ){
                     alert('marketRequest sent, thanks');
@@ -369,7 +374,7 @@ qx.Class.define("FormView", {
                     data.feedback[prop.name] = that[type + '_field_'+prop.name].val();
                 });
 
-                data.feedback.clientBrowser = L.Browser;
+                data.feedback.metaData = L.Browser;
 
                 APP.getDataManager().addFeedback(data, function(){
                     alert('feedback sent, thanks');

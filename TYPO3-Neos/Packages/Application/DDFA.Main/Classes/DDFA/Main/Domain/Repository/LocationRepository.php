@@ -192,9 +192,11 @@ class LocationRepository extends AbstractTranslationRepository {
                 $property->setAccessible(true);
                 $value = $property->getValue($object);
                 if ($value == NULL || $value == "") {
-                    $parentProperty = $parentReflection->getProperty($property->getName());
-                    $parentProperty->setAccessible(true);
-                    $property->setValue($object, $parentProperty->getValue($parentEntry));
+                    if ($parentReflection->hasProperty($property->getName())) {
+                        $parentProperty = $parentReflection->getProperty($property->getName());
+                        $parentProperty->setAccessible(true);
+                        $property->setValue($object, $parentProperty->getValue($parentEntry));
+                    }
                 }
             }
 
@@ -245,7 +247,7 @@ class LocationRepository extends AbstractTranslationRepository {
 
         switch ($object->getType()) {
             case DDConst::OWNER_INI:
-                $owner = $this->initiativeRepository->findOneHydrated($object->getInitiative());
+                $owner = $this->initiativeRepository->findOneHydrated($object->getInitiative(), $object->getLocale());
                 break;
             case DDConst::OWNER_MARKET:
                 if ($object->getMarketEntry() == null)
@@ -274,6 +276,12 @@ class LocationRepository extends AbstractTranslationRepository {
                     $parentProperty->setAccessible(true);
                     $property->setValue($object, $parentProperty->getValue($owner));
                 }
+            }
+            //TODO: add hydrated owner in every case, not only if initiative
+            if ($object->getType() == DDConst::OWNER_INI) {
+                $iniProp = $sourceReflection->getProperty("initiative");
+                $iniProp->setAccessible(true);
+                $iniProp->setValue($object, $owner);
             }
         }
 

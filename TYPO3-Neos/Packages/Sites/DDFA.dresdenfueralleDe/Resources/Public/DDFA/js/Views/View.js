@@ -17,6 +17,7 @@ qx.Class.define("View", {
             var that = this;
 
             that.addEvents();
+            that.say(that.classname + 'Rendered');
         },
 
         getWording: function( key ){

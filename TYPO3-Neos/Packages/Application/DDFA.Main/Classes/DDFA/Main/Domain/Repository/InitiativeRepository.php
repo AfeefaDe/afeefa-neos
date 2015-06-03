@@ -62,9 +62,11 @@ class InitiativeRepository extends AbstractTranslationRepository {
                 $property->setAccessible(true);
                 $value = $property->getValue($object);
                 if ($value == NULL || $value == "") {
-                    $parentProperty = $parentReflection->getProperty($property->getName());
-                    $parentProperty->setAccessible(true);
-                    $property->setValue($object, $parentProperty->getValue($parentEntry));
+                    if ($parentReflection->hasProperty($property->getName())) {
+                        $parentProperty = $parentReflection->getProperty($property->getName());
+                        $parentProperty->setAccessible(true);
+                        $property->setValue($object, $parentProperty->getValue($parentEntry));
+                    }
                 }
             }
         }

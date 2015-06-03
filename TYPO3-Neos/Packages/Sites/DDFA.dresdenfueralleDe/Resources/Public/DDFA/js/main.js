@@ -23,7 +23,7 @@ require( ['domReady', 'modernizr'], function(domReady) {
 
 	domReady(function(){
 
-		require( ['jquery', 'qx', 'underscore', 'hammer', 'd3'], function( $, qx, _, Hammer ){
+		require( ['jquery', 'qx', 'underscore', 'hammer'], function( $, qx, _, Hammer ){
 
 			require( ['Daddy'], function(){
 
@@ -51,13 +51,15 @@ require( ['domReady', 'modernizr'], function(domReady) {
 							if( APP.getUserDevice() === 'phone' ) {
 								
 								require( ['Views/DetailViewMobile', 'Views/LanguageViewMobile'], function(){
-									APP.getRouter().navigate();
+									APP.getRouter().initialNavigate();
 								});
 
 							} else {
-								APP.getRouter().navigate();
+								APP.getRouter().initialNavigate();
 							}
 						
+							APP.say('appInitialized');
+
 						});
 					
 

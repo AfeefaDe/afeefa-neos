@@ -126,6 +126,12 @@ abstract class Actor extends BasicEntity {
      */
     protected $spokenLanguages;
 
+    /**
+     * @var boolean
+     * @ORM\Column(nullable=true)
+     */
+    protected $published;
+
     public function __construct() {
         parent::__construct();
         $this->setEntryId(uniqid());
@@ -391,5 +397,19 @@ abstract class Actor extends BasicEntity {
      */
     public function setSpokenLanguages($spokenLanguages) {
         $this->spokenLanguages = $spokenLanguages;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPublished() {
+        return $this->published;
+    }
+
+    /**
+     * @param mixed $published
+     */
+    public function setPublished($published) {
+        $this->published = $published;
     }
 }

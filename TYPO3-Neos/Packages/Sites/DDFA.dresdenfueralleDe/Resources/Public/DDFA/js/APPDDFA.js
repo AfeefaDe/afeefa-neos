@@ -31,6 +31,7 @@ qx.Class.define("APPDDFA", {
         Router: {},
         LM: {},
         data: {},
+        mapView: {},
         detailView: {},
         menuView: {},
         legendView: {},

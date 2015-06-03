@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 02. Jun 2015 um 19:32
+-- Erstellungszeit: 02. Jun 2015 um 23:23
 -- Server Version: 5.6.21
 -- PHP-Version: 5.6.3
 
@@ -45,6 +45,7 @@ INSERT INTO `ddfa_main_domain_model_language` (`persistence_object_identifier`, 
 ('52ba3ee7-e806-4597-9e2c-c76759a94707', 'sr', 'Serbian', 0),
 ('6c8b0f53-099a-4d9b-9262-b40225c2e2ba', 'ur', 'Urdu', 1),
 ('89bf260b-95a0-4ae3-8e8f-f203103f69aa', 'ru', 'Russian', 0),
+('90504c74-bf42-45d9-818f-21076db6a461', 'it', 'Italian', 0),
 ('a2938e05-3e95-4658-b2d9-3c2fd4d43fe8', 'de', 'German', 0),
 ('bc0e89ae-f3b5-4e22-8099-92f270b0c39f', 'ti', 'Tigrinya', 0);
 

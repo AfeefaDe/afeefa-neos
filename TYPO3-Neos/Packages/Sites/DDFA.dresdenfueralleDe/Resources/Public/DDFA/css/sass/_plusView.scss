@@ -211,6 +211,16 @@
 
 		@include formBasic;
 
+		form {
+
+			input {
+				display: block;
+				@include box-sizing(border-box);
+				width: 100%;
+				padding: 0 5%;
+			}
+
+		}
 	}
 }
 

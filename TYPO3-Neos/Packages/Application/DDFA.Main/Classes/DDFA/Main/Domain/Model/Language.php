@@ -12,15 +12,7 @@ use TYPO3\Flow\Annotations as Flow;
 /**
  * @Flow\Entity
  */
-class Language {
-    /**
-     * @var string
-     * @ORM\Id
-     * @ORM\Column(name="persistence_object_identifier", type="string", length=40)
-     * @Flow\Identity
-     */
-    protected $Persistence_Object_Identifier;
-
+class Language extends BasicEntity {
     /**
      * @var string
      * @Flow\Identity
@@ -63,20 +55,6 @@ class Language {
      */
     public function setLanguage($language) {
         $this->language = $language;
-    }
-
-    /**
-     * @return string
-     */
-    public function getPersistenceObjectIdentifier() {
-        return $this->Persistence_Object_Identifier;
-    }
-
-    /**
-     * @param string $Persistence_Object_Identifier
-     */
-    public function setPersistenceObjectIdentifier($Persistence_Object_Identifier) {
-        $this->Persistence_Object_Identifier = $Persistence_Object_Identifier;
     }
 
     /**

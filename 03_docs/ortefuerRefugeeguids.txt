@@ -1,0 +1,21 @@
+(<span class="locationLink" name="556e1d4c72a6e">sächsischer Flüchtlingsrat</span>)
+(<span class="locationLink" name="556e1d420242a">Ausländerrat</span>)
+(<span class="locationLink" name="556e1d33f0698">Kontaktgruppe Asyl</span>)
+(<span class="locationLink" name="556e1d53c320a">Dresdner Verein für soziale Integration von Ausländern und Aussiedlern</span>)
+(<span class="locationLink" name="556e1d5057f02">Gemeindedolmetscherdienst</span>)
+(<span class="locationLink" name="556e1d313acbd">Deutschkurse Asyl, Migration, Flucht; English: German courses, asylum, migration, escape</span>)
+(<span class="locationLink" name="556e1d4585894">Medea</span>)
+(<span class="locationLink" name="556e1d4bf254c">Medinetz</span>)
+<span class="locationLink" name="556e1d35b069f">Welcome to Löbtau</span>
+<span class="locationLink" name="556e1d42cea11">Prohlis is colourful</span>
+<span class="locationLink" name="556e1d47add2f">Gorbitz international</span>
+<span class="locationLink" name="556e1d3d87f99">Welcome to the highland (Pappritz)</span>
+<span class="locationLink" name="556e1d354601f">Laubegast is colourful</span>
+<span class="locationLink" name="556e1d4118730">Pieschen for all</span>
+<span class="locationLink" name="556e1d43b6579">Leuben is colourful</span>
+(Internationales Begegnungszentrum)?
+<span class="locationLink" name="556e1d3a0df7c">SPIKE youth club</span>
+KAMA Dresden  <span class="locationLink" name="556e1d4e90550">Kama Dresden</span>
+RAA Sachsen <span class="locationLink" name="556e1d3ca3475">RAA Sachsen</span>
+Kulturb&uuml;ro <span class="locationLink" name="">Kulturb&uuml;ro</span>?
+Netzwerk Asyl, Migration und Flucht <span class="locationLink" name="556e1d2cd0160">Netzwerk Asyl, Migration und Flucht</span>

@@ -427,10 +427,13 @@ qx.Class.define("FormView", {
 
                 APP.getDataManager().addFeedback(data, function( response ){
                     
-                    if(response.feedback)
+                    if(response.feedback) {
                         alert( that.getWording('form_feedbackSent') );
-                    else
+                        that.close();
+                    }
+                    else {
                         alert(that.getWording('form_fail'));
+                    }
 
                 });
 

@@ -74,6 +74,16 @@ qx.Class.define("MenuView", {
                 that.say('mainMenuOpened');
             });
             
+            that.refugeeBtn.click(function(){
+                that.close();
+                APP.getIncludeView().load( APP.getIncludeView().getIncludes().refugeeGuide );
+            });
+
+            that.aboutBtn.click(function(){
+                that.close();
+                APP.getIncludeView().load( APP.getIncludeView().getIncludes().imprint );
+            });
+
             that.listen('curtainclicked', function(){
                 that.close();
             });

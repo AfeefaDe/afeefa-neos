@@ -1,54 +1,90 @@
-#legendView {
+@import "compass/css3";
+
+#includeView {
 	
 	@include transition(all 200ms);
 
 	position: absolute;
-	right: -11.5em;
+	left: -35%;
 	top: 0;
-	
-	@include box-sizing(border-box);
-	width: 15em;
-	height: 100%;
-	padding: 2em 0.5em;
 
-	background-color: rgba(30,30,30,0.6);
+	visibility: hidden;
+	opacity: 0;	
+
+	@include box-sizing(border-box);
+	width: 35%;
+	height: 100%;
+	padding: 1em 0;
+
+	display: flex;
+	flex-direction: column;
+	/*@include flex-direction(column);*/
+
+	background-color: rgba(30,30,30,0.8);
+	color: $white;
 
 	/*border: 1px solid red;*/
 
-	.container {
+	&.active {
+		left: 0;
+		visibility: visible;
+		opacity: 1;
+	}
 
-		position: relative;
-		width: 100%;
-		height: 2.5em;
-		line-height: 2.5em;
-		color: $white;
-		margin-bottom: 1em;
+	.closeBtn {
+		position: absolute;
+		top: 0em;
+		left: 1em;
+		background-color: #f2f2f2;
+		color: #333333;
+		font-weight: bold;
+		line-height: 1em;
+		font-size: 2em;
+		width: 1em;
+		height: 1em;
+		text-align: center;
 		cursor: pointer;
+	}
+	.chapters {
+		display: none;
+	}
+	
+	.chaptersReal {
+	  	flex-shrink: 0;
+	}
 
-		.btn {
-			@include circleBtn;
-			@include categorySymbolsDark;
-			@include background-size(72%);
-			position: absolute;
-			top: 0;
-			left: 0;
-			width: 2.5em;
-			height: 2.5em;
-			background-color: $white;
-			background-image: url("../img/menu.svg");
+	.content {
+
+		/*@include flex-grow(1);*/
+		flex-grow: 1;
+	  	
+	  	padding: 2em;
+		position: relative;
+		overflow-y: auto;
+		
+		line-height: 1.2em;
+		color: $white;
+		text-align: justify;
+
+		h1 {
+			font-weight: 100;
+			margin-bottom: 1em
+		}
+
+		h2 {
+			font-weight: 500;
+			line-height: 1em;
 		}
 
 		p {
-			position: absolute;
-			top: 0;
-			margin: 0;
-			left: 3.5em;
-			text-transform: uppercase;
 			font-weight: 300;
-			text-overflow: ellipsis;
-			width: calc(100% - 3.5em );
-			overflow: hidden;
-			white-space: nowrap;
+		}
+
+		span.locationLink {
+			font-weight: 500;
+			display: inline-block;
+			background-color: $blue-dark;
+			cursor: pointer;
 		}
 
 	}
@@ -59,10 +95,6 @@ body.desktop, body.tablet {
 
 	#legendView{
 
-		&:hover {
-			right: 0;
-		}
-
 	}
 
 }
@@ -70,10 +102,6 @@ body.desktop, body.tablet {
 body.phone {
 
 	#legendView{
-
-		.legend-btn {
-			/*right: -5em;*/
-		}
 
 	}
 

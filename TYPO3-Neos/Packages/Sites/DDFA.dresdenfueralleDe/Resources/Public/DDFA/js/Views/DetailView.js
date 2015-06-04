@@ -232,6 +232,14 @@ qx.Class.define("DetailView", {
 
             this.base(arguments);
 
+            that.listen('includeViewOpened', function(){
+                that.view.addClass('right');
+            });
+
+            that.listen('includeViewClosed', function(){
+                that.view.removeClass('right');
+            });
+
             that.listen('mapclicked', function(){
                 that.close();
             });

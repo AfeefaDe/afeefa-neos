@@ -1187,6 +1187,11 @@ a:link, a:visited, a:hover, a:active {
   opacity: 1;
 }
 /* line 166, sass/_detailView.scss */
+#detailView.right {
+  left: initial;
+  right: 6em;
+}
+/* line 171, sass/_detailView.scss */
 #detailView .scroll-container {
   flex-grow: 1;
   overflow-y: auto;
@@ -1440,7 +1445,7 @@ a:link, a:visited, a:hover, a:active {
   display: none;
 }
 
-/* line 177, sass/_detailView.scss */
+/* line 182, sass/_detailView.scss */
 #detailViewMobile {
   -webkit-transition: all 200ms;
   -moz-transition: all 200ms;
@@ -1460,17 +1465,17 @@ a:link, a:visited, a:hover, a:active {
   /* OTHER PROPERTIES */
   /* type specific overwrites */
 }
-/* line 189, sass/_detailView.scss */
+/* line 194, sass/_detailView.scss */
 #detailViewMobile.active {
   bottom: 0;
 }
-/* line 193, sass/_detailView.scss */
+/* line 198, sass/_detailView.scss */
 #detailViewMobile.active-large {
   bottom: 0;
   height: 80%;
   /*overflow-y: scroll;*/
 }
-/* line 199, sass/_detailView.scss */
+/* line 204, sass/_detailView.scss */
 #detailViewMobile .scroll-container {
   height: calc(100% - 4em);
   overflow-y: auto;
@@ -1837,6 +1842,10 @@ a:link, a:visited, a:hover, a:active {
 body.phone #menuView .menu-btn {
   right: -5em;
 }
+/* line 84, sass/_menuView.scss */
+body.phone #menuView .item {
+  display: none;
+}
 
 /* line 1, sass/_legendView.scss */
 #legendView {
@@ -1864,7 +1873,7 @@ body.phone #menuView .menu-btn {
   line-height: 2.5em;
   color: #f2f2f2;
   margin-bottom: 1em;
-  cursor: pointer;
+  /*cursor: pointer;*/
 }
 /* line 28, sass/_legendView.scss */
 #legendView .container .btn {
@@ -2634,6 +2643,92 @@ body.phone #plusView {
 /* line 83, sass/_formView.scss */
 #formViewMobile.feedback .sendBtn {
   background-color: #333333;
+}
+
+/* line 3, sass/_includeView.scss */
+#includeView {
+  -webkit-transition: all 200ms;
+  -moz-transition: all 200ms;
+  -o-transition: all 200ms;
+  transition: all 200ms;
+  position: absolute;
+  left: -35%;
+  top: 0;
+  visibility: hidden;
+  opacity: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 35%;
+  height: 100%;
+  padding: 1em 0;
+  display: flex;
+  flex-direction: column;
+  /*@include flex-direction(column);*/
+  background-color: rgba(30, 30, 30, 0.8);
+  color: #f2f2f2;
+  /*border: 1px solid red;*/
+}
+/* line 28, sass/_includeView.scss */
+#includeView.active {
+  left: 0;
+  visibility: visible;
+  opacity: 1;
+}
+/* line 34, sass/_includeView.scss */
+#includeView .closeBtn {
+  position: absolute;
+  top: 0em;
+  left: 1em;
+  background-color: #f2f2f2;
+  color: #333333;
+  font-weight: bold;
+  line-height: 1em;
+  font-size: 2em;
+  width: 1em;
+  height: 1em;
+  text-align: center;
+  cursor: pointer;
+}
+/* line 48, sass/_includeView.scss */
+#includeView .chapters {
+  display: none;
+}
+/* line 52, sass/_includeView.scss */
+#includeView .chaptersReal {
+  flex-shrink: 0;
+}
+/* line 56, sass/_includeView.scss */
+#includeView .content {
+  /*@include flex-grow(1);*/
+  flex-grow: 1;
+  padding: 2em;
+  position: relative;
+  overflow-y: auto;
+  line-height: 1.2em;
+  color: #f2f2f2;
+  text-align: justify;
+}
+/* line 69, sass/_includeView.scss */
+#includeView .content h1 {
+  font-weight: 100;
+  margin-bottom: 1em;
+}
+/* line 74, sass/_includeView.scss */
+#includeView .content h2 {
+  font-weight: 500;
+  line-height: 1em;
+}
+/* line 79, sass/_includeView.scss */
+#includeView .content p {
+  font-weight: 300;
+}
+/* line 83, sass/_includeView.scss */
+#includeView .content span.locationLink {
+  font-weight: 500;
+  display: inline-block;
+  background-color: #0074a6;
+  cursor: pointer;
 }
 
 /* line 5, sass/_mobileAdaptions.scss */

@@ -53,15 +53,15 @@ qx.Class.define("Router", {
 		    	
 		    	APP.setMenuView( new MenuView() );
 		    	
-		    	APP.setLegendView( new LegendView() );
+		    	// APP.setLegendView( new LegendView() );
 
-		    	APP.setPlusView( new PlusView() );
+		    	// APP.setPlusView( new PlusView() );
 		    	
 		    	APP.setLanguageView( new LanguageViewMobile() );
 		    	
-		    	APP.setFormView( new FormView() );
+		    	// APP.setFormView( new FormView() );
 		    	
-		    	APP.setIncludeView( new IncludeView() );
+		    	// APP.setIncludeView( new IncludeView() );
 		
 			} else {
 
@@ -83,14 +83,23 @@ qx.Class.define("Router", {
 		    	APP.setIncludeView( new IncludeView() );
 			}
 	    	
-	    	APP.getMapView().render();
-	    	APP.getDetailView().render();
-	    	APP.getPlusView().render();
-	    	APP.getLanguageView().render();
-	    	APP.getMenuView().render();
-	    	APP.getLegendView().render();
-	    	APP.getFormView().render();
-	    	APP.getIncludeView().render();
+	    	// TODO throw away
+	    	if( userDevice === 'phone' ) {
+	    		APP.getMapView().render();
+		    	APP.getDetailView().render();
+		    	APP.getLanguageView().render();
+		    	APP.getMenuView().render();
+	    	}
+	    	else {
+		    	APP.getMapView().render();
+		    	APP.getDetailView().render();
+		    	APP.getPlusView().render();
+		    	APP.getLanguageView().render();
+		    	APP.getMenuView().render();
+		    	APP.getLegendView().render();
+		    	APP.getFormView().render();
+		    	APP.getIncludeView().render();
+	    	}
 	    },
 
 	    navigate: function( path ){

@@ -24,7 +24,7 @@ qx.Class.define("DataManager", {
             
             that.getAllCategories(function(data){
                 
-
+                // set categories here as [ {identifier: az7szdf , category: name}, ... ]
 
                 that.getAllLocations(function(data){
                     

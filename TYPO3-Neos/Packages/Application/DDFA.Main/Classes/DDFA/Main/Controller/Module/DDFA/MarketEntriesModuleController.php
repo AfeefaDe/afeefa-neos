@@ -151,6 +151,16 @@ class MarketEntriesModuleController extends AbstractTranslationController {
     }
 
     /**
+     * @param MarketEntry $object
+     */
+    public function publishAction(MarketEntry $object) {
+        $object->setPublished(true);
+        $this->objectRepository->update($object);
+        $this->addFlashMessage('The market entry has been published.');
+        $this->redirect('index');
+    }
+
+    /**
      * @param MarketEntry $deleteObject
      * @return void
      * @throws \TYPO3\Flow\Persistence\Exception\IllegalObjectTypeException

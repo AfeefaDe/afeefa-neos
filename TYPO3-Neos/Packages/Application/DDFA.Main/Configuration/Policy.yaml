@@ -3,7 +3,7 @@ resources:
     # DDFA_Main_Module_ddfaLocationsModule: 'method(DDFA\Main\Controller\Module\DDFA\LocationsModuleController->.*Action())'
     DDFA_Main_Module_ddfaLocationsModule: 'method(DDFA\Main\Controller\Module\DDFA\LocationsModuleController->(index|add|create|view|edit|simpleEdit|selectTranslation|update|delete)Action())'
     DDFA_Main_Module_ddfaInitiativesModule: 'method(DDFA\Main\Controller\Module\DDFA\InitiativesModuleController->(index|add|create|view|edit|simpleEdit|selectTranslation|update|delete)Action())'
-    DDFA_Main_Module_ddfaMarketEntriesModule: 'method(DDFA\Main\Controller\Module\DDFA\MarketEntriesModuleController->(index|add|create|view|edit|simpleEdit|selectTranslation|update|delete)Action())'
+    DDFA_Main_Module_ddfaMarketEntriesModule: 'method(DDFA\Main\Controller\Module\DDFA\MarketEntriesModuleController->(index|add|create|view|edit|simpleEdit|selectTranslation|publish|update|delete)Action())'
     DDFA_Main_Module_ddfaCategoriesModule: 'method(DDFA\Main\Controller\Module\DDFA\CategoriesModuleController->(index|add|create|view|edit|update|delete)Action())'
     DDFA_Main_Module_ddfaTagsModule: 'method(DDFA\Main\Controller\Module\DDFA\TagsModuleController->(index|add|create|view|edit|update|delete)Action())'
     DDFA_Main_Module_ddfaLanguagesModule: 'method(DDFA\Main\Controller\Module\DDFA\LanguagesModuleController->(index|add|create|view|edit|update|delete)Action())'

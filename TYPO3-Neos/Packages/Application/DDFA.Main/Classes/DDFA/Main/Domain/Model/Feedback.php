@@ -13,7 +13,7 @@ use TYPO3\Flow\Annotations as Flow;
  * @Flow\Entity
  * @ORM\MappedSuperclass()
  */
-abstract class Feedback extends BasicEntity {
+class Feedback extends BasicEntity {
 
     /**
      * @var string

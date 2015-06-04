@@ -63,7 +63,7 @@ class InitiativesModuleController extends AbstractTranslationController {
             $this->redirect('view', NULL, NULL, array('viewObject' => $this->objectRepository->findOneLocalized($viewObject, $_POST['viewLocale'])));
 
         } else {
-            $viewObject = $this->objectRepository->hydrate($viewObject);
+            $viewObject = $this->objectRepository->hydrate($viewObject, $viewObject->getLocale());
 
             $this->view->assign('viewObject', $viewObject);
             $this->view->assign('languages', $this->objectRepository->findLocales($viewObject));
@@ -119,7 +119,7 @@ class InitiativesModuleController extends AbstractTranslationController {
      * @param Initiative $viewObject
      */
     public function editAction(Initiative $editObject, Initiative $viewObject) {
-        $this->view->assign('viewObject', $this->objectRepository->hydrate($viewObject));
+        $this->view->assign('viewObject', $this->objectRepository->hydrate($viewObject, $viewObject->getLocale()));
         $this->view->assign('editObject', $editObject);
         $this->view->assign('editLanguages', $this->languageRepository->findAll());
         $this->view->assign('viewLanguages', $this->objectRepository->findAllLocales($viewObject));

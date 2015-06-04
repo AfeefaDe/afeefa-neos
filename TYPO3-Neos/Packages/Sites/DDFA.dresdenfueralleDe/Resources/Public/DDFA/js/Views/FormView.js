@@ -449,7 +449,9 @@ qx.Class.define("FormView", {
                         return;
                     }
 
-                    that.responseMessage.append( that.getWording('form_success') );
+                    // that.responseMessage.append( that.getWording('form_success') );
+                    alert(that.getWording('form_success'));
+                    that.close();
 
                     dataLocation.location['marketEntry'] = response.marketentry.identifier;
                     APP.getDataManager().addLocation(dataLocation, function(){

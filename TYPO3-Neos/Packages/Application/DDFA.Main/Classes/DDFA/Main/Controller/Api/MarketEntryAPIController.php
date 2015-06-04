@@ -9,6 +9,7 @@
 namespace DDFA\Main\Controller\Api;
 
 
+use DateTime;
 use DDFA\Main\Domain\Model\MarketEntry;
 use DDFA\Main\Domain\Repository\MarketEntryRepository;
 use TYPO3\Flow\Annotations as Flow;
@@ -44,10 +45,6 @@ class MarketEntryAPIController extends ActionController
     }
 
     public function createAction(MarketEntry $marketentry) {
-        /*$now = new DateTime();
-        $marketentry->setCreated($now);
-        $marketentry->setUpdated($now);
-        $marketentry->setPersistenceObjectIdentifier(DDHelpers::createGuid());*/
         $this->marketEntryRepository->add($marketentry);
         $this->response->setStatus(201);
         $this->view->assign('value', ['marketentry' => $marketentry]);
@@ -60,7 +57,20 @@ class MarketEntryAPIController extends ActionController
                 '_exposeObjectIdentifier' => TRUE,
                 '_exposedObjectIdentifierKey' => 'identifier',
                 '_descend' => [
-                    'manufacturer' => [
+                    'dateFrom' => [
+                        '_exclude' => ['__isInitialized__'],
+                        '_exposeObjectIdentifier' => TRUE,
+                        '_exposedObjectIdentifierKey' => 'identifier'
+                    ],
+                    'dateTo' => [
+                        '_exclude' => ['__isInitialized__'],
+                        '_exposeObjectIdentifier' => TRUE,
+                        '_exposedObjectIdentifierKey' => 'identifier'
+                    ],
+
+                ],
+                '_descendAll' => [
+                    'locations' => [
                         '_exclude' => ['__isInitialized__'],
                         '_exposeObjectIdentifier' => TRUE,
                         '_exposedObjectIdentifierKey' => 'identifier'

@@ -9,7 +9,11 @@
 	height: 100%;
 	padding: 2em 0;
 
-	/*border: 1px solid red;*/
+
+	background-image: url("../img/icon_37.svg");
+	@include background-size(12em);
+	background-position: center bottom;
+	background-repeat: no-repeat;
 
 	.menu-btn {
 		position: absolute;
@@ -24,9 +28,49 @@
 		width: 50%;
 		margin: 0 auto;
 		display: block;
+		margin-bottom: 10em;
 	}
 
 	img { width: 100%; }
+
+	.item {
+		@include box-sizing(border-box);
+		width: 100%;
+		padding: 0 5em 0 0;
+		background-color: rgba(0,0,0,0.5);
+		margin-bottom: 1em;
+		cursor: pointer;
+		text-align: right;
+
+		&:hover { background-color: rgba(0,0,0,0.6); }
+
+		span {
+			line-height: 2em;
+			color: $white;
+			font-weight: 100;
+		}
+
+		&.refugee-guide, &.supporter-guide {
+			
+			@include background-size(3.8em);
+			background-position: 10.5em 0.8em;
+			background-repeat: no-repeat;
+			margin-bottom: 2em;
+
+			span {
+				font-size: 1.3em;
+				line-height: 2em;
+			}
+		}
+
+		&.refugee-guide {
+			background-image: url("../img/icon_54.svg");
+		}
+
+		&.supporter-guide {
+			background-image: url("../img/icon_56.svg");
+		}
+	}
 
 }
 

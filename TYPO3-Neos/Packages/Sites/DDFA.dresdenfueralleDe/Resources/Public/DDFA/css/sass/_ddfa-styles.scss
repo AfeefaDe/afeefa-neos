@@ -130,6 +130,7 @@ a {
 	@include background-size(20%);
 	background-position: center center;
 	background-repeat: no-repeat;
+
 	@include box-shadow(0px 0px 10px #111);
 
 	/* map curtain */

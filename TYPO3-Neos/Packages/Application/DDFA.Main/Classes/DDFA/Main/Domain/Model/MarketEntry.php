@@ -43,7 +43,7 @@ class MarketEntry extends Actor {
 
     /**
      * @var \Doctrine\Common\Collections\Collection<\DDFA\Main\Domain\Model\Location>
-     * @ORM\OneToMany(mappedBy="event")
+     * @ORM\OneToMany(mappedBy="marketEntry")
      */
     protected $locations;
 

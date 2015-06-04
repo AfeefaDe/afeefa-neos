@@ -55,7 +55,7 @@ qx.Class.define("MapView", {
 	            html: cluster.getChildCount()
 	          });
 	        },
-	        maxClusterRadius: 5
+	        maxClusterRadius: 10
 		});
 		
 		that.map.addLayer(that.markerCluster);

@@ -105,7 +105,7 @@ qx.Class.define("DataManager", {
                 cb(data);
             })
             .fail(function(a) {
-                console.debug(a);
+                cb(a);
             });
 
         },
@@ -127,7 +127,7 @@ qx.Class.define("DataManager", {
                 cb(data);
             })
             .fail(function(a) {
-                console.debug(a);
+                cb(a);
             });
 
         },
@@ -149,7 +149,7 @@ qx.Class.define("DataManager", {
                 cb(data);
             })
             .fail(function(a) {
-                console.debug(a);
+                cb(a);
             });
             
         },

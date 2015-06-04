@@ -27,30 +27,43 @@ qx.Class.define("FormView", {
 
         that.setPropertiesMarket(
             [
-                {name: 'name', type: 'text', intoLocation: true},
-                {name: 'category', type: 'select', values: APP.getConfig().categoriesMarket },
-                {name: 'speakerPublic', type: 'text'},
-                {name: 'mail', type: 'email'},
-                {name: 'web', type: 'url'},
-                {name: 'facebook', type: 'url'},
-                {name: 'description', type: 'textarea'},
-                {name: 'phone', type: 'tel'},
-                {name: 'spokenLanguages', type: 'text'},
+                {name: 'name', type: 'text', required: true, intoMarketEntry: true, intoLocation: true},
+                // TODO categories auch als arrays [identifier, label]
+                // {name: 'category', type: 'select', values: APP.getConfig().categoriesMarket },
+                {name: 'category', type: 'select', required: true, intoMarketEntry: true, values: [
+                    ['df402493-f467-4472-8b98-9038d2ac967e', 'consultation'],
+                    ['fa815876-ad1d-433e-87ff-8de20639e2b1', 'medic'],
+                    ['5dddf63d-ccf6-44e2-8daf-81bb44507fdd', 'german'],
+                    ['d29bbe86-ecd6-42df-8054-70a90ec7b535', 'jobs'],
+                    ['adfb2457-819c-4574-ace1-56f5b38d8f96', 'leisure'],
+                    ['b63f01d2-3573-48dc-83a5-6c9577cfbc6b', 'translation'],
+                    ['12914a3d-0cb5-4646-be56-3f671d737977', 'children'],
+                    ['744f41e9-799c-432b-a9a3-e78d471ec51a', 'donation'],
+                    ['07f88130-7d98-4a20-bbb8-d0d98f55c553', 'community'],
+                    ['5cd18ce7-923d-47ff-af66-7f4286f420d0', 'other']
+                ] },
+                {name: 'speakerPublic', type: 'text', intoMarketEntry: true},
+                {name: 'mail', type: 'email', required: true, intoMarketEntry: true},
+                {name: 'web', type: 'url', intoMarketEntry: true},
+                {name: 'facebook', type: 'url', intoMarketEntry: true},
+                {name: 'description', type: 'textarea', required: true, intoMarketEntry: true},
+                {name: 'phone', type: 'tel', intoMarketEntry: true},
+                {name: 'spokenLanguages', type: 'text', intoMarketEntry: true},
                 {name: 'street', type: 'text', intoLocation: true},
                 {name: 'zip', type: 'text', intoLocation: true},
                 {name: 'city', type: 'text', intoLocation: true},
-                {name: 'datefrom', type: 'date'},
-                {name: 'dateto', type: 'date'},
+                {name: 'dateFrom', type: 'date', intoMarketEntry: true},
+                {name: 'dateTo', type: 'date', intoMarketEntry: true},
                 // {name: 'dateday', type: 'datetime-local'},
-                {name: 'datePeriodic', type: 'select', values: ['daily', 'weekly', 'monthly'] }
+                {name: 'datePeriodic', type: 'select', intoMarketEntry: true, values: [ [0, 'daily'], [1, 'weekly'], [2, 'secondWeekly'], [3, 'monthly'] ] }
             ]
         );
 
         that.setPropertiesFeedback(
             [
-                {name: 'name', type: 'text'},
-                {name: 'mail', type: 'email'},
-                {name: 'text', type: 'textarea'}
+                {name: 'author', type: 'text', required: true},
+                {name: 'mail', type: 'email', required: true},
+                {name: 'message', type: 'textarea', required: true}
             ]
         );
 
@@ -83,6 +96,12 @@ qx.Class.define("FormView", {
             var scrollContainer = $("<div />").addClass('scroll-container');
             that.view.append(scrollContainer);
             
+            //////////////////////
+            // response message //
+            //////////////////////
+            that.responseMessage = $("<p />").addClass('message');
+            that.view.append(that.responseMessage);
+
             ///////////
             // form  //
             ///////////
@@ -102,7 +121,9 @@ qx.Class.define("FormView", {
 
                 _.each( properties, function(prop){
 
-                    // labels
+                    ////////////
+                    // labels //
+                    ////////////
                     that[type + '_label_'+prop.name] = $("<label />")
                         .attr('name', prop.name);
                     
@@ -110,7 +131,9 @@ qx.Class.define("FormView", {
                     
                     that.form.append(that[type + '_label_'+prop.name]);
 
-                    // html5 input types
+                    ///////////////////////
+                    // html5 input types //
+                    ///////////////////////
                     if( _.contains( that.getHtml5InputTypes() , prop.type ) ){
 
                         that[type + '_field_'+prop.name] = $("<input />")
@@ -123,15 +146,25 @@ qx.Class.define("FormView", {
 
                         that[type + '_field_'+prop.name] = $("<select />");
                         
+                        // TODO empty option
+                        if(!prop.required)
+                            var emptyOption = $('<option />')
+                                // .attr('disabled', true)
+                                .attr('selected', true)
+                                .append('');
+
+                        that[type + '_field_'+prop.name].append(emptyOption);
+                        
                         _.each( prop.values, function(value){
                         
                             var option = $("<option />")
-                                .attr('value', value);
+                                .attr('value', value[0]);
                             
-                            if( prop.name == 'category'){ option.append( that.getWording('cat_' + value) ); }
-                            else if( prop.name == 'datePeriodic'){ option.append( that.getWording('prop_' + prop.name + '_' + value) ); }
-                            // else if( prop.name == 'spokenLanguages'){ option.append( that.getWording('lang_' + value) ); }
-                            else { option.append( that.getWording('form_' + value) ); }
+                            // TODO verarbeite select values as arrays [value, label]
+                            if( prop.name == 'category'){ option.append( that.getWording('cat_' + value[1]) ); }
+                            else if( prop.name == 'datePeriodic'){ option.append( that.getWording('prop_' + prop.name + '_' + value[1]) ); }
+                            // else if( prop.name == 'spokenLanguages'){ option.append( that.getWording('lang_' + value[1]) ); }
+                            else { option.append( that.getWording('form_' + value[1]) ); }
                             
                             that[type + '_field_'+prop.name].append(option);
                             that[type + '_field_'+prop.name].attr('name', prop.name);
@@ -142,7 +175,8 @@ qx.Class.define("FormView", {
                     else if( prop.type == 'textarea' ){
 
                         that[type + '_field_'+prop.name] = $("<textarea />")
-                            .attr('name', prop.name);
+                            .attr('name', prop.name)
+                            .attr('rows', 5);
 
                     }
                     else {
@@ -151,6 +185,9 @@ qx.Class.define("FormView", {
                             .attr('name', prop.name);
 
                     }
+
+                    // general properties
+                    if(prop.required) that[type + '_field_'+prop.name].attr('required', true);
 
                     that.allInputFields.push( that[type + '_field_'+prop.name] );
 
@@ -179,10 +216,15 @@ qx.Class.define("FormView", {
             // call superclass
             this.base(arguments);
             
-            that.sendBtn.click(function(e){
+            that.form.submit(function(e){
                 e.preventDefault();
                 that.sendForm();
             });
+
+            // that.sendBtn.click(function(e){
+            //     e.preventDefault();
+            //     that.sendForm();
+            // });
 
             // that.listen('mapclicked', function(){
             that.cancelBtn.click(function(e){
@@ -210,7 +252,9 @@ qx.Class.define("FormView", {
                         .show()
                         .append( that.getWording('prop_' + prop.name) );
 
-                    that[type + '_field_'+prop.name].show()
+                    if(prop.required) that[type + '_field_'+prop.name].attr('required', true);
+
+                    that[type + '_field_'+prop.name].show();
 
                 });
 
@@ -227,6 +271,8 @@ qx.Class.define("FormView", {
                     that[type + '_label_'+prop.name]
                         .show()
                         .append( that.getWording('prop_' + prop.name) );
+                    
+                    if(prop.required) that[type + '_field_'+prop.name].attr('required', true);
 
                     that[type + '_field_'+prop.name].show();
 
@@ -245,6 +291,8 @@ qx.Class.define("FormView", {
                     that[type + '_label_'+prop.name]
                         .show()
                         .append( that.getWording('prop_' + prop.name) );
+                    
+                    if(prop.required) that[type + '_field_'+prop.name].attr('required', true);
                     
                     that[type + '_field_'+prop.name].show();
 
@@ -265,6 +313,8 @@ qx.Class.define("FormView", {
 
             that.heading.empty();
 
+            that.responseMessage.empty();
+
             // var allProperties = _.union( that.getPropertiesMarket(), that.getPropertiesFeedback() );
             _.each( that.allInputLabels, function(label){
                 label.hide();
@@ -274,6 +324,7 @@ qx.Class.define("FormView", {
             _.each( that.allInputFields, function(input){
                 input.hide();
                 input.val(null);
+                input.removeAttr('required');
             });
         },
 
@@ -311,26 +362,27 @@ qx.Class.define("FormView", {
 
                 _.each( that.getPropertiesMarket(), function(prop){
                     
-                    data.marketentry[prop.name] = that[type + '_field_'+prop.name].val();
+                    if(prop.intoMarketEntry) data.marketentry[prop.name] = that[type + '_field_'+prop.name].val();
 
                     if(prop.intoLocation) dataLocation.location[prop.name] = that[type + '_field_'+prop.name].val();
 
                 });
 
+                // TODO date dummy data, because it's required by the model, which becomes obsolete as soon as the model allows empty date properties
+                if( data.marketentry.dateFrom.length == 0) data.marketentry.dateFrom = '1854-01-01T00:00:00+0200';
+                if( data.marketentry.dateFrom.indexOf('T00:00:00+0200') < 0 ) data.marketentry.dateFrom += 'T00:00:00+0200';
+                if( data.marketentry.dateTo.length == 0) data.marketentry.dateTo = '1854-01-01T00:00:00+0200';
+                if( data.marketentry.dateTo.indexOf('T00:00:00+0200') < 0 ) data.marketentry.dateTo += 'T00:00:00+0200';
+                if( !data.marketentry.datePeriodic ) data.marketentry.datePeriodic = '999';
+                data.marketentry.dateDay = new Date(data.marketentry.dateFrom).getDay();
+
                 data.marketentry.offer = true;
+                data.marketentry.published = false;
                 
                 dataLocation.location.type = 1;
+                dataLocation.location.published = false;
 
-                APP.getDataManager().addMarketEntry(data, function( response ){
-                    alert('marketOffer sent, thanks');
-                    
-                    dataLocation.marketentry = response.marketentry.identifier;
-                    APP.getDataManager().addLocation(dataLocation, function(){
-                        alert('marketLocation sent, thanks');
-                    });
-
-                });
-
+                createMarketEntry(data, dataLocation);
 
             }
             else if( type == that.getFormTypes().marketRequest ){
@@ -340,25 +392,27 @@ qx.Class.define("FormView", {
 
                 _.each( that.getPropertiesMarket(), function(prop){
                     
-                    data.marketentry[prop.name] = that[type + '_field_'+prop.name].val();
+                    if(prop.intoMarketEntry) data.marketentry[prop.name] = that[type + '_field_'+prop.name].val();
 
                     if(prop.intoLocation) dataLocation.location[prop.name] = that[type + '_field_'+prop.name].val();
 
                 });
 
+                // TODO date dummy data, because it's required by the model, which becomes obsolete as soon as the model allows empty date properties
+                if( data.marketentry.dateFrom.length == 0) data.marketentry.dateFrom = '1854-01-01T00:00:00+0200';
+                if( data.marketentry.dateFrom.indexOf('T00:00:00+0200') < 0 ) data.marketentry.dateFrom += 'T00:00:00+0200';
+                if( data.marketentry.dateTo.length == 0) data.marketentry.dateTo = '1854-01-01T00:00:00+0200';
+                if( data.marketentry.dateTo.indexOf('T00:00:00+0200') < 0 ) data.marketentry.dateTo += 'T00:00:00+0200';
+                if( !data.marketentry.datePeriodic ) data.marketentry.datePeriodic = '999';
+                data.marketentry.dateDay = new Date(data.marketentry.dateFrom).getDay();
+                
                 data.marketentry.offer = false;
+                data.marketentry.published = false;
+                
                 dataLocation.location.type = 1;
+                dataLocation.location.published = false;
 
-                APP.getDataManager().addMarketEntry(data, function( response ){
-                    alert('marketRequest sent, thanks');
-                    
-                    dataLocation.marketentry = response.marketentry.identifier;
-                    APP.getDataManager().addLocation(dataLocation, function(){
-                        alert('marketLocation sent, thanks');
-                    });
-
-                });
-
+                createMarketEntry(data, dataLocation);
 
             }
             else if( type == that.getFormTypes().feedback ){
@@ -369,10 +423,36 @@ qx.Class.define("FormView", {
                     data.feedback[prop.name] = that[type + '_field_'+prop.name].val();
                 });
 
-                data.feedback.clientBrowser = L.Browser;
+                data.feedback.metaData = L.Browser;
 
-                APP.getDataManager().addFeedback(data, function(){
-                    alert('feedback sent, thanks');
+                APP.getDataManager().addFeedback(data, function( response ){
+                    
+                    if(response.feedback)
+                        alert( that.getWording('form_feedbackSent') );
+                    else
+                        alert(that.getWording('form_fail'));
+
+                });
+
+            }
+
+            function createMarketEntry(data, dataLocation){
+
+                APP.getDataManager().addMarketEntry(data, function( response ){
+                    
+                    if(!response.marketentry){
+                        // that.thatResponseMessage().append( that.getWording('form_fail') );
+                        alert(that.getWording('form_fail'));
+                        return;
+                    }
+
+                    that.responseMessage.append( that.getWording('form_success') );
+
+                    dataLocation.location['marketEntry'] = response.marketentry.identifier;
+                    APP.getDataManager().addLocation(dataLocation, function(){
+                        // alert('marketLocation sent, thanks');
+                    });
+
                 });
 
             }

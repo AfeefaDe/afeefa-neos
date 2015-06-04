@@ -17,11 +17,12 @@
 		background-image: url("../img/cat-19.svg");
 		background-color: rgba(0,0,0,0) !important;
 	}
-	&.cat-christian { background-image: url("../img/cat-16.svg"); }
+	&.cat-christian { background-image: url("../img/icon_60.svg"); }
 	&.cat-islam { background-image: url("../img/cat-16.svg"); }
 	&.cat-jewish { background-image: url("../img/cat-22.svg"); }
 	&.cat-shop { background-image: url("../img/cat-22.svg"); }
-	&.cat-public { background-image: url("../img/cat-22.svg"); }
+	/*&.cat-public { background-image: url("../img/cat-22.svg"); }*/
+	&.cat-tram { background-image: url("../img/icon_57.svg"); background-color: $dvb; }
 	
 	&.cat-other { background-image: none; }
 
@@ -46,11 +47,12 @@
 		background-image: url("../img/cat-19.svg");
 		background-color: rgba(0,0,0,0) !important;
 	}
-	&.cat-christian { background-image: url("../img/cat-15.svg"); }
+	&.cat-christian { background-image: url("../img/icon_59.svg"); }
 	&.cat-islam { background-image: url("../img/cat-15.svg"); }
 	&.cat-jewish { background-image: url("../img/cat-21.svg"); }
 	&.cat-shop { background-image: url("../img/cat-21.svg"); }
-	&.cat-public { background-image: url("../img/cat-21.svg"); }
+	/*&.cat-public { background-image: url("../img/cat-21.svg"); }*/
+	&.cat-tram { background-image: url("../img/icon_58.svg"); background-color: $dvb; }
 
 	&.cat-other { background-image: none; }
 

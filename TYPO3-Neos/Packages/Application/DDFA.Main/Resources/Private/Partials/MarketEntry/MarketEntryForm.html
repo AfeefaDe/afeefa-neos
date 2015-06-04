@@ -1,0 +1,182 @@
+<fieldset class="neos-span3">
+    <legend>Basic information</legend>
+
+    <div class="neos-control-group">
+        <label class="neos-control-label" for="name">Name</label>
+
+        <div class="neos-controls">
+            <f:form.textfield class="neos-span12" property="name" id="name" placeholder="Enter name" required="true"
+                              autofocus="true"/>
+        </div>
+    </div>
+
+    <div class="neos-control-group">
+        <label class="neos-control-label" for="category">Category</label>
+
+        <div class="neos-controls">
+            <f:form.select class="neos-span12" id="category" name="cat" options="{cats}" optionValueField="name"
+                           optionLabelField="name" value="{selectedCat}" sortByOptionLabel="true"/>
+        </div>
+    </div>
+
+    <div class="neos-control-group">
+        <label class="neos-control-label" for="image">Logo / Image</label>
+
+        <div class="neos-controls">
+            <f:form.select class="neos-span12" id="image" property="image" options="{imgs}"
+                           optionValueField="identifier" optionLabelField="title" value="{selectedImg}"
+                           sortByOptionLabel="true" prependOptionLabel="- none -"/>
+        </div>
+    </div>
+
+    <div class="neos-control-group">
+        <label class="neos-control-label">Image type</label>
+
+        <div class="neos-controls">
+            <label for="typeLogo" class="neos-radio neos-inline">
+                <f:form.radio property="imageType" value="logo" checked="true" id="typeLogo"/>
+                Logo<span></span>
+            </label>
+            <label for="typeImage" class="neos-radio neos-inline">
+                <f:form.radio property="imageType" value="image" id="typeImage"/>
+                Image<span></span>
+            </label>
+        </div>
+    </div>
+
+    <div class="neos-control-group">
+        <label class="neos-control-label" for="description">Description</label>
+
+        <div class="neos-controls">
+            <f:form.textarea class="neos-span12" rows="8" property="description" id="description"
+                             placeholder="Enter a description text..."/>
+        </div>
+    </div>
+
+    <div class="neos-control-group">
+        <label class="neos-control-label" for="spokenLanguages">Spoken languages</label>
+
+        <div class="neos-controls">
+            <f:form.textfield class="neos-span12" property="spokenLanguages" id="spokenLanguages"
+                              placeholder="Enter languages" autofocus="true"/>
+        </div>
+    </div>
+
+    <!-- TODO  min="1" max="5" -->
+    <div class="neos-control-group">
+        <label class="neos-control-label" for="rating">Rating</label>
+
+        <div class="neos-controls">
+            <f:form.textfield class="neos-span12" property="rating" id="rating" type="number" required="true"
+                              value="3"/>
+        </div>
+    </div>
+</fieldset>
+
+<fieldset class="neos-span3 neos-offset1">
+    <legend>Contact</legend>
+
+    <div class="neos-control-group">
+        <label class="neos-control-label" for="mail">Mail</label>
+
+        <div class="neos-controls">
+            <f:form.textfield class="neos-span12" property="mail" id="mail" type="email"
+                              placeholder="Enter mail address"/>
+        </div>
+    </div>
+
+    <div class="neos-control-group">
+        <label class="neos-control-label" for="web">Website URL</label>
+
+        <div class="neos-controls">
+            <f:form.textfield class="neos-span12" property="web" id="web" type="url" placeholder="Enter Website URL"/>
+        </div>
+    </div>
+
+    <div class="neos-control-group">
+        <label class="neos-control-label" for="facebook">facebook URL</label>
+
+        <div class="neos-controls">
+            <f:form.textfield class="neos-span12" property="facebook" id="facebook" type="url"
+                              placeholder="Enter facebook URL"/>
+        </div>
+    </div>
+
+    <div class="neos-control-group">
+        <label class="neos-control-label" for="phone">Phone</label>
+
+        <div class="neos-controls">
+            <f:form.textfield class="neos-span12" property="phone" id="phone" type="tel"
+                              placeholder="Enter phone number"/>
+        </div>
+    </div>
+
+    <div class="neos-control-group">
+        <label class="neos-control-label" for="speakerPrivate">Internal speaker</label>
+
+        <div class="neos-controls">
+            <f:form.textfield class="neos-span12" property="speakerPrivate" id="speakerPrivate"
+                              placeholder="Enter internal speaker"/>
+        </div>
+    </div>
+
+    <div class="neos-control-group">
+        <label class="neos-control-label" for="speakerPublic">Public speaker</label>
+
+        <div class="neos-controls">
+            <f:form.textfield class="neos-span12" property="speakerPublic" id="speakerPublic"
+                              placeholder="Enter public speaker"/>
+        </div>
+    </div>
+</fieldset>
+
+<fieldset class="neos-span3 neos-offset1">
+    <legend>Date</legend>
+
+    <div class="neos-control-group">
+        <label class="neos-control-label">Is Offer?</label>
+
+        <div class="neos-controls">
+            <label for="isOffer" class="neos-radio neos-inline">
+                <f:form.radio property="offer" value="offer" checked="true" id="isOffer"/>
+                offer<span></span>
+            </label>
+            <label for="isDemand" class="neos-radio neos-inline">
+                <f:form.radio property="offer" value="demand" id="isDemand"/>
+                demand<span></span>
+            </label>
+        </div>
+    </div>
+
+    <div class="neos-control-group">
+        <label class="neos-control-label" for="dateFrom">Date from</label>
+
+        <div class="neos-controls">
+            <f:form.textfield class="neos-span12" property="dateFrom" id="dateFrom" type="date"/>
+        </div>
+    </div>
+
+    <div class="neos-control-group">
+        <label class="neos-control-label" for="dateTo">Date to</label>
+
+        <div class="neos-controls">
+            <f:form.textfield class="neos-span12" property="dateTo" id="dateTo" type="date"/>
+        </div>
+    </div>
+
+    <div class="neos-control-group">
+        <label class="neos-control-label" for="dateDay">Date day</label>
+
+        <div class="neos-controls">
+            <f:form.textfield class="neos-span12" property="dateDay" id="dateDay"/>
+        </div>
+    </div>
+
+    <div class="neos-control-group">
+        <label class="neos-control-label" for="datePeriodic">periodic</label>
+
+        <div class="neos-controls">
+            <f:form.textfield class="neos-span12" property="datePeriodic" id="datePeriodic"/>
+        </div>
+    </div>
+</fieldset>

@@ -7,23 +7,22 @@ namespace DDFA\Main\Controller\Module\DDFA;
  *                                                                        */
 
 use DateTime;
-use DDFA\Main\Domain\Model\Initiative;
+use DDFA\Main\Domain\Model\MarketEntry;
 use DDFA\Main\Domain\Repository\CategoryRepository;
-use DDFA\Main\Domain\Repository\InitiativeRepository as InitiativeRepository;
 use DDFA\Main\Domain\Repository\LanguageRepository as LanguageRepository;
+use DDFA\Main\Domain\Repository\MarketEntryRepository;
 use DDFA\Main\Utility\DDConst;
 use TYPO3\Flow\Annotations as Flow;
-use TYPO3\Media\Domain\Repository\AssetRepository;
 
 /**
  * The TYPO3 User Settings module controller
  *
  * @Flow\Scope("singleton")
  */
-class InitiativesModuleController extends AbstractTranslationController {
+class MarketEntriesModuleController extends AbstractTranslationController {
     /**
      * @Flow\Inject
-     * @var InitiativeRepository
+     * @var MarketEntryRepository
      */
     protected $objectRepository;
 
@@ -40,24 +39,18 @@ class InitiativesModuleController extends AbstractTranslationController {
     protected $categoryRepository;
 
     /**
-     * @Flow\Inject
-     * @var AssetRepository
-     */
-    protected $assetRepository;
-
-    /**
      * @return void
      */
     public function indexAction() {
-        $this->view->assign('inis', $this->objectRepository->findAllLocalized());
+        $this->view->assign('entries', $this->objectRepository->findAllLocalized());
         $this->view->assign('numLanguages', $this->languageRepository->findAll()->count() - 1);
     }
 
     /**
-     * @param Initiative $viewObject
+     * @param MarketEntry $viewObject
      * @return void
      */
-    public function viewAction(Initiative $viewObject) {
+    public function viewAction(MarketEntry $viewObject) {
         if (isset($_POST['viewLocale']) && $_POST['viewLocale'] != DDConst::LOCALE_STD) {
             $this->redirect('view', NULL, NULL, array('viewObject' => $this->objectRepository->findOneLocalized($viewObject, $_POST['viewLocale'])));
 
@@ -73,23 +66,22 @@ class InitiativesModuleController extends AbstractTranslationController {
      * @return void
      */
     public function addAction() {
-        $this->view->assign('cats', $this->categoryRepository->findByType(DDConst::OWNER_INI));
-        $this->view->assign('imgs', $this->assetRepository->findAll());
+        $this->view->assign('cats', $this->categoryRepository->findByType(DDConst::OWNER_MARKET));
     }
 
     /**
-     * @param Initiative $newObject
+     * @param MarketEntry $newObject
      * @return void
      * @throws \TYPO3\Flow\Persistence\Exception\IllegalObjectTypeException
      */
-    public function createAction(Initiative $newObject) {
+    public function createAction(MarketEntry $newObject) {
         //TODO refactor:
         if (isset($_POST['moduleArguments']['cat'])) {
             $newObject->setCategory($this->categoryRepository->findOneByName($_POST['moduleArguments']['cat']));
         }
 
         $this->objectRepository->add($newObject);
-        $this->addFlashMessage('A new initiative has been created successfully.');
+        $this->addFlashMessage('A new market entry has been created successfully.');
 
         if (isset($_POST['moduleArguments']['localize'])) {
             $editObject = $this->addTranslation($newObject->getEntryId(), DDConst::LOCALE_NXT);
@@ -102,22 +94,22 @@ class InitiativesModuleController extends AbstractTranslationController {
     /**
      * @param $entryID
      * @param $locale
-     * @return Initiative
+     * @return MarketEntry
      */
     protected function addTranslation($entryID, $locale) {
-        $object = new Initiative();
+        $object = new MarketEntry();
         $object->setEntryId($entryID);
         $object->setLocale($locale);
         $this->objectRepository->add($object);
-        $this->addFlashMessage("A new initiative translation has been added successfully.");
+        $this->addFlashMessage("A new market entry translation has been added successfully.");
         return $object;
     }
 
     /**
-     * @param Initiative $editObject
-     * @param Initiative $viewObject
+     * @param MarketEntry $editObject
+     * @param MarketEntry $viewObject
      */
-    public function editAction(Initiative $editObject, Initiative $viewObject) {
+    public function editAction(MarketEntry $editObject, MarketEntry $viewObject) {
         $this->view->assign('viewObject', $this->objectRepository->hydrate($viewObject, $viewObject->getLocale()));
         $this->view->assign('editObject', $editObject);
         $this->view->assign('editLanguages', $this->languageRepository->findAll());
@@ -125,9 +117,9 @@ class InitiativesModuleController extends AbstractTranslationController {
     }
 
     /**
-     * @param Initiative $editObject
+     * @param MarketEntry $editObject
      */
-    public function simpleEditAction(Initiative $editObject) {
+    public function simpleEditAction(MarketEntry $editObject) {
         if ($editObject->getLocale() != DDConst::LOCALE_STD) {
             $viewObject = $this->objectRepository->findOneLocalized($editObject, DDConst::LOCALE_STD);
             $this->redirect('edit', NULL, NULL,
@@ -136,17 +128,16 @@ class InitiativesModuleController extends AbstractTranslationController {
         } else {
             $this->view->assign('editObject', $editObject);
             $this->view->assign('languages', $this->languageRepository->findAll());
-            $this->view->assign('cats', $this->categoryRepository->findByType(DDConst::OWNER_INI));
-            $this->view->assign('imgs', $this->assetRepository->findAll());
+            $this->view->assign('cats', $this->categoryRepository->findByType(DDConst::OWNER_MARKET));
         }
     }
 
     /**
-     * @param Initiative $editObject
+     * @param MarketEntry $editObject
      * @return void
      * @throws \TYPO3\Flow\Persistence\Exception\IllegalObjectTypeException
      */
-    public function updateAction(Initiative $editObject) {
+    public function updateAction(MarketEntry $editObject) {
         $editObject->setUpdated(new DateTime());
 
         //TODO refactor:
@@ -154,30 +145,30 @@ class InitiativesModuleController extends AbstractTranslationController {
             $editObject->setCategory($this->categoryRepository->findOneByName($_POST['moduleArguments']['cat']));
         }
 
-        $this->addFlashMessage('The initiative has been updated successfully.');
+        $this->addFlashMessage('The market entry has been updated successfully.');
         $this->objectRepository->update($editObject);
         $this->redirect('index');
     }
 
     /**
-     * @param Initiative $deleteObject
+     * @param MarketEntry $deleteObject
      * @return void
      * @throws \TYPO3\Flow\Persistence\Exception\IllegalObjectTypeException
      */
-    public function deleteAction(Initiative $deleteObject) {
-        //TODO check if locations refer to initiative
+    public function deleteAction(MarketEntry $deleteObject) {
+        //TODO check if locations refer to entry
         foreach ($this->objectRepository->findAllLocalisations($deleteObject) as $localisedObject)
             $this->objectRepository->remove($localisedObject);
 
-        $this->addFlashMessage('The initiative including all its translations has been removed successfully.');
+        $this->addFlashMessage('The market entry including all its translations has been removed successfully.');
         $this->redirect('index');
     }
 
     /**
-     * @param Initiative $object
+     * @param MarketEntry $object
      * @return void
      */
-    public function selectTranslationAction(Initiative $object) {
+    public function selectTranslationAction(MarketEntry $object) {
         $editLocale = $_POST['moduleArguments']['editLocale'];
         $viewLocale = $_POST['moduleArguments']['viewLocale'];
 

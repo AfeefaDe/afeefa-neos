@@ -1,6 +1,6 @@
 <f:layout name="Default"/>
 
-<f:section name="title">Edit initiative</f:section>
+<f:section name="title">Edit entry</f:section>
 
 <f:section name="content">
 
@@ -11,11 +11,11 @@
         <div class="neos-row-fluid neos-module-container">
             <div class="neos-span5">
                 <legend>{editObject.locale}</legend>
-                <f:render partial="Initiative/InitiativeFormTranslate"/>
+                <f:render partial="MarketEntry/MarketEntryFormTranslate"/>
             </div>
             <div class="neos-offset1 neos-span5">
                 <legend>{viewObject.locale}: <i>{viewObject.name}</i></legend>
-                <f:render partial="Initiative/InitiativeView" arguments="{ini: viewObject}"/>
+                <f:render partial="MarketEntry/MarketEntryView" arguments="{entry: viewObject}"/>
             </div>
         </div>
         <div class="neos-footer">

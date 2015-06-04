@@ -20,16 +20,22 @@ qx.Class.define("DataManager", {
             // fetch initiatives
             // initiativesFetched = true;
 
-            // fetch locations
-            that.getAllLocations(function(data){
+            // fetch them all
+            
+            that.getAllCategories(function(data){
                 
-                allData.locations = data.locations;
-                
-                that.getLanguageBib( function(data){
 
-                    APP.getLM().setBib( data[0] );
 
-                    cb( allData );
+                that.getAllLocations(function(data){
+                    
+                    allData.locations = data.locations;
+                    
+                    that.getLanguageBib( function(data){
+
+                        APP.getLM().setBib( data[0] );
+
+                        cb( allData );
+                    });
                 });
             });
             
@@ -55,11 +61,26 @@ qx.Class.define("DataManager", {
 
         },
 
+        getAllCategories: function( cb ){
+
+            $.ajax({
+                url: "api/categories",
+                type: 'GET',
+                dataType: 'json'
+            })
+            .done(function( data ) {
+                cb(data);
+            })
+            .fail(function(a) {
+                console.debug(a);
+            });
+
+        },
+
         getAllLocations: function( cb ){
 
             $.ajax({
                 url: "api/locations?locale=" + APP.getLM().getCurrentLang(),
-                // url: "api/locations",
                 type: 'GET',
                 dataType: 'json'
             })

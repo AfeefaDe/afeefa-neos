@@ -38,6 +38,7 @@ qx.Class.define("APPDDFA", {
         plusView: {},
         languageView: {},
         formView: {},
+        includeView: {},
         userDevice: {},
         config: {},
         currentLang: {}

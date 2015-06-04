@@ -9,7 +9,6 @@
 namespace DDFA\Main\Controller\Api;
 
 
-use DateTime;
 use DDFA\Main\Domain\Model\MarketEntry;
 use DDFA\Main\Domain\Repository\MarketEntryRepository;
 use TYPO3\Flow\Annotations as Flow;

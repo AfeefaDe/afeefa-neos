@@ -12,7 +12,7 @@ resources:
     DDFA_Main_Api_ddfaInitiativeAPI: 'method(DDFA\Main\Controller\Api\InitiativeAPIController->(list|show)Action())'
     DDFA_Main_Api_ddfaMarketEntryAPI: 'method(DDFA\Main\Controller\Api\MarketEntryAPIController->(list|show|create)Action())'
     DDFA_Main_Api_ddfaCategoryAPI: 'method(DDFA\Main\Controller\Api\CategoryAPIController->(list|show)Action())'
-    DDFA_Main_Api_ddfaFeedbackAPI: 'method(DDFA\Main\Controller\Api\FeedbackAPIController->.*Action())'
+    DDFA_Main_Api_ddfaFeedbackAPI: 'method(DDFA\Main\Controller\Api\FeedbackAPIController->(show|create)Action())'
 acls:
   TYPO3.Neos:Administrator:
     methods:

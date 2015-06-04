@@ -15,6 +15,7 @@ use TYPO3\Flow\Mvc\Controller\ActionController;
 use TYPO3\Flow\Mvc\View\JsonView;
 use TYPO3\Flow\Mvc\View\ViewInterface;
 use TYPO3\Flow\Annotations as Flow;
+use TYPO3\Flow\Property\TypeConverter\PersistentObjectConverter;
 
 class FeedbackAPIController extends ActionController {
 
@@ -41,6 +42,12 @@ class FeedbackAPIController extends ActionController {
         $this->view->assign('value', ['feedback' => $feedback]);
     }
 
+    public function createAction(Feedback $feedback) {
+        $this->feedbackRepository->add($feedback);
+        $this->response->setStatus(201);
+        $this->view->assign('value', ['feedback' => $feedback]);
+    }
+
     protected function initializeView(ViewInterface $view)
     {
         if ($view instanceof JsonView) {
@@ -56,5 +63,11 @@ class FeedbackAPIController extends ActionController {
                 ]
             ]);
         }
+    }
+
+    protected function initializeCreateAction() {
+        $config = $this->arguments['feedback']->getPropertyMappingConfiguration();
+        $config->setTypeConverterOption('TYPO3\Flow\Property\TypeConverter\PersistentObjectConverter', PersistentObjectConverter::CONFIGURATION_CREATION_ALLOWED, TRUE);
+        $config->allowAllProperties();
     }
 }

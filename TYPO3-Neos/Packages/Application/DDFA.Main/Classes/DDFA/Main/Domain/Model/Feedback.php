@@ -82,4 +82,18 @@ class Feedback extends BasicEntity {
     public function setMessage($message) {
         $this->message = $message;
     }
+
+    /**
+     * @return string
+     */
+    public function getMetaData() {
+        return $this->metaData;
+    }
+
+    /**
+     * @param string $metaData
+     */
+    public function setMetaData($metaData) {
+        $this->metaData = $metaData;
+    }
 }

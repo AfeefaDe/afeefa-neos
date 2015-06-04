@@ -53,6 +53,8 @@ qx.Class.define("MenuView", {
             that.helpBtnLabel = $('<span />');
             that.helpBtn.append(that.helpBtnLabel);
             that.menu.append(that.helpBtn);
+            // TODO qucikfix
+            that.helpBtn.css('display', 'none');
 
             // btn about
             that.aboutBtn = $('<div />').addClass('item about');
@@ -77,6 +79,11 @@ qx.Class.define("MenuView", {
             that.refugeeBtn.click(function(){
                 that.close();
                 APP.getIncludeView().load( APP.getIncludeView().getIncludes().refugeeGuide );
+            });
+
+            that.supporterBtn.click(function(){
+                that.close();
+                APP.getIncludeView().load( APP.getIncludeView().getIncludes().supporterGuide );
             });
 
             that.aboutBtn.click(function(){

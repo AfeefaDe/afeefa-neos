@@ -49,7 +49,12 @@ qx.Class.define("IncludeView", {
 
             that.say('includeViewOpened');
             
-            if(includeKey == that.getIncludes().imprint){
+            if(includeKey == that.getIncludes().supporterGuide){
+                that.content.load( that.getBaseUrl() + that.getIncludes()[includeKey] + "_de.html", function( response, status, xhr ) {
+
+                });
+            }
+            else if(includeKey == that.getIncludes().imprint){
                 that.content.load( that.getBaseUrl() + that.getIncludes()[includeKey] + ".html", function( response, status, xhr ) {
 
                 });

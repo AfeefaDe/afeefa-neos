@@ -7,7 +7,7 @@ resources:
     DDFA_Main_Module_ddfaTagsModule: 'method(DDFA\Main\Controller\Module\DDFA\TagsModuleController->(index|add|create|view|edit|update|delete)Action())'
     DDFA_Main_Module_ddfaLanguagesModule: 'method(DDFA\Main\Controller\Module\DDFA\LanguagesModuleController->(index|add|create|view|edit|update|delete)Action())'
     DDFA_Main_Plugin_ddfaLocationAPI: 'method(DDFA\Main\Controller\Plugin\DDFA\LocationAPIController->(get|getById)Action())'
-    DDFA_Main_Api_ddfaLocationAPI: 'method(DDFA\Main\Controller\Api\LocationAPIController->(list|show)Action())'
+    DDFA_Main_Api_ddfaLocationAPI: 'method(DDFA\Main\Controller\Api\LocationAPIController->(list|show|create)Action())'
     DDFA_Main_Api_ddfaInitiativeAPI: 'method(DDFA\Main\Controller\Api\InitiativeAPIController->(list|show)Action())'
     DDFA_Main_Api_ddfaMarketEntryAPI: 'method(DDFA\Main\Controller\Api\MarketEntryAPIController->(list|show|create)Action())'
 acls:

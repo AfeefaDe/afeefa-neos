@@ -47,13 +47,13 @@ class LocationAPIController extends ActionController {
     }
 
     public function createAction(Location $location) {
-        /*$now = new DateTime();
-        $location->setCreated($now);
-        $location->setUpdated($now);
-        $location->setPersistenceObjectIdentifier(DDHelpers::createGuid());*/
-        $this->iniLocationRepository->add($location);
-        $this->response->setStatus(201);
-        $this->view->assign('value', ['location' => $location]);
+        if($location->getType()==1) {
+            $this->iniLocationRepository->add($location);
+            $this->response->setStatus(201);
+            $this->view->assign('value', ['location' => $location]);
+        } else {
+            $this->response->setStatus(412);
+        }
     }
 
     protected function initializeView(ViewInterface $view) {

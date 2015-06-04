@@ -32,6 +32,7 @@ class Category extends BasicEntity {
 
     /**
      * @var string
+     * @ORM\Column(nullable=true)
      */
     protected $description;
 

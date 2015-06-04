@@ -21,23 +21,25 @@ class MarketEntry extends Actor {
 
     /**
      * @var \DateTime
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", nullable=true)
      */
     protected $dateFrom;
 
     /**
      * @var \DateTime
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", nullable=true)
      */
     protected $dateTo;
 
     /**
      * @var int
+     * @ORM\Column(nullable=true)
      */
     protected $dateDay;
 
     /**
      * @var int
+     * @ORM\Column(nullable=true)
      */
     protected $datePeriodic;
 

@@ -116,7 +116,7 @@
 
         <div class="neos-controls">
             <f:form.textfield class="neos-span12" property="speakerPrivate" id="speakerPrivate"
-                              placeholder="Enter internal speaker" autofocus="true"/>
+                              placeholder="Enter internal speaker"/>
         </div>
     </div>
 
@@ -125,7 +125,58 @@
 
         <div class="neos-controls">
             <f:form.textfield class="neos-span12" property="speakerPublic" id="speakerPublic"
-                              placeholder="Enter public speaker" autofocus="true"/>
+                              placeholder="Enter public speaker"/>
+        </div>
+    </div>
+</fieldset>
+
+<fieldset class="neos-span3 neos-offset1">
+    <legend>Date</legend>
+
+    <div class="neos-control-group">
+        <label class="neos-control-label">Is Offer?</label>
+
+        <div class="neos-controls">
+            <label for="isOffer" class="neos-radio neos-inline">
+                <f:form.radio property="offer" value="offer" checked="true" id="isOffer"/>
+                offer<span></span>
+            </label>
+            <label for="isDemand" class="neos-radio neos-inline">
+                <f:form.radio property="offer" value="demand" id="isDemand"/>
+                demand<span></span>
+            </label>
+        </div>
+    </div>
+
+    <div class="neos-control-group">
+        <label class="neos-control-label" for="dateFrom">Date from</label>
+
+        <div class="neos-controls">
+            <f:form.textfield class="neos-span12" property="dateFrom" id="dateFrom" type="date"/>
+        </div>
+    </div>
+
+    <div class="neos-control-group">
+        <label class="neos-control-label" for="dateTo">Date to</label>
+
+        <div class="neos-controls">
+            <f:form.textfield class="neos-span12" property="dateTo" id="dateTo" type="date"/>
+        </div>
+    </div>
+
+    <div class="neos-control-group">
+        <label class="neos-control-label" for="dateDay">Date day</label>
+
+        <div class="neos-controls">
+            <f:form.textfield class="neos-span12" property="dateDay" id="dateDay"/>
+        </div>
+    </div>
+
+    <div class="neos-control-group">
+        <label class="neos-control-label" for="datePeriodic">periodic</label>
+
+        <div class="neos-controls">
+            <f:form.textfield class="neos-span12" property="datePeriodic" id="datePeriodic"/>
         </div>
     </div>
 </fieldset>

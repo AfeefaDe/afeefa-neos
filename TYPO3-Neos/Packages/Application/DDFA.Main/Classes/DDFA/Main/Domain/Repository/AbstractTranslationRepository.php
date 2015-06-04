@@ -154,12 +154,16 @@ abstract class AbstractTranslationRepository extends Repository {
         else
             $objectSTD = $this->findOneLocalized($object);
 
-        if ($object->getLocale() != $locale)
+        if ($object->getLocale() != $locale) {
             $object = $this->findOneLocalized($object, $locale);
+            if($object == null)
+                $object = $objectSTD;
+        }
 
-        if ($object->getLocale() == DDConst::LOCALE_NXT)
+        if ($object->getLocale() == DDConst::LOCALE_NXT) {
             $returnVal = $this->merge($objectSTD, $object);
-        else {
+
+        } else {
             $objectNXT = $this->findOneLocalized($object, DDConst::LOCALE_NXT);
             if ($objectNXT != null)
                 $returnVal = $this->merge($objectSTD, $this->merge($objectNXT, $object));

@@ -17,6 +17,7 @@ qx.Class.define("MenuView", {
             // view container
             that.view = $("<div />");
             that.view.attr('id', that.getViewId());
+            $('#main-container').append(that.view);
 
             // menu button
             that.menuBtn = $("<div />");
@@ -35,7 +36,29 @@ qx.Class.define("MenuView", {
             a.append(that.logo);
             that.menu.append(a);
             
-            $('#main-container').append(that.view);
+            // btn refugee guide
+            that.refugeeBtn = $('<div />').addClass('item refugee-guide');
+            that.refugeeLBtnLabel = $('<span />');
+            that.refugeeBtn.append(that.refugeeLBtnLabel);
+            that.menu.append(that.refugeeBtn);
+
+            // btn supporter guide
+            that.supporterBtn = $('<div />').addClass('item supporter-guide');
+            that.supporterBtnLabel = $('<span />');
+            that.supporterBtn.append(that.supporterBtnLabel);
+            that.menu.append(that.supporterBtn);
+
+            // btn help
+            that.helpBtn = $('<div />').addClass('item help');
+            that.helpBtnLabel = $('<span />');
+            that.helpBtn.append(that.helpBtnLabel);
+            that.menu.append(that.helpBtn);
+
+            // btn about
+            that.aboutBtn = $('<div />').addClass('item about');
+            that.aboutBtnLabel = $('<span />');
+            that.aboutBtn.append(that.aboutBtnLabel);
+            that.menu.append(that.aboutBtn);
 
             this.base(arguments);
     	},
@@ -47,12 +70,12 @@ qx.Class.define("MenuView", {
             this.base(arguments);
             
             that.menuBtn.click(function(){
-                $('#main-container').addClass('shifted');
+                that.load();    
                 that.say('mainMenuOpened');
             });
             
             that.listen('curtainclicked', function(){
-                $('#main-container').removeClass('shifted');
+                that.close();
             });
 
             // interferring with other left shifting menus
@@ -65,12 +88,34 @@ qx.Class.define("MenuView", {
             
         },
 
+        load: function(){
+            var that = this;
+
+            that.reset();
+
+            $('#main-container').addClass('shifted');
+
+            that.refugeeLBtnLabel.append( that.getWording('menu_refugee') );
+            that.supporterBtnLabel.append( that.getWording('menu_supporter') );
+            that.helpBtnLabel.append( that.getWording('menu_help') );
+            that.aboutBtnLabel.append( that.getWording('menu_about') );
+
+        },
+
+        reset: function(){
+            var that = this;
+
+            that.refugeeLBtnLabel.empty();
+            that.supporterBtnLabel.empty();
+            that.helpBtnLabel.empty();
+            that.aboutBtnLabel.empty();
+
+        },
+
         close: function(){
             var that = this;
 
-            // TODO: only do in mobile version
-            // that.addRequestBtn.css('display', 'none');
-            // that.addOfferBtn.css('display', 'none');
+            $('#main-container').removeClass('shifted');
         },
 
         changeLanguage: function(){

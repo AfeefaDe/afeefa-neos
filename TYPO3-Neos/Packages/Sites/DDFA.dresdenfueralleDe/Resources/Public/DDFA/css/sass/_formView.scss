@@ -6,6 +6,10 @@
 		
 		height: 3em;
 	  	flex-shrink: 0;
+
+	  	@include background-size(2em);
+		background-position: 1em center;
+		background-repeat: no-repeat;
 		
 		h1 {
 			height: 2em;
@@ -62,12 +66,20 @@
 
 	/* type specific overwrites */
 	&.marketOffer, &.marketRequest {
-		.heading { background-color: $orange; }
+		.heading { background-color: $orange;  }
 		.sendBtn { background-color: $orange; }
 	}
 
+	&.marketOffer {
+		.heading { background-image: url("../img/icon_48.svg"); }
+	}
+
+	&.marketRequest {
+		.heading { background-image: url("../img/icon_52.svg"); }
+	}
+
 	&.feedback {
-		.heading { background-color: $black; }
+		.heading { background-color: $black; background-image: url("../img/icon_50.svg"); }
 		.sendBtn { background-color: $black; }
 	}
 

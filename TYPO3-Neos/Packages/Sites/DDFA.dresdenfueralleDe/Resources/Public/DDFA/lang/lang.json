@@ -48,7 +48,11 @@
             "form_newMarketRequest":"Gesuch aufgeben",
             "form_feedback":"Feedback ans Afeefa Team",
             "form_sendBtn":"Abschicken",
-            "form_cancelBtn":"Abbrechen"
+            "form_cancelBtn":"Abbrechen",
+            "menu_refugee":"Leitfaden für Geflüchtete",
+            "menu_supporter":"Leifaden für Unterstützer",
+            "menu_help":"Hilfe",
+            "menu_about":"Impressum"
         },
 
         "en":{

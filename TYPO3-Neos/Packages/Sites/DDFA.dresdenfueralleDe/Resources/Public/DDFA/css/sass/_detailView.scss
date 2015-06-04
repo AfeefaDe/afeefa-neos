@@ -162,6 +162,11 @@
 		visibility: visible;
 		opacity: 1;
 	}
+
+	&.right {
+		left: initial;
+		right: 6em;
+	}
 	
 	.scroll-container {
 		flex-grow: 1;

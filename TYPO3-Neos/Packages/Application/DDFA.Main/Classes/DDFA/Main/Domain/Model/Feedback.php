@@ -18,6 +18,11 @@ abstract class Feedback extends BasicEntity {
     /**
      * @var string
      */
+    protected $author;
+
+    /**
+     * @var string
+     */
     protected $mail;
 
     /**
@@ -25,7 +30,13 @@ abstract class Feedback extends BasicEntity {
      * @ORM\Column(type="text")
      *
      */
-    protected $text;
+    protected $message;
+
+    /**
+     * @var string
+     * @ORM\Column()
+     */
+    protected $metaData;
 
     public function __construct() {
         parent::__construct();
@@ -48,14 +59,28 @@ abstract class Feedback extends BasicEntity {
     /**
      * @return string
      */
-    public function getText() {
-        return $this->text;
+    public function getAuthor() {
+        return $this->author;
     }
 
     /**
-     * @param string $text
+     * @param string $author
      */
-    public function setText($text) {
-        $this->text = $text;
+    public function setAuthor($author) {
+        $this->author = $author;
+    }
+
+    /**
+     * @return string
+     */
+    public function getMessage() {
+        return $this->message;
+    }
+
+    /**
+     * @param string $message
+     */
+    public function setMessage($message) {
+        $this->message = $message;
     }
 }

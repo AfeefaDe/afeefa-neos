@@ -54,3 +54,17 @@
       variables:
         entity: 'category'
 
+-
+  name: 'api feedback'
+  uriPattern: 'api/feedback<FeedbackSubroutes>(.{@format})'
+  defaults:
+    '@controller': 'Api\FeedbackAPI'
+    '@action': 'list'
+    '@format': 'json'
+  subRoutes:
+    FeedbackSubroutes:
+      package: 'DDFA.Main'
+      suffix: 'Entity'
+      variables:
+        entity: 'feedback'
+

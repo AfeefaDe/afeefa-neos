@@ -11,10 +11,10 @@ namespace DDFA\Main\Controller\Api;
 
 use DDFA\Main\Domain\Model\Category;
 use DDFA\Main\Domain\Repository\CategoryRepository;
+use TYPO3\Flow\Annotations as Flow;
 use TYPO3\Flow\Mvc\Controller\ActionController;
 use TYPO3\Flow\Mvc\View\JsonView;
 use TYPO3\Flow\Mvc\View\ViewInterface;
-use TYPO3\Flow\Annotations as Flow;
 
 class CategoryAPIController extends ActionController {
 

@@ -40,3 +40,31 @@
       variables:
         entity: 'marketentry'
 
+-
+  name: 'api categories'
+  uriPattern: 'api/categories<CategoriesSubroutes>(.{@format})'
+  defaults:
+    '@controller': 'Api\CategoryAPI'
+    '@action': 'list'
+    '@format': 'json'
+  subRoutes:
+    CategoriesSubroutes:
+      package: 'DDFA.Main'
+      suffix: 'Entity'
+      variables:
+        entity: 'category'
+
+-
+  name: 'api feedback'
+  uriPattern: 'api/feedback<FeedbackSubroutes>(.{@format})'
+  defaults:
+    '@controller': 'Api\FeedbackAPI'
+    '@action': 'list'
+    '@format': 'json'
+  subRoutes:
+    FeedbackSubroutes:
+      package: 'DDFA.Main'
+      suffix: 'Entity'
+      variables:
+        entity: 'feedback'
+

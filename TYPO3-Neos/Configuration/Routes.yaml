@@ -10,16 +10,6 @@
 ##
 # dd4all subroutes
 -
-  name: 'dd4all'
-  uriPattern: '<dd4allSubroutes>'
-  defaults:
-    '@package': 'DDFA.Main'
-    '@format': 'json'
-  subRoutes:
-    'dd4allSubroutes':
-      package: 'DDFA.Main'
-
--
   name: 'api'
   uriPattern: '<apiSubroutes>'
   defaults:

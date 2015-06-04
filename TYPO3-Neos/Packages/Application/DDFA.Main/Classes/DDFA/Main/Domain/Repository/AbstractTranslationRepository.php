@@ -159,8 +159,13 @@ abstract class AbstractTranslationRepository extends Repository {
 
         if ($object->getLocale() == DDConst::LOCALE_NXT)
             $returnVal = $this->merge($objectSTD, $object);
-        else
-            $returnVal = $this->merge($objectSTD, $this->merge($this->findOneLocalized($object, DDConst::LOCALE_NXT), $object));
+        else {
+            $objectNXT = $this->findOneLocalized($object, DDConst::LOCALE_NXT);
+            if ($objectNXT != null)
+                $returnVal = $this->merge($objectSTD, $this->merge($objectNXT, $object));
+            else
+                $returnVal = $this->merge($objectSTD, $object);
+        }
 
         return $this->convertImgUri($returnVal);
     }

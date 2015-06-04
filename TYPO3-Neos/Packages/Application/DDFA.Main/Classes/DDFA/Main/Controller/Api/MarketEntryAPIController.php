@@ -47,14 +47,6 @@ class MarketEntryAPIController extends ActionController
     public function createAction(MarketEntry $marketentry) {
         $this->marketEntryRepository->add($marketentry);
         $this->response->setStatus(201);
-        /*$now = new DateTime();
-        $marketentry = new MarketEntry();
-        $marketentry->setOffer(true);
-        $marketentry->setDateFrom($now);
-        $marketentry->setDateTo($now);
-        $marketentry->setDateDay(1);
-        $marketentry->setDatePeriodic(1);
-        $this->marketEntryRepository->add($marketentry);*/
         $this->view->assign('value', ['marketentry' => $marketentry]);
     }
 

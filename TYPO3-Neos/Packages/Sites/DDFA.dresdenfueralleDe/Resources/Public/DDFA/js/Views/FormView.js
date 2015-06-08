@@ -221,12 +221,10 @@ qx.Class.define("FormView", {
                 that.sendForm();
             });
 
-            // that.sendBtn.click(function(e){
-            //     e.preventDefault();
-            //     that.sendForm();
+            // that.listen('mapclicked', function(){
+            //     that.closeSoftly();
             // });
 
-            // that.listen('mapclicked', function(){
             that.cancelBtn.click(function(e){
                 e.preventDefault();
                 that.close();
@@ -335,6 +333,12 @@ qx.Class.define("FormView", {
             that.reset();
         },
 
+        closeSoftly: function(){
+            var that = this;
+
+            that.view.removeClass('active');
+        },
+
         sendForm: function(){
             var that = this;
 
@@ -437,6 +441,12 @@ qx.Class.define("FormView", {
 
                 });
 
+                
+                APP.getDataManager().sendToSlack({
+                    heading: 'Feedback von _' + data.feedback.author + '_ (' + data.feedback.mail + ')',
+                    message: data.feedback.message
+                });
+
             }
 
             function createMarketEntry(data, dataLocation){
@@ -458,6 +468,23 @@ qx.Class.define("FormView", {
                         // alert('marketLocation sent, thanks');
                     });
 
+                });
+
+                var type = (data.marketentry.offer) ? 'Angebot' : 'Gesuch';
+                APP.getDataManager().sendToSlack({
+                    heading: type + ' von _' + data.marketentry.speakerPublic + '_ (' + data.marketentry.mail + ')',
+                    message:    '_Titel:_ ' + data.marketentry.name + '\n'
+                                + '_Beschreibung:_ ' + data.marketentry.description + '\n'
+                                + '_web:_ ' + data.marketentry.web + '\n'
+                                + '_facebook:_ ' + data.marketentry.facebook + '\n'
+                                + '_phone:_ ' + data.marketentry.phone + '\n'
+                                + '_Sprachen:_ ' + data.marketentry.spokenLanguages + '\n'
+                                + '_Str:_ ' + data.marketentry.street + '\n'
+                                + '_PLZ:_ ' + data.marketentry.zip + '\n'
+                                + '_Ort:_ ' + data.marketentry.city + '\n'
+                                + '_von:_ ' + data.marketentry.dateFrom + '\n'
+                                + '_bis:_ ' + data.marketentry.dateTo + '\n'
+                                + '_Wdh.:_ ' + data.marketentry.datePeriodic
                 });
 
             }

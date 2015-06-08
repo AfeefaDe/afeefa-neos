@@ -155,7 +155,7 @@ qx.Class.define("DataManager", {
 
         addFeedback: function( data, cb ){
             
-            console.debug('POST api/feedback', data);
+            // console.debug('POST api/feedback', data);
 
             $.ajax({
                 url: "api/feedback",
@@ -173,6 +173,28 @@ qx.Class.define("DataManager", {
                 cb(a);
             });
             
+        },
+
+        sendToSlack: function( data, cb ) {
+
+            var slackMessage = '*' + data.heading + '*' + ':\n' + data.message;
+
+            $.ajax({
+                url: "https://hooks.slack.com/services/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",
+                type: 'POST',
+                data: JSON.stringify( {text:slackMessage} ),
+                cache: false,
+                dataType: 'text',
+                processData: false
+                // contentType: false
+            })
+            .done(function( data ) {
+                // cb(data);
+            })
+            .fail(function(a) {
+                // cb(a);
+            });
+
         },
 
         importInis: function(){

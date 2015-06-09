@@ -30,9 +30,10 @@ qx.Class.define("MenuView", {
             that.view.append(that.menu);
 
             // logo
-            var a = $('<a />').attr('href', 'http://afeefa.de');
+            var a = $('<a />')
+                .attr('href', 'http://afeefa.de')
+                .attr('id', 'logo');
             that.logo  = $('<img />').attr('src', APP.getConfig().imgPath + 'afeefa_light.svg');
-            that.logo.attr('id', 'logo');
             a.append(that.logo);
             that.menu.append(a);
             
@@ -61,6 +62,14 @@ qx.Class.define("MenuView", {
             that.aboutBtnLabel = $('<span />');
             that.aboutBtn.append(that.aboutBtnLabel);
             that.menu.append(that.aboutBtn);
+
+            // btn facebook
+            that.facebookBtn = $('<div />').addClass('item facebook');
+            that.facebookBtnLabel = $('<a />')
+                .attr('href', 'https://www.facebook.com/afeefa.de')
+                .attr('target', '_blank');
+            that.facebookBtn.append(that.facebookBtnLabel);
+            that.menu.append(that.facebookBtn);
 
             this.base(arguments);
     	},
@@ -116,6 +125,7 @@ qx.Class.define("MenuView", {
             that.supporterBtnLabel.append( that.getWording('menu_supporter') );
             that.helpBtnLabel.append( that.getWording('menu_help') );
             that.aboutBtnLabel.append( that.getWording('menu_about') );
+            that.facebookBtnLabel.append( that.getWording('menu_facebook') );
 
         },
 
@@ -126,6 +136,7 @@ qx.Class.define("MenuView", {
             that.supporterBtnLabel.empty();
             that.helpBtnLabel.empty();
             that.aboutBtnLabel.empty();
+            that.facebookBtnLabel.empty();
 
         },
 

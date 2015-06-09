@@ -56,9 +56,10 @@
             "form_success":"Danke für deinen Eintrag! Wir behalten uns vor, diesen zu prüfen und geben ihn so schnell wie möglich frei.",
             "form_feedbackSent":"Wir haben dein Feedback erhalten. Herzlichen Dank dafür!",
             "menu_refugee":"Leitfaden für Geflüchtete",
-            "menu_supporter":"Leifaden für Unterstützer",
+            "menu_supporter":"Leifaden für Engagierte",
             "menu_help":"Hilfe",
-            "menu_about":"Impressum"
+            "menu_about":"Impressum",
+            "menu_facebook":"facebook"
         },
 
         "en":{
@@ -85,7 +86,11 @@
             "prop_scope":"nur im Stadtteil aktiv",
             "prop_openingHours":"opening hours",
             "misc_officialEntry":"official entry",
-            "misc_privateEntry":"private entry"
+            "misc_privateEntry":"private entry",
+
+            "menu_refugee":"guide for asylum seekers",
+            "menu_supporter":"guide for supporters",
+            "menu_about":"imprint"
         },
 
         "ar":{

@@ -1,12 +1,14 @@
-(<span class="locationLink" name="556e1d4c72a6e">sächsischer Flüchtlingsrat</span>)
-(<span class="locationLink" name="556e1d420242a">Ausländerrat</span>)
+(<span class="locationLink" name="556e1d4c72a6e">S&auml;chsischen Fl&uuml;chtlingsrat</span>)
+(<span class="locationLink" name="556e1d420242a">Ausl&auml;nderrat</span>)
 (<span class="locationLink" name="556e1d33f0698">Kontaktgruppe Asyl</span>)
-(<span class="locationLink" name="556e1d53c320a">Dresdner Verein für soziale Integration von Ausländern und Aussiedlern</span>)
+(<span class="locationLink" name="556e1d53c320a">Dresdner Verein f&uuml;r soziale Integration von Ausl&auml;ndern und Aussiedlern</span>)
 (<span class="locationLink" name="556e1d5057f02">Gemeindedolmetscherdienst</span>)
-(<span class="locationLink" name="556e1d313acbd">Deutschkurse Asyl, Migration, Flucht; English: German courses, asylum, migration, escape</span>)
+Sozialamt: <span class="locationLink" name="556e2608941b3">Sozialamt</span>
+(<span class="locationLink" name="556e1d313acbd">DAMF</span>)
+<span class="locationLink" name="557720d4f1055">Traumaambulanz</span>
 (<span class="locationLink" name="556e1d4585894">Medea</span>)
 (<span class="locationLink" name="556e1d4bf254c">Medinetz</span>)
-<span class="locationLink" name="556e1d35b069f">Welcome to Löbtau</span>
+<span class="locationLink" name="556e1d35b069f">Welcome to L&ouml;btau</span>
 <span class="locationLink" name="556e1d42cea11">Prohlis is colourful</span>
 <span class="locationLink" name="556e1d47add2f">Gorbitz international</span>
 <span class="locationLink" name="556e1d3d87f99">Welcome to the highland (Pappritz)</span>
@@ -19,3 +21,10 @@ KAMA Dresden  <span class="locationLink" name="556e1d4e90550">Kama Dresden</span
 RAA Sachsen <span class="locationLink" name="556e1d3ca3475">RAA Sachsen</span>
 Kulturb&uuml;ro <span class="locationLink" name="">Kulturb&uuml;ro</span>?
 Netzwerk Asyl, Migration und Flucht <span class="locationLink" name="556e1d2cd0160">Netzwerk Asyl, Migration und Flucht</span>
+Asylum Seekers Movement:
+Remembering Khaled:
+Postplatz: <span class="locationLink" name="5570d7c99fdd8">Postplatz</span>
+Umsonstladen: <span class="locationLink" name="5570b8fcd6b1c">Umsonstladen</span>
+Kleiderladen der Heilsarmee: <span class="locationLink" name="5570b8db255b3">Kleiderladen der Heilsarmee</span>
+Kinderkleider-Tauschb&ouml;rse Dresden Gorbitz: <span class="locationLink" name="5570b8afd85a5">Kinderkleider-Tauschb&ouml;rse Dresden Gorbitz</span>
+Kaleb Kleiderkammer: <span class="locationLink" name="5570b93510e5a">Kaleb Kleiderkammer</span>

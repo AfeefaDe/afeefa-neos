@@ -54,41 +54,30 @@
 		<!-- requirejs (module loader) handles all further js includes -->
 		<script data-main="{f:uri.resource(path: 'DDFA/js/main', package: 'DDFA.dresdenfueralleDe')}" type="text/javascript" src="{f:uri.resource(path: 'requirejs/require.js', package: 'DDFA.dresdenfueralleDe')}"></script>
 
+
 		<script src='https://api.tiles.mapbox.com/mapbox.js/v2.1.9/mapbox.js'></script>
 		<script src='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/leaflet.markercluster.js'></script>
 
 	</f:section>
 </head>
 <body>
+
 <f:section name="body">
+
+	<!--<div id="fb-root"></div>
+	<script>(function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0];
+	  if (d.getElementById(id)) return;
+	  js = d.createElement(s); js.id = id;
+	  js.src = "//connect.facebook.net/de_DE/sdk.js#xfbml=1&version=v2.3";
+	  fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script>-->
 	
 	<div id="main-container">
 
 		<div id="map-container"></div>
 	
 	</div>
-
-  <!--
-	<form>
-	  <div class="form-group">
-	  	<div class="input-group">
-		  	<span class="input-group-addon">@</span>
-		    <input type="email" class="form-control" id="email" placeholder="Deine E-Mail">
-		  </div>
-	  </div>
-	  <div class="form-group">
-	  	<div class="input-group">
-		  	<span class="input-group-addon" id="basic-addon1">@</span>
-	  		<span class="input-group-addon glyphicon glyphicon-pencil" aria-hidden="true"></span>
-	    	<textarea class="form-control" id="message" rows="3" placeholder="Deine Nachricht"></textarea>
-	    </div>
-	  </div>
-	  <button type="submit" class="btn btn-default">
-	  	<span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Senden
-	  </button>
-
-	</form>
-	-->
 
 </f:section>
 

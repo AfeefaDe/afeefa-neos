@@ -1,5 +1,14 @@
 @import "compass/css3";
 
+@mixin link {
+	text-decoration: none;
+	font-weight: 500;
+	display: inline-block;
+	background-color: $white;
+	color: $black;
+	cursor: pointer;
+}
+
 #includeView {
 	
 	@include transition(all 200ms);
@@ -29,6 +38,10 @@
 		left: 0;
 		visibility: visible;
 		opacity: 1;
+	}
+
+	a {
+		@include link;
 	}
 
 	.closeBtn {
@@ -74,6 +87,7 @@
 		h2 {
 			font-weight: 500;
 			line-height: 1em;
+			text-align: left;
 		}
 
 		p {
@@ -81,11 +95,7 @@
 		}
 
 		span.locationLink {
-			font-weight: 500;
-			display: inline-block;
-			background-color: $white;
-			color: $black;
-			cursor: pointer;
+			@include link;
 		}
 
 	}

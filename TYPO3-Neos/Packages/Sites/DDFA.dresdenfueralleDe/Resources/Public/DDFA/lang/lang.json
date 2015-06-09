@@ -17,6 +17,7 @@
             "cat_public":"Behörde",
             "cat_tram":"Haltestelle",
             "cat_other":"sonstige",
+            
             "prop_name":"Titel",
             "prop_author":"Name",
             "prop_category":"Kategorie",
@@ -44,8 +45,10 @@
             "prop_datePeriodic_weekly":"wöchentlich",
             "prop_datePeriodic_secondWeekly":"alle 2 Wochen",
             "prop_datePeriodic_monthly":"monatlich",
+            
             "misc_officialEntry":"offizieller Eintrag",
             "misc_privateEntry":"privater Eintrag",
+            
             "form_newMarketOffer":"Angebot aufgeben",
             "form_newMarketRequest":"Gesuch aufgeben",
             "form_feedback":"Feedback ans Afeefa Team",
@@ -55,6 +58,7 @@
             "form_fail":"Leider hat es nicht geklappt, versuche es bitte noch einmal.",
             "form_success":"Danke für deinen Eintrag! Wir behalten uns vor, diesen zu prüfen und geben ihn so schnell wie möglich frei.",
             "form_feedbackSent":"Wir haben dein Feedback erhalten. Herzlichen Dank dafür!",
+            
             "menu_refugee":"Leitfaden für Geflüchtete",
             "menu_supporter":"Leifaden für Engagierte",
             "menu_help":"Hilfe",
@@ -88,8 +92,8 @@
             "misc_officialEntry":"official entry",
             "misc_privateEntry":"private entry",
 
-            "menu_refugee":"guide for asylum seekers",
-            "menu_supporter":"guide for supporters",
+            "menu_refugee":"Guide for asylum seekers",
+            "menu_supporter":"Guide for supporters",
             "menu_about":"imprint"
         },
 
@@ -114,7 +118,9 @@
             "prop_facebook":"facebook",
             "prop_openingHours":"أوقات العمل",
             "misc_officialEntry":"مدخل رسمي",
-            "misc_privateEntry":"مدخل  خاص"
+            "misc_privateEntry":"مدخل  خاص",
+
+            "menu_refugee":"دليل طالبي اللجوء"
         },
 
         "fa":{
@@ -138,16 +144,21 @@
             "prop_facebook":"facebook",
             "prop_openingHours":"ساعات کاری",
             "misc_officialEntry":"ورود عمومی",
-            "misc_privateEntry":"ورود شخصی"
+            "misc_privateEntry":"ورود شخصی",
+
+            "menu_refugee":"راهنمای پناهجویان"
         },
 
         "fr":{
+            "menu_refugee":""
         },
 
         "sr":{
+            "menu_refugee":""
         },
 
         "ru":{
+            "menu_refugee":"Руководство для просителей убежища"
         },
 
         "ti":{
@@ -171,13 +182,17 @@
             "prop_facebook":"facebook",
             "prop_openingHours":"ሰዓታት ስራሕ",
             "misc_officialEntry":"ወግዓዊ ሰነድ",
-            "misc_privateEntry":"ውልቃዊ ሰነድ"
+            "misc_privateEntry":"ውልቃዊ ሰነድ",
+
+            "menu_refugee":"ጠቐምቲ ሓበሬታታት ንሓተቲ ዕቑባ"
         },
 
         "ur":{
+            "menu_refugee":"پناہ کے متلاشیوں کے لئے گائیڈ"
         },
 
         "it":{
+            "menu_refugee":""
         }
     }
 ]

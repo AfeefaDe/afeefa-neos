@@ -24,19 +24,20 @@
 		background-image: url("../img/menu.svg");
 	}
 
-	a {
+	a#logo {
 		width: 50%;
 		margin: 0 auto;
 		display: block;
 		margin-bottom: 10em;
+
+		img { width: 100%; }
 	}
 
-	img { width: 100%; }
 
 	.item {
 		@include box-sizing(border-box);
 		width: 100%;
-		padding: 0 5em 0 0;
+		padding: 0 5em 0 1em;
 		background-color: rgba(0,0,0,0.5);
 		margin-bottom: 1em;
 		cursor: pointer;
@@ -44,10 +45,11 @@
 
 		&:hover { background-color: rgba(0,0,0,0.6); }
 
-		span {
+		a, span {
 			line-height: 2em;
 			color: $white;
 			font-weight: 100;
+			text-decoration: none;
 		}
 
 		&.refugee-guide, &.supporter-guide {
@@ -56,6 +58,7 @@
 			background-position: 10.5em 0.8em;
 			background-repeat: no-repeat;
 			margin-bottom: 2em;
+			height: 5em;
 
 			span {
 				font-size: 1.3em;
@@ -69,6 +72,12 @@
 
 		&.supporter-guide {
 			background-image: url("../img/icon_56.svg");
+		}
+
+		&.facebook {
+			background-image: url("../img/icon-46.svg");
+			background-repeat: no-repeat;
+			background-position: 90% center;
 		}
 	}
 

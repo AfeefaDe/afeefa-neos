@@ -34,7 +34,7 @@ qx.Class.define("MapView", {
 		that.map = L.mapbox.map('map-container', 'felixkamille.4128d9e7', {
 			zoomControl: false,
 			maxBounds: [
-    			L.latLng(50.95, 13.5), // south-west corner
+    			L.latLng(50.894423, 13.304980), // south-west corner
     			L.latLng(51.2, 14.0)  // north-east corner
 			],
 			attributionControl: false,

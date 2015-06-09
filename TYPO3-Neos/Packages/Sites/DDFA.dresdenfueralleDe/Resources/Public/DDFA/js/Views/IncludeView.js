@@ -45,6 +45,8 @@ qx.Class.define("IncludeView", {
         load: function( includeKey ){
             var that = this;
 
+            that.reset();
+            
             that.view.addClass('active');
 
             that.say('includeViewOpened');

@@ -441,7 +441,7 @@ qx.Class.define("FormView", {
 
                 });
 
-                
+                // to slack
                 APP.getDataManager().sendToSlack({
                     heading: 'Feedback von _' + data.feedback.author + '_ (' + data.feedback.mail + ')',
                     message: data.feedback.message
@@ -470,6 +470,7 @@ qx.Class.define("FormView", {
 
                 });
 
+                // to slack
                 var type = (data.marketentry.offer) ? 'Angebot' : 'Gesuch';
                 APP.getDataManager().sendToSlack({
                     heading: type + ' von _' + data.marketentry.speakerPublic + '_ (' + data.marketentry.mail + ')',

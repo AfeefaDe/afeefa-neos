@@ -384,7 +384,7 @@ qx.Class.define("FormView", {
                 data.marketentry.published = false;
                 
                 dataLocation.location.type = 1;
-                dataLocation.location.published = true;
+                dataLocation.location.published = false;
 
                 createMarketEntry(data, dataLocation);
 
@@ -414,7 +414,7 @@ qx.Class.define("FormView", {
                 data.marketentry.published = false;
                 
                 dataLocation.location.type = 1;
-                dataLocation.location.published = true;
+                dataLocation.location.published = false;
 
                 createMarketEntry(data, dataLocation);
 

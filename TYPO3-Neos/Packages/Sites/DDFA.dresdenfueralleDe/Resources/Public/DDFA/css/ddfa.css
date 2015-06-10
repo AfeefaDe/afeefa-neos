@@ -2318,6 +2318,9 @@ body.phone #plusView {
   visibility: visible;
   opacity: 1;
 }
+#includeView.imprint {
+  direction: ltr;
+}
 #includeView a {
   text-decoration: none;
   font-weight: 500;

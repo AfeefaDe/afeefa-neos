@@ -40,6 +40,10 @@
 		opacity: 1;
 	}
 
+	&.imprint {
+		direction: ltr;
+	}
+
 	a {
 		@include link;
 	}

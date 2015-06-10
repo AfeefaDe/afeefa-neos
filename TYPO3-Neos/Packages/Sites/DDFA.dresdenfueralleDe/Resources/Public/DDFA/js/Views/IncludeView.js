@@ -48,6 +48,7 @@ qx.Class.define("IncludeView", {
             that.reset();
             
             that.view.addClass('active');
+            that.view.addClass(includeKey);
 
             that.say('includeViewOpened');
             
@@ -133,6 +134,9 @@ qx.Class.define("IncludeView", {
             var that = this;
 
             that.view.removeClass('active');
+            _.each(that.getIncludes(), function(value, key){
+                that.view.removeClass(value);
+            });
             
             that.say('includeViewClosed');
         },

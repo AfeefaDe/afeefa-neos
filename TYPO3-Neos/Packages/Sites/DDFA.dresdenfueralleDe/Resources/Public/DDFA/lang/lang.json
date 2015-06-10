@@ -167,7 +167,7 @@
             "misc_officialEntry":"مدخل رسمي",
             "misc_privateEntry":"مدخل  خاص",
 
-            "menu_refugee":"دليل طالبي اللجوء"
+            "menu_refugee":""
         },
 
         "fa":{
@@ -193,7 +193,7 @@
             "misc_officialEntry":"ورود عمومی",
             "misc_privateEntry":"ورود شخصی",
 
-            "menu_refugee":"راهنمای پناهجویان"
+            "menu_refugee":""
         },
 
         "fr":{
@@ -231,11 +231,11 @@
             "misc_officialEntry":"ወግዓዊ ሰነድ",
             "misc_privateEntry":"ውልቃዊ ሰነድ",
 
-            "menu_refugee":"ጠቐምቲ ሓበሬታታት ንሓተቲ ዕቑባ"
+            "menu_refugee":""
         },
 
         "ur":{
-            "menu_refugee":"پناہ کے متلاشیوں کے لئے گائیڈ"
+            "menu_refugee":""
         },
 
         "it":{

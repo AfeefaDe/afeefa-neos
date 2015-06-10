@@ -1,6 +1,7 @@
 [
     {
         "de":{
+            "category":"Kategorie",
             "cat_consultation":"Beratung",
             "cat_medic":"Medizinische Beratung",
             "cat_german":"Deutsch lernen",
@@ -10,12 +11,13 @@
             "cat_children":"für Kinder + Jugendliche",
             "cat_donation":"Spenden",
             "cat_community":"Gemeinschaft",
+            "cat_tram":"Haltestelle",
+            "cat_religious":"religiöse Einrichtung",
             "cat_christian":"Kirche",
             "cat_islam":"Moschee",
             "cat_jewish":"Synagoge",
             "cat_shop":"kulterspezifischer Einkaufsladen",
             "cat_public":"Behörde",
-            "cat_tram":"Haltestelle",
             "cat_other":"sonstige",
             
             "prop_name":"Titel",
@@ -37,8 +39,8 @@
             "prop_supportNeeded":"Unterstützer gesucht",
             "prop_scope":"nur im Stadtteil aktiv",
             "prop_openingHours":"Öffnungszeiten",
-            "prop_datefrom":"Von",
-            "prop_dateto":"Bis",
+            "prop_dateFrom":"Von",
+            "prop_dateTo":"Bis",
             "prop_dateday":"Tag genau",
             "prop_datePeriodic":"Wiederholung",
             "prop_datePeriodic_daily":"täglich",
@@ -46,8 +48,12 @@
             "prop_datePeriodic_secondWeekly":"alle 2 Wochen",
             "prop_datePeriodic_monthly":"monatlich",
             
+            "misc_verifiedEntry":"Eintrag geprüft",
+            "misc_notVerifiedEntry":"Eintrag nicht geprüft",
             "misc_officialEntry":"offizieller Eintrag",
             "misc_privateEntry":"privater Eintrag",
+            "misc_tram":"Straßenbahn",
+            "misc_bus":"Bus",
             
             "form_newMarketOffer":"Angebot aufgeben",
             "form_newMarketRequest":"Gesuch aufgeben",
@@ -77,24 +83,65 @@
             "cat_children":"for children + young adults",
             "cat_donation":"donations",
             "cat_community":"community",
-            "cat_tram":"tram stop",
+            "cat_tram":"traffic stop",
+            "cat_religious":"religious institution",
+            "cat_christian":"church",
+            "cat_islam":"mosque",
+            "cat_jewish":"synagogue",
+            "cat_shop":"international shop",
+            "cat_public":"public bodies",
+            "cat_other":"other",
+            
+            "prop_name":"title",
+            "prop_author":"name",
+            "prop_category":"category",
             "prop_location":"location",
+            "prop_street":"street",
+            "prop_zip":"postal code",
+            "prop_city":"City",
             "prop_description":"description",
-            "prop_speaker":"contact person",
+            "prop_speakerPublic":"contact person",
+            "prop_spokenLanguages":"languages",
             "prop_phone":"phone",
             "prop_fax":"fax",
+            "prop_message":"message",
             "prop_mail":"e-mail",
             "prop_web":"website",
             "prop_facebook":"facebook",
-            "prop_supportNeeded":"supportes wanted",
+            "prop_supportNeeded":"supporters wanted",
             "prop_scope":"nur im Stadtteil aktiv",
             "prop_openingHours":"opening hours",
+            "prop_dateFrom":"from",
+            "prop_dateTo":"to",
+            "prop_dateday":"",
+            "prop_datePeriodic":"frequence/ repetition",
+            "prop_datePeriodic_daily":"daily",
+            "prop_datePeriodic_weekly":"weekly",
+            "prop_datePeriodic_secondWeekly":"every 2 weeks",
+            "prop_datePeriodic_monthly":"monthly",
+            
+            "misc_verifiedEntry":"verified",
+            "misc_notVerifiedEntry":"not verified",
             "misc_officialEntry":"official entry",
             "misc_privateEntry":"private entry",
+            "misc_tram":"tram",
+            "misc_bus":"bus",
+
+            "form_newMarketOffer":"make an offer",
+            "form_newMarketRequest":"make a request",
+            "form_feedback":"feedback to the Afeefa team",
+            "form_emptyOption":"nothing selected",
+            "form_sendBtn":"Send",
+            "form_cancelBtn":"Cancel",
+            "form_fail":"Something went wrong. Please try again later.",
+            "form_success":"Thank you! We will verify your entry and release it as soon as possible.",
+            "form_feedbackSent":"we recieved your feedback. Thanks a lot!",
 
             "menu_refugee":"Guide for asylum seekers",
             "menu_supporter":"Guide for supporters",
-            "menu_about":"imprint"
+            "menu_help":"help",
+            "menu_about":"imprint",
+            "menu_facebook":"facebook"
         },
 
         "ar":{
@@ -158,7 +205,7 @@
         },
 
         "ru":{
-            "menu_refugee":"Руководство для просителей убежища"
+            "menu_refugee":""
         },
 
         "ti":{

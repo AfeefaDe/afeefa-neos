@@ -188,6 +188,9 @@ qx.Class.define("FormView", {
 
                     // general properties
                     if(prop.required) that[type + '_field_'+prop.name].attr('required', true);
+                    
+                    that[type + '_field_'+prop.name].addClass(prop.name);
+                    that[type + '_label_'+prop.name].addClass(prop.name);
 
                     that.allInputFields.push( that[type + '_field_'+prop.name] );
 
@@ -301,6 +304,9 @@ qx.Class.define("FormView", {
             }
 
             that.view.addClass('active');
+
+            // TODO dirty fix for IE
+            if( !Modernizr.inputtypes.date ) that.view.find('.dateFrom, .dateTo, .datePeriodic').hide();
         },
 
         reset: function(){
@@ -373,12 +379,12 @@ qx.Class.define("FormView", {
                 });
 
                 // TODO date dummy data, because it's required by the model, which becomes obsolete as soon as the model allows empty date properties
-                if( data.marketentry.dateFrom.length == 0) data.marketentry.dateFrom = '1854-01-01T00:00:00+0200';
-                if( data.marketentry.dateFrom.indexOf('T00:00:00+0200') < 0 ) data.marketentry.dateFrom += 'T00:00:00+0200';
-                if( data.marketentry.dateTo.length == 0) data.marketentry.dateTo = '1854-01-01T00:00:00+0200';
-                if( data.marketentry.dateTo.indexOf('T00:00:00+0200') < 0 ) data.marketentry.dateTo += 'T00:00:00+0200';
-                if( !data.marketentry.datePeriodic ) data.marketentry.datePeriodic = '999';
-                data.marketentry.dateDay = new Date(data.marketentry.dateFrom).getDay();
+                // if( data.marketentry.dateFrom.length == 0) data.marketentry.dateFrom = '1854-01-01T00:00:00+0200';
+                if( data.marketentry.dateFrom.length && data.marketentry.dateFrom.indexOf('T00:00:00+0200') < 0 ) data.marketentry.dateFrom += 'T00:00:00+0200';
+                // if( data.marketentry.dateTo.length == 0) data.marketentry.dateTo = '1854-01-01T00:00:00+0200';
+                if( data.marketentry.dateFrom.length && data.marketentry.dateTo.indexOf('T00:00:00+0200') < 0 ) data.marketentry.dateTo += 'T00:00:00+0200';
+                // if( !data.marketentry.datePeriodic ) data.marketentry.datePeriodic = '999';
+                // data.marketentry.dateDay = new Date(data.marketentry.dateFrom).getDay();
 
                 data.marketentry.offer = true;
                 data.marketentry.published = false;
@@ -403,12 +409,14 @@ qx.Class.define("FormView", {
                 });
 
                 // TODO date dummy data, because it's required by the model, which becomes obsolete as soon as the model allows empty date properties
-                if( data.marketentry.dateFrom.length == 0) data.marketentry.dateFrom = '1854-01-01T00:00:00+0200';
-                if( data.marketentry.dateFrom.indexOf('T00:00:00+0200') < 0 ) data.marketentry.dateFrom += 'T00:00:00+0200';
-                if( data.marketentry.dateTo.length == 0) data.marketentry.dateTo = '1854-01-01T00:00:00+0200';
-                if( data.marketentry.dateTo.indexOf('T00:00:00+0200') < 0 ) data.marketentry.dateTo += 'T00:00:00+0200';
-                if( !data.marketentry.datePeriodic ) data.marketentry.datePeriodic = '999';
-                data.marketentry.dateDay = new Date(data.marketentry.dateFrom).getDay();
+                // if( data.marketentry.dateFrom.length == 0) data.marketentry.dateFrom = '1854-01-01T00:00:00+0200';
+                if( data.marketentry.dateFrom.length && data.marketentry.dateFrom.indexOf('T00:00:00+0200') < 0 ) data.marketentry.dateFrom += 'T00:00:00+0200';
+                // if( data.marketentry.dateFrom.indexOf('T00:00:00+0200') < 0 ) data.marketentry.dateFrom += 'T00:00:00+0200';
+                // if( data.marketentry.dateTo.length == 0) data.marketentry.dateTo = '1854-01-01T00:00:00+0200';
+                if( data.marketentry.dateFrom.length && data.marketentry.dateTo.indexOf('T00:00:00+0200') < 0 ) data.marketentry.dateTo += 'T00:00:00+0200';
+                // if( data.marketentry.dateTo.indexOf('T00:00:00+0200') < 0 ) data.marketentry.dateTo += 'T00:00:00+0200';
+                // if( !data.marketentry.datePeriodic ) data.marketentry.datePeriodic = '999';
+                // data.marketentry.dateDay = new Date(data.marketentry.dateFrom).getDay();
                 
                 data.marketentry.offer = false;
                 data.marketentry.published = false;

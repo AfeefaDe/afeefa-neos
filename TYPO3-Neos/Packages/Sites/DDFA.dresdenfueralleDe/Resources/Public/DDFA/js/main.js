@@ -23,7 +23,7 @@ require( ['domReady', 'modernizr'], function(domReady) {
 
 	domReady(function(){
 
-		require( ['jquery', 'qx', 'underscore', 'hammer'], function( $, qx, _, Hammer ){
+		require( ['jquery', 'qx', 'underscore', 'hammer', 'modernizr'], function( $, qx, _, Hammer ){
 
 			require( ['Daddy'], function(){
 

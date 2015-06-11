@@ -2370,6 +2370,7 @@ body.phone #plusView {
 }
 #includeView .content p {
   font-weight: 300;
+  line-height: 1.3em;
 }
 #includeView .content span.locationLink {
   text-decoration: none;

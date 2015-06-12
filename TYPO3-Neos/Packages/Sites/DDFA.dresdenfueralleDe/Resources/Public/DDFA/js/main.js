@@ -16,7 +16,9 @@ require.config({
         bootstrap: 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min',
         mapbox: 'https://api.tiles.mapbox.com/mapbox.js/v2.1.9/mapbox',
         d3: 'http://d3js.org/d3.v3.min'
-    }
+    },
+
+    waitSeconds: 0	// disable "Load timeout for modules" error
 });
 
 require( ['domReady', 'modernizr'], function(domReady) {

@@ -1054,7 +1054,7 @@ a:link, a:visited, a:hover, a:active {
   opacity: 1;
 }
 #detailView.right {
-  left: initial;
+  left: auto;
   right: 6em;
 }
 #detailView .scroll-container {

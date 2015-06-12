@@ -17,12 +17,15 @@ Sozialamt: <span class="locationLink" name="556e2608941b3">Sozialamt</span>
 <span class="locationLink" name="556e1d43b6579">Leuben is colourful</span>
 (Internationales Begegnungszentrum)?
 <span class="locationLink" name="556e1d3a0df7c">SPIKE youth club</span>
-KAMA Dresden  <span class="locationLink" name="556e1d4e90550">Kama Dresden</span>
-RAA Sachsen <span class="locationLink" name="556e1d3ca3475">RAA Sachsen</span>
-Kulturbüro <span class="locationLink" name="">Kulturbüro</span>?
-Netzwerk Asyl, Migration und Flucht <span class="locationLink" name="556e1d2cd0160">Netzwerk Asyl, Migration und Flucht</span>
-Asylum Seekers Movement:
-Remembering Khaled:
+<span class="locationLink" name="556e1d4e90550">KAMA Dresden</span>
+<span class="locationLink" name="556e1d3ca3475">RAA Sachsen</span>
+<span class="locationLink" name="">Kulturbüro</span>?
+<span class="locationLink" name="556e1d2cd0160">Netzwerk Asyl, Migration und Flucht</span>
+
+<a href="https://www.facebook.com/AsylumSeekersMovement" target="_blank">Asylum Seekers Movement</a>
+
+<a href="https://www.facebook.com/rememberingkhaled" target="_blank">Remembering Khaled</a>
+
 Postplatz: <span class="locationLink" name="5570d7c99fdd8">Postplatz</span>
 Umsonstladen: <span class="locationLink" name="5570b8fcd6b1c">Umsonstladen</span>
 Kleiderladen der Heilsarmee: <span class="locationLink" name="5570b8db255b3">Kleiderladen der Heilsarmee</span>

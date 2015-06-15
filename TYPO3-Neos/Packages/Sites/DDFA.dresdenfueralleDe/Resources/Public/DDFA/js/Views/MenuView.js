@@ -127,7 +127,7 @@ qx.Class.define("MenuView", {
             that.refugeeLBtnLabel.append( that.getWording('menu_refugee') );
             that.supporterBtnLabel.append( that.getWording('menu_supporter') );
             that.helpBtnLabel.append( that.getWording('menu_help') );
-            that.aboutBtnLabel.append( that.getWording('menu_about') );
+            that.aboutBtnLabel.append( that.getWording('menu_imprint') );
             that.facebookBtnLabel.append( that.getWording('menu_facebook') );
 
         },

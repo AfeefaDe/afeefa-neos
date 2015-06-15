@@ -6,6 +6,7 @@
 		
 		height: 3em;
 	  	flex-shrink: 0;
+		color: $white;
 		
 		h1 {
 			height: 2em;
@@ -18,7 +19,6 @@
 			font-weight: 300;
 			font-size: 1.1em;
 			text-align: center;
-			color: $white;
 		}
 	}
 
@@ -132,6 +132,13 @@
 			.property-icon { background-color: $black; }
 			.property-name { line-height: 2.6em !important; }
 			.property-value { display: none; }
+		}
+		
+		&.cat-tram{
+			.heading { background-color: $dvb; color: $black !important; }
+			.property.category {
+				.property-icon { background-color: $dvb; }
+			}
 		}
 	}
 }

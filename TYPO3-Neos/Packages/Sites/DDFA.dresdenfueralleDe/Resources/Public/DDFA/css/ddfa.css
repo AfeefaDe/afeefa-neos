@@ -880,11 +880,11 @@ a:link, a:visited, a:hover, a:active {
 }
 #map-container div.location {
   border: 1px solid #f2f2f2;
-  -webkit-border-radius: 15px;
-  -moz-border-radius: 15px;
-  -ms-border-radius: 15px;
-  -o-border-radius: 15px;
-  border-radius: 15px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+  border-radius: 20px;
   -webkit-box-shadow: 1px 1px 2px #333333;
   -moz-box-shadow: 1px 1px 2px #333333;
   box-shadow: 1px 1px 2px #333333;
@@ -913,7 +913,6 @@ a:link, a:visited, a:hover, a:active {
   background-position: center center;
   /* type 0 + type 1 categories*/
   /* type 3 categories*/
-  /*&.cat-public { background-image: url("../img/cat-22.svg"); }*/
 }
 #map-container div.location.cat.cat-consultation {
   background-image: url("../img/cat-10.svg");
@@ -953,15 +952,30 @@ a:link, a:visited, a:hover, a:active {
 }
 #map-container div.location.cat.cat-christian {
   background-image: url("../img/icon_60.svg");
+  -webkit-background-size: 65%;
+  -moz-background-size: 65%;
+  -o-background-size: 65%;
+  background-size: 65%;
 }
 #map-container div.location.cat.cat-islam {
-  background-image: url("../img/cat-16.svg");
+  background-image: url("../img/icon_62.svg");
 }
 #map-container div.location.cat.cat-jewish {
   background-image: url("../img/cat-22.svg");
 }
 #map-container div.location.cat.cat-shop {
-  background-image: url("../img/cat-22.svg");
+  background-image: url("../img/icon_66.svg");
+  -webkit-background-size: 65%;
+  -moz-background-size: 65%;
+  -o-background-size: 65%;
+  background-size: 65%;
+}
+#map-container div.location.cat.cat-public {
+  background-image: url("../img/icon_64.svg");
+  -webkit-background-size: 80%;
+  -moz-background-size: 80%;
+  -o-background-size: 80%;
+  background-size: 80%;
 }
 #map-container div.location.cat.cat-tram {
   background-image: url("../img/icon_57.svg");
@@ -1066,6 +1080,7 @@ a:link, a:visited, a:hover, a:active {
 #detailView .heading {
   height: 3em;
   flex-shrink: 0;
+  color: #f2f2f2;
 }
 #detailView .heading h1 {
   height: 2em;
@@ -1077,7 +1092,6 @@ a:link, a:visited, a:hover, a:active {
   font-weight: 300;
   font-size: 1.1em;
   text-align: center;
-  color: #f2f2f2;
 }
 #detailView .image {
   /*height: 10em;*/
@@ -1110,7 +1124,6 @@ a:link, a:visited, a:hover, a:active {
   background-position: center 0.2em;
   /* type 0 + type 1 categories*/
   /* type 3 categories*/
-  /*&.cat-public { background-image: url("../img/cat-22.svg"); }*/
   /* property icons */
 }
 #detailView .property .property-icon.cat-consultation {
@@ -1151,15 +1164,30 @@ a:link, a:visited, a:hover, a:active {
 }
 #detailView .property .property-icon.cat-christian {
   background-image: url("../img/icon_60.svg");
+  -webkit-background-size: 65%;
+  -moz-background-size: 65%;
+  -o-background-size: 65%;
+  background-size: 65%;
 }
 #detailView .property .property-icon.cat-islam {
-  background-image: url("../img/cat-16.svg");
+  background-image: url("../img/icon_62.svg");
 }
 #detailView .property .property-icon.cat-jewish {
   background-image: url("../img/cat-22.svg");
 }
 #detailView .property .property-icon.cat-shop {
-  background-image: url("../img/cat-22.svg");
+  background-image: url("../img/icon_66.svg");
+  -webkit-background-size: 65%;
+  -moz-background-size: 65%;
+  -o-background-size: 65%;
+  background-size: 65%;
+}
+#detailView .property .property-icon.cat-public {
+  background-image: url("../img/icon_64.svg");
+  -webkit-background-size: 80%;
+  -moz-background-size: 80%;
+  -o-background-size: 80%;
+  background-size: 80%;
 }
 #detailView .property .property-icon.cat-tram {
   background-image: url("../img/icon_57.svg");
@@ -1260,6 +1288,13 @@ a:link, a:visited, a:hover, a:active {
 #detailView.type-3 .property.category .property-value {
   display: none;
 }
+#detailView.type-3.cat-tram .heading {
+  background-color: #fdc400;
+  color: #333333 !important;
+}
+#detailView.type-3.cat-tram .property.category .property-icon {
+  background-color: #fdc400;
+}
 
 #detailViewMobile {
   -webkit-transition: all 200ms;
@@ -1296,6 +1331,7 @@ a:link, a:visited, a:hover, a:active {
 #detailViewMobile .heading {
   height: 3em;
   flex-shrink: 0;
+  color: #f2f2f2;
 }
 #detailViewMobile .heading h1 {
   height: 2em;
@@ -1307,7 +1343,6 @@ a:link, a:visited, a:hover, a:active {
   font-weight: 300;
   font-size: 1.1em;
   text-align: center;
-  color: #f2f2f2;
 }
 #detailViewMobile .image {
   /*height: 10em;*/
@@ -1340,7 +1375,6 @@ a:link, a:visited, a:hover, a:active {
   background-position: center 0.2em;
   /* type 0 + type 1 categories*/
   /* type 3 categories*/
-  /*&.cat-public { background-image: url("../img/cat-22.svg"); }*/
   /* property icons */
 }
 #detailViewMobile .property .property-icon.cat-consultation {
@@ -1381,15 +1415,30 @@ a:link, a:visited, a:hover, a:active {
 }
 #detailViewMobile .property .property-icon.cat-christian {
   background-image: url("../img/icon_60.svg");
+  -webkit-background-size: 65%;
+  -moz-background-size: 65%;
+  -o-background-size: 65%;
+  background-size: 65%;
 }
 #detailViewMobile .property .property-icon.cat-islam {
-  background-image: url("../img/cat-16.svg");
+  background-image: url("../img/icon_62.svg");
 }
 #detailViewMobile .property .property-icon.cat-jewish {
   background-image: url("../img/cat-22.svg");
 }
 #detailViewMobile .property .property-icon.cat-shop {
-  background-image: url("../img/cat-22.svg");
+  background-image: url("../img/icon_66.svg");
+  -webkit-background-size: 65%;
+  -moz-background-size: 65%;
+  -o-background-size: 65%;
+  background-size: 65%;
+}
+#detailViewMobile .property .property-icon.cat-public {
+  background-image: url("../img/icon_64.svg");
+  -webkit-background-size: 80%;
+  -moz-background-size: 80%;
+  -o-background-size: 80%;
+  background-size: 80%;
 }
 #detailViewMobile .property .property-icon.cat-tram {
   background-image: url("../img/icon_57.svg");
@@ -1489,6 +1538,13 @@ a:link, a:visited, a:hover, a:active {
 }
 #detailViewMobile.type-3 .property.category .property-value {
   display: none;
+}
+#detailViewMobile.type-3.cat-tram .heading {
+  background-color: #fdc400;
+  color: #333333 !important;
+}
+#detailViewMobile.type-3.cat-tram .property.category .property-icon {
+  background-color: #fdc400;
 }
 
 #menuView {
@@ -1652,7 +1708,6 @@ body.phone #menuView .item {
   cursor: pointer;
   /* type 0 + type 1 categories*/
   /* type 3 categories*/
-  /*&.cat-public { background-image: url("../img/cat-21.svg"); }*/
   -webkit-background-size: 72%;
   -moz-background-size: 72%;
   -o-background-size: 72%;
@@ -1710,13 +1765,24 @@ body.phone #menuView .item {
   background-image: url("../img/icon_59.svg");
 }
 #legendView .container .btn.cat-islam {
-  background-image: url("../img/cat-15.svg");
+  background-image: url("../img/icon_61.svg");
 }
 #legendView .container .btn.cat-jewish {
   background-image: url("../img/cat-21.svg");
 }
 #legendView .container .btn.cat-shop {
-  background-image: url("../img/cat-21.svg");
+  background-image: url("../img/icon_65.svg");
+  -webkit-background-size: 65%;
+  -moz-background-size: 65%;
+  -o-background-size: 65%;
+  background-size: 65%;
+}
+#legendView .container .btn.cat-public {
+  background-image: url("../img/icon_63.svg");
+  -webkit-background-size: 80%;
+  -moz-background-size: 80%;
+  -o-background-size: 80%;
+  background-size: 80%;
 }
 #legendView .container .btn.cat-tram {
   background-image: url("../img/icon_58.svg");

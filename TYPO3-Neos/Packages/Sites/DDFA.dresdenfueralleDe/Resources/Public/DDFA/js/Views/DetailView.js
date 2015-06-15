@@ -93,6 +93,7 @@ qx.Class.define("DetailView", {
 
             // record type
             that.view.addClass('type-' + record.type);
+            that.view.addClass('cat-' + record.category.name);
             
             // heading
             that.heading.append(record.name ? record.name : '');
@@ -172,6 +173,9 @@ qx.Class.define("DetailView", {
 
             // record type
             that.view.removeClass('type-0 type-1 type-2 type-3');
+            that.view.removeClass (function (index, css) {
+                return (css.match (/(^|\s)cat-\S+/g) || []).join(' ');
+            });
 
             // heading
             that.heading.empty();

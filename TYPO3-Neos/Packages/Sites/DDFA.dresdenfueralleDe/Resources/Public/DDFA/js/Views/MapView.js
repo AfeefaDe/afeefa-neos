@@ -237,26 +237,33 @@ qx.Class.define("MapView", {
 			// type specific adjustment
 			var iconSize, iconAnchor;
 
+			// IniLocation
 			if( location.type === 0 ) {
 				iconSize = [30,30];
 				iconAnchor = [15,15];
 			}
+			// MarketLocation
 			else if( location.type === 1 ) {
 				iconSize = [23,23];
 				iconAnchor = [12,12];
 			}
+			// EventLocation
 			else if( location.type === 2 ) {
-				iconSize = [30,30];
+				iconSize = [23,23];
 				iconAnchor = [15,15];
 			}
+			// BasicLocation
 			else if( location.type === 3 ) {
 
-				if( location.category && location.category === 'housing') {
-					iconSize = [30,30];
-					iconAnchor = [15,15];
-				} else {
+				// Gemeinschaftsunterkunft
+				if( location.category && location.category.name === 'housing') {
+					iconSize = [40,40];
+					iconAnchor = [20,20];
+				}
+				// sonstige
+				else {
 					iconSize = [15,15];
-					iconSize = [15,15];
+					iconAnchor = [8,8];
 				}
 
 			}

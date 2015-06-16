@@ -257,8 +257,8 @@ qx.Class.define("MapView", {
 
 				// Gemeinschaftsunterkunft
 				if( location.category && location.category.name === 'housing') {
-					iconSize = [40,40];
-					iconAnchor = [20,20];
+					iconSize = [30,30];
+					iconAnchor = [15,15];
 				}
 				// sonstige
 				else {
@@ -325,6 +325,7 @@ qx.Class.define("MapView", {
 				
 			// });
 
+			// if( location.type !== 3) that.markerCluster.addLayer(marker);
 			that.markerCluster.addLayer(marker);
 
 			var currentLookup = that.getMarkerLocationLookup();

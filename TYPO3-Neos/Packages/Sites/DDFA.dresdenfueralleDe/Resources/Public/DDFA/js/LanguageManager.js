@@ -36,6 +36,11 @@ qx.Class.define("LanguageManager", {
                 
             var wording = that.getBib()[ key ][ that.getCurrentLang() ];
             
+            if( wording && _.contains(['ar', 'fa', 'ur'], that.getCurrentLang() ) ){
+                // reverse string
+                
+            }
+
             if(!wording) wording = that.getBib()[ key ][ APP.getConfig().languages[1] ];
             if(!wording) wording = that.getBib()[ key ][ APP.getConfig().languages[0] ];
             if(!wording) wording = 'XXX';
@@ -65,6 +70,8 @@ qx.Class.define("LanguageManager", {
                 });
                 
                 $('body').addClass(that.getCurrentLang());
+                
+                $('body').attr('lang', that.getCurrentLang());
 
             });
         }

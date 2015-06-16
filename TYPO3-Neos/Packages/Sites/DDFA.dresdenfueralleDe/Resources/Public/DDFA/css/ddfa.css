@@ -946,9 +946,12 @@ a:link, a:visited, a:hover, a:active {
   background-size: 115%;
 }
 #map-container div.location.cat.cat-housing {
-  border: 1px solid #f2f2f2;
+  border: none;
   background-image: url("../img/cat-19.svg");
   background-color: rgba(0, 0, 0, 0) !important;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
 }
 #map-container div.location.cat.cat-christian {
   background-image: url("../img/icon_60.svg");
@@ -1158,9 +1161,12 @@ a:link, a:visited, a:hover, a:active {
   background-size: 115%;
 }
 #detailView .property .property-icon.cat-housing {
-  border: 1px solid #f2f2f2;
+  border: none;
   background-image: url("../img/cat-19.svg");
   background-color: rgba(0, 0, 0, 0) !important;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
 }
 #detailView .property .property-icon.cat-christian {
   background-image: url("../img/icon_60.svg");
@@ -1409,9 +1415,12 @@ a:link, a:visited, a:hover, a:active {
   background-size: 115%;
 }
 #detailViewMobile .property .property-icon.cat-housing {
-  border: 1px solid #f2f2f2;
+  border: none;
   background-image: url("../img/cat-19.svg");
   background-color: rgba(0, 0, 0, 0) !important;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
 }
 #detailViewMobile .property .property-icon.cat-christian {
   background-image: url("../img/icon_60.svg");
@@ -2432,7 +2441,6 @@ body.phone #plusView {
 #includeView .content h2 {
   font-weight: 500;
   line-height: 1em;
-  text-align: left;
 }
 #includeView .content p {
   font-weight: 300;

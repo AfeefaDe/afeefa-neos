@@ -13,9 +13,10 @@
 
 	/* type 3 categories*/
 	&.cat-housing {
-		border: 1px solid $white;
+		border: none;
 		background-image: url("../img/cat-19.svg");
 		background-color: rgba(0,0,0,0) !important;
+		@include box-shadow(none);
 	}
 	&.cat-christian { background-image: url("../img/icon_60.svg"); @include background-size(65%); }
 	&.cat-islam { background-image: url("../img/icon_62.svg"); }

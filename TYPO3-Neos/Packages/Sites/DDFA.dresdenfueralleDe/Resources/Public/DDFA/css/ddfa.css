@@ -2430,6 +2430,7 @@ body.phone #plusView {
   padding: 2em;
   position: relative;
   overflow-y: auto;
+  overflow-x: hidden;
   line-height: 1.2em;
   color: #f2f2f2;
   text-align: justify;

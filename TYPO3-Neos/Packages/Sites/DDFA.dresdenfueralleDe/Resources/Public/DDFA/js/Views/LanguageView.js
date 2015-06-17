@@ -33,11 +33,17 @@ qx.Class.define("LanguageView", {
                 var langBtn = $("<div />");
                 langBtn.addClass('btn ' + lang);
 
+                // bootstrap tooltip
+                langBtn.attr({
+                    'data-toggle': 'tooltip',
+                    'data-placement': "bottom"
+                });
+
                 langBtn.click(function(){
                     that.say('languageChanged', lang);
                 });
 
-                that.buttons.push(langBtn);
+                that.buttons.push( {el: langBtn, lang: lang} );
 
                 that.view.append(langBtn);
             });
@@ -53,8 +59,15 @@ qx.Class.define("LanguageView", {
             var that = this;
 
             _.each( that.buttons, function(btn){
-                if( btn.hasClass( APP.getLM().getCurrentLang() ) )
-                    btn.addClass('active');
+                if( btn.el.hasClass( APP.getLM().getCurrentLang() ) )
+                    btn.el.addClass('active');
+
+                // bootstrap tooltip
+                btn.el.attr({
+                    'title': that.getWording('lan_' + btn.lang),
+                    'data-original-title': that.getWording('lan_' + btn.lang)
+                });
+
             });
 
         },
@@ -71,7 +84,7 @@ qx.Class.define("LanguageView", {
 
             // reset all buttons
             _.each( that.buttons, function(btn) {
-                btn.removeClass('active');
+                btn.el.removeClass('active');
             });
 
         },

@@ -53,12 +53,10 @@ qx.Class.define("PlusView", {
             // call superclass
             this.base(arguments);
             
-
             // that.listen('mapclicked', function(){
             //     that.close();
             // });
             
-
             that.offerBtn.click(function(){
                APP.getFormView().load( APP.getFormView().getFormTypes().marketOffer );
             });
@@ -71,6 +69,24 @@ qx.Class.define("PlusView", {
                APP.getFormView().load( APP.getFormView().getFormTypes().feedback );
             });
 
+            ///////////////////////
+            // bootstrap tooltip //
+            ///////////////////////
+            that.offerBtn.attr({
+                // 'data-toggle': 'tooltip',
+                // 'data-placement': "left",
+                'title': that.getWording('form_newMarketOffer')
+            });
+            that.requestBtn.attr({
+                // 'data-toggle': 'tooltip',
+                // 'data-placement': "left",
+                'title': that.getWording('form_newMarketRequest')
+            });
+            that.feedbackBtn.attr({
+                // 'data-toggle': 'tooltip',
+                // 'data-placement': "left",
+                'title': that.getWording('form_feedback')
+            });
 
         },
 
@@ -80,6 +96,29 @@ qx.Class.define("PlusView", {
             // TODO: only do in mobile version
             // that.requestBtn.css('display', 'none');
             // that.offerBtn.css('display', 'none');
+        },
+
+        changeLanguage: function(){
+            var that = this;
+
+            ///////////////////////
+            // bootstrap tooltip //
+            ///////////////////////
+            that.offerBtn.attr({
+                // 'data-toggle': 'tooltip',
+                // 'data-placement': "left",
+                'title': that.getWording('form_newMarketOffer')
+            });
+            that.requestBtn.attr({
+                // 'data-toggle': 'tooltip',
+                // 'data-placement': "left",
+                'title': that.getWording('form_newMarketRequest')
+            });
+            that.feedbackBtn.attr({
+                // 'data-toggle': 'tooltip',
+                // 'data-placement': "left",
+                'title': that.getWording('form_feedback')
+            });
         }
     }
 

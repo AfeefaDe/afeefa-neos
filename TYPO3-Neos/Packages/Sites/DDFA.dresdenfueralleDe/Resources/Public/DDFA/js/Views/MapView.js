@@ -296,7 +296,11 @@ qx.Class.define("MapView", {
 				else if( location.type === 2 ) locationName = location.event.name;
 			}
 			
-			var popup = L.popup( {className: 'ddfa-popup'} )
+			var popup = L.popup({
+				className: 'ddfa-popup',
+				closeButton: false,
+				offset: [0, 0]
+			})
 			    .setLatLng([location.lat, location.lon])
 			    .setContent('<b>' + locationName + '</b>');
 

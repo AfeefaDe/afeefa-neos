@@ -32,6 +32,19 @@ qx.Class.define("View", {
             that.listen('languageChanged', function(){
                 that.changeLanguage();
             });
+
+            ////////////////////////////
+            // AFTER VIEW IS RENDERED //
+            ////////////////////////////
+            that.listen(that.classname + 'Rendered', function(){
+        
+                // initialize bootstrap tooltips
+                $(function () {
+                    console.debug('init tooltips');
+                    that.view.find('[data-toggle="tooltip"]').tooltip();
+                })
+
+            });
         },
 
         changeLanguage: function(){

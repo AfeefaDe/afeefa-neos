@@ -12,7 +12,8 @@
 		background-repeat: no-repeat;
 		
 		h1 {
-			height: 2em;
+			@include box-sizing(border-box);
+			height: 3em;
 			margin: 0;
 			padding: 1em 1em 0 1em;
 			overflow: hidden;
@@ -121,6 +122,9 @@
 	}
 
 	@include formViewBasic;
+
+	/*quick fix, because IE has no datepicker */
+	
 
 }
 

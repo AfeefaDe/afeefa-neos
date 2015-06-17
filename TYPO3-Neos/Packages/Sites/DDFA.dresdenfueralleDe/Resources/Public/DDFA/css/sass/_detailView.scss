@@ -9,7 +9,8 @@
 		color: $white;
 		
 		h1 {
-			height: 2em;
+			@include box-sizing(border-box);
+			height: 3em;
 			margin: 0;
 			padding: 1em 1em 0 1em;
 			overflow: hidden;
@@ -134,7 +135,7 @@
 			.property-value { display: none; }
 		}
 		
-		&.cat-tram{
+		&.cat-trafficStop{
 			.heading { background-color: $dvb; color: $black !important; }
 			.property.category {
 				.property-icon { background-color: $dvb; }

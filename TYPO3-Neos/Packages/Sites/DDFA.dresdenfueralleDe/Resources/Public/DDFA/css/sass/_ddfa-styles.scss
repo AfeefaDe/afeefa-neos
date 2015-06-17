@@ -23,7 +23,7 @@
 	&.cat-jewish { background-image: url("../img/cat-22.svg"); }
 	&.cat-shop { background-image: url("../img/icon_66.svg"); @include background-size(65%); }
 	&.cat-public { background-image: url("../img/icon_64.svg"); @include background-size(80%); }
-	&.cat-tram { background-image: url("../img/icon_57.svg"); background-color: $dvb; }
+	&.cat-trafficStop { background-image: url("../img/icon_57.svg"); background-color: $dvb; }
 	
 	&.cat-other { background-image: none; }
 
@@ -53,7 +53,7 @@
 	&.cat-jewish { background-image: url("../img/cat-21.svg"); }
 	&.cat-shop { background-image: url("../img/icon_65.svg"); @include background-size(65%); }
 	&.cat-public { background-image: url("../img/icon_63.svg"); @include background-size(80%); }
-	&.cat-tram { background-image: url("../img/icon_58.svg"); background-color: $dvb; }
+	&.cat-trafficStop { background-image: url("../img/icon_58.svg"); background-color: $dvb; }
 
 	&.cat-other { background-image: none; }
 

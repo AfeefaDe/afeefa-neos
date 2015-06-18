@@ -39,7 +39,11 @@ qx.Class.define("MenuView", {
             var a = $('<a />')
                 .attr('href', 'http://afeefa.de')
                 .attr('id', 'logo');
-            that.logo  = $('<img />').attr('src', APP.getConfig().imgPath + 'afeefa_light.svg');
+            that.logo  = $('<img />').attr({
+                'src': APP.getConfig().imgPath + 'afeefa_light.svg',
+                alt: 'Afeefa Logo',
+                title: 'Afeefa Logo'
+            });
             a.append(that.logo);
             that.menu.append(a);
             
@@ -76,6 +80,20 @@ qx.Class.define("MenuView", {
             that.aboutBtnLabel = $('<span />');
             that.aboutBtn.append(that.aboutBtnLabel);
             that.menu.append(that.aboutBtn);
+
+            // logo
+            var a = $('<a />').attr({
+                'id': 'dfa-logo',
+                'href': 'http://dresdenfueralle.de',
+                'target': '_blank'
+            });
+            that.dfaLogo  = $('<img />').attr({
+                'src': APP.getConfig().imgPath + 'icon_37.svg',
+                alt: 'Dresden für Alle Logo',
+                title: 'Dresden für Alle Logo'
+            });
+            a.append(that.dfaLogo);
+            that.menu.append(a);
 
             // fb like btn
             // that.menu.append('<div class="fb-like" data-href="https://www.facebook.com/afeefa.de" data-layout="button" data-action="like" data-show-faces="false" data-share="false"></div>');

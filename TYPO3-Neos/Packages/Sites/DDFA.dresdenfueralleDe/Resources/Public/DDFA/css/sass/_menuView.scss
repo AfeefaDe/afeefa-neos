@@ -9,12 +9,6 @@
 	height: 100%;
 	padding: 2em 0;
 
-
-	background-image: url("../img/icon_37.svg");
-	@include background-size(12em);
-	background-position: center bottom;
-	background-repeat: no-repeat;
-
 	.menu-btn {
 		position: absolute;
 		right: -6em;
@@ -24,15 +18,18 @@
 		background-image: url("../img/menu.svg");
 	}
 
-	a#logo {
+	a#logo, a#dfa-logo {
 		width: 50%;
-		margin: 0 auto;
 		display: block;
-		margin-bottom: 10em;
+		margin: 0 auto 10em auto;
 
 		img { width: 100%; }
 	}
 
+	a#dfa-logo {
+		width: 60%;
+		margin: 3em auto 0 auto;
+	}
 
 	.item {
 		@include box-sizing(border-box);
@@ -51,6 +48,7 @@
 			font-weight: 100;
 			text-decoration: none;
 		}
+
 
 		&.refugee-guide, &.supporter-guide {
 			
@@ -87,10 +85,17 @@ body.phone {
 
 	#menuView{
 
+		#main-menu{
+			height: 100%;
+			overflow-y: auto;
+			overflow-x: hidden;
+		}
+
 		.menu-btn {
 			right: -5em;
 		}
-		.item {
+
+		.item.refugee-guide, .item.supporter-guide, .item.help, .item.about {
 			display: none;
 		}
 

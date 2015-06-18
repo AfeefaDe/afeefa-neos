@@ -138,6 +138,19 @@ qx.Class.define("MenuView", {
             that.listen('shiftMenuClosed', function(){
                 that.menu.removeClass('hidden');
             });
+
+            ////////////////////
+            // swipe gestures //
+            ////////////////////
+            require( [ 'hammer' ], function( Hammer ){
+
+                var hammer = new Hammer(that.view[0]);
+
+                hammer.on('swipeleft', function(ev){
+                    that.close();
+                });
+
+            });
             
         },
 

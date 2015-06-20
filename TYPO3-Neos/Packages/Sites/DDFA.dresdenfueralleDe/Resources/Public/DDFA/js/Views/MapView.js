@@ -273,6 +273,7 @@ qx.Class.define("MapView", {
 
 			var className = 'location';
 			className += ' type-' + location.type;
+			className += ' rating-' + location.rating;
 			if( location.category ) className += ' cat cat-' + location.category.name;
 			if( location.supportNeeded ) className += ' support-needed';
 

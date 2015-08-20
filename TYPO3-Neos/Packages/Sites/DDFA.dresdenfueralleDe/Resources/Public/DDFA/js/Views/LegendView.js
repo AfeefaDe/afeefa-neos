@@ -97,26 +97,18 @@ qx.Class.define("LegendView", {
             var that = this;
 
             // consequences
-            // 1. fetch filtered data
-            // 2. close detailView if location gets unavailable
-            // 3. change legendView appearance
-            // 4. if an unavailable location is selected inside the guides, the filter has to be disabled
+            // TODO close detailView if location gets unavailable
+            // TODO if an unavailable location is selected inside the guides, the filter has to be disabled
+            
             APP.setActiveFilter(filterOptions);
             that.say('filterSet');
-            // console.debug(filterOptions);
         },
 
         resetFilter: function(){
             var that = this;
 
-            // consequences
-            // 1. fetch filtered data
-            // 2. close detailView if location gets unavailable
-            // 3. change legendView appearance
-            // 4. if an unavailable location is selected inside the guides, the filter has to be disabled
             APP.setActiveFilter(null);
             that.say('filterSet');
-            // console.debug(filterOptions);
         },
 
         reset: function(){
@@ -125,6 +117,8 @@ qx.Class.define("LegendView", {
             _.each( that.getCategories(), function(cat){
                 that['label-' + cat].empty();
             });
+
+            that['label-filter-reset'].empty();
         },
 
         addEvents: function(){

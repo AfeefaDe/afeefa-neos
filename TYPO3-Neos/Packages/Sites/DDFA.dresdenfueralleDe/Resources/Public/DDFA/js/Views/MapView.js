@@ -57,7 +57,10 @@ qx.Class.define("MapView", {
 	          });
 	        },
 	        maxClusterRadius: 10,
-	        spiderfyOnMaxZoom: true
+	        spiderfyOnMaxZoom: true,
+	        spiderfyDistanceMultiplier: 2,
+	        spiderLegPolylineOptions: { weight: 1.5, color: '#000' }
+	        // disableClusteringAtZoom: 17
 		});
 		
 		that.map.addLayer(that.markerCluster);

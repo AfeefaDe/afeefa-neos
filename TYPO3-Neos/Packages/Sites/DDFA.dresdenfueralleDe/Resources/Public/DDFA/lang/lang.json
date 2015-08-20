@@ -615,6 +615,19 @@
                   "ur":""
             },
             
+            "misc_filterReset":{
+                  "de":"Filter deaktivieren",
+                  "en":"Reset filter",
+                  "ar":"",
+                  "fa":"",
+                  "fr":"",
+                  "it":"",
+                  "ru":"",
+                  "sr":"",
+                  "ti":"",
+                  "ur":""
+            },
+
             "form_newMarketOffer":{
                   "de":"Angebot aufgeben",
                   "en":"make an offer",

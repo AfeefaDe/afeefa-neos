@@ -51,7 +51,30 @@ qx.Class.define("LegendView", {
                 
                 that.legend.append(container);
 
+                btn.click(function(){ that.setFilter( {category: cat} ); });
+                that['label-' + cat].click(function(){ that.setFilter( {category: cat} ); });
+
             });
+
+            createFilterResetBtn();
+            function createFilterResetBtn(){
+                // container
+                var container = $("<div />");
+                container.addClass('container filter-reset');
+                
+                // symbol
+                var btn = $("<div />");
+                btn.addClass('btn');
+                container.append(btn);
+
+                // label
+                that['label-filter-reset'] = $("<p />");
+                container.append(that['label-filter-reset']);
+                
+                that.legend.append(container);
+
+                that['label-filter-reset'].click(function(){ that.resetFilter(); });
+            }
 
             $('#main-container').append(that.view);
 
@@ -66,6 +89,34 @@ qx.Class.define("LegendView", {
             _.each( that.getCategories(), function(cat){
                 that['label-' + cat].append( that.getWording('cat_' + cat) );
             });
+
+            that['label-filter-reset'].append( that.getWording('misc_filterReset') );
+        },
+
+        setFilter: function( filterOptions ){
+            var that = this;
+
+            // consequences
+            // 1. fetch filtered data
+            // 2. close detailView if location gets unavailable
+            // 3. change legendView appearance
+            // 4. if an unavailable location is selected inside the guides, the filter has to be disabled
+            APP.setActiveFilter(filterOptions);
+            that.say('filterSet');
+            // console.debug(filterOptions);
+        },
+
+        resetFilter: function(){
+            var that = this;
+
+            // consequences
+            // 1. fetch filtered data
+            // 2. close detailView if location gets unavailable
+            // 3. change legendView appearance
+            // 4. if an unavailable location is selected inside the guides, the filter has to be disabled
+            APP.setActiveFilter(null);
+            that.say('filterSet');
+            // console.debug(filterOptions);
         },
 
         reset: function(){
@@ -82,6 +133,25 @@ qx.Class.define("LegendView", {
             // call superclass
             this.base(arguments);
             
+            that.listen('filterSet', function(){
+
+                var filter = APP.getActiveFilter();
+
+                if( filter ) {
+                    
+                    that.view.addClass('filter-active');  
+                    
+                    that.view.find('.btn').parent().addClass('inactive');
+                    that.view.find('.btn.cat-' + filter.category).parent().removeClass('inactive');
+                
+                } else {
+                
+                    that.view.removeClass('filter-active');   
+                    that.view.find('.btn').parent().removeClass('inactive');
+                }
+
+            });
+
             // that.menuBtn.click(function(){
             //     $('#main-container').addClass('shifted-left');
             // });

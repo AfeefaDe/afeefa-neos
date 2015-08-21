@@ -29,13 +29,6 @@ qx.Class.define("DataManager", {
 
                 that.getAllLocations(function(data){
                     
-                    // filter active?
-                    var filter = APP.getActiveFilter();
-                    if( filter )
-                        data.locations = _.filter(data.locations, function(location){
-                        return location.category.name === filter.category;
-                    });
-
                     allData.locations = data.locations;
                     
                     that.getLanguageBib( function(data){
@@ -208,19 +201,19 @@ qx.Class.define("DataManager", {
         addEvents: function(){
             var that = this;
 
-            that.listen('filterSet', function(){
+            // that.listen('filterSet', function(){
                 
-                APP.getDataManager().fetchAllData(function( data ){
+            //     APP.getDataManager().fetchAllData(function( data ){
 
-                  console.debug('fetchedAllData in ' + APP.getLM().getCurrentLang(), data);
+            //       console.debug('fetchedAllData in ' + APP.getLM().getCurrentLang(), data);
 
-                  APP.setData(data);
+            //       APP.setData(data);
 
-                  that.say('fetchedNewData');
+            //       that.say('localDataChanged');
 
-                });
+            //     });
 
-            });
+            // });
         },
 
         importInis: function(){

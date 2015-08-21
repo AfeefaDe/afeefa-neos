@@ -128,6 +128,33 @@ qx.Class.define("MapView", {
     	// if(entryId) that.selectMarkerById(entryId);
     },
 
+    loadNewData: function() {
+    	var that = this;
+
+    	// reset things
+    	that.markerCluster.clearLayers();
+		that.setMarkerLocationLookup([]);
+
+		// get ALL data
+		var locations = APP.getData().locations;
+		
+		// filter active?
+        var filter = APP.getActiveFilter();
+        if( filter ) {
+        	
+            locations = _.filter(locations, function(location){
+        		// don't filter these location types:
+        		if( _.contains([2, 3], location.type) ) return true;
+                
+                return location.category.name === filter.category;
+            });
+
+        }
+
+		that.addLocations(locations);
+		that.loadFromUrl();
+    },
+
     lookupMarkerById: function( id ){
     	var that = this;
 
@@ -198,12 +225,13 @@ qx.Class.define("MapView", {
     	});
     	
     	that.listen('fetchedNewData', function(){
-    		that.markerCluster.clearLayers();
-    		that.setMarkerLocationLookup([]);
-			that.addLocations(APP.getData().locations);
-			that.loadFromUrl();
+    		that.loadNewData();
     	});
-    	
+
+    	that.listen('filterSet', function(){
+    		that.loadNewData();
+    	});
+
     	// var $locateBtn = $('#locate-btn');
     	// $locateBtn.click(function(){
     	// 	// alert('haha');

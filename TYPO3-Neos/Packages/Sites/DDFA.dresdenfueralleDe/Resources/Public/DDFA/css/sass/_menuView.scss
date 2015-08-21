@@ -21,7 +21,7 @@
 	a#logo, a#dfa-logo {
 		width: 50%;
 		display: block;
-		margin: 0 auto 10em auto;
+		margin: 0 auto 3em auto;
 
 		img { width: 100%; }
 	}
@@ -74,6 +74,12 @@
 
 		&.facebook {
 			background-image: url("../img/icon-46.svg");
+			background-repeat: no-repeat;
+			background-position: 90% center;
+		}
+
+		&.donate {
+			background-image: url("../img/icon_72.svg");
 			background-repeat: no-repeat;
 			background-position: 90% center;
 		}

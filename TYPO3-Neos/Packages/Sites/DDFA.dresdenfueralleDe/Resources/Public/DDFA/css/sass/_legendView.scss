@@ -49,8 +49,29 @@
 			width: calc(100% - 3.5em );
 			overflow: hidden;
 			white-space: nowrap;
+			cursor: pointer;
 		}
 
+		&.filter-reset {
+			display: none;
+			opacity: 1 !important;
+			.btn {visibility: hidden;}
+		}
+
+		&:hover {
+			opacity: 1 !important;
+			p { @include text-shadow( 0px 0px 2px rgba(255, 255, 255, 1) ); }
+		}
+
+		&.inactive {
+			opacity: .3;
+		}
+
+	}
+
+	&.filter-active {
+
+		.container.filter-reset { display: block; }
 	}
 
 }

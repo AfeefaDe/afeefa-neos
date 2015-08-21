@@ -67,6 +67,12 @@ qx.Class.define("MenuView", {
             that.facebookBtn.append(that.facebookBtnLabel);
             that.menu.append(that.facebookBtn);
 
+            // btn facebook
+            that.donateBtn = $('<div />').addClass('item donate');
+            that.donateBtnLabel = $('<span />');
+            that.donateBtn.append(that.donateBtnLabel);
+            that.menu.append(that.donateBtn);
+
             // btn help
             that.helpBtn = $('<div />').addClass('item help');
             that.helpBtnLabel = $('<span />');
@@ -122,6 +128,11 @@ qx.Class.define("MenuView", {
                 APP.getIncludeView().load( APP.getIncludeView().getIncludes().supporterGuide );
             });
 
+            that.donateBtn.click(function(){
+                that.close();
+                APP.getIncludeView().load( APP.getIncludeView().getIncludes().donate );
+            });
+
             that.aboutBtn.click(function(){
                 that.close();
                 APP.getIncludeView().load( APP.getIncludeView().getIncludes().imprint );
@@ -166,6 +177,7 @@ qx.Class.define("MenuView", {
             that.helpBtnLabel.append( that.getWording('menu_help') );
             that.aboutBtnLabel.append( that.getWording('menu_imprint') );
             that.facebookBtnLabel.append( that.getWording('menu_facebook') );
+            that.donateBtnLabel.append( that.getWording('menu_donate') );
 
             // bootstrap tooltip
             that.menuBtn.attr({
@@ -183,6 +195,7 @@ qx.Class.define("MenuView", {
             that.helpBtnLabel.empty();
             that.aboutBtnLabel.empty();
             that.facebookBtnLabel.empty();
+            that.donateBtnLabel.empty();
 
         },
 

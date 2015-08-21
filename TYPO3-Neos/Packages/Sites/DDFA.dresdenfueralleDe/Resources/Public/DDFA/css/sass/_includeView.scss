@@ -86,7 +86,6 @@
 		
 		line-height: 1.2em;
 		color: $white;
-		text-align: justify;
 
 		h1 {
 			font-weight: 100;
@@ -94,13 +93,32 @@
 		}
 
 		h2 {
-			font-weight: 500;
+			font-weight: 100;
 			line-height: 1em;
+			margin-top: 2em;
+		}
+
+		h3 {
+			font-size: 1.2em;
+			font-weight: 100;
+			line-height: 1em;
+    		margin-top: 1.5em;
+			margin-bottom: 0.4em;
 		}
 
 		p {
+			text-align: justify;
 			font-weight: 300;
 			line-height: 1.3em;
+		}
+
+		table {
+			font-weight: 300;
+
+			td {
+				padding: .3em 0 .3em 1em;
+				&:first-child { padding-left: 0em; }
+			}
 		}
 
 		span.locationLink {

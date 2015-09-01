@@ -43,6 +43,12 @@ qx.Class.define("MapView", {
 			maxZoom: 18
     	}).setView([ 51.051, 13.74 ], 13);
 		
+		///////////////////////////////
+		// Layer for basic locations //
+		///////////////////////////////
+		that.basicLayer = L.layerGroup();
+		that.map.addLayer(that.basicLayer);
+
 		//////////////////////
 		// Marker Cluster //
 		//////////////////////
@@ -364,7 +370,12 @@ qx.Class.define("MapView", {
 			// });
 
 			// if( location.type !== 3) that.markerCluster.addLayer(marker);
-			that.markerCluster.addLayer(marker);
+			if (location.type === 3) {
+				that.basicLayer.addLayer(marker);
+			}
+			else {
+				that.markerCluster.addLayer(marker);
+			}
 
 			var currentLookup = that.getMarkerLocationLookup();
 			currentLookup.push( {location: location, marker: marker} );

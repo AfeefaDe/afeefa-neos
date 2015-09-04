@@ -52,7 +52,8 @@ qx.Class.define("DetailView", {
             //////////////////////
             
             // generic
-            var properties = _.union( ['category', 'location'], APP.getConfig().simpleProperties );
+            // var properties = _.union( ['category'], APP.getConfig().simpleProperties,  ['location'] );, 
+            var properties = ['category', 'description', 'speakerPublic', 'spokenLanguages', 'location', 'openingHours', 'phone', 'mail', 'web', 'facebook', 'dateFrom', 'dateTo'];
             _.each(properties, function(prop){
 
                 that['propertyContainer'+prop] = $("<div />").addClass('property ' + prop);
@@ -101,13 +102,14 @@ qx.Class.define("DetailView", {
             ////////////////////
             // image property //
             ////////////////////
-            var imagePath = '_Resources/Static/Packages/DDFA.dresdenfueralleDe/DDFA/img/';
+            // var imagePath = '_Resources/Static/Packages/DDFA.dresdenfueralleDe/DDFA/img/';
             if( record.image ) {
                 that.imageContainer.css('height', that.view.innerWidth()*0.6);
-                that.imageContainer.addClass(record.image.type);
+                that.imageContainer.addClass(record.imageType);
                 that.imageContainer.show();
 
-                that.image.attr('src', imagePath + record.image.src);
+                // that.image.attr('src', imagePath + record.image.src);
+                that.image.attr('src', record.image);
             }
 
             //////////////////////

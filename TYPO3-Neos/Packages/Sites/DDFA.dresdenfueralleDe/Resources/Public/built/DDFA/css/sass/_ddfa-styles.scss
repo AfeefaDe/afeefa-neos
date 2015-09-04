@@ -1,0 +1,206 @@
+@mixin categorySymbols {
+
+	/* type 0 + type 1 categories*/
+	&.cat-consultation { background-image: url("../img/cat-10.svg"); }
+	&.cat-medic { background-image: url("../img/cat-04.svg"); }
+	&.cat-german { background-image: url("../img/cat-18.svg"); }
+	&.cat-jobs { background-image: url("../img/cat-02.svg"); }
+	&.cat-leisure { background-image: url("../img/cat-08.svg"); }
+	&.cat-translation { background-image: url("../img/cat-06.svg"); }
+	&.cat-children { background-image: url("../img/cat-14.svg"); }
+	&.cat-donation { background-image: url("../img/cat-12.svg"); }
+	&.cat-community { background-image: url("../img/icon-40.svg"); @include background-size(115%); }
+
+	/* type 3 categories*/
+	&.cat-housing {
+		border: none;
+		background-image: url("../img/cat-19.svg");
+		background-color: rgba(0,0,0,0) !important;
+		@include box-shadow(none);
+	}
+	&.cat-christian { background-image: url("../img/icon_60.svg"); @include background-size(65%); }
+	&.cat-islam { background-image: url("../img/icon_62.svg"); }
+	&.cat-jewish { background-image: url("../img/cat-22.svg"); }
+	&.cat-shop { background-image: url("../img/icon_66.svg"); @include background-size(65%); }
+	&.cat-public { background-image: url("../img/icon_64.svg"); @include background-size(80%); }
+	&.cat-trafficStop { background-image: url("../img/icon_57.svg"); background-color: $dvb; }
+	
+	&.cat-other { background-image: none; }
+
+}
+
+@mixin categorySymbolsDark {
+
+	/* type 0 + type 1 categories*/
+	&.cat-consultation { background-image: url("../img/cat-09.svg"); }
+	&.cat-medic { background-image: url("../img/cat-03.svg"); }
+	&.cat-german { background-image: url("../img/cat-17.svg"); }
+	&.cat-jobs { background-image: url("../img/cat-01.svg"); }
+	&.cat-leisure { background-image: url("../img/cat-07.svg"); }
+	&.cat-translation { background-image: url("../img/cat-05.svg"); }
+	&.cat-children { background-image: url("../img/cat-13.svg"); }
+	&.cat-donation { background-image: url("../img/cat-11.svg"); }
+	&.cat-community { background-image: url("../img/icon-39.svg"); @include background-size(115%); }
+
+	/* type 3 categories*/
+	&.cat-housing {
+		border: 1px solid $white;
+		background-image: url("../img/cat-19.svg");
+		background-color: rgba(0,0,0,0) !important;
+	}
+	&.cat-christian { background-image: url("../img/icon_59.svg"); }
+	&.cat-islam { background-image: url("../img/icon_61.svg"); }
+	&.cat-jewish { background-image: url("../img/cat-21.svg"); }
+	&.cat-shop { background-image: url("../img/icon_65.svg"); @include background-size(65%); }
+	&.cat-public { background-image: url("../img/icon_63.svg"); @include background-size(80%); }
+	&.cat-trafficStop { background-image: url("../img/icon_58.svg"); background-color: $dvb; }
+
+	&.cat-other { background-image: none; }
+
+}
+
+@mixin languageFlags {
+
+	&.de { background-image: url("../img/flag_de.svg"); }
+	&.en { background-image: url("../img/flag_en.svg"); }
+	&.ar { background-image: url("../img/flag_ar.svg"); }
+	&.fa { background-image: url("../img/flag_fa.svg"); }
+	&.fr { background-image: url("../img/flag_fr.svg"); }
+	&.sr { background-image: url("../img/flag_sr.svg"); }
+	&.ru { background-image: url("../img/flag_ru.svg"); }
+	&.ti { background-image: url("../img/flag_ti.svg"); }
+	&.ur { background-image: url("../img/flag_ur.svg"); }
+	&.it { background-image: url("../img/flag_it.svg"); }
+
+}
+
+@mixin circleBtn {
+
+	width: 3em;
+	height: 3em;
+	@include border-radius(2em);
+	@include box-sizing(border-box);
+	@include box-shadow(0px 0px 2px #333);
+	
+	@include background-size(50%);
+	background-position: center center;
+	background-repeat: no-repeat;
+	cursor: pointer;
+
+	&:hover {
+		@include box-shadow(0px 0px 5px #111);
+	}
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+
+	font-family: 'Roboto', sans-serif;
+	font-size: 11pt;
+	direction: ltr;
+
+	/* disabling chrome's pull-down-to-refresh feature */
+	overflow-y: hidden;
+
+	background-color: $black;
+
+}
+
+a {
+
+	&:link {
+        color: #333;
+        text-decoration: underline;
+    }
+    &:visited, &:hover, &:active{
+        @extend a:link;
+    }
+}
+
+b,
+strong {
+  font-weight: 400;
+}
+
+.hidden{ display: none; }
+
+#main-container {
+	
+	@include transition(all 250ms);
+
+	position: fixed;
+	left: 0;
+	width: 100%;
+	height: 100%;
+
+	background-color: $black;
+	/*background-image: url("../img/CND.svg");*/
+	background-image: url("../img/afeefa_light.svg");
+	@include background-size(20%);
+	background-position: center center;
+	background-repeat: no-repeat;
+
+	@include box-shadow(0px 0px 10px #111);
+
+	/* map curtain */
+	@mixin mapCurtainActive {
+		visibility: visible;
+		opacity: 0.6;
+	}
+	#map-curtain {
+		@include transition(all 250ms);
+		background-color: $black;
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		visibility: hidden;
+		opacity: 0;
+		z-index: 9999;
+		
+		&.active {
+			@include mapCurtainActive;
+		}
+	}
+
+	&.shifted {
+		left: 15em;
+
+		#map-curtain {
+			@include mapCurtainActive;
+		}
+
+		#menuView { z-index: 999; }
+		/*#lang-menu { display: none; }*/
+	}
+
+	&.shifted-small {
+		left: 4em;
+
+		#map-curtain {
+			@include mapCurtainActive;
+		}
+
+		#languageViewMobile { z-index: 999; }
+		/*#main-menu { display: none; }*/
+
+	}
+}
+
+#locate-btn {
+	position: fixed;
+	width: 3.5em;
+	height: 3.5em;
+	right: 1em;
+	bottom: 4em;
+	background-color: #EEE;
+	background-image: url('../img/btn-locate.svg');
+	@include background-size(70%);
+	background-position: center;
+	background-repeat: no-repeat;
+	@include box-shadow(0px 0px 5px #888888);
+	@include border-radius(1.75em);
+	cursor: pointer;
+	/*z-index: 999;*/
+}

@@ -1,6 +1,6 @@
 require.config({
     
-    baseUrl: '_Resources/Static/Packages/DDFA.dresdenfueralleDe/DDFA/js',
+    // baseUrl: '_Resources/Static/Packages/DDFA.dresdenfueralleDe/DDFA/js',
     
     paths: {
         modernizr: '../../H5BP/js/vendor/modernizr-2.8.3.min',
@@ -21,15 +21,15 @@ require.config({
     waitSeconds: 0	// disable "Load timeout for modules" error
 });
 
-require( ['domReady', 'modernizr'], function(domReady) {
+require( ['domReady', 'jquery', 'qx', 'underscore', 'hammer', 'bootstrap', 'Daddy', 'restive', 'APPDDFA', 'DataManager', 'Router', 'LanguageManager', 'Views/View', 'Views/MapView', 'Views/DetailView', 'Views/MenuView', 'Views/LegendView', 'Views/LanguageView', 'Views/PlusView', 'Views/FormView', 'Views/IncludeView'], function(domReady, $, qx, _, Hammer) {
 
 	domReady(function(){
 
-		require( ['jquery', 'qx', 'underscore', 'hammer', 'modernizr'], function( $, qx, _, Hammer ){
+		// require( [ 'modernizr'], function(  ){
 
-			require( ['bootstrap', 'Daddy'], function(){
+			// require( [], function(){
 
-				require( ['restive', 'APPDDFA', 'DataManager', 'Router', 'LanguageManager', 'Views/View'], function(){
+				// require( [], function(){
 
 					APP = new APPDDFA();
 					
@@ -48,7 +48,7 @@ require( ['domReady', 'modernizr'], function(domReady) {
 						// 	APP.getRouter().navigate();
 						// });
 
-						require( ['Views/MapView', 'Views/DetailView', 'Views/MenuView', 'Views/LegendView', 'Views/LanguageView', 'Views/PlusView', 'Views/FormView', 'Views/IncludeView'], function(){
+						// require( [], function(){
 							
 							if( APP.getUserDevice() === 'phone' ) {
 								
@@ -62,7 +62,7 @@ require( ['domReady', 'modernizr'], function(domReady) {
 						
 							APP.say('appInitialized');
 
-						});
+						// });
 					
 
 					});
@@ -111,11 +111,11 @@ require( ['domReady', 'modernizr'], function(domReady) {
 					// 	$legend.removeClass('active');
 					// });
 
-				});
+				// });
 			
-			});
+			// });
 
-		});
+		// });
 	});
 
 });

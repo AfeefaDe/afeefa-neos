@@ -8,7 +8,7 @@
  *
  */
 
-({
+({  
     //The top level directory that contains your app. If this option is used
     //then it assumed your scripts are in a subdirectory under this path.
     //This option is not required. If it is not specified, then baseUrl
@@ -22,7 +22,7 @@
     //is not explicitly set, then all modules are loaded relative to
     //the directory that holds the build file. If appDir is set, then
     //baseUrl should be specified as relative to the appDir.
-    baseUrl: '_Resources/Static/Packages/DDFA.dresdenfueralleDe/DDFA/js',
+    baseUrl: 'DDFA/js',
 
     //By default all the configuration for optimization happens from the command
     //line or by properties in the config file, and configuration that was
@@ -34,7 +34,17 @@
     //or require.config({}) call found in that file will be used.
     //As of 2.1.10, mainConfigFile can be an array of values, with the last
     //value's config take precedence over previous values in the array.
-    mainConfigFile: './main.js',
+    // mainConfigFile: 'DDFA/js/main.js',
+
+    modules: [
+        {
+            name: 'main'
+        }
+    ],
+    
+    fileExclusionRegExp: /^(r|build)\.js$/,
+    optimizeCss: 'standard',
+    removeCombined: true,
 
     //Set paths for modules. If relative paths, set relative to baseUrl above.
     //If a special value of "empty:" is used for the path value, then that
@@ -43,6 +53,22 @@
     //Useful to map module names that are to resources on a CDN or other
     //http: URL when running in the browser and during an optimization that
     //file should be skipped because it has no dependencies.
+    // paths: {
+    //     modernizr: 'H5BP/js/vendor/modernizr-2.8.3.min',
+    //     domReady: 'requirejs/domReady',
+    //     jquery: 'jquery/jquery-2.1.3',
+    //     restive: 'restive/restive.min',
+    //     qx: 'qooxdoo/qx-oo-4.1.min',
+    //     underscore: 'underscore/underscore-min',
+    //     leaflet: 'leaflet/leaflet',
+    //     leafletCluster: 'empty:',
+    //     hammer: 'hammerjs/hammer.min',
+    //     cartodb: 'empty:',
+    //     bootstrap: 'empty:',
+    //     mapbox: 'empty:',
+    //     d3: 'empty:'
+    // },
+
     paths: {
         modernizr: '../../H5BP/js/vendor/modernizr-2.8.3.min',
         domReady: '../../requirejs/domReady',
@@ -54,7 +80,7 @@
         leafletCluster: 'https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/leaflet.markercluster',
         hammer: '../../hammerjs/hammer.min',
         cartodb: 'http://libs.cartocdn.com/cartodb.js/v3/3.12/cartodb',
-        bootstrap: 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min',
+        bootstrap: 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min',
         mapbox: 'https://api.tiles.mapbox.com/mapbox.js/v2.1.9/mapbox',
         d3: 'http://d3js.org/d3.v3.min'
     },
@@ -70,7 +96,7 @@
     //The directory path to save the output. If not specified, then
     //the path will default to be a directory called "build" as a sibling
     //to the build file. All relative paths are relative to the build file.
-    dir: "./../../",
+    dir: "./built",
 
     //As of RequireJS 2.0.2, the dir above will be deleted before the
     //build starts again. If you have a big build and are not doing

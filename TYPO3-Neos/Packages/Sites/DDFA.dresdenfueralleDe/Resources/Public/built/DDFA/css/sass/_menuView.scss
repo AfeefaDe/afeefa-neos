@@ -1,0 +1,110 @@
+#menuView {
+	
+	position: absolute;
+	left: -15em;
+	top: 0;
+	
+	@include box-sizing(border-box);
+	width: 15em;
+	height: 100%;
+	padding: 2em 0;
+
+	.menu-btn {
+		position: absolute;
+		right: -6em;
+		top: 2em;
+		@include circleBtn;
+		background-color: $blue_dark;
+		background-image: url("../img/menu.svg");
+	}
+
+	a#logo, a#dfa-logo {
+		width: 50%;
+		display: block;
+		margin: 0 auto 3em auto;
+
+		img { width: 100%; }
+	}
+
+	a#dfa-logo {
+		width: 60%;
+		margin: 3em auto 0 auto;
+	}
+
+	.item {
+		@include box-sizing(border-box);
+		width: 100%;
+		padding: 0 5em 0 1em;
+		background-color: rgba(0,0,0,0.5);
+		margin-bottom: 1em;
+		cursor: pointer;
+		text-align: right;
+
+		&:hover { background-color: rgba(0,0,0,0.6); }
+
+		a, span {
+			line-height: 2em;
+			color: $white;
+			font-weight: 100;
+			text-decoration: none;
+		}
+
+
+		&.refugee-guide, &.supporter-guide {
+			
+			@include background-size(3.8em);
+			background-position: 10.5em 0.8em;
+			background-repeat: no-repeat;
+			margin-bottom: 2em;
+			height: 5em;
+
+			span {
+				font-size: 1.3em;
+				line-height: 2em;
+			}
+		}
+
+		&.refugee-guide {
+			background-image: url("../img/icon_54.svg");
+		}
+
+		&.supporter-guide {
+			background-image: url("../img/icon_56.svg");
+		}
+
+		&.facebook {
+			background-image: url("../img/icon-46.svg");
+			background-repeat: no-repeat;
+			background-position: 90% center;
+		}
+
+		&.donate {
+			background-image: url("../img/icon_72.svg");
+			background-repeat: no-repeat;
+			background-position: 90% center;
+		}
+	}
+
+}
+
+body.phone {
+
+	#menuView{
+
+		#main-menu{
+			height: 100%;
+			overflow-y: auto;
+			overflow-x: hidden;
+		}
+
+		.menu-btn {
+			right: -5em;
+		}
+
+		.item.refugee-guide, .item.supporter-guide, .item.help, .item.about {
+			display: none;
+		}
+
+	}
+
+}

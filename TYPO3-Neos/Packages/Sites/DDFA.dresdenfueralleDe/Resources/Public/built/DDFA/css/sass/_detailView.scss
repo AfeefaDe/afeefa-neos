@@ -1,0 +1,219 @@
+@mixin detailViewBasic {
+	
+
+	/* HEADING */
+	.heading {
+		
+		height: 3em;
+	  	flex-shrink: 0;
+		color: $white;
+		
+		h1 {
+			@include box-sizing(border-box);
+			height: 3em;
+			margin: 0;
+			padding: 1em 1em 0 1em;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+
+			font-weight: 300;
+			font-size: 1.1em;
+			text-align: center;
+		}
+	}
+
+	/* IMAGE PROPERTY */
+	.image {
+		/*height: 10em;*/
+		text-align: center;
+		overflow: hidden;
+
+		img {
+			position: relative;
+		  	top: 50%;
+		  	transform: translateY(-50%);
+		}
+
+		&.logo img { height: 80%; }
+		&.photo img { width: 100%; }
+	}
+
+	/* OTHER PROPERTIES */
+	.property {
+		display: none;
+		padding: 0 5%;
+		margin-top: 1em;
+		min-height: 2em;
+
+		$iconSize: 2.5em;
+
+		.property-icon {
+			width: $iconSize;
+			height: $iconSize;
+			float: left;
+
+			/*@include background-size(72%);*/
+			background-repeat: no-repeat;
+			background-position: center 0.2em;
+
+			@include categorySymbols;
+
+
+			/* property icons */
+			&.icon-location { background-image: url("../img/icon-35.svg"); }
+			&.icon-phone { background-image: url("../img/icon-23.svg"); }
+			&.icon-mail { background-image: url("../img/icon-25.svg"); }
+			&.icon-web { background-image: url("../img/icon-27.svg"); }
+			&.icon-openingHours { background-image: url("../img/icon-29.svg"); }
+			&.icon-description { background-image: url("../img/icon-31.svg"); }
+			&.icon-facebook { background-image: url("../img/icon-45.svg"); }
+			&.icon-spokenLanguages { background-image: url("../img/icon-43.svg"); }
+			&.icon-speakerPublic { background-image: url("../img/icon-41.svg"); }
+
+		}
+		.property-text {
+			margin-left: calc(5% + 2.5em);
+
+			&.ar, &.ur, &.fa {
+				margin-right: calc(5% + 2.5em);
+			}
+
+			p { 
+				margin: 0;
+				line-height: 1.3em;
+
+				&.property-name {
+					font-weight: 500;
+					text-transform: capitalize;
+				}
+			}
+
+			a {
+				  width: 100%;
+				  display: inline-block;
+				  overflow: hidden;
+				  text-overflow: ellipsis;
+				  white-space: nowrap;
+			}
+		}
+
+		&.category {
+			.property-icon {
+				@include border-radius(2em);
+				background-position: center center;
+			}
+		}
+	}
+	
+	/* type specific overwrites */
+	&.type-0 {
+		.heading { background-color: $blue_dark; }
+		.property.category {
+			.property-icon { background-color: $blue_dark; }
+			.property-value { color: $blue_dark; }
+		}
+	}
+	&.type-1 {
+		.heading { background-color: $orange; }
+		.property.category {
+			.property-icon { background-color: $orange; }
+			.property-value { color: $orange; }
+		}
+	}
+	&.type-2 {
+		.heading { background-color: pink; }
+		.property.category {
+			.property-icon { background-color: pink; }
+		}
+	}
+	&.type-3 {
+		.heading { background-color: $black; }
+		.property.category {
+			.property-icon { background-color: $black; }
+			.property-name { line-height: 2.6em !important; }
+			.property-value { display: none; }
+		}
+		
+		&.cat-trafficStop{
+			.heading { background-color: $dvb; color: $black !important; }
+			.property.category {
+				.property-icon { background-color: $dvb; }
+			}
+		}
+	}
+}
+
+#detailView {
+	
+	visibility: hidden;
+	opacity: 0;
+	@include transition(all 200ms);
+	
+	position: absolute;
+	left: 3em;
+	top: 7em;
+
+	display: flex;
+	flex-direction: column;
+
+	width: 21%;
+	/*min-width: 300px;*/
+	min-height: 20%;
+	max-height: 70%;
+	/*padding-bottom: 1em;*/
+
+	background-color: $white;
+	@include box-shadow(0px 0px 2px #333);
+
+	&.active {
+		visibility: visible;
+		opacity: 1;
+	}
+
+	&.right {
+		left: auto;
+		right: 6em;
+	}
+	
+	.scroll-container {
+		flex-grow: 1;
+		overflow-y: auto;
+		padding-bottom: 1em;
+		overflow-x: hidden;
+	}
+
+	@include detailViewBasic;
+
+}
+
+#detailViewMobile {
+	
+	@include transition(all 200ms);
+	z-index: 100;
+	width: 100%;
+	height: 3em;
+	position: absolute;
+	bottom: -3em;
+	
+	background-color: $white;
+	@include box-shadow(0px 0px 2px #333);
+
+	&.active {
+		bottom: 0;
+	}
+
+	&.active-large {
+		bottom: 0;
+		height: 80%;
+		/*overflow-y: scroll;*/
+	}
+	
+	.scroll-container {
+		height: calc(100% - 4em);
+		overflow-y: auto;
+		padding-bottom: 1em;
+	}
+
+	@include detailViewBasic;
+}

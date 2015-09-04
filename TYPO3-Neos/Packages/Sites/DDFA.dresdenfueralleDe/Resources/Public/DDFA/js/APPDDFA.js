@@ -19,7 +19,7 @@ qx.Class.define("APPDDFA", {
                 categoriesMarket: ["consultation", "medic", "german", "jobs", "leisure", "translation", "children", "donation", "community"],
                 categoriesEvent: [],
                 categoriesBasic: ["housing", "christian", "islam", "jewish", 'public', 'wifi', 'shop'],
-                simpleProperties: ['speakerPublic', 'spokenLanguages', 'phone', 'mail', 'web', 'facebook', 'openingHours', 'dateFrom', 'dateTo', 'description'],
+                simpleProperties: ['description', 'speakerPublic', 'spokenLanguages', 'phone', 'mail', 'web', 'facebook', 'openingHours', 'dateFrom', 'dateTo'],
                 imgPath: '_Resources/Static/Packages/DDFA.dresdenfueralleDe/DDFA/img/'
             }
         );

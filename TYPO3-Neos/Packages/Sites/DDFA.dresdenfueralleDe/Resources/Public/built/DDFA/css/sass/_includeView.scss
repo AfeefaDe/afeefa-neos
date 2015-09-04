@@ -1,0 +1,146 @@
+@import "compass/css3";
+
+@mixin link {
+	text-decoration: none;
+	font-weight: 500;
+	display: inline-block;
+	background-color: $white;
+	color: $black;
+	cursor: pointer;
+
+	&:hover{
+		@include box-shadow(0px 0px 5px #ffffff);
+	}
+}
+
+#includeView {
+	
+	@include transition(all 200ms);
+
+	position: absolute;
+	left: -35%;
+	top: 0;
+
+	visibility: hidden;
+	opacity: 0;	
+
+	@include box-sizing(border-box);
+	width: 35%;
+	height: 100%;
+	padding: 1em 0;
+
+	display: flex;
+	flex-direction: column;
+	/*@include flex-direction(column);*/
+
+	background-color: rgba(30,30,30,0.8);
+	color: $white;
+
+	/*border: 1px solid red;*/
+
+	&.active {
+		left: 0;
+		visibility: visible;
+		opacity: 1;
+	}
+
+	&.imprint {
+		direction: ltr;
+	}
+
+	a {
+		@include link;
+	}
+
+	.closeBtn {
+		position: absolute;
+		top: 0em;
+		left: 1em;
+		background-color: #f2f2f2;
+		color: #333333;
+		font-weight: bold;
+		line-height: 1em;
+		font-size: 2em;
+		width: 1em;
+		height: 1em;
+		text-align: center;
+		cursor: pointer;
+	}
+	.chapters {
+		display: none;
+	}
+	
+	.chaptersReal {
+	  	flex-shrink: 0;
+	}
+
+	.content {
+
+		/*@include flex-grow(1);*/
+		flex-grow: 1;
+	  	
+	  	padding: 2em;
+		position: relative;
+		overflow-y: auto;
+		overflow-x: hidden;
+		
+		line-height: 1.2em;
+		color: $white;
+
+		h1 {
+			font-weight: 100;
+			margin-bottom: 1em
+		}
+
+		h2 {
+			font-weight: 100;
+			line-height: 1em;
+			margin-top: 2em;
+		}
+
+		h3 {
+			font-size: 1.2em;
+			font-weight: 100;
+			line-height: 1em;
+    		margin-top: 1.5em;
+			margin-bottom: 0.4em;
+		}
+
+		p {
+			text-align: justify;
+			font-weight: 300;
+			line-height: 1.3em;
+		}
+
+		table {
+			font-weight: 300;
+
+			td {
+				padding: .3em 0 .3em 1em;
+				&:first-child { padding-left: 0em; }
+			}
+		}
+
+		span.locationLink {
+			@include link;
+		}
+
+	}
+
+}
+
+body.desktop, body.tablet {
+
+	#legendView{
+
+	}
+
+}
+
+body.phone {
+
+	#legendView{
+
+	}
+
+}

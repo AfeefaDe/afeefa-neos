@@ -12,6 +12,8 @@ qx.Class.define("MapView", {
   construct: function(){
   	var that = this;
 
+    that.setViewId('mapView');
+
   	that.setUserLocation(null);
   	that.setSelectedMarker(null);
   	that.setMarkerLocationLookup([]);
@@ -23,6 +25,13 @@ qx.Class.define("MapView", {
       	
       	var that = this;
 
+      	// view container
+        that.view = $("<div />");
+        that.view.attr('id', that.getViewId());
+
+        $('#main-container').append(that.view);
+
+        // dark map curtain
       	that.mapCurtain = $("<div />").attr('id', 'map-curtain');
         $('#main-container').append(that.mapCurtain);
 
@@ -31,7 +40,8 @@ qx.Class.define("MapView", {
 	    //////////////////
       	
       	L.mapbox.accessToken = 'pk.eyJ1IjoiZmVsaXhrYW1pbGxlIiwiYSI6Ilo1SHFOX0EifQ.pfAzun90Lj1UlVapKI3LiA';
-		that.map = L.mapbox.map('map-container', 'felixkamille.4128d9e7', {
+		// that.map = L.mapbox.map('map-container', 'felixkamille.4128d9e7', {
+		that.map = L.mapbox.map(that.getViewId(), 'felixkamille.4128d9e7', {
 			zoomControl: false,
 			maxBounds: [
     			L.latLng(50.894413, 13.304980), // south-west corner

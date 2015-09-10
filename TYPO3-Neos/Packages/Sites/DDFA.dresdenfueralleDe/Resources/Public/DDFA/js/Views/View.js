@@ -4,7 +4,8 @@ qx.Class.define("View", {
 	type: "abstract",
 
     properties: {
-        viewId: {}
+        viewId: {},
+        loadable: { init : false }
     },
 
     construct: function(){
@@ -16,6 +17,13 @@ qx.Class.define("View", {
         render: function(){
             var that = this;
 
+            that.view.addClass('view-container');
+
+            if( that.getLoadable() ) {
+                var loadingCurtain = $("<div />").addClass('loading-curtain');
+                that.view.append(loadingCurtain);
+            }
+
             that.addEvents();
             that.say(that.classname + 'Rendered');
         },
@@ -24,6 +32,18 @@ qx.Class.define("View", {
             var that = this;
 
             return APP.getLM().resolve(key);
+        },
+
+        loading: function( bool ){
+            var that = this;
+
+            if (bool) {
+                that.view.addClass('loading');
+            }
+            else {
+                that.view.removeClass('loading');
+            }
+                
         },
 
         addEvents: function(){

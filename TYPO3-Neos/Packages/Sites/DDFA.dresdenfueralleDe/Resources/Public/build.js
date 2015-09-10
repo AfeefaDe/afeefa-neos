@@ -77,12 +77,12 @@
         qx: '../../qooxdoo/qx-oo-4.1.min',
         underscore: '../../underscore/underscore-min',
         leaflet: '../../leaflet/leaflet',
-        leafletCluster: 'https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/leaflet.markercluster',
+        leafletCluster: 'empty:',
         hammer: '../../hammerjs/hammer.min',
-        cartodb: 'http://libs.cartocdn.com/cartodb.js/v3/3.12/cartodb',
-        bootstrap: 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min',
-        mapbox: 'https://api.tiles.mapbox.com/mapbox.js/v2.1.9/mapbox',
-        d3: 'http://d3js.org/d3.v3.min'
+        cartodb: 'empty:',
+        bootstrap: 'empty:',
+        mapbox: 'empty:',
+        d3: 'empty:'
     },
 
     //Sets up a map of module IDs to other module IDs. For more details, see

@@ -34,12 +34,33 @@
 		<link href='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/MarkerCluster.Default.css' rel='stylesheet' />
 
 	</f:section>
+
+		<!-- TODO -->
+		<?php
+		// variant for TYPO3 CMS
+		// \TYPO3\CMS\Core\Core\Bootstrap::getInstance()->getContext()
+		# shorthand to predefined contexts:
+		// \TYPO3\CMS\Core\Core\Bootstrap::getInstance()->getContext()->isDevelopment();
+		// \TYPO3\CMS\Core\Core\Bootstrap::getInstance()->getContext()->isProduction();
+
+		// variant A for flow
+		// die(\TYPO3\FLOW3\Core\Bootstrap::getInstance()->getContext());
+		# shorthand to predefined contexts:
+		// \TYPO3\FLOW3\Core\Bootstrap::getInstance()->getContext()->isDevelopment();
+		// \TYPO3\FLOW3\Core\Bootstrap::getInstance()->getContext()->isProduction();
+		
+		// variant B for flow
+		die(\TYPO3\Flow\Utility\Environment::getInstance()->getContext());
+		# shorthand to predefined contexts:
+		\TYPO3\Flow\Utility\Environment::getInstance()->getContext()->isDevelopment();
+		\TYPO3\Flow\Utility\Environment::getInstance()->getContext()->isProduction();
+		?>
 	<f:section name="headScripts">
 
-		<!-- requirejs (module loader) handles all further js includes -->
-		<!--<script data-main="{f:uri.resource(path: 'DDFA/js/main', package: 'DDFA.dresdenfueralleDe')}" type="text/javascript" src="{f:uri.resource(path: 'requirejs/require.js', package: 'DDFA.dresdenfueralleDe')}"></script>-->
-		<script data-main="{f:uri.resource(path: 'built/DDFA/js/main', package: 'DDFA.dresdenfueralleDe')}" type="text/javascript" src="{f:uri.resource(path: 'requirejs/require.js', package: 'DDFA.dresdenfueralleDe')}"></script>
+		<!-- current flow context: {context} -->
 
+		<!-- requirejs (module loader) handles all further js includes -->
+		<script data-main="{f:uri.resource(path: '{mainScript}', package: 'DDFA.dresdenfueralleDe')}" type="text/javascript" src="{f:uri.resource(path: 'requirejs/require.js', package: 'DDFA.dresdenfueralleDe')}"></script>
 
 		<script src='https://api.tiles.mapbox.com/mapbox.js/v2.1.9/mapbox.js'></script>
 		<script src='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/leaflet.markercluster.js'></script>

@@ -28,10 +28,13 @@ qx.Class.define("View", {
             that.say(that.classname + 'Rendered');
         },
 
-        getWording: function( key ){
+        // param (key, [locale])
+        // @key bib key
+        // @locale get wording in a specific ignoring the current app language
+        getWording: function( key, locale ){
             var that = this;
 
-            return APP.getLM().resolve(key);
+            return APP.getLM().resolve(key, locale);
         },
 
         loading: function( bool ){

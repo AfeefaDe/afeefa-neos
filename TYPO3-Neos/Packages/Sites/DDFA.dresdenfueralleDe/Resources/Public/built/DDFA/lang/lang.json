@@ -772,6 +772,18 @@
                   "ti":"",
                   "ur":""
             },
+            "menu_press":{
+                  "de":"Presse",
+                  "en":"Press",
+                  "ar":"",
+                  "fa":"",
+                  "fr":"",
+                  "it":"",
+                  "ru":"",
+                  "sr":"",
+                  "ti":"",
+                  "ur":""
+            },
             "menu_donate":{
                   "de":"Spenden",
                   "en":"Donate",

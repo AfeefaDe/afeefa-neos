@@ -10,6 +10,7 @@ qx.Class.define("DetailViewMobile", {
     	var that = this;
 
         that.setViewId('detailViewMobile');
+        that.setLoadable(true);
         that.record = null;
     },
 
@@ -32,40 +33,6 @@ qx.Class.define("DetailViewMobile", {
                 else if ( that.view.hasClass('active-large') ){
                     that.resize(1);
                 }
-            });
-
-            ////////////////////
-            // swipe gestures //
-            ////////////////////
-            require( [ 'hammer' ], function( Hammer ){
-
-                var hammer = new Hammer(that.headingContainer[0]);
-                hammer.get('pan').set({ direction: Hammer.DIRECTION_ALL, treshold: 0 });
-                hammer.get('swipe').set({ direction: Hammer.DIRECTION_ALL, treshold: 0 });
-
-                hammer.on('swipedown', function(ev){
-                    that.resize(1);
-                });
-
-                hammer.on('swipeup', function(ev){
-                    that.resize(2);
-                });
-
-                // hammer.on('pandown panup', function(ev){
-                //     console.debug('pandown', ev.deltaY, ev);
-                //     if( ev.deltaY >= 0 ) that.view.css('bottom', -(ev.deltaY) );
-                // });
-
-                // hammer.on('panend', function(ev){
-                //     console.debug('panend', ev.deltaY, ev);
-                //     if(ev.deltaY > 100) {
-                //         that.close();
-                //         that.view.css('bottom', "" );
-                //     } else {
-                //         that.view.css('bottom', "" );
-                //     }
-                // });
-
             });
 
         },

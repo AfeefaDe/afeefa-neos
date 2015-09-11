@@ -10,6 +10,8 @@ qx.Class.define("DetailView", {
     	var that = this;
 
         that.setViewId('detailView');
+        that.setLoadable(true);
+
         that.record = null;
     },
 
@@ -166,6 +168,8 @@ qx.Class.define("DetailView", {
 
             });
 
+            that.loading(false);
+
             // show DetailView
             that.view.addClass('active');
         },
@@ -217,13 +221,15 @@ qx.Class.define("DetailView", {
         changeLanguage: function(){
             var that = this;
 
-            if( that.record !== null) {
+            that.loading(true);
 
-                var record = that.record;
-                that.reset();
-                that.load(record);
+            // if( that.record !== null) {
+
+            //     var record = that.record;
+            //     that.reset();
+            //     that.load(record);
                 
-            }
+            // }
 
             // request that.record's entryId in current locale
             // var recordRelocalized;

@@ -29,17 +29,24 @@ qx.Class.define("LanguageManager", {
             that.addEvents();
         },
 
-        resolve: function( key ){
+        // param (key, [locale])
+        // @key bib key
+        // @locale get wording in a specific ignoring the current app language
+        resolve: function( key, locale ){
             var that = this;
 
             if( that.getBib()[ key ] === undefined ) return 'XXX';
-                
-            var wording = that.getBib()[ key ][ that.getCurrentLang() ];
             
-            if( wording && _.contains(['ar', 'fa', 'ur'], that.getCurrentLang() ) ){
-                // reverse string
+            var wording;
+            if(locale)
+                wording = that.getBib()[ key ][ locale ];
+            else
+                wording = that.getBib()[ key ][ that.getCurrentLang() ];
+
+            // if( wording && _.contains(['ar', 'fa', 'ur'], that.getCurrentLang() ) ){
+            //     // reverse string
                 
-            }
+            // }
 
             if(!wording) wording = that.getBib()[ key ][ APP.getConfig().languages[1] ];
             if(!wording) wording = that.getBib()[ key ][ APP.getConfig().languages[0] ];

@@ -94,7 +94,8 @@ qx.Class.define("APPDDFA", {
             APP.setUserDevice('desktop');
             if( $('body').hasClass('mobi') || $('body').hasClass('phone') ) APP.setUserDevice('mobile');
             if( $('body').hasClass('tablet') ) APP.setUserDevice('tablet');
-
+            
+            $('body').addClass( APP.getUserDevice() );
         }
     }
 

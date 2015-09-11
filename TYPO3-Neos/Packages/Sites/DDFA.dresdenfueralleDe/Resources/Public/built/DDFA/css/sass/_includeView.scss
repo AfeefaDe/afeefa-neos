@@ -131,16 +131,16 @@
 
 body.desktop, body.tablet {
 
-	#legendView{
+	#includeView {
 
 	}
 
 }
 
-body.phone {
+body.mobile {
 
-	#legendView{
-
+	#includeView {
+		width: 100%;
 	}
 
 }

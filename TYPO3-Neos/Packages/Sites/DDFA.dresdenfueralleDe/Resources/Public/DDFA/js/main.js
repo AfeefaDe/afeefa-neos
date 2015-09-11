@@ -73,7 +73,7 @@ require([
 
 						// require( [], function(){
 							
-							if( APP.getUserDevice() === 'phone' ) {
+							if( APP.getUserDevice() === 'mobile' ) {
 								
 								require( ['Views/DetailViewMobile', 'Views/LanguageViewMobile'], function(){
 									APP.getRouter().initialNavigate();

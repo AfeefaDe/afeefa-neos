@@ -73,16 +73,28 @@ qx.Class.define("APPDDFA", {
             var that = this;
 
             // analyse user device
-            $('body').restive({
-                breakpoints: ['768', '1280'],
-                classes: ['768-c', '1280-c'],
-                force_dip: true
-            });
-            if( $('body').hasClass('768-c') ) APP.setUserDevice('phone');
-            else if( $('body').hasClass('1280-c') ) APP.setUserDevice('tablet');
-            else APP.setUserDevice('desktop');
+            // $('body').restive({
+            //     breakpoints: ['768', '1280'],
+            //     classes: ['768-c', '1280-c'],
+            //     force_dip: true
+            // });
 
-            $('body').addClass( APP.getUserDevice() );
+            // if( $('body').hasClass('768-c') ) APP.setUserDevice('phone');
+            // else if( $('body').hasClass('1280-c') ) APP.setUserDevice('tablet');
+            // else APP.setUserDevice('desktop');
+
+            // $('body').addClass( APP.getUserDevice() );
+
+            $('body').restive({
+                  breakpoints: ['10000'],
+                  classes: ['nb'],
+                  turbo_classes: 'is_mobile=mobi,is_phone=phone,is_tablet=tablet,is_landscape=landscape'
+            });
+
+            APP.setUserDevice('desktop');
+            if( $('body').hasClass('mobi') || $('body').hasClass('phone') ) APP.setUserDevice('mobile');
+            if( $('body').hasClass('tablet') ) APP.setUserDevice('tablet');
+
         }
     }
 

@@ -44,7 +44,7 @@ qx.Class.define("Router", {
 	    initialNavigate: function(){
 	    	var userDevice = APP.getUserDevice();
 
-			if( userDevice === 'phone' ) {
+			if( userDevice === 'mobile' ) {
 
 				// new MapView();
 		    	APP.setMapView( new MapView() );
@@ -84,7 +84,7 @@ qx.Class.define("Router", {
 			}
 	    	
 	    	// TODO throw away
-	    	if( userDevice === 'phone' ) {
+	    	if( userDevice === 'mobile' ) {
 	    		APP.getMapView().render();
 		    	APP.getDetailView().render();
 		    	APP.getLanguageView().render();

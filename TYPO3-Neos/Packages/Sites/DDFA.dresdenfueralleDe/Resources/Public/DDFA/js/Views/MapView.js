@@ -136,8 +136,8 @@ qx.Class.define("MapView", {
     	if(entryId) {
     		var lookup = that.lookupMarkerById(entryId);
     		if(lookup){
-    			that.selectMarker(lookup.marker, lookup.location);
     			if(options && options.setView) that.map.setView( [lookup.location.lat, lookup.location.lon], 15);
+    			that.selectMarker(lookup.marker, lookup.location);
     		}
     	}
 

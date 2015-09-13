@@ -102,7 +102,7 @@ qx.Class.define("LanguageViewMobile", {
             // TODO: only do in mobile version
             // that.addRequestBtn.css('display', 'none');
             // that.addOfferBtn.css('display', 'none');
-            that.say('shiftMenuClosed');
+            // that.say('shiftMenuClosed');
         }
     }
 

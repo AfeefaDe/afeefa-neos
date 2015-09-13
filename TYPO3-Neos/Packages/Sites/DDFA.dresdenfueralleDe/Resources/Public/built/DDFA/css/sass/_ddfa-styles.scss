@@ -128,7 +128,7 @@ strong {
 
 #main-container {
 	
-	@include transition(all 250ms);
+	@include transition(left 250ms);
 
 	position: fixed;
 	left: 0;

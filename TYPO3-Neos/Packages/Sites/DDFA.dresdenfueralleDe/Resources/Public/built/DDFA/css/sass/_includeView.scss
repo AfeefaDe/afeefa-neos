@@ -15,7 +15,7 @@
 
 #includeView {
 	
-	@include transition(left 200ms);
+	@include transition(left 200ms, height 200ms);
 
 	position: absolute;
 	left: -35%;
@@ -139,6 +139,10 @@ body.mobile {
 
 	#includeView {
 		width: 100%;
+
+		&.small {
+			height: 20%;
+		}
 	}
 
 }

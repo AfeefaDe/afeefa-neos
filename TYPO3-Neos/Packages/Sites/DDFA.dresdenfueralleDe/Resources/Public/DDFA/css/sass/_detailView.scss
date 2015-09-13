@@ -5,7 +5,7 @@
 	.heading {
 		
 		height: 3em;
-	  	flex-shrink: 0;
+	  	@include flex-shrink(0);
 		color: $white;
 		
 		h1 {
@@ -146,18 +146,21 @@
 
 #detailView {
 	
+	$viewWidth: 23em;
+
 	visibility: hidden;
 	opacity: 0;
-	@include transition(all 200ms);
+	@include transition(left 400ms, right 400ms);
 	
 	position: absolute;
 	left: 3em;
 	top: 7em;
 
-	display: flex;
-	flex-direction: column;
+	/*display: flex;*/
+	@include display-flex;
+	@include flex-direction(column);
 
-	width: 21%;
+	width: $viewWidth;
 	/*min-width: 300px;*/
 	min-height: 20%;
 	max-height: 70%;
@@ -173,11 +176,12 @@
 
 	&.right {
 		left: auto;
-		right: 6em;
+		/*right: 6em;*/
+		left: calc(100% - #{$viewWidth} - 4em);
 	}
 	
 	.scroll-container {
-		flex-grow: 1;
+		@include flex-grow(1);
 		overflow-y: auto;
 		padding-bottom: 1em;
 		overflow-x: hidden;
@@ -185,6 +189,12 @@
 
 	@include detailViewBasic;
 
+}
+
+.tablet {
+	#detailViewMobile {
+		width: 30%;
+	}	
 }
 
 #detailViewMobile {

@@ -4,7 +4,8 @@ qx.Class.define("View", {
 	type: "abstract",
 
     properties: {
-        viewId: {}
+        viewId: {},
+        loadable: { init : false }
     },
 
     construct: function(){
@@ -16,14 +17,36 @@ qx.Class.define("View", {
         render: function(){
             var that = this;
 
+            that.view.addClass('view-container');
+
+            if( that.getLoadable() ) {
+                var loadingCurtain = $("<div />").addClass('loading-curtain');
+                that.view.append(loadingCurtain);
+            }
+
             that.addEvents();
             that.say(that.classname + 'Rendered');
         },
 
-        getWording: function( key ){
+        // param (key, [locale])
+        // @key bib key
+        // @locale get wording in a specific ignoring the current app language
+        getWording: function( key, locale ){
             var that = this;
 
-            return APP.getLM().resolve(key);
+            return APP.getLM().resolve(key, locale);
+        },
+
+        loading: function( bool ){
+            var that = this;
+
+            if (bool) {
+                that.view.addClass('loading');
+            }
+            else {
+                that.view.removeClass('loading');
+            }
+                
         },
 
         addEvents: function(){

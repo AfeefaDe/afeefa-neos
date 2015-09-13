@@ -56,7 +56,7 @@ qx.Class.define("LanguageViewMobile", {
 
         load: function(){
             var that = this;
-
+            
             that.rootBtn.addClass( APP.getLM().getCurrentLang() );
         },
 
@@ -102,6 +102,7 @@ qx.Class.define("LanguageViewMobile", {
             // TODO: only do in mobile version
             // that.addRequestBtn.css('display', 'none');
             // that.addOfferBtn.css('display', 'none');
+            that.say('shiftMenuClosed');
         }
     }
 

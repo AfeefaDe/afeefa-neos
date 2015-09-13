@@ -21,7 +21,30 @@ require.config({
     waitSeconds: 0	// disable "Load timeout for modules" error
 });
 
-require( ['domReady', 'jquery', 'qx', 'underscore', 'hammer', 'bootstrap', 'Daddy', 'restive', 'APPDDFA', 'DataManager', 'Router', 'LanguageManager', 'Views/View', 'Views/MapView', 'Views/DetailView', 'Views/MenuView', 'Views/LegendView', 'Views/LanguageView', 'Views/PlusView', 'Views/FormView', 'Views/IncludeView'], function(domReady, $, qx, _, Hammer) {
+require([
+	'domReady',
+	'jquery',
+	'qx',
+	'underscore',
+	'hammer',
+	'modernizr',
+	'bootstrap',
+	'Daddy',
+	'restive',
+	'APPDDFA',
+	'DataManager',
+	'Router',
+	'LanguageManager',
+	'Views/View',
+	'Views/MapView',
+	'Views/DetailView',
+	'Views/MenuView',
+	'Views/LegendView',
+	'Views/LanguageView',
+	'Views/PlusView',
+	'Views/FormView',
+	'Views/IncludeView'
+], function(domReady, $, qx, _, Hammer) {
 
 	domReady(function(){
 
@@ -50,7 +73,7 @@ require( ['domReady', 'jquery', 'qx', 'underscore', 'hammer', 'bootstrap', 'Dadd
 
 						// require( [], function(){
 							
-							if( APP.getUserDevice() === 'phone' ) {
+							if( APP.getUserDevice() === 'mobile' ) {
 								
 								require( ['Views/DetailViewMobile', 'Views/LanguageViewMobile'], function(){
 									APP.getRouter().initialNavigate();

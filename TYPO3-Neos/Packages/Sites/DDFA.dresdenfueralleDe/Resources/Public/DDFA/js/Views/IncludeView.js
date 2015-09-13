@@ -16,6 +16,7 @@ qx.Class.define("IncludeView", {
             refugeeGuide: 'refugeeGuide',
             supporterGuide: 'supporterGuide',
             imprint: 'imprint',
+            press: 'press',
             donate: 'donate'
         });
         that.setBaseUrl( '_Resources/Static/Packages/DDFA.dresdenfueralleDe/DDFA/inc/' );
@@ -111,6 +112,13 @@ qx.Class.define("IncludeView", {
             that.content.empty();
         },
 
+        minimize: function(bool){
+            var that = this;
+
+            if( bool ) that.view.addClass('small')
+            else that.view.removeClass('small')
+        },
+
         addEvents: function(){
             var that = this;
 
@@ -119,7 +127,25 @@ qx.Class.define("IncludeView", {
             
             that.closeBtn.click(function(){
                 that.close();
+                that.say('includeViewClosed');
             });
+
+            that.listen('detailViewOpened', function(){
+                that.minimize(true);
+            });
+            
+            // that.listen('detailViewMobileMaximized', function(){
+            //     that.minimize(true);
+            // });
+
+            // that.listen('detailViewMobileMinimized', function(){
+            //     that.minimize(true);
+            // });
+
+            that.listen('detailViewClosed', function(){
+                that.minimize(false);
+            });
+
 
             // that.menuBtn.click(function(){
             //     $('#main-container').addClass('shifted-left');

@@ -10,6 +10,8 @@ qx.Class.define("DetailView", {
     	var that = this;
 
         that.setViewId('detailView');
+        that.setLoadable(true);
+
         that.record = null;
     },
 
@@ -166,8 +168,12 @@ qx.Class.define("DetailView", {
 
             });
 
+            that.loading(false);
+
             // show DetailView
             that.view.addClass('active');
+
+            that.say('detailViewOpened');
         },
 
         reset: function() {
@@ -212,18 +218,21 @@ qx.Class.define("DetailView", {
             var that = this;
             that.view.removeClass('active');
             that.reset();
+            that.say('detailViewClosed');
         },
 
         changeLanguage: function(){
             var that = this;
 
-            if( that.record !== null) {
+            that.loading(true);
 
-                var record = that.record;
-                that.reset();
-                that.load(record);
+            // if( that.record !== null) {
+
+            //     var record = that.record;
+            //     that.reset();
+            //     that.load(record);
                 
-            }
+            // }
 
             // request that.record's entryId in current locale
             // var recordRelocalized;
@@ -239,7 +248,10 @@ qx.Class.define("DetailView", {
             this.base(arguments);
 
             that.listen('includeViewOpened', function(){
-                that.view.addClass('right');
+                if( APP.getUserDevice() === 'mobile' )
+                    that.close();
+                else
+                    that.view.addClass('right');
             });
 
             that.listen('includeViewClosed', function(){

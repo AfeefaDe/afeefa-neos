@@ -64,8 +64,8 @@ qx.Class.define("LanguageView", {
 
                 // bootstrap tooltip
                 btn.el.attr({
-                    'title': that.getWording('lan_' + btn.lang),
-                    'data-original-title': that.getWording('lan_' + btn.lang)
+                    'title': that.getWording('lan_' + btn.lang, btn.lang) + ' (' + that.getWording('lan_' + btn.lang) + ')',
+                    'data-original-title': that.getWording('lan_' + btn.lang, btn.lang) + ' (' + that.getWording('lan_' + btn.lang) + ')'
                 });
 
             });

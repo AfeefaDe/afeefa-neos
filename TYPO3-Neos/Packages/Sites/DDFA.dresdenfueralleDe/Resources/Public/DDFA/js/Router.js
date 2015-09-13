@@ -44,7 +44,7 @@ qx.Class.define("Router", {
 	    initialNavigate: function(){
 	    	var userDevice = APP.getUserDevice();
 
-			if( userDevice === 'phone' ) {
+			if( userDevice === 'mobile' ) {
 
 				// new MapView();
 		    	APP.setMapView( new MapView() );
@@ -61,7 +61,7 @@ qx.Class.define("Router", {
 		    	
 		    	// APP.setFormView( new FormView() );
 		    	
-		    	// APP.setIncludeView( new IncludeView() );
+		    	APP.setIncludeView( new IncludeView() );
 		
 			} else {
 
@@ -84,11 +84,12 @@ qx.Class.define("Router", {
 			}
 	    	
 	    	// TODO throw away
-	    	if( userDevice === 'phone' ) {
+	    	if( userDevice === 'mobile' ) {
 	    		APP.getMapView().render();
 		    	APP.getDetailView().render();
 		    	APP.getLanguageView().render();
 		    	APP.getMenuView().render();
+		    	APP.getIncludeView().render();
 	    	}
 	    	else {
 		    	APP.getMapView().render();

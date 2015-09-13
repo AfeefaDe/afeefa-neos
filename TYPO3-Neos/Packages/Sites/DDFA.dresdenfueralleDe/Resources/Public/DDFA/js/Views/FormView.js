@@ -16,6 +16,8 @@ qx.Class.define("FormView", {
 
         that.setViewId('formView');
         
+        that.setLoadable(true);
+        
         that.setFormTypes({
             "initiative": 0,
             "marketOffer": 1,
@@ -330,6 +332,8 @@ qx.Class.define("FormView", {
                 input.val(null);
                 input.removeAttr('required');
             });
+
+            that.loading(false);
         },
 
         close: function(){
@@ -363,6 +367,8 @@ qx.Class.define("FormView", {
              //        return this;
              //    }
 
+            that.loading(true);
+
             var type = that.getCurrentFormType();
 
             if( type == that.getFormTypes().marketOffer ){
@@ -377,6 +383,9 @@ qx.Class.define("FormView", {
                     if(prop.intoLocation) dataLocation.location[prop.name] = that[type + '_field_'+prop.name].val();
 
                 });
+
+                // TODO define metaData property in data model
+                // data.marketentry.metaData = L.Browser;
 
                 // TODO date dummy data, because it's required by the model, which becomes obsolete as soon as the model allows empty date properties
                 // if( data.marketentry.dateFrom.length == 0) data.marketentry.dateFrom = '1854-01-01T00:00:00+0200';
@@ -407,6 +416,9 @@ qx.Class.define("FormView", {
                     if(prop.intoLocation) dataLocation.location[prop.name] = that[type + '_field_'+prop.name].val();
 
                 });
+
+                // TODO define metaData property in data model
+                // data.marketentry.metaData = L.Browser;
 
                 // TODO date dummy data, because it's required by the model, which becomes obsolete as soon as the model allows empty date properties
                 // if( data.marketentry.dateFrom.length == 0) data.marketentry.dateFrom = '1854-01-01T00:00:00+0200';
@@ -445,6 +457,7 @@ qx.Class.define("FormView", {
                     }
                     else {
                         alert(that.getWording('form_fail'));
+                        that.loading(false);
                     }
 
                 });
@@ -452,7 +465,8 @@ qx.Class.define("FormView", {
                 // to slack
                 APP.getDataManager().sendToSlack({
                     heading: 'Feedback von _' + data.feedback.author + '_ (' + data.feedback.mail + ')',
-                    message: data.feedback.message
+                    message: data.feedback.message + '\n\n'
+                            + '_' + JSON.stringify(data.feedback.metaData) + '_'
                 });
 
             }
@@ -464,6 +478,7 @@ qx.Class.define("FormView", {
                     if(!response.marketentry){
                         // that.thatResponseMessage().append( that.getWording('form_fail') );
                         alert(that.getWording('form_fail'));
+                        that.loading(false);
                         return;
                     }
 
@@ -493,7 +508,8 @@ qx.Class.define("FormView", {
                                 + '_Ort:_ ' + data.marketentry.city + '\n'
                                 + '_von:_ ' + data.marketentry.dateFrom + '\n'
                                 + '_bis:_ ' + data.marketentry.dateTo + '\n'
-                                + '_Wdh.:_ ' + data.marketentry.datePeriodic
+                                + '_Wdh.:_ ' + data.marketentry.datePeriodic + '\n\n'
+                                + '_' + JSON.stringify(data.marketentry.metaData) + '_'
                 });
 
             }

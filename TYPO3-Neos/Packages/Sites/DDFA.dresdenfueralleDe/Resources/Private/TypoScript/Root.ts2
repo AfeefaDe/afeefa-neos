@@ -19,7 +19,10 @@ page = Page {
 		javascripts.site = TYPO3.TypoScript:Template {
 			templatePath = 'resource://DDFA.dresdenfueralleDe/Private/Templates/Page/DDFA.html'
 			sectionName = 'headScripts'
+			context = ${Configuration.setting('TYPO3.Flow.core.context')}
+			mainScript = ${Configuration.setting('TYPO3.Flow.core.context') == 'Production' ? 'built/DDFA/js/main' : 'DDFA/js/main'}
 		}
+
 	}
 
 	body {

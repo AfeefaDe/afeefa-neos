@@ -37,6 +37,11 @@ qx.Class.define("DetailViewMobile", {
                 }
             });
 
+            // that.listen('includeViewClicked', function(e){
+            //     if( e.customData.viewState == 1 )
+            //         that.close();
+            // });
+
         },
 
         // parameter state: 0 = complete close, 1 = small, 2 = large

@@ -51,6 +51,7 @@ qx.Class.define("IncludeView", {
             
             that.view.addClass('active');
             that.view.addClass(includeKey);
+            that.setViewState(0);
 
             that.say('includeViewOpened');
             
@@ -115,8 +116,14 @@ qx.Class.define("IncludeView", {
         minimize: function(bool){
             var that = this;
 
-            if( bool ) that.view.addClass('small')
-            else that.view.removeClass('small')
+            if( bool ) {
+                that.view.addClass('small')
+                that.setViewState(1);
+            }
+            else {
+                that.view.removeClass('small')  
+                that.setViewState(0);
+            } 
         },
 
         addEvents: function(){
@@ -125,6 +132,10 @@ qx.Class.define("IncludeView", {
             // call superclass
             this.base(arguments);
             
+            that.view.click(function(){
+                that.say('includeViewClicked', {viewState: that.getViewState()} );
+            });
+
             that.closeBtn.click(function(){
                 that.close();
                 that.say('includeViewClosed');
@@ -133,7 +144,7 @@ qx.Class.define("IncludeView", {
             that.listen('detailViewOpened', function(){
                 that.minimize(true);
             });
-            
+
             // that.listen('detailViewMobileMaximized', function(){
             //     that.minimize(true);
             // });

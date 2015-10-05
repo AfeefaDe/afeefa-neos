@@ -23,7 +23,7 @@ qx.Class.define("DataManager", {
 
             // fetch them all
             
-            that.getAllCategories(function(data){
+            // that.getAllCategories(function(data){
                 
                 // set categories here as [ {identifier: az7szdf , category: name}, ... ]
 
@@ -38,7 +38,7 @@ qx.Class.define("DataManager", {
                         cb( allData );
                     });
                 });
-            });
+            // });
             
             // callback
             // while( !initiativesFetched || !locationsFetched )

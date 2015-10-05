@@ -590,7 +590,7 @@
                   "ti":"",
                   "ur":""
             },
-            "misc_officialEntry":{
+            "old_misc_officialEntry":{
                   "de":"offizieller Eintrag",
                   "en":"official entry",
                   "ar":"مدخل رسمي",
@@ -602,7 +602,7 @@
                   "ti":"ወግዓዊ ሰነድ",
                   "ur":""
             },
-            "misc_privateEntry":{
+            "old_misc_privateEntry":{
                   "de":"privater Eintrag",
                   "en":"private entry",
                   "ar":"مدخل  خاص",
@@ -612,6 +612,30 @@
                   "ru":"частное внеcение в спиcок/регистрация",
                   "sr":"Приватни улаз",
                   "ti":"ውልቃዊ ሰነድ",
+                  "ur":""
+            },
+            "misc_officialEntry":{
+                  "de":"Initiative/ Organisation",
+                  "en":"Initiative/ Organization",
+                  "ar":"",
+                  "fa":"",
+                  "fr":"",
+                  "it":"",
+                  "ru":"",
+                  "sr":"",
+                  "ti":"",
+                  "ur":""
+            },
+            "misc_privateEntry":{
+                  "de":"Projekt",
+                  "en":"Project",
+                  "ar":"",
+                  "fa":"",
+                  "fr":"",
+                  "it":"",
+                  "ru":"",
+                  "sr":"",
+                  "ti":"",
                   "ur":""
             },
             

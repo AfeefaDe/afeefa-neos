@@ -36,6 +36,19 @@ qx.Class.define("MapView", {
       	that.mapCurtain = $("<div />").attr('id', 'map-curtain');
         $('#main-container').append(that.mapCurtain);
 
+        // locate btn
+    	that.locateBtn = $("<div />").attr('id', 'locate-btn');
+        that.view.append(that.locateBtn);
+    	
+    	that.locateBtn.click(function(){
+    		// alert('haha');
+    		that.locate();
+    	});
+    	that.locateBtn.on('touchend', function(){
+    		that.locate();
+    	});
+
+
 	    //////////////////
       	// MAPBOX INIT //
 	    //////////////////
@@ -125,6 +138,9 @@ qx.Class.define("MapView", {
        	this.base(arguments);
         
         that.loading(true);
+
+		if (APP.getUserDevice() == 'mobile') that.locate();
+
     },
 
 	// TODO: outsource in Router
@@ -259,18 +275,6 @@ qx.Class.define("MapView", {
     		that.loadNewData();
     	});
 
-    	// var $locateBtn = $('#locate-btn');
-    	// $locateBtn.click(function(){
-    	// 	// alert('haha');
-    	// 	that.locate();
-    	// });
-		
-		// that.locate();
-		
-    	// $('#locate-btn').on('touchend', function(){
-    	// 	that.locate();
-    	// });
-    	
     },
     removeEvents: function() {
 
@@ -519,7 +523,7 @@ qx.Class.define("MapView", {
     	// update view if location found
 		that.map.on('locationfound', function(e) {
 		    // alert(e.latlng);
-		    that.map.setView( e.latlng , 13);
+		    that.map.setView( e.latlng , 15);
 		    that.setUserLocation = e.latlng;
 
 		    var myIcon = L.icon({

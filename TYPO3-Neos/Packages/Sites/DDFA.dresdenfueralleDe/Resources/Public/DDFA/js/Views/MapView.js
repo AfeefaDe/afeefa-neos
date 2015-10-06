@@ -186,7 +186,7 @@ qx.Class.define("MapView", {
         }
 
 		that.addLocations(locations);
-		that.loadFromUrl();
+		that.loadFromUrl({setView: true});
         that.loading(false);
 
     },

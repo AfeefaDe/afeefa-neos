@@ -617,26 +617,26 @@
             "misc_officialEntry":{
                   "de":"Initiative/ Organisation",
                   "en":"Initiative/ Organization",
-                  "ar":"",
-                  "fa":"",
-                  "fr":"",
-                  "it":"",
-                  "ru":"",
-                  "sr":"",
+                  "ar":"منظمة",
+                  "fa":"سازمان",
+                  "fr":"Organisation",
+                  "it":"organizzazione",
+                  "ru":"организация",
+                  "sr":"организација",
                   "ti":"",
-                  "ur":""
+                  "ur":"تنظیم"
             },
             "misc_privateEntry":{
                   "de":"Projekt",
                   "en":"Project",
-                  "ar":"",
-                  "fa":"",
-                  "fr":"",
-                  "it":"",
-                  "ru":"",
-                  "sr":"",
+                  "ar":"مشروع",
+                  "fa":"پروژه",
+                  "fr":"Projet",
+                  "it":"progetto",
+                  "ru":"проект",
+                  "sr":"пројекат",
                   "ti":"",
-                  "ur":""
+                  "ur":"منصوبہ"
             },
             
             "misc_filterReset":{

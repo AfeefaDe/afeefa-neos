@@ -212,12 +212,6 @@ qx.Class.define("FormView", {
                 .append( that.getWording('form_cancelBtn') );
             that.form.append(that.cancelBtn);
 
-            // TODO remove
-            that.dummyBtn = $("<button />")
-                .addClass('dummyBtn')
-                .append( 'issue' );
-            that.form.append(that.dummyBtn);
-
             this.base(arguments);
         },
 
@@ -239,15 +233,6 @@ qx.Class.define("FormView", {
             that.cancelBtn.click(function(e){
                 e.preventDefault();
                 that.close();
-            });
-
-            // TODO remove
-            that.dummyBtn.click(function(e){
-                
-                APP.getDataManager().githubCreateIssue({
-                    content: 'test issue'
-                });
-
             });
 
         },

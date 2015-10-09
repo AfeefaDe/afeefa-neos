@@ -6,9 +6,9 @@ require_once('github-php-client-master/client/GitHubClient.php');
 $username = 'felixkamille';
 $password = 'Feli-0411';
 
-var_dump($_POST);
+//var_dump($_POST);
 
-if(isset($_POST)){
+if(isset($_POST) && isset($_POST['type'])){
 
 	$client = new GitHubClient();
 	$client->setCredentials($username, $password);

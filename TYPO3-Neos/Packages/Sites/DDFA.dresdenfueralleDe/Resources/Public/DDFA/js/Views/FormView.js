@@ -212,6 +212,12 @@ qx.Class.define("FormView", {
                 .append( that.getWording('form_cancelBtn') );
             that.form.append(that.cancelBtn);
 
+            // TODO remove
+            that.dummyBtn = $("<button />")
+                .addClass('dummyBtn')
+                .append( 'issue' );
+            that.form.append(that.dummyBtn);
+
             this.base(arguments);
         },
 
@@ -233,6 +239,15 @@ qx.Class.define("FormView", {
             that.cancelBtn.click(function(e){
                 e.preventDefault();
                 that.close();
+            });
+
+            // TODO remove
+            that.dummyBtn.click(function(e){
+                
+                APP.getDataManager().githubCreateIssue({
+                    content: 'test issue'
+                });
+
             });
 
         },
@@ -462,6 +477,14 @@ qx.Class.define("FormView", {
 
                 });
 
+                // to github
+                // TODO read response to get created issue ID and post this ID as waffle link to slack
+                APP.getDataManager().githubCreateIssue({
+                    type: 'feedback',
+                    data: data.feedback,
+                    metadata: JSON.stringify(data.feedback.metaData)
+                });
+
                 // to slack
                 APP.getDataManager().sendToSlack({
                     heading: 'Feedback von _' + data.feedback.author + '_ (' + data.feedback.mail + ')',
@@ -493,6 +516,12 @@ qx.Class.define("FormView", {
 
                 });
 
+                // to github
+                APP.getDataManager().githubCreateIssue({
+                    type: 'marketentry',
+                    data: _.extend({}, data.marketentry, dataLocation.location)
+                });
+
                 // to slack
                 var type = (data.marketentry.offer) ? 'Angebot' : 'Gesuch';
                 APP.getDataManager().sendToSlack({
@@ -503,13 +532,12 @@ qx.Class.define("FormView", {
                                 + '_facebook:_ ' + data.marketentry.facebook + '\n'
                                 + '_phone:_ ' + data.marketentry.phone + '\n'
                                 + '_Sprachen:_ ' + data.marketentry.spokenLanguages + '\n'
-                                + '_Str:_ ' + data.marketentry.street + '\n'
-                                + '_PLZ:_ ' + data.marketentry.zip + '\n'
-                                + '_Ort:_ ' + data.marketentry.city + '\n'
+                                + '_Str:_ ' + dataLocation.location.street + '\n'
+                                + '_PLZ:_ ' + dataLocation.location.zip + '\n'
+                                + '_Ort:_ ' + dataLocation.location.city + '\n'
                                 + '_von:_ ' + data.marketentry.dateFrom + '\n'
                                 + '_bis:_ ' + data.marketentry.dateTo + '\n'
                                 + '_Wdh.:_ ' + data.marketentry.datePeriodic + '\n\n'
-                                + '_' + JSON.stringify(data.marketentry.metaData) + '_'
                 });
 
             }

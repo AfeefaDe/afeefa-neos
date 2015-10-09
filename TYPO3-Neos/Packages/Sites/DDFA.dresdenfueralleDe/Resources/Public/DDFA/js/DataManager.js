@@ -212,6 +212,26 @@ qx.Class.define("DataManager", {
 
         },
 
+        githubCreateIssue: function( data, cb ) {
+
+            $.ajax({
+                url: "_Resources/Static/Packages/DDFA.dresdenfueralleDe/githubAPI/",
+                type: 'POST',
+                data: data,
+                cache: false,
+                dataType: 'text',
+                processData: true
+                // contentType: false
+            })
+            .done(function( data ) {
+                // cb(data);
+            })
+            .fail(function(a) {
+                // cb(a);
+            });
+
+        },
+
         addEvents: function(){
             var that = this;
 

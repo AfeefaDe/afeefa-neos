@@ -74,4 +74,3 @@ if (isset($_POST) && isset($_POST['type'])) {
 
     $client->issues->createAnIssue($owner, $repo, $title, $body, $assignee, $milestone, $labels);
 }
-?>

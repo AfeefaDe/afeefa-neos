@@ -1,12 +1,12 @@
 <?php
 header('Access-Control-Allow-Headers: x-requested-with');
-header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Origin: http://afeefa.de');
 
 // see https://github.com/tan-tan-kanarek/github-php-client/blob/master/client.md
 require_once('github-php-client-master/client/GitHubClient.php');
 
-$username = 'felixkamille';
-$password = 'Feli-0411';
+$username = 'AfeefaBot';
+$password = '[Dutscke2015]';
 
 //var_dump($_POST);
 

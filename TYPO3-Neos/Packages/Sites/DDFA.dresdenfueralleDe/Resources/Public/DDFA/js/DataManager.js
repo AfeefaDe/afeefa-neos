@@ -215,7 +215,9 @@ qx.Class.define("DataManager", {
         githubCreateIssue: function( data, cb ) {
 
             $.ajax({
-                url: "_Resources/Static/Packages/DDFA.dresdenfueralleDe/githubAPI/",
+                // url: "_Resources/Static/Packages/DDFA.dresdenfueralleDe/githubAPI/",
+                url: "http://afeefa.hejn.de/githubAPI/",
+                crossDomain: true,
                 type: 'POST',
                 data: data,
                 cache: false,

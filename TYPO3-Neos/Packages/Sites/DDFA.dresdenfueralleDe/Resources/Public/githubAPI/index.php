@@ -5,6 +5,7 @@ header('Access-Control-Allow-Origin: http://afeefa.de');
 // see https://github.com/tan-tan-kanarek/github-php-client/blob/master/client.md
 require_once('github-php-client-master/client/GitHubClient.php');
 
+// TODO use API token instead
 $username = 'AfeefaBot';
 $password = '[Dutscke2015]';
 

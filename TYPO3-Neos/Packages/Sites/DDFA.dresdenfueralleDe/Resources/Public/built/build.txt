@@ -19,6 +19,10 @@ DDFA/css/ddfa.css
 ----------------
 DDFA/css/ddfa.css
 
+DDFA/css/sass/_ring.scss.css
+----------------
+DDFA/css/sass/_ring.scss.css
+
 H5BP/css/main.css
 ----------------
 H5BP/css/main.css

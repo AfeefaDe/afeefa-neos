@@ -15,7 +15,7 @@
 
 #includeView {
 	
-	@include transition(all 200ms);
+	@include transition(left 200ms, height 200ms);
 
 	position: absolute;
 	left: -35%;
@@ -29,9 +29,8 @@
 	height: 100%;
 	padding: 1em 0;
 
-	display: flex;
-	flex-direction: column;
-	/*@include flex-direction(column);*/
+	@include display-flex;
+	@include flex-direction(column);
 
 	background-color: rgba(30,30,30,0.8);
 	color: $white;
@@ -71,20 +70,19 @@
 	}
 	
 	.chaptersReal {
-	  	flex-shrink: 0;
+	  	@include flex-shrink(0);
 	}
 
 	.content {
 
-		/*@include flex-grow(1);*/
-		flex-grow: 1;
+		@include flex-grow(1);
 	  	
 	  	padding: 2em;
 		position: relative;
 		overflow-y: auto;
 		overflow-x: hidden;
 		
-		line-height: 1.2em;
+		line-height: 2em;
 		color: $white;
 
 		h1 {
@@ -141,6 +139,10 @@ body.mobile {
 
 	#includeView {
 		width: 100%;
+
+		&.small {
+			height: 20%;
+		}
 	}
 
 }

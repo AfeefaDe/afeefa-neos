@@ -172,6 +172,8 @@ qx.Class.define("DetailView", {
 
             // show DetailView
             that.view.addClass('active');
+
+            that.say('detailViewOpened');
         },
 
         reset: function() {
@@ -216,6 +218,7 @@ qx.Class.define("DetailView", {
             var that = this;
             that.view.removeClass('active');
             that.reset();
+            that.say('detailViewClosed');
         },
 
         changeLanguage: function(){
@@ -245,7 +248,10 @@ qx.Class.define("DetailView", {
             this.base(arguments);
 
             that.listen('includeViewOpened', function(){
-                that.view.addClass('right');
+                if( APP.getUserDevice() === 'mobile' )
+                    that.close();
+                else
+                    that.view.addClass('right');
             });
 
             that.listen('includeViewClosed', function(){

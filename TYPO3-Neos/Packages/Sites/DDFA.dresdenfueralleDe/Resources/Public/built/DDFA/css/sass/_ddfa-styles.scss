@@ -128,7 +128,7 @@ strong {
 
 #main-container {
 	
-	@include transition(all 250ms);
+	@include transition(left 250ms);
 
 	position: fixed;
 	left: 0;
@@ -206,21 +206,4 @@ strong {
 		/*#main-menu { display: none; }*/
 
 	}
-}
-
-#locate-btn {
-	position: fixed;
-	width: 3.5em;
-	height: 3.5em;
-	right: 1em;
-	bottom: 4em;
-	background-color: #EEE;
-	background-image: url('../img/btn-locate.svg');
-	@include background-size(70%);
-	background-position: center;
-	background-repeat: no-repeat;
-	@include box-shadow(0px 0px 5px #888888);
-	@include border-radius(1.75em);
-	cursor: pointer;
-	/*z-index: 999;*/
 }

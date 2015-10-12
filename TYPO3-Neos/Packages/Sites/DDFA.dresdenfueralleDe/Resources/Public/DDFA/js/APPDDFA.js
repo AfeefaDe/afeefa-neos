@@ -59,13 +59,23 @@ qx.Class.define("APPDDFA", {
             // analyse user language
             that.getLM().init();
 
-            // fetch necessary data
-            that.getDataManager().fetchAllData(function( data ){
-              console.debug('fetchedAllData', data);
+            var allData = {};
 
-              that.setData(data);
+            // fetch only necessary data for app startup
+            that.getDataManager().fetchInitialData(function( data ){
+                
+                console.debug('fetchedInitialData', data);
+                cb();
+                
+            });
 
-              cb();
+            // fetch other data (e.g. that takes a long time loading)
+            that.getDataManager().getAllLocations(function(data){
+                    
+                allData.locations = data.locations;
+                that.setData(allData);
+                that.say('fetchedNewData');
+
             });
         },
 

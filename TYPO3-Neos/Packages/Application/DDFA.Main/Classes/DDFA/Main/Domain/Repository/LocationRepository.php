@@ -211,4 +211,72 @@ class LocationRepository extends AbstractTranslationRepository {
 
         return $object;
     }
+
+    public function supplement2(Location $object) {
+
+        if ($object->getMarketEntry() == null && $object->getInitiative() == null && $object->getEvent() == null)
+            return $object;
+
+        switch ($object->getType()) {
+            case DDConst::OWNER_INI:
+                $owner = $this->initiativeRepository->findOneLocalized($object->getInitiative(), $object->getLocale());
+                break;
+            case DDConst::OWNER_MARKET:
+                $owner = $this->marketRepository->findByIdentifier($object->getMarketEntry()->getPersistenceObjectIdentifier());
+                break;
+            case DDConst::OWNER_EVENT:
+                $owner = $this->eventRepository->findByIdentifier($object->getEvent()->getPersistenceObjectIdentifier());
+                break;
+            default:
+                return $object;
+        }
+
+        $parentReflection = new ReflectionObject($owner);
+        $sourceReflection = new ReflectionObject($object);
+
+        foreach ($sourceReflection->getProperties() as $property) {
+            if ($property->getName() == "description") {
+                $property->setAccessible(true);
+
+                $value = $property->getValue($object);
+                if ($value == NULL || $value == "") {
+                    $name = $property->getName();
+                    if ($parentReflection->hasProperty($name)) {
+                        $parentProperty = $parentReflection->getProperty($name);
+                        $parentProperty->setAccessible(true);
+                        $property->setValue($object, $parentProperty->getValue($owner));
+                    }
+                }
+            }
+            //TODO: add hydrated owner in every case, not only if initiative
+            if ($object->getType() == DDConst::OWNER_INI) {
+                $iniProp = $sourceReflection->getProperty("initiative");
+                $iniProp->setAccessible(true);
+                $iniProp->setValue($object, $owner);
+            }
+        }
+
+        return $object;
+    }
+
+    public function findAllWithGabs($locale) {
+        $query = $this->createQuery()->setOrderings(array('updated' => QueryInterface::ORDER_DESCENDING));
+        $result = $query->matching(
+            $query->logicalAnd(
+                $query->logicalOr(
+                    $query->equals('type', DDConst::OWNER_INI),
+                    $query->equals('type', DDConst::OWNER_MARKET)
+                ),
+                $query->equals('locale', $locale)
+            )
+        )->execute();
+
+        $r = array();
+        foreach($result as $l) {
+            $l_de = $this->findOneLocalized($l);
+            if($this->supplement2($l)->getDescription() == "")
+                array_push($r, $l);
+        }
+        return $r;
+    }
 }

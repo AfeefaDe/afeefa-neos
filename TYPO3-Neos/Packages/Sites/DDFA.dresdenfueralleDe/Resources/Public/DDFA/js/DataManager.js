@@ -11,6 +11,20 @@ qx.Class.define("DataManager", {
 
     members : {
         
+        fetchInitialData: function( cb ){
+            var that = this;
+
+            var allData = {};
+            
+            that.getLanguageBib( function(data){
+
+                APP.getLM().setBib( data[0] );
+
+                cb(allData);
+            });
+                
+        },
+
         fetchAllData: function( cb ){
             var that = this;
 
@@ -23,7 +37,7 @@ qx.Class.define("DataManager", {
 
             // fetch them all
             
-            that.getAllCategories(function(data){
+            // that.getAllCategories(function(data){
                 
                 // set categories here as [ {identifier: az7szdf , category: name}, ... ]
 
@@ -38,7 +52,7 @@ qx.Class.define("DataManager", {
                         cb( allData );
                     });
                 });
-            });
+            // });
             
             // callback
             // while( !initiativesFetched || !locationsFetched )
@@ -187,6 +201,28 @@ qx.Class.define("DataManager", {
                 cache: false,
                 dataType: 'text',
                 processData: false
+                // contentType: false
+            })
+            .done(function( data ) {
+                // cb(data);
+            })
+            .fail(function(a) {
+                // cb(a);
+            });
+
+        },
+
+        githubCreateIssue: function( data, cb ) {
+
+            $.ajax({
+                // url: "_Resources/Static/Packages/DDFA.dresdenfueralleDe/githubAPI/",
+                url: "http://afeefa.hejn.de/githubAPI/",
+                crossDomain: true,
+                type: 'POST',
+                data: data,
+                cache: false,
+                dataType: 'text',
+                processData: true
                 // contentType: false
             })
             .done(function( data ) {

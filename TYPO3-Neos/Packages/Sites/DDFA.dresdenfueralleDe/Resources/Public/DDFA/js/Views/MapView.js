@@ -14,6 +14,7 @@ qx.Class.define("MapView", {
 
     that.setViewId('mapView');
 
+    that.setLoadable(true);
   	that.setUserLocation(null);
   	that.setSelectedMarker(null);
   	that.setMarkerLocationLookup([]);
@@ -34,6 +35,19 @@ qx.Class.define("MapView", {
         // dark map curtain
       	that.mapCurtain = $("<div />").attr('id', 'map-curtain');
         $('#main-container').append(that.mapCurtain);
+
+        // locate btn
+    	that.locateBtn = $("<div />").attr('id', 'locate-btn');
+        that.view.append(that.locateBtn);
+    	
+    	that.locateBtn.click(function(){
+    		// alert('haha');
+    		that.locate();
+    	});
+    	that.locateBtn.on('touchend', function(){
+    		that.locate();
+    	});
+
 
 	    //////////////////
       	// MAPBOX INIT //
@@ -100,7 +114,7 @@ qx.Class.define("MapView", {
 		// });
 
 
-		that.addLocations(APP.getData().locations);
+		// that.addLocations(APP.getData().locations);
 
 		// that.addMarkers(mapdata.locations.inis);
 		// that.addMarkers(mapdata.locations.publics);
@@ -123,6 +137,10 @@ qx.Class.define("MapView", {
         // that.addEvents();
        	this.base(arguments);
         
+        that.loading(true);
+
+		if (APP.getUserDevice() == 'mobile') that.locate();
+
     },
 
 	// TODO: outsource in Router
@@ -136,8 +154,8 @@ qx.Class.define("MapView", {
     	if(entryId) {
     		var lookup = that.lookupMarkerById(entryId);
     		if(lookup){
-    			that.selectMarker(lookup.marker, lookup.location);
     			if(options && options.setView) that.map.setView( [lookup.location.lat, lookup.location.lon], 15);
+    			that.selectMarker(lookup.marker, lookup.location);
     		}
     	}
 
@@ -168,7 +186,9 @@ qx.Class.define("MapView", {
         }
 
 		that.addLocations(locations);
-		that.loadFromUrl();
+		that.loadFromUrl({setView: true});
+        that.loading(false);
+
     },
 
     lookupMarkerById: function( id ){
@@ -186,6 +206,13 @@ qx.Class.define("MapView", {
 
     	var that = this;
     	
+       	// this.base(arguments);
+       	
+       	// TODO inherit from View superclass
+       	that.listen('languageChanged', function(){
+            that.changeLanguage();
+        });
+
 	    //////////
     	// say //
 	    //////////
@@ -248,23 +275,16 @@ qx.Class.define("MapView", {
     		that.loadNewData();
     	});
 
-    	// var $locateBtn = $('#locate-btn');
-    	// $locateBtn.click(function(){
-    	// 	// alert('haha');
-    	// 	that.locate();
-    	// });
-		
-		// that.locate();
-		
-    	// $('#locate-btn').on('touchend', function(){
-    	// 	that.locate();
-    	// });
-    	
     },
     removeEvents: function() {
 
     },
 
+    changeLanguage: function() {
+    	var that = this;
+
+        that.loading(true);
+    },
    //  addMarkersGeoJSON: function(markers, color) {
 	 	
 	 	// var that = this;
@@ -503,7 +523,7 @@ qx.Class.define("MapView", {
     	// update view if location found
 		that.map.on('locationfound', function(e) {
 		    // alert(e.latlng);
-		    that.map.setView( e.latlng , 13);
+		    that.map.setView( e.latlng , 15);
 		    that.setUserLocation = e.latlng;
 
 		    var myIcon = L.icon({

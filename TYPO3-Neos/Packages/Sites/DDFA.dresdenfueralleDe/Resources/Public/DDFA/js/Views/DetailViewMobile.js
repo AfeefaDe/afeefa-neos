@@ -26,14 +26,21 @@ qx.Class.define("DetailViewMobile", {
             that.headingContainer.click(function(){
                 if( that.view.hasClass('active-large') && that.view.hasClass('active') ){
                     that.resize(1);
+                    that.say('detailViewMobileMinimized');
                 }
                 else if ( that.view.hasClass('active') ){
                     that.resize(2);
+                    that.say('detailViewMobileMaximized');
                 }
                 else if ( that.view.hasClass('active-large') ){
                     that.resize(1);
                 }
             });
+
+            // that.listen('includeViewClicked', function(e){
+            //     if( e.customData.viewState == 1 )
+            //         that.close();
+            // });
 
         },
 

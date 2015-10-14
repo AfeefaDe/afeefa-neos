@@ -7,7 +7,7 @@ require_once('github-php-client-master/client/GitHubClient.php');
 
 // TODO use API token instead
 $username = 'AfeefaBot';
-$password = '[Dutscke2015]';
+$password = 'Secret48592615Pass';
 
 //var_dump($_POST);
 

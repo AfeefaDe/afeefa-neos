@@ -5,8 +5,8 @@ $locale = in_array($_GET['locale'], ['de', 'en', 'ar', 'ur', 'fr', 'it', 'ti', '
 
 if (!$locale) die('wrong or no locale');
 
-//header('Content-Type: application/json; charset=utf-8');
-//header("Content-Disposition: attachment; filename=".date('Y_m_d', time())."_phraseappexport_".$locale.".json");
+header('Content-Type: application/json; charset=utf-8');
+header("Content-Disposition: attachment; filename=" . date('Y_m_d', time()) . "_phraseappexport_" . $locale . ".json");
 
 /*$output = fopen('php://output', 'w');
 
@@ -19,7 +19,7 @@ where l.initiative_id = i.persistence_object_identifier and i.locale = 'de' and 
 
 while ($row = mysql_fetch_row($result)) fputcsv($output, $row);*/
 
-$result = sql("select i.entry_id as e, CAST(i.name AS CHAR CHARACTER SET utf8) as n, i.description as d, i.persistence_object_identifier as id
+$result = sql("select i.entry_id as e, convert(cast(convert(i.name using utf8) as binary) using latin1) as n, convert(cast(convert(i.description using utf8) as binary) using latin1) as d, i.persistence_object_identifier as id
 from ddfa_main_domain_model_initiative as i
 where i.locale = '" . $locale . "'");
 
@@ -28,8 +28,8 @@ while ($i = mysql_fetch_object($result)) {
     $inis[$i->e] = ['name' => $i->n, 'description' => $i->d, 'id' => $i->id];
 }
 
-var_dump($inis);
+//var_dump($inis);
 
 echo json_encode(array('initiatives' => $inis), JSON_UNESCAPED_UNICODE);
 
-echo json_last_error_msg();
+//echo json_last_error_msg();

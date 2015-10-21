@@ -1,35 +1,26 @@
 <?php
 include('sql.php');
 
-$locale = in_array($_GET['locale'], ['de', 'en', 'ar', 'ur', 'fr', 'it', 'ti', 'se', 'fa', 'ru']) ? $_GET['locale'] : false;
+$locale = isset($_GET['locale']) && in_array($_GET['locale'], ['de', 'en', 'ar', 'ur', 'fr', 'it', 'ti', 'se', 'fa', 'ru']) ? $_GET['locale'] : false;
+$type = isset($_GET['type']) && in_array($_GET['type'], ['initiative', 'marketentry', 'location']) ? $_GET['type'] : false;
 
-if (!$locale) die('wrong or no locale');
+if (!$locale) die("no or wrong locale, chose from 'de', 'en', 'ar', 'ur', 'fr', 'it', 'ti', 'se', 'fa', 'ru'.");
+if (!$type) die("no or wrong type, chose from 'initiative', 'marketentry', 'location'.");
 
 header('Content-Type: application/json; charset=utf-8');
-header("Content-Disposition: attachment; filename=" . date('Y_m_d', time()) . "_phraseappexport_" . $locale . ".json");
+header("Content-Disposition: attachment; filename=" . $type . "_" . date('Y_m_d', time()) . "_" . $locale . ".json");
 
-/*$output = fopen('php://output', 'w');
-
-fputcsv($output, array('entryID', 'Typ', 'Name', 'Orga', 'Beschreibung', 'Oeffnungszeiten'));
-
-$result = sql("select l.entry_id, l.type, l.name, i.name, l.description, l.openinghours
-from ddfa_main_domain_model_location as l, ddfa_main_domain_model_initiative as i
-where l.initiative_id = i.persistence_object_identifier and i.locale = 'de' and l.locale = 'de' and l.type = '0'
-      and (l.description IS NULL or l.description = '') and (i.description IS NULL or i.description = '')");
-
-while ($row = mysql_fetch_row($result)) fputcsv($output, $row);*/
-
-$result = sql("select i.entry_id as e, convert(cast(convert(i.name using utf8) as binary) using latin1) as n, convert(cast(convert(i.description using utf8) as binary) using latin1) as d, i.persistence_object_identifier as id
-from ddfa_main_domain_model_initiative as i
-where i.locale = '" . $locale . "'");
+if ($type == 'location')
+    $result = sql("select entry_id as e, convert(cast(convert(name using utf8) as binary) using latin1) as n, convert(cast(convert(description using utf8) as binary) using latin1) as d, convert(cast(convert(openinghours using utf8) as binary) using latin1) as o, persistence_object_identifier as poid from ddfa_main_domain_model_" . $type . " where locale = '" . $locale . "'");
+else
+    $result = sql("select entry_id as e, convert(cast(convert(name using utf8) as binary) using latin1) as n, convert(cast(convert(description using utf8) as binary) using latin1) as d, persistence_object_identifier as poid from ddfa_main_domain_model_" . $type . " where locale = '" . $locale . "'");
 
 $inis = array();
 while ($i = mysql_fetch_object($result)) {
-    $inis[$i->e] = ['name' => $i->n, 'description' => $i->d, 'id' => $i->id];
+    if ($type == 'location')
+        $inis[$i->e] = ['name' => $i->n, 'description' => $i->d, 'poid' => $i->poid, 'openinghours' => $i->o];
+    else
+        $inis[$i->e] = ['name' => $i->n, 'description' => $i->d, 'poid' => $i->poid];
 }
 
-//var_dump($inis);
-
-echo json_encode(array('initiatives' => $inis), JSON_UNESCAPED_UNICODE);
-
-//echo json_last_error_msg();
+echo json_encode(array($type => $inis), JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT | JSON_FORCE_OBJECT);

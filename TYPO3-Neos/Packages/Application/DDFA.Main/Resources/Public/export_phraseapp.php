@@ -31,6 +31,7 @@ $objects = [];
 while ($object = mysql_fetch_object($result)) {
     $arr['poid'] = $object->poid;
 
+
     if ($type == 'location' && isset($object->oh) && $object->oh != "")
         $arr['openinghours'] = $object->oh;
     if (isset($object->name) && $object->name != "")

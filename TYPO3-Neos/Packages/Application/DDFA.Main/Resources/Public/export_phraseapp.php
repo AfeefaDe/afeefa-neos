@@ -12,7 +12,7 @@ header("Content-Disposition: attachment; filename=" . $type . "_" . date('Y_m_d'
 
 if ($type == 'location') {
     $result = sql("select entry_id as eid,
-        convert(cast(convert(name using utf8) as binary) using latin1),
+        convert(cast(convert(name using utf8) as binary) using latin1) as n,
         convert(cast(convert(description using utf8) as binary) using latin1) as des,
         convert(cast(convert(openinghours using utf8) as binary) using latin1) as oh,
         persistence_object_identifier as poid
@@ -20,7 +20,7 @@ if ($type == 'location') {
         where locale = '" . $locale . "'");
 } else {
     $result = sql("select entry_id as eid,
-        convert(cast(convert(name using utf8) as binary) using latin1),
+        convert(cast(convert(name using utf8) as binary) using latin1) as n,
         convert(cast(convert(description using utf8) as binary) using latin1) as des,
         persistence_object_identifier as poid
         from ddfa_main_domain_model_" . $type . "
@@ -34,8 +34,8 @@ while ($object = mysql_fetch_object($result)) {
 
     if ($type == 'location' && isset($object->oh) && $object->oh != "")
         $arr['openinghours'] = $object->oh;
-    if (isset($object->name) && $object->name != "")
-        $arr['name'] = $object->name;
+    if (isset($object->n) && $object->n != "")
+        $arr['name'] = $object->n;
     if (isset($object->des) && $object->des != "")
         $arr['description'] = $object->des;
 

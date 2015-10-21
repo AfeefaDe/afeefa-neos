@@ -55,9 +55,6 @@ class LocationAPIController extends ActionController {
             $this->response->setStatus(412);
         }
     }
-    public function fooAction($locale = 'de') {
-        $this->view->assign('value', ['locations' => $this->iniLocationRepository->findAllWithGabs($locale)]);
-    }
 
     protected function initializeView(ViewInterface $view) {
         if ($view instanceof JsonView) {

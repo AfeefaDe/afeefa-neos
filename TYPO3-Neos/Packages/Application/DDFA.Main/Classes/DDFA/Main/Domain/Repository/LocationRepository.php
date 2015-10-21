@@ -212,7 +212,7 @@ class LocationRepository extends AbstractTranslationRepository {
         return $object;
     }
 
-    public function supplement2(Location $object) {
+    /*public function supplement2(Location $object) {
 
         if ($object->getMarketEntry() == null && $object->getInitiative() == null && $object->getEvent() == null)
             return $object;
@@ -279,4 +279,15 @@ class LocationRepository extends AbstractTranslationRepository {
         }
         return $r;
     }
+
+    public function findAllLocalized2($locale = DDConst::LOCALE_STD)
+    {
+        $query = $this->createQuery()->setOrderings(array('name' => QueryInterface::ORDER_ASCENDING));
+
+        $objects = $query->matching(
+            $query->equals('locale', $locale)
+        )->execute();
+
+        return $objects;
+    }*/
 }

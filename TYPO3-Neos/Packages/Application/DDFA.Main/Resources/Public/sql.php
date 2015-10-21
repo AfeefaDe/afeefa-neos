@@ -1,9 +1,9 @@
 <?php
 function sql($request, $variant = 1) {
     $server = "localhost";
-    $user = "root";
-    $pass = ".MYdat0112358.";
-    $db = "neos-dd4all";
+    $user = "dude";
+    $pass = "";
+    $db = "neos";
 
     $link = mysql_connect($server, $user, $pass);
     if (!$link) {

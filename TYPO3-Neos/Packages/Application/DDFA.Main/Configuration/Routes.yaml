@@ -1,12 +1,4 @@
 -
-  name: 'api location gabs'
-  uriPattern: 'api/gabs(?{@locale})'
-  defaults:
-    '@controller': 'Api\LocationAPI'
-    '@action': 'foo'
-    '@locale': 'de'
-
--
   name: 'api locations'
   uriPattern: 'api/locations<LocationSubroutes>(?{@locale})'
   defaults:

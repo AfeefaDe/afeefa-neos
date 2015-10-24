@@ -1,10 +1,27 @@
 <?php
 function sql($request, $variant = 1) {
-    $server = "localhost";
-    $user = "dude";
-    $pass = "";
-    $db = "neos";
+    
+    ///////////////
+    // DB Config //
+    ///////////////
 
+    // localhost joschka
+    // $server = "localhost";
+    // $user = "dude";
+    // $pass = "";
+    // $db = "neos";
+
+    // localhost felix
+    $server = "localhost";
+    $user = "root";
+    $pass = "";
+    $db = "afeefa_neos";
+
+
+    /////////////
+    // Connect //
+    /////////////
+    
     $link = mysql_connect($server, $user, $pass);
     if (!$link) {
         die("<div class='error'>No connection to database! :(</div><br />");

@@ -1,12 +1,14 @@
 <?php
 header('Access-Control-Allow-Headers: x-requested-with');
-header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Origin: http://afeefa.de');
+header('Access-Control-Allow-Methods: POST');
 
 // see https://github.com/tan-tan-kanarek/github-php-client/blob/master/client.md
 require_once('github-php-client-master/client/GitHubClient.php');
 
-$username = 'felixkamille';
-$password = 'Feli-0411';
+// TODO use API token instead
+$username = 'AfeefaBot';
+$password = 'Secret48592615Pass';
 
 //var_dump($_POST);
 

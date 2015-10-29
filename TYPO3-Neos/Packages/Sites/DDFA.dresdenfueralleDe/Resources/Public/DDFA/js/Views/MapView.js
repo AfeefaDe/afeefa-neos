@@ -58,8 +58,8 @@ qx.Class.define("MapView", {
 		that.map = L.mapbox.map(that.getViewId(), 'felixkamille.4128d9e7', {
 			zoomControl: false,
 			maxBounds: [
-    			L.latLng(50.894413, 13.304980), // south-west corner
-    			L.latLng(51.2, 14.0)  // north-east corner
+    			L.latLng(50.835169, 13.099075), // south-west corner
+    			L.latLng(51.365345, 14.759512)  // north-east corner
 			],
 			// attributionControl: true,
 			tileLayer: {format: 'jpg70'},  // valid values are png, jpg, png32, png64, png128, png256, jpg70, jpg80, jpg90

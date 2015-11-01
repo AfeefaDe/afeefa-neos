@@ -59,6 +59,25 @@ qx.Class.define("MenuView", {
             that.supporterBtn.append(that.supporterBtnLabel);
             that.menu.append(that.supporterBtn);
             
+            
+            // btn about
+            that.aboutBtn = $('<div />').addClass('item about');
+            that.aboutBtnLabel = $('<span />');
+            that.aboutBtn.append(that.aboutBtnLabel);
+            that.menu.append(that.aboutBtn);
+
+            // btn press
+            that.pressBtn = $('<div />').addClass('item press');
+            that.pressBtnLabel = $('<span />');
+            that.pressBtn.append(that.pressBtnLabel);
+            that.menu.append(that.pressBtn);
+            
+            // btn imprint
+            that.imprintBtn = $('<div />').addClass('item imprint');
+            that.imprintBtnLabel = $('<span />');
+            that.imprintBtn.append(that.imprintBtnLabel);
+            that.menu.append(that.imprintBtn);
+
             // btn facebook
             that.facebookBtn = $('<div />').addClass('item facebook');
             that.facebookBtnLabel = $('<a />')
@@ -66,32 +85,6 @@ qx.Class.define("MenuView", {
                 .attr('target', '_blank');
             that.facebookBtn.append(that.facebookBtnLabel);
             that.menu.append(that.facebookBtn);
-            
-            // btn facebook
-            that.donateBtn = $('<div />').addClass('item donate');
-            that.donateBtnLabel = $('<span />');
-            that.donateBtn.append(that.donateBtnLabel);
-            that.menu.append(that.donateBtn);
-
-            // btn press
-            that.pressBtn = $('<div />').addClass('item press');
-            that.pressBtnLabel = $('<span />');
-            that.pressBtn.append(that.pressBtnLabel);
-            that.menu.append(that.pressBtn);
-
-            // btn help
-            that.helpBtn = $('<div />').addClass('item help');
-            that.helpBtnLabel = $('<span />');
-            that.helpBtn.append(that.helpBtnLabel);
-            that.menu.append(that.helpBtn);
-            // TODO qucikfix
-            that.helpBtn.css('display', 'none');
-
-            // btn about
-            that.aboutBtn = $('<div />').addClass('item about');
-            that.aboutBtnLabel = $('<span />');
-            that.aboutBtn.append(that.aboutBtnLabel);
-            that.menu.append(that.aboutBtn);
 
             // logo
             var a = $('<a />').attr({
@@ -134,17 +127,17 @@ qx.Class.define("MenuView", {
                 APP.getIncludeView().load( APP.getIncludeView().getIncludes().supporterGuide );
             });
 
+            that.aboutBtn.click(function(){
+                that.close();
+                APP.getIncludeView().load( APP.getIncludeView().getIncludes().about );
+            });
+
             that.pressBtn.click(function(){
                 that.close();
                 APP.getIncludeView().load( APP.getIncludeView().getIncludes().press );
             });
 
-            that.donateBtn.click(function(){
-                that.close();
-                APP.getIncludeView().load( APP.getIncludeView().getIncludes().donate );
-            });
-
-            that.aboutBtn.click(function(){
+            that.imprintBtn.click(function(){
                 that.close();
                 APP.getIncludeView().load( APP.getIncludeView().getIncludes().imprint );
             });
@@ -190,11 +183,10 @@ qx.Class.define("MenuView", {
 
             that.refugeeLBtnLabel.append( that.getWording('menu_refugee') );
             that.supporterBtnLabel.append( that.getWording('menu_supporter') );
-            that.helpBtnLabel.append( that.getWording('menu_help') );
-            that.aboutBtnLabel.append( that.getWording('menu_imprint') );
-            that.facebookBtnLabel.append( that.getWording('menu_facebook') );
+            that.aboutBtnLabel.append( that.getWording('menu_about') );
             that.pressBtnLabel.append( that.getWording('menu_press') );
-            that.donateBtnLabel.append( that.getWording('menu_donate') );
+            that.imprintBtnLabel.append( that.getWording('menu_imprint') );
+            that.facebookBtnLabel.append( that.getWording('menu_facebook') );
 
             // bootstrap tooltip
             that.menuBtn.attr({
@@ -209,11 +201,10 @@ qx.Class.define("MenuView", {
 
             that.refugeeLBtnLabel.empty();
             that.supporterBtnLabel.empty();
-            that.helpBtnLabel.empty();
             that.aboutBtnLabel.empty();
-            that.facebookBtnLabel.empty();
             that.pressBtnLabel.empty();
-            that.donateBtnLabel.empty();
+            that.imprintBtnLabel.empty();
+            that.facebookBtnLabel.empty();
 
         },
 

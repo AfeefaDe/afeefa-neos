@@ -17,7 +17,7 @@ qx.Class.define("IncludeView", {
             supporterGuide: 'supporterGuide',
             imprint: 'imprint',
             press: 'press',
-            donate: 'donate'
+            about: 'about'
         });
         that.setBaseUrl( '_Resources/Static/Packages/DDFA.dresdenfueralleDe/DDFA/inc/' );
     },
@@ -36,7 +36,7 @@ qx.Class.define("IncludeView", {
             that.content.addClass('content');
             that.view.append(that.content);
 
-            that.closeBtn = $("<div />").addClass('closeBtn').append('x');
+            that.closeBtn = $("<div />").addClass('closeBtn').append('');
             that.view.append(that.closeBtn);
 
             $('#main-container').append(that.view);
@@ -55,54 +55,44 @@ qx.Class.define("IncludeView", {
 
             that.say('includeViewOpened');
             
-            if(includeKey == that.getIncludes().supporterGuide){
-                that.content.load( that.getBaseUrl() + that.getIncludes()[includeKey] + "_de.html", function( response, status, xhr ) {
-
-                });
-            }
-            else if(includeKey == that.getIncludes().imprint){
-                that.content.load( that.getBaseUrl() + that.getIncludes()[includeKey] + ".html", function( response, status, xhr ) {
-
-                });
-            } else {
                 
-                that.content.load( that.getBaseUrl() + that.getIncludes()[includeKey] + '_' + APP.getLM().getCurrentLang() + ".html", function( response, status, xhr ) {
-                // that.content.load( that.getBaseUrl() + "inc/refugeeGuide_en.html", function( response, status, xhr ) {
+            that.content.load( that.getBaseUrl() + that.getIncludes()[includeKey] + '_' + APP.getLM().getCurrentLang() + ".html", function( response, status, xhr ) {
+            // that.content.load( that.getBaseUrl() + "inc/refugeeGuide_en.html", function( response, status, xhr ) {
 
-                    if ( status == "error" ) {
+                if ( status == "error" ) {
 
-                        that.content.load( that.getBaseUrl() + that.getIncludes()[includeKey] + '_en.html', function( response, status, xhr ) {
-                            
-                            if ( status == "error" ) {
+                    that.content.load( that.getBaseUrl() + that.getIncludes()[includeKey] + '_en.html', function( response, status, xhr ) {
+                        
+                        if ( status == "error" ) {
 
-                                that.content.load( that.getBaseUrl() + that.getIncludes()[includeKey] + '_de.html', function( response, status, xhr ) {
-                                    loadComplete();
-                                });
+                            that.content.load( that.getBaseUrl() + that.getIncludes()[includeKey] + '_de.html', function( response, status, xhr ) {
+                                loadComplete();
+                            });
 
-                            }
-
-                            loadComplete();
-
-                        });
-
-                    }
-
-                    loadComplete();
-
-                });
-
-                function loadComplete(){
-                    
-                    $('span.locationLink').click(function(){
-                        var lookup = APP.getMapView().lookupMarkerById( $(this).attr('name') );
-                        if(lookup){
-                            APP.getMapView().selectMarker(lookup.marker, lookup.location);
-                            APP.getMapView().map.setView( [lookup.location.lat, lookup.location.lon], 15);
                         }
+
+                        loadComplete();
+
                     });
 
                 }
 
+                loadComplete();
+
+            });
+
+            function loadComplete(){
+                
+                $('span.locationLink').click(function(){
+                    var lookup = APP.getMapView().lookupMarkerById( $(this).attr('name') );
+                    if(lookup){
+                        APP.getMapView().selectMarker(lookup.marker, lookup.location);
+                        APP.getMapView().map.setView( [lookup.location.lat, lookup.location.lon], 15);
+                    }
+                });
+
+                var heading = that.content.find('h1').first().detach();
+                that.content.before(heading);
             }
 
         },
@@ -110,6 +100,7 @@ qx.Class.define("IncludeView", {
         reset: function(){
             var that = this;
 
+            that.view.find('h1').remove();
             that.content.empty();
         },
 

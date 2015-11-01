@@ -785,8 +785,20 @@
                   "ur":""
             },
             "menu_supporter":{
-                  "de":"Leifaden für Engagierte",
+                  "de":"Leitfaden für Engagierte",
                   "en":"",
+                  "ar":"",
+                  "fa":"",
+                  "fr":"",
+                  "it":"",
+                  "ru":"",
+                  "sr":"",
+                  "ti":"",
+                  "ur":""
+            },
+            "menu_about":{
+                  "de":"Über Afeefa",
+                  "en":"About Afeefa",
                   "ar":"",
                   "fa":"",
                   "fr":"",
@@ -799,30 +811,6 @@
             "menu_press":{
                   "de":"Presse",
                   "en":"Press",
-                  "ar":"",
-                  "fa":"",
-                  "fr":"",
-                  "it":"",
-                  "ru":"",
-                  "sr":"",
-                  "ti":"",
-                  "ur":""
-            },
-            "menu_donate":{
-                  "de":"Spenden",
-                  "en":"Donate",
-                  "ar":"",
-                  "fa":"",
-                  "fr":"",
-                  "it":"",
-                  "ru":"",
-                  "sr":"",
-                  "ti":"",
-                  "ur":""
-            },
-            "menu_help":{
-                  "de":"Hilfe",
-                  "en":"help",
                   "ar":"",
                   "fa":"",
                   "fr":"",

@@ -65,7 +65,7 @@ qx.Class.define("MapView", {
 			tileLayer: {format: 'jpg70'},  // valid values are png, jpg, png32, png64, png128, png256, jpg70, jpg80, jpg90
 			tapTolerance: 30,
 			maxZoom: 18
-    	}).setView([ 51.051, 13.74 ], 13);
+    	}).setView([ 51.051, 13.74 ], 14);
 		
 		///////////////////////////////
 		// Layer for basic locations //
@@ -420,16 +420,30 @@ qx.Class.define("MapView", {
 		// return newLayer;
     },
 
-    selectMarker: function( marker, location ){
+    selectMarker: function( marker, location, setView ){
     	var that = this;
 
     	that.deselectMarker();
 		that.setSelectedMarker(marker);
 
-    	APP.getDetailView().load(location);
+		if(setView) that.map.setView( [location.lat, location.lon], 15);
 		$(marker._icon).addClass('active');
+		
+    	APP.getDetailView().load(location);
 
 		window.location.hash = location.entryId;
+
+    },
+
+    selectMarkerFromLink: function( entryId ) {
+    	var that = this;
+
+    	var lookup = that.lookupMarkerById( entryId );
+        
+        if(lookup){
+            APP.getMapView().selectMarker(lookup.marker, lookup.location, true);
+        }
+
     },
 
     deselectMarker: function(){
@@ -437,9 +451,11 @@ qx.Class.define("MapView", {
 
     	if( that.getSelectedMarker() ) {
     		$( that.getSelectedMarker()._icon ).removeClass('active');
-    		that.setSelectedMarker(null);
-			window.location.hash = '';
     	}
+
+		window.location.hash = '';
+		APP.getDetailView().close();
+		that.setSelectedMarker(null);
 
     },
 

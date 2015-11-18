@@ -1,18 +1,5 @@
 @import "compass/css3";
 
-@mixin link {
-	text-decoration: none;
-	font-weight: 500;
-	display: inline-block;
-	background-color: $white;
-	color: $black;
-	cursor: pointer;
-
-	&:hover{
-		@include box-shadow(0px 0px 5px #ffffff);
-	}
-}
-
 #includeView {
 	
 	@include transition(left 200ms, height 200ms);
@@ -48,7 +35,22 @@
 	}
 
 	a {
-		@include link;
+		color: $white;
+		text-decoration: none;
+	  	border-bottom: 1px $white dotted;
+		
+		&:visited, &:active {
+			color: $white;
+			text-decoration: none;
+		  	border-bottom: 1px $white dotted;
+		}
+
+		&:hover {
+			@include transition(background-color 300ms);
+			color: $black;
+			background-color: $white;
+			text-decoration: none;
+		}
 	}
 
 	.closeBtn {
@@ -96,9 +98,16 @@
 
 		h2 {
 			font-weight: 100;
-			line-height: 1em;
+			line-height: 1.3em;
 			margin-top: 2em;
 			text-transform: uppercase;
+
+			a, a:visited, a:active, a:hover {
+				text-decoration: none;
+				border: none;
+				background: none;
+				color: $white;
+			}
 		}
 
 		h3 {
@@ -129,7 +138,20 @@
 		}
 
 		span.locationLink {
-			@include link;
+			@extend a;
+
+			display: inline-block;
+			cursor: pointer;
+			text-indent: 1em;
+			background-image: url('../img/icon-36.svg');
+			@include background-size(auto 70%);
+			background-position: left;
+			background-repeat: no-repeat;
+
+			&:hover {
+				background-image: url('../img/icon-35.svg');
+			}
+
 		}
 
 		p.figure-caption{

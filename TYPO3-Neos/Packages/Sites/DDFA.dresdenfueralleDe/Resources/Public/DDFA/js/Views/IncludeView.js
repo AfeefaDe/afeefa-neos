@@ -84,11 +84,7 @@ qx.Class.define("IncludeView", {
             function loadComplete(){
                 
                 $('span.locationLink').click(function(){
-                    var lookup = APP.getMapView().lookupMarkerById( $(this).attr('name') );
-                    if(lookup){
-                        APP.getMapView().selectMarker(lookup.marker, lookup.location);
-                        APP.getMapView().map.setView( [lookup.location.lat, lookup.location.lon], 15);
-                    }
+                    APP.getMapView().selectMarkerFromLink( $(this).attr('name') );
                 });
 
                 var heading = that.content.find('h1').first().detach();

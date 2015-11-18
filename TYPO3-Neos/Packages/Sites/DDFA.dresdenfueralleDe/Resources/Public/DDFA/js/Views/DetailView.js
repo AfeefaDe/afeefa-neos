@@ -83,11 +83,6 @@ qx.Class.define("DetailView", {
             var that = this;
             
             if(that.record) {
-                if(that.record === record) {
-                    that.reset();
-                    that.close();
-                    return;
-                }
                 that.reset();
             }
 

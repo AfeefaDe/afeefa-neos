@@ -73,6 +73,7 @@
         modernizr: '../../H5BP/js/vendor/modernizr-2.8.3.min',
         domReady: '../../requirejs/domReady',
         jquery: '../../jquery/jquery-2.1.3',
+        perfectScrollbarJQuery: 'empty:',
         restive: '../../restive/restive.min',
         qx: '../../qooxdoo/qx-oo-4.1.min',
         underscore: '../../underscore/underscore-min',

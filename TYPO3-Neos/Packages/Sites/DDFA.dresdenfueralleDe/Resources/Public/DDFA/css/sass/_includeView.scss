@@ -3,7 +3,7 @@
 #includeView {
 	
 	@include transition(left 200ms, height 200ms);
-	@include box-shadow(0px 0px 2px #333);
+	@include box-shadow(0px 0px 5px #333);
 
 	position: absolute;
 	left: -35%;

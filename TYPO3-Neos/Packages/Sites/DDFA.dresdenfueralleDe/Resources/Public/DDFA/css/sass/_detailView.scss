@@ -185,6 +185,7 @@
 		overflow-y: auto;
 		padding-bottom: 1em;
 		overflow-x: hidden;
+	    position: relative;
 	}
 
 	@include detailViewBasic;

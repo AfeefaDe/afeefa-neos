@@ -6,6 +6,7 @@ require.config({
         modernizr: '../../H5BP/js/vendor/modernizr-2.8.3.min',
         domReady: '../../requirejs/domReady',
         jquery: '../../jquery/jquery-2.1.3',
+        perfectScrollbarJQuery: 'https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/0.6.7/js/min/perfect-scrollbar.jquery.min',
         restive: '../../restive/restive.min',
         qx: '../../qooxdoo/qx-oo-4.1.min',
         underscore: '../../underscore/underscore-min',
@@ -24,6 +25,7 @@ require.config({
 require([
 	'domReady',
 	'jquery',
+	'perfectScrollbarJQuery',
 	'qx',
 	'underscore',
 	'hammer',

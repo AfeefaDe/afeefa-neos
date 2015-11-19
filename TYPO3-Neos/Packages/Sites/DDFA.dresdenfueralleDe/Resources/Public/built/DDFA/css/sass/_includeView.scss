@@ -3,7 +3,7 @@
 #includeView {
 	
 	@include transition(left 200ms, height 200ms);
-	@include box-shadow(0px 0px 2px #333);
+	@include box-shadow(0px 0px 5px #333);
 
 	position: absolute;
 	left: -35%;
@@ -144,8 +144,8 @@
 			cursor: pointer;
 			text-indent: 1em;
 			background-image: url('../img/icon-36.svg');
-			@include background-size(auto 70%);
-			background-position: left;
+			@include background-size(auto 1em);
+			background-position: 0 2px;
 			background-repeat: no-repeat;
 
 			&:hover {

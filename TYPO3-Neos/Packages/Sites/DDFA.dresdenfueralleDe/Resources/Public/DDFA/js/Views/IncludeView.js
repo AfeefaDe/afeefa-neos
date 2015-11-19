@@ -41,6 +41,8 @@ qx.Class.define("IncludeView", {
 
             $('#main-container').append(that.view);
 
+            if( APP.getUserDevice() == 'desktop') that.content.perfectScrollbar();
+
             this.base(arguments);
     	},
 
@@ -89,6 +91,9 @@ qx.Class.define("IncludeView", {
 
                 var heading = that.content.find('h1').first().detach();
                 that.content.before(heading);
+
+                if( APP.getUserDevice() == 'desktop') that.view.perfectScrollbar('update');
+
             }
 
         },

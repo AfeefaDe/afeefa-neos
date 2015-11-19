@@ -15,9 +15,9 @@ bootstrap/css/bootstrap.min.css
 ----------------
 bootstrap/css/bootstrap.min.css
 
-DDFA/css/ddfa.css
+DDFA/css/afeefa.css
 ----------------
-DDFA/css/ddfa.css
+DDFA/css/afeefa.css
 
 DDFA/css/sass/_ring.scss.css
 ----------------

@@ -36,9 +36,10 @@ qx.Class.define("DetailView", {
             that.view.append(that.headingContainer);
 
             // scrollable content container
-            var scrollContainer = $("<div />").addClass('scroll-container');
-            that.view.append(scrollContainer);
-            
+            that.scrollContainer = $("<div />").addClass('scroll-container');
+            that.view.append(that.scrollContainer);
+            if( APP.getUserDevice() == 'desktop') that.scrollContainer.perfectScrollbar();
+
             ////////////////////
             // image property //
             ////////////////////
@@ -47,7 +48,7 @@ qx.Class.define("DetailView", {
             that.image = $("<img />");
             that.imageContainer.append(that.image);
 
-            scrollContainer.append(that.imageContainer);
+            that.scrollContainer.append(that.imageContainer);
             
             //////////////////////
             // other properties //
@@ -70,7 +71,7 @@ qx.Class.define("DetailView", {
                 catText.append(that['propertyValue'+prop]);
                 that['propertyContainer'+prop].append(catText);
                 
-                scrollContainer.append(that['propertyContainer'+prop]);
+                that.scrollContainer.append(that['propertyContainer'+prop]);
 
             });
 
@@ -169,6 +170,8 @@ qx.Class.define("DetailView", {
 
             // show DetailView
             that.view.addClass('active');
+
+            if( APP.getUserDevice() == 'desktop') that.scrollContainer.perfectScrollbar('update');
 
             that.say('detailViewOpened');
         },

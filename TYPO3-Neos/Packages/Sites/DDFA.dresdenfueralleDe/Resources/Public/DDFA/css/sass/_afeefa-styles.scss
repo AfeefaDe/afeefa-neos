@@ -126,6 +126,12 @@ strong {
 
 .hidden{ display: none; }
 
+/* SCROLLBARS with perfect-scrollbar.js */
+.ps-container>.ps-scrollbar-y-rail,
+.ps-container>.ps-scrollbar-y-rail>.ps-scrollbar-y {
+	width: 3px !important;
+}
+
 #main-container {
 	
 	@include transition(left 250ms);

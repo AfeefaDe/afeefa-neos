@@ -144,8 +144,8 @@
 			cursor: pointer;
 			text-indent: 1em;
 			background-image: url('../img/icon-36.svg');
-			@include background-size(auto 70%);
-			background-position: left;
+			@include background-size(auto 1em);
+			background-position: 0 2px;
 			background-repeat: no-repeat;
 
 			&:hover {

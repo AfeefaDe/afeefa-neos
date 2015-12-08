@@ -216,8 +216,9 @@ qx.Class.define("DataManager", {
 
             $.ajax({
                 // url: "_Resources/Static/Packages/DDFA.dresdenfueralleDe/githubAPI/",
-                url: "http://afeefa.hejn.de/githubAPI/",
-                crossDomain: true,
+                // url: "http://afeefa.hejn.de/githubAPI/",
+                url: "githubAPI/",
+                // crossDomain: true,
                 type: 'POST',
                 data: data,
                 cache: false,

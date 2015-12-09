@@ -13,4 +13,7 @@ abstract class DDConst {
     const LOCALE_NXT = "en"; //locale that is provided to translate first
 
     const MEDIA_IMAGE = "typo3_media_image";
+
+    const LOCATION_SUPPLEMENT_PROPS = ["description", "mail", "web", "facebook", "phone", "rating", "speakerPublic", "speakerPrivate", "category", "image", "imageType", "spokenLanguages"];
+
 }

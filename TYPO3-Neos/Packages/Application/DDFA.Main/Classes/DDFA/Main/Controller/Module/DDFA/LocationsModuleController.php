@@ -80,7 +80,7 @@ class LocationsModuleController extends AbstractTranslationController {
 
         } else {
 
-            $viewObject = $this->objectRepository->supplement($viewObject);
+            $viewObject = $this->objectRepository->findOneSupplemented($viewObject);
             $this->view->assign('viewObject', $viewObject);
             $this->view->assign('languages', $this->objectRepository->findLocales($viewObject));
         }
@@ -189,7 +189,7 @@ class LocationsModuleController extends AbstractTranslationController {
      * @param Location $viewObject
      */
     public function editAction(Location $editObject, Location $viewObject) {
-        $this->view->assign('viewObject', $this->objectRepository->supplement($viewObject));
+        $this->view->assign('viewObject', $this->objectRepository->findOneSupplemented($viewObject));
         $this->view->assign('editObject', $editObject);
         $this->view->assign('editLanguages', $this->languageRepository->findAll());
         $this->view->assign('viewLanguages', $this->objectRepository->findAllLocales($viewObject));

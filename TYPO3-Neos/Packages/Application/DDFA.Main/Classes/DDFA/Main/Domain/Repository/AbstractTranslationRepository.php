@@ -15,7 +15,8 @@ use TYPO3\Flow\Persistence\Repository;
 use TYPO3\Flow\Resource\ResourceManager;
 use TYPO3\Media\Domain\Repository\AssetRepository;
 
-abstract class AbstractTranslationRepository extends Repository {
+abstract class AbstractTranslationRepository extends Repository
+{
     /**
      * @Flow\Inject
      * @var ResourceManager
@@ -28,7 +29,8 @@ abstract class AbstractTranslationRepository extends Repository {
      */
     protected $assetRepository;
 
-    public function findAll() {
+    public function findAll()
+    {
         return $this->createQuery()->setOrderings(array('name' => QueryInterface::ORDER_ASCENDING))->execute();
     }
 
@@ -37,7 +39,8 @@ abstract class AbstractTranslationRepository extends Repository {
      * @param string $locale
      * @return mixed
      */
-    public function findAllLocalized($locale = DDConst::LOCALE_STD) {
+    public function findAllLocalized($locale = DDConst::LOCALE_STD)
+    {
         $query = $this->createQuery()->setOrderings(array('name' => QueryInterface::ORDER_ASCENDING));
 
         $objects = $query->matching(
@@ -52,7 +55,8 @@ abstract class AbstractTranslationRepository extends Repository {
      * @param $objects
      * @return mixed
      */
-    protected function includeLocales($objects) {
+    protected function includeLocales($objects)
+    {
         foreach ($objects as $o) {
             $locales = $this->findLocales($o);
             $o->numLocales = sizeof($locales);
@@ -68,7 +72,8 @@ abstract class AbstractTranslationRepository extends Repository {
      * @return array
      */
     //TODO sophisticate and include real languages
-    public function findLocales(Actor $object) {
+    public function findLocales(Actor $object)
+    {
         $r = array();
         $i = 0;
         foreach ($this->findAllLocalisations($object) as $localisation) {
@@ -87,7 +92,8 @@ abstract class AbstractTranslationRepository extends Repository {
      * @param Actor $object
      * @return \TYPO3\Flow\Persistence\QueryResultInterface
      */
-    public function findAllLocalisations(Actor $object) {
+    public function findAllLocalisations(Actor $object)
+    {
         $query = $this->createQuery()->setOrderings(array('locale' => QueryInterface::ORDER_ASCENDING));
         return $query->matching(
             $query->equals('entryId', $object->getEntryId())
@@ -100,7 +106,8 @@ abstract class AbstractTranslationRepository extends Repository {
      * @param Actor $object
      * @return array
      */
-    public function findAllLocales(Actor $object) {
+    public function findAllLocales(Actor $object)
+    {
         $r = array();
         $i = 0;
         foreach ($this->findAllLocalisations($object) as $localisation) {
@@ -116,25 +123,25 @@ abstract class AbstractTranslationRepository extends Repository {
      * @param Actor $object
      * @return \TYPO3\Flow\Persistence\QueryResultInterface
      */
-    public function findLocalisations(Actor $object) {
-        //TODO not used
-
-        $query = $this->createQuery()->setOrderings(array('locale' => QueryInterface::ORDER_ASCENDING));
-        return $query->matching(
-            $query->logicalAnd(
-                $query->equals('entryId', $object->getEntryId()),
-                $query->logicalNot(
-                    $query->equals('Persistence_Object_Identifier', $object->getPersistenceObjectIdentifier())
-                )
-            )
-        )->execute();
-    }
+//    public function findLocalisations(Actor $object)
+//    {
+//        $query = $this->createQuery()->setOrderings(array('locale' => QueryInterface::ORDER_ASCENDING));
+//        return $query->matching(
+//            $query->logicalAnd(
+//                $query->equals('entryId', $object->getEntryId()),
+//                $query->logicalNot(
+//                    $query->equals('Persistence_Object_Identifier', $object->getPersistenceObjectIdentifier())
+//                )
+//            )
+//        )->execute();
+//    }
 
     /**
      * @param string $locale
      * @return array
      */
-    protected function findAllHydrated($locale) {
+    protected function findAllHydrated($locale)
+    {
         $allLocations = $this->findByLocale(DDConst::LOCALE_STD);
         $result = array();
         foreach ($allLocations as $location) {
@@ -148,31 +155,83 @@ abstract class AbstractTranslationRepository extends Repository {
      * @param string $locale
      * @return Actor
      */
-    public function hydrate(Actor $object, $locale) {
+    public function hydrate(Actor $object, $locale)
+    {
+        $objectNXT = null;
+        if ($object->getLocale() == DDConst::LOCALE_NXT)
+            $objectNXT = $object;
+
         if ($object->getLocale() == DDConst::LOCALE_STD)
             $objectSTD = $object;
-        else
+        else {
             $objectSTD = $this->findOneLocalized($object);
-
-        if ($object->getLocale() != $locale) {
-            $object = $this->findOneLocalized($object, $locale);
-            if($object == null)
-                $object = $objectSTD;
         }
 
-        if ($object->getLocale() == DDConst::LOCALE_NXT) {
-            $returnVal = $this->merge($objectSTD, $object);
+        switch ($locale) {
+            case DDConst::LOCALE_STD:
+                $returnVal = $objectSTD;
+                break;
+            case DDConst::LOCALE_NXT:
+                if ($objectNXT == null)
+                    $objectNXT = $this->findOneLocalized($object, DDConst::LOCALE_NXT);
 
-        } else {
-            $objectNXT = $this->findOneLocalized($object, DDConst::LOCALE_NXT);
-            if ($objectNXT != null)
-                $returnVal = $this->merge($objectSTD, $this->merge($objectNXT, $object));
-            else
-                $returnVal = $this->merge($objectSTD, $object);
+                //todo: second test maybe not efficient
+                if ($objectNXT == null || sizeof($this->findEmptyParams($objectNXT)) == sizeof(DDConst::LOCATION_SUPPLEMENT_PROPS))
+                    $returnVal = $objectSTD;
+                else
+                    $returnVal = $this->merge($objectSTD, $objectNXT);
+                break;
+            default:
+                if ($objectNXT == null)
+                    $objectNXT = $this->findOneLocalized($object, DDConst::LOCALE_NXT);
+
+                if ($object->getLocale() != $locale) {
+                    $realObject = $this->findOneLocalized($object, $locale);
+                    if ($realObject != null)
+                        $object = $realObject;
+                    else {
+                        if ($objectNXT != null)
+                            $object = $objectNXT;
+                        else
+                            $object = $objectSTD;
+                    }
+                }
+
+                if ($objectNXT != null)
+                    $returnVal = $this->merge($objectSTD, $this->merge($objectNXT, $object));
+                else
+                    $returnVal = $this->merge($objectSTD, $object);
+                break;
         }
 
         return $this->convertImgUri($returnVal);
     }
+
+//    public function hydrate(Actor $object, $locale) {
+//        if ($object->getLocale() == DDConst::LOCALE_STD)
+//            $objectSTD = $object;
+//        else
+//            $objectSTD = $this->findOneLocalized($object);
+//
+//        if ($object->getLocale() != $locale) {
+//            $object = $this->findOneLocalized($object, $locale);
+//            if($object == null)
+//                $object = $objectSTD;
+//        }
+//
+//        if ($object->getLocale() == DDConst::LOCALE_NXT) {
+//            $returnVal = $this->merge($objectSTD, $object);
+//
+//        } else {
+//            $objectNXT = $this->findOneLocalized($object, DDConst::LOCALE_NXT);
+//            if ($objectNXT != null)
+//                $returnVal = $this->merge($objectSTD, $this->merge($objectNXT, $object));
+//            else
+//                $returnVal = $this->merge($objectSTD, $object);
+//        }
+//
+//        return $this->convertImgUri($returnVal);
+//    }
 
     /**
      * returns a specific localisation of the object (or nothing if requested locale does not exist)
@@ -181,7 +240,8 @@ abstract class AbstractTranslationRepository extends Repository {
      * @param $locale
      * @return Actor
      */
-    public function findOneLocalized(Actor $object, $locale = DDConst::LOCALE_STD) {
+    public function findOneLocalized(Actor $object, $locale = DDConst::LOCALE_STD)
+    {
         if ($object->getLocale() == $object)
             return $object;
 
@@ -195,11 +255,34 @@ abstract class AbstractTranslationRepository extends Repository {
     }
 
     /**
+     * @param Actor $object
+     * @return array
+     */
+    public function findEmptyParams(Actor $object)
+    {
+        $props = [];
+        $reflection = new ReflectionObject($object);
+
+        foreach ($reflection->getProperties() as $property) {
+            if (in_array($property->getName(), DDConst::LOCATION_SUPPLEMENT_PROPS)) {
+                $property->setAccessible(true);
+
+                $value = $property->getValue($object);
+                if ($value == NULL || $value == "") {
+                    array_push($props, $property->getName());
+                }
+            }
+        }
+        return $props;
+    }
+
+    /**
      * @param Actor $baseObject
      * @param Actor $hydrateObject
      * @return Actor
      */
-    protected function merge(Actor $baseObject, Actor $hydrateObject) {
+    protected function merge(Actor $baseObject, Actor $hydrateObject)
+    {
 
         if ($baseObject->getLocale() == $hydrateObject->getLocale()) {
             return $baseObject;
@@ -225,7 +308,8 @@ abstract class AbstractTranslationRepository extends Repository {
      * @param Actor $object
      * @return Actor
      */
-    protected function convertImgUri(Actor $object) {
+    protected function convertImgUri(Actor $object)
+    {
         $reflection = new ReflectionObject($object);
         if ($reflection->hasProperty("image")) {
             $img = $reflection->getProperty("image");
@@ -240,7 +324,8 @@ abstract class AbstractTranslationRepository extends Repository {
      * @param Actor $object
      * @return string
      */
-    protected function getImgUri(Actor $object) {
+    protected function getImgUri(Actor $object)
+    {
         $uri = "";
         if ($object->getImage()) {
             $uri = $this->resourceManager->getPersistentResourcesStorageBaseUri();

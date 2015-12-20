@@ -12,7 +12,8 @@ use TYPO3\Flow\Annotations as Flow;
 /**
  * @Flow\Entity
  */
-class Location extends Actor {
+class Location extends Actor
+{
     /**
      * @var string
      * @ORM\Column(nullable=true)
@@ -57,9 +58,15 @@ class Location extends Actor {
 
     /**
      * @var string
-     * @ORM\Column(nullable=true)
+     * @ORM\Column(nullable=true,type="text")
      */
     protected $openingHours;
+
+    /**
+     * @var string
+     * @ORM\Column(nullable=true,type="text")
+     */
+    protected $arrival;
 
     //TODO: change to type enum
     /**
@@ -88,14 +95,16 @@ class Location extends Actor {
      */
     protected $event;
 
-    public function __construct() {
+    public function __construct()
+    {
         parent::__construct();
     }
 
     /**
      * @return string
      */
-    public function getOpeningHours() {
+    public function getOpeningHours()
+    {
         return $this->openingHours;
     }
 
@@ -103,14 +112,16 @@ class Location extends Actor {
      * @param string $openingHours
      * @return void
      */
-    public function setOpeningHours($openingHours) {
+    public function setOpeningHours($openingHours)
+    {
         $this->openingHours = $openingHours;
     }
 
     /**
      * @return Initiative
      */
-    public function getInitiative() {
+    public function getInitiative()
+    {
         return $this->initiative;
     }
 
@@ -118,14 +129,16 @@ class Location extends Actor {
      * @param Initiative $initiative
      * @return void
      */
-    public function setInitiative(Initiative $initiative) {
+    public function setInitiative(Initiative $initiative)
+    {
         $this->initiative = $initiative;
     }
 
     /**
      * @return string
      */
-    public function getLon() {
+    public function getLon()
+    {
         return $this->lon;
     }
 
@@ -133,14 +146,16 @@ class Location extends Actor {
      * @param string $lon
      * @return void
      */
-    public function setLon($lon) {
+    public function setLon($lon)
+    {
         $this->lon = $lon;
     }
 
     /**
      * @return string
      */
-    public function getLat() {
+    public function getLat()
+    {
         return $this->lat;
     }
 
@@ -148,14 +163,16 @@ class Location extends Actor {
      * @param string $lat
      * @return void
      */
-    public function setLat($lat) {
+    public function setLat($lat)
+    {
         $this->lat = $lat;
     }
 
     /**
      * @return string
      */
-    public function getStreet() {
+    public function getStreet()
+    {
         return $this->street;
     }
 
@@ -163,14 +180,16 @@ class Location extends Actor {
      * @param string $street
      * @return void
      */
-    public function setStreet($street) {
+    public function setStreet($street)
+    {
         $this->street = $street;
     }
 
     /**
      * @return string
      */
-    public function getDistrict() {
+    public function getDistrict()
+    {
         return $this->district;
     }
 
@@ -178,14 +197,16 @@ class Location extends Actor {
      * @param string $district
      * @return void
      */
-    public function setDistrict($district) {
+    public function setDistrict($district)
+    {
         $this->district = $district;
     }
 
     /**
      * @return string
      */
-    public function getZip() {
+    public function getZip()
+    {
         return $this->zip;
     }
 
@@ -193,14 +214,16 @@ class Location extends Actor {
      * @param string $zip
      * @return void
      */
-    public function setZip($zip) {
+    public function setZip($zip)
+    {
         $this->zip = $zip;
     }
 
     /**
      * @return string
      */
-    public function getCity() {
+    public function getCity()
+    {
         return $this->city;
     }
 
@@ -208,14 +231,16 @@ class Location extends Actor {
      * @param string $city
      * @return void
      */
-    public function setCity($city) {
+    public function setCity($city)
+    {
         $this->city = $city;
     }
 
     /**
      * @return string
      */
-    public function getScope() {
+    public function getScope()
+    {
         return $this->scope;
     }
 
@@ -223,49 +248,72 @@ class Location extends Actor {
      * @param string $scope
      * @return void
      */
-    public function setScope($scope) {
+    public function setScope($scope)
+    {
         $this->scope = $scope;
     }
 
     /**
      * @return MarketEntry
      */
-    public function getMarketEntry() {
+    public function getMarketEntry()
+    {
         return $this->marketEntry;
     }
 
     /**
      * @param MarketEntry $marketEntry
      */
-    public function setMarketEntry($marketEntry) {
+    public function setMarketEntry($marketEntry)
+    {
         $this->marketEntry = $marketEntry;
     }
 
     /**
      * @return Event
      */
-    public function getEvent() {
+    public function getEvent()
+    {
         return $this->event;
     }
 
     /**
      * @param Event $event
      */
-    public function setEvent($event) {
+    public function setEvent($event)
+    {
         $this->event = $event;
     }
 
     /**
      * @return int
      */
-    public function getType() {
+    public function getType()
+    {
         return $this->type;
     }
 
     /**
      * @param int $type
      */
-    public function setType($type) {
+    public function setType($type)
+    {
         $this->type = $type;
+    }
+
+    /**
+     * @return string
+     */
+    public function getArrival()
+    {
+        return $this->arrival;
+    }
+
+    /**
+     * @param string $arrival
+     */
+    public function setArrival($arrival)
+    {
+        $this->arrival = $arrival;
     }
 }

@@ -50,7 +50,6 @@ class InitiativesModuleController extends AbstractTranslationController {
      */
     public function indexAction() {
         $this->view->assign('inis', $this->objectRepository->findAllLocalized());
-        $this->view->assign('numLanguages', $this->languageRepository->findAll()->count() - 1);
     }
 
     /**

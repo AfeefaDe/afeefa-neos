@@ -49,10 +49,6 @@ class InitiativeAPIController extends ActionController {
     }
 
     public function createAction(Initiative $initiative) {
-        /*$now = new DateTime();
-        $initiative->setCreated($now);
-        $initiative->setUpdated($now);
-        $initiative->setPersistenceObjectIdentifier(DDHelpers::createGuid());*/
         $this->iniRepository->add($initiative);
         $this->response->setStatus(201);
         $this->view->assign('value', ['initiative' => $initiative]);

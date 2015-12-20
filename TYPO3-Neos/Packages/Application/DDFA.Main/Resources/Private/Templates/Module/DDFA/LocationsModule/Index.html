@@ -7,9 +7,9 @@
         <div id="tabContainer">
             <div id="tabs">
                 <ul>
-                    <li id="tab_1">Initiative Locations</li>
-                    <li id="tab_2">MarketEntry Locations</li>
-                    <li id="tab_3">Basic Locations</li>
+                    <li id="tab_1"><i class="icon-bullhorn"></i> Initiative Locations</li>
+                    <li id="tab_2"><i class="icon-heart"></i> Market entry Locations</li>
+                    <li id="tab_3"><i class="icon-circle"></i> Basic Locations</li>
                 </ul>
             </div>
 
@@ -27,8 +27,9 @@
                         <table class="neos-table">
                             <thead>
                             <tr>
-                                <!-- TODO icon of category -->
-                                <th width="140px"></th>
+                                <th width="138px">
+                                    <div>Actions</div>
+                                </th>
                                 <th>
                                     <div>Name</div>
                                 </th>
@@ -73,7 +74,9 @@
                         <table class="neos-table">
                             <thead>
                             <tr>
-                                <th width="140px"></th>
+                                <th width="138px">
+                                    <div>Actions</div>
+                                </th>
                                 <th>
                                     <div>Name</div>
                                 </th>
@@ -119,7 +122,9 @@
                         <table class="neos-table">
                             <thead>
                             <tr>
-                                <th width="140px"></th>
+                                <th width="138px">
+                                    <div>Actions</div>
+                                </th>
                                 <th>
                                     <div>Name</div>
                                 </th>
@@ -149,9 +154,19 @@
             </div>
 
             <div class="neos-footer">
-                <f:link.action action="add" class="neos-button neos-button-primary" arguments="{type: 0}"
+                <f:link.action action="add" class="neos-button" arguments="{type: 0}"
                                title="add a new initiative location">
-                    Add initiative location
+                    <i class="icon-bullhorn"></i> Add initiative location
+                </f:link.action>
+
+                <f:link.action action="add" class="neos-button" arguments="{type: 1}"
+                               title="add a new initiative location">
+                    <i class="icon-heart"></i> Add market entry location
+                </f:link.action>
+
+                <f:link.action action="add" class="neos-button" arguments="{type: 3}"
+                               title="add a new initiative location">
+                    <i class="icon-circle"></i> Add basic location
                 </f:link.action>
             </div>
         </div>

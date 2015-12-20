@@ -15,6 +15,7 @@ use DDFA\Main\Domain\Repository\LocationRepository;
 use DDFA\Main\Domain\Repository\MarketEntryRepository;
 use DDFA\Main\Utility\DDConst;
 use TYPO3\Flow\Annotations as Flow;
+use TYPO3\Flow\Error\Message;
 use TYPO3\Media\Domain\Repository\AssetRepository;
 
 /**
@@ -22,7 +23,8 @@ use TYPO3\Media\Domain\Repository\AssetRepository;
  *
  * @Flow\Scope("singleton")
  */
-class LocationsModuleController extends AbstractTranslationController {
+class LocationsModuleController extends AbstractTranslationController
+{
     /**
      * @Flow\Inject
      * @var LocationRepository
@@ -62,7 +64,8 @@ class LocationsModuleController extends AbstractTranslationController {
     /**
      * @return void
      */
-    public function indexAction() {
+    public function indexAction()
+    {
         $this->view->assign('numLanguages', $this->languageRepository->findAll()->count() - 1);
         $this->view->assign('iniLocations', $this->objectRepository->findAllOfInitiativeLocalized());
         $this->view->assign('basicLocations', $this->objectRepository->findAllOfBasicLocalized());
@@ -74,7 +77,8 @@ class LocationsModuleController extends AbstractTranslationController {
      * @param Location $viewObject
      * @return void
      */
-    public function viewAction(Location $viewObject) {
+    public function viewAction(Location $viewObject)
+    {
         if (isset($_POST['viewLocale']) && $_POST['viewLocale'] != DDConst::LOCALE_STD) {
             $this->redirect('view', NULL, NULL, array('viewObject' => $this->objectRepository->findOneLocalized($viewObject, $_POST['viewLocale'])));
 
@@ -89,7 +93,8 @@ class LocationsModuleController extends AbstractTranslationController {
     /**
      * @return void
      */
-    public function addAction() {
+    public function addAction()
+    {
         if (isset($_GET['moduleArguments']['type'])) {
             $type = $_GET['moduleArguments']['type'];
 
@@ -113,9 +118,12 @@ class LocationsModuleController extends AbstractTranslationController {
                     //justly empty!
                     break;
                 default:
+                    $this->addFlashMessage('No location type selected.', 'Typeerror', Message::SEVERITY_ERROR);
                     $this->view->assign('fail', TRUE);
             }
+
         } else {
+            $this->addFlashMessage('No location type selected.', 'Typeerror', Message::SEVERITY_ERROR);
             $this->view->assign('fail', TRUE);
         }
     }
@@ -125,7 +133,8 @@ class LocationsModuleController extends AbstractTranslationController {
      * @return void
      * @throws \TYPO3\Flow\Persistence\Exception\IllegalObjectTypeException
      */
-    public function createAction(Location $newObject) {
+    public function createAction(Location $newObject)
+    {
         if (isset($_POST['moduleArguments']['type'])) {
             $type = $_POST['moduleArguments']['type'];
             switch ($type) {
@@ -143,10 +152,22 @@ class LocationsModuleController extends AbstractTranslationController {
                 case DDConst::OWNER_BASIC:
                     break;
                 default:
-                    //TODO error handling
-                    die("No valid location type, sorry.");
+                    $this->addFlashMessage('No valid location type, sorry.', '', Message::SEVERITY_ERROR);
+                    $this->redirect('add');
             }
             $newObject->setType($type);
+
+            if (preg_match('/^[0-9]+\.[0-9]+,\s*[0-9]+\.[0-9]+/', $newObject->getLat())) {
+                $cords = explode(',', $newObject->getLat(), 2);
+                if (preg_match('/^[0-9]+\.[0-9]+/', trim($cords[0])) && preg_match('/^[0-9]+\.[0-9]+/', trim($cords[1]))) {
+                    $newObject->setLat(trim($cords[0]));
+                    $newObject->setLon(trim($cords[1]));
+                }
+            }
+
+            if ($newObject->getLat() == '' || $newObject->getLon() == '') {
+                $this->addFlashMessage('Coordinates missing in Location "'.$newObject->getName().'"', 'Missing Arguments', Message::SEVERITY_WARNING);
+            }
 
             //TODO refactor:
             if (isset($_POST['moduleArguments']['cat']))
@@ -162,8 +183,8 @@ class LocationsModuleController extends AbstractTranslationController {
             } else
                 $this->redirect('index');
         } else {
-            //TODO error handling
-            die("No location type selected!");
+            $this->addFlashMessage('No location type selected.', '', Message::SEVERITY_ERROR);
+            $this->redirect('add');
         }
     }
 
@@ -174,7 +195,9 @@ class LocationsModuleController extends AbstractTranslationController {
      * @return Location
      * @throws \TYPO3\Flow\Persistence\Exception\IllegalObjectTypeException
      */
-    protected function addTranslation($entryID, $locale, $type) {
+    protected
+    function addTranslation($entryID, $locale, $type)
+    {
         $object = new Location();
         $object->setEntryId($entryID);
         $object->setLocale($locale);
@@ -188,7 +211,9 @@ class LocationsModuleController extends AbstractTranslationController {
      * @param Location $editObject
      * @param Location $viewObject
      */
-    public function editAction(Location $editObject, Location $viewObject) {
+    public
+    function editAction(Location $editObject, Location $viewObject)
+    {
         $this->view->assign('viewObject', $this->objectRepository->findOneSupplemented($viewObject));
         $this->view->assign('editObject', $editObject);
         $this->view->assign('editLanguages', $this->languageRepository->findAll());
@@ -198,7 +223,9 @@ class LocationsModuleController extends AbstractTranslationController {
     /**
      * @param Location $editObject
      */
-    public function simpleEditAction(Location $editObject) {
+    public
+    function simpleEditAction(Location $editObject)
+    {
         if ($editObject->getLocale() != DDConst::LOCALE_STD) {
             $viewObject = $this->objectRepository->findOneLocalized($editObject, DDConst::LOCALE_STD);
 
@@ -236,7 +263,9 @@ class LocationsModuleController extends AbstractTranslationController {
      * @return void
      * @throws \TYPO3\Flow\Persistence\Exception\IllegalObjectTypeException
      */
-    public function updateAction(Location $editObject) {
+    public
+    function updateAction(Location $editObject)
+    {
         if (isset($_POST['moduleArguments']['ini']))
             $editObject->setInitiative($this->initiativeRepository->findOneByName($_POST['moduleArguments']['ini']));
 
@@ -247,7 +276,7 @@ class LocationsModuleController extends AbstractTranslationController {
         if (isset($_POST['moduleArguments']['cat']))
             $editObject->setCategory($this->categoryRepository->findOneByName($_POST['moduleArguments']['cat']));
 
-        $this->addFlashMessage('The location has been updated successfully.');
+        $this->addFlashMessage('The location has been updated successfully.','Update',Message::SEVERITY_NOTICE);
         $editObject->setUpdated(new DateTime());
         $this->objectRepository->update($editObject);
         $this->redirect('index');
@@ -258,11 +287,13 @@ class LocationsModuleController extends AbstractTranslationController {
      * @return void
      * @throws \TYPO3\Flow\Persistence\Exception\IllegalObjectTypeException
      */
-    public function deleteAction(Location $deleteObject) {
+    public
+    function deleteAction(Location $deleteObject)
+    {
         foreach ($this->objectRepository->findAllLocalisations($deleteObject) as $localisedObject)
             $this->objectRepository->remove($localisedObject);
 
-        $this->addFlashMessage('The location including all its translations has been removed successfully.');
+        $this->addFlashMessage('The location including all its translations has been removed successfully.', 'Deleted', Message::SEVERITY_NOTICE);
         $this->redirect('index');
     }
 
@@ -270,7 +301,9 @@ class LocationsModuleController extends AbstractTranslationController {
      * @param Location $object
      * @return void
      */
-    public function selectTranslationAction(Location $object) {
+    public
+    function selectTranslationAction(Location $object)
+    {
         $editLocale = $_POST['moduleArguments']['editLocale'];
         $viewLocale = $_POST['moduleArguments']['viewLocale'];
 

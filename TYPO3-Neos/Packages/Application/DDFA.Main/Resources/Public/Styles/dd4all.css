@@ -30,3 +30,43 @@ div.afeefa-infoBox p, div.afeefa-grayBox p {
     font-size: smaller;
     font-style: italic;
 }
+
+#tabs {
+    height: 30px;
+    overflow: hidden;
+    border-bottom: solid #333 thin;
+    margin: 0;
+    padding: 0;
+}
+
+#tabs > ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#tabs > ul > li {
+    margin: 0 2px 0 0;
+    padding: 7px 10px;
+    display: block;
+    float: left;
+    color: #fff;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    background: #222;
+}
+
+#tabs > ul > li:hover {
+    background: #3f3f3f;
+    cursor: pointer;
+    color: #fff;
+    border-bottom: solid #555 2px;
+}
+
+#tabs > ul > li.tabActive {
+    background: #3f3f3f;
+    cursor: pointer;
+    color: #fff;
+    border-top: solid #555 4px;
+}

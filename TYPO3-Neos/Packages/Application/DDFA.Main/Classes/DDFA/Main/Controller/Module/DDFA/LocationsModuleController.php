@@ -66,7 +66,6 @@ class LocationsModuleController extends AbstractTranslationController
      */
     public function indexAction()
     {
-        $this->view->assign('numLanguages', $this->languageRepository->findAll()->count() - 1);
         $this->view->assign('iniLocations', $this->objectRepository->findAllOfInitiativeLocalized());
         $this->view->assign('basicLocations', $this->objectRepository->findAllOfBasicLocalized());
         $this->view->assign('marketLocations', $this->objectRepository->findAllOfMarketLocalized());
@@ -166,7 +165,7 @@ class LocationsModuleController extends AbstractTranslationController
             }
 
             if ($newObject->getLat() == '' || $newObject->getLon() == '') {
-                $this->addFlashMessage('Coordinates missing in Location "'.$newObject->getName().'"', 'Missing Arguments', Message::SEVERITY_WARNING);
+                $this->addFlashMessage('Coordinates missing in location "' . $newObject->getName() . '"', 'Missing Arguments', Message::SEVERITY_WARNING);
             }
 
             //TODO refactor:
@@ -271,6 +270,18 @@ class LocationsModuleController extends AbstractTranslationController
 
         if (isset($_POST['moduleArguments']['entry']))
             $editObject->setMarketEntry($this->marketRepository->findOneByName($_POST['moduleArguments']['entry']));
+
+        if (preg_match('/^[0-9]+\.[0-9]+,\s*[0-9]+\.[0-9]+/', $editObject->getLat())) {
+            $cords = explode(',', $editObject->getLat(), 2);
+            if (preg_match('/^[0-9]+\.[0-9]+/', trim($cords[0])) && preg_match('/^[0-9]+\.[0-9]+/', trim($cords[1]))) {
+                $editObject->setLat(trim($cords[0]));
+                $editObject->setLon(trim($cords[1]));
+            }
+        }
+
+        if ($editObject->getLat() == '' || $editObject->getLon() == '') {
+            $this->addFlashMessage('Coordinates missing in Location "' . $editObject->getName() . '"', 'Missing Arguments', Message::SEVERITY_WARNING);
+        }
 
         //TODO refactor:
         if (isset($_POST['moduleArguments']['cat']))

@@ -49,6 +49,15 @@
         </div>
     </div>
 
+    <div class="neos-control-group">
+        <label class="neos-control-label" for="subCategory">Subcategory</label>
+
+        <div class="neos-controls">
+            <f:form.textfield class="neos-span12" property="subCategory" id="subCategory"
+                              placeholder="Enter a subcategory"/>
+        </div>
+    </div>
+
     <!--<div class="neos-control-group">
         <label class="neos-control-label" for="image">Logo / Image</label>
 
@@ -79,7 +88,16 @@
 
         <div class="neos-controls">
             <f:form.textarea class="neos-span12" property="description" id="description"
-                             placeholder="Enter a description text..." rows="8"/>
+                             placeholder="Enter a description text..." rows="5"/>
+        </div>
+    </div>
+
+    <div class="neos-control-group">
+        <label class="neos-control-label" for="arrival">Arrival</label>
+
+        <div class="neos-controls">
+            <f:form.textarea class="neos-span12" property="arrival" id="arrival"
+                             placeholder="Enter a description for the arrival or the access road here... " rows="5"/>
         </div>
     </div>
 
@@ -87,8 +105,8 @@
         <label class="neos-control-label" for="openingHours">Opening hours</label>
 
         <div class="neos-controls">
-            <f:form.textfield class="neos-span12" property="openingHours" id="openingHours"
-                              placeholder="Enter opening hours"/>
+            <f:form.textarea class="neos-span12" property="openingHours" id="openingHours"
+                             placeholder="Enter opening hours here..." rows="3"/>
         </div>
     </div>
 
@@ -133,7 +151,7 @@
     </div>
 
     <div class="neos-control-group">
-        <label class="neos-control-label" for="facebook">facebook URL</label>
+        <label class="neos-control-label" for="facebook">Facebook URL</label>
 
         <div class="neos-controls">
             <f:form.textfield class="neos-span12" property="facebook" id="facebook" type="url"
@@ -221,7 +239,7 @@
         <label class="neos-control-label" for="city">City</label>
 
         <div class="neos-controls">
-            <f:form.textfield class="neos-span12" property="city" id="city" placeholder="Enter city" value="Dresden"/>
+            <f:form.textfield class="neos-span12" property="city" id="city" placeholder="Enter city"/>
         </div>
     </div>
 
@@ -241,4 +259,14 @@
         </div>
     </div>
 
+    <legend>Internal</legend>
+
+    <div class="neos-control-group">
+        <label class="neos-control-label" for="internalComment">Internal Comment</label>
+
+        <div class="neos-controls">
+            <f:form.textarea class="neos-span12" property="internalComment" id="internalComment"
+                             placeholder="Enter some notes nobody will ever see..." rows="5"/>
+        </div>
+    </div>
 </fieldset>

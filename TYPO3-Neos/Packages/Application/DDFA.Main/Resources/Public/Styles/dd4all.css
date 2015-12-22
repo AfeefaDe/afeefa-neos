@@ -70,3 +70,27 @@ div.afeefa-infoBox p, div.afeefa-grayBox p {
     color: #fff;
     border-top: solid #555 4px;
 }
+
+a.tooltip {
+    outline: none;
+}
+
+a.tooltip:hover {
+    text-decoration: none;
+}
+
+a.tooltip span {
+    z-index: 10;
+    display: none;
+    padding: 8px;
+    margin: -10px 0 0 15px;
+    width: 300px;
+    box-shadow: 5px 5px 30px #222;
+}
+
+a.tooltip:hover span {
+    display: inline;
+    position: absolute;
+    border: 1px solid #555;
+    background: #3f3f3f;
+}

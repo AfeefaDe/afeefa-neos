@@ -158,15 +158,17 @@ class LocationRepository extends AbstractTranslationRepository
 
     /**
      * @param string $locale
+     * @param bool $onlyPublished
      * @return array
      */
-    public function findAllSupplemented($locale)
+    public function findAllSupplemented($locale, $onlyPublished = false)
     {
-        $locations = $this->findAllLocalized();
+        //find German location, to make sure, that, every entry is included, even if not translated in $locale
+        $locations = $this->findAllLocalized(DDConst::LOCALE_STD, $onlyPublished);
 
         $result = array();
         foreach ($locations as $l) {
-            $l = $this->findOneSupplemented($l, $locale);
+            $l = $this->findOneSupplemented($l, $locale, $onlyPublished);
 
             if ($l != null)
                 array_push($result, $l);
@@ -177,14 +179,22 @@ class LocationRepository extends AbstractTranslationRepository
     /**
      * @param Location $location
      * @param string $locale
-     * @return Actor|Location
+     * @param bool $onlyPublished
+     * @return null|Location
      */
-    public function findOneSupplemented(Location $location, $locale = null)
+    public function findOneSupplemented(Location $location, $locale = null, $onlyPublished = false)
     {
+        // comment in, if only display locations with published owner, otherwise published attribute of owner is ignored:
+
+//        if($onlyPublished) {
+//            $owner = $this->findOwner($location);
+//            if($owner != null && ($owner->getPublished() == null || $owner->getPublished() != 1))
+//                return null;
+//        }
+
         if ($locale == null)
             $locale = $location->getLocale();
 
-        //find German location, to make sure, that, every entry is included, even if not translated in $locale
         return $this->supplementFromOwner($this->hydrate($this->findOneLocalized($location, DDConst::LOCALE_STD), $locale), $locale);
     }
 
@@ -239,19 +249,11 @@ class LocationRepository extends AbstractTranslationRepository
 
         return $location;
     }
-//    public function findAllSupplemented($locale) {
-//        $locations = $this->findAllHydrated($locale);
-//        $result = array();
-//        foreach ($locations as $l) {
-//            array_push($result, $this->supplement($l));
-//        }
-//        return $result;
-//    }
 
     /**
      * @param Location|Actor $location
      * @param $locale
-     * @return Actor|null|object
+     * @return null|Actor
      */
     public function findHydratedOwner(Location $location, $locale)
     {
@@ -270,52 +272,24 @@ class LocationRepository extends AbstractTranslationRepository
         return null;
     }
 
-//    public function supplement(Location $object)
-//    {
-//        $LOCATION_SUPPLEMENT_PROPS = ["description", "mail", "web", "facebook", "phone", "rating", "category", "speakerPublic", "speakerPrivate", "image", "imageType", "spokenLanguages"];
-//
-//        if ($object->getMarketEntry() == null && $object->getInitiative() == null && $object->getEvent() == null)
-//            return $object;
-//
-//        switch ($object->getType()) {
-//            case DDConst::OWNER_INI:
-//                $owner = $this->initiativeRepository->hydrate($object->getInitiative(), $object->getLocale());
-//                break;
-//            case DDConst::OWNER_MARKET:
-//
-//                $owner = $this->marketRepository->findByIdentifier($object->getMarketEntry()->getPersistenceObjectIdentifier());
-//                break;
-//            case DDConst::OWNER_EVENT:
-//                $owner = $this->eventRepository->findByIdentifier($object->getEvent()->getPersistenceObjectIdentifier());
-//                break;
-//            default:
-//                return $object;
-//        }
-//
-//        $parentReflection = new ReflectionObject($owner);
-//        $sourceReflection = new ReflectionObject($object);
-//
-//        foreach ($sourceReflection->getProperties() as $property) {
-//            if (in_array($property->getName(), $LOCATION_SUPPLEMENT_PROPS)) {
-//                $property->setAccessible(true);
-//
-//                $value = $property->getValue($object);
-//                if ($value == NULL || $value == "") {
-//                    $name = $property->getName();
-//                    if ($parentReflection->hasProperty($name)) {
-//                        $parentProperty = $parentReflection->getProperty($name);
-//                        $parentProperty->setAccessible(true);
-//                        $property->setValue($object, $parentProperty->getValue($owner));
-//                    }
-//                }
-//            }
-//            if ($object->getType() == DDConst::OWNER_INI) {
-//                $iniProp = $sourceReflection->getProperty("initiative");
-//                $iniProp->setAccessible(true);
-//                $iniProp->setValue($object, $owner);
-//            }
-//        }
-//
-//        return $object;
-//    }
+    /**
+     * @param Location $location
+     * @return null|Actor
+     */
+    public function findOwner(Location $location)
+    {
+        if ($location->getMarketEntry() == null && $location->getInitiative() == null && $location->getEvent() == null)
+            return null;
+
+        switch ($location->getType()) {
+            case DDConst::OWNER_INI:
+                return $this->initiativeRepository->findByIdentifier($location->getInitiative()->getPersistenceObjectIdentifier());
+            case DDConst::OWNER_MARKET:
+                return $this->marketRepository->findByIdentifier($location->getMarketEntry()->getPersistenceObjectIdentifier());
+            case DDConst::OWNER_EVENT:
+                return $this->eventRepository->findByIdentifier($location->getEvent()->getPersistenceObjectIdentifier());
+        }
+
+        return null;
+    }
 }

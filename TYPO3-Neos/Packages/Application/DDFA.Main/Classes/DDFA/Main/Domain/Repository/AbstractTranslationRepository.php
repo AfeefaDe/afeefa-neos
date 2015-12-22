@@ -37,17 +37,28 @@ abstract class AbstractTranslationRepository extends Repository
     /**
      * returns all objects with a certain locale and adds number of translations (numLocales) and a string of the according locale codes (locales)
      * @param string $locale
+     * @param bool $onlyPublished
      * @return mixed
      */
-    public function findAllLocalized($locale = DDConst::LOCALE_STD)
+    public function findAllLocalized($locale = DDConst::LOCALE_STD, $onlyPublished = false)
     {
         $query = $this->createQuery()->setOrderings(array('name' => QueryInterface::ORDER_ASCENDING));
 
-        $objects = $query->matching(
-            $query->equals('locale', $locale)
-        )->execute();
 
-        return $this->includeLocales($objects);
+        if ($onlyPublished) {
+            $query = $query->matching(
+                $query->logicalAnd(
+                    $query->equals('published', '1'), $query->equals('locale', $locale)
+                )
+            );
+
+        } else {
+            $query = $query->matching(
+                $query->equals('locale', $locale)
+            );
+        }
+
+        return $this->includeLocales($query->execute());
     }
 
     /**

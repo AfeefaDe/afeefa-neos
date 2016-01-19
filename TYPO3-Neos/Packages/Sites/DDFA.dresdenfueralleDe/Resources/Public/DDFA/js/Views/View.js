@@ -1,26 +1,26 @@
 qx.Class.define("View", {
-    
-    extend : Daddy,
-	type: "abstract",
+
+    extend: Daddy,
+    type: "abstract",
 
     properties: {
         viewId: {},
         viewState: {},
-        loadable: { init : false }
+        loadable: {init: false}
     },
 
-    construct: function(){
-    	var that = this;
+    construct: function () {
+        var that = this;
     },
 
-    members : {
-        
-        render: function(){
+    members: {
+
+        render: function () {
             var that = this;
 
             that.view.addClass('view-container');
 
-            if( that.getLoadable() ) {
+            if (that.getLoadable()) {
                 var loadingCurtain = $("<div />").addClass('loading-curtain');
                 that.view.append(loadingCurtain);
             }
@@ -32,13 +32,13 @@ qx.Class.define("View", {
         // param (key, [locale])
         // @key bib key
         // @locale get wording in a specific ignoring the current app language
-        getWording: function( key, locale ){
+        getWording: function (key, locale) {
             var that = this;
 
             return APP.getLM().resolve(key, locale);
         },
 
-        loading: function( bool ){
+        loading: function (bool) {
             var that = this;
 
             if (bool) {
@@ -47,21 +47,21 @@ qx.Class.define("View", {
             else {
                 that.view.removeClass('loading');
             }
-                
+
         },
 
-        addEvents: function(){
+        addEvents: function () {
             var that = this;
 
-            that.listen('languageChanged', function(){
+            that.listen('languageChanged', function () {
                 that.changeLanguage();
             });
 
             ////////////////////////////
             // AFTER VIEW IS RENDERED //
             ////////////////////////////
-            that.listen(that.classname + 'Rendered', function(){
-        
+            that.listen(that.classname + 'Rendered', function () {
+
                 // initialize bootstrap tooltips
                 $(function () {
                     console.debug('init tooltips');
@@ -71,8 +71,8 @@ qx.Class.define("View", {
             });
         },
 
-        changeLanguage: function(){
-            
+        changeLanguage: function () {
+
         }
     }
 

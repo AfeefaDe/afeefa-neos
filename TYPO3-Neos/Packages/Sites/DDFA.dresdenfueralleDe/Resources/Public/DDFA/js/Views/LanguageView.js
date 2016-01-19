@@ -1,18 +1,18 @@
 qx.Class.define("LanguageView", {
-    
-    extend : View,
-	type: "singleton",
 
-    construct: function(){
-    	var that = this;
+    extend: View,
+    type: "singleton",
+
+    construct: function () {
+        var that = this;
 
         that.setViewId('languageView');
     },
 
-    members : {
-        
-    	render: function(){
-    		var that = this;
+    members: {
+
+        render: function () {
+            var that = this;
 
             // view container
             that.view = $("<div />");
@@ -29,7 +29,7 @@ qx.Class.define("LanguageView", {
             // add other language buttons
             // var remainingLanguages = _.without( APP.getConfig().languages, APP.getLM().getCurrentLang() );
             // _.each( remainingLanguages, function(lang){
-            _.each( APP.getConfig().languages, function(lang){
+            _.each(APP.getConfig().languages, function (lang) {
                 var langBtn = $("<div />");
                 langBtn.addClass('btn ' + lang);
 
@@ -39,15 +39,15 @@ qx.Class.define("LanguageView", {
                     'data-placement': "bottom"
                 });
 
-                langBtn.click(function(){
+                langBtn.click(function () {
                     that.say('languageChanged', lang);
                 });
 
-                that.buttons.push( {el: langBtn, lang: lang} );
+                that.buttons.push({el: langBtn, lang: lang});
 
                 that.view.append(langBtn);
             });
-            
+
             $('#main-container').append(that.view);
 
             this.base(arguments);
@@ -55,11 +55,11 @@ qx.Class.define("LanguageView", {
             that.load();
         },
 
-        load: function(){
+        load: function () {
             var that = this;
 
-            _.each( that.buttons, function(btn){
-                if( btn.el.hasClass( APP.getLM().getCurrentLang() ) )
+            _.each(that.buttons, function (btn) {
+                if (btn.el.hasClass(APP.getLM().getCurrentLang()))
                     btn.el.addClass('active');
 
                 // bootstrap tooltip
@@ -72,31 +72,31 @@ qx.Class.define("LanguageView", {
 
         },
 
-        addEvents: function(){
+        addEvents: function () {
             var that = this;
 
             // call superclass
             this.base(arguments);
         },
 
-        reset: function(){
+        reset: function () {
             var that = this;
 
             // reset all buttons
-            _.each( that.buttons, function(btn) {
+            _.each(that.buttons, function (btn) {
                 btn.el.removeClass('active');
             });
 
         },
 
-        changeLanguage: function(){
+        changeLanguage: function () {
             var that = this;
 
             that.reset();
             that.load();
         },
 
-        close: function(){
+        close: function () {
             var that = this;
 
             // TODO: only do in mobile version

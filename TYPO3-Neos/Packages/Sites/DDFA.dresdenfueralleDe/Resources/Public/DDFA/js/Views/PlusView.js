@@ -1,7 +1,7 @@
 qx.Class.define("PlusView", {
-    
-    extend : View,
-	type: "singleton",
+
+    extend: View,
+    type: "singleton",
 
     properties: {
         propertiesMarket: {},
@@ -9,16 +9,16 @@ qx.Class.define("PlusView", {
         inputTypes: {}
     },
 
-    construct: function(){
-    	var that = this;
+    construct: function () {
+        var that = this;
 
         that.setViewId('plusView');
     },
 
-    members : {
-        
-    	render: function(){
-    		var that = this;
+    members: {
+
+        render: function () {
+            var that = this;
 
             // view container
             that.view = $("<div />");
@@ -36,37 +36,37 @@ qx.Class.define("PlusView", {
             that.offerBtn = $("<div />");
             that.offerBtn.addClass('btn offerBtn');
             that.view.append(that.offerBtn);
-            
+
             // plus button
             that.plusBtn = $("<div />");
             that.plusBtn.addClass('btn plusBtn');
             that.view.append(that.plusBtn);
-            
+
             $('#main-container').append(that.view);
 
             this.base(arguments);
-    	},
+        },
 
-        addEvents: function(){
+        addEvents: function () {
             var that = this;
 
             // call superclass
             this.base(arguments);
-            
+
             // that.listen('mapclicked', function(){
             //     that.close();
             // });
-            
-            that.offerBtn.click(function(){
-               APP.getFormView().load( APP.getFormView().getFormTypes().marketOffer );
-            });
-            
-            that.requestBtn.click(function(){
-               APP.getFormView().load( APP.getFormView().getFormTypes().marketRequest );
+
+            that.offerBtn.click(function () {
+                APP.getFormView().load(APP.getFormView().getFormTypes().marketOffer);
             });
 
-            that.feedbackBtn.click(function(){
-               APP.getFormView().load( APP.getFormView().getFormTypes().feedback );
+            that.requestBtn.click(function () {
+                APP.getFormView().load(APP.getFormView().getFormTypes().marketRequest);
+            });
+
+            that.feedbackBtn.click(function () {
+                APP.getFormView().load(APP.getFormView().getFormTypes().feedback);
             });
 
             ///////////////////////
@@ -90,7 +90,7 @@ qx.Class.define("PlusView", {
 
         },
 
-        close: function(){
+        close: function () {
             var that = this;
 
             // TODO: only do in mobile version
@@ -98,7 +98,7 @@ qx.Class.define("PlusView", {
             // that.offerBtn.css('display', 'none');
         },
 
-        changeLanguage: function(){
+        changeLanguage: function () {
             var that = this;
 
             ///////////////////////

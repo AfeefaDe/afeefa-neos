@@ -1,10 +1,10 @@
 qx.Class.define("APPDDFA", {
-    extend : Daddy,
+    extend: Daddy,
     type: "singleton",
 
     // extend: "Daddy",
 
-    construct: function(){
+    construct: function () {
         var that = this;
 
         that.setTitle('connecteDD');
@@ -27,7 +27,7 @@ qx.Class.define("APPDDFA", {
         that.setActiveFilter(null);
     },
 
-    properties : {
+    properties: {
         title: {},
         DataManager: {},
         Router: {},
@@ -47,12 +47,12 @@ qx.Class.define("APPDDFA", {
         activeFilter: {}
     },
 
-    members : {
-        
+    members: {
 
-        init: function( cb ){
+
+        init: function (cb) {
             var that = this;
-            
+
             // analyse user device
             that.detectUserDevice();
 
@@ -62,16 +62,16 @@ qx.Class.define("APPDDFA", {
             var allData = {};
 
             // fetch only necessary data for app startup
-            that.getDataManager().fetchInitialData(function( data ){
-                
+            that.getDataManager().fetchInitialData(function (data) {
+
                 console.debug('fetchedInitialData', data);
                 cb();
-                
+
             });
 
             // fetch other data (e.g. that takes a long time loading)
-            that.getDataManager().getAllLocations(function(data){
-                    
+            that.getDataManager().getAllLocations(function (data) {
+
                 allData.locations = data.locations;
                 that.setData(allData);
                 that.say('fetchedNewData');
@@ -79,7 +79,7 @@ qx.Class.define("APPDDFA", {
             });
         },
 
-        detectUserDevice: function(){
+        detectUserDevice: function () {
             var that = this;
 
             // analyse user device
@@ -96,16 +96,16 @@ qx.Class.define("APPDDFA", {
             // $('body').addClass( APP.getUserDevice() );
 
             $('body').restive({
-                  breakpoints: ['10000'],
-                  classes: ['nb'],
-                  turbo_classes: 'is_mobile=mobi,is_phone=phone,is_tablet=tablet,is_landscape=landscape'
+                breakpoints: ['10000'],
+                classes: ['nb'],
+                turbo_classes: 'is_mobile=mobi,is_phone=phone,is_tablet=tablet,is_landscape=landscape'
             });
 
             APP.setUserDevice('desktop');
-            if( $('body').hasClass('mobi') || $('body').hasClass('phone') ) APP.setUserDevice('mobile');
-            if( $('body').hasClass('tablet') ) APP.setUserDevice('tablet');
-            
-            $('body').addClass( APP.getUserDevice() );
+            if ($('body').hasClass('mobi') || $('body').hasClass('phone')) APP.setUserDevice('mobile');
+            if ($('body').hasClass('tablet')) APP.setUserDevice('tablet');
+
+            $('body').addClass(APP.getUserDevice());
         }
     }
 

@@ -194,44 +194,49 @@ qx.Class.define("DataManager", {
 
             var slackMessage = '*' + data.heading + '*' + ':\n' + data.message;
 
-            $.ajax({
-                url: "https://hooks.slack.com/services/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",
-                type: 'POST',
-                data: JSON.stringify({text: slackMessage}),
-                cache: false,
-                dataType: 'text',
-                processData: false
-                // contentType: false
-            })
-                .done(function (data) {
-                    // cb(data);
-                })
-                .fail(function (a) {
-                    // cb(a);
-                });
+            if (window.location.hostname == 'afeefa.de') {
 
+                $.ajax({
+                    url: "https://hooks.slack.com/services/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",
+                    type: 'POST',
+                    data: JSON.stringify({text: slackMessage}),
+                    cache: false,
+                    dataType: 'text',
+                    processData: false
+                    // contentType: false
+                })
+                    .done(function (data) {
+                        // cb(data);
+                    })
+                    .fail(function (a) {
+                        // cb(a);
+                    });
+            }
         },
 
         githubCreateIssue: function (data, cb) {
 
-            $.ajax({
-                // url: "_Resources/Static/Packages/DDFA.dresdenfueralleDe/githubAPI/",
-                // url: "http://afeefa.hejn.de/githubAPI/",
-                url: "githubAPI/",
-                // crossDomain: true,
-                type: 'POST',
-                data: data,
-                cache: false,
-                dataType: 'text',
-                processData: true
-                // contentType: false
-            })
-                .done(function (data) {
-                    // cb(data);
+            if (window.location.hostname == 'afeefa.de') {
+
+                $.ajax({
+                    // url: "_Resources/Static/Packages/DDFA.dresdenfueralleDe/githubAPI/",
+                    // url: "http://afeefa.hejn.de/githubAPI/",
+                    url: "githubAPI/",
+                    // crossDomain: true,
+                    type: 'POST',
+                    data: data,
+                    cache: false,
+                    dataType: 'text',
+                    processData: true
+                    // contentType: false
                 })
-                .fail(function (a) {
-                    // cb(a);
-                });
+                    .done(function (data) {
+                        // cb(data);
+                    })
+                    .fail(function (a) {
+                        // cb(a);
+                    });
+            }
 
         },
 

@@ -400,7 +400,9 @@ qx.Class.define("FormView", {
                 // TODO define metaData property in data model
                 // data.marketentry.metaData = L.Browser;
 
-                // TODO date dummy data, because it's required by the model, which becomes obsolete as soon as the model allows empty date properties
+                // oldTODO: date dummy data, because it's required by the model, which becomes obsolete as soon as the model allows empty date properties
+                // now obsolete, J.
+
                 // if( data.marketentry.dateFrom.length == 0) data.marketentry.dateFrom = '1854-01-01T00:00:00+0200';
                 if (data.marketentry.dateFrom.length && data.marketentry.dateFrom.indexOf('T00:00:00+0200') < 0) data.marketentry.dateFrom += 'T00:00:00+0200';
                 // if( data.marketentry.dateTo.length == 0) data.marketentry.dateTo = '1854-01-01T00:00:00+0200';

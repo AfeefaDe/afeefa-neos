@@ -19,7 +19,8 @@ use TYPO3\Flow\Annotations as Flow;
  *
  * @Flow\Scope("singleton")
  */
-class MarketEntriesModuleController extends AbstractTranslationController {
+class MarketEntriesModuleController extends AbstractTranslationController
+{
     /**
      * @Flow\Inject
      * @var MarketEntryRepository
@@ -41,7 +42,8 @@ class MarketEntriesModuleController extends AbstractTranslationController {
     /**
      * @return void
      */
-    public function indexAction() {
+    public function indexAction()
+    {
         $this->view->assign('entries', $this->objectRepository->findAllLocalized());
         $this->view->assign('numLanguages', $this->languageRepository->findAll()->count() - 1);
     }
@@ -50,7 +52,8 @@ class MarketEntriesModuleController extends AbstractTranslationController {
      * @param MarketEntry $viewObject
      * @return void
      */
-    public function viewAction(MarketEntry $viewObject) {
+    public function viewAction(MarketEntry $viewObject)
+    {
         if (isset($_POST['viewLocale']) && $_POST['viewLocale'] != DDConst::LOCALE_STD) {
             $this->redirect('view', NULL, NULL, array('viewObject' => $this->objectRepository->findOneLocalized($viewObject, $_POST['viewLocale'])));
 
@@ -65,7 +68,8 @@ class MarketEntriesModuleController extends AbstractTranslationController {
     /**
      * @return void
      */
-    public function addAction() {
+    public function addAction()
+    {
         $this->view->assign('cats', $this->categoryRepository->findByType(DDConst::OWNER_MARKET));
     }
 
@@ -74,7 +78,8 @@ class MarketEntriesModuleController extends AbstractTranslationController {
      * @return void
      * @throws \TYPO3\Flow\Persistence\Exception\IllegalObjectTypeException
      */
-    public function createAction(MarketEntry $newObject) {
+    public function createAction(MarketEntry $newObject)
+    {
         //TODO refactor:
         if (isset($_POST['moduleArguments']['cat'])) {
             $newObject->setCategory($this->categoryRepository->findOneByName($_POST['moduleArguments']['cat']));
@@ -96,7 +101,8 @@ class MarketEntriesModuleController extends AbstractTranslationController {
      * @param $locale
      * @return MarketEntry
      */
-    protected function addTranslation($entryID, $locale) {
+    protected function addTranslation($entryID, $locale)
+    {
         $object = new MarketEntry();
         $object->setEntryId($entryID);
         $object->setLocale($locale);
@@ -109,7 +115,8 @@ class MarketEntriesModuleController extends AbstractTranslationController {
      * @param MarketEntry $editObject
      * @param MarketEntry $viewObject
      */
-    public function editAction(MarketEntry $editObject, MarketEntry $viewObject) {
+    public function editAction(MarketEntry $editObject, MarketEntry $viewObject)
+    {
         $this->view->assign('viewObject', $this->objectRepository->hydrate($viewObject, $viewObject->getLocale()));
         $this->view->assign('editObject', $editObject);
         $this->view->assign('editLanguages', $this->languageRepository->findAll());
@@ -119,7 +126,8 @@ class MarketEntriesModuleController extends AbstractTranslationController {
     /**
      * @param MarketEntry $editObject
      */
-    public function simpleEditAction(MarketEntry $editObject) {
+    public function simpleEditAction(MarketEntry $editObject)
+    {
         if ($editObject->getLocale() != DDConst::LOCALE_STD) {
             $viewObject = $this->objectRepository->findOneLocalized($editObject, DDConst::LOCALE_STD);
             $this->redirect('edit', NULL, NULL,
@@ -137,7 +145,8 @@ class MarketEntriesModuleController extends AbstractTranslationController {
      * @return void
      * @throws \TYPO3\Flow\Persistence\Exception\IllegalObjectTypeException
      */
-    public function updateAction(MarketEntry $editObject) {
+    public function updateAction(MarketEntry $editObject)
+    {
         $editObject->setUpdated(new DateTime());
 
         //TODO refactor:
@@ -153,7 +162,8 @@ class MarketEntriesModuleController extends AbstractTranslationController {
     /**
      * @param MarketEntry $object
      */
-    public function publishAction(MarketEntry $object) {
+    public function publishAction(MarketEntry $object)
+    {
         $object->setPublished(true);
         $this->objectRepository->update($object);
         $this->addFlashMessage('The market entry has been published.');
@@ -165,7 +175,8 @@ class MarketEntriesModuleController extends AbstractTranslationController {
      * @return void
      * @throws \TYPO3\Flow\Persistence\Exception\IllegalObjectTypeException
      */
-    public function deleteAction(MarketEntry $deleteObject) {
+    public function deleteAction(MarketEntry $deleteObject)
+    {
         //TODO check if locations refer to entry
         foreach ($this->objectRepository->findAllLocalisations($deleteObject) as $localisedObject)
             $this->objectRepository->remove($localisedObject);
@@ -178,7 +189,8 @@ class MarketEntriesModuleController extends AbstractTranslationController {
      * @param MarketEntry $object
      * @return void
      */
-    public function selectTranslationAction(MarketEntry $object) {
+    public function selectTranslationAction(MarketEntry $object)
+    {
         $editLocale = $_POST['moduleArguments']['editLocale'];
         $viewLocale = $_POST['moduleArguments']['viewLocale'];
 

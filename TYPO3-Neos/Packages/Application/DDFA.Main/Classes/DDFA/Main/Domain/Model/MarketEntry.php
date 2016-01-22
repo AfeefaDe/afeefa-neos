@@ -17,6 +17,7 @@ class MarketEntry extends Actor
 {
     /**
      * @var boolean
+     * @ORM\Column(nullable=true)
      */
     protected $offer;
 

@@ -21,10 +21,28 @@ class MarketEntry extends Actor
     protected $offer;
 
     /**
-     * @var string
-     * @ORM\Column(nullable=true,type="text")
+     * @var \DateTime
+     * @ORM\Column(type="datetime", nullable=true)
      */
-    protected $date;
+    protected $dateFrom;
+
+    /**
+     * @var \DateTime
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    protected $dateTo;
+
+    /**
+     * @var int
+     * @ORM\Column(nullable=true)
+     */
+    protected $dateDay;
+
+    /**
+     * @var int
+     * @ORM\Column(nullable=true)
+     */
+    protected $datePeriodic;
 
     /**
      * @var \Doctrine\Common\Collections\Collection<\DDFA\Main\Domain\Model\Location>
@@ -93,18 +111,66 @@ class MarketEntry extends Actor
     }
 
     /**
-     * @return string
+     * @return \DateTime
      */
-    public function getDate()
+    public function getDateFrom()
     {
-        return $this->date;
+        return $this->dateFrom;
     }
 
     /**
-     * @param string $date
+     * @param \DateTime $dateFrom
      */
-    public function setDate($date)
+    public function setDateFrom($dateFrom)
     {
-        $this->date = $date;
+        $this->dateFrom = $dateFrom;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getDateTo()
+    {
+        return $this->dateTo;
+    }
+
+    /**
+     * @param \DateTime $dateTo
+     */
+    public function setDateTo($dateTo)
+    {
+        $this->dateTo = $dateTo;
+    }
+
+    /**
+     * @return int
+     */
+    public function getDateDay()
+    {
+        return $this->dateDay;
+    }
+
+    /**
+     * @param int $dateDay
+     */
+    public function setDateDay($dateDay)
+    {
+        $this->dateDay = $dateDay;
+    }
+
+    /**
+     * @return int
+     */
+    public function getDatePeriodic()
+    {
+        return $this->datePeriodic;
+    }
+
+    /**
+     * @param int $datePeriodic
+     */
+    public function setDatePeriodic($datePeriodic)
+    {
+        $this->datePeriodic = $datePeriodic;
     }
 }

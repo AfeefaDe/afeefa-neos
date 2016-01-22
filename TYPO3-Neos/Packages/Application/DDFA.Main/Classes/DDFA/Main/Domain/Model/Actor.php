@@ -120,12 +120,17 @@ abstract class Actor extends BasicEntity
      */
     protected $imageType;
 
-
     /**
      * @var boolean
      * @ORM\Column(nullable=true)
      */
     protected $supportWanted;
+
+    /**
+     * @var boolean
+     * @ORM\Column(nullable=true)
+     */
+    protected $forChildren;
 
     /**
      * @var string
@@ -495,5 +500,21 @@ abstract class Actor extends BasicEntity
     public function setInternalComment($internalComment)
     {
         $this->internalComment = $internalComment;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function isForChildren()
+    {
+        return $this->forChildren;
+    }
+
+    /**
+     * @param boolean $forChildren
+     */
+    public function setForChildren($forChildren)
+    {
+        $this->forChildren = $forChildren;
     }
 }

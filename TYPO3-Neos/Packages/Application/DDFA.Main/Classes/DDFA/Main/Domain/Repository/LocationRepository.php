@@ -37,6 +37,12 @@ class LocationRepository extends AbstractTranslationRepository
     protected $eventRepository;
 
     /**
+     * @Flow\Inject
+     * @var LanguageRepository
+     */
+    protected $languageRepository;
+
+    /**
      * @return \TYPO3\Flow\Persistence\QueryResultInterface
      */
     public function findAll()

@@ -11,6 +11,13 @@ use TYPO3\Flow\Annotations as Flow;
 /**
  * @Flow\Scope("singleton")
  */
-class MarketEntryRepository extends AbstractTranslationRepository {
+class MarketEntryRepository extends AbstractTranslationRepository
+{
+
+    /**
+     * @Flow\Inject
+     * @var LanguageRepository
+     */
+    protected $languageRepository;
 
 }

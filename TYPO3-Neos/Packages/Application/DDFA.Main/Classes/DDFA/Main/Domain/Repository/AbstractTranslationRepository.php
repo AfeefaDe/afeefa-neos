@@ -29,6 +29,12 @@ abstract class AbstractTranslationRepository extends Repository
      */
     protected $assetRepository;
 
+    /**
+     * @Flow\Inject
+     * @var LanguageRepository
+     */
+    protected $languageRepository;
+
     public function findAll()
     {
         return $this->createQuery()->setOrderings(array('name' => QueryInterface::ORDER_ASCENDING))->execute();
@@ -121,10 +127,15 @@ abstract class AbstractTranslationRepository extends Repository
     {
         $r = array();
         $i = 0;
+
         foreach ($this->findAllLocalisations($object) as $localisation) {
-            $r[$i] = $localisation->getLocale();
-            ++$i;
+            $lan = $this->languageRepository->findByCode($localisation->getLocale())->getFirst();
+            if ($lan != null) {
+                $r[$i] = ['language' => $lan->getLanguage(), 'code' => $lan->getCode()];
+                ++$i;
+            }
         }
+
         return $r;
     }
 

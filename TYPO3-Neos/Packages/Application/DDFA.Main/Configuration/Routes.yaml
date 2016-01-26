@@ -1,0 +1,70 @@
+-
+  name: 'api locations'
+  uriPattern: 'api/locations<LocationSubroutes>(?{@locale})'
+  defaults:
+    '@controller': 'Api\LocationAPI'
+    '@action': 'list'
+    '@locale': 'de'
+  subRoutes:
+    LocationSubroutes:
+      package: 'DDFA.Main'
+      suffix: 'Entity'
+      variables:
+        entity: 'location'
+
+-
+  name: 'api initiatives'
+  uriPattern: 'api/initiatives<InitiativeSubroutes>(?{@locale})'
+  defaults:
+    '@controller': 'Api\InitiativeAPI'
+    '@action': 'list'
+    '@locale': 'de'
+  subRoutes:
+    InitiativeSubroutes:
+      package: 'DDFA.Main'
+      suffix: 'Entity'
+      variables:
+        entity: 'initiative'
+
+-
+  name: 'api marketentries'
+  uriPattern: 'api/marketentries<MarketEntriesSubroutes>(.{@format})'
+  defaults:
+    '@controller': 'Api\MarketEntryAPI'
+    '@action': 'list'
+    '@format': 'json'
+  subRoutes:
+    MarketEntriesSubroutes:
+      package: 'DDFA.Main'
+      suffix: 'Entity'
+      variables:
+        entity: 'marketentry'
+
+-
+  name: 'api categories'
+  uriPattern: 'api/categories<CategoriesSubroutes>(.{@format})'
+  defaults:
+    '@controller': 'Api\CategoryAPI'
+    '@action': 'list'
+    '@format': 'json'
+  subRoutes:
+    CategoriesSubroutes:
+      package: 'DDFA.Main'
+      suffix: 'Entity'
+      variables:
+        entity: 'category'
+
+-
+  name: 'api feedback'
+  uriPattern: 'api/feedback<FeedbackSubroutes>(.{@format})'
+  defaults:
+    '@controller': 'Api\FeedbackAPI'
+    '@action': 'list'
+    '@format': 'json'
+  subRoutes:
+    FeedbackSubroutes:
+      package: 'DDFA.Main'
+      suffix: 'Entity'
+      variables:
+        entity: 'feedback'
+

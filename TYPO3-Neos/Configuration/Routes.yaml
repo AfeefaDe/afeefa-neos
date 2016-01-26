@@ -1,0 +1,32 @@
+#                                                                        #
+# Routes configuration                                                   #
+#                                                                        #
+# This file contains the configuration for the MVC router.               #
+# Just add your own modifications as necessary.                          #
+#                                                                        #
+# Please refer to the Flow manual for possible configuration options.    #
+#                                                                        #
+
+##
+# dd4all subroutes
+-
+  name: 'api'
+  uriPattern: '<apiSubroutes>'
+  defaults:
+    '@package': 'DDFA.Main'
+    '@format': 'json'
+  subRoutes:
+    'apiSubroutes':
+      package: 'DDFA.Main'
+
+##
+# TYPO3 Neos subroutes
+-
+  name: 'TYPO3 Neos'
+  uriPattern: '<TYPO3NeosSubroutes>'
+  subRoutes:
+    'TYPO3NeosSubroutes':
+      package: 'TYPO3.Neos'
+      variables:
+        'defaultUriSuffix': '.html'
+

@@ -1,0 +1,180 @@
+<f:layout name="Default"/>
+
+<f:section name="title">List of locations</f:section>
+
+<f:section name="content">
+    <div class="neos-module-container">
+        <div id="tabContainer">
+            <div id="tabs">
+                <ul>
+                    <li id="tab_1"><i class="icon-bullhorn"></i> Initiative Locations</li>
+                    <li id="tab_2"><i class="icon-heart"></i> Market entry Locations</li>
+                    <li id="tab_3"><i class="icon-circle"></i> Basic Locations</li>
+                </ul>
+            </div>
+
+            <div class="tabpage" id="tabpage_1">
+                <div class="neos-action neos-pull-right">
+                    <f:link.action action="add" class="neos-button" arguments="{type: '0'}"
+                                   title="add a new initiative location">
+                        <i class="icon-plus"></i>
+                    </f:link.action>
+                </div>
+
+                <f:if condition="{iniLocations}">
+                    <f:then>
+                        <div class="afeefa-small">(sort by update date, latest first)</div>
+                        <table class="neos-table">
+                            <thead>
+                            <tr>
+                                <th width=46px"><i class="icon-ok-sign"></i></th>
+                                <th width="138px">
+                                    <div>Actions</div>
+                                </th>
+                                <th></th>
+                                <th>
+                                    <div>Name</div>
+                                </th>
+                                <th>
+                                    <div>Initiative</div>
+                                </th>
+                                <th>
+                                    <div>Address</div>
+                                </th>
+                                <th>
+                                    <div>Translations</div>
+                                </th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <f:for each="{iniLocations}" as="l">
+                                <f:render partial="Location/IniLocationEntry" arguments="{l: l}"/>
+                            </f:for>
+                            </tbody>
+                        </table>
+
+                    </f:then>
+                    <f:else>
+                        <div>
+                            Currently there are no locations of an initiative - just add one. ;)
+                        </div>
+                    </f:else>
+                </f:if>
+            </div>
+
+            <div class="tabpage" id="tabpage_2">
+                <div class="neos-action neos-pull-right">
+                    <f:link.action action="add" class="neos-button" arguments="{type: '1'}"
+                                   title="add a new market entry location">
+                        <i class="icon-plus"></i>
+                    </f:link.action>
+                </div>
+
+                <f:if condition="{marketLocations}">
+                    <f:then>
+                        <div class="afeefa-small">(sort by update date, latest first)</div>
+                        <table class="neos-table">
+                            <thead>
+                            <tr>
+                                <th width=46px"><i class="icon-ok-sign"></i></th>
+                                <th width="138px">
+                                    <div>Actions</div>
+                                </th>
+                                <th>
+                                    <div>Name</div>
+                                </th>
+                                <th>
+                                    <div>Market entry</div>
+                                </th>
+                                <th>
+                                    <div>Address</div>
+                                </th>
+                                <th>
+                                    <div>Translations</div>
+                                </th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <f:for each="{marketLocations}" as="m">
+                                <f:render partial="Location/MarketLocationEntry" arguments="{l: m}"/>
+                            </f:for>
+                            </tbody>
+                        </table>
+                    </f:then>
+                    <f:else>
+                        <div>
+                            Currently there are no market entry locations. <br>
+                            Hopefully somebody will add one soon...
+                        </div>
+                    </f:else>
+                </f:if>
+            </div>
+
+            <div class="tabpage" id="tabpage_3">
+
+                <div class="neos-action neos-pull-right">
+                    <f:link.action action="add" class="neos-button" arguments="{type: '3'}"
+                                   title="add a new basic location">
+                        <i class="icon-plus"></i>
+                    </f:link.action>
+                </div>
+
+                <f:if condition="{basicLocations}">
+                    <f:then>
+                        <div class="afeefa-small">(sort by name descending)</div>
+                        <table class="neos-table">
+                            <thead>
+                            <tr>
+                                <th width=46px"><i class="icon-ok-sign"></i></th>
+                                <th width="138px">
+                                    <div>Actions</div>
+                                </th>
+                                <th>
+                                    <div>Name</div>
+                                </th>
+                                <th>
+                                    <div>Address</div>
+                                </th>
+                                <th>
+                                    <div>Translations</div>
+                                </th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <f:for each="{basicLocations}" as="b">
+                                <f:render partial="Location/BasicLocationEntry" arguments="{l: b}"/>
+                            </f:for>
+                            </tbody>
+                        </table>
+                    </f:then>
+                    <f:else>
+                        <div>
+                            Currently there are no market entry locations, but: <br>
+                            You can add one! \o/ Come on, do it, bro, yo!
+                        </div>
+                    </f:else>
+                </f:if>
+
+            </div>
+
+            <div class="neos-footer">
+                <f:link.action action="add" class="neos-button" arguments="{type: 0}"
+                               title="add a new initiative location">
+                    <i class="icon-bullhorn"></i> Add initiative location
+                </f:link.action>
+
+                <f:link.action action="add" class="neos-button" arguments="{type: 1}"
+                               title="add a new initiative location">
+                    <i class="icon-heart"></i> Add market entry location
+                </f:link.action>
+
+                <f:link.action action="add" class="neos-button" arguments="{type: 3}"
+                               title="add a new initiative location">
+                    <i class="icon-circle"></i> Add basic location
+                </f:link.action>
+            </div>
+        </div>
+    </div>
+    <script type="application/javascript" src="{f:uri.resource(path: 'JavaScript/tabs.js')}"></script>
+</f:section>
+

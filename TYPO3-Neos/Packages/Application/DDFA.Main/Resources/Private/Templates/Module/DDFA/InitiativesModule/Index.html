@@ -1,0 +1,44 @@
+<f:layout name="Default"/>
+
+<f:section name="title">Overview of all initiatives</f:section>
+
+<f:section name="content">
+    <div class="neos-module-container">
+        <f:if condition="{inis}">
+            <f:then>
+                <table class="neos-table">
+                    <thead>
+                    <tr>
+                        <th width="46px"><i class="icon-ok-sign"></i></th>
+                        <th width="138px">
+                            <div>Actions</div>
+                        </th>
+                        <th></th>
+                        <th>
+                            <div>Name</div>
+                        </th>
+                        <th>
+                            <div>Translations</div>
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <f:for each="{inis}" as="ini">
+                        <f:render partial="Initiative/InitiativeEntry" arguments="{ini: ini}"/>
+                    </f:for>
+                    </tbody>
+                </table>
+            </f:then>
+            <f:else>
+                <div>
+                    Currently there is no Initiative. Please add one.
+                </div>
+            </f:else>
+        </f:if>
+    </div>
+    <div class="neos-footer">
+        <f:link.action action="add" class="neos-button neos-button-primary">
+            Add initiative
+        </f:link.action>
+    </div>
+</f:section>

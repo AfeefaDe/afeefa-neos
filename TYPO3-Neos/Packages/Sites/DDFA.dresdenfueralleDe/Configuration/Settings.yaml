@@ -1,0 +1,30 @@
+TYPO3:
+  TYPO3CR:
+    contentDimensions:
+      'language':
+        label: 'Language'
+        icon: 'icon-language'
+        default: 'de'
+        defaultPreset: 'de'
+        presets:
+          # 'all': ~
+          'de':
+            label: 'Deutsch'
+            values: ['de']
+            uriSegment: 'de'
+          'en':
+            label: 'English'
+            values: ['en', 'de']
+            uriSegment: 'en'
+          'fr':
+            label: 'Français'
+            values: ['fr', 'en', 'de']
+            uriSegment: 'fr'
+          'ar':
+            label: 'العربية (Arabic)'
+            values: ['ar', 'en', 'de']
+            uriSegment: 'ar'
+          'fa':
+            label: 'فارسی (Persian)'
+            values: ['fa', 'en', 'de']
+            uriSegment: 'fa'

@@ -1,0 +1,13 @@
+<!--suppress ALL -->
+<link href="{f:uri.resource(path: 'Styles/dd4all.css')}" rel="stylesheet"/>
+<div class="neos-content neos-container-fluid">
+    <legend>
+        <f:render section="title"/>
+    </legend>
+
+    <div class="neos-notification-container">
+        <f:render partial="Shared/FlashMessages"/>
+    </div>
+
+    <f:render section="content"/>
+</div>

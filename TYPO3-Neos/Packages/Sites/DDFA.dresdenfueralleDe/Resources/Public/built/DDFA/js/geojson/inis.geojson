@@ -1,0 +1,52 @@
+{ "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+          "name": "Cabana",
+          "cat": "mapdata.categories.advice",
+          "street": "Kreuzstraße 7",
+          "zip": "01067",
+          "city": "Dresden",
+          "opening": "Montag 10-13 und 13-16; Dienstag 13-17; Mittwoch 14-17; Freitag 10-13",
+          "phone": "(0351) 492 33 67, (0351) 492 33 62",
+          "fax": "(0351) 492 33 60",
+          "mail": "cabana@infozentrum-dresden.de",
+          "web": "http://www.infozentrum-dresden.de",
+          "facebook": null,
+          "staff": "Grit Gabler, Annegret Krellner, In Am Sayad Mahmood",
+          "language": "Deutsch, Englisch, Portugiesisch, Niederländisch, Russisch, Tschechisch, Arabisch, Persisch",
+          "services": "Beratung, Integrationskurse, Information",
+          "desc": "Bereitstellung eines bedarfsorientierten und individuellen Beratungsangebots für Migranten"
+      },
+      "geometry": {
+          "type": "Point",
+          "coordinates": [13.7391965, 51.0491571]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+          "name": "DAMF Deutschkurse für Asylsuchende",
+          "cat": "mapdata.categories.language",
+          "street": null,
+          "zip": null,
+          "city": "Dresden",
+          "opening": null,
+          "phone": null,
+          "fax": null,
+          "mail": "damf-dd@gmx.de",
+          "web": "http://damf.blogsport.de",
+          "facebook": "https://www.facebook.com/pages/DAMF-Deutschkurse-Asyl-Migration-Flucht-Dresden/176997822482682",
+          "staff": "Kristin Kossatz, Mirjam Christ",
+          "language": null,
+          "services": "Deutschkurse; Niveaueinstufungen, Alphabetisierung, A1, Einstufungstests, ehrenamtlich",
+          "desc": "Deutschkurse von Alphabetisierung bis Ende A1 in 6 Niveaustufen für Asylsuchende, die kein oder noch kein Recht auf ESF- oder Integrationskurse haben; 60 ehrenamtliche Lehrer_innen unerrichten ca. 30 Kurse; 4x pro Jahr Einstufungstests und Neustarts von Kursen"
+      },
+      "geometry": {
+          "type": "Point",
+          "coordinates": [13.738482, 51.055599]
+      }
+    }
+  ]
+}

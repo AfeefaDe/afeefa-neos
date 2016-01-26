@@ -1,0 +1,21 @@
+body {
+	
+	/*general*/
+	&.ar, &.ur, &.fa {
+		direction: rtl;
+		
+		/* detailView */
+		#detailView {
+		
+			.property-icon {
+				float: right;
+			}
+			.property-text {
+				margin-right: calc(5% + 2.5em);
+			}
+		}
+
+	}
+	
+}
+

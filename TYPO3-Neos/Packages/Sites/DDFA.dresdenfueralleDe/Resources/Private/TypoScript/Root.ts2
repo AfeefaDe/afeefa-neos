@@ -1,0 +1,56 @@
+/**
+ * Root TypoScript template for the dresdenfueralle.de site
+ */
+page = Page {
+	head {
+
+		meta = TYPO3.TypoScript:Template {
+            templatePath = 'resource://DDFA.dresdenfueralleDe/Private/Templates/Page/DDFA.html'
+            sectionName = 'meta'
+
+            title = ${q(node).property('title')}
+        }
+        
+		stylesheets.site = TYPO3.TypoScript:Template {
+			templatePath = 'resource://DDFA.dresdenfueralleDe/Private/Templates/Page/DDFA.html'
+			sectionName = 'stylesheets'
+		}
+
+		javascripts.site = TYPO3.TypoScript:Template {
+			templatePath = 'resource://DDFA.dresdenfueralleDe/Private/Templates/Page/DDFA.html'
+			sectionName = 'headScripts'
+			context = ${Configuration.setting('TYPO3.Flow.core.context')}
+			mainScript = ${Configuration.setting('TYPO3.Flow.core.context') == 'Production' ? 'built/DDFA/js/main' : 'DDFA/js/main'}
+		}
+
+	}
+
+	body {
+		templatePath = 'resource://DDFA.dresdenfueralleDe/Private/Templates/Page/DDFA.html'
+		sectionName = 'body'
+		parts {
+			
+			languageMenu = TYPO3.Neos:DimensionMenu {
+            	dimension = 'language'
+				// templatePath = 'resource://DDFA.dresdenfueralleDe/Private/Templates/TypoScriptObjects/DimensionMenu.html'
+            }
+
+			menu = Menu {
+				templatePath = 'resource://DDFA.dresdenfueralleDe/Private/Templates/TypoScriptObjects/Menu.html'
+			}
+
+		}
+		// These are your content areas, you can define as many as you want, just name them and the nodePath.
+		content {
+			// The default content section
+			main = PrimaryContent {
+				nodePath = 'main'
+			}
+		}
+
+		javascripts.site = TYPO3.TypoScript:Template {
+			templatePath = 'resource://DDFA.dresdenfueralleDe/Private/Templates/Page/DDFA.html'
+			sectionName = 'bodyScripts'
+		}
+	}
+}

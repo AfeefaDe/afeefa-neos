@@ -10,9 +10,11 @@ use DateTime;
 use DDFA\Main\Domain\Model\MarketEntry;
 use DDFA\Main\Domain\Repository\CategoryRepository;
 use DDFA\Main\Domain\Repository\LanguageRepository as LanguageRepository;
+use DDFA\Main\Domain\Repository\LocationRepository;
 use DDFA\Main\Domain\Repository\MarketEntryRepository;
 use DDFA\Main\Utility\DDConst;
 use TYPO3\Flow\Annotations as Flow;
+use TYPO3\Flow\Error\Message;
 
 /**
  * The TYPO3 User Settings module controller
@@ -38,6 +40,12 @@ class MarketEntriesModuleController extends AbstractTranslationController
      * @var CategoryRepository
      */
     protected $categoryRepository;
+
+    /**
+     * @Flow\Inject
+     * @var LocationRepository
+     */
+    protected $locationRepository;
 
     /**
      * @return void
@@ -177,11 +185,15 @@ class MarketEntriesModuleController extends AbstractTranslationController
      */
     public function deleteAction(MarketEntry $deleteObject)
     {
-        //TODO check if locations refer to entry
-        foreach ($this->objectRepository->findAllLocalisations($deleteObject) as $localisedObject)
-            $this->objectRepository->remove($localisedObject);
+        if ($this->locationRepository->existsReferringLocation($deleteObject)) {
+            $this->addFlashMessage('Cannot be delete: There is at least one location, that refers to this market entry!', 'Cannot be delete', Message::SEVERITY_ERROR);
+        } else {
+            foreach ($this->objectRepository->findAllLocalisations($deleteObject) as $localisedObject)
+                $this->objectRepository->remove($localisedObject);
 
-        $this->addFlashMessage('The market entry including all its translations has been removed successfully.');
+            $this->addFlashMessage('The market entry including all its translations has been removed successfully.');
+        }
+
         $this->redirect('index');
     }
 

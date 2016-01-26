@@ -7,7 +7,10 @@ namespace DDFA\Main\Domain\Repository;
  *                                                                        */
 
 use DDFA\Main\Domain\Model\Actor;
+use DDFA\Main\Domain\Model\Event;
+use DDFA\Main\Domain\Model\Initiative;
 use DDFA\Main\Domain\Model\Location;
+use DDFA\Main\Domain\Model\MarketEntry;
 use DDFA\Main\Utility\DDConst;
 use ReflectionObject;
 use TYPO3\Flow\Annotations as Flow;
@@ -297,5 +300,27 @@ class LocationRepository extends AbstractTranslationRepository
         }
 
         return null;
+    }
+
+    /**
+     * @param Actor|Initiative|MarketEntry|Event $owner
+     * @return boolean
+     */
+    public function existsReferringLocation(Actor $owner)
+    {
+        $query = $this->createQuery();
+
+        if ($owner instanceof MarketEntry)
+            $query->matching($query->equals('marketEntry', $owner->getPersistenceObjectIdentifier()));
+        else if ($owner instanceof Initiative)
+            $query->matching($query->equals('initiative', $owner->getPersistenceObjectIdentifier()));
+        else if ($owner instanceof Event)
+            $query->matching($query->equals('event', $owner->getPersistenceObjectIdentifier()));
+        else
+            return false;
+
+        echo $query->execute()->count();
+
+        return $query->execute()->count() != 0;
     }
 }

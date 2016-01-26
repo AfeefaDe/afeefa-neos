@@ -11,8 +11,10 @@ use DDFA\Main\Domain\Model\Initiative;
 use DDFA\Main\Domain\Repository\CategoryRepository;
 use DDFA\Main\Domain\Repository\InitiativeRepository as InitiativeRepository;
 use DDFA\Main\Domain\Repository\LanguageRepository as LanguageRepository;
+use DDFA\Main\Domain\Repository\LocationRepository;
 use DDFA\Main\Utility\DDConst;
 use TYPO3\Flow\Annotations as Flow;
+use TYPO3\Flow\Error\Message;
 use TYPO3\Media\Domain\Repository\AssetRepository;
 
 /**
@@ -45,6 +47,12 @@ class InitiativesModuleController extends AbstractTranslationController
      * @var AssetRepository
      */
     protected $assetRepository;
+
+    /**
+     * @Flow\Inject
+     * @var LocationRepository
+     */
+    protected $locationRepository;
 
     /**
      * @return void
@@ -174,11 +182,14 @@ class InitiativesModuleController extends AbstractTranslationController
      */
     public function deleteAction(Initiative $deleteObject)
     {
-        //TODO check if locations refer to initiative
-        foreach ($this->objectRepository->findAllLocalisations($deleteObject) as $localisedObject)
-            $this->objectRepository->remove($localisedObject);
+        if ($this->locationRepository->existsReferringLocation($deleteObject)) {
+            $this->addFlashMessage('Cannot be delete: There is at least one location, that refers to this initiaitve!', 'Cannot be delete', Message::SEVERITY_ERROR);
+        } else {
+            foreach ($this->objectRepository->findAllLocalisations($deleteObject) as $localisedObject)
+                $this->objectRepository->remove($localisedObject);
 
-        $this->addFlashMessage('The initiative including all its translations has been removed successfully.');
+            $this->addFlashMessage('The initiative including all its translations has been removed successfully.');
+        }
         $this->redirect('index');
     }
 

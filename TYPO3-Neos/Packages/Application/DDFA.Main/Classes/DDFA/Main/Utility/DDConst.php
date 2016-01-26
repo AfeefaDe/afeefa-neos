@@ -3,7 +3,8 @@
 namespace DDFA\Main\Utility;
 
 
-abstract class DDConst {
+abstract class DDConst
+{
     const OWNER_INI = 0;
     const OWNER_MARKET = 1;
     const OWNER_EVENT = 2;
@@ -14,6 +15,6 @@ abstract class DDConst {
 
     const MEDIA_IMAGE = "typo3_media_image";
 
-    const LOCATION_SUPPLEMENT_PROPS = ["description", "mail", "web", "facebook", "phone", "rating", "speakerPublic", "speakerPrivate", "category", "image", "imageType", "spokenLanguages"];
+    const LOCATION_SUPPLEMENT_PROPS = ["description", "arrival", "mail", "web", "facebook", "phone", "rating", "speakerPublic", "speakerPrivate", "category", "subcategory", "spokenLanguages"];
 
 }

@@ -1,9 +1,0 @@
-resources:
-  methods:
-    # TYPO3_Neos_Backend_Module_Administration_Sites: 'method(TYPO3\Neos\Controller\Module\Administration\SitesController->(index|edit|updateSite|newSite|createSite|deleteSite|activateSite|deactivateSite|editDomain|updateDomain|newDomain|createDomain|deleteDomain|activateDomain|deactivateDomain)Action())'
-    DDFA_Map_Module_ddfaLocationsModule: 'method(DDFA\Map\Controller\Module\DDFA\LocationsModuleController->.*Action())'
-    # DDFA_Map_Module_ddfaLocationsModule: 'method(DDFA\Map\Controller\Module\DDFA\LocationsModuleController->(index|add)Action())'
-acls:
-  TYPO3.Neos:Administrator:
-    methods:
-      DDFA_Map_Module_ddfaLocationsModule: GRANT

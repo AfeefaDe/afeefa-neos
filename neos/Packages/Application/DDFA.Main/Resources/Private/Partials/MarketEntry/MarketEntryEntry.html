@@ -18,13 +18,11 @@
             <f:link.action action="view" controller="marketEntriesModuleController" arguments="{viewObject: entry}"
                            class="neos-button " title="View market entry">
                 <i class="icon-eye-open icon-white"></i>
-            </f:link.action>
-            <f:link.action action="simpleEdit" controller="marketEntriesModuleController"
+            </f:link.action><f:link.action action="simpleEdit" controller="marketEntriesModuleController"
                            arguments="{editObject: entry}"
                            class="neos-button" title="Edit market entry">
                 <i class="icon-pencil icon-white"></i>
-            </f:link.action>
-            <f:form action="delete" arguments="{deleteObject: entry}" class="actionForm afeefa-form">
+            </f:link.action><f:form action="delete" arguments="{deleteObject: entry}" class="actionForm afeefa-form">
                 <button type="submit" class="neos-button" title="Delete market entry">
                     <i class="icon-trash icon-white"></i>
                 </button>

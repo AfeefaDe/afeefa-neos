@@ -192,16 +192,37 @@ class LocationRepository extends AbstractTranslationRepository
     {
         // comment in, if only display locations with published owner, otherwise published attribute of owner is ignored:
 
-//        if($onlyPublished) {
-//            $owner = $this->findOwner($location);
-//            if($owner != null && ($owner->getPublished() == null || $owner->getPublished() != 1))
-//                return null;
-//        }
+        if ($onlyPublished) {
+            $owner = $this->findOwner($location);
+            if ($owner != null && ($owner->getPublished() == null || $owner->getPublished() != 1))
+                return null;
+        }
 
         if ($locale == null)
             $locale = $location->getLocale();
 
         return $this->supplementFromOwner($this->hydrate($this->findOneLocalized($location, DDConst::LOCALE_STD), $locale), $locale);
+    }
+
+    /**
+     * @param Location $location
+     * @return null|Actor
+     */
+    public function findOwner(Location $location)
+    {
+        if ($location->getMarketEntry() == null && $location->getInitiative() == null && $location->getEvent() == null)
+            return null;
+
+        switch ($location->getType()) {
+            case DDConst::OWNER_INI:
+                return $this->initiativeRepository->findByIdentifier($location->getInitiative()->getPersistenceObjectIdentifier());
+            case DDConst::OWNER_MARKET:
+                return $this->marketRepository->findByIdentifier($location->getMarketEntry()->getPersistenceObjectIdentifier());
+            case DDConst::OWNER_EVENT:
+                return $this->eventRepository->findByIdentifier($location->getEvent()->getPersistenceObjectIdentifier());
+        }
+
+        return null;
     }
 
     /**
@@ -269,27 +290,6 @@ class LocationRepository extends AbstractTranslationRepository
         switch ($location->getType()) {
             case DDConst::OWNER_INI:
                 return $this->initiativeRepository->hydrate($location->getInitiative(), $locale);
-            case DDConst::OWNER_MARKET:
-                return $this->marketRepository->findByIdentifier($location->getMarketEntry()->getPersistenceObjectIdentifier());
-            case DDConst::OWNER_EVENT:
-                return $this->eventRepository->findByIdentifier($location->getEvent()->getPersistenceObjectIdentifier());
-        }
-
-        return null;
-    }
-
-    /**
-     * @param Location $location
-     * @return null|Actor
-     */
-    public function findOwner(Location $location)
-    {
-        if ($location->getMarketEntry() == null && $location->getInitiative() == null && $location->getEvent() == null)
-            return null;
-
-        switch ($location->getType()) {
-            case DDConst::OWNER_INI:
-                return $this->initiativeRepository->findByIdentifier($location->getInitiative()->getPersistenceObjectIdentifier());
             case DDConst::OWNER_MARKET:
                 return $this->marketRepository->findByIdentifier($location->getMarketEntry()->getPersistenceObjectIdentifier());
             case DDConst::OWNER_EVENT:

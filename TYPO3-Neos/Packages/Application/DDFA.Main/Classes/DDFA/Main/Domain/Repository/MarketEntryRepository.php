@@ -13,11 +13,9 @@ use TYPO3\Flow\Annotations as Flow;
  */
 class MarketEntryRepository extends AbstractTranslationRepository
 {
-
     /**
      * @Flow\Inject
      * @var LanguageRepository
      */
     protected $languageRepository;
-
 }

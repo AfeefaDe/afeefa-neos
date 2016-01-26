@@ -32,7 +32,7 @@ class EventAPIController extends ActionController {
     protected $supportedMediaTypes = array('application/json');
 
     public function listAction() {
-        $this->view->assign('value', ['events' => $this->eventRepository->findAll()]);
+        $this->view->assign('value', ['events' => $this->eventRepository->findAllLocalized(DDConst::LOCALE_STD, true)]);
     }
 
     public function showAction(Event $event) {

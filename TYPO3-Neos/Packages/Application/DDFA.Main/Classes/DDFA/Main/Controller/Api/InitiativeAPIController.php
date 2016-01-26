@@ -36,7 +36,7 @@ class InitiativeAPIController extends ActionController {
      * @param string $locale
      */
     public function listAction($locale) {
-        $this->view->assign('value', ['initiatives' => $this->iniRepository->findAll()]);
+        $this->view->assign('value', ['initiatives' => $this->iniRepository->findAllLocalized(DDConst::LOCALE_STD, true)]);
     }
 
     /**

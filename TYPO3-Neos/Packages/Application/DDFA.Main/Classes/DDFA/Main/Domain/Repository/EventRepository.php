@@ -7,11 +7,15 @@ namespace DDFA\Main\Domain\Repository;
  *                                                                        */
 
 use TYPO3\Flow\Annotations as Flow;
-use TYPO3\Flow\Persistence\Repository;
 
 /**
  * @Flow\Scope("singleton")
  */
-class EventRepository extends Repository {
-
+class EventRepository extends AbstractTranslationRepository
+{
+    /**
+     * @Flow\Inject
+     * @var LanguageRepository
+     */
+    protected $languageRepository;
 }

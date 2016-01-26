@@ -411,7 +411,7 @@ qx.Class.define("FormView", {
                 // data.marketentry.dateDay = new Date(data.marketentry.dateFrom).getDay();
 
                 data.marketentry.offer = true;
-                data.marketentry.published = false;
+                data.marketentry.published = true;
 
                 dataLocation.location.type = 1;
                 dataLocation.location.published = false;
@@ -446,7 +446,7 @@ qx.Class.define("FormView", {
                 // data.marketentry.dateDay = new Date(data.marketentry.dateFrom).getDay();
 
                 data.marketentry.offer = false;
-                data.marketentry.published = false;
+                data.marketentry.published = true;
 
                 dataLocation.location.type = 1;
                 dataLocation.location.published = false;

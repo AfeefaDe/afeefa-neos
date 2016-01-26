@@ -1,4 +1,18 @@
 <tr>
+    <td>
+        <f:if condition="{l.published}">
+            <f:then>
+                <i class="icon-ok-sign"></i>
+            </f:then>
+            <f:else>
+                <f:form action="publish" arguments="{object: l}" class="actionForm">
+                    <button type="submit" class="neos-button" title="publish">
+                        <i class="icon-ok icon-white"></i></button>
+                </f:form>
+            </f:else>
+        </f:if>
+    </td>
+
     <td class="neos-action">
         <div>
             <f:link.action action="view" controller="initiativesModuleController" arguments="{viewObject: ini}"

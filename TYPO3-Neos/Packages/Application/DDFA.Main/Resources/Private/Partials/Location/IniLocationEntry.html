@@ -1,4 +1,18 @@
 <tr>
+    <td>
+        <f:if condition="{l.published}">
+            <f:then>
+                <i class="icon-ok-sign"></i>
+            </f:then>
+            <f:else>
+                <f:form action="publish" arguments="{object: l}" class="actionForm">
+                    <button type="submit" class="neos-button" title="publish">
+                        <i class="icon-ok icon-white"></i></button>
+                </f:form>
+            </f:else>
+        </f:if>
+    </td>
+
     <td class="neos-action">
         <div>
             <f:link.action action="view" arguments="{viewObject: l}"
@@ -6,7 +20,7 @@
                 <i class="icon-eye-open icon-white"></i>
             </f:link.action><f:link.action action="simpleEdit" arguments="{editObject: l}"
                            class="neos-button" title="Edit location">
-                <i class="icon-pencil icon-white"></i></f:link.action>
+            <i class="icon-pencil icon-white"></i></f:link.action>
             <f:form action="delete" arguments="{deleteObject: l}" class="actionForm afeefa-form">
                 <button type="submit" class="neos-button" title="Delete location">
                     <i class="icon-trash icon-white"></i>

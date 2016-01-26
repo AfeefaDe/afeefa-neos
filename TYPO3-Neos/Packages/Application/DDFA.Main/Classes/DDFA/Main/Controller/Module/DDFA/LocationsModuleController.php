@@ -287,7 +287,7 @@ class LocationsModuleController extends AbstractTranslationController
         if (isset($_POST['moduleArguments']['cat']))
             $editObject->setCategory($this->categoryRepository->findOneByName($_POST['moduleArguments']['cat']));
 
-        $this->addFlashMessage('The location has been updated successfully.','Update',Message::SEVERITY_NOTICE);
+        $this->addFlashMessage('The location has been updated successfully.', 'Update', Message::SEVERITY_NOTICE);
         $editObject->setUpdated(new DateTime());
         $this->objectRepository->update($editObject);
         $this->redirect('index');
@@ -343,5 +343,16 @@ class LocationsModuleController extends AbstractTranslationController
                         'viewObject' => ['__identity' => $viewObject->getPersistenceObjectIdentifier()]]);
             }
         }
+    }
+
+    /**
+     * @param Location $object
+     */
+    public function publishAction(Location $object)
+    {
+        $object->setPublished(true);
+        $this->objectRepository->update($object);
+        $this->addFlashMessage('The location has been published.');
+        $this->redirect('index');
     }
 }

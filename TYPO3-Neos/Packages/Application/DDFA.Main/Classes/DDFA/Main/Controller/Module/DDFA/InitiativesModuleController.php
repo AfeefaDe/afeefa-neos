@@ -20,7 +20,8 @@ use TYPO3\Media\Domain\Repository\AssetRepository;
  *
  * @Flow\Scope("singleton")
  */
-class InitiativesModuleController extends AbstractTranslationController {
+class InitiativesModuleController extends AbstractTranslationController
+{
     /**
      * @Flow\Inject
      * @var InitiativeRepository
@@ -48,7 +49,8 @@ class InitiativesModuleController extends AbstractTranslationController {
     /**
      * @return void
      */
-    public function indexAction() {
+    public function indexAction()
+    {
         $this->view->assign('inis', $this->objectRepository->findAllLocalized());
     }
 
@@ -56,7 +58,8 @@ class InitiativesModuleController extends AbstractTranslationController {
      * @param Initiative $viewObject
      * @return void
      */
-    public function viewAction(Initiative $viewObject) {
+    public function viewAction(Initiative $viewObject)
+    {
         if (isset($_POST['viewLocale']) && $_POST['viewLocale'] != DDConst::LOCALE_STD) {
             $this->redirect('view', NULL, NULL, array('viewObject' => $this->objectRepository->findOneLocalized($viewObject, $_POST['viewLocale'])));
 
@@ -71,7 +74,8 @@ class InitiativesModuleController extends AbstractTranslationController {
     /**
      * @return void
      */
-    public function addAction() {
+    public function addAction()
+    {
         $this->view->assign('cats', $this->categoryRepository->findByType(DDConst::OWNER_INI));
         $this->view->assign('imgs', $this->assetRepository->findAll());
     }
@@ -81,7 +85,8 @@ class InitiativesModuleController extends AbstractTranslationController {
      * @return void
      * @throws \TYPO3\Flow\Persistence\Exception\IllegalObjectTypeException
      */
-    public function createAction(Initiative $newObject) {
+    public function createAction(Initiative $newObject)
+    {
         //TODO refactor:
         if (isset($_POST['moduleArguments']['cat'])) {
             $newObject->setCategory($this->categoryRepository->findOneByName($_POST['moduleArguments']['cat']));
@@ -103,7 +108,8 @@ class InitiativesModuleController extends AbstractTranslationController {
      * @param $locale
      * @return Initiative
      */
-    protected function addTranslation($entryID, $locale) {
+    protected function addTranslation($entryID, $locale)
+    {
         $object = new Initiative();
         $object->setEntryId($entryID);
         $object->setLocale($locale);
@@ -116,7 +122,8 @@ class InitiativesModuleController extends AbstractTranslationController {
      * @param Initiative $editObject
      * @param Initiative $viewObject
      */
-    public function editAction(Initiative $editObject, Initiative $viewObject) {
+    public function editAction(Initiative $editObject, Initiative $viewObject)
+    {
         $this->view->assign('viewObject', $this->objectRepository->hydrate($viewObject, $viewObject->getLocale()));
         $this->view->assign('editObject', $editObject);
         $this->view->assign('editLanguages', $this->languageRepository->findAll());
@@ -126,7 +133,8 @@ class InitiativesModuleController extends AbstractTranslationController {
     /**
      * @param Initiative $editObject
      */
-    public function simpleEditAction(Initiative $editObject) {
+    public function simpleEditAction(Initiative $editObject)
+    {
         if ($editObject->getLocale() != DDConst::LOCALE_STD) {
             $viewObject = $this->objectRepository->findOneLocalized($editObject, DDConst::LOCALE_STD);
             $this->redirect('edit', NULL, NULL,
@@ -145,7 +153,8 @@ class InitiativesModuleController extends AbstractTranslationController {
      * @return void
      * @throws \TYPO3\Flow\Persistence\Exception\IllegalObjectTypeException
      */
-    public function updateAction(Initiative $editObject) {
+    public function updateAction(Initiative $editObject)
+    {
         $editObject->setUpdated(new DateTime());
 
         //TODO refactor:
@@ -163,7 +172,8 @@ class InitiativesModuleController extends AbstractTranslationController {
      * @return void
      * @throws \TYPO3\Flow\Persistence\Exception\IllegalObjectTypeException
      */
-    public function deleteAction(Initiative $deleteObject) {
+    public function deleteAction(Initiative $deleteObject)
+    {
         //TODO check if locations refer to initiative
         foreach ($this->objectRepository->findAllLocalisations($deleteObject) as $localisedObject)
             $this->objectRepository->remove($localisedObject);
@@ -176,7 +186,8 @@ class InitiativesModuleController extends AbstractTranslationController {
      * @param Initiative $object
      * @return void
      */
-    public function selectTranslationAction(Initiative $object) {
+    public function selectTranslationAction(Initiative $object)
+    {
         $editLocale = $_POST['moduleArguments']['editLocale'];
         $viewLocale = $_POST['moduleArguments']['viewLocale'];
 
@@ -205,5 +216,17 @@ class InitiativesModuleController extends AbstractTranslationController {
                         'viewObject' => ['__identity' => $viewObject->getPersistenceObjectIdentifier()]]);
             }
         }
+    }
+
+    /**
+     * @param Initiative $object
+     * @throws \TYPO3\Flow\Persistence\Exception\IllegalObjectTypeException
+     */
+    public function publishAction(Initiative $object)
+    {
+        $object->setPublished(true);
+        $this->objectRepository->update($object);
+        $this->addFlashMessage('The initiative has been published.');
+        $this->redirect('index');
     }
 }

@@ -1,0 +1,79 @@
+
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+.navbar-header {
+	background-image: url('../img/afeefa_alpha.svg');
+	background-size: auto 60%;
+	background-repeat: no-repeat;
+	background-position: left center;
+	padding-left: 2.5em;
+}
+
+.jumbotron {
+	overflow: hidden;position: relative;
+    background: white;
+}
+
+.jumbotron:before {
+    content: ' ';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    opacity: 0.1;
+	background-image: url('../img/afeefa-de-screenshot.jpg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    -ms-background-size: cover;
+    -o-background-size: cover;
+    -moz-background-size: cover;
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+
+.jumbotron .container {
+	z-index: 2;
+	position: relative;
+}
+
+.row {
+    margin-bottom: 3em;
+}
+
+h3 {
+	font-size: 1em;
+	font-weight: bold;
+	margin-top: 30px;
+}
+
+.img-float-left-margin {
+	margin: 0 2em 2em 0;
+}
+.img-float-right-margin {
+	margin: 0 0 2em 2em;
+}
+
+.img-showcase {
+	margin: 2em 2em 2em 2em;
+}
+
+@media screen and (min-width: 768px)
+.jumbotron h1, .jumbotron .h1 {
+    font-size: 4em !important;
+}
+
+
+
+
+
+
+
+
+
+

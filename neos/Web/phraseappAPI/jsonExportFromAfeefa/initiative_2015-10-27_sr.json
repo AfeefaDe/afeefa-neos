@@ -1,0 +1,242 @@
+{
+    "initiative": {
+        "556e1d2c50c8b": {
+            "poid": "02e2cc6f-2aa1-49c6-acd5-e03b84129864",
+            "name": "Leuben ist bunt",
+            "description": "Naša mreža \"Leuben ist bunt\" (\"Lajben je šaren\") čine predstavnici gradskih biroa, crkvene parohije i kancelarije za mlade u Lajbenu."
+        },
+        "556e1d2e25d47": {
+            "poid": "03350c1f-98f1-4f49-a411-81060757e820",
+            "name": "Dresdner Verein für soziale Integration von Ausländern und Aussiedlern e.V.",
+            "description": "Pogledajte našu internet stranicu."
+        },
+        "556e1d2f2b679": {
+            "poid": "056be622-011a-4d4b-a65c-d596b70154d8",
+            "name": "Runder Tisch Asyl, OA Neustadt"
+        },
+        "556e1d2b95183": {
+            "poid": "11903020-2a4d-4804-890f-96a0244ccc75",
+            "name": "RAA Sachsen Opferberatung - Unterstützung für Betroffene rechtsmotivierter und rassistischer Gewalt"
+        },
+        "556e1d2adc55d": {
+            "poid": "150dec5d-b45a-4cec-b554-167e11f50ec5",
+            "name": "Save me Dresden",
+            "description": "Organizacija mentorsvta za izbeglice (preseljavanje i smeštaj). Politički aktivizam za poboljšanje programa preseljavanja u Nemčkoj i centar za koordinaciju svih programa mentorstva u Drezdenu."
+        },
+        "556e1d2ad2e1e": {
+            "poid": "1530be0a-e98f-4417-974a-f7e2e9aa3ad0",
+            "name": "Willkommen in Löbtau",
+            "description": "Mreža \"Welcome to Löbtau\" (,,Dobrodošli u Lubtau\") želi da pruži podršku izbeglicama da stignu i smeste se u naš deo grada. Želimo da izgradimo odnos između lokalnog stanovništva i izbeglica. Organizacija se sastoji od posvećenih građana, crkvenih parošana, organizacija\/klubova i političkih partija."
+        },
+        "556e1d2f46873": {
+            "poid": "16c4dff1-3d8e-444e-96cc-8af4b2a86db3",
+            "name": "Jugendwerk Dresden"
+        },
+        "556e1d2cc160c": {
+            "poid": "18dc5aa3-aa6f-41e5-8109-1e19ead43328",
+            "name": "Internationale Gärten Dresden e. V."
+        },
+        "556e1d2b97066": {
+            "poid": "1dbc7e76-149c-4d43-8bd6-28b3fb8cff4f",
+            "name": "Willkommen in Hochland",
+            "description": "Cilj ove organizacije je poboljšanje uslova življena izbeglica i azilanata u Drezdenu i okolnim predelima. Nudimo pomoć i podršku pri dolasku u Drezden, kao i integraciju u stanovništvo. Nudimo savetovalište, brigu\/podršku, razvoj prilika za zaposlenje, interkulturalne i druge događaje."
+        },
+        "556e1d2d47a01": {
+            "poid": "203ccc30-d0ec-4c4d-9029-5cbfd3429825",
+            "name": "Sächsischer Flüchtlingsrat"
+        },
+        "556e1d2eaa693": {
+            "poid": "267681d6-f632-47e9-b8a2-36c28ad3488e",
+            "name": "Dresden - place to be e. V."
+        },
+        "556e1d2e48238": {
+            "poid": "2724942f-9982-401d-9aa0-0f7383219bdd",
+            "name": "Regionalkoordination Neustadt\/Klotzsche\/Pieschen"
+        },
+        "556e1d2d657b7": {
+            "poid": "2b45d4b2-ff0e-4f2c-95d1-731ed0e1ebdf",
+            "name": "KAMA Dresden e.V."
+        },
+        "556e1d2c436b4": {
+            "poid": "2c7b460e-c49c-4659-a6a2-bb0ca12052cd",
+            "name": "Ausländerrat Dresden e.V."
+        },
+        "556e1d2dbd631": {
+            "poid": "2e8da957-8bab-4113-b54c-9a8dffacce46",
+            "name": "Regionalkoordination Flüchtlingssozialarbeit Prohlis\/Leuben",
+            "description": "Koordinacija ponuda za azilante u Prolisu i Lajbenu (nemački Prohlis i Leuben), volonterski rad."
+        },
+        "556e1d2b592c6": {
+            "poid": "31e334a8-1821-4cd9-907b-32f4d5907be0",
+            "name": "AWO Sonnenstein gGmbH, Asylberatung"
+        },
+        "556e1d2c45abc": {
+            "poid": "33a10325-cd02-47f8-991a-0365d591169b",
+            "name": "Prohlis ist bunt",
+            "description": "Mreža \"Prohlis ist bunt\" (\"Prolis je šaren\") je udruženje klubova, institucija, gradskog biroa, lokalne kancelarije, crkvene parohije i političkih partija u Prolisu, čiji je cilj uspostavljane atmosfere dobrodošlice u region. Glavni ciljevi su umrežavanje i saradnja sa glavnom mrežom na projektima. Mreža postoji od proleća 2014. godine."
+        },
+        "556e1d2b5b84a": {
+            "poid": "3e0bb928-6a48-462b-9206-2715ff5f889c",
+            "name": "ZMO-Jugend e.V.",
+            "description": "Nudimo \"Interkulturelle Begegnungsstätte für junge Menschen\" (,,Interkulturelno mesto za mlade\") koje je namenjeno deci, tinejdžerima kao i roditeljima, azilantima i stanovnicima. Ponudu prilagođavamo prema potrebama i interesovanjima naših posetioca i članovima. Od porasta broja izbeglica, naše usluge su posebno tražene od strane ove grupe ljudi. Umreženi smo sa profesionalnim servisima i institucijama zadužene za izbeglice."
+        },
+        "556e1d2a532e3": {
+            "poid": "3f06fe33-2072-4a75-b8fc-6f6d7ab646fb",
+            "name": "Das interkulturelle Sofa"
+        },
+        "556e1d2f2a5e3": {
+            "poid": "4bc5cdff-d863-424b-b8da-7e53b5e7d5ff",
+            "name": "Women* refugee meeting",
+            "description": "Višejezična ponuda: raznovrsne aktivnosti za rekreakciju za žene u izbeglištvu, kao što su zajednički obedi, kuvanje, ples, sport, upoznavanje sa ženama iz Drezdena i okoline."
+        },
+        "556e1d2ecb39c": {
+            "poid": "501f45f6-6823-4d39-9bf0-2d530db38116",
+            "name": "Bürgercourage e.V."
+        },
+        "556e1d2ea645d": {
+            "poid": "5b22fc23-786d-48a7-89cb-5c938f9fec0e",
+            "name": "Gruppe Cartonage",
+            "description": "Za prava izbeglica u Nemačkoj, kao i kritika postojećih struktura koje rukuju ovim pitanjem."
+        },
+        "556e1d2e344e8": {
+            "poid": "5ef3f6a6-b096-4dfc-939e-0a6c7513cf89",
+            "name": "International Café im Artderkultur e.V."
+        },
+        "556e1d2c7c196": {
+            "poid": "6149fd3a-4204-4f7f-ba55-4b17b14572fd",
+            "name": "MEDEA Frauen-und Mädchengesundtheitszentrum e.V.",
+            "description": "Zdravstveno savetovalište (psihologija, ishrana, prevencija, trudnoća, alternativna medicina...) kao i sastanci za žene. Svakog četvrtka 10:00-12:00 (podne), osim praznicima\/ odmorima, se održava ženski doručak, četvrtkom 16:00-18:00 se održava sastanak za žene i decu KHJ Gorbitz (počevši od marta ovaj sastanak će se održavati sredom 16:00-18:00)."
+        },
+        "556e1d2d77653": {
+            "poid": "6795658e-e7e2-450a-a6cb-425533d0d556",
+            "name": "Ausländerbeirat"
+        },
+        "556e1d2db064f": {
+            "poid": "705571e3-c6ea-43f9-9e28-9233498903f2",
+            "name": "gemeindedolmetscherdienst"
+        },
+        "556e1d2bd7497": {
+            "poid": "88023cd7-08f0-49bb-8389-c0f7d6a9c2de",
+            "name": "Pieschen für alle"
+        },
+        "556e1d2cd0160": {
+            "poid": "8a4773df-d99d-4c27-b874-e9b259d30791",
+            "name": "Netzwerk Asyl Migration Flucht (NAMF)",
+            "description": "Politička inicijativa za prava izbeglica i migranata, i protiv rasizma. Aktivnosti sprovodimo kroz e-mail listu, kroz koju pojedinci i grupe mogu da razmenjuju informacije i da se organizuju. Da biste se pridružili našoj listi pošaljite e-mail na adresu: namf@notraces.net."
+        },
+        "556e1d2c84d2b": {
+            "poid": "8dc52a48-b05f-4505-8680-9486aa91df44",
+            "name": "AG Asylsuchende [GRH]"
+        },
+        "556e1d2db8b1b": {
+            "poid": "8f0f8b52-6e0a-484c-887f-39a0ad016f56",
+            "name": "Regionalkoordination Flüchtlingssozialarbeit Cotta"
+        },
+        "556e1d2bcad46": {
+            "poid": "90043284-5c6b-4fdd-91d0-e27da1bb1001",
+            "name": "Verein Pro Pieschen e.V."
+        },
+        "556e1d2d38fb9": {
+            "poid": "96bc7fa3-dabe-412c-a387-827fd147732d",
+            "name": "Welcome Center TU Dresden "
+        },
+        "556e1d2b513d0": {
+            "poid": "9987b612-271d-453b-ac98-00821127ddfa",
+            "name": "SPIKE Dresden",
+            "description": "Organizujmo pomoć\/podršku azilantima u Lojbnic-Nojostra (nemački Leubnitz-Neuostra) i drugim predelima grada. Imamo prijateljsku i otvorenu atmosferu za sastanke, opuštanje, socijalnu inteakciuju, koordinaciju različitih predloga\/ponuda, podršku i umrežavanje. Naše prostorije se mogu koristiti čak i nakon radnog vremena za specijalne akcije (npr. prepodne). Svake nedelje i srede od 16:00-20:00 posvećeni i zainteresovani ljudi su pozvani da upoznaju i uspostave kontakt sa azilantima, gde planiraju neke zajedničke aktivnosti."
+        },
+        "556e1d2dcbb43": {
+            "poid": "9b063592-fbc2-4c6d-a4e3-b3d6d39353fe",
+            "name": "Regionalkoordination Flüchtlingssozialarbeit Altstadt\/Pauen"
+        },
+        "556e1d2a58454": {
+            "poid": "9c557375-9dd3-4d7c-a9de-791eb1c3251c",
+            "description": "Individualno savetovanje za migrante, kao i po dogovoru."
+        },
+        "556e1d2aa1087": {
+            "poid": "a4284ab9-54d7-4586-9b79-5823e7c9022d",
+            "name": "Kontaktgruppe Asyl e.V.",
+            "description": "Mi clanovi kontaktne grupe ,,Asylum\" (skraćeno KoGA), podržavamo azilante i izbeglice iz Drezdena da prevaziđu administrativne barijere i da ostvare prilike za stvaranje kontakata i sastanaka. Sa poštovanjem, mi radimo na snazi i potencijalu ovih ljudi i pružamo im pomoć kao zastupnici. Vodimo otvorenu kampanju protiv orepresivnih struktura i rasističkih predrasuda promovišući otvoreno i raznobojno društvo."
+        },
+        "556e1d2f49edc": {
+            "poid": "a82f1e54-9411-4c88-bd51-509936f72a5d",
+            "name": "TOLERADE",
+            "description": "Muzička parada koja se usprostavlja ksenofobilčnim tendencijama u Drezdnu i Saksoniji. Istovremeno, na ovaj način pokazujemo raznolikost kulturalnog pejzaža Drezdena."
+        },
+        "556e1d2e98280": {
+            "poid": "a849f69b-9178-4cfe-9cfb-ad5b1e9f9b30",
+            "name": "Altstädter Dialog",
+            "description": "Novoosnovana inicijativa koju su pokrenuli ljudi iz vlade, udruženja i građanstva."
+        },
+        "556e1d2c4edab": {
+            "poid": "b75927cc-c4a1-4a70-bf83-e53108d65033",
+            "name": "Saxonia Systems AG",
+            "description": "Kao kompanija koja se uspostavila u društvu, želimo da preuzmemo odgovornost i da pomognemo koliko možemo. Imamo blisku saradnju sa ,,Sächischen Flüchtlingsrat\" (,,Saksonski savet za izbeglice\") i sa federalnom agencijom za zapošljavanje. Ipak, nismo udruženje koje sprovodi direktne aktivnosti sa izbeglicama, ali želimo da pružimo podršku kroz našu mrežu."
+        },
+        "556e1d2bd5a6f": {
+            "poid": "be1098df-8d45-4c8e-8493-3f38ced6edf2",
+            "name": "Bündnis Buntes Meißen"
+        },
+        "556e1d2e46bb4": {
+            "poid": "c62ab02d-f14d-41bc-9ef0-d1921c649182",
+            "name": "HELLERAU - Europäisches Zentrum der Künste Dresden"
+        },
+        "556e1d2d40468": {
+            "poid": "cdac755d-03a8-4fe7-b98f-94b964d9f08d",
+            "name": "medinetz"
+        },
+        "556e1d2d4d338": {
+            "poid": "d2e49302-500a-4b58-a987-184dc99ad460",
+            "name": "traumaberatung"
+        },
+        "556e1d2adf6bc": {
+            "poid": "db546fa9-57e7-4e6c-99b9-76d80d92a63e",
+            "name": "arche noVa - Initiative für Menschen in Not e.V.",
+            "description": "Pružamo podršku izbeglicama i drugim grupama putem finansijkse pomoći i pružanja edukacije u školama po pitanju izbeglištva i azila."
+        },
+        "556e1d2ccf2da": {
+            "poid": "de6701de-15aa-4641-82b5-016d449c2763",
+            "name": "LAG politisch-kulturelle Bildung Sachsen e. V.",
+            "description": "Već duži niz godina radimo na temama kao što su rasizam, migracija, izbeglištvo, azil i nudimo dalju edukaciju za radnike i volontere. Glavna tema je kako reagovati na rasizam i kako ga kritikovati. Nudimo seminare za osobe koje su bile žrtve rasizma, takođe. Datumi, sadržaji i specifične potrebe se mogu dogovoriti."
+        },
+        "556e1d2bc8980": {
+            "poid": "de8ace62-6ff3-47a8-b8b3-66d4437ecad5",
+            "name": "Johannstädter Kulturtreff e.V.",
+            "description": "U našim prostorijama i u ateljeima postoji prostor za časove, razne aktivnosti i projekte. Mogućnosti su brojne uključujući kuvanje, sport, susrete, umetnost i kulturu."
+        },
+        "556e1d2f16fb3": {
+            "poid": "e51c741b-31f0-4c04-8397-d541b61df98e",
+            "name": "Initiative für Flüchtlinge Bühlau-Rochwitz"
+        },
+        "556e1d2f21f91": {
+            "poid": "f3e96b5d-8184-467d-b46b-8ca783a4f0df",
+            "name": "German lessons für Refugees Dresden",
+            "description": "Kursevi u biblioteci ,,Neutstadt\" i ,,Zentralbibliothek\"."
+        },
+        "556e1d2cbbb72": {
+            "poid": "f5a5b924-6524-4f82-8c32-4ad99bbb39fb",
+            "name": "Netzwerk \"Gorbitz International\"",
+            "description": "Mreža \"Gorbitz International\", je udruženje ljudi is Gorbica (nemački Gorbitz) i okruženja, se sastoji od predstavnika različitih udruženja, crkvene parohije, političkih partija i klubova. Zajednički cilj nam je da se zauzmemo za dobre odnose u susedstvu i da održimo otvorenu i atmosferu dobrodošlice. Unutar mreže postoje podgrupe i projekti kao što su: zajednički kafic, radna grupa za organizaciju i odnos sa javnošću, zajednička bašta i tako dalje."
+        },
+        "556e1d2a5bfb0": {
+            "poid": "f76440e5-2eae-41d7-859b-bf8c946d92a7",
+            "name": "Bündnis Buntes Radebeul",
+            "description": "Kurseve nemačkog, različite težine, drže dobrovoljni nastavnici, što uključuje osnovni kurs alfabeta, postizanje A1\/A2 nivoa kao osnov3 za državni test jezika, praćen grupama za vežbanje. Podrška i pratnja u radu sa vlastima, odlaska kod doktora, poslodavaca itd. Organizacija sporta i kulturnih aktivnosti, kao i zanatskih delatnosti (nem. \"handwerklicher Tätigkeiten\"). Mesečni sastanci u centralnom smeštaju za izbeglice u Radebulu (nemački Radebeul)."
+        },
+        "556e1d2a598c7": {
+            "poid": "f8d78266-0fc4-4d3b-a433-9ee45561d010",
+            "name": "DAMF Deutschkurse für Asylsuchende",
+            "description": "Kursevi nemačkog počevši od alfabeta do kraja A1 nivoa, kroz šest nivoa teškoće, za azilante koji još uvek nemaju pravo na ESF ili integracione kurseve. Šesdest dobrovoljnih nastavnika će držati oko trideset kurseva nemačkog. Početak novog kursa i test provere znanja se održavaju četiri puta godišnje."
+        },
+        "556e1d2aa48d9": {
+            "poid": "fcc24567-15ea-4448-9b5d-1937a8740922",
+            "name": "Laubegast ist Bunt",
+            "description": "Lokalna mreža \"Laubegast ist bunt\" (Labegas je šaren) radi od 2010. godine u promociji demokratije, otvorenosti i kosmopolitskog stava i tolerancije kao dela duha grada. Od 2014. godine pomoć izbeglicama je postala jedna od naših ključnih delatnosti."
+        },
+        "556e1d2ad83b5": {
+            "poid": "fe410ba7-b1bf-429c-83f2-edcd05dcd6f9",
+            "name": "Initiative \"Brücken schaffen\"",
+            "description": "Inicijativa \"Brücken schaffen\" (,,Izgradimo mostove) je kooperacija između crkvenih parošana, organizacija\/klubova, političkih partija i lokalne centralne kancelarije (\"Ortsamt\") gradskih okruga Kloše, Langebruk i Helerau (nemački Klotsche, Langebrück i Hellerau). Želimo da učinimo dolazak, integraciju i zajednički život sa građanima što lakšim i harmoničnijim mogućim za izbeglice i azilante."
+        }
+    }
+}

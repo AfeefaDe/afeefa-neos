@@ -16,24 +16,23 @@
 			height: 3.5em;
 			@include border-radius(2em);
 
-			background-color: $red;
+			background-color: $black;
 			background-image: url("../img/icon-34.svg");
 			@include background-size(30%);
 		}
 
-		&.offerBtn, &.requestBtn, &.feedbackBtn {
+		&.offerBtn, &.feedbackBtn {
 			
 			display: none;
 			margin-bottom: 15px;
 		}
 
-		&.offerBtn { background-color: $orange; background-image: url("../img/icon_48.svg"); }
-		&.requestBtn { background-color: $orange; background-image: url("../img/icon_52.svg"); @include background-size(70%); }
-		&.feedbackBtn { background-color: $white; background-image: url("../img/icon_49.svg"); }
+		&.offerBtn { background-color: $black; background-image: url("../img/icon_48.svg"); }
+		&.feedbackBtn { background-color: $black; background-image: url("../img/icon_50.svg"); }
 	}
 
 	&:hover {
-		.offerBtn, .requestBtn, .feedbackBtn {
+		.offerBtn, .feedbackBtn {
 			display: block;
 		}
 	};

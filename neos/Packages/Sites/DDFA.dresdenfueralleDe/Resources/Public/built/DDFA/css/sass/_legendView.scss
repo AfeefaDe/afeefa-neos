@@ -26,16 +26,18 @@
 		/*cursor: pointer;*/
 
 		.btn {
+			
 			@include circleBtn;
-			@include categorySymbolsDark;
-			@include background-size(72%);
+			/*@include categorySymbolsDark;*/
+			@include categorySymbols;
+			/*@include background-size(72%);*/
+			background-image: none !important;
 			position: absolute;
 			top: 0;
 			left: 0;
 			width: 2.5em;
 			height: 2.5em;
-			background-color: $white;
-			background-image: url("../img/menu.svg");
+			/*background-color: $white;*/
 		}
 
 		p {

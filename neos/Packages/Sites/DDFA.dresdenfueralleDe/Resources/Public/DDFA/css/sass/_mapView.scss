@@ -12,26 +12,28 @@
 
 	div.location {
 
-		border: 1px solid $white;
-		@include border-radius(20px);
 		@include box-shadow(1px 1px 2px #333);
+		background-color: $gray80;
 
 		/* types: 0: IniLocation, 1: MarketLocation, 2: EventLocation, 3: SimpleLocation */
 		&.type-0 {
-			background-color: $blue_dark;
+			@include border-radius(3px);
+			@include categorySymbols;
 		}
 
 		&.type-1 {
-			background-color: $orange;
+			@include border-radius(20px);
+			@include categorySymbols;
 		}
 
 		&.type-2 {
-			background-color: yellow;
 		}
 
 		&.type-3 {
-			background-color: $black;
-			border: none;
+			@include border-radius(20px);
+			@include box-shadow(0px 0px 2px #555);
+			background-color: $white !important;
+			@include categorySymbolsDark;
 		}
 
 		&.rating-5 {
@@ -45,7 +47,6 @@
 			background-repeat: no-repeat;
 			background-position: center center;
 
-			@include categorySymbols;
 		}
 
 		&.marker-cluster {
@@ -61,7 +62,7 @@
 		}
 
 	  	&.active {
-	  		border: 3px solid $white;
+	  		border: 1px solid $white;
 			@include box-shadow(1px 1px 3px #000);
 			/*@include box-sizing(content-box);*/
 	  	}
@@ -83,7 +84,7 @@
 
 	div.marker-station {
 		p {
-			background-color: $dvb;
+			background-color: $yellow_dvb;
 			padding: 2px;
 			text-align: center;
 			opacity: .9;
@@ -96,6 +97,26 @@
 		background-color: $blue;
 		@include border-radius(8px);
 		@include box-shadow(0px 0px 5px #888888);
+	}
+
+	.afeefa-popup {
+		
+		.leaflet-popup-content {
+			padding: 5px 5px 5px;
+			color: $white;
+		}
+
+		.leaflet-popup-content-wrapper {
+			background-color: $black_alpha;
+		}
+		.leaflet-popup-tip {
+			border-top-color: $black_alpha;
+		}
+
+		span {display: block;}
+		.title {}
+		.category {font-size: .8em;}
+
 	}
 
 	#locate-btn {

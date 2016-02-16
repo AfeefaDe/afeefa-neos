@@ -10,7 +10,7 @@
 	top: 0;
 
 	visibility: hidden;
-	opacity: 0;	
+	opacity: 0;
 
 	@include box-sizing(border-box);
 	width: 35%;
@@ -19,7 +19,7 @@
 	@include display-flex;
 	@include flex-direction(column);
 
-	background-color: rgba(30,30,30,0.8);
+	background-color: $black_alpha;
 	color: $white;
 
 	/*border: 1px solid red;*/

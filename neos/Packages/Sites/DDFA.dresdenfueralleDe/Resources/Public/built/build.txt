@@ -1,20 +1,4 @@
 
-DDFA/css/afeefa.css
-----------------
-DDFA/css/afeefa.css
-
-DDFA/css/sass/_ring.scss.css
-----------------
-DDFA/css/sass/_ring.scss.css
-
-H5BP/css/main.css
-----------------
-H5BP/css/main.css
-
-H5BP/css/normalize.css
-----------------
-H5BP/css/normalize.css
-
 bootstrap/css/bootstrap-theme.css
 ----------------
 bootstrap/css/bootstrap-theme.css
@@ -30,6 +14,22 @@ bootstrap/css/bootstrap.css
 bootstrap/css/bootstrap.min.css
 ----------------
 bootstrap/css/bootstrap.min.css
+
+DDFA/css/afeefa.css
+----------------
+DDFA/css/afeefa.css
+
+DDFA/css/sass/_ring.scss.css
+----------------
+DDFA/css/sass/_ring.scss.css
+
+H5BP/css/main.css
+----------------
+H5BP/css/main.css
+
+H5BP/css/normalize.css
+----------------
+H5BP/css/normalize.css
 
 DDFA/js/main.js
 ----------------

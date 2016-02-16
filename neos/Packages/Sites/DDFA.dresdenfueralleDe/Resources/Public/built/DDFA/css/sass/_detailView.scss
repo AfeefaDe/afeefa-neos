@@ -136,9 +136,9 @@
 		}
 		
 		&.cat-trafficStop{
-			.heading { background-color: $dvb; color: $black !important; }
+			.heading { background-color: $yellow_dvb; color: $black !important; }
 			.property.category {
-				.property-icon { background-color: $dvb; }
+				.property-icon { background-color: $yellow_dvb; }
 			}
 		}
 	}

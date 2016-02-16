@@ -1,18 +1,18 @@
 qx.Class.define("MenuView", {
+    
+    extend : View,
+	type: "singleton",
 
-    extend: View,
-    type: "singleton",
-
-    construct: function () {
-        var that = this;
+    construct: function(){
+    	var that = this;
 
         that.setViewId('menuView');
     },
 
-    members: {
-
-        render: function () {
-            var that = this;
+    members : {
+        
+    	render: function(){
+    		var that = this;
 
             // view container
             that.view = $("<div />");
@@ -31,7 +31,7 @@ qx.Class.define("MenuView", {
             that.view.append(that.menuBtn);
 
             // menu
-            that.menu = $("<div />");
+            that.menu  = $("<div />");
             that.menu.attr('id', 'main-menu');
             that.view.append(that.menu);
 
@@ -39,14 +39,14 @@ qx.Class.define("MenuView", {
             var a = $('<a />')
                 .attr('href', 'http://afeefa.de')
                 .attr('id', 'logo');
-            that.logo = $('<img />').attr({
+            that.logo  = $('<img />').attr({
                 'src': APP.getConfig().imgPath + 'afeefa_light.svg',
                 alt: 'Afeefa Logo',
                 title: 'Afeefa Logo'
             });
             a.append(that.logo);
             that.menu.append(a);
-
+            
             // btn refugee guide
             that.refugeeBtn = $('<div />').addClass('item refugee-guide');
             that.refugeeLBtnLabel = $('<span />');
@@ -58,8 +58,8 @@ qx.Class.define("MenuView", {
             that.supporterBtnLabel = $('<span />');
             that.supporterBtn.append(that.supporterBtnLabel);
             that.menu.append(that.supporterBtn);
-
-
+            
+            
             // btn about
             that.aboutBtn = $('<div />').addClass('item about');
             that.aboutBtnLabel = $('<span />');
@@ -71,7 +71,7 @@ qx.Class.define("MenuView", {
             that.pressBtnLabel = $('<span />');
             that.pressBtn.append(that.pressBtnLabel);
             that.menu.append(that.pressBtn);
-
+            
             // btn imprint
             that.imprintBtn = $('<div />').addClass('item imprint');
             that.imprintBtnLabel = $('<span />');
@@ -87,12 +87,12 @@ qx.Class.define("MenuView", {
             that.menu.append(that.facebookBtn);
 
             // logo
-            a = $('<a />').attr({
+            var a = $('<a />').attr({
                 'id': 'dfa-logo',
                 'href': 'http://dresdenfueralle.de',
                 'target': '_blank'
             });
-            that.dfaLogo = $('<img />').attr({
+            that.dfaLogo  = $('<img />').attr({
                 'src': APP.getConfig().imgPath + 'icon_37.svg',
                 alt: 'Dresden für Alle Logo',
                 title: 'Dresden für Alle Logo'
@@ -104,89 +104,89 @@ qx.Class.define("MenuView", {
             // that.menu.append('<div class="fb-like" data-href="https://www.facebook.com/afeefa.de" data-layout="button" data-action="like" data-show-faces="false" data-share="false"></div>');
 
             this.base(arguments);
-        },
+    	},
 
-        addEvents: function () {
+        addEvents: function(){
             var that = this;
 
             // call superclass
             this.base(arguments);
-
-            that.menuBtn.click(function () {
-                that.load();
+            
+            that.menuBtn.click(function(){
+                that.load();    
                 that.say('mainMenuOpened');
             });
-
-            that.refugeeBtn.click(function () {
+            
+            that.refugeeBtn.click(function(){
                 that.close();
-                APP.getIncludeView().load(APP.getIncludeView().getIncludes().refugeeGuide);
+                APP.getIncludeView().load( APP.getIncludeView().getIncludes().refugeeGuide );
             });
 
-            that.supporterBtn.click(function () {
+            that.supporterBtn.click(function(){
                 that.close();
-                APP.getIncludeView().load(APP.getIncludeView().getIncludes().supporterGuide);
+                APP.getIncludeView().load( APP.getIncludeView().getIncludes().supporterGuide );
             });
 
-            that.aboutBtn.click(function () {
+            that.aboutBtn.click(function(){
                 that.close();
-                APP.getIncludeView().load(APP.getIncludeView().getIncludes().about);
+                APP.getIncludeView().load( APP.getIncludeView().getIncludes().about );
             });
 
-            that.pressBtn.click(function () {
+            that.pressBtn.click(function(){
                 that.close();
-                APP.getIncludeView().load(APP.getIncludeView().getIncludes().press);
+                APP.getIncludeView().load( APP.getIncludeView().getIncludes().press );
             });
 
-            that.imprintBtn.click(function () {
+            that.imprintBtn.click(function(){
                 that.close();
-                APP.getIncludeView().load(APP.getIncludeView().getIncludes().imprint);
+                APP.getIncludeView().load( APP.getIncludeView().getIncludes().imprint );
             });
 
-            that.listen('curtainclicked', function () {
+            that.listen('curtainclicked', function(){
                 that.close();
             });
 
             // interferring with other left shifting menus
-            that.listen('languageMenuOpened', function () {
+            that.listen('languageMenuOpened', function(){
                 that.menu.addClass('hidden');
             });
-            that.listen('shiftMenuClosed', function () {
+            that.listen('shiftMenuClosed', function(){
                 that.menu.removeClass('hidden');
             });
-
-            that.listen('includeViewClosed', function () {
-                that.load();
+            
+            that.listen('includeViewClosed', function(){
+                that.load();    
                 that.say('mainMenuOpened');
             });
 
             ////////////////////
             // swipe gestures //
             ////////////////////
-            require(['hammer'], function (Hammer) {
+            require( [ 'hammer' ], function( Hammer ){
 
                 var hammer = new Hammer(that.view[0]);
 
-                hammer.on('swipeleft', function (ev) {
+                hammer.on('swipeleft', function(ev){
                     that.close();
                 });
 
             });
-
+            
         },
 
-        load: function () {
+        load: function(){
             var that = this;
 
             that.reset();
 
             $('#main-container').addClass('shifted');
 
-            that.refugeeLBtnLabel.append(that.getWording('menu_refugee'));
-            that.supporterBtnLabel.append(that.getWording('menu_supporter'));
-            that.aboutBtnLabel.append(that.getWording('menu_about'));
-            that.pressBtnLabel.append(that.getWording('menu_press'));
-            that.imprintBtnLabel.append(that.getWording('menu_imprint'));
-            that.facebookBtnLabel.append(that.getWording('menu_facebook'));
+            that.refugeeLBtnLabel.append( that.getWording('menu_refugee') );
+            that.supporterBtnLabel.append( that.getWording('menu_supporter') );
+            that.aboutBtnLabel.append( that.getWording('menu_about') );
+            that.pressBtnLabel.append( that.getWording('menu_press') );
+            that.imprintBtnLabel.append( that.getWording('menu_imprint') );
+            that.facebookBtnLabel.append( that.getWording('menu_facebook') );
 
             // bootstrap tooltip
             that.menuBtn.attr({
@@ -196,7 +196,7 @@ qx.Class.define("MenuView", {
 
         },
 
-        reset: function () {
+        reset: function(){
             var that = this;
 
             that.refugeeLBtnLabel.empty();
@@ -208,13 +208,13 @@ qx.Class.define("MenuView", {
 
         },
 
-        close: function () {
+        close: function(){
             var that = this;
 
             $('#main-container').removeClass('shifted');
         },
 
-        changeLanguage: function () {
+        changeLanguage: function(){
             var that = this;
 
             // bootstrap tooltip

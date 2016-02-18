@@ -7,7 +7,10 @@
 		height: 3em;
 	  	@include flex-shrink(0);
 		color: $white;
-		
+		background-color: $black;
+
+		@include categoryColors;
+
 		h1 {
 			@include box-sizing(border-box);
 			height: 3em;
@@ -48,17 +51,25 @@
 
 		$iconSize: 2.5em;
 
+		&.category {
+			.property-icon {
+				@include entityShapes;
+				@include categoryColors;
+				@include categorySymbols;
+			}
+			.property-value {
+				font-style: italic;
+				color: $gray50;
+			}
+		}
+
 		.property-icon {
 			width: $iconSize;
 			height: $iconSize;
 			float: left;
 
-			/*@include background-size(72%);*/
 			background-repeat: no-repeat;
 			background-position: center 0.2em;
-
-			@include categorySymbols;
-
 
 			/* property icons */
 			&.icon-location { background-image: url("../img/icon-35.svg"); }
@@ -98,48 +109,13 @@
 			}
 		}
 
-		&.category {
-			.property-icon {
-				@include border-radius(2em);
-				background-position: center center;
-			}
-		}
 	}
 	
-	/* type specific overwrites */
-	&.type-0 {
-		.heading { background-color: $blue_dark; }
-		.property.category {
-			.property-icon { background-color: $blue_dark; }
-			.property-value { color: $blue_dark; }
-		}
-	}
-	&.type-1 {
-		.heading { background-color: $orange; }
-		.property.category {
-			.property-icon { background-color: $orange; }
-			.property-value { color: $orange; }
-		}
-	}
-	&.type-2 {
-		.heading { background-color: pink; }
-		.property.category {
-			.property-icon { background-color: pink; }
-		}
-	}
+	/* overwrite for POIs */
 	&.type-3 {
-		.heading { background-color: $black; }
 		.property.category {
-			.property-icon { background-color: $black; }
 			.property-name { line-height: 2.6em !important; }
 			.property-value { display: none; }
-		}
-		
-		&.cat-trafficStop{
-			.heading { background-color: $yellow_dvb; color: $black !important; }
-			.property.category {
-				.property-icon { background-color: $yellow_dvb; }
-			}
 		}
 	}
 }

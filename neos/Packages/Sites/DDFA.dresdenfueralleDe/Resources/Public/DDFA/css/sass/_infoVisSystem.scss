@@ -1,0 +1,112 @@
+@mixin entityShapes {
+	
+	/* orga */
+	&.type-0 {
+		@include border-radius(3px);
+	}
+
+	/* market entry */
+	&.type-1 {
+		@include border-radius(20px);
+	}
+
+	/* event */
+	&.type-2 {
+		@include border-radius(0px);
+	}
+
+	/* POI */
+	&.type-3 {
+		@include border-radius(20px);
+		@include box-shadow(0px 0px 2px #555);
+		background-color: $white !important;
+	}
+}
+
+@mixin categoryColors {
+
+	/* Main categories */
+	
+	&.cat-language	{ 
+		background-color: $yellow;
+	}
+
+	&.cat-medic {
+		background-color: $red;
+	}
+	
+	&.cat-jobs {
+		background-color: $blue_dark;
+	}
+
+	&.cat-consultation {
+		background-color: $olive;
+	}
+
+	&.cat-leisure {
+		background-color: $turquoise;
+	}
+	
+	&.cat-community {
+		background-color: $violet;
+	}
+
+	&.cat-donation {
+		background-color: $orange;
+	}
+}
+
+@mixin categorySymbols {
+
+	@include background-size(72%);
+	background-repeat: no-repeat;
+	background-position: center center;
+
+	/* Main categories */
+
+	&.cat-language	{ 
+		background-image: url("../img/cat-06.svg"); 
+	}
+
+	&.cat-medic {
+		background-image: url("../img/cat-04.svg");
+	}
+	
+	&.cat-jobs {
+		background-image: url("../img/icon_76.svg");
+	}
+
+	&.cat-consultation {
+		background-image: url("../img/cat-10.svg");
+	}
+
+	&.cat-leisure {
+		background-image: url("../img/cat-08.svg");
+	}
+	
+	&.cat-community { background-image: url("../img/icon-40.svg"); @include background-size(115%); }
+
+	&.cat-donation { background-image: url("../img/cat-12.svg"); }
+	
+	/* Sub categories */
+
+
+	
+	/* POIs */
+
+	&.cat-housing {
+		border: 1px solid $white;
+		background-image: url("../img/cat-19.svg");
+		background-color: rgba(0,0,0,0) !important;
+	}
+	&.cat-christian { background-image: url("../img/icon_59.svg"); }
+	&.cat-hospital { background-image: url("../img/cat-03.svg"); }
+	&.cat-islam { background-image: url("../img/icon_61.svg"); }
+	&.cat-jewish { background-image: url("../img/cat-21.svg"); }
+	&.cat-shop { background-image: url("../img/icon_65.svg"); @include background-size(65%); }
+	&.cat-public { background-image: url("../img/icon_63.svg"); @include background-size(80%); }
+	&.cat-library { background-image: url("../img/cat-17.svg"); @include background-size(80%); }
+	&.cat-trafficStop { background-image: url("../img/icon_57.svg"); background-color: $yellow_dvb; }
+
+	&.cat-other { background-image: url("../img/icon-32.svg"); @include background-size(50%); }
+}

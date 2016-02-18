@@ -1,4 +1,4 @@
-qx.Class.define("APPDDFA", {
+qx.Class.define("APPAFEEFA", {
     extend : Daddy,
     type: "singleton",
 

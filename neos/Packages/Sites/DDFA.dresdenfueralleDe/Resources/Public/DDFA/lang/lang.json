@@ -36,6 +36,18 @@
                   "ti":"ሕክምናዊ ኣገልግሎት",
                   "ur":"صحت کی دیکھ بھال"
             },
+            "cat_hospital":{
+                  "de":"Krankenhaus",
+                  "en":"Hospital",
+                  "ar":"",
+                  "fa":"",
+                  "fr":"",
+                  "it":"",
+                  "ru":"",
+                  "sr":"",
+                  "ti":"",
+                  "ur":""
+            },
             "cat_language":{
                   "de":"Sprache",
                   "en":"Language",
@@ -626,7 +638,7 @@
                   "ti":"ውልቃዊ ሰነድ",
                   "ur":""
             },
-            "misc_officialEntry":{
+            "entity_orga":{
                   "de":"Organisation/ Initiative/ Projekt",
                   "en":"Organization/ Initiative/ Project",
                   "ar":"منظمة / مشروع",
@@ -638,7 +650,7 @@
                   "ti":"",
                   "ur":"تنظیم / منصوبہ"
             },
-            "misc_privateEntry":{
+            "entity_market":{
                   "de":"Börseneintrag",
                   "en":"Market entry",
                   "ar":"",
@@ -651,6 +663,19 @@
                   "ur":""
             },
             
+            "entity_event":{
+                  "de":"Veranstaltung",
+                  "en":"Event",
+                  "ar":"",
+                  "fa":"",
+                  "fr":"",
+                  "it":"",
+                  "ru":"",
+                  "sr":"",
+                  "ti":"",
+                  "ur":""
+            },
+
             "misc_filterReset":{
                   "de":"Filter deaktivieren",
                   "en":"Reset filter",

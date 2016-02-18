@@ -90,12 +90,13 @@ qx.Class.define("DetailView", {
             // set current record
             that.record = record;
 
-            // record type
+            // view
             that.view.addClass('type-' + record.type);
             that.view.addClass('cat-' + record.category.name);
-            
+
             // heading
             that.heading.append(record.name ? record.name : '');
+            that.headingContainer.addClass('cat-' + record.category.name);
 
             ////////////////////
             // image property //
@@ -118,8 +119,11 @@ qx.Class.define("DetailView", {
             var prop = 'category';
             var propName = record[prop] ? record[prop].name : 'nee';
             that['propertyIcon'+prop].addClass('cat-' + propName);
+            that['propertyIcon'+prop].addClass('type-' + record.type);
             that['propertyName'+prop].append( that.getWording('cat_' + propName) );
-            var value = (record.type !== 1) ? that.getWording('misc_officialEntry') : that.getWording('misc_privateEntry');
+            
+            var entityLabels = { 0: that.getWording('entity_orga'), 1: that.getWording('entity_market'), 2: that.getWording('entity_event') };
+            var value = entityLabels[record.type];
             that['propertyValue'+prop].append(value);
             that['propertyContainer'+prop].show();
 
@@ -166,6 +170,15 @@ qx.Class.define("DetailView", {
 
             });
 
+            // navigate + streetview
+            // $content.append('<p><a href="http://maps.google.com/?saddr=34.052222,-118.243611&daddr=37.322778,-122.031944" target="_blank"><button class="btn btn-default"><span class="fa fa-location-arrow" aria-hidden="true"></span> Navigate</button></a></p>');
+            //  var userLocation = that.getUserLocation();
+            //  if ( userLocation )
+            //      $content.append('<p><a href="http://maps.google.com/?saddr=' + userLocation.lat + ',' + userLocation.lng + '&daddr=' + marker.geo[0] + ',' + marker.geo[1] + '" target="_blank"><button class="btn btn-default"><span class="fa fa-location-arrow" aria-hidden="true"></span> Navigate</button></a></p>');
+            //  else
+            //      $content.append('<p><a href="http://maps.google.com/?daddr=' + marker.geo[0] + ',' + marker.geo[1] + '" target="_blank"><button class="btn btn-default"><span class="fa fa-location-arrow" aria-hidden="true"></span> Navigate</button></a></p>');
+            //  $content.append('<p><button class="btn btn-default"><span class="fa fa-street-view" aria-hidden="true"></span> Show in Google Street View</button></p>');
+
             that.loading(false);
 
             // show DetailView
@@ -179,7 +192,7 @@ qx.Class.define("DetailView", {
         reset: function() {
             var that = this;
 
-            // record type
+            // view
             that.view.removeClass('type-0 type-1 type-2 type-3');
             that.view.removeClass (function (index, css) {
                 return (css.match (/(^|\s)cat-\S+/g) || []).join(' ');
@@ -187,19 +200,22 @@ qx.Class.define("DetailView", {
 
             // heading
             that.heading.empty();
+            that.headingContainer.removeClass (function (index, css) {
+                return (css.match (/(^|\s)cat-\S+/g) || []).join(' ');
+            });
 
             // image property
             that.imageContainer.hide();
             that.imageContainer.removeClass('logo photo');
 
-            // other properties
-            
-            // generic
-            var properties = _.union( ['category', 'location'], APP.getConfig().simpleProperties );
-            
+            // entry icon
+            that['propertyIconcategory'].removeClass('type-0 type-1 type-2 type-3');
             that['propertyIconcategory'].removeClass (function (index, css) {
                 return (css.match (/(^|\s)cat-\S+/g) || []).join(' ');
             });
+            
+            // generic
+            var properties = _.union( ['category', 'location'], APP.getConfig().simpleProperties );
             
             _.each(properties, function(prop){
                 that['propertyIcon'+prop].removeClass (function (index, css) {

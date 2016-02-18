@@ -33,7 +33,7 @@ require([
 	'bootstrap',
 	'Daddy',
 	'restive',
-	'APPDDFA',
+	'APPAFEEFA',
 	'DataManager',
 	'Router',
 	'LanguageManager',
@@ -56,7 +56,7 @@ require([
 
 				// require( [], function(){
 
-					APP = new APPDDFA();
+					APP = new APPAFEEFA();
 					
 					// initialize app (e.g. fetch data)
 					APP.init(function(){

@@ -41,7 +41,6 @@ qx.Class.define("MapView", {
         that.view.append(that.locateBtn);
     	
     	that.locateBtn.click(function(){
-    		// alert('haha');
     		that.locate();
     	});
     	that.locateBtn.on('touchend', function(){
@@ -49,12 +48,10 @@ qx.Class.define("MapView", {
     	});
 
 
-	    //////////////////
+	    /////////////////
       	// MAPBOX INIT //
-	    //////////////////
-      	
+	    /////////////////
       	L.mapbox.accessToken = 'pk.eyJ1IjoiZmVsaXhrYW1pbGxlIiwiYSI6Ilo1SHFOX0EifQ.pfAzun90Lj1UlVapKI3LiA';
-		// that.map = L.mapbox.map('map-container', 'felixkamille.4128d9e7', {
 		that.map = L.mapbox.map(that.getViewId(), 'felixkamille.4128d9e7', {
 			zoomControl: false,
 			maxBounds: [
@@ -67,17 +64,8 @@ qx.Class.define("MapView", {
 			maxZoom: 18
     	}).setView([ 51.051, 13.74 ], 14);
 		
-		///////////////////////////////
-		// Layer for basic locations //
-		///////////////////////////////
-		that.basicLayer = L.layerGroup();
-		that.map.addLayer(that.basicLayer);
-
-		//////////////////////
-		// Marker Cluster //
-		//////////////////////
-
-		that.markerCluster = new L.MarkerClusterGroup({
+		// Layer group for main markers (with clustering)
+		that.layerForMainMarkers = new L.MarkerClusterGroup({
 			iconCreateFunction: function(cluster) {
 	          return new L.DivIcon({
 	            className: 'location marker-cluster',
@@ -92,82 +80,91 @@ qx.Class.define("MapView", {
 	        spiderLegPolylineOptions: { weight: 1.5, color: '#000' }
 	        // disableClusteringAtZoom: 17
 		});
-		
-		that.map.addLayer(that.markerCluster);
 
-		///////////////
-		// POI layer //
-		///////////////
+		// Layer for basic locations
+		that.layerForPOIMarkers = L.layerGroup();
 
-		// that.poiMarkers = new L.LayerGroup();
-		// that.map.addLayer(that.poiMarkers);
-		
-		// that.stationMarkers = that.addPOIs(mapdata.locations.stations, '#fdc400');
-		// that.setZoomFilter();
-		
-		//////////////
-		// Get data //
-		//////////////
-		
-		// APP.getDataManager().getAllLocations(function( data ){
-		// 	console.debug(data);
-		// });
+		// add layer groups to map
+		that.map.addLayer(that.layerForMainMarkers);
+		that.map.addLayer(that.layerForPOIMarkers);
 
 
-		// that.addLocations(APP.getData().locations);
+		//////////////////////////
+		// Last Rendering Steps //
+		//////////////////////////
 
-		// that.addMarkers(mapdata.locations.inis);
-		// that.addMarkers(mapdata.locations.publics);
-		// that.addMarkers(mapdata.locations.wifi);
-		// that.addMarkersGeoJSON();
-
-
-        // console.debug(that.markerCluster);
-		
-		// that.map.featureLayer.setFilter(function(f) {
-  //           return false;
-  //       });
-
-		// that.markerCluster.eachLayer(function(layer){
-		// 	layer.setFilter(function(f) {
-	 //            return f.properties['marker-symbol'] === 'fast-food';
-	 //        });
-  //       });
-        
-        // that.addEvents();
+       	// call View.render() --> calls MapView.addEvents() --> calls View.addEvents()
        	this.base(arguments);
         
         that.loading(true);
 
+        // initial actions
 		if (APP.getUserDevice() == 'mobile') that.locate();
 
     },
 
-	// TODO: outsource in Router
-    loadFromUrl: function( options ){
+    addEvents: function() {
+
     	var that = this;
-
-		var url = window.location.hash.split('#');
-    	url = _.without(url, '');
-    	var entryId = url[0];
     	
-    	if(entryId) {
-    		var lookup = that.lookupMarkerById(entryId);
-    		if(lookup){
-    			if(options && options.setView) that.map.setView( [lookup.location.lat, lookup.location.lon], 15);
-    			that.selectMarker(lookup.marker, lookup.location);
-    		}
-    	}
+       	this.base(arguments);
+    	
+    	that.listen('fetchedNewData', function(){
+    		that.loadNewData();
+    	});
 
-    	// if(entryId) that.selectMarkerById(entryId);
+    	// that.map.on('load', function(e){
+    	// 	that.setZoomFilter();
+    	// });
+
+    	that.map.on('viewreset', function(e){
+    		// that.setZoomFilter();s
+    	});
+
+    	that.listen('filterSet', function(){
+    		that.loadNewData();
+    	});
+       	
+		// map click (not fired on drag or marker click or sth, pure map click!)
+		that.map.on('click', function(e) {
+			that.say('mapclicked');
+		});
+
+		that.mapCurtain.on('click', function(e) {
+			that.say('curtainclicked');
+		});
+
+		if( APP.getUserDevice() == 'phone' ){
+			$('#main-container').on("transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd", function(e){
+				if( e.target != e.currentTarget ) return;
+				if( !$(this).hasClass('shifted') && !$(this).hasClass('shifted-small') ){
+					that.say('shiftMenuClosed');
+				}
+			});
+		}
+
+		that.listen('mapclicked', function(){
+            that.deselectMarker();
+        });
+
+		that.listen('DetailViewMobileRendered', function(){
+			that.loadFromUrl( {setView: true} );
+		});
+
+		that.listen('DetailViewRendered', function(){
+			that.loadFromUrl( {setView: true} );
+		});
+
+    },
+    removeEvents: function() {
+
     },
 
     loadNewData: function() {
     	var that = this;
 
     	// reset things
-    	that.markerCluster.clearLayers();
-		that.setMarkerLocationLookup([]);
+    	that.removeMarkers();
 
 		// get ALL data
 		var locations = APP.getData().locations;
@@ -185,117 +182,13 @@ qx.Class.define("MapView", {
 
         }
 
-		that.addLocations(locations);
+		that.addMarkers(locations);
 		that.loadFromUrl({setView: true});
         that.loading(false);
 
     },
 
-    lookupMarkerById: function( id ){
-    	var that = this;
-
-    	var hit = _.find( that.getMarkerLocationLookup(), function(pair){
-    		return pair.location.entryId == id;
-    	});
-
-    	return hit;
-    	// if(hit) that.selectMarker(hit.marker, hit.location);
-    },
-
-    addEvents: function() {
-
-    	var that = this;
-    	
-       	// this.base(arguments);
-       	
-       	// TODO inherit from View superclass
-       	that.listen('languageChanged', function(){
-            that.changeLanguage();
-        });
-
-	    //////////
-    	// say //
-	    //////////
-		// map click (not fired on drag or marker click or sth, pure map click!)
-		that.map.on('click', function(e) {
-			that.say('mapclicked');
-		});
-
-		that.mapCurtain.on('click', function(e) {
-			that.say('curtainclicked');
-		});
-
-		if( APP.getUserDevice() == 'phone' ){
-
-			// $('#main-container').bind("transitionstart webkitTransitionStart oTransitionStart MSTransitionStart", function(){
-			// 	if( $(this).hasClass('shifted') )
-			// 		$('#lang-menu').hide();
-			// 	else ( $(this).hasClass('shifted-small') )
-			// 		$('#main-menu').hide();
-			// });
-			$('#main-container').on("transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd", function(e){
-				if( e.target != e.currentTarget ) return;
-				if( !$(this).hasClass('shifted') && !$(this).hasClass('shifted-small') ){
-					that.say('shiftMenuClosed');
-				}
-			});
-
-		}
-
-		//////////////
-		// listen //
-		//////////////
-		that.listen('mapclicked', function(){
-            that.deselectMarker();
-        });
-
-		// that.listen('appInitialized', function(){
-		that.listen('DetailViewMobileRendered', function(){
-		// that.listen('markersCreated', function(){
-			that.loadFromUrl( {setView: true} );
-		});
-
-		that.listen('DetailViewRendered', function(){
-			that.loadFromUrl( {setView: true} );
-		});
-
-    	// that.map.on('load', function(e){
-    	// 	that.setZoomFilter();
-    	// });
-
-    	that.map.on('viewreset', function(e){
-    		// that.setZoomFilter();s
-    	});
-    	
-    	that.listen('fetchedNewData', function(){
-    		that.loadNewData();
-    	});
-
-    	that.listen('filterSet', function(){
-    		that.loadNewData();
-    	});
-
-    },
-    removeEvents: function() {
-
-    },
-
-    changeLanguage: function() {
-    	var that = this;
-
-        that.loading(true);
-    },
-   //  addMarkersGeoJSON: function(markers, color) {
-	 	
-	 	// var that = this;
-
-   //  	var featureLayer = L.mapbox.featureLayer()
-		 //    .loadURL('/_Resources/Static/Packages/DDFA.dresdenfueralleDe/DDFA/js/geojson/inis.geojson')
-		 //    .addTo(that.map);
-
-   //  },
-
-    addLocations: function(locations) {
+    addMarkers: function(locations) {
 	 	
 	 	var that = this;
 
@@ -343,9 +236,12 @@ qx.Class.define("MapView", {
 			var className = 'location';
 			className += ' type-' + location.type;
 			className += ' rating-' + location.rating;
-			if( location.category ) className += ' cat cat-' + location.category.name;
+			if( location.category ) className += ' cat-' + location.category.name;
 			if( location.supportNeeded ) className += ' support-needed';
 
+			////////////
+			// MARKER //
+			////////////
 			var marker = L.marker( [location.lat, location.lon] , {
 				riseOnHover: true,
 			    icon: L.divIcon({
@@ -353,9 +249,8 @@ qx.Class.define("MapView", {
 	                iconSize: iconSize,
 	                iconAnchor: iconAnchor
 	            })
-			// }).addTo(that.map);
 			});
-			
+
 			///////////
 			// POPUP //
 			///////////
@@ -372,7 +267,7 @@ qx.Class.define("MapView", {
 				offset: [0, 0]
 			})
 			    .setLatLng([location.lat, location.lon])
-			    .setContent('<span class="title">' + locationName + '</span><span class="category">' +location.category.name+ '</span>');
+			    .setContent('<span class="title">' + locationName + '</span><span class="category">' +that.getWording('cat_' + location.category.name)+ '</span>');
 
 			marker.on('mouseover', function (e) {
 	            that.map.openPopup(popup);
@@ -387,24 +282,11 @@ qx.Class.define("MapView", {
 				that.selectMarker(marker, location);
 			});
 
-			// 	// $content.append('<p><a href="http://maps.google.com/?saddr=34.052222,-118.243611&daddr=37.322778,-122.031944" target="_blank"><button class="btn btn-default"><span class="fa fa-location-arrow" aria-hidden="true"></span> Navigate</button></a></p>');
-				
-			// 	var userLocation = that.getUserLocation();
-			// 	if ( userLocation )
-			// 		$content.append('<p><a href="http://maps.google.com/?saddr=' + userLocation.lat + ',' + userLocation.lng + '&daddr=' + marker.geo[0] + ',' + marker.geo[1] + '" target="_blank"><button class="btn btn-default"><span class="fa fa-location-arrow" aria-hidden="true"></span> Navigate</button></a></p>');
-			// 	else
-			// 		$content.append('<p><a href="http://maps.google.com/?daddr=' + marker.geo[0] + ',' + marker.geo[1] + '" target="_blank"><button class="btn btn-default"><span class="fa fa-location-arrow" aria-hidden="true"></span> Navigate</button></a></p>');
-
-			// 	$content.append('<p><button class="btn btn-default"><span class="fa fa-street-view" aria-hidden="true"></span> Show in Google Street View</button></p>');
-				
-			// });
-
-			// if( location.type !== 3) that.markerCluster.addLayer(marker);
 			if (location.type === 3) {
-				that.basicLayer.addLayer(marker);
+				that.layerForPOIMarkers.addLayer(marker);
 			}
 			else {
-				that.markerCluster.addLayer(marker);
+				that.layerForMainMarkers.addLayer(marker);
 			}
 
 			var currentLookup = that.getMarkerLocationLookup();
@@ -419,6 +301,61 @@ qx.Class.define("MapView", {
 
 		// return newLayer;
     },
+
+    removeMarkers: function() {
+
+    	var that = this;
+
+    	that.layerForMainMarkers.clearLayers();
+    	that.layerForPOIMarkers.clearLayers();
+		
+		that.setMarkerLocationLookup([]);
+
+    },
+
+	// TODO: outsource in Router
+    loadFromUrl: function( options ){
+    	var that = this;
+
+		var url = window.location.hash.split('#');
+    	url = _.without(url, '');
+    	var entryId = url[0];
+    	
+    	if(entryId) {
+    		var lookup = that.lookupMarkerById(entryId);
+    		if(lookup){
+    			if(options && options.setView) that.map.setView( [lookup.location.lat, lookup.location.lon], 15);
+    			that.selectMarker(lookup.marker, lookup.location);
+    		}
+    	}
+
+    	// if(entryId) that.selectMarkerById(entryId);
+    },
+
+    lookupMarkerById: function( id ){
+    	var that = this;
+
+    	var hit = _.find( that.getMarkerLocationLookup(), function(pair){
+    		return pair.location.entryId == id;
+    	});
+
+    	return hit;
+    },
+
+    changeLanguage: function() {
+    	var that = this;
+
+        that.loading(true);
+    },
+   //  addMarkersGeoJSON: function(markers, color) {
+	 	
+	 	// var that = this;
+
+   //  	var featureLayer = L.mapbox.featureLayer()
+		 //    .loadURL('/_Resources/Static/Packages/DDFA.dresdenfueralleDe/DDFA/js/geojson/inis.geojson')
+		 //    .addTo(that.map);
+
+   //  },
 
     selectMarker: function( marker, location, setView ){
     	var that = this;

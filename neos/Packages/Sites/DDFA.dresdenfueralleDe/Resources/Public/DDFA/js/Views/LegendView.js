@@ -23,35 +23,57 @@ qx.Class.define("LegendView", {
             that.view = $("<div />");
             that.view.attr('id', that.getViewId());
 
-            // menu button
-            // that.menuBtn = $("<div />");
-            // that.menuBtn.addClass('menu-btn');
-            // that.view.append(that.menuBtn);
+            /////////////
+            // Heading //
+            /////////////
+            that.headingContainer = $("<div />").addClass('heading');
+            that.heading = $("<h2 />");
+            that.headingContainer.append(that.heading);
 
-            // legend
-            that.legend  = $("<div />");
-            that.legend.attr('id', 'legend');
-            that.view.append(that.legend);
+            ///////////////////
+            // Entity filter //
+            ///////////////////
+            that.filterModuleEntity  = $("<div />");
+            that.filterModuleEntity.attr('class', 'filter-module');
+            that.view.append(that.filterModuleEntity);
 
-            // buttons
+            // module heading
+            var moduleHeading = $("<h3 />");
+            moduleHeading.append('Entry types');
+            that.filterModuleEntity.append(moduleHeading);
+
+            //////////////////////
+            // Categoriy filter //
+            //////////////////////
+            that.filterModuleCat  = $("<div />");
+            that.filterModuleCat.attr('class', 'filter-module');
+            that.view.append(that.filterModuleCat);
+
+            // module heading
+            var moduleHeading = $("<h3 />");
+            moduleHeading.append('Categories');
+            that.filterModuleCat.append(moduleHeading);
+
+            // categories
             _.each( that.getCategories(), function(cat){
                 
                 // container
                 var container = $("<div />");
-                container.addClass('container');
+                container.addClass('cat-container');
+                container.addClass('cat-' + cat);
                 
-                // symbol
-                var btn = $("<div />");
-                btn.addClass('btn ' + 'cat-' + cat);
-                container.append(btn);
+                // icon
+                var icon = $("<div />");
+                icon.addClass('icon ' + 'cat-' + cat);
+                container.append(icon);
 
                 // label
                 that['label-' + cat] = $("<p />");
                 container.append(that['label-' + cat]);
                 
-                that.legend.append(container);
+                that.filterModuleCat.append(container);
 
-                btn.click(function(){ that.setFilter( {category: cat} ); });
+                icon.click(function(){ that.setFilter( {category: cat} ); });
                 that['label-' + cat].click(function(){ that.setFilter( {category: cat} ); });
 
             });
@@ -62,16 +84,16 @@ qx.Class.define("LegendView", {
                 var container = $("<div />");
                 container.addClass('container filter-reset');
                 
-                // symbol
-                var btn = $("<div />");
-                btn.addClass('btn');
-                container.append(btn);
+                // icon
+                var icon = $("<div />");
+                icon.addClass('icon');
+                container.append(icon);
 
                 // label
                 that['label-filter-reset'] = $("<p />");
                 container.append(that['label-filter-reset']);
                 
-                that.legend.append(container);
+                that.filterModuleCat.append(container);
 
                 that['label-filter-reset'].click(function(){ that.resetFilter(); });
             }
@@ -135,13 +157,13 @@ qx.Class.define("LegendView", {
                     
                     that.view.addClass('filter-active');  
                     
-                    that.view.find('.btn').parent().addClass('inactive');
-                    that.view.find('.btn.cat-' + filter.category).parent().removeClass('inactive');
+                    that.view.find('.icon').parent().addClass('inactive');
+                    that.view.find('.icon.cat-' + filter.category).parent().removeClass('inactive');
                 
                 } else {
                 
                     that.view.removeClass('filter-active');   
-                    that.view.find('.btn').parent().removeClass('inactive');
+                    that.view.find('.icon').parent().removeClass('inactive');
                 }
 
             });

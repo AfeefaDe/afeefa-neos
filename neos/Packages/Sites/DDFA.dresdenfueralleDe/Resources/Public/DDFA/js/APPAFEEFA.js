@@ -7,7 +7,7 @@ qx.Class.define("APPAFEEFA", {
     construct: function(){
         var that = this;
 
-        that.setTitle('connecteDD');
+        that.setTitle('Afeefa.de - Networking platform for refugees and supporters');
         that.setDataManager(new DataManager());
         that.setRouter(new Router());
         that.setLM(new LanguageManager());
@@ -15,9 +15,73 @@ qx.Class.define("APPAFEEFA", {
         that.setConfig(
             {
                 languages: ['de', 'en', 'ar', 'fa', 'fr', 'sr', 'ru', 'ti', 'ur', 'it'],
-                categoriesIni: ["language", "medic", "jobs", "consultation", "leisure", "community", "donation", "children"],
-                categoriesMarket: ["language", "medic", "jobs", "consultation", "leisure", "community", "donation", "children"],
-                categoriesEvent: [],
+                categories: [
+                    {
+                        name: 'language',
+                        id: '1',
+                        sub: [
+                            { name: 'german-course', id: '1-1' },
+                            { name: 'learning-place', id: '1-2' },
+                            { name: 'tandem', id: '1-3' }
+                        ]
+                    },
+                    {
+                        name: 'medic',
+                        id: '2',
+                        sub: [
+                            { name: 'a', id: '2-1' },
+                            { name: 'b', id: '2-2' },
+                            { name: 'c', id: '2-3' }
+                        ]
+                    },
+                    {
+                        name: 'jobs',
+                        id: '3',
+                        sub: [
+                            { name: 'a', id: '3-1' },
+                            { name: 'b', id: '3-2' },
+                            { name: 'c', id: '3-3' }
+                        ]
+
+                    },
+                    {
+                        name: 'consultation',
+                        id: '4',
+                        sub: [
+                            { name: 'a', id: '4-1' },
+                            { name: 'b', id: '4-2' },
+                            { name: 'c', id: '4-3' }
+                        ]
+                    },
+                    {
+                        name: 'leisure',
+                        id: '5',
+                        sub: [
+                            { name: 'a', id: '5-1' },
+                            { name: 'b', id: '5-2' },
+                            { name: 'c', id: '5-3' }
+                        ]
+                    },
+                    {
+                        name: 'community',
+                        id: '6',
+                        sub: [
+                            { name: 'network', id: '6-1' },
+                            { name: 'meeting-place', id: '6-2' },
+                            { name: 'welcome-festival', id: '6-3' },
+                            { name: 'workshop-room', id: '6-4' }
+                        ]
+                    },
+                    {
+                        name: 'donation',
+                        id: '7',
+                        sub: [
+                            { name: 'a', id: '7-1' },
+                            { name: 'b', id: '7-2' },
+                            { name: 'c', id: '7-3' }
+                        ]
+                    }
+                ],
                 categoriesBasic: ["housing", "christian", "islam", "jewish", 'public', 'wifi', 'shop'],
                 simpleProperties: ['description', 'speakerPublic', 'spokenLanguages', 'phone', 'mail', 'web', 'facebook', 'openingHours', 'dateFrom', 'dateTo'],
                 imgPath: '_Resources/Static/Packages/DDFA.dresdenfueralleDe/DDFA/img/'

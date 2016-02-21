@@ -11,7 +11,8 @@ qx.Class.define("LegendView", {
     	var that = this;
 
         that.setViewId('legendView');
-        that.setCategories( _.union( APP.getConfig().categoriesIni, APP.getConfig().categoriesMarket ) );
+        that.setCategories( APP.getConfig().categories);
+        // that.setCategories( _.union( APP.getConfig().categoriesIni, APP.getConfig().categoriesMarket ) );
     },
 
     members : {
@@ -59,22 +60,56 @@ qx.Class.define("LegendView", {
                 
                 // container
                 var container = $("<div />");
-                container.addClass('cat-container');
-                container.addClass('cat-' + cat);
-                
-                // icon
-                var icon = $("<div />");
-                icon.addClass('icon ' + 'cat-' + cat);
-                container.append(icon);
+                container.addClass('container');
 
-                // label
-                that['label-' + cat] = $("<p />");
-                container.append(that['label-' + cat]);
+                // cat container
+                var catContainer = $("<div />");
+                catContainer.addClass('cat-container');
+                catContainer.addClass('cat-' + cat.name);
                 
+                    // icon
+                    var icon = $("<div />");
+                    icon.addClass('icon ' + 'cat-' + cat.name);
+                    catContainer.append(icon);
+
+                    icon.click(function(){ that.setFilter( {category: cat.name} ); });
+                    
+                    // label
+                    that['label-' + cat.id] = $("<p />");
+                    catContainer.append(that['label-' + cat.id]);
+
+                    that['label-' + cat.id].click(function(){ that.setFilter( {category: cat.name} ); });
+                    
+                    container.append(catContainer);
+                
+                // sub cat container
+                var subCatContainer = $("<div />");
+                subCatContainer.addClass('subcat-container');
+                subCatContainer.addClass('cat-' + cat.name);
+                catContainer.append(subCatContainer);
+
+                    // sub categories
+                    // TODO replace dummy data
+                    _.each( cat.sub, function(subcat){
+                        
+                        var subContainer = $("<div />");
+
+                        // icon
+                        var subIcon = $("<div />");
+                        subIcon.addClass('icon ' + 'subcat-' + subcat.name);
+                        subContainer.append(subIcon);
+
+                        // label
+                        that['label-' + subcat.id] = $("<p />");
+                        subContainer.append(that['label-' + subcat.id]);
+                        
+                        subCatContainer.append(subContainer);
+
+                    });
+                    
+                    container.append(subCatContainer);
+
                 that.filterModuleCat.append(container);
-
-                icon.click(function(){ that.setFilter( {category: cat} ); });
-                that['label-' + cat].click(function(){ that.setFilter( {category: cat} ); });
 
             });
 
@@ -109,7 +144,13 @@ qx.Class.define("LegendView", {
             var that = this;
 
             _.each( that.getCategories(), function(cat){
-                that['label-' + cat].append( that.getWording('cat_' + cat) );
+                
+                that['label-' + cat.id].append( that.getWording('cat_' + cat.name) );
+
+                _.each( cat.sub, function(subcat){
+                    that['label-' + subcat.id].append( that.getWording('cat_' + subcat.name) );
+                });
+
             });
 
             that['label-filter-reset'].append( that.getWording('misc_filterReset') );

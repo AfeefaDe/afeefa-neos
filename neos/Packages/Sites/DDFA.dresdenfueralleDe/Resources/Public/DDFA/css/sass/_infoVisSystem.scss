@@ -25,6 +25,8 @@
 
 @mixin categoryColors($alpha_background: 1, $alpha_border: 1) {
 
+	/* TODO find a solution to avoid setting the border on elements that dont need that and dont provide a parameter for it */
+
 	/* Main categories */
 	
 	&.cat-language	{ 
@@ -91,7 +93,7 @@
 		background-image: url("../img/cat-08.svg");
 	}
 	
-	&.cat-community { background-image: url("../img/cat-02.svg"); @include background-size(80%); }
+	&.cat-community { background-image: url("../img/cat-02.svg"); @include background-size(85%); }
 
 	&.cat-donation { background-image: url("../img/cat-12.svg"); }
 	
@@ -102,9 +104,9 @@
 	/* POIs */
 
 	&.cat-housing {
-		border: 1px solid $white;
+		/*border: 1px solid $white;*/
 		background-image: url("../img/cat-19.svg");
-		background-color: rgba(0,0,0,0) !important;
+		/*background-color: rgba(0,0,0,0) !important;*/
 	}
 	&.cat-christian { background-image: url("../img/icon_59.svg"); }
 	&.cat-hospital { background-image: url("../img/cat-03.svg"); }

@@ -12,18 +12,54 @@
                   "ti":"ደረጃ",
                   "ur":"زمرے"
             },
-            "cat_consultation":{
-                  "de":"Beratung",
-                  "en":"consultation",
-                  "ar":"استشارة",
-                  "fa":"مشاوره",
-                  "fr":"Être conseillé",
+            "cat_language":{
+                  "de":"Sprache",
+                  "en":"Language",
+                  "ar":"",
+                  "fa":"",
+                  "fr":"",
                   "it":"",
-                  "ru":"Консультация",
-                  "sr":"саветовање",
-                  "ti":"ምኽሪ",
-                  "ur":"مشاورت"
+                  "ru":"",
+                  "sr":"",
+                  "ti":"",
+                  "ur":""
             },
+                  "cat_german-course":{
+                        "de":"Deutschkurs",
+                        "en":"German course",
+                        "ar":"",
+                        "fa":"",
+                        "fr":"",
+                        "it":"",
+                        "ru":"",
+                        "sr":"",
+                        "ti":"",
+                        "ur":""
+                  },
+                  "cat_learning-place":{
+                        "de":"Lernort",
+                        "en":"learning place",
+                        "ar":"",
+                        "fa":"",
+                        "fr":"",
+                        "it":"",
+                        "ru":"",
+                        "sr":"",
+                        "ti":"",
+                        "ur":""
+                  },
+                  "cat_tandem":{
+                        "de":"Tandem",
+                        "en":"tandem",
+                        "ar":"",
+                        "fa":"",
+                        "fr":"",
+                        "it":"",
+                        "ru":"",
+                        "sr":"",
+                        "ti":"",
+                        "ur":""
+                  },
             "cat_medic":{
                   "de":"Medizin",
                   "en":"Healthcare",
@@ -36,21 +72,21 @@
                   "ti":"ሕክምናዊ ኣገልግሎት",
                   "ur":"صحت کی دیکھ بھال"
             },
+            "cat_consultation":{
+                  "de":"Beratung",
+                  "en":"consultation",
+                  "ar":"استشارة",
+                  "fa":"مشاوره",
+                  "fr":"Être conseillé",
+                  "it":"",
+                  "ru":"Консультация",
+                  "sr":"саветовање",
+                  "ti":"ምኽሪ",
+                  "ur":"مشاورت"
+            },
             "cat_hospital":{
                   "de":"Krankenhaus",
                   "en":"Hospital",
-                  "ar":"",
-                  "fa":"",
-                  "fr":"",
-                  "it":"",
-                  "ru":"",
-                  "sr":"",
-                  "ti":"",
-                  "ur":""
-            },
-            "cat_language":{
-                  "de":"Sprache",
-                  "en":"Language",
                   "ar":"",
                   "fa":"",
                   "fr":"",

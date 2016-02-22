@@ -59,23 +59,6 @@ qx.Class.define("DataManager", {
 
         },
 
-        // dummy version
-        _getAllLocations: function( cb ){
-
-            $.ajax({
-                url: '_Resources/Static/Packages/DDFA.dresdenfueralleDe/DDFA/dummyData/locations.json',
-                type: 'GET',
-                dataType: 'text'
-            })
-            .done(function( data ) {
-                cb( JSON.parse(data) );
-            })
-            .fail(function(a) {
-                console.debug(a);
-            });
-
-        },
-
         getAllCategories: function( cb ){
 
             $.ajax({

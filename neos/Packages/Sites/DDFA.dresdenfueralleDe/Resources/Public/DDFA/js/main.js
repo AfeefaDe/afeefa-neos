@@ -39,6 +39,7 @@ require([
 	'LanguageManager',
 	'Views/View',
 	'Views/MapView',
+	'Views/SearchView',
 	'Views/DetailView',
 	'Views/MenuView',
 	'Views/LegendView',

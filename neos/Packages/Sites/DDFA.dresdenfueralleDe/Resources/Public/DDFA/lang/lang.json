@@ -168,6 +168,18 @@
                   "ti":"ወፈያ",
                   "ur":"عطیہ"
             },
+                  "cat_collection-point":{
+                        "de":"Annahmestelle",
+                        "en":"collection point",
+                        "ar":"",
+                        "fa":"",
+                        "fr":"",
+                        "it":"",
+                        "ru":"",
+                        "sr":"",
+                        "ti":"",
+                        "ur":""
+                  },
             "cat_community":{
                   "de":"Gemeinschaft",
                   "en":"community",
@@ -180,6 +192,54 @@
                   "ti":"ማሕባር",
                   "ur":"کمیونٹی"
             },
+                  "cat_network":{
+                        "de":"Netzwerk",
+                        "en":"network",
+                        "ar":"",
+                        "fa":"",
+                        "fr":"",
+                        "it":"",
+                        "ru":"",
+                        "sr":"",
+                        "ti":"",
+                        "ur":""
+                  },
+                  "cat_meeting-place":{
+                        "de":"Treffpunkt",
+                        "en":"meeting place",
+                        "ar":"",
+                        "fa":"",
+                        "fr":"",
+                        "it":"",
+                        "ru":"",
+                        "sr":"",
+                        "ti":"",
+                        "ur":""
+                  },
+                  "cat_welcome-festival":{
+                        "de":"Willkommensfest",
+                        "en":"welcome festival",
+                        "ar":"",
+                        "fa":"",
+                        "fr":"",
+                        "it":"",
+                        "ru":"",
+                        "sr":"",
+                        "ti":"",
+                        "ur":""
+                  },
+                  "cat_workshop-room":{
+                        "de":"Werkstattraum",
+                        "en":"workshop room",
+                        "ar":"",
+                        "fa":"",
+                        "fr":"",
+                        "it":"",
+                        "ru":"",
+                        "sr":"",
+                        "ti":"",
+                        "ur":""
+                  },
             "cat_trafficStop":{
                   "de":"Haltestelle",
                   "en":"traffic stop",

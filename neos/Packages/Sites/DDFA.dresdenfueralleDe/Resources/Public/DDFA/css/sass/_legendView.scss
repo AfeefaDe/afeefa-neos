@@ -1,6 +1,6 @@
 #legendView {
 	
-	@include transition(all 100ms);
+	@include transition(all 150ms);
 
 	position: absolute;
 	right: -11.9em;
@@ -15,7 +15,10 @@
 
 	.filter-module {
 
+		text-align: center;
+
 		h3 {
+			text-align: left;
 			font-weight: normal;
 			text-transform: uppercase;
 			color: $gray50;
@@ -28,13 +31,29 @@
 	.container {
 		margin-bottom: 1em;
 		color: $white;
+
+		&.extended {
+			.cat-container .nippus {
+				@include transform(rotate(180deg));
+			}
+
+			.sub-container {
+				max-height: 300px; /* the height is not real, just a work around to make the transition working, because it needs a specific value */
+			}
+		}
+
+		.button {
+
+		}
 	}
+
 	.cat-container {
 
 		position: relative;
 		width: 100%;
 		height: 2.5em;
 		line-height: 2.5em;
+		cursor: pointer;
 		
 		@include categoryColors($alpha_background: .4);
 		border-left: .5rem solid;
@@ -48,7 +67,7 @@
 			width: 2.5em;
 			height: 2.5em;
 			
-			@include transition(all 250ms);
+			@include transition(all 150ms);
 		}
 
 		p {
@@ -59,10 +78,29 @@
 			text-transform: uppercase;
 			font-weight: 300;
 			text-overflow: ellipsis;
-			width: calc(100% - 3.5em );
+			width: calc(100% - 6em);
+			text-align: left;
 			overflow: hidden;
 			white-space: nowrap;
+		}
+
+		.nippus {
+			position: absolute;
+			top: 0;
+			right: 0;
+			width: 2.5em;
+			height: 2.5em;
+			background-repeat: no-repeat;
+			background-position: center center;
+			background-image: url("../img/icon_84.svg");
+			@include background-size(30%);
 			cursor: pointer;
+			@include transition(transform 100ms);
+			opacity: .8;
+
+			&:hover {
+				opacity: 1;
+			}
 		}
 
 		&.filter-reset {
@@ -84,35 +122,50 @@
 
 	}
 
-	.subcat-container {
+	.sub-container {
 		@include transition(max-height 250ms);
-		
 		@include categoryColors($alpha_background: .1);
-		border-left: .5rem solid;
-
+		
 		max-height: 0;
 		overflow: hidden;
 
+		.subcat-container {
+			@include categoryColors();
+			background: none !important;
+			border-left: .5rem solid;
+			
+			.icon {
+				
+				@include categorySymbols;
+				@include background-size(50%);
+				
+				float: left;			
+				width: 2.5em;
+				height: 2.5em;
+				margin-left: .5em;
+				cursor: pointer;
+			}
 
-		.icon {
-			
-			@include categorySymbols;
-			@include background-size(50%);
-			
-			background-image: url("../img/cat-08.svg");
-			
-			float: left;			
-			width: 2.5em;
-			height: 2.5em;
-			margin-left: .5em;
+			p {
+				margin: 0 0 0 3.5em;
+				text-overflow: ellipsis;
+				height: 2.5em;
+				line-height: 2.5em;
+				text-align: left;
+				cursor: pointer;
+			}
+
+			&.inactive {
+				opacity: .3;
+			}
+
+			&:hover {
+				opacity: 1 !important;
+				
+				p { @include text-shadow( 0px 0px 2px rgba(255, 255, 255, 1) ); }
+			}
 		}
 
-		p {
-			margin: 0 0 0 3.5em;
-			text-overflow: ellipsis;
-		    height: 2.5em;
-    		line-height: 2.5em;
-		}
 	}
 
 	&.filter-active {
@@ -128,10 +181,6 @@
 			h3 { visibility: visible; }
 		}
 		.cat-container .icon { margin-left: .5em; }
-
-		.subcat-container {
-			max-height: 300px; /* the height is not real, just a work around to make the transition working, because it needs a specific value */
-		}
 
 	}
 

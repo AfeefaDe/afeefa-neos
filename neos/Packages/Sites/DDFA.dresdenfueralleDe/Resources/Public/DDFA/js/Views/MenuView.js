@@ -19,17 +19,6 @@ qx.Class.define("MenuView", {
             that.view.attr('id', that.getViewId());
             $('#main-container').append(that.view);
 
-            // menu button
-            that.menuBtn = $("<div />");
-            that.menuBtn.addClass('menu-btn');
-            // bootstrap tooltip
-            that.menuBtn.attr({
-                'data-toggle': 'tooltip',
-                'data-placement': "bottom",
-                'title': that.getWording('menu_menu')
-            });
-            that.view.append(that.menuBtn);
-
             // menu
             that.menu  = $("<div />");
             that.menu.attr('id', 'main-menu');
@@ -112,11 +101,6 @@ qx.Class.define("MenuView", {
             // call superclass
             this.base(arguments);
             
-            that.menuBtn.click(function(){
-                that.load();    
-                that.say('mainMenuOpened');
-            });
-            
             that.refugeeBtn.click(function(){
                 that.close();
                 APP.getIncludeView().load( APP.getIncludeView().getIncludes().refugeeGuide );
@@ -144,6 +128,10 @@ qx.Class.define("MenuView", {
 
             that.listen('curtainclicked', function(){
                 that.close();
+            });
+
+            that.listen('mainMenuBtnClicked', function(){
+                that.load();
             });
 
             // interferring with other left shifting menus
@@ -188,12 +176,6 @@ qx.Class.define("MenuView", {
             that.imprintBtnLabel.append( that.getWording('menu_imprint') );
             that.facebookBtnLabel.append( that.getWording('menu_facebook') );
 
-            // bootstrap tooltip
-            that.menuBtn.attr({
-                'title': that.getWording('menu_menu'),
-                'data-original-title': that.getWording('menu_menu')
-            });
-
         },
 
         reset: function(){
@@ -216,12 +198,6 @@ qx.Class.define("MenuView", {
 
         changeLanguage: function(){
             var that = this;
-
-            // bootstrap tooltip
-            that.menuBtn.attr({
-                'title': that.getWording('menu_menu'),
-                'data-original-title': that.getWording('menu_menu')
-            });
         }
     }
 

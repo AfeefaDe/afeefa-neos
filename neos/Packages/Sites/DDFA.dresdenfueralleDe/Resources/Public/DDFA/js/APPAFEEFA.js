@@ -29,18 +29,18 @@ qx.Class.define("APPAFEEFA", {
                         name: 'medic',
                         id: '2',
                         sub: [
-                            { name: 'a', id: '2-1' },
-                            { name: 'b', id: '2-2' },
-                            { name: 'c', id: '2-3' }
+                            { name: '2a', id: '2-1' },
+                            { name: '2b', id: '2-2' },
+                            { name: '2c', id: '2-3' }
                         ]
                     },
                     {
                         name: 'jobs',
                         id: '3',
                         sub: [
-                            { name: 'a', id: '3-1' },
-                            { name: 'b', id: '3-2' },
-                            { name: 'c', id: '3-3' }
+                            { name: '3a', id: '3-1' },
+                            { name: '3b', id: '3-2' },
+                            { name: '3c', id: '3-3' }
                         ]
 
                     },
@@ -48,18 +48,18 @@ qx.Class.define("APPAFEEFA", {
                         name: 'consultation',
                         id: '4',
                         sub: [
-                            { name: 'a', id: '4-1' },
-                            { name: 'b', id: '4-2' },
-                            { name: 'c', id: '4-3' }
+                            { name: '4a', id: '4-1' },
+                            { name: '4b', id: '4-2' },
+                            { name: '4c', id: '4-3' }
                         ]
                     },
                     {
                         name: 'leisure',
                         id: '5',
                         sub: [
-                            { name: 'a', id: '5-1' },
-                            { name: 'b', id: '5-2' },
-                            { name: 'c', id: '5-3' }
+                            { name: '5a', id: '5-1' },
+                            { name: '5b', id: '5-2' },
+                            { name: '5c', id: '5-3' }
                         ]
                     },
                     {
@@ -76,9 +76,7 @@ qx.Class.define("APPAFEEFA", {
                         name: 'donation',
                         id: '7',
                         sub: [
-                            { name: 'a', id: '7-1' },
-                            { name: 'b', id: '7-2' },
-                            { name: 'c', id: '7-3' }
+                            { name: 'collection-point', id: '7-1' }
                         ]
                     }
                 ],
@@ -98,6 +96,7 @@ qx.Class.define("APPAFEEFA", {
         LM: {},
         data: {},
         mapView: {},
+        searchView: {},
         detailView: {},
         menuView: {},
         legendView: {},

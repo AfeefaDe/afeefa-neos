@@ -1250,6 +1250,30 @@ textarea {
   }
 }
 /* line 34, sass/_afeefa-styles.scss */
+.button {
+  background-color: rgba(0, 0, 0, 0.8);
+  -moz-border-radius: 0.2em;
+  -webkit-border-radius: 0.2em;
+  border-radius: 0.2em;
+  color: #999999;
+  -moz-box-shadow: 0px 0px 2px #000;
+  -webkit-box-shadow: 0px 0px 2px #000;
+  box-shadow: 0px 0px 2px #000;
+  text-align: center;
+  padding: .8em;
+  cursor: pointer;
+  display: inline-block;
+}
+/* line 44, sass/_afeefa-styles.scss */
+.button:hover {
+  color: #f2f2f2;
+}
+/* line 48, sass/_afeefa-styles.scss */
+.button p {
+  margin: 0;
+}
+
+/* line 53, sass/_afeefa-styles.scss */
 body {
   margin: 0;
   padding: 0;
@@ -1262,31 +1286,31 @@ body {
   background-color: #333333;
 }
 
-/* line 52, sass/_afeefa-styles.scss */
+/* line 71, sass/_afeefa-styles.scss */
 a:link, a:visited, #includeView .content span.locationLink:visited, a:hover, #includeView .content span.locationLink:hover, a:active, #includeView .content span.locationLink:active, #includeView .content span.locationLink:link {
   color: #333;
   text-decoration: underline;
 }
 
-/* line 61, sass/_afeefa-styles.scss */
+/* line 80, sass/_afeefa-styles.scss */
 b,
 strong {
   font-weight: 400;
 }
 
-/* line 66, sass/_afeefa-styles.scss */
+/* line 85, sass/_afeefa-styles.scss */
 .hidden {
   display: none;
 }
 
 /* SCROLLBARS with perfect-scrollbar.js */
-/* line 69, sass/_afeefa-styles.scss */
+/* line 88, sass/_afeefa-styles.scss */
 .ps-container > .ps-scrollbar-y-rail,
 .ps-container > .ps-scrollbar-y-rail > .ps-scrollbar-y {
-  width: 3px !important;
+  width: 6px !important;
 }
 
-/* line 74, sass/_afeefa-styles.scss */
+/* line 93, sass/_afeefa-styles.scss */
 #main-container {
   -moz-transition: left 250ms;
   -o-transition: left 250ms;
@@ -1311,12 +1335,12 @@ strong {
   /* general styles for view container */
   /* map curtain */
 }
-/* line 95, sass/_afeefa-styles.scss */
+/* line 114, sass/_afeefa-styles.scss */
 #main-container .view-container.loading {
   -webkit-filter: grayscale(1);
   filter: grayscale(1);
 }
-/* line 97, sass/_afeefa-styles.scss */
+/* line 116, sass/_afeefa-styles.scss */
 #main-container .view-container.loading .loading-curtain {
   width: 100%;
   height: 100%;
@@ -1329,7 +1353,7 @@ strong {
   top: 0;
   left: 0;
 }
-/* line 117, sass/_afeefa-styles.scss */
+/* line 136, sass/_afeefa-styles.scss */
 #main-container #map-curtain {
   -moz-transition: all 250ms;
   -o-transition: all 250ms;
@@ -1343,36 +1367,36 @@ strong {
   opacity: 0;
   z-index: 9999;
 }
-/* line 127, sass/_afeefa-styles.scss */
+/* line 146, sass/_afeefa-styles.scss */
 #main-container #map-curtain.active {
   visibility: visible;
   opacity: 0.6;
 }
-/* line 132, sass/_afeefa-styles.scss */
+/* line 151, sass/_afeefa-styles.scss */
 #main-container.shifted {
   left: 15em;
   /*#lang-menu { display: none; }*/
 }
-/* line 135, sass/_afeefa-styles.scss */
+/* line 154, sass/_afeefa-styles.scss */
 #main-container.shifted #map-curtain {
   visibility: visible;
   opacity: 0.6;
 }
-/* line 139, sass/_afeefa-styles.scss */
+/* line 158, sass/_afeefa-styles.scss */
 #main-container.shifted #menuView {
   z-index: 999;
 }
-/* line 143, sass/_afeefa-styles.scss */
+/* line 162, sass/_afeefa-styles.scss */
 #main-container.shifted-small {
   left: 4em;
   /*#main-menu { display: none; }*/
 }
-/* line 146, sass/_afeefa-styles.scss */
+/* line 165, sass/_afeefa-styles.scss */
 #main-container.shifted-small #map-curtain {
   visibility: visible;
   opacity: 0.6;
 }
-/* line 150, sass/_afeefa-styles.scss */
+/* line 169, sass/_afeefa-styles.scss */
 #main-container.shifted-small #languageViewMobile {
   z-index: 999;
 }
@@ -1475,59 +1499,77 @@ strong {
 }
 /* line 76, sass/_infoVisSystem.scss */
 #mapView div.location.cat-language {
-  background-image: url("../img/cat-06.svg");
+  background-image: url("../img/icon_06.svg");
 }
-/* line 80, sass/_infoVisSystem.scss */
+/* line 77, sass/_infoVisSystem.scss */
 #mapView div.location.cat-medic {
-  background-image: url("../img/cat-04.svg");
+  background-image: url("../img/icon_04.svg");
 }
-/* line 84, sass/_infoVisSystem.scss */
+/* line 78, sass/_infoVisSystem.scss */
 #mapView div.location.cat-jobs {
   background-image: url("../img/icon_76.svg");
 }
-/* line 88, sass/_infoVisSystem.scss */
+/* line 79, sass/_infoVisSystem.scss */
 #mapView div.location.cat-consultation {
-  background-image: url("../img/cat-10.svg");
+  background-image: url("../img/icon_10.svg");
 }
-/* line 92, sass/_infoVisSystem.scss */
+/* line 80, sass/_infoVisSystem.scss */
 #mapView div.location.cat-leisure {
-  background-image: url("../img/cat-08.svg");
+  background-image: url("../img/icon_86.svg");
 }
-/* line 96, sass/_infoVisSystem.scss */
+/* line 81, sass/_infoVisSystem.scss */
 #mapView div.location.cat-community {
-  background-image: url("../img/cat-02.svg");
+  background-image: url("../img/icon_02.svg");
   -moz-background-size: 85%;
   -o-background-size: 85%;
   -webkit-background-size: 85%;
   background-size: 85%;
 }
-/* line 98, sass/_infoVisSystem.scss */
+/* line 82, sass/_infoVisSystem.scss */
 #mapView div.location.cat-donation {
-  background-image: url("../img/cat-12.svg");
+  background-image: url("../img/icon_12.svg");
 }
-/* line 106, sass/_infoVisSystem.scss */
+/* line 86, sass/_infoVisSystem.scss */
+#mapView div.location.subcat-german-course {
+  background-image: url("../img/icon_18.svg");
+}
+/* line 87, sass/_infoVisSystem.scss */
+#mapView div.location.subcat-network {
+  background-image: url("../img/icon_64.svg");
+}
+/* line 88, sass/_infoVisSystem.scss */
+#mapView div.location.subcat-meeting-place {
+  background-image: url("../img/icon_78.svg");
+}
+/* line 89, sass/_infoVisSystem.scss */
+#mapView div.location.subcat-welcome-festival {
+  background-image: url("../img/icon_82.svg");
+}
+/* line 90, sass/_infoVisSystem.scss */
+#mapView div.location.subcat-workshop-room {
+  background-image: url("../img/icon_80.svg");
+}
+/* line 95, sass/_infoVisSystem.scss */
 #mapView div.location.cat-housing {
-  /*border: 1px solid $white;*/
-  background-image: url("../img/cat-19.svg");
-  /*background-color: rgba(0,0,0,0) !important;*/
+  background-image: url("../img/icon_19.svg");
 }
-/* line 111, sass/_infoVisSystem.scss */
+/* line 98, sass/_infoVisSystem.scss */
 #mapView div.location.cat-christian {
   background-image: url("../img/icon_59.svg");
 }
-/* line 112, sass/_infoVisSystem.scss */
+/* line 99, sass/_infoVisSystem.scss */
 #mapView div.location.cat-hospital {
-  background-image: url("../img/cat-03.svg");
+  background-image: url("../img/icon_03.svg");
 }
-/* line 113, sass/_infoVisSystem.scss */
+/* line 100, sass/_infoVisSystem.scss */
 #mapView div.location.cat-islam {
   background-image: url("../img/icon_61.svg");
 }
-/* line 114, sass/_infoVisSystem.scss */
+/* line 101, sass/_infoVisSystem.scss */
 #mapView div.location.cat-jewish {
-  background-image: url("../img/cat-21.svg");
+  background-image: url("../img/icon_21.svg");
 }
-/* line 115, sass/_infoVisSystem.scss */
+/* line 102, sass/_infoVisSystem.scss */
 #mapView div.location.cat-shop {
   background-image: url("../img/icon_65.svg");
   -moz-background-size: 65%;
@@ -1535,7 +1577,7 @@ strong {
   -webkit-background-size: 65%;
   background-size: 65%;
 }
-/* line 116, sass/_infoVisSystem.scss */
+/* line 103, sass/_infoVisSystem.scss */
 #mapView div.location.cat-public {
   background-image: url("../img/icon_63.svg");
   -moz-background-size: 80%;
@@ -1543,22 +1585,22 @@ strong {
   -webkit-background-size: 80%;
   background-size: 80%;
 }
-/* line 117, sass/_infoVisSystem.scss */
+/* line 104, sass/_infoVisSystem.scss */
 #mapView div.location.cat-library {
-  background-image: url("../img/cat-17.svg");
+  background-image: url("../img/icon_17.svg");
   -moz-background-size: 80%;
   -o-background-size: 80%;
   -webkit-background-size: 80%;
   background-size: 80%;
 }
-/* line 118, sass/_infoVisSystem.scss */
+/* line 105, sass/_infoVisSystem.scss */
 #mapView div.location.cat-trafficStop {
   background-image: url("../img/icon_57.svg");
   background-color: #fdc400;
 }
-/* line 120, sass/_infoVisSystem.scss */
+/* line 107, sass/_infoVisSystem.scss */
 #mapView div.location.cat-other {
-  background-image: url("../img/icon-32.svg");
+  background-image: url("../img/icon_32.svg");
   -moz-background-size: 50%;
   -o-background-size: 50%;
   -webkit-background-size: 50%;
@@ -1667,6 +1709,86 @@ body.phone #mapView #locate-btn {
   height: 4em;
   right: 2em;
   bottom: 2em;
+}
+
+/* line 1, sass/_searchView.scss */
+#searchView {
+  position: absolute;
+  top: 2em;
+  left: 3em;
+  width: 23em;
+}
+/* line 11, sass/_searchView.scss */
+#searchView #search-bar {
+  position: relative;
+  width: 100%;
+  height: 2.5em;
+  background-color: rgba(0, 0, 0, 0.8);
+  -moz-border-radius: 0.2em;
+  -webkit-border-radius: 0.2em;
+  border-radius: 0.2em;
+  -moz-box-shadow: 0px 0px 2px #000;
+  -webkit-box-shadow: 0px 0px 2px #000;
+  box-shadow: 0px 0px 2px #000;
+}
+/* line 19, sass/_searchView.scss */
+#searchView #search-bar .menu-btn {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3em;
+  height: 2.5em;
+  background-image: url("../img/icon_38.svg");
+  -moz-background-size: 40%;
+  -o-background-size: 40%;
+  -webkit-background-size: 40%;
+  background-size: 40%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  cursor: pointer;
+  opacity: .5;
+}
+/* line 32, sass/_searchView.scss */
+#searchView #search-bar .menu-btn:hover {
+  opacity: 1;
+}
+/* line 37, sass/_searchView.scss */
+#searchView #search-bar input {
+  position: absolute;
+  top: 0;
+  left: 3em;
+  width: calc(100% - 3em - 5em);
+  height: 2.5em;
+  line-height: 2.5em;
+  color: #999999;
+  background: none;
+  border: none;
+}
+/* line 48, sass/_searchView.scss */
+#searchView #search-bar input:focus {
+  color: #f2f2f2;
+}
+/* line 54, sass/_searchView.scss */
+#searchView #results {
+  position: relative;
+  width: 100%;
+  max-height: calc(100vh - 10em);
+  background-color: rgba(0, 0, 0, 0.8);
+  -moz-border-radius: 0.2em;
+  -webkit-border-radius: 0.2em;
+  border-radius: 0.2em;
+  -moz-box-shadow: 0px 0px 2px #000;
+  -webkit-box-shadow: 0px 0px 2px #000;
+  box-shadow: 0px 0px 2px #000;
+}
+/* line 62, sass/_searchView.scss */
+#searchView #results .result {
+  color: #f2f2f2;
+  padding: .5em;
+}
+/* line 67, sass/_searchView.scss */
+#searchView #results.minimized {
+  height: 2em;
 }
 
 /* line 123, sass/_detailView.scss */
@@ -1889,59 +2011,77 @@ body.phone #mapView #locate-btn {
 }
 /* line 76, sass/_infoVisSystem.scss */
 #detailView .property.category .property-icon.cat-language {
-  background-image: url("../img/cat-06.svg");
+  background-image: url("../img/icon_06.svg");
 }
-/* line 80, sass/_infoVisSystem.scss */
+/* line 77, sass/_infoVisSystem.scss */
 #detailView .property.category .property-icon.cat-medic {
-  background-image: url("../img/cat-04.svg");
+  background-image: url("../img/icon_04.svg");
 }
-/* line 84, sass/_infoVisSystem.scss */
+/* line 78, sass/_infoVisSystem.scss */
 #detailView .property.category .property-icon.cat-jobs {
   background-image: url("../img/icon_76.svg");
 }
-/* line 88, sass/_infoVisSystem.scss */
+/* line 79, sass/_infoVisSystem.scss */
 #detailView .property.category .property-icon.cat-consultation {
-  background-image: url("../img/cat-10.svg");
+  background-image: url("../img/icon_10.svg");
 }
-/* line 92, sass/_infoVisSystem.scss */
+/* line 80, sass/_infoVisSystem.scss */
 #detailView .property.category .property-icon.cat-leisure {
-  background-image: url("../img/cat-08.svg");
+  background-image: url("../img/icon_86.svg");
 }
-/* line 96, sass/_infoVisSystem.scss */
+/* line 81, sass/_infoVisSystem.scss */
 #detailView .property.category .property-icon.cat-community {
-  background-image: url("../img/cat-02.svg");
+  background-image: url("../img/icon_02.svg");
   -moz-background-size: 85%;
   -o-background-size: 85%;
   -webkit-background-size: 85%;
   background-size: 85%;
 }
-/* line 98, sass/_infoVisSystem.scss */
+/* line 82, sass/_infoVisSystem.scss */
 #detailView .property.category .property-icon.cat-donation {
-  background-image: url("../img/cat-12.svg");
+  background-image: url("../img/icon_12.svg");
 }
-/* line 106, sass/_infoVisSystem.scss */
+/* line 86, sass/_infoVisSystem.scss */
+#detailView .property.category .property-icon.subcat-german-course {
+  background-image: url("../img/icon_18.svg");
+}
+/* line 87, sass/_infoVisSystem.scss */
+#detailView .property.category .property-icon.subcat-network {
+  background-image: url("../img/icon_64.svg");
+}
+/* line 88, sass/_infoVisSystem.scss */
+#detailView .property.category .property-icon.subcat-meeting-place {
+  background-image: url("../img/icon_78.svg");
+}
+/* line 89, sass/_infoVisSystem.scss */
+#detailView .property.category .property-icon.subcat-welcome-festival {
+  background-image: url("../img/icon_82.svg");
+}
+/* line 90, sass/_infoVisSystem.scss */
+#detailView .property.category .property-icon.subcat-workshop-room {
+  background-image: url("../img/icon_80.svg");
+}
+/* line 95, sass/_infoVisSystem.scss */
 #detailView .property.category .property-icon.cat-housing {
-  /*border: 1px solid $white;*/
-  background-image: url("../img/cat-19.svg");
-  /*background-color: rgba(0,0,0,0) !important;*/
+  background-image: url("../img/icon_19.svg");
 }
-/* line 111, sass/_infoVisSystem.scss */
+/* line 98, sass/_infoVisSystem.scss */
 #detailView .property.category .property-icon.cat-christian {
   background-image: url("../img/icon_59.svg");
 }
-/* line 112, sass/_infoVisSystem.scss */
+/* line 99, sass/_infoVisSystem.scss */
 #detailView .property.category .property-icon.cat-hospital {
-  background-image: url("../img/cat-03.svg");
+  background-image: url("../img/icon_03.svg");
 }
-/* line 113, sass/_infoVisSystem.scss */
+/* line 100, sass/_infoVisSystem.scss */
 #detailView .property.category .property-icon.cat-islam {
   background-image: url("../img/icon_61.svg");
 }
-/* line 114, sass/_infoVisSystem.scss */
+/* line 101, sass/_infoVisSystem.scss */
 #detailView .property.category .property-icon.cat-jewish {
-  background-image: url("../img/cat-21.svg");
+  background-image: url("../img/icon_21.svg");
 }
-/* line 115, sass/_infoVisSystem.scss */
+/* line 102, sass/_infoVisSystem.scss */
 #detailView .property.category .property-icon.cat-shop {
   background-image: url("../img/icon_65.svg");
   -moz-background-size: 65%;
@@ -1949,7 +2089,7 @@ body.phone #mapView #locate-btn {
   -webkit-background-size: 65%;
   background-size: 65%;
 }
-/* line 116, sass/_infoVisSystem.scss */
+/* line 103, sass/_infoVisSystem.scss */
 #detailView .property.category .property-icon.cat-public {
   background-image: url("../img/icon_63.svg");
   -moz-background-size: 80%;
@@ -1957,22 +2097,22 @@ body.phone #mapView #locate-btn {
   -webkit-background-size: 80%;
   background-size: 80%;
 }
-/* line 117, sass/_infoVisSystem.scss */
+/* line 104, sass/_infoVisSystem.scss */
 #detailView .property.category .property-icon.cat-library {
-  background-image: url("../img/cat-17.svg");
+  background-image: url("../img/icon_17.svg");
   -moz-background-size: 80%;
   -o-background-size: 80%;
   -webkit-background-size: 80%;
   background-size: 80%;
 }
-/* line 118, sass/_infoVisSystem.scss */
+/* line 105, sass/_infoVisSystem.scss */
 #detailView .property.category .property-icon.cat-trafficStop {
   background-image: url("../img/icon_57.svg");
   background-color: #fdc400;
 }
-/* line 120, sass/_infoVisSystem.scss */
+/* line 107, sass/_infoVisSystem.scss */
 #detailView .property.category .property-icon.cat-other {
-  background-image: url("../img/icon-32.svg");
+  background-image: url("../img/icon_32.svg");
   -moz-background-size: 50%;
   -o-background-size: 50%;
   -webkit-background-size: 50%;
@@ -1994,39 +2134,39 @@ body.phone #mapView #locate-btn {
 }
 /* line 75, sass/_detailView.scss */
 #detailView .property .property-icon.icon-location {
-  background-image: url("../img/icon-35.svg");
+  background-image: url("../img/icon_35.svg");
 }
 /* line 76, sass/_detailView.scss */
 #detailView .property .property-icon.icon-phone {
-  background-image: url("../img/icon-23.svg");
+  background-image: url("../img/icon_23.svg");
 }
 /* line 77, sass/_detailView.scss */
 #detailView .property .property-icon.icon-mail {
-  background-image: url("../img/icon-25.svg");
+  background-image: url("../img/icon_25.svg");
 }
 /* line 78, sass/_detailView.scss */
 #detailView .property .property-icon.icon-web {
-  background-image: url("../img/icon-27.svg");
+  background-image: url("../img/icon_27.svg");
 }
 /* line 79, sass/_detailView.scss */
 #detailView .property .property-icon.icon-openingHours {
-  background-image: url("../img/icon-29.svg");
+  background-image: url("../img/icon_29.svg");
 }
 /* line 80, sass/_detailView.scss */
 #detailView .property .property-icon.icon-description {
-  background-image: url("../img/icon-31.svg");
+  background-image: url("../img/icon_31.svg");
 }
 /* line 81, sass/_detailView.scss */
 #detailView .property .property-icon.icon-facebook {
-  background-image: url("../img/icon-45.svg");
+  background-image: url("../img/icon_45.svg");
 }
 /* line 82, sass/_detailView.scss */
 #detailView .property .property-icon.icon-spokenLanguages {
-  background-image: url("../img/icon-43.svg");
+  background-image: url("../img/icon_43.svg");
 }
 /* line 83, sass/_detailView.scss */
 #detailView .property .property-icon.icon-speakerPublic {
-  background-image: url("../img/icon-41.svg");
+  background-image: url("../img/icon_41.svg");
 }
 /* line 86, sass/_detailView.scss */
 #detailView .property .property-text {
@@ -2274,59 +2414,77 @@ body.phone #mapView #locate-btn {
 }
 /* line 76, sass/_infoVisSystem.scss */
 #detailViewMobile .property.category .property-icon.cat-language {
-  background-image: url("../img/cat-06.svg");
+  background-image: url("../img/icon_06.svg");
 }
-/* line 80, sass/_infoVisSystem.scss */
+/* line 77, sass/_infoVisSystem.scss */
 #detailViewMobile .property.category .property-icon.cat-medic {
-  background-image: url("../img/cat-04.svg");
+  background-image: url("../img/icon_04.svg");
 }
-/* line 84, sass/_infoVisSystem.scss */
+/* line 78, sass/_infoVisSystem.scss */
 #detailViewMobile .property.category .property-icon.cat-jobs {
   background-image: url("../img/icon_76.svg");
 }
-/* line 88, sass/_infoVisSystem.scss */
+/* line 79, sass/_infoVisSystem.scss */
 #detailViewMobile .property.category .property-icon.cat-consultation {
-  background-image: url("../img/cat-10.svg");
+  background-image: url("../img/icon_10.svg");
 }
-/* line 92, sass/_infoVisSystem.scss */
+/* line 80, sass/_infoVisSystem.scss */
 #detailViewMobile .property.category .property-icon.cat-leisure {
-  background-image: url("../img/cat-08.svg");
+  background-image: url("../img/icon_86.svg");
 }
-/* line 96, sass/_infoVisSystem.scss */
+/* line 81, sass/_infoVisSystem.scss */
 #detailViewMobile .property.category .property-icon.cat-community {
-  background-image: url("../img/cat-02.svg");
+  background-image: url("../img/icon_02.svg");
   -moz-background-size: 85%;
   -o-background-size: 85%;
   -webkit-background-size: 85%;
   background-size: 85%;
 }
-/* line 98, sass/_infoVisSystem.scss */
+/* line 82, sass/_infoVisSystem.scss */
 #detailViewMobile .property.category .property-icon.cat-donation {
-  background-image: url("../img/cat-12.svg");
+  background-image: url("../img/icon_12.svg");
 }
-/* line 106, sass/_infoVisSystem.scss */
+/* line 86, sass/_infoVisSystem.scss */
+#detailViewMobile .property.category .property-icon.subcat-german-course {
+  background-image: url("../img/icon_18.svg");
+}
+/* line 87, sass/_infoVisSystem.scss */
+#detailViewMobile .property.category .property-icon.subcat-network {
+  background-image: url("../img/icon_64.svg");
+}
+/* line 88, sass/_infoVisSystem.scss */
+#detailViewMobile .property.category .property-icon.subcat-meeting-place {
+  background-image: url("../img/icon_78.svg");
+}
+/* line 89, sass/_infoVisSystem.scss */
+#detailViewMobile .property.category .property-icon.subcat-welcome-festival {
+  background-image: url("../img/icon_82.svg");
+}
+/* line 90, sass/_infoVisSystem.scss */
+#detailViewMobile .property.category .property-icon.subcat-workshop-room {
+  background-image: url("../img/icon_80.svg");
+}
+/* line 95, sass/_infoVisSystem.scss */
 #detailViewMobile .property.category .property-icon.cat-housing {
-  /*border: 1px solid $white;*/
-  background-image: url("../img/cat-19.svg");
-  /*background-color: rgba(0,0,0,0) !important;*/
+  background-image: url("../img/icon_19.svg");
 }
-/* line 111, sass/_infoVisSystem.scss */
+/* line 98, sass/_infoVisSystem.scss */
 #detailViewMobile .property.category .property-icon.cat-christian {
   background-image: url("../img/icon_59.svg");
 }
-/* line 112, sass/_infoVisSystem.scss */
+/* line 99, sass/_infoVisSystem.scss */
 #detailViewMobile .property.category .property-icon.cat-hospital {
-  background-image: url("../img/cat-03.svg");
+  background-image: url("../img/icon_03.svg");
 }
-/* line 113, sass/_infoVisSystem.scss */
+/* line 100, sass/_infoVisSystem.scss */
 #detailViewMobile .property.category .property-icon.cat-islam {
   background-image: url("../img/icon_61.svg");
 }
-/* line 114, sass/_infoVisSystem.scss */
+/* line 101, sass/_infoVisSystem.scss */
 #detailViewMobile .property.category .property-icon.cat-jewish {
-  background-image: url("../img/cat-21.svg");
+  background-image: url("../img/icon_21.svg");
 }
-/* line 115, sass/_infoVisSystem.scss */
+/* line 102, sass/_infoVisSystem.scss */
 #detailViewMobile .property.category .property-icon.cat-shop {
   background-image: url("../img/icon_65.svg");
   -moz-background-size: 65%;
@@ -2334,7 +2492,7 @@ body.phone #mapView #locate-btn {
   -webkit-background-size: 65%;
   background-size: 65%;
 }
-/* line 116, sass/_infoVisSystem.scss */
+/* line 103, sass/_infoVisSystem.scss */
 #detailViewMobile .property.category .property-icon.cat-public {
   background-image: url("../img/icon_63.svg");
   -moz-background-size: 80%;
@@ -2342,22 +2500,22 @@ body.phone #mapView #locate-btn {
   -webkit-background-size: 80%;
   background-size: 80%;
 }
-/* line 117, sass/_infoVisSystem.scss */
+/* line 104, sass/_infoVisSystem.scss */
 #detailViewMobile .property.category .property-icon.cat-library {
-  background-image: url("../img/cat-17.svg");
+  background-image: url("../img/icon_17.svg");
   -moz-background-size: 80%;
   -o-background-size: 80%;
   -webkit-background-size: 80%;
   background-size: 80%;
 }
-/* line 118, sass/_infoVisSystem.scss */
+/* line 105, sass/_infoVisSystem.scss */
 #detailViewMobile .property.category .property-icon.cat-trafficStop {
   background-image: url("../img/icon_57.svg");
   background-color: #fdc400;
 }
-/* line 120, sass/_infoVisSystem.scss */
+/* line 107, sass/_infoVisSystem.scss */
 #detailViewMobile .property.category .property-icon.cat-other {
-  background-image: url("../img/icon-32.svg");
+  background-image: url("../img/icon_32.svg");
   -moz-background-size: 50%;
   -o-background-size: 50%;
   -webkit-background-size: 50%;
@@ -2379,39 +2537,39 @@ body.phone #mapView #locate-btn {
 }
 /* line 75, sass/_detailView.scss */
 #detailViewMobile .property .property-icon.icon-location {
-  background-image: url("../img/icon-35.svg");
+  background-image: url("../img/icon_35.svg");
 }
 /* line 76, sass/_detailView.scss */
 #detailViewMobile .property .property-icon.icon-phone {
-  background-image: url("../img/icon-23.svg");
+  background-image: url("../img/icon_23.svg");
 }
 /* line 77, sass/_detailView.scss */
 #detailViewMobile .property .property-icon.icon-mail {
-  background-image: url("../img/icon-25.svg");
+  background-image: url("../img/icon_25.svg");
 }
 /* line 78, sass/_detailView.scss */
 #detailViewMobile .property .property-icon.icon-web {
-  background-image: url("../img/icon-27.svg");
+  background-image: url("../img/icon_27.svg");
 }
 /* line 79, sass/_detailView.scss */
 #detailViewMobile .property .property-icon.icon-openingHours {
-  background-image: url("../img/icon-29.svg");
+  background-image: url("../img/icon_29.svg");
 }
 /* line 80, sass/_detailView.scss */
 #detailViewMobile .property .property-icon.icon-description {
-  background-image: url("../img/icon-31.svg");
+  background-image: url("../img/icon_31.svg");
 }
 /* line 81, sass/_detailView.scss */
 #detailViewMobile .property .property-icon.icon-facebook {
-  background-image: url("../img/icon-45.svg");
+  background-image: url("../img/icon_45.svg");
 }
 /* line 82, sass/_detailView.scss */
 #detailViewMobile .property .property-icon.icon-spokenLanguages {
-  background-image: url("../img/icon-43.svg");
+  background-image: url("../img/icon_43.svg");
 }
 /* line 83, sass/_detailView.scss */
 #detailViewMobile .property .property-icon.icon-speakerPublic {
-  background-image: url("../img/icon-41.svg");
+  background-image: url("../img/icon_41.svg");
 }
 /* line 86, sass/_detailView.scss */
 #detailViewMobile .property .property-text {
@@ -2461,53 +2619,21 @@ body.phone #mapView #locate-btn {
   padding: 2em 0;
 }
 /* line 12, sass/_menuView.scss */
-#menuView .menu-btn {
-  position: absolute;
-  right: -6em;
-  top: 2em;
-  width: 3em;
-  height: 3em;
-  -moz-border-radius: 2em;
-  -webkit-border-radius: 2em;
-  border-radius: 2em;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  -moz-box-shadow: 0px 0px 2px #333;
-  -webkit-box-shadow: 0px 0px 2px #333;
-  box-shadow: 0px 0px 2px #333;
-  -moz-background-size: 50%;
-  -o-background-size: 50%;
-  -webkit-background-size: 50%;
-  background-size: 50%;
-  background-position: center center;
-  background-repeat: no-repeat;
-  cursor: pointer;
-  background-color: #0074a6;
-  background-image: url("../img/menu.svg");
-}
-/* line 29, sass/_afeefa-styles.scss */
-#menuView .menu-btn:hover {
-  -moz-box-shadow: 0px 0px 5px #111;
-  -webkit-box-shadow: 0px 0px 5px #111;
-  box-shadow: 0px 0px 5px #111;
-}
-/* line 21, sass/_menuView.scss */
 #menuView a#logo, #menuView #includeView .content span#logo.locationLink, #includeView .content #menuView span#logo.locationLink, #menuView a#dfa-logo, #menuView #includeView .content span#dfa-logo.locationLink, #includeView .content #menuView span#dfa-logo.locationLink {
   width: 50%;
   display: block;
   margin: 0 auto 3em auto;
 }
-/* line 26, sass/_menuView.scss */
+/* line 17, sass/_menuView.scss */
 #menuView a#logo img, #menuView #includeView .content span#logo.locationLink img, #includeView .content #menuView span#logo.locationLink img, #menuView a#dfa-logo img, #menuView #includeView .content span#dfa-logo.locationLink img, #includeView .content #menuView span#dfa-logo.locationLink img {
   width: 100%;
 }
-/* line 29, sass/_menuView.scss */
+/* line 20, sass/_menuView.scss */
 #menuView a#dfa-logo, #menuView #includeView .content span#dfa-logo.locationLink, #includeView .content #menuView span#dfa-logo.locationLink {
   width: 60%;
   margin: 3em auto 0 auto;
 }
-/* line 34, sass/_menuView.scss */
+/* line 25, sass/_menuView.scss */
 #menuView .item {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -2519,18 +2645,18 @@ body.phone #mapView #locate-btn {
   cursor: pointer;
   text-align: right;
 }
-/* line 43, sass/_menuView.scss */
+/* line 34, sass/_menuView.scss */
 #menuView .item:hover {
   background-color: rgba(0, 0, 0, 0.6);
 }
-/* line 45, sass/_menuView.scss */
+/* line 36, sass/_menuView.scss */
 #menuView .item a, #menuView .item #includeView .content span.locationLink, #includeView .content #menuView .item span.locationLink, #menuView .item span {
   line-height: 2em;
   color: #f2f2f2;
   font-weight: 100;
   text-decoration: none;
 }
-/* line 53, sass/_menuView.scss */
+/* line 44, sass/_menuView.scss */
 #menuView .item.refugee-guide, #menuView .item.supporter-guide {
   -moz-background-size: 3.8em;
   -o-background-size: 3.8em;
@@ -2541,55 +2667,55 @@ body.phone #mapView #locate-btn {
   margin-bottom: 2em;
   height: 5em;
 }
-/* line 61, sass/_menuView.scss */
+/* line 52, sass/_menuView.scss */
 #menuView .item.refugee-guide span, #menuView .item.supporter-guide span {
   font-size: 1.3em;
   line-height: 2em;
 }
-/* line 67, sass/_menuView.scss */
+/* line 58, sass/_menuView.scss */
 #menuView .item.refugee-guide {
   background-image: url("../img/icon_54.svg");
 }
-/* line 71, sass/_menuView.scss */
+/* line 62, sass/_menuView.scss */
 #menuView .item.supporter-guide {
   background-image: url("../img/icon_56.svg");
 }
-/* line 75, sass/_menuView.scss */
+/* line 66, sass/_menuView.scss */
 #menuView .item.facebook {
   background-image: url("../img/icon-46.svg");
   background-repeat: no-repeat;
   background-position: 90% center;
 }
-/* line 81, sass/_menuView.scss */
+/* line 72, sass/_menuView.scss */
 #menuView .item.donate {
   background-image: url("../img/icon_72.svg");
   background-repeat: no-repeat;
   background-position: 90% center;
 }
 
-/* line 92, sass/_menuView.scss */
+/* line 83, sass/_menuView.scss */
 body.phone #menuView {
   /*.item.refugee-guide, .item.supporter-guide, .item.help, .item.about {*/
   /*display: none;*/
   /*}*/
 }
-/* line 94, sass/_menuView.scss */
+/* line 85, sass/_menuView.scss */
 body.phone #menuView #main-menu {
   height: 100%;
   overflow-y: auto;
   overflow-x: hidden;
 }
-/* line 100, sass/_menuView.scss */
+/* line 91, sass/_menuView.scss */
 body.phone #menuView .menu-btn {
   right: -5em;
 }
 
 /* line 1, sass/_legendView.scss */
 #legendView {
-  -moz-transition: all 100ms;
-  -o-transition: all 100ms;
-  -webkit-transition: all 100ms;
-  transition: all 100ms;
+  -moz-transition: all 150ms;
+  -o-transition: all 150ms;
+  -webkit-transition: all 150ms;
+  transition: all 150ms;
   position: absolute;
   right: -11.9em;
   top: 0;
@@ -2601,8 +2727,13 @@ body.phone #menuView .menu-btn {
   padding: 2em 0;
   background-color: rgba(0, 0, 0, 0.8);
 }
-/* line 18, sass/_legendView.scss */
+/* line 16, sass/_legendView.scss */
+#legendView .filter-module {
+  text-align: center;
+}
+/* line 20, sass/_legendView.scss */
 #legendView .filter-module h3 {
+  text-align: left;
   font-weight: normal;
   text-transform: uppercase;
   color: #999999;
@@ -2610,17 +2741,30 @@ body.phone #menuView .menu-btn {
   font-size: 0.9em;
   visibility: hidden;
 }
-/* line 28, sass/_legendView.scss */
+/* line 31, sass/_legendView.scss */
 #legendView .container {
   margin-bottom: 1em;
   color: #f2f2f2;
 }
-/* line 32, sass/_legendView.scss */
+/* line 36, sass/_legendView.scss */
+#legendView .container.extended .cat-container .nippus {
+  -moz-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -webkit-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+/* line 40, sass/_legendView.scss */
+#legendView .container.extended .sub-container {
+  max-height: 300px;
+  /* the height is not real, just a work around to make the transition working, because it needs a specific value */
+}
+/* line 50, sass/_legendView.scss */
 #legendView .cat-container {
   position: relative;
   width: 100%;
   height: 2.5em;
   line-height: 2.5em;
+  cursor: pointer;
   /* TODO find a solution to avoid setting the border on elements that dont need that and dont provide a parameter for it */
   /* Main categories */
   border-left: .5rem solid;
@@ -2660,7 +2804,7 @@ body.phone #menuView .menu-btn {
   background-color: rgba(202, 115, 17, 0.4);
   border-color: #ca7311;
 }
-/* line 42, sass/_legendView.scss */
+/* line 61, sass/_legendView.scss */
 #legendView .cat-container .icon {
   -moz-background-size: 72%;
   -o-background-size: 72%;
@@ -2676,66 +2820,84 @@ body.phone #menuView .menu-btn {
   left: 0;
   width: 2.5em;
   height: 2.5em;
-  -moz-transition: all 250ms;
-  -o-transition: all 250ms;
-  -webkit-transition: all 250ms;
-  transition: all 250ms;
+  -moz-transition: all 150ms;
+  -o-transition: all 150ms;
+  -webkit-transition: all 150ms;
+  transition: all 150ms;
 }
 /* line 76, sass/_infoVisSystem.scss */
 #legendView .cat-container .icon.cat-language {
-  background-image: url("../img/cat-06.svg");
+  background-image: url("../img/icon_06.svg");
 }
-/* line 80, sass/_infoVisSystem.scss */
+/* line 77, sass/_infoVisSystem.scss */
 #legendView .cat-container .icon.cat-medic {
-  background-image: url("../img/cat-04.svg");
+  background-image: url("../img/icon_04.svg");
 }
-/* line 84, sass/_infoVisSystem.scss */
+/* line 78, sass/_infoVisSystem.scss */
 #legendView .cat-container .icon.cat-jobs {
   background-image: url("../img/icon_76.svg");
 }
-/* line 88, sass/_infoVisSystem.scss */
+/* line 79, sass/_infoVisSystem.scss */
 #legendView .cat-container .icon.cat-consultation {
-  background-image: url("../img/cat-10.svg");
+  background-image: url("../img/icon_10.svg");
 }
-/* line 92, sass/_infoVisSystem.scss */
+/* line 80, sass/_infoVisSystem.scss */
 #legendView .cat-container .icon.cat-leisure {
-  background-image: url("../img/cat-08.svg");
+  background-image: url("../img/icon_86.svg");
 }
-/* line 96, sass/_infoVisSystem.scss */
+/* line 81, sass/_infoVisSystem.scss */
 #legendView .cat-container .icon.cat-community {
-  background-image: url("../img/cat-02.svg");
+  background-image: url("../img/icon_02.svg");
   -moz-background-size: 85%;
   -o-background-size: 85%;
   -webkit-background-size: 85%;
   background-size: 85%;
 }
-/* line 98, sass/_infoVisSystem.scss */
+/* line 82, sass/_infoVisSystem.scss */
 #legendView .cat-container .icon.cat-donation {
-  background-image: url("../img/cat-12.svg");
+  background-image: url("../img/icon_12.svg");
 }
-/* line 106, sass/_infoVisSystem.scss */
+/* line 86, sass/_infoVisSystem.scss */
+#legendView .cat-container .icon.subcat-german-course {
+  background-image: url("../img/icon_18.svg");
+}
+/* line 87, sass/_infoVisSystem.scss */
+#legendView .cat-container .icon.subcat-network {
+  background-image: url("../img/icon_64.svg");
+}
+/* line 88, sass/_infoVisSystem.scss */
+#legendView .cat-container .icon.subcat-meeting-place {
+  background-image: url("../img/icon_78.svg");
+}
+/* line 89, sass/_infoVisSystem.scss */
+#legendView .cat-container .icon.subcat-welcome-festival {
+  background-image: url("../img/icon_82.svg");
+}
+/* line 90, sass/_infoVisSystem.scss */
+#legendView .cat-container .icon.subcat-workshop-room {
+  background-image: url("../img/icon_80.svg");
+}
+/* line 95, sass/_infoVisSystem.scss */
 #legendView .cat-container .icon.cat-housing {
-  /*border: 1px solid $white;*/
-  background-image: url("../img/cat-19.svg");
-  /*background-color: rgba(0,0,0,0) !important;*/
+  background-image: url("../img/icon_19.svg");
 }
-/* line 111, sass/_infoVisSystem.scss */
+/* line 98, sass/_infoVisSystem.scss */
 #legendView .cat-container .icon.cat-christian {
   background-image: url("../img/icon_59.svg");
 }
-/* line 112, sass/_infoVisSystem.scss */
+/* line 99, sass/_infoVisSystem.scss */
 #legendView .cat-container .icon.cat-hospital {
-  background-image: url("../img/cat-03.svg");
+  background-image: url("../img/icon_03.svg");
 }
-/* line 113, sass/_infoVisSystem.scss */
+/* line 100, sass/_infoVisSystem.scss */
 #legendView .cat-container .icon.cat-islam {
   background-image: url("../img/icon_61.svg");
 }
-/* line 114, sass/_infoVisSystem.scss */
+/* line 101, sass/_infoVisSystem.scss */
 #legendView .cat-container .icon.cat-jewish {
-  background-image: url("../img/cat-21.svg");
+  background-image: url("../img/icon_21.svg");
 }
-/* line 115, sass/_infoVisSystem.scss */
+/* line 102, sass/_infoVisSystem.scss */
 #legendView .cat-container .icon.cat-shop {
   background-image: url("../img/icon_65.svg");
   -moz-background-size: 65%;
@@ -2743,7 +2905,7 @@ body.phone #menuView .menu-btn {
   -webkit-background-size: 65%;
   background-size: 65%;
 }
-/* line 116, sass/_infoVisSystem.scss */
+/* line 103, sass/_infoVisSystem.scss */
 #legendView .cat-container .icon.cat-public {
   background-image: url("../img/icon_63.svg");
   -moz-background-size: 80%;
@@ -2751,28 +2913,28 @@ body.phone #menuView .menu-btn {
   -webkit-background-size: 80%;
   background-size: 80%;
 }
-/* line 117, sass/_infoVisSystem.scss */
+/* line 104, sass/_infoVisSystem.scss */
 #legendView .cat-container .icon.cat-library {
-  background-image: url("../img/cat-17.svg");
+  background-image: url("../img/icon_17.svg");
   -moz-background-size: 80%;
   -o-background-size: 80%;
   -webkit-background-size: 80%;
   background-size: 80%;
 }
-/* line 118, sass/_infoVisSystem.scss */
+/* line 105, sass/_infoVisSystem.scss */
 #legendView .cat-container .icon.cat-trafficStop {
   background-image: url("../img/icon_57.svg");
   background-color: #fdc400;
 }
-/* line 120, sass/_infoVisSystem.scss */
+/* line 107, sass/_infoVisSystem.scss */
 #legendView .cat-container .icon.cat-other {
-  background-image: url("../img/icon-32.svg");
+  background-image: url("../img/icon_32.svg");
   -moz-background-size: 50%;
   -o-background-size: 50%;
   -webkit-background-size: 50%;
   background-size: 50%;
 }
-/* line 54, sass/_legendView.scss */
+/* line 73, sass/_legendView.scss */
 #legendView .cat-container p {
   position: absolute;
   top: 0;
@@ -2781,81 +2943,147 @@ body.phone #menuView .menu-btn {
   text-transform: uppercase;
   font-weight: 300;
   text-overflow: ellipsis;
-  width: calc(100% - 3.5em );
+  width: calc(100% - 6em);
+  text-align: left;
   overflow: hidden;
   white-space: nowrap;
-  cursor: pointer;
 }
-/* line 68, sass/_legendView.scss */
+/* line 87, sass/_legendView.scss */
+#legendView .cat-container .nippus {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 2.5em;
+  height: 2.5em;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-image: url("../img/icon_84.svg");
+  -moz-background-size: 30%;
+  -o-background-size: 30%;
+  -webkit-background-size: 30%;
+  background-size: 30%;
+  cursor: pointer;
+  -moz-transition: -moz-transform 100ms;
+  -o-transition: -o-transform 100ms;
+  -webkit-transition: -webkit-transform 100ms;
+  transition: transform 100ms;
+  opacity: .8;
+}
+/* line 101, sass/_legendView.scss */
+#legendView .cat-container .nippus:hover {
+  opacity: 1;
+}
+/* line 106, sass/_legendView.scss */
 #legendView .cat-container.filter-reset {
   display: none;
   opacity: 1 !important;
 }
-/* line 71, sass/_legendView.scss */
+/* line 109, sass/_legendView.scss */
 #legendView .cat-container.filter-reset .icon {
   visibility: hidden;
 }
-/* line 74, sass/_legendView.scss */
+/* line 112, sass/_legendView.scss */
 #legendView .cat-container:hover {
   opacity: 1 !important;
 }
-/* line 77, sass/_legendView.scss */
+/* line 115, sass/_legendView.scss */
 #legendView .cat-container:hover p {
   text-shadow: 0px 0px 2px white;
 }
-/* line 81, sass/_legendView.scss */
+/* line 119, sass/_legendView.scss */
 #legendView .cat-container.inactive {
   opacity: .3;
 }
-/* line 87, sass/_legendView.scss */
-#legendView .subcat-container {
+/* line 125, sass/_legendView.scss */
+#legendView .sub-container {
   -moz-transition: max-height 250ms;
   -o-transition: max-height 250ms;
   -webkit-transition: max-height 250ms;
   transition: max-height 250ms;
   /* TODO find a solution to avoid setting the border on elements that dont need that and dont provide a parameter for it */
   /* Main categories */
-  border-left: .5rem solid;
   max-height: 0;
   overflow: hidden;
 }
 /* line 32, sass/_infoVisSystem.scss */
-#legendView .subcat-container.cat-language {
+#legendView .sub-container.cat-language {
   background-color: rgba(228, 177, 0, 0.1);
   border-color: #e4b100;
 }
 /* line 37, sass/_infoVisSystem.scss */
-#legendView .subcat-container.cat-medic {
+#legendView .sub-container.cat-medic {
   background-color: rgba(162, 28, 21, 0.1);
   border-color: #a21c15;
 }
 /* line 42, sass/_infoVisSystem.scss */
-#legendView .subcat-container.cat-jobs {
+#legendView .sub-container.cat-jobs {
   background-color: rgba(0, 116, 166, 0.1);
   border-color: #0074a6;
 }
 /* line 47, sass/_infoVisSystem.scss */
-#legendView .subcat-container.cat-consultation {
+#legendView .sub-container.cat-consultation {
   background-color: rgba(94, 104, 35, 0.1);
   border-color: #5e6823;
 }
 /* line 52, sass/_infoVisSystem.scss */
-#legendView .subcat-container.cat-leisure {
+#legendView .sub-container.cat-leisure {
   background-color: rgba(142, 194, 191, 0.1);
   border-color: #8ec2bf;
 }
 /* line 57, sass/_infoVisSystem.scss */
-#legendView .subcat-container.cat-community {
+#legendView .sub-container.cat-community {
   background-color: rgba(105, 62, 117, 0.1);
   border-color: #693e75;
 }
 /* line 62, sass/_infoVisSystem.scss */
-#legendView .subcat-container.cat-donation {
+#legendView .sub-container.cat-donation {
   background-color: rgba(202, 115, 17, 0.1);
   border-color: #ca7311;
 }
-/* line 97, sass/_legendView.scss */
-#legendView .subcat-container .icon {
+/* line 132, sass/_legendView.scss */
+#legendView .sub-container .subcat-container {
+  /* TODO find a solution to avoid setting the border on elements that dont need that and dont provide a parameter for it */
+  /* Main categories */
+  background: none !important;
+  border-left: .5rem solid;
+}
+/* line 32, sass/_infoVisSystem.scss */
+#legendView .sub-container .subcat-container.cat-language {
+  background-color: #e4b100;
+  border-color: #e4b100;
+}
+/* line 37, sass/_infoVisSystem.scss */
+#legendView .sub-container .subcat-container.cat-medic {
+  background-color: #a21c15;
+  border-color: #a21c15;
+}
+/* line 42, sass/_infoVisSystem.scss */
+#legendView .sub-container .subcat-container.cat-jobs {
+  background-color: #0074a6;
+  border-color: #0074a6;
+}
+/* line 47, sass/_infoVisSystem.scss */
+#legendView .sub-container .subcat-container.cat-consultation {
+  background-color: #5e6823;
+  border-color: #5e6823;
+}
+/* line 52, sass/_infoVisSystem.scss */
+#legendView .sub-container .subcat-container.cat-leisure {
+  background-color: #8ec2bf;
+  border-color: #8ec2bf;
+}
+/* line 57, sass/_infoVisSystem.scss */
+#legendView .sub-container .subcat-container.cat-community {
+  background-color: #693e75;
+  border-color: #693e75;
+}
+/* line 62, sass/_infoVisSystem.scss */
+#legendView .sub-container .subcat-container.cat-donation {
+  background-color: #ca7311;
+  border-color: #ca7311;
+}
+/* line 137, sass/_legendView.scss */
+#legendView .sub-container .subcat-container .icon {
   -moz-background-size: 72%;
   -o-background-size: 72%;
   -webkit-background-size: 72%;
@@ -2869,130 +3097,157 @@ body.phone #menuView .menu-btn {
   -o-background-size: 50%;
   -webkit-background-size: 50%;
   background-size: 50%;
-  background-image: url("../img/cat-08.svg");
   float: left;
   width: 2.5em;
   height: 2.5em;
   margin-left: .5em;
+  cursor: pointer;
 }
 /* line 76, sass/_infoVisSystem.scss */
-#legendView .subcat-container .icon.cat-language {
-  background-image: url("../img/cat-06.svg");
+#legendView .sub-container .subcat-container .icon.cat-language {
+  background-image: url("../img/icon_06.svg");
 }
-/* line 80, sass/_infoVisSystem.scss */
-#legendView .subcat-container .icon.cat-medic {
-  background-image: url("../img/cat-04.svg");
+/* line 77, sass/_infoVisSystem.scss */
+#legendView .sub-container .subcat-container .icon.cat-medic {
+  background-image: url("../img/icon_04.svg");
 }
-/* line 84, sass/_infoVisSystem.scss */
-#legendView .subcat-container .icon.cat-jobs {
+/* line 78, sass/_infoVisSystem.scss */
+#legendView .sub-container .subcat-container .icon.cat-jobs {
   background-image: url("../img/icon_76.svg");
 }
-/* line 88, sass/_infoVisSystem.scss */
-#legendView .subcat-container .icon.cat-consultation {
-  background-image: url("../img/cat-10.svg");
+/* line 79, sass/_infoVisSystem.scss */
+#legendView .sub-container .subcat-container .icon.cat-consultation {
+  background-image: url("../img/icon_10.svg");
 }
-/* line 92, sass/_infoVisSystem.scss */
-#legendView .subcat-container .icon.cat-leisure {
-  background-image: url("../img/cat-08.svg");
+/* line 80, sass/_infoVisSystem.scss */
+#legendView .sub-container .subcat-container .icon.cat-leisure {
+  background-image: url("../img/icon_86.svg");
 }
-/* line 96, sass/_infoVisSystem.scss */
-#legendView .subcat-container .icon.cat-community {
-  background-image: url("../img/cat-02.svg");
+/* line 81, sass/_infoVisSystem.scss */
+#legendView .sub-container .subcat-container .icon.cat-community {
+  background-image: url("../img/icon_02.svg");
   -moz-background-size: 85%;
   -o-background-size: 85%;
   -webkit-background-size: 85%;
   background-size: 85%;
 }
+/* line 82, sass/_infoVisSystem.scss */
+#legendView .sub-container .subcat-container .icon.cat-donation {
+  background-image: url("../img/icon_12.svg");
+}
+/* line 86, sass/_infoVisSystem.scss */
+#legendView .sub-container .subcat-container .icon.subcat-german-course {
+  background-image: url("../img/icon_18.svg");
+}
+/* line 87, sass/_infoVisSystem.scss */
+#legendView .sub-container .subcat-container .icon.subcat-network {
+  background-image: url("../img/icon_64.svg");
+}
+/* line 88, sass/_infoVisSystem.scss */
+#legendView .sub-container .subcat-container .icon.subcat-meeting-place {
+  background-image: url("../img/icon_78.svg");
+}
+/* line 89, sass/_infoVisSystem.scss */
+#legendView .sub-container .subcat-container .icon.subcat-welcome-festival {
+  background-image: url("../img/icon_82.svg");
+}
+/* line 90, sass/_infoVisSystem.scss */
+#legendView .sub-container .subcat-container .icon.subcat-workshop-room {
+  background-image: url("../img/icon_80.svg");
+}
+/* line 95, sass/_infoVisSystem.scss */
+#legendView .sub-container .subcat-container .icon.cat-housing {
+  background-image: url("../img/icon_19.svg");
+}
 /* line 98, sass/_infoVisSystem.scss */
-#legendView .subcat-container .icon.cat-donation {
-  background-image: url("../img/cat-12.svg");
-}
-/* line 106, sass/_infoVisSystem.scss */
-#legendView .subcat-container .icon.cat-housing {
-  /*border: 1px solid $white;*/
-  background-image: url("../img/cat-19.svg");
-  /*background-color: rgba(0,0,0,0) !important;*/
-}
-/* line 111, sass/_infoVisSystem.scss */
-#legendView .subcat-container .icon.cat-christian {
+#legendView .sub-container .subcat-container .icon.cat-christian {
   background-image: url("../img/icon_59.svg");
 }
-/* line 112, sass/_infoVisSystem.scss */
-#legendView .subcat-container .icon.cat-hospital {
-  background-image: url("../img/cat-03.svg");
+/* line 99, sass/_infoVisSystem.scss */
+#legendView .sub-container .subcat-container .icon.cat-hospital {
+  background-image: url("../img/icon_03.svg");
 }
-/* line 113, sass/_infoVisSystem.scss */
-#legendView .subcat-container .icon.cat-islam {
+/* line 100, sass/_infoVisSystem.scss */
+#legendView .sub-container .subcat-container .icon.cat-islam {
   background-image: url("../img/icon_61.svg");
 }
-/* line 114, sass/_infoVisSystem.scss */
-#legendView .subcat-container .icon.cat-jewish {
-  background-image: url("../img/cat-21.svg");
+/* line 101, sass/_infoVisSystem.scss */
+#legendView .sub-container .subcat-container .icon.cat-jewish {
+  background-image: url("../img/icon_21.svg");
 }
-/* line 115, sass/_infoVisSystem.scss */
-#legendView .subcat-container .icon.cat-shop {
+/* line 102, sass/_infoVisSystem.scss */
+#legendView .sub-container .subcat-container .icon.cat-shop {
   background-image: url("../img/icon_65.svg");
   -moz-background-size: 65%;
   -o-background-size: 65%;
   -webkit-background-size: 65%;
   background-size: 65%;
 }
-/* line 116, sass/_infoVisSystem.scss */
-#legendView .subcat-container .icon.cat-public {
+/* line 103, sass/_infoVisSystem.scss */
+#legendView .sub-container .subcat-container .icon.cat-public {
   background-image: url("../img/icon_63.svg");
   -moz-background-size: 80%;
   -o-background-size: 80%;
   -webkit-background-size: 80%;
   background-size: 80%;
 }
-/* line 117, sass/_infoVisSystem.scss */
-#legendView .subcat-container .icon.cat-library {
-  background-image: url("../img/cat-17.svg");
+/* line 104, sass/_infoVisSystem.scss */
+#legendView .sub-container .subcat-container .icon.cat-library {
+  background-image: url("../img/icon_17.svg");
   -moz-background-size: 80%;
   -o-background-size: 80%;
   -webkit-background-size: 80%;
   background-size: 80%;
 }
-/* line 118, sass/_infoVisSystem.scss */
-#legendView .subcat-container .icon.cat-trafficStop {
+/* line 105, sass/_infoVisSystem.scss */
+#legendView .sub-container .subcat-container .icon.cat-trafficStop {
   background-image: url("../img/icon_57.svg");
   background-color: #fdc400;
 }
-/* line 120, sass/_infoVisSystem.scss */
-#legendView .subcat-container .icon.cat-other {
-  background-image: url("../img/icon-32.svg");
+/* line 107, sass/_infoVisSystem.scss */
+#legendView .sub-container .subcat-container .icon.cat-other {
+  background-image: url("../img/icon_32.svg");
   -moz-background-size: 50%;
   -o-background-size: 50%;
   -webkit-background-size: 50%;
   background-size: 50%;
 }
-/* line 110, sass/_legendView.scss */
-#legendView .subcat-container p {
+/* line 149, sass/_legendView.scss */
+#legendView .sub-container .subcat-container p {
   margin: 0 0 0 3.5em;
   text-overflow: ellipsis;
   height: 2.5em;
   line-height: 2.5em;
+  text-align: left;
+  cursor: pointer;
 }
-/* line 120, sass/_legendView.scss */
+/* line 158, sass/_legendView.scss */
+#legendView .sub-container .subcat-container.inactive {
+  opacity: .3;
+}
+/* line 162, sass/_legendView.scss */
+#legendView .sub-container .subcat-container:hover {
+  opacity: 1 !important;
+}
+/* line 165, sass/_legendView.scss */
+#legendView .sub-container .subcat-container:hover p {
+  text-shadow: 0px 0px 2px white;
+}
+/* line 173, sass/_legendView.scss */
 #legendView.filter-active .cat-container.filter-reset {
   display: block;
 }
-/* line 123, sass/_legendView.scss */
+/* line 176, sass/_legendView.scss */
 #legendView:hover {
   right: 0;
 }
-/* line 128, sass/_legendView.scss */
+/* line 181, sass/_legendView.scss */
 #legendView:hover .filter-module h3 {
   visibility: visible;
 }
-/* line 130, sass/_legendView.scss */
+/* line 183, sass/_legendView.scss */
 #legendView:hover .cat-container .icon {
   margin-left: .5em;
-}
-/* line 132, sass/_legendView.scss */
-#legendView:hover .subcat-container {
-  max-height: 300px;
-  /* the height is not real, just a work around to make the transition working, because it needs a specific value */
 }
 
 /* line 1, sass/_plusView.scss */
@@ -3036,8 +3291,8 @@ body.phone #menuView .menu-btn {
   -moz-border-radius: 2em;
   -webkit-border-radius: 2em;
   border-radius: 2em;
-  background-color: #333333;
-  background-image: url("../img/icon-34.svg");
+  background-color: rgba(0, 0, 0, 0.8);
+  background-image: url("../img/icon_34.svg");
   -moz-background-size: 30%;
   -o-background-size: 30%;
   -webkit-background-size: 30%;
@@ -3071,9 +3326,9 @@ body.phone #plusView {
 /* line 19, sass/_languageView.scss */
 #languageView {
   position: absolute;
-  top: 2em;
+  bottom: 2em;
   direction: ltr;
-  left: 7em;
+  left: 3em;
 }
 /* line 7, sass/_languageView.scss */
 #languageView .btn {
@@ -3176,7 +3431,7 @@ body.phone #plusView {
 /* line 53, sass/_languageView.scss */
 #languageViewMobile {
   position: absolute;
-  top: 2em;
+  bottom: 2em;
   direction: ltr;
   /*position: absolute;*/
   left: -4em;

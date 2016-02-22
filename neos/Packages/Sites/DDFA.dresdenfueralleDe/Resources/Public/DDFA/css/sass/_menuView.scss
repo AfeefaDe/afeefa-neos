@@ -9,15 +9,6 @@
 	height: 100%;
 	padding: 2em 0;
 
-	.menu-btn {
-		position: absolute;
-		right: -6em;
-		top: 2em;
-		@include circleBtn;
-		background-color: $blue_dark;
-		background-image: url("../img/menu.svg");
-	}
-
 	a#logo, a#dfa-logo {
 		width: 50%;
 		display: block;

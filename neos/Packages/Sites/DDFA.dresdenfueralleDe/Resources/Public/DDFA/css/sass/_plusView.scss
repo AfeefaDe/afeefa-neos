@@ -16,8 +16,8 @@
 			height: 3.5em;
 			@include border-radius(2em);
 
-			background-color: $black;
-			background-image: url("../img/icon-34.svg");
+			background-color: $black_alpha;
+			background-image: url("../img/icon_34.svg");
 			@include background-size(30%);
 		}
 

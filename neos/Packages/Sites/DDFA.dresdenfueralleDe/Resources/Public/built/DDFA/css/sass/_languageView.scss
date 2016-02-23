@@ -1,7 +1,7 @@
 @mixin languageViewBasic {
 
 	position: absolute;
-	top: 2em;
+	bottom: 2em;
 	direction: ltr;
 
 	.btn {
@@ -20,7 +20,7 @@
 	
 	@include languageViewBasic;
 
-	left: 7em;
+	left: 3em;
 	
 	.btn {
 		display: none;

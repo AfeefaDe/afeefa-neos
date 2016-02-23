@@ -12,18 +12,54 @@
                   "ti":"ደረጃ",
                   "ur":"زمرے"
             },
-            "cat_consultation":{
-                  "de":"Beratung",
-                  "en":"consultation",
-                  "ar":"استشارة",
-                  "fa":"مشاوره",
-                  "fr":"Être conseillé",
+            "cat_language":{
+                  "de":"Sprache",
+                  "en":"Language",
+                  "ar":"",
+                  "fa":"",
+                  "fr":"",
                   "it":"",
-                  "ru":"Консультация",
-                  "sr":"саветовање",
-                  "ti":"ምኽሪ",
-                  "ur":"مشاورت"
+                  "ru":"",
+                  "sr":"",
+                  "ti":"",
+                  "ur":""
             },
+                  "cat_german-course":{
+                        "de":"Deutschkurs",
+                        "en":"German course",
+                        "ar":"",
+                        "fa":"",
+                        "fr":"",
+                        "it":"",
+                        "ru":"",
+                        "sr":"",
+                        "ti":"",
+                        "ur":""
+                  },
+                  "cat_learning-place":{
+                        "de":"Lernort",
+                        "en":"learning place",
+                        "ar":"",
+                        "fa":"",
+                        "fr":"",
+                        "it":"",
+                        "ru":"",
+                        "sr":"",
+                        "ti":"",
+                        "ur":""
+                  },
+                  "cat_tandem":{
+                        "de":"Tandem",
+                        "en":"tandem",
+                        "ar":"",
+                        "fa":"",
+                        "fr":"",
+                        "it":"",
+                        "ru":"",
+                        "sr":"",
+                        "ti":"",
+                        "ur":""
+                  },
             "cat_medic":{
                   "de":"Medizin",
                   "en":"Healthcare",
@@ -36,9 +72,21 @@
                   "ti":"ሕክምናዊ ኣገልግሎት",
                   "ur":"صحت کی دیکھ بھال"
             },
-            "cat_language":{
-                  "de":"Sprache",
-                  "en":"Language",
+            "cat_consultation":{
+                  "de":"Beratung",
+                  "en":"consultation",
+                  "ar":"استشارة",
+                  "fa":"مشاوره",
+                  "fr":"Être conseillé",
+                  "it":"",
+                  "ru":"Консультация",
+                  "sr":"саветовање",
+                  "ti":"ምኽሪ",
+                  "ur":"مشاورت"
+            },
+            "cat_hospital":{
+                  "de":"Krankenhaus",
+                  "en":"Hospital",
                   "ar":"",
                   "fa":"",
                   "fr":"",
@@ -120,6 +168,18 @@
                   "ti":"ወፈያ",
                   "ur":"عطیہ"
             },
+                  "cat_collection-point":{
+                        "de":"Annahmestelle",
+                        "en":"collection point",
+                        "ar":"",
+                        "fa":"",
+                        "fr":"",
+                        "it":"",
+                        "ru":"",
+                        "sr":"",
+                        "ti":"",
+                        "ur":""
+                  },
             "cat_community":{
                   "de":"Gemeinschaft",
                   "en":"community",
@@ -132,6 +192,54 @@
                   "ti":"ማሕባር",
                   "ur":"کمیونٹی"
             },
+                  "cat_network":{
+                        "de":"Netzwerk",
+                        "en":"network",
+                        "ar":"",
+                        "fa":"",
+                        "fr":"",
+                        "it":"",
+                        "ru":"",
+                        "sr":"",
+                        "ti":"",
+                        "ur":""
+                  },
+                  "cat_meeting-place":{
+                        "de":"Treffpunkt",
+                        "en":"meeting place",
+                        "ar":"",
+                        "fa":"",
+                        "fr":"",
+                        "it":"",
+                        "ru":"",
+                        "sr":"",
+                        "ti":"",
+                        "ur":""
+                  },
+                  "cat_welcome-festival":{
+                        "de":"Willkommensfest",
+                        "en":"welcome festival",
+                        "ar":"",
+                        "fa":"",
+                        "fr":"",
+                        "it":"",
+                        "ru":"",
+                        "sr":"",
+                        "ti":"",
+                        "ur":""
+                  },
+                  "cat_workshop-room":{
+                        "de":"Werkstattraum",
+                        "en":"workshop room",
+                        "ar":"",
+                        "fa":"",
+                        "fr":"",
+                        "it":"",
+                        "ru":"",
+                        "sr":"",
+                        "ti":"",
+                        "ur":""
+                  },
             "cat_trafficStop":{
                   "de":"Haltestelle",
                   "en":"traffic stop",
@@ -626,7 +734,7 @@
                   "ti":"ውልቃዊ ሰነድ",
                   "ur":""
             },
-            "misc_officialEntry":{
+            "entity_orga":{
                   "de":"Organisation/ Initiative/ Projekt",
                   "en":"Organization/ Initiative/ Project",
                   "ar":"منظمة / مشروع",
@@ -638,7 +746,7 @@
                   "ti":"",
                   "ur":"تنظیم / منصوبہ"
             },
-            "misc_privateEntry":{
+            "entity_market":{
                   "de":"Börseneintrag",
                   "en":"Market entry",
                   "ar":"",
@@ -651,6 +759,19 @@
                   "ur":""
             },
             
+            "entity_event":{
+                  "de":"Veranstaltung",
+                  "en":"Event",
+                  "ar":"",
+                  "fa":"",
+                  "fr":"",
+                  "it":"",
+                  "ru":"",
+                  "sr":"",
+                  "ti":"",
+                  "ur":""
+            },
+
             "misc_filterReset":{
                   "de":"Filter deaktivieren",
                   "en":"Reset filter",

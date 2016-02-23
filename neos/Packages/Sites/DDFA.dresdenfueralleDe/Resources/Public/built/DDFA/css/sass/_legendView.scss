@@ -1,68 +1,119 @@
 #legendView {
 	
-	@include transition(all 200ms);
+	@include transition(all 150ms);
 
 	position: absolute;
-	right: -11.5em;
+	right: -11.9em;
 	top: 0;
 	
 	@include box-sizing(border-box);
 	width: 15em;
 	height: 100%;
-	padding: 2em 0.5em;
+	padding: 2em 0;
 
-	background-color: rgba(30,30,30,0.6);
+	background-color: $black_alpha;
 
-	/*border: 1px solid red;*/
+	.filter-module {
+
+		text-align: center;
+
+		h3 {
+			text-align: left;
+			font-weight: normal;
+			text-transform: uppercase;
+			color: $gray50;
+			padding-left: .5rem;
+			font-size: 0.9em;
+			visibility: hidden;
+		}
+	}
 
 	.container {
+		margin-bottom: 1em;
+		color: $white;
+
+		&.extended {
+			.cat-container .nippus {
+				@include transform(rotate(180deg));
+			}
+
+			.sub-container {
+				max-height: 300px; /* the height is not real, just a work around to make the transition working, because it needs a specific value */
+			}
+		}
+
+		.button {
+
+		}
+	}
+
+	.cat-container {
 
 		position: relative;
 		width: 100%;
 		height: 2.5em;
 		line-height: 2.5em;
-		color: $white;
-		margin-bottom: 1em;
-		/*cursor: pointer;*/
+		cursor: pointer;
+		
+		@include categoryColors($alpha_background: .4);
+		border-left: .5rem solid;
 
-		.btn {
+		.icon {
 			
-			@include circleBtn;
-			/*@include categorySymbolsDark;*/
 			@include categorySymbols;
-			/*@include background-size(72%);*/
-			background-image: none !important;
 			position: absolute;
 			top: 0;
 			left: 0;
 			width: 2.5em;
 			height: 2.5em;
-			/*background-color: $white;*/
+			
+			@include transition(all 150ms);
 		}
 
 		p {
 			position: absolute;
 			top: 0;
-			margin: 0;
 			left: 3.5em;
+			margin: 0;
 			text-transform: uppercase;
 			font-weight: 300;
 			text-overflow: ellipsis;
-			width: calc(100% - 3.5em );
+			width: calc(100% - 6em);
+			text-align: left;
 			overflow: hidden;
 			white-space: nowrap;
+		}
+
+		.nippus {
+			position: absolute;
+			top: 0;
+			right: 0;
+			width: 2.5em;
+			height: 2.5em;
+			background-repeat: no-repeat;
+			background-position: center center;
+			background-image: url("../img/icon_84.svg");
+			@include background-size(30%);
 			cursor: pointer;
+			@include transition(transform 100ms);
+			opacity: .8;
+
+			&:hover {
+				opacity: 1;
+			}
 		}
 
 		&.filter-reset {
 			display: none;
 			opacity: 1 !important;
-			.btn {visibility: hidden;}
+			.icon {visibility: hidden;}
 		}
 
 		&:hover {
 			opacity: 1 !important;
+			
 			p { @include text-shadow( 0px 0px 2px rgba(255, 255, 255, 1) ); }
+			
 		}
 
 		&.inactive {
@@ -71,32 +122,65 @@
 
 	}
 
+	.sub-container {
+		@include transition(max-height 250ms);
+		@include categoryColors($alpha_background: .1);
+		
+		max-height: 0;
+		overflow: hidden;
+
+		.subcat-container {
+			@include categoryColors();
+			background: none !important;
+			border-left: .5rem solid;
+			
+			.icon {
+				
+				@include categorySymbols;
+				@include background-size(50%);
+				
+				float: left;			
+				width: 2.5em;
+				height: 2.5em;
+				margin-left: .5em;
+				cursor: pointer;
+			}
+
+			p {
+				margin: 0 0 0 3.5em;
+				text-overflow: ellipsis;
+				height: 2.5em;
+				line-height: 2.5em;
+				text-align: left;
+				cursor: pointer;
+			}
+
+			&.inactive {
+				opacity: .3;
+			}
+
+			&:hover {
+				opacity: 1 !important;
+				
+				p { @include text-shadow( 0px 0px 2px rgba(255, 255, 255, 1) ); }
+			}
+		}
+
+	}
+
 	&.filter-active {
 
-		.container.filter-reset { display: block; }
+		.cat-container.filter-reset { display: block; }
 	}
 
-}
+	&:hover{
 
-body.desktop, body.tablet {
+		right: 0;
 
-	#legendView{
-
-		&:hover {
-			right: 0;
+		.filter-module {
+			h3 { visibility: visible; }
 		}
-
-	}
-
-}
-
-body.phone {
-
-	#legendView{
-
-		.legend-btn {
-			/*right: -5em;*/
-		}
+		.cat-container .icon { margin-left: .5em; }
 
 	}
 

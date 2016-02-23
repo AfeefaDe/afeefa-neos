@@ -1474,8 +1474,8 @@ strong {
 }
 /* line 42, sass/_infoVisSystem.scss */
 #mapView div.location.cat-jobs {
-  background-color: #0074a6;
-  border-color: #0074a6;
+  background-color: #085272;
+  border-color: #085272;
 }
 /* line 47, sass/_infoVisSystem.scss */
 #mapView div.location.cat-consultation {
@@ -1484,8 +1484,8 @@ strong {
 }
 /* line 52, sass/_infoVisSystem.scss */
 #mapView div.location.cat-leisure {
-  background-color: #8ec2bf;
-  border-color: #8ec2bf;
+  background-color: #318b86;
+  border-color: #318b86;
 }
 /* line 57, sass/_infoVisSystem.scss */
 #mapView div.location.cat-community {
@@ -1863,8 +1863,8 @@ body.phone #mapView #locate-btn {
 }
 /* line 42, sass/_infoVisSystem.scss */
 #detailView .heading.cat-jobs {
-  background-color: #0074a6;
-  border-color: #0074a6;
+  background-color: #085272;
+  border-color: #085272;
 }
 /* line 47, sass/_infoVisSystem.scss */
 #detailView .heading.cat-consultation {
@@ -1873,8 +1873,8 @@ body.phone #mapView #locate-btn {
 }
 /* line 52, sass/_infoVisSystem.scss */
 #detailView .heading.cat-leisure {
-  background-color: #8ec2bf;
-  border-color: #8ec2bf;
+  background-color: #318b86;
+  border-color: #318b86;
 }
 /* line 57, sass/_infoVisSystem.scss */
 #detailView .heading.cat-community {
@@ -1986,8 +1986,8 @@ body.phone #mapView #locate-btn {
 }
 /* line 42, sass/_infoVisSystem.scss */
 #detailView .property.category .property-icon.cat-jobs {
-  background-color: #0074a6;
-  border-color: #0074a6;
+  background-color: #085272;
+  border-color: #085272;
 }
 /* line 47, sass/_infoVisSystem.scss */
 #detailView .property.category .property-icon.cat-consultation {
@@ -1996,8 +1996,8 @@ body.phone #mapView #locate-btn {
 }
 /* line 52, sass/_infoVisSystem.scss */
 #detailView .property.category .property-icon.cat-leisure {
-  background-color: #8ec2bf;
-  border-color: #8ec2bf;
+  background-color: #318b86;
+  border-color: #318b86;
 }
 /* line 57, sass/_infoVisSystem.scss */
 #detailView .property.category .property-icon.cat-community {
@@ -2266,8 +2266,8 @@ body.phone #mapView #locate-btn {
 }
 /* line 42, sass/_infoVisSystem.scss */
 #detailViewMobile .heading.cat-jobs {
-  background-color: #0074a6;
-  border-color: #0074a6;
+  background-color: #085272;
+  border-color: #085272;
 }
 /* line 47, sass/_infoVisSystem.scss */
 #detailViewMobile .heading.cat-consultation {
@@ -2276,8 +2276,8 @@ body.phone #mapView #locate-btn {
 }
 /* line 52, sass/_infoVisSystem.scss */
 #detailViewMobile .heading.cat-leisure {
-  background-color: #8ec2bf;
-  border-color: #8ec2bf;
+  background-color: #318b86;
+  border-color: #318b86;
 }
 /* line 57, sass/_infoVisSystem.scss */
 #detailViewMobile .heading.cat-community {
@@ -2389,8 +2389,8 @@ body.phone #mapView #locate-btn {
 }
 /* line 42, sass/_infoVisSystem.scss */
 #detailViewMobile .property.category .property-icon.cat-jobs {
-  background-color: #0074a6;
-  border-color: #0074a6;
+  background-color: #085272;
+  border-color: #085272;
 }
 /* line 47, sass/_infoVisSystem.scss */
 #detailViewMobile .property.category .property-icon.cat-consultation {
@@ -2399,8 +2399,8 @@ body.phone #mapView #locate-btn {
 }
 /* line 52, sass/_infoVisSystem.scss */
 #detailViewMobile .property.category .property-icon.cat-leisure {
-  background-color: #8ec2bf;
-  border-color: #8ec2bf;
+  background-color: #318b86;
+  border-color: #318b86;
 }
 /* line 57, sass/_infoVisSystem.scss */
 #detailViewMobile .property.category .property-icon.cat-community {
@@ -2781,8 +2781,8 @@ body.phone #menuView .menu-btn {
 }
 /* line 42, sass/_infoVisSystem.scss */
 #legendView .cat-container.cat-jobs {
-  background-color: rgba(0, 116, 166, 0.4);
-  border-color: #0074a6;
+  background-color: rgba(8, 82, 114, 0.4);
+  border-color: #085272;
 }
 /* line 47, sass/_infoVisSystem.scss */
 #legendView .cat-container.cat-consultation {
@@ -2791,8 +2791,8 @@ body.phone #menuView .menu-btn {
 }
 /* line 52, sass/_infoVisSystem.scss */
 #legendView .cat-container.cat-leisure {
-  background-color: rgba(142, 194, 191, 0.4);
-  border-color: #8ec2bf;
+  background-color: rgba(49, 139, 134, 0.4);
+  border-color: #318b86;
 }
 /* line 57, sass/_infoVisSystem.scss */
 #legendView .cat-container.cat-community {
@@ -3017,8 +3017,8 @@ body.phone #menuView .menu-btn {
 }
 /* line 42, sass/_infoVisSystem.scss */
 #legendView .sub-container.cat-jobs {
-  background-color: rgba(0, 116, 166, 0.1);
-  border-color: #0074a6;
+  background-color: rgba(8, 82, 114, 0.1);
+  border-color: #085272;
 }
 /* line 47, sass/_infoVisSystem.scss */
 #legendView .sub-container.cat-consultation {
@@ -3027,8 +3027,8 @@ body.phone #menuView .menu-btn {
 }
 /* line 52, sass/_infoVisSystem.scss */
 #legendView .sub-container.cat-leisure {
-  background-color: rgba(142, 194, 191, 0.1);
-  border-color: #8ec2bf;
+  background-color: rgba(49, 139, 134, 0.1);
+  border-color: #318b86;
 }
 /* line 57, sass/_infoVisSystem.scss */
 #legendView .sub-container.cat-community {
@@ -3059,8 +3059,8 @@ body.phone #menuView .menu-btn {
 }
 /* line 42, sass/_infoVisSystem.scss */
 #legendView .sub-container .subcat-container.cat-jobs {
-  background-color: #0074a6;
-  border-color: #0074a6;
+  background-color: #085272;
+  border-color: #085272;
 }
 /* line 47, sass/_infoVisSystem.scss */
 #legendView .sub-container .subcat-container.cat-consultation {
@@ -3069,8 +3069,8 @@ body.phone #menuView .menu-btn {
 }
 /* line 52, sass/_infoVisSystem.scss */
 #legendView .sub-container .subcat-container.cat-leisure {
-  background-color: #8ec2bf;
-  border-color: #8ec2bf;
+  background-color: #318b86;
+  border-color: #318b86;
 }
 /* line 57, sass/_infoVisSystem.scss */
 #legendView .sub-container .subcat-container.cat-community {

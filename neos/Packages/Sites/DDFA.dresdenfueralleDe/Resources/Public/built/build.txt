@@ -41,12 +41,13 @@ hammerjs/hammer.min.js
 H5BP/js/vendor/modernizr-2.8.3.min.js
 DDFA/js/Daddy.js
 restive/restive.min.js
-DDFA/js/APPDDFA.js
+DDFA/js/APPAFEEFA.js
 DDFA/js/DataManager.js
 DDFA/js/Router.js
 DDFA/js/LanguageManager.js
 DDFA/js/Views/View.js
 DDFA/js/Views/MapView.js
+DDFA/js/Views/SearchView.js
 DDFA/js/Views/DetailView.js
 DDFA/js/Views/MenuView.js
 DDFA/js/Views/LegendView.js

@@ -14,7 +14,8 @@ require.config({
         leafletCluster: 'https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/leaflet.markercluster',
         hammer: '../../hammerjs/hammer.min',
         cartodb: 'http://libs.cartocdn.com/cartodb.js/v3/3.12/cartodb',
-        bootstrap: 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min',
+        // bootstrap: 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min',
+        bootstrap: '../../bootstrap/js/bootstrap.min',
         mapbox: 'https://api.tiles.mapbox.com/mapbox.js/v2.1.9/mapbox',
         d3: 'http://d3js.org/d3.v3.min'
     },
@@ -85,8 +86,11 @@ require([
 							} else {
 								APP.getRouter().initialNavigate();
 							}
-						
+
 							APP.say('appInitialized');
+
+							// DO STARTUP THINGS
+							APP.getIncludeView().load( APP.getIncludeView().getIncludes().intro );
 
 						// });
 					

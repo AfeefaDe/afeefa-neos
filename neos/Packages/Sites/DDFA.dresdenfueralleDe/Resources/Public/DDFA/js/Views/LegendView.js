@@ -61,7 +61,7 @@ qx.Class.define("LegendView", {
       _.each( that.getCategories(), function(cat){
         // container
         var container = $("<div />");
-        container.addClass('container');
+        container.addClass('std-container');
 
         // cat container
         var catContainer = $("<div />");
@@ -222,13 +222,13 @@ qx.Class.define("LegendView", {
                   
                   const currentSubcatContainers = that.view.find('.subcat-container.subcat-' + filter.subcategory);
                   currentSubcatContainers.removeClass('inactive');
-                  currentSubcatContainers.parents('.container').find('.cat-container').removeClass('inactive');
+                  currentSubcatContainers.parents('.std-container').find('.cat-container').removeClass('inactive');
               
               } else {
               
                   that.view.removeClass('filter-active');
                   that.filterModuleCat.find('.cat-container, .subcat-container').removeClass('inactive');
-                  that.filterModuleCat.find('.container').removeClass('extended');
+                  that.filterModuleCat.find('.std-container').removeClass('extended');
               }
 
           });

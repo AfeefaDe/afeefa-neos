@@ -72,16 +72,34 @@ qx.Class.define("SearchView", {
       that.results.empty();
       that.maximize();
 
+      // TODO remove it's dummy
+      const intro = $("<div />")
+        .addClass('result')
+        .append('Intro')
+        .click(function(){
+          APP.getIncludeView().load( APP.getIncludeView().getIncludes().intro );
+        });
+      that.results.append(intro);
+
+      const refguide = $("<div />")
+        .addClass('result')
+        .append('Leitfaden für Geflüchtete')
+        .click(function(){
+          APP.getIncludeView().load( APP.getIncludeView().getIncludes().refugeeGuide );
+        });
+      that.results.append(refguide);
+
+      // for god's sake show ALL locations
       _.each(locations, function(location) {
         const entry = $("<div />")
-          .addClass('result');
-        entry.append(location.name + ' (' + that.getWording('cat_' + location.category.name) + ')');
+          .addClass('result')
+          .append(location.name + ' (' + that.getWording('cat_' + location.category.name) + ')')
+          .click(function(){
+            APP.getMapView().selectMarkerFromLink(location.entryId);
+            // APP.getDetailView().load(location);
+          });
         that.results.append(entry);
 
-        entry.click(function(){
-          APP.getMapView().selectMarkerFromLink(location.entryId);
-          // APP.getDetailView().load(location);
-        });
       });
 
       // if( APP.getUserDevice() == 'desktop') that.results.perfectScrollbar();

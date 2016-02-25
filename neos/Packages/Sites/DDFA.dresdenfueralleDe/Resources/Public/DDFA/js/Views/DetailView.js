@@ -119,9 +119,11 @@ qx.Class.define("DetailView", {
             var prop = 'category';
             var propName = record[prop] ? record[prop].name : 'nee';
             that['propertyIcon'+prop].addClass('cat-' + propName);
+            // TODO dirty code for subcategory, but hey ;)
+            that['propertyIcon'+prop].addClass('subcat-' + record.subCategory);
             that['propertyIcon'+prop].addClass('type-' + record.type);
             that['propertyName'+prop].append( that.getWording('cat_' + propName) );
-            
+
             var entityLabels = { 0: that.getWording('entity_orga'), 1: that.getWording('entity_market'), 2: that.getWording('entity_event') };
             var value = entityLabels[record.type];
             that['propertyValue'+prop].append(value);
@@ -212,6 +214,9 @@ qx.Class.define("DetailView", {
             that['propertyIconcategory'].removeClass('type-0 type-1 type-2 type-3');
             that['propertyIconcategory'].removeClass (function (index, css) {
                 return (css.match (/(^|\s)cat-\S+/g) || []).join(' ');
+            });
+            that['propertyIconcategory'].removeClass (function (index, css) {
+                return (css.match (/(^|\s)subcat-\S+/g) || []).join(' ');
             });
             
             // generic

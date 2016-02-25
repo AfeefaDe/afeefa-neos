@@ -13,13 +13,41 @@
 
 }
 
+@mixin roundedCorners {
+	@include border-radius(.2em);
+}
+
+@mixin shadow($height: 1) {
+	@include box-shadow(0px 0px ($height * 2px) #000);
+}
+
+@mixin textLink {
+	color: $black;
+	text-decoration: none;
+  	border-bottom: 1px $black dotted;
+	
+	&:visited, &:active {
+		color: $black;
+		text-decoration: none;
+	  	border-bottom: 1px $black dotted;
+	}
+
+	&:hover {
+		@include transition(background-color 300ms);
+		color: $white;
+		background-color: $black;
+		text-decoration: none;
+	}
+}
+
 @mixin circleBtn {
 
 	width: 3em;
 	height: 3em;
 	@include border-radius(2em);
 	@include box-sizing(border-box);
-	@include box-shadow(0px 0px 2px #333);
+
+	@include shadow();
 	
 	@include background-size(50%);
 	background-position: center center;
@@ -31,19 +59,28 @@
 	}
 }
 
-.button {
+@mixin button {
+	@include roundedCorners();
+	@include shadow();
 	background-color: $black_alpha;
-	@include border-radius(.2em);
-	color: $gray50;
-	@include box-shadow(0px 0px 2px #000);
+	color: $gray50 !important;
 	text-align: center;
 	padding: .8em;
 	cursor: pointer;
 	display: inline-block;
 
 	&:hover {
-		color: $white;
+		color: $white !important;
 	}
+}
+
+button {
+	@include button;
+	border: none;
+}
+
+.button {
+	@include button;
 
 	p {
 		margin: 0;
@@ -55,14 +92,15 @@ body {
 	padding: 0;
 	height: 100%;
 
-	font-family: 'Roboto', sans-serif;
-	font-size: 11pt;
+	font-family: 'Roboto', sans-serif !important;
+	font-size: 11pt !important;
 	direction: ltr;
+	color: $black !important;
 
 	/* disabling chrome's pull-down-to-refresh feature */
 	overflow-y: hidden;
 
-	background-color: $black;
+	background-color: $black !important;
 
 }
 

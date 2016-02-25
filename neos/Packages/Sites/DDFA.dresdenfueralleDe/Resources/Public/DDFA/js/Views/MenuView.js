@@ -60,7 +60,7 @@ qx.Class.define("MenuView", {
             that.pressBtnLabel = $('<span />');
             that.pressBtn.append(that.pressBtnLabel);
             that.menu.append(that.pressBtn);
-            
+
             // btn imprint
             that.imprintBtn = $('<div />').addClass('item imprint');
             that.imprintBtnLabel = $('<span />');
@@ -138,14 +138,15 @@ qx.Class.define("MenuView", {
             that.listen('languageMenuOpened', function(){
                 that.menu.addClass('hidden');
             });
+
             that.listen('shiftMenuClosed', function(){
                 that.menu.removeClass('hidden');
             });
             
-            that.listen('includeViewClosed', function(){
-                that.load();    
-                that.say('mainMenuOpened');
-            });
+            // that.listen('includeViewClosed', function(){
+            //     that.load();    
+            //     that.say('mainMenuOpened');
+            // });
 
             ////////////////////
             // swipe gestures //

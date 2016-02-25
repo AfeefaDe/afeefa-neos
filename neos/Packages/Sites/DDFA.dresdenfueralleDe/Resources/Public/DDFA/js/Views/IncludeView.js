@@ -17,7 +17,8 @@ qx.Class.define("IncludeView", {
             supporterGuide: 'supporterGuide',
             imprint: 'imprint',
             press: 'press',
-            about: 'about'
+            about: 'about',
+            intro: 'intro'
         });
         that.setBaseUrl( '_Resources/Static/Packages/DDFA.dresdenfueralleDe/DDFA/inc/' );
     },
@@ -31,21 +32,22 @@ qx.Class.define("IncludeView", {
             that.view = $("<div />");
             that.view.attr('id', that.getViewId());
 
-            // content
-            that.content  = $("<div />");
-            that.content.addClass('content');
-            that.view.append(that.content);
+            // content container
+            that.contentContainer  = $("<div />");
+            that.contentContainer.addClass('content-container');
+            that.view.append(that.contentContainer);
 
             that.closeBtn = $("<div />").addClass('closeBtn').append('');
             that.view.append(that.closeBtn);
 
             $('#main-container').append(that.view);
 
-            if( APP.getUserDevice() == 'desktop') that.content.perfectScrollbar();
+            if( APP.getUserDevice() == 'desktop') that.contentContainer.perfectScrollbar();
 
             this.base(arguments);
     	},
 
+        // TODO option: modal
         load: function( includeKey ){
             var that = this;
 
@@ -58,16 +60,15 @@ qx.Class.define("IncludeView", {
             that.say('includeViewOpened');
             
                 
-            that.content.load( that.getBaseUrl() + that.getIncludes()[includeKey] + '_' + APP.getLM().getCurrentLang() + ".html", function( response, status, xhr ) {
-            // that.content.load( that.getBaseUrl() + "inc/refugeeGuide_en.html", function( response, status, xhr ) {
+            that.contentContainer.load( that.getBaseUrl() + that.getIncludes()[includeKey] + '_' + APP.getLM().getCurrentLang() + ".html", function( response, status, xhr ) {
 
                 if ( status == "error" ) {
 
-                    that.content.load( that.getBaseUrl() + that.getIncludes()[includeKey] + '_en.html', function( response, status, xhr ) {
+                    that.contentContainer.load( that.getBaseUrl() + that.getIncludes()[includeKey] + '_en.html', function( response, status, xhr ) {
                         
                         if ( status == "error" ) {
 
-                            that.content.load( that.getBaseUrl() + that.getIncludes()[includeKey] + '_de.html', function( response, status, xhr ) {
+                            that.contentContainer.load( that.getBaseUrl() + that.getIncludes()[includeKey] + '_de.html', function( response, status, xhr ) {
                                 loadComplete();
                             });
 
@@ -89,11 +90,21 @@ qx.Class.define("IncludeView", {
                     APP.getMapView().selectMarkerFromLink( $(this).attr('name') );
                 });
 
-                var heading = that.content.find('h1').first().detach();
-                that.content.before(heading);
+                // var heading = that.content.find('h1').first().detach();
+                // that.content.before(heading);
 
-                if( APP.getUserDevice() == 'desktop') that.view.perfectScrollbar('update');
+                if( APP.getUserDevice() == 'desktop') that.contentContainer.perfectScrollbar('update');
 
+                // scan buttons
+                $('button').click(function(){
+                    const action = $(this).attr('data-action');
+                    switch(action) {
+                        case 'close':
+                            that.close();
+                            break;
+                        default:
+                    }
+                });
             }
 
         },
@@ -101,8 +112,8 @@ qx.Class.define("IncludeView", {
         reset: function(){
             var that = this;
 
-            that.view.find('h1').remove();
-            that.content.empty();
+            // that.view.find('h1').remove();
+            that.contentContainer.empty();
         },
 
         minimize: function(bool){

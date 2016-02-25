@@ -3,11 +3,11 @@
 	@include transition(all 150ms);
 
 	position: absolute;
-	right: -11.9em;
+	right: -16.9em;
 	top: 0;
 	
 	@include box-sizing(border-box);
-	width: 15em;
+	width: 20em;
 	height: 100%;
 	padding: 2em 0;
 
@@ -28,7 +28,7 @@
 		}
 	}
 
-	.container {
+	.std-container {
 		margin-bottom: 1em;
 		color: $white;
 
@@ -40,10 +40,6 @@
 			.sub-container {
 				max-height: 300px; /* the height is not real, just a work around to make the transition working, because it needs a specific value */
 			}
-		}
-
-		.button {
-
 		}
 	}
 
@@ -153,6 +149,8 @@
 				line-height: 2.5em;
 				text-align: left;
 				cursor: pointer;
+				overflow: hidden;
+    			white-space: nowrap;
 			}
 
 			&.inactive {

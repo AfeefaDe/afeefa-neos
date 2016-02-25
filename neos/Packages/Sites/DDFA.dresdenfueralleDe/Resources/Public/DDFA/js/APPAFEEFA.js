@@ -21,26 +21,27 @@ qx.Class.define("APPAFEEFA", {
                         id: '1',
                         sub: [
                             { name: 'german-course', id: '1-1' },
-                            { name: 'learning-place', id: '1-2' },
-                            { name: 'tandem', id: '1-3' }
+                            { name: 'interpreter', id: '1-2' },
+                            { name: 'learning-place', id: '1-3' },
+                            { name: 'tandem', id: '1-4' }
                         ]
                     },
                     {
                         name: 'medic',
                         id: '2',
                         sub: [
-                            { name: '2a', id: '2-1' },
-                            { name: '2b', id: '2-2' },
-                            { name: '2c', id: '2-3' }
+                            { name: 'medical-counselling', id: '2-1' },
+                            { name: 'medical-care', id: '2-2' },
+                            { name: 'psychological-counselling', id: '2-3' }
                         ]
                     },
                     {
                         name: 'jobs',
                         id: '3',
                         sub: [
-                            { name: '3a', id: '3-1' },
-                            { name: '3b', id: '3-2' },
-                            { name: '3c', id: '3-3' }
+                            { name: 'job-counselling', id: '3-1' },
+                            { name: 'political-education', id: '3-2' },
+                            { name: 'education-sponsorship', id: '3-3' }
                         ]
 
                     },
@@ -48,35 +49,49 @@ qx.Class.define("APPAFEEFA", {
                         name: 'consultation',
                         id: '4',
                         sub: [
-                            { name: '4a', id: '4-1' },
-                            { name: '4b', id: '4-2' },
-                            { name: '4c', id: '4-3' }
+                            { name: 'family-counselling', id: '4-1' },
+                            { name: 'legal-advice', id: '4-2' },
+                            { name: 'volunteer-coordination', id: '4-3' },
+                            { name: 'asylum-counselling', id: '4-4' },
+                            { name: 'social-counselling', id: '4-5' }
                         ]
                     },
                     {
                         name: 'leisure',
                         id: '5',
                         sub: [
-                            { name: '5a', id: '5-1' },
-                            { name: '5b', id: '5-2' },
-                            { name: '5c', id: '5-3' }
+                            { name: 'youth-club', id: '5-1' },
+                            { name: 'sports', id: '5-2' },
+                            { name: 'museum', id: '5-3' },
+                            { name: 'music', id: '5-4' },
+                            { name: 'stage', id: '5-5' },
+                            { name: 'craft-art', id: '5-6' },
+                            { name: 'gardening', id: '5-7' },
+                            { name: 'workshop-room', id: '5-8' },
+                            { name: 'cooking', id: '5-9' }
                         ]
                     },
                     {
                         name: 'community',
                         id: '6',
                         sub: [
-                            { name: 'network', id: '6-1' },
+                            { name: 'welcome-alliance', id: '6-1' },
                             { name: 'meeting-place', id: '6-2' },
-                            { name: 'welcome-festival', id: '6-3' },
-                            { name: 'workshop-room', id: '6-4' }
+                            { name: 'childcare', id: '6-3' },
+                            { name: 'workshop', id: '6-4' },
+                            { name: 'sponsorship', id: '6-5' },
+                            { name: 'lgbt', id: '6-6' },
+                            { name: 'housing-project', id: '6-7' },
+                            { name: 'network', id: '6-8' }
                         ]
                     },
                     {
                         name: 'donation',
                         id: '7',
                         sub: [
-                            { name: 'collection-point', id: '7-1' }
+                            { name: 'food', id: '7-1' },
+                            { name: 'clothes', id: '7-2' },
+                            { name: 'furniture', id: '7-3' }
                         ]
                     }
                 ],

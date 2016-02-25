@@ -67,8 +67,7 @@ qx.Class.define("APPAFEEFA", {
                             { name: 'stage', id: '5-5' },
                             { name: 'craft-art', id: '5-6' },
                             { name: 'gardening', id: '5-7' },
-                            { name: 'workshop-room', id: '5-8' },
-                            { name: 'cooking', id: '5-9' }
+                            { name: 'cooking', id: '5-8' }
                         ]
                     },
                     {
@@ -81,8 +80,7 @@ qx.Class.define("APPAFEEFA", {
                             { name: 'workshop', id: '6-4' },
                             { name: 'sponsorship', id: '6-5' },
                             { name: 'lgbt', id: '6-6' },
-                            { name: 'housing-project', id: '6-7' },
-                            { name: 'network', id: '6-8' }
+                            { name: 'housing-project', id: '6-7' }
                         ]
                     },
                     {

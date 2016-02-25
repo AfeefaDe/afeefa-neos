@@ -190,7 +190,7 @@ qx.Class.define("LegendView", {
           var that = this;
 
           _.each( that.getCategories(), function(cat){
-              that['label-' + cat].empty();
+              that['label-' + cat.id].empty();
 
               _.each( cat.sub, function(subcat){
                   that['label-' + subcat.id].empty();

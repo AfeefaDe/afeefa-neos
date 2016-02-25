@@ -1556,7 +1556,7 @@ strong {
   background-image: url("../img/icon_18.svg");
 }
 /* line 87, sass/_infoVisSystem.scss */
-#mapView div.location.subcat-network {
+#mapView div.location.subcat-welcome-alliance {
   background-image: url("../img/icon_64.svg") !important;
 }
 /* line 88, sass/_infoVisSystem.scss */
@@ -1568,7 +1568,7 @@ strong {
   background-image: url("../img/icon_82.svg");
 }
 /* line 90, sass/_infoVisSystem.scss */
-#mapView div.location.subcat-workshop-room {
+#mapView div.location.subcat-craft-art {
   background-image: url("../img/icon_80.svg");
 }
 /* line 91, sass/_infoVisSystem.scss */
@@ -2072,7 +2072,7 @@ body.phone #mapView #locate-btn {
   background-image: url("../img/icon_18.svg");
 }
 /* line 87, sass/_infoVisSystem.scss */
-#detailView .property.category .property-icon.subcat-network {
+#detailView .property.category .property-icon.subcat-welcome-alliance {
   background-image: url("../img/icon_64.svg") !important;
 }
 /* line 88, sass/_infoVisSystem.scss */
@@ -2084,7 +2084,7 @@ body.phone #mapView #locate-btn {
   background-image: url("../img/icon_82.svg");
 }
 /* line 90, sass/_infoVisSystem.scss */
-#detailView .property.category .property-icon.subcat-workshop-room {
+#detailView .property.category .property-icon.subcat-craft-art {
   background-image: url("../img/icon_80.svg");
 }
 /* line 91, sass/_infoVisSystem.scss */
@@ -2479,7 +2479,7 @@ body.phone #mapView #locate-btn {
   background-image: url("../img/icon_18.svg");
 }
 /* line 87, sass/_infoVisSystem.scss */
-#detailViewMobile .property.category .property-icon.subcat-network {
+#detailViewMobile .property.category .property-icon.subcat-welcome-alliance {
   background-image: url("../img/icon_64.svg") !important;
 }
 /* line 88, sass/_infoVisSystem.scss */
@@ -2491,7 +2491,7 @@ body.phone #mapView #locate-btn {
   background-image: url("../img/icon_82.svg");
 }
 /* line 90, sass/_infoVisSystem.scss */
-#detailViewMobile .property.category .property-icon.subcat-workshop-room {
+#detailViewMobile .property.category .property-icon.subcat-craft-art {
   background-image: url("../img/icon_80.svg");
 }
 /* line 91, sass/_infoVisSystem.scss */
@@ -2896,7 +2896,7 @@ body.phone #menuView .menu-btn {
   background-image: url("../img/icon_18.svg");
 }
 /* line 87, sass/_infoVisSystem.scss */
-#legendView .cat-container .icon.subcat-network {
+#legendView .cat-container .icon.subcat-welcome-alliance {
   background-image: url("../img/icon_64.svg") !important;
 }
 /* line 88, sass/_infoVisSystem.scss */
@@ -2908,7 +2908,7 @@ body.phone #menuView .menu-btn {
   background-image: url("../img/icon_82.svg");
 }
 /* line 90, sass/_infoVisSystem.scss */
-#legendView .cat-container .icon.subcat-workshop-room {
+#legendView .cat-container .icon.subcat-craft-art {
   background-image: url("../img/icon_80.svg");
 }
 /* line 91, sass/_infoVisSystem.scss */
@@ -3178,7 +3178,7 @@ body.phone #menuView .menu-btn {
   background-image: url("../img/icon_18.svg");
 }
 /* line 87, sass/_infoVisSystem.scss */
-#legendView .sub-container .subcat-container .icon.subcat-network {
+#legendView .sub-container .subcat-container .icon.subcat-welcome-alliance {
   background-image: url("../img/icon_64.svg") !important;
 }
 /* line 88, sass/_infoVisSystem.scss */
@@ -3190,7 +3190,7 @@ body.phone #menuView .menu-btn {
   background-image: url("../img/icon_82.svg");
 }
 /* line 90, sass/_infoVisSystem.scss */
-#legendView .sub-container .subcat-container .icon.subcat-workshop-room {
+#legendView .sub-container .subcat-container .icon.subcat-craft-art {
   background-image: url("../img/icon_80.svg");
 }
 /* line 91, sass/_infoVisSystem.scss */

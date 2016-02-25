@@ -2,30 +2,28 @@
 
 #includeView {
 	
-	@include transition(left 200ms, height 200ms);
-	@include box-shadow(0px 0px 5px #333);
+	@include shadow($height: 2);
+	@include transition(opacity 200ms);
 
 	position: absolute;
-	left: -35%;
-	top: 0;
+	left: 15%;
+	top: 12%;
 
 	visibility: hidden;
 	opacity: 0;
 
 	@include box-sizing(border-box);
-	width: 35%;
-	height: 100%;
+	max-width: 70%;
+	max-height: 80%;
+	padding: 0 0 2rem 0;
 
 	@include display-flex;
-	@include flex-direction(column);
+	/*@include flex-direction(column);*/
 
-	background-color: $black_alpha;
-	color: $white;
-
-	/*border: 1px solid red;*/
+	background-color: $white;
+	color: $black;
 
 	&.active {
-		left: 0;
 		visibility: visible;
 		opacity: 1;
 	}
@@ -35,66 +33,61 @@
 	}
 
 	a {
-		color: $white;
-		text-decoration: none;
-	  	border-bottom: 1px $white dotted;
-		
-		&:visited, &:active {
-			color: $white;
-			text-decoration: none;
-		  	border-bottom: 1px $white dotted;
-		}
-
-		&:hover {
-			@include transition(background-color 300ms);
-			color: $black;
-			background-color: $white;
-			text-decoration: none;
-		}
+		@include textLink;
 	}
 
 	.closeBtn {
 	    position: absolute;
-        top: 0.4em;
-	    left: 1.2em;
-	    width: 1em;
-	    height: 1em;
-	    font-size: 1.4rem;
+        top: 1em;
+	    right: 1em;
+	    width: 1.5em;
+	    height: 1.5em;
 	    cursor: pointer;
-	    background-image: url("../img/icon_74.svg");
-	    @include background-size(60%);
+	    background-image: url("../img/icon_34.svg");
+	    @include background-size(100%);
 		background-position: center center;
 		background-repeat: no-repeat;
-	}
-	.chapters {
-		margin-top: 2em;
-	}
-	
-	.chaptersReal {
-	  	@include flex-shrink(0);
+		@include transform(rotate(45deg));
 	}
 
+	.content-container {
+		/*height: 100%;*/
+		@include flex-grow(1);
+		/*overflow: hidden;*/
+	}
+	
+	.header {
+	    background-color: $black;
+	  	padding: 1em 3rem;
+	}
+	
 	h1 {
 	    font-weight: 300;
 	    margin: 0;
-	    padding: 0.3em 1em 0.3em 2.5em;
-	    background-color: black;
-	    font-size: 1.4rem;
+	    padding-top: 5rem;
+	    font-size: 1.5em;
 	    color: $white;
 	    @include box-sizing(content-box);
 	}
+	p.subheading {
+		color: $white;
+		margin: 0;
+	}
+
+	.chapters {
+		margin-top: 2rem;
+	}
+	
+	.chaptersReal {
+	  	/*@include flex-shrink(0);*/
+	}
 
 	.content {
-
-		@include flex-grow(1);
 	  	
-	  	padding: 0 2em 2em 2em;
+	  	padding: 1em 3rem;
 		position: relative;
-		overflow-y: auto;
-		overflow-x: hidden;
 		
 		line-height: 2em;
-		color: $white;
 
 		h2 {
 			font-weight: 100;
@@ -106,7 +99,7 @@
 				text-decoration: none;
 				border: none;
 				background: none;
-				color: $white;
+				color: $black;
 			}
 		}
 
@@ -134,7 +127,11 @@
 		}
 
 		hr {
-		    border-color: #666;
+		    border-color: #ccc;
+		}
+
+		.no-top-margin {
+			margin-top: 0;
 		}
 
 		span.locationLink {
@@ -160,9 +157,7 @@
 		    font-weight: 100;
 		    font-style: italic;
 		}
-
 	}
-
 }
 
 body.desktop, body.tablet {

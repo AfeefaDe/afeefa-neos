@@ -63,10 +63,10 @@ qx.Class.define("DataManager", {
         _getAllLocations: function (cb) {
 
             $.ajax({
-                url: '_Resources/Static/Packages/DDFA.dresdenfueralleDe/DDFA/dummyData/locations.json',
-                type: 'GET',
-                dataType: 'text'
-            })
+                    url: '_Resources/Static/Packages/DDFA.dresdenfueralleDe/DDFA/dummyData/locations.json',
+                    type: 'GET',
+                    dataType: 'text'
+                })
                 .done(function (data) {
                     cb(JSON.parse(data));
                 })
@@ -79,10 +79,10 @@ qx.Class.define("DataManager", {
         getAllCategories: function (cb) {
 
             $.ajax({
-                url: "api/categories",
-                type: 'GET',
-                dataType: 'json'
-            })
+                    url: "api/categories",
+                    type: 'GET',
+                    dataType: 'json'
+                })
                 .done(function (data) {
                     cb(data);
                 })
@@ -95,10 +95,10 @@ qx.Class.define("DataManager", {
         getAllLocations: function (cb) {
 
             $.ajax({
-                url: "api/locations?locale=" + APP.getLM().getCurrentLang(),
-                type: 'GET',
-                dataType: 'json'
-            })
+                    url: "api/locations?locale=" + APP.getLM().getCurrentLang(),
+                    type: 'GET',
+                    dataType: 'json'
+                })
                 .done(function (data) {
                     cb(data);
                 })
@@ -111,10 +111,10 @@ qx.Class.define("DataManager", {
         getLanguageBib: function (cb) {
 
             $.ajax({
-                url: '_Resources/Static/Packages/DDFA.dresdenfueralleDe/DDFA/lang/lang.json',
-                type: 'GET',
-                dataType: 'text'
-            })
+                    url: '_Resources/Static/Packages/DDFA.dresdenfueralleDe/DDFA/lang/lang.json',
+                    type: 'GET',
+                    dataType: 'text'
+                })
                 .done(function (data) {
                     cb(JSON.parse(data));
                 })
@@ -129,14 +129,14 @@ qx.Class.define("DataManager", {
             console.debug('POST api/marketentries', data);
 
             $.ajax({
-                url: "api/marketentries",
-                type: 'POST',
-                data: data,
-                cache: false,
-                dataType: 'json',
-                processData: true,
-                contentType: false
-            })
+                    url: "api/marketentries",
+                    type: 'POST',
+                    data: data,
+                    cache: false,
+                    dataType: 'json',
+                    processData: true,
+                    contentType: false
+                })
                 .done(function (data) {
                     cb(data);
                 })
@@ -151,14 +151,14 @@ qx.Class.define("DataManager", {
             console.debug('POST api/locations', data);
 
             $.ajax({
-                url: "api/locations",
-                type: 'POST',
-                data: data,
-                cache: false,
-                dataType: 'json',
-                processData: true,
-                contentType: false
-            })
+                    url: "api/locations",
+                    type: 'POST',
+                    data: data,
+                    cache: false,
+                    dataType: 'json',
+                    processData: true,
+                    contentType: false
+                })
                 .done(function (data) {
                     cb(data);
                 })
@@ -173,14 +173,14 @@ qx.Class.define("DataManager", {
             // console.debug('POST api/feedback', data);
 
             $.ajax({
-                url: "api/feedback",
-                type: 'POST',
-                data: data,
-                cache: false,
-                dataType: 'json',
-                processData: true,
-                contentType: false
-            })
+                    url: "api/feedback",
+                    type: 'POST',
+                    data: data,
+                    cache: false,
+                    dataType: 'json',
+                    processData: true,
+                    contentType: false
+                })
                 .done(function (data) {
                     cb(data);
                 })
@@ -197,14 +197,14 @@ qx.Class.define("DataManager", {
             if (window.location.hostname == 'afeefa.de') {
 
                 $.ajax({
-                    url: "https://hooks.slack.com/services/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",
-                    type: 'POST',
-                    data: JSON.stringify({text: slackMessage}),
-                    cache: false,
-                    dataType: 'text',
-                    processData: false
-                    // contentType: false
-                })
+                        url: "https://hooks.slack.com/services/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",
+                        type: 'POST',
+                        data: JSON.stringify({text: slackMessage}),
+                        cache: false,
+                        dataType: 'text',
+                        processData: false
+                        // contentType: false
+                    })
                     .done(function (data) {
                         // cb(data);
                     })
@@ -219,17 +219,17 @@ qx.Class.define("DataManager", {
             if (window.location.hostname == 'afeefa.de') {
 
                 $.ajax({
-                    // url: "_Resources/Static/Packages/DDFA.dresdenfueralleDe/githubAPI/",
-                    // url: "http://afeefa.hejn.de/githubAPI/",
-                    url: "githubAPI/",
-                    // crossDomain: true,
-                    type: 'POST',
-                    data: data,
-                    cache: false,
-                    dataType: 'text',
-                    processData: true
-                    // contentType: false
-                })
+                        // url: "_Resources/Static/Packages/DDFA.dresdenfueralleDe/githubAPI/",
+                        // url: "http://afeefa.hejn.de/githubAPI/",
+                        url: "githubAPI/",
+                        // crossDomain: true,
+                        type: 'POST',
+                        data: data,
+                        cache: false,
+                        dataType: 'text',
+                        processData: true
+                        // contentType: false
+                    })
                     .done(function (data) {
                         // cb(data);
                     })
@@ -430,14 +430,14 @@ qx.Class.define("DataManager", {
 
             function createInitiative(data, i, cb) {
                 $.ajax({
-                    url: "api/initiatives",
-                    type: 'POST',
-                    data: data,
-                    cache: false,
-                    dataType: 'json',
-                    processData: true,
-                    contentType: false
-                })
+                        url: "api/initiatives",
+                        type: 'POST',
+                        data: data,
+                        cache: false,
+                        dataType: 'json',
+                        processData: true,
+                        contentType: false
+                    })
                     .done(function (data) {
                         if (cb) cb(data, i);
                     })
@@ -448,14 +448,14 @@ qx.Class.define("DataManager", {
 
             function createLocation(data, i, cb) {
                 $.ajax({
-                    url: "api/locations",
-                    type: 'POST',
-                    data: data,
-                    cache: false,
-                    dataType: 'json',
-                    processData: true,
-                    contentType: false
-                })
+                        url: "api/locations",
+                        type: 'POST',
+                        data: data,
+                        cache: false,
+                        dataType: 'json',
+                        processData: true,
+                        contentType: false
+                    })
                     .done(function (data) {
                         if (cb) cb(data, i);
                     })

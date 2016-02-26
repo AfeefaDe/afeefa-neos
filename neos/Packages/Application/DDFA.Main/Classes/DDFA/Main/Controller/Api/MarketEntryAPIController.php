@@ -44,7 +44,8 @@ class MarketEntryAPIController extends ActionController
         $this->view->assign('value', ['marketentry' => $marketentry]);
     }
 
-    public function createAction(MarketEntry $marketentry) {
+    public function createAction(MarketEntry $marketentry)
+    {
         $this->marketEntryRepository->add($marketentry);
         $this->response->setStatus(201);
         $this->view->assign('value', ['marketentry' => $marketentry]);
@@ -54,26 +55,25 @@ class MarketEntryAPIController extends ActionController
     {
         if ($view instanceof JsonView) {
             $marketentryconfig = [
-                '_exposeObjectIdentifier' => TRUE,
-                '_exposedObjectIdentifierKey' => 'identifier',
                 '_descend' => [
-                    'dateFrom' => [
-                        '_exclude' => ['__isInitialized__'],
-                        '_exposeObjectIdentifier' => TRUE,
-                        '_exposedObjectIdentifierKey' => 'identifier'
-                    ],
-                    'dateTo' => [
-                        '_exclude' => ['__isInitialized__'],
-                        '_exposeObjectIdentifier' => TRUE,
-                        '_exposedObjectIdentifierKey' => 'identifier'
+                    'category' => [
+                        '_exclude' => ['__isInitialized__']
+//                        '_exposeObjectIdentifier' => TRUE,
+//                        '_exposedObjectIdentifierKey' => 'identifier'
                     ],
 
-                ],
-                '_descendAll' => [
                     'locations' => [
-                        '_exclude' => ['__isInitialized__'],
-                        '_exposeObjectIdentifier' => TRUE,
-                        '_exposedObjectIdentifierKey' => 'identifier'
+                        '_descend' => [
+                            '_exclude' => ['__isInitialized__'],
+//                        '_exposeObjectIdentifier' => TRUE,
+//                        '_exposedObjectIdentifierKey' => 'identifier',
+                            '_descend' => ['category' => [
+                                '_exclude' => ['__isInitialized__']
+//                            '_exposeObjectIdentifier' => TRUE,
+//                            '_exposedObjectIdentifierKey' => 'identifier'
+                            ]
+                            ]
+                        ]
                     ]
                 ]
             ];

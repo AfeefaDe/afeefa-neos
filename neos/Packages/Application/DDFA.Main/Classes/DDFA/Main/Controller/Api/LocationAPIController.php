@@ -60,41 +60,19 @@ class LocationAPIController extends ActionController {
         if ($view instanceof JsonView) {
             $locationConfiguration = [
                 '_descend' => [
-                    'initiative' => [
-                        '_exclude' => ['__isInitialized__'],
-                        '_exposeObjectIdentifier' => TRUE,
-                        '_exposedObjectIdentifierKey' => 'identifier',
-                        '_descend' => ['category' => [
-                            '_exclude' => ['__isInitialized__'],
-                            '_exposeObjectIdentifier' => TRUE,
-                            '_exposedObjectIdentifierKey' => 'identifier'
-                        ]
-                        ]
-                    ],
                     'category' => [
-                        '_exclude' => ['__isInitialized__'],
-                        '_exposeObjectIdentifier' => TRUE,
-                        '_exposedObjectIdentifierKey' => 'identifier'
+                        '_exclude' => ['__isInitialized__']
+//                        '_exposeObjectIdentifier' => TRUE,
+//                        '_exposedObjectIdentifierKey' => 'identifier'
                     ],
                     'marketEntry' => [
                         '_exclude' => ['__isInitialized__'],
-                        '_exposeObjectIdentifier' => TRUE,
-                        '_exposedObjectIdentifierKey' => 'identifier',
+//                        '_exposeObjectIdentifier' => TRUE,
+//                        '_exposedObjectIdentifierKey' => 'identifier',
                         '_descend' => ['category' => [
-                            '_exclude' => ['__isInitialized__'],
-                            '_exposeObjectIdentifier' => TRUE,
-                            '_exposedObjectIdentifierKey' => 'identifier'
-                        ]
-                        ]
-                    ],
-                    'event' => [
-                        '_exclude' => ['__isInitialized__'],
-                        '_exposeObjectIdentifier' => TRUE,
-                        '_exposedObjectIdentifierKey' => 'identifier',
-                        '_descend' => ['category' => [
-                            '_exclude' => ['__isInitialized__'],
-                            '_exposeObjectIdentifier' => TRUE,
-                            '_exposedObjectIdentifierKey' => 'identifier'
+                            '_exclude' => ['__isInitialized__']
+//                            '_exposeObjectIdentifier' => TRUE,
+//                            '_exposedObjectIdentifierKey' => 'identifier'
                         ]
                         ]
                     ]

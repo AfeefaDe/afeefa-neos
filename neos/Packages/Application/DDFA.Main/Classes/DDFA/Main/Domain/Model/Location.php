@@ -68,7 +68,7 @@ class Location extends Actor
      */
     protected $arrival;
 
-    //TODO: change to type enum
+    //TODO: remove type and ini and event relation
     /**
      * @var int
      */

@@ -60,12 +60,12 @@
 	    background-color: $black;
 	  	padding: 1em 3rem;
 	}
-	
+
 	h1 {
 	    font-weight: 300;
 	    margin: 0;
 	    padding-top: 5rem;
-	    font-size: 1.5em;
+	    font-size: 2em;
 	    color: $white;
 	    @include box-sizing(content-box);
 	}
@@ -157,6 +157,19 @@
 		    font-weight: 100;
 		    font-style: italic;
 		}
+	}
+
+	.entity-shape {
+		@include entityShapes;
+		@include categoryColors;
+		@include categorySymbols;
+		height: 1.5em;
+		width: 1.5em;
+		display: inline-block;
+		background-color: $black;
+	    position: relative;
+    	bottom: -0.4em;
+	    margin: 0 0.2em;
 	}
 }
 

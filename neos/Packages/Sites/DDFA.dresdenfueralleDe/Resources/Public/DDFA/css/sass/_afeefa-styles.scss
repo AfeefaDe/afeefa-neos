@@ -17,8 +17,8 @@
 	@include border-radius(.2em);
 }
 
-@mixin shadow($height: 1) {
-	@include box-shadow(0px 0px ($height * 2px) #000);
+@mixin shadow($height: 1, $color: #000) {
+	@include box-shadow(0px 0px ($height * 2px) $color);
 }
 
 @mixin textLink {
@@ -60,17 +60,30 @@
 }
 
 @mixin button {
+	@include transition(all 250ms);
 	@include roundedCorners();
 	@include shadow();
 	background-color: $black_alpha;
-	color: $gray50 !important;
+	color: $white !important;
 	text-align: center;
-	padding: .8em;
+	padding: .5em .8em;
 	cursor: pointer;
 	display: inline-block;
 
 	&:hover {
-		color: $white !important;
+		@include shadow($height: 2);
+	}
+
+	&.btn-secondary {
+		background-color: $gray20;
+		@include shadow($color: $gray50);
+		color: $gray50 !important;
+		padding: .3em .5em;
+
+		&:hover {
+			@include shadow($height: 2, $color: $gray50);
+			color: $black;
+		}
 	}
 }
 

@@ -12,7 +12,12 @@
 
 	/* event */
 	&.type-2 {
-		@include border-radius(0px);
+		@include border-radius(3px);
+		@include transform(rotate(45deg));
+
+		&[class^="cat-"] {
+			@include transform(rotate(-45deg));
+		}
 	}
 
 	/* POI */

@@ -1249,8 +1249,12 @@ textarea {
     page-break-after: avoid;
   }
 }
-/* line 77, sass/_afeefa-styles.scss */
+/* line 90, sass/_afeefa-styles.scss */
 button {
+  -moz-transition: all 250ms;
+  -o-transition: all 250ms;
+  -webkit-transition: all 250ms;
+  transition: all 250ms;
   -moz-border-radius: 0.2em;
   -webkit-border-radius: 0.2em;
   border-radius: 0.2em;
@@ -1258,20 +1262,42 @@ button {
   -webkit-box-shadow: 0px 0px 2px #000;
   box-shadow: 0px 0px 2px #000;
   background-color: rgba(0, 0, 0, 0.8);
-  color: #999999 !important;
+  color: #f2f2f2 !important;
   text-align: center;
-  padding: .8em;
+  padding: .5em .8em;
   cursor: pointer;
   display: inline-block;
   border: none;
 }
-/* line 72, sass/_afeefa-styles.scss */
+/* line 73, sass/_afeefa-styles.scss */
 button:hover {
-  color: #f2f2f2 !important;
+  -moz-box-shadow: 0px 0px 4px #000;
+  -webkit-box-shadow: 0px 0px 4px #000;
+  box-shadow: 0px 0px 4px #000;
+}
+/* line 77, sass/_afeefa-styles.scss */
+button.btn-secondary {
+  background-color: #DDDDDD;
+  -moz-box-shadow: 0px 0px 2px #999999;
+  -webkit-box-shadow: 0px 0px 2px #999999;
+  box-shadow: 0px 0px 2px #999999;
+  color: #999999 !important;
+  padding: .3em .5em;
+}
+/* line 83, sass/_afeefa-styles.scss */
+button.btn-secondary:hover {
+  -moz-box-shadow: 0px 0px 4px #999999;
+  -webkit-box-shadow: 0px 0px 4px #999999;
+  box-shadow: 0px 0px 4px #999999;
+  color: #333333;
 }
 
-/* line 82, sass/_afeefa-styles.scss */
+/* line 95, sass/_afeefa-styles.scss */
 .button {
+  -moz-transition: all 250ms;
+  -o-transition: all 250ms;
+  -webkit-transition: all 250ms;
+  transition: all 250ms;
   -moz-border-radius: 0.2em;
   -webkit-border-radius: 0.2em;
   border-radius: 0.2em;
@@ -1279,22 +1305,40 @@ button:hover {
   -webkit-box-shadow: 0px 0px 2px #000;
   box-shadow: 0px 0px 2px #000;
   background-color: rgba(0, 0, 0, 0.8);
-  color: #999999 !important;
+  color: #f2f2f2 !important;
   text-align: center;
-  padding: .8em;
+  padding: .5em .8em;
   cursor: pointer;
   display: inline-block;
 }
-/* line 72, sass/_afeefa-styles.scss */
+/* line 73, sass/_afeefa-styles.scss */
 .button:hover {
-  color: #f2f2f2 !important;
+  -moz-box-shadow: 0px 0px 4px #000;
+  -webkit-box-shadow: 0px 0px 4px #000;
+  box-shadow: 0px 0px 4px #000;
 }
-/* line 85, sass/_afeefa-styles.scss */
+/* line 77, sass/_afeefa-styles.scss */
+.button.btn-secondary {
+  background-color: #DDDDDD;
+  -moz-box-shadow: 0px 0px 2px #999999;
+  -webkit-box-shadow: 0px 0px 2px #999999;
+  box-shadow: 0px 0px 2px #999999;
+  color: #999999 !important;
+  padding: .3em .5em;
+}
+/* line 83, sass/_afeefa-styles.scss */
+.button.btn-secondary:hover {
+  -moz-box-shadow: 0px 0px 4px #999999;
+  -webkit-box-shadow: 0px 0px 4px #999999;
+  box-shadow: 0px 0px 4px #999999;
+  color: #333333;
+}
+/* line 98, sass/_afeefa-styles.scss */
 .button p {
   margin: 0;
 }
 
-/* line 90, sass/_afeefa-styles.scss */
+/* line 103, sass/_afeefa-styles.scss */
 body {
   margin: 0;
   padding: 0;
@@ -1308,31 +1352,31 @@ body {
   background-color: #333333 !important;
 }
 
-/* line 109, sass/_afeefa-styles.scss */
+/* line 122, sass/_afeefa-styles.scss */
 a:link, a:visited, #includeView .content span.locationLink:visited, a:hover, #includeView .content span.locationLink:hover, a:active, #includeView .content span.locationLink:active, #includeView .content span.locationLink:link {
   color: #333;
   text-decoration: underline;
 }
 
-/* line 118, sass/_afeefa-styles.scss */
+/* line 131, sass/_afeefa-styles.scss */
 b,
 strong {
   font-weight: 400;
 }
 
-/* line 123, sass/_afeefa-styles.scss */
+/* line 136, sass/_afeefa-styles.scss */
 .hidden {
   display: none;
 }
 
 /* SCROLLBARS with perfect-scrollbar.js */
-/* line 126, sass/_afeefa-styles.scss */
+/* line 139, sass/_afeefa-styles.scss */
 .ps-container > .ps-scrollbar-y-rail,
 .ps-container > .ps-scrollbar-y-rail > .ps-scrollbar-y {
   width: 6px !important;
 }
 
-/* line 131, sass/_afeefa-styles.scss */
+/* line 144, sass/_afeefa-styles.scss */
 #main-container {
   -moz-transition: left 250ms;
   -o-transition: left 250ms;
@@ -1357,12 +1401,12 @@ strong {
   /* general styles for view container */
   /* map curtain */
 }
-/* line 152, sass/_afeefa-styles.scss */
+/* line 165, sass/_afeefa-styles.scss */
 #main-container .view-container.loading {
   -webkit-filter: grayscale(1);
   filter: grayscale(1);
 }
-/* line 154, sass/_afeefa-styles.scss */
+/* line 167, sass/_afeefa-styles.scss */
 #main-container .view-container.loading .loading-curtain {
   width: 100%;
   height: 100%;
@@ -1375,7 +1419,7 @@ strong {
   top: 0;
   left: 0;
 }
-/* line 174, sass/_afeefa-styles.scss */
+/* line 187, sass/_afeefa-styles.scss */
 #main-container #map-curtain {
   -moz-transition: all 250ms;
   -o-transition: all 250ms;
@@ -1389,36 +1433,36 @@ strong {
   opacity: 0;
   z-index: 9999;
 }
-/* line 184, sass/_afeefa-styles.scss */
+/* line 197, sass/_afeefa-styles.scss */
 #main-container #map-curtain.active {
   visibility: visible;
   opacity: 0.6;
 }
-/* line 189, sass/_afeefa-styles.scss */
+/* line 202, sass/_afeefa-styles.scss */
 #main-container.shifted {
   left: 15em;
   /*#lang-menu { display: none; }*/
 }
-/* line 192, sass/_afeefa-styles.scss */
+/* line 205, sass/_afeefa-styles.scss */
 #main-container.shifted #map-curtain {
   visibility: visible;
   opacity: 0.6;
 }
-/* line 196, sass/_afeefa-styles.scss */
+/* line 209, sass/_afeefa-styles.scss */
 #main-container.shifted #menuView {
   z-index: 999;
 }
-/* line 200, sass/_afeefa-styles.scss */
+/* line 213, sass/_afeefa-styles.scss */
 #main-container.shifted-small {
   left: 4em;
   /*#main-menu { display: none; }*/
 }
-/* line 203, sass/_afeefa-styles.scss */
+/* line 216, sass/_afeefa-styles.scss */
 #main-container.shifted-small #map-curtain {
   visibility: visible;
   opacity: 0.6;
 }
-/* line 207, sass/_afeefa-styles.scss */
+/* line 220, sass/_afeefa-styles.scss */
 #main-container.shifted-small #languageViewMobile {
   z-index: 999;
 }
@@ -1470,11 +1514,22 @@ strong {
 }
 /* line 14, sass/_infoVisSystem.scss */
 #mapView div.location.type-2 {
-  -moz-border-radius: 0px;
-  -webkit-border-radius: 0px;
-  border-radius: 0px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
 }
-/* line 19, sass/_infoVisSystem.scss */
+/* line 18, sass/_infoVisSystem.scss */
+#mapView div.location.type-2[class^="cat-"] {
+  -moz-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+/* line 24, sass/_infoVisSystem.scss */
 #mapView div.location.type-3 {
   -moz-border-radius: 20px;
   -webkit-border-radius: 20px;
@@ -1484,62 +1539,62 @@ strong {
   box-shadow: 0px 0px 2px #555;
   background-color: #f2f2f2 !important;
 }
-/* line 32, sass/_infoVisSystem.scss */
+/* line 37, sass/_infoVisSystem.scss */
 #mapView div.location.cat-language {
   background-color: #e4b100;
   border-color: #e4b100;
 }
-/* line 37, sass/_infoVisSystem.scss */
+/* line 42, sass/_infoVisSystem.scss */
 #mapView div.location.cat-medic {
   background-color: #a21c15;
   border-color: #a21c15;
 }
-/* line 42, sass/_infoVisSystem.scss */
+/* line 47, sass/_infoVisSystem.scss */
 #mapView div.location.cat-jobs {
   background-color: #085272;
   border-color: #085272;
 }
-/* line 47, sass/_infoVisSystem.scss */
+/* line 52, sass/_infoVisSystem.scss */
 #mapView div.location.cat-consultation {
   background-color: #5e6823;
   border-color: #5e6823;
 }
-/* line 52, sass/_infoVisSystem.scss */
+/* line 57, sass/_infoVisSystem.scss */
 #mapView div.location.cat-leisure {
   background-color: #318b86;
   border-color: #318b86;
 }
-/* line 57, sass/_infoVisSystem.scss */
+/* line 62, sass/_infoVisSystem.scss */
 #mapView div.location.cat-community {
   background-color: #693e75;
   border-color: #693e75;
 }
-/* line 62, sass/_infoVisSystem.scss */
+/* line 67, sass/_infoVisSystem.scss */
 #mapView div.location.cat-donation {
   background-color: #ca7311;
   border-color: #ca7311;
 }
-/* line 76, sass/_infoVisSystem.scss */
+/* line 81, sass/_infoVisSystem.scss */
 #mapView div.location.cat-language {
   background-image: url("../img/icon_06.svg");
 }
-/* line 77, sass/_infoVisSystem.scss */
+/* line 82, sass/_infoVisSystem.scss */
 #mapView div.location.cat-medic {
   background-image: url("../img/icon_04.svg");
 }
-/* line 78, sass/_infoVisSystem.scss */
+/* line 83, sass/_infoVisSystem.scss */
 #mapView div.location.cat-jobs {
   background-image: url("../img/icon_76.svg");
 }
-/* line 79, sass/_infoVisSystem.scss */
+/* line 84, sass/_infoVisSystem.scss */
 #mapView div.location.cat-consultation {
   background-image: url("../img/icon_10.svg");
 }
-/* line 80, sass/_infoVisSystem.scss */
+/* line 85, sass/_infoVisSystem.scss */
 #mapView div.location.cat-leisure {
   background-image: url("../img/icon_86.svg");
 }
-/* line 81, sass/_infoVisSystem.scss */
+/* line 86, sass/_infoVisSystem.scss */
 #mapView div.location.cat-community {
   background-image: url("../img/icon_02.svg");
   -moz-background-size: 85%;
@@ -1547,55 +1602,55 @@ strong {
   -webkit-background-size: 85%;
   background-size: 85%;
 }
-/* line 82, sass/_infoVisSystem.scss */
+/* line 87, sass/_infoVisSystem.scss */
 #mapView div.location.cat-donation {
   background-image: url("../img/icon_12.svg");
 }
-/* line 86, sass/_infoVisSystem.scss */
+/* line 91, sass/_infoVisSystem.scss */
 #mapView div.location.subcat-german-course {
   background-image: url("../img/icon_18.svg");
 }
-/* line 87, sass/_infoVisSystem.scss */
+/* line 92, sass/_infoVisSystem.scss */
 #mapView div.location.subcat-welcome-alliance {
   background-image: url("../img/icon_64.svg") !important;
 }
-/* line 88, sass/_infoVisSystem.scss */
+/* line 93, sass/_infoVisSystem.scss */
 #mapView div.location.subcat-meeting-place {
   background-image: url("../img/icon_78.svg");
 }
-/* line 89, sass/_infoVisSystem.scss */
+/* line 94, sass/_infoVisSystem.scss */
 #mapView div.location.subcat-welcome-festival {
   background-image: url("../img/icon_82.svg");
 }
-/* line 90, sass/_infoVisSystem.scss */
+/* line 95, sass/_infoVisSystem.scss */
 #mapView div.location.subcat-craft-art {
   background-image: url("../img/icon_80.svg");
 }
-/* line 91, sass/_infoVisSystem.scss */
+/* line 96, sass/_infoVisSystem.scss */
 #mapView div.location.subcat-volunteer-coordination {
   background-image: url("../img/icon_56.svg");
 }
-/* line 96, sass/_infoVisSystem.scss */
+/* line 101, sass/_infoVisSystem.scss */
 #mapView div.location.cat-housing {
   background-image: url("../img/icon_19.svg");
 }
-/* line 99, sass/_infoVisSystem.scss */
+/* line 104, sass/_infoVisSystem.scss */
 #mapView div.location.cat-christian {
   background-image: url("../img/icon_59.svg");
 }
-/* line 100, sass/_infoVisSystem.scss */
+/* line 105, sass/_infoVisSystem.scss */
 #mapView div.location.cat-hospital {
   background-image: url("../img/icon_03.svg");
 }
-/* line 101, sass/_infoVisSystem.scss */
+/* line 106, sass/_infoVisSystem.scss */
 #mapView div.location.cat-islam {
   background-image: url("../img/icon_61.svg");
 }
-/* line 102, sass/_infoVisSystem.scss */
+/* line 107, sass/_infoVisSystem.scss */
 #mapView div.location.cat-jewish {
   background-image: url("../img/icon_21.svg");
 }
-/* line 103, sass/_infoVisSystem.scss */
+/* line 108, sass/_infoVisSystem.scss */
 #mapView div.location.cat-shop {
   background-image: url("../img/icon_65.svg");
   -moz-background-size: 65%;
@@ -1603,7 +1658,7 @@ strong {
   -webkit-background-size: 65%;
   background-size: 65%;
 }
-/* line 104, sass/_infoVisSystem.scss */
+/* line 109, sass/_infoVisSystem.scss */
 #mapView div.location.cat-public {
   background-image: url("../img/icon_63.svg");
   -moz-background-size: 80%;
@@ -1611,7 +1666,7 @@ strong {
   -webkit-background-size: 80%;
   background-size: 80%;
 }
-/* line 105, sass/_infoVisSystem.scss */
+/* line 110, sass/_infoVisSystem.scss */
 #mapView div.location.cat-library {
   background-image: url("../img/icon_17.svg");
   -moz-background-size: 80%;
@@ -1619,12 +1674,12 @@ strong {
   -webkit-background-size: 80%;
   background-size: 80%;
 }
-/* line 106, sass/_infoVisSystem.scss */
+/* line 111, sass/_infoVisSystem.scss */
 #mapView div.location.cat-trafficStop {
   background-image: url("../img/icon_57.svg");
   background-color: #fdc400;
 }
-/* line 108, sass/_infoVisSystem.scss */
+/* line 113, sass/_infoVisSystem.scss */
 #mapView div.location.cat-other {
   background-image: url("../img/icon_32.svg");
   -moz-background-size: 50%;
@@ -1877,37 +1932,37 @@ body.phone #mapView #locate-btn {
   /* TODO find a solution to avoid setting the border on elements that dont need that and dont provide a parameter for it */
   /* Main categories */
 }
-/* line 32, sass/_infoVisSystem.scss */
+/* line 37, sass/_infoVisSystem.scss */
 #detailView .heading.cat-language {
   background-color: #e4b100;
   border-color: #e4b100;
 }
-/* line 37, sass/_infoVisSystem.scss */
+/* line 42, sass/_infoVisSystem.scss */
 #detailView .heading.cat-medic {
   background-color: #a21c15;
   border-color: #a21c15;
 }
-/* line 42, sass/_infoVisSystem.scss */
+/* line 47, sass/_infoVisSystem.scss */
 #detailView .heading.cat-jobs {
   background-color: #085272;
   border-color: #085272;
 }
-/* line 47, sass/_infoVisSystem.scss */
+/* line 52, sass/_infoVisSystem.scss */
 #detailView .heading.cat-consultation {
   background-color: #5e6823;
   border-color: #5e6823;
 }
-/* line 52, sass/_infoVisSystem.scss */
+/* line 57, sass/_infoVisSystem.scss */
 #detailView .heading.cat-leisure {
   background-color: #318b86;
   border-color: #318b86;
 }
-/* line 57, sass/_infoVisSystem.scss */
+/* line 62, sass/_infoVisSystem.scss */
 #detailView .heading.cat-community {
   background-color: #693e75;
   border-color: #693e75;
 }
-/* line 62, sass/_infoVisSystem.scss */
+/* line 67, sass/_infoVisSystem.scss */
 #detailView .heading.cat-donation {
   background-color: #ca7311;
   border-color: #ca7311;
@@ -1986,11 +2041,22 @@ body.phone #mapView #locate-btn {
 }
 /* line 14, sass/_infoVisSystem.scss */
 #detailView .property.category .property-icon.type-2 {
-  -moz-border-radius: 0px;
-  -webkit-border-radius: 0px;
-  border-radius: 0px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
 }
-/* line 19, sass/_infoVisSystem.scss */
+/* line 18, sass/_infoVisSystem.scss */
+#detailView .property.category .property-icon.type-2[class^="cat-"] {
+  -moz-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+/* line 24, sass/_infoVisSystem.scss */
 #detailView .property.category .property-icon.type-3 {
   -moz-border-radius: 20px;
   -webkit-border-radius: 20px;
@@ -2000,62 +2066,62 @@ body.phone #mapView #locate-btn {
   box-shadow: 0px 0px 2px #555;
   background-color: #f2f2f2 !important;
 }
-/* line 32, sass/_infoVisSystem.scss */
+/* line 37, sass/_infoVisSystem.scss */
 #detailView .property.category .property-icon.cat-language {
   background-color: #e4b100;
   border-color: #e4b100;
 }
-/* line 37, sass/_infoVisSystem.scss */
+/* line 42, sass/_infoVisSystem.scss */
 #detailView .property.category .property-icon.cat-medic {
   background-color: #a21c15;
   border-color: #a21c15;
 }
-/* line 42, sass/_infoVisSystem.scss */
+/* line 47, sass/_infoVisSystem.scss */
 #detailView .property.category .property-icon.cat-jobs {
   background-color: #085272;
   border-color: #085272;
 }
-/* line 47, sass/_infoVisSystem.scss */
+/* line 52, sass/_infoVisSystem.scss */
 #detailView .property.category .property-icon.cat-consultation {
   background-color: #5e6823;
   border-color: #5e6823;
 }
-/* line 52, sass/_infoVisSystem.scss */
+/* line 57, sass/_infoVisSystem.scss */
 #detailView .property.category .property-icon.cat-leisure {
   background-color: #318b86;
   border-color: #318b86;
 }
-/* line 57, sass/_infoVisSystem.scss */
+/* line 62, sass/_infoVisSystem.scss */
 #detailView .property.category .property-icon.cat-community {
   background-color: #693e75;
   border-color: #693e75;
 }
-/* line 62, sass/_infoVisSystem.scss */
+/* line 67, sass/_infoVisSystem.scss */
 #detailView .property.category .property-icon.cat-donation {
   background-color: #ca7311;
   border-color: #ca7311;
 }
-/* line 76, sass/_infoVisSystem.scss */
+/* line 81, sass/_infoVisSystem.scss */
 #detailView .property.category .property-icon.cat-language {
   background-image: url("../img/icon_06.svg");
 }
-/* line 77, sass/_infoVisSystem.scss */
+/* line 82, sass/_infoVisSystem.scss */
 #detailView .property.category .property-icon.cat-medic {
   background-image: url("../img/icon_04.svg");
 }
-/* line 78, sass/_infoVisSystem.scss */
+/* line 83, sass/_infoVisSystem.scss */
 #detailView .property.category .property-icon.cat-jobs {
   background-image: url("../img/icon_76.svg");
 }
-/* line 79, sass/_infoVisSystem.scss */
+/* line 84, sass/_infoVisSystem.scss */
 #detailView .property.category .property-icon.cat-consultation {
   background-image: url("../img/icon_10.svg");
 }
-/* line 80, sass/_infoVisSystem.scss */
+/* line 85, sass/_infoVisSystem.scss */
 #detailView .property.category .property-icon.cat-leisure {
   background-image: url("../img/icon_86.svg");
 }
-/* line 81, sass/_infoVisSystem.scss */
+/* line 86, sass/_infoVisSystem.scss */
 #detailView .property.category .property-icon.cat-community {
   background-image: url("../img/icon_02.svg");
   -moz-background-size: 85%;
@@ -2063,55 +2129,55 @@ body.phone #mapView #locate-btn {
   -webkit-background-size: 85%;
   background-size: 85%;
 }
-/* line 82, sass/_infoVisSystem.scss */
+/* line 87, sass/_infoVisSystem.scss */
 #detailView .property.category .property-icon.cat-donation {
   background-image: url("../img/icon_12.svg");
 }
-/* line 86, sass/_infoVisSystem.scss */
+/* line 91, sass/_infoVisSystem.scss */
 #detailView .property.category .property-icon.subcat-german-course {
   background-image: url("../img/icon_18.svg");
 }
-/* line 87, sass/_infoVisSystem.scss */
+/* line 92, sass/_infoVisSystem.scss */
 #detailView .property.category .property-icon.subcat-welcome-alliance {
   background-image: url("../img/icon_64.svg") !important;
 }
-/* line 88, sass/_infoVisSystem.scss */
+/* line 93, sass/_infoVisSystem.scss */
 #detailView .property.category .property-icon.subcat-meeting-place {
   background-image: url("../img/icon_78.svg");
 }
-/* line 89, sass/_infoVisSystem.scss */
+/* line 94, sass/_infoVisSystem.scss */
 #detailView .property.category .property-icon.subcat-welcome-festival {
   background-image: url("../img/icon_82.svg");
 }
-/* line 90, sass/_infoVisSystem.scss */
+/* line 95, sass/_infoVisSystem.scss */
 #detailView .property.category .property-icon.subcat-craft-art {
   background-image: url("../img/icon_80.svg");
 }
-/* line 91, sass/_infoVisSystem.scss */
+/* line 96, sass/_infoVisSystem.scss */
 #detailView .property.category .property-icon.subcat-volunteer-coordination {
   background-image: url("../img/icon_56.svg");
 }
-/* line 96, sass/_infoVisSystem.scss */
+/* line 101, sass/_infoVisSystem.scss */
 #detailView .property.category .property-icon.cat-housing {
   background-image: url("../img/icon_19.svg");
 }
-/* line 99, sass/_infoVisSystem.scss */
+/* line 104, sass/_infoVisSystem.scss */
 #detailView .property.category .property-icon.cat-christian {
   background-image: url("../img/icon_59.svg");
 }
-/* line 100, sass/_infoVisSystem.scss */
+/* line 105, sass/_infoVisSystem.scss */
 #detailView .property.category .property-icon.cat-hospital {
   background-image: url("../img/icon_03.svg");
 }
-/* line 101, sass/_infoVisSystem.scss */
+/* line 106, sass/_infoVisSystem.scss */
 #detailView .property.category .property-icon.cat-islam {
   background-image: url("../img/icon_61.svg");
 }
-/* line 102, sass/_infoVisSystem.scss */
+/* line 107, sass/_infoVisSystem.scss */
 #detailView .property.category .property-icon.cat-jewish {
   background-image: url("../img/icon_21.svg");
 }
-/* line 103, sass/_infoVisSystem.scss */
+/* line 108, sass/_infoVisSystem.scss */
 #detailView .property.category .property-icon.cat-shop {
   background-image: url("../img/icon_65.svg");
   -moz-background-size: 65%;
@@ -2119,7 +2185,7 @@ body.phone #mapView #locate-btn {
   -webkit-background-size: 65%;
   background-size: 65%;
 }
-/* line 104, sass/_infoVisSystem.scss */
+/* line 109, sass/_infoVisSystem.scss */
 #detailView .property.category .property-icon.cat-public {
   background-image: url("../img/icon_63.svg");
   -moz-background-size: 80%;
@@ -2127,7 +2193,7 @@ body.phone #mapView #locate-btn {
   -webkit-background-size: 80%;
   background-size: 80%;
 }
-/* line 105, sass/_infoVisSystem.scss */
+/* line 110, sass/_infoVisSystem.scss */
 #detailView .property.category .property-icon.cat-library {
   background-image: url("../img/icon_17.svg");
   -moz-background-size: 80%;
@@ -2135,12 +2201,12 @@ body.phone #mapView #locate-btn {
   -webkit-background-size: 80%;
   background-size: 80%;
 }
-/* line 106, sass/_infoVisSystem.scss */
+/* line 111, sass/_infoVisSystem.scss */
 #detailView .property.category .property-icon.cat-trafficStop {
   background-image: url("../img/icon_57.svg");
   background-color: #fdc400;
 }
-/* line 108, sass/_infoVisSystem.scss */
+/* line 113, sass/_infoVisSystem.scss */
 #detailView .property.category .property-icon.cat-other {
   background-image: url("../img/icon_32.svg");
   -moz-background-size: 50%;
@@ -2284,37 +2350,37 @@ body.phone #mapView #locate-btn {
   /* TODO find a solution to avoid setting the border on elements that dont need that and dont provide a parameter for it */
   /* Main categories */
 }
-/* line 32, sass/_infoVisSystem.scss */
+/* line 37, sass/_infoVisSystem.scss */
 #detailViewMobile .heading.cat-language {
   background-color: #e4b100;
   border-color: #e4b100;
 }
-/* line 37, sass/_infoVisSystem.scss */
+/* line 42, sass/_infoVisSystem.scss */
 #detailViewMobile .heading.cat-medic {
   background-color: #a21c15;
   border-color: #a21c15;
 }
-/* line 42, sass/_infoVisSystem.scss */
+/* line 47, sass/_infoVisSystem.scss */
 #detailViewMobile .heading.cat-jobs {
   background-color: #085272;
   border-color: #085272;
 }
-/* line 47, sass/_infoVisSystem.scss */
+/* line 52, sass/_infoVisSystem.scss */
 #detailViewMobile .heading.cat-consultation {
   background-color: #5e6823;
   border-color: #5e6823;
 }
-/* line 52, sass/_infoVisSystem.scss */
+/* line 57, sass/_infoVisSystem.scss */
 #detailViewMobile .heading.cat-leisure {
   background-color: #318b86;
   border-color: #318b86;
 }
-/* line 57, sass/_infoVisSystem.scss */
+/* line 62, sass/_infoVisSystem.scss */
 #detailViewMobile .heading.cat-community {
   background-color: #693e75;
   border-color: #693e75;
 }
-/* line 62, sass/_infoVisSystem.scss */
+/* line 67, sass/_infoVisSystem.scss */
 #detailViewMobile .heading.cat-donation {
   background-color: #ca7311;
   border-color: #ca7311;
@@ -2393,11 +2459,22 @@ body.phone #mapView #locate-btn {
 }
 /* line 14, sass/_infoVisSystem.scss */
 #detailViewMobile .property.category .property-icon.type-2 {
-  -moz-border-radius: 0px;
-  -webkit-border-radius: 0px;
-  border-radius: 0px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
 }
-/* line 19, sass/_infoVisSystem.scss */
+/* line 18, sass/_infoVisSystem.scss */
+#detailViewMobile .property.category .property-icon.type-2[class^="cat-"] {
+  -moz-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+/* line 24, sass/_infoVisSystem.scss */
 #detailViewMobile .property.category .property-icon.type-3 {
   -moz-border-radius: 20px;
   -webkit-border-radius: 20px;
@@ -2407,62 +2484,62 @@ body.phone #mapView #locate-btn {
   box-shadow: 0px 0px 2px #555;
   background-color: #f2f2f2 !important;
 }
-/* line 32, sass/_infoVisSystem.scss */
+/* line 37, sass/_infoVisSystem.scss */
 #detailViewMobile .property.category .property-icon.cat-language {
   background-color: #e4b100;
   border-color: #e4b100;
 }
-/* line 37, sass/_infoVisSystem.scss */
+/* line 42, sass/_infoVisSystem.scss */
 #detailViewMobile .property.category .property-icon.cat-medic {
   background-color: #a21c15;
   border-color: #a21c15;
 }
-/* line 42, sass/_infoVisSystem.scss */
+/* line 47, sass/_infoVisSystem.scss */
 #detailViewMobile .property.category .property-icon.cat-jobs {
   background-color: #085272;
   border-color: #085272;
 }
-/* line 47, sass/_infoVisSystem.scss */
+/* line 52, sass/_infoVisSystem.scss */
 #detailViewMobile .property.category .property-icon.cat-consultation {
   background-color: #5e6823;
   border-color: #5e6823;
 }
-/* line 52, sass/_infoVisSystem.scss */
+/* line 57, sass/_infoVisSystem.scss */
 #detailViewMobile .property.category .property-icon.cat-leisure {
   background-color: #318b86;
   border-color: #318b86;
 }
-/* line 57, sass/_infoVisSystem.scss */
+/* line 62, sass/_infoVisSystem.scss */
 #detailViewMobile .property.category .property-icon.cat-community {
   background-color: #693e75;
   border-color: #693e75;
 }
-/* line 62, sass/_infoVisSystem.scss */
+/* line 67, sass/_infoVisSystem.scss */
 #detailViewMobile .property.category .property-icon.cat-donation {
   background-color: #ca7311;
   border-color: #ca7311;
 }
-/* line 76, sass/_infoVisSystem.scss */
+/* line 81, sass/_infoVisSystem.scss */
 #detailViewMobile .property.category .property-icon.cat-language {
   background-image: url("../img/icon_06.svg");
 }
-/* line 77, sass/_infoVisSystem.scss */
+/* line 82, sass/_infoVisSystem.scss */
 #detailViewMobile .property.category .property-icon.cat-medic {
   background-image: url("../img/icon_04.svg");
 }
-/* line 78, sass/_infoVisSystem.scss */
+/* line 83, sass/_infoVisSystem.scss */
 #detailViewMobile .property.category .property-icon.cat-jobs {
   background-image: url("../img/icon_76.svg");
 }
-/* line 79, sass/_infoVisSystem.scss */
+/* line 84, sass/_infoVisSystem.scss */
 #detailViewMobile .property.category .property-icon.cat-consultation {
   background-image: url("../img/icon_10.svg");
 }
-/* line 80, sass/_infoVisSystem.scss */
+/* line 85, sass/_infoVisSystem.scss */
 #detailViewMobile .property.category .property-icon.cat-leisure {
   background-image: url("../img/icon_86.svg");
 }
-/* line 81, sass/_infoVisSystem.scss */
+/* line 86, sass/_infoVisSystem.scss */
 #detailViewMobile .property.category .property-icon.cat-community {
   background-image: url("../img/icon_02.svg");
   -moz-background-size: 85%;
@@ -2470,55 +2547,55 @@ body.phone #mapView #locate-btn {
   -webkit-background-size: 85%;
   background-size: 85%;
 }
-/* line 82, sass/_infoVisSystem.scss */
+/* line 87, sass/_infoVisSystem.scss */
 #detailViewMobile .property.category .property-icon.cat-donation {
   background-image: url("../img/icon_12.svg");
 }
-/* line 86, sass/_infoVisSystem.scss */
+/* line 91, sass/_infoVisSystem.scss */
 #detailViewMobile .property.category .property-icon.subcat-german-course {
   background-image: url("../img/icon_18.svg");
 }
-/* line 87, sass/_infoVisSystem.scss */
+/* line 92, sass/_infoVisSystem.scss */
 #detailViewMobile .property.category .property-icon.subcat-welcome-alliance {
   background-image: url("../img/icon_64.svg") !important;
 }
-/* line 88, sass/_infoVisSystem.scss */
+/* line 93, sass/_infoVisSystem.scss */
 #detailViewMobile .property.category .property-icon.subcat-meeting-place {
   background-image: url("../img/icon_78.svg");
 }
-/* line 89, sass/_infoVisSystem.scss */
+/* line 94, sass/_infoVisSystem.scss */
 #detailViewMobile .property.category .property-icon.subcat-welcome-festival {
   background-image: url("../img/icon_82.svg");
 }
-/* line 90, sass/_infoVisSystem.scss */
+/* line 95, sass/_infoVisSystem.scss */
 #detailViewMobile .property.category .property-icon.subcat-craft-art {
   background-image: url("../img/icon_80.svg");
 }
-/* line 91, sass/_infoVisSystem.scss */
+/* line 96, sass/_infoVisSystem.scss */
 #detailViewMobile .property.category .property-icon.subcat-volunteer-coordination {
   background-image: url("../img/icon_56.svg");
 }
-/* line 96, sass/_infoVisSystem.scss */
+/* line 101, sass/_infoVisSystem.scss */
 #detailViewMobile .property.category .property-icon.cat-housing {
   background-image: url("../img/icon_19.svg");
 }
-/* line 99, sass/_infoVisSystem.scss */
+/* line 104, sass/_infoVisSystem.scss */
 #detailViewMobile .property.category .property-icon.cat-christian {
   background-image: url("../img/icon_59.svg");
 }
-/* line 100, sass/_infoVisSystem.scss */
+/* line 105, sass/_infoVisSystem.scss */
 #detailViewMobile .property.category .property-icon.cat-hospital {
   background-image: url("../img/icon_03.svg");
 }
-/* line 101, sass/_infoVisSystem.scss */
+/* line 106, sass/_infoVisSystem.scss */
 #detailViewMobile .property.category .property-icon.cat-islam {
   background-image: url("../img/icon_61.svg");
 }
-/* line 102, sass/_infoVisSystem.scss */
+/* line 107, sass/_infoVisSystem.scss */
 #detailViewMobile .property.category .property-icon.cat-jewish {
   background-image: url("../img/icon_21.svg");
 }
-/* line 103, sass/_infoVisSystem.scss */
+/* line 108, sass/_infoVisSystem.scss */
 #detailViewMobile .property.category .property-icon.cat-shop {
   background-image: url("../img/icon_65.svg");
   -moz-background-size: 65%;
@@ -2526,7 +2603,7 @@ body.phone #mapView #locate-btn {
   -webkit-background-size: 65%;
   background-size: 65%;
 }
-/* line 104, sass/_infoVisSystem.scss */
+/* line 109, sass/_infoVisSystem.scss */
 #detailViewMobile .property.category .property-icon.cat-public {
   background-image: url("../img/icon_63.svg");
   -moz-background-size: 80%;
@@ -2534,7 +2611,7 @@ body.phone #mapView #locate-btn {
   -webkit-background-size: 80%;
   background-size: 80%;
 }
-/* line 105, sass/_infoVisSystem.scss */
+/* line 110, sass/_infoVisSystem.scss */
 #detailViewMobile .property.category .property-icon.cat-library {
   background-image: url("../img/icon_17.svg");
   -moz-background-size: 80%;
@@ -2542,12 +2619,12 @@ body.phone #mapView #locate-btn {
   -webkit-background-size: 80%;
   background-size: 80%;
 }
-/* line 106, sass/_infoVisSystem.scss */
+/* line 111, sass/_infoVisSystem.scss */
 #detailViewMobile .property.category .property-icon.cat-trafficStop {
   background-image: url("../img/icon_57.svg");
   background-color: #fdc400;
 }
-/* line 108, sass/_infoVisSystem.scss */
+/* line 113, sass/_infoVisSystem.scss */
 #detailViewMobile .property.category .property-icon.cat-other {
   background-image: url("../img/icon_32.svg");
   -moz-background-size: 50%;
@@ -2803,37 +2880,37 @@ body.phone #menuView .menu-btn {
   /* Main categories */
   border-left: .5rem solid;
 }
-/* line 32, sass/_infoVisSystem.scss */
+/* line 37, sass/_infoVisSystem.scss */
 #legendView .cat-container.cat-language {
   background-color: rgba(228, 177, 0, 0.4);
   border-color: #e4b100;
 }
-/* line 37, sass/_infoVisSystem.scss */
+/* line 42, sass/_infoVisSystem.scss */
 #legendView .cat-container.cat-medic {
   background-color: rgba(162, 28, 21, 0.4);
   border-color: #a21c15;
 }
-/* line 42, sass/_infoVisSystem.scss */
+/* line 47, sass/_infoVisSystem.scss */
 #legendView .cat-container.cat-jobs {
   background-color: rgba(8, 82, 114, 0.4);
   border-color: #085272;
 }
-/* line 47, sass/_infoVisSystem.scss */
+/* line 52, sass/_infoVisSystem.scss */
 #legendView .cat-container.cat-consultation {
   background-color: rgba(94, 104, 35, 0.4);
   border-color: #5e6823;
 }
-/* line 52, sass/_infoVisSystem.scss */
+/* line 57, sass/_infoVisSystem.scss */
 #legendView .cat-container.cat-leisure {
   background-color: rgba(49, 139, 134, 0.4);
   border-color: #318b86;
 }
-/* line 57, sass/_infoVisSystem.scss */
+/* line 62, sass/_infoVisSystem.scss */
 #legendView .cat-container.cat-community {
   background-color: rgba(105, 62, 117, 0.4);
   border-color: #693e75;
 }
-/* line 62, sass/_infoVisSystem.scss */
+/* line 67, sass/_infoVisSystem.scss */
 #legendView .cat-container.cat-donation {
   background-color: rgba(202, 115, 17, 0.4);
   border-color: #ca7311;
@@ -2859,27 +2936,27 @@ body.phone #menuView .menu-btn {
   -webkit-transition: all 150ms;
   transition: all 150ms;
 }
-/* line 76, sass/_infoVisSystem.scss */
+/* line 81, sass/_infoVisSystem.scss */
 #legendView .cat-container .icon.cat-language {
   background-image: url("../img/icon_06.svg");
 }
-/* line 77, sass/_infoVisSystem.scss */
+/* line 82, sass/_infoVisSystem.scss */
 #legendView .cat-container .icon.cat-medic {
   background-image: url("../img/icon_04.svg");
 }
-/* line 78, sass/_infoVisSystem.scss */
+/* line 83, sass/_infoVisSystem.scss */
 #legendView .cat-container .icon.cat-jobs {
   background-image: url("../img/icon_76.svg");
 }
-/* line 79, sass/_infoVisSystem.scss */
+/* line 84, sass/_infoVisSystem.scss */
 #legendView .cat-container .icon.cat-consultation {
   background-image: url("../img/icon_10.svg");
 }
-/* line 80, sass/_infoVisSystem.scss */
+/* line 85, sass/_infoVisSystem.scss */
 #legendView .cat-container .icon.cat-leisure {
   background-image: url("../img/icon_86.svg");
 }
-/* line 81, sass/_infoVisSystem.scss */
+/* line 86, sass/_infoVisSystem.scss */
 #legendView .cat-container .icon.cat-community {
   background-image: url("../img/icon_02.svg");
   -moz-background-size: 85%;
@@ -2887,55 +2964,55 @@ body.phone #menuView .menu-btn {
   -webkit-background-size: 85%;
   background-size: 85%;
 }
-/* line 82, sass/_infoVisSystem.scss */
+/* line 87, sass/_infoVisSystem.scss */
 #legendView .cat-container .icon.cat-donation {
   background-image: url("../img/icon_12.svg");
 }
-/* line 86, sass/_infoVisSystem.scss */
+/* line 91, sass/_infoVisSystem.scss */
 #legendView .cat-container .icon.subcat-german-course {
   background-image: url("../img/icon_18.svg");
 }
-/* line 87, sass/_infoVisSystem.scss */
+/* line 92, sass/_infoVisSystem.scss */
 #legendView .cat-container .icon.subcat-welcome-alliance {
   background-image: url("../img/icon_64.svg") !important;
 }
-/* line 88, sass/_infoVisSystem.scss */
+/* line 93, sass/_infoVisSystem.scss */
 #legendView .cat-container .icon.subcat-meeting-place {
   background-image: url("../img/icon_78.svg");
 }
-/* line 89, sass/_infoVisSystem.scss */
+/* line 94, sass/_infoVisSystem.scss */
 #legendView .cat-container .icon.subcat-welcome-festival {
   background-image: url("../img/icon_82.svg");
 }
-/* line 90, sass/_infoVisSystem.scss */
+/* line 95, sass/_infoVisSystem.scss */
 #legendView .cat-container .icon.subcat-craft-art {
   background-image: url("../img/icon_80.svg");
 }
-/* line 91, sass/_infoVisSystem.scss */
+/* line 96, sass/_infoVisSystem.scss */
 #legendView .cat-container .icon.subcat-volunteer-coordination {
   background-image: url("../img/icon_56.svg");
 }
-/* line 96, sass/_infoVisSystem.scss */
+/* line 101, sass/_infoVisSystem.scss */
 #legendView .cat-container .icon.cat-housing {
   background-image: url("../img/icon_19.svg");
 }
-/* line 99, sass/_infoVisSystem.scss */
+/* line 104, sass/_infoVisSystem.scss */
 #legendView .cat-container .icon.cat-christian {
   background-image: url("../img/icon_59.svg");
 }
-/* line 100, sass/_infoVisSystem.scss */
+/* line 105, sass/_infoVisSystem.scss */
 #legendView .cat-container .icon.cat-hospital {
   background-image: url("../img/icon_03.svg");
 }
-/* line 101, sass/_infoVisSystem.scss */
+/* line 106, sass/_infoVisSystem.scss */
 #legendView .cat-container .icon.cat-islam {
   background-image: url("../img/icon_61.svg");
 }
-/* line 102, sass/_infoVisSystem.scss */
+/* line 107, sass/_infoVisSystem.scss */
 #legendView .cat-container .icon.cat-jewish {
   background-image: url("../img/icon_21.svg");
 }
-/* line 103, sass/_infoVisSystem.scss */
+/* line 108, sass/_infoVisSystem.scss */
 #legendView .cat-container .icon.cat-shop {
   background-image: url("../img/icon_65.svg");
   -moz-background-size: 65%;
@@ -2943,7 +3020,7 @@ body.phone #menuView .menu-btn {
   -webkit-background-size: 65%;
   background-size: 65%;
 }
-/* line 104, sass/_infoVisSystem.scss */
+/* line 109, sass/_infoVisSystem.scss */
 #legendView .cat-container .icon.cat-public {
   background-image: url("../img/icon_63.svg");
   -moz-background-size: 80%;
@@ -2951,7 +3028,7 @@ body.phone #menuView .menu-btn {
   -webkit-background-size: 80%;
   background-size: 80%;
 }
-/* line 105, sass/_infoVisSystem.scss */
+/* line 110, sass/_infoVisSystem.scss */
 #legendView .cat-container .icon.cat-library {
   background-image: url("../img/icon_17.svg");
   -moz-background-size: 80%;
@@ -2959,12 +3036,12 @@ body.phone #menuView .menu-btn {
   -webkit-background-size: 80%;
   background-size: 80%;
 }
-/* line 106, sass/_infoVisSystem.scss */
+/* line 111, sass/_infoVisSystem.scss */
 #legendView .cat-container .icon.cat-trafficStop {
   background-image: url("../img/icon_57.svg");
   background-color: #fdc400;
 }
-/* line 108, sass/_infoVisSystem.scss */
+/* line 113, sass/_infoVisSystem.scss */
 #legendView .cat-container .icon.cat-other {
   background-image: url("../img/icon_32.svg");
   -moz-background-size: 50%;
@@ -3043,37 +3120,37 @@ body.phone #menuView .menu-btn {
   max-height: 0;
   overflow: hidden;
 }
-/* line 32, sass/_infoVisSystem.scss */
+/* line 37, sass/_infoVisSystem.scss */
 #legendView .sub-container.cat-language {
   background-color: rgba(228, 177, 0, 0.1);
   border-color: #e4b100;
 }
-/* line 37, sass/_infoVisSystem.scss */
+/* line 42, sass/_infoVisSystem.scss */
 #legendView .sub-container.cat-medic {
   background-color: rgba(162, 28, 21, 0.1);
   border-color: #a21c15;
 }
-/* line 42, sass/_infoVisSystem.scss */
+/* line 47, sass/_infoVisSystem.scss */
 #legendView .sub-container.cat-jobs {
   background-color: rgba(8, 82, 114, 0.1);
   border-color: #085272;
 }
-/* line 47, sass/_infoVisSystem.scss */
+/* line 52, sass/_infoVisSystem.scss */
 #legendView .sub-container.cat-consultation {
   background-color: rgba(94, 104, 35, 0.1);
   border-color: #5e6823;
 }
-/* line 52, sass/_infoVisSystem.scss */
+/* line 57, sass/_infoVisSystem.scss */
 #legendView .sub-container.cat-leisure {
   background-color: rgba(49, 139, 134, 0.1);
   border-color: #318b86;
 }
-/* line 57, sass/_infoVisSystem.scss */
+/* line 62, sass/_infoVisSystem.scss */
 #legendView .sub-container.cat-community {
   background-color: rgba(105, 62, 117, 0.1);
   border-color: #693e75;
 }
-/* line 62, sass/_infoVisSystem.scss */
+/* line 67, sass/_infoVisSystem.scss */
 #legendView .sub-container.cat-donation {
   background-color: rgba(202, 115, 17, 0.1);
   border-color: #ca7311;
@@ -3085,37 +3162,37 @@ body.phone #menuView .menu-btn {
   background: none !important;
   border-left: .5rem solid;
 }
-/* line 32, sass/_infoVisSystem.scss */
+/* line 37, sass/_infoVisSystem.scss */
 #legendView .sub-container .subcat-container.cat-language {
   background-color: #e4b100;
   border-color: #e4b100;
 }
-/* line 37, sass/_infoVisSystem.scss */
+/* line 42, sass/_infoVisSystem.scss */
 #legendView .sub-container .subcat-container.cat-medic {
   background-color: #a21c15;
   border-color: #a21c15;
 }
-/* line 42, sass/_infoVisSystem.scss */
+/* line 47, sass/_infoVisSystem.scss */
 #legendView .sub-container .subcat-container.cat-jobs {
   background-color: #085272;
   border-color: #085272;
 }
-/* line 47, sass/_infoVisSystem.scss */
+/* line 52, sass/_infoVisSystem.scss */
 #legendView .sub-container .subcat-container.cat-consultation {
   background-color: #5e6823;
   border-color: #5e6823;
 }
-/* line 52, sass/_infoVisSystem.scss */
+/* line 57, sass/_infoVisSystem.scss */
 #legendView .sub-container .subcat-container.cat-leisure {
   background-color: #318b86;
   border-color: #318b86;
 }
-/* line 57, sass/_infoVisSystem.scss */
+/* line 62, sass/_infoVisSystem.scss */
 #legendView .sub-container .subcat-container.cat-community {
   background-color: #693e75;
   border-color: #693e75;
 }
-/* line 62, sass/_infoVisSystem.scss */
+/* line 67, sass/_infoVisSystem.scss */
 #legendView .sub-container .subcat-container.cat-donation {
   background-color: #ca7311;
   border-color: #ca7311;
@@ -3141,27 +3218,27 @@ body.phone #menuView .menu-btn {
   margin-left: .5em;
   cursor: pointer;
 }
-/* line 76, sass/_infoVisSystem.scss */
+/* line 81, sass/_infoVisSystem.scss */
 #legendView .sub-container .subcat-container .icon.cat-language {
   background-image: url("../img/icon_06.svg");
 }
-/* line 77, sass/_infoVisSystem.scss */
+/* line 82, sass/_infoVisSystem.scss */
 #legendView .sub-container .subcat-container .icon.cat-medic {
   background-image: url("../img/icon_04.svg");
 }
-/* line 78, sass/_infoVisSystem.scss */
+/* line 83, sass/_infoVisSystem.scss */
 #legendView .sub-container .subcat-container .icon.cat-jobs {
   background-image: url("../img/icon_76.svg");
 }
-/* line 79, sass/_infoVisSystem.scss */
+/* line 84, sass/_infoVisSystem.scss */
 #legendView .sub-container .subcat-container .icon.cat-consultation {
   background-image: url("../img/icon_10.svg");
 }
-/* line 80, sass/_infoVisSystem.scss */
+/* line 85, sass/_infoVisSystem.scss */
 #legendView .sub-container .subcat-container .icon.cat-leisure {
   background-image: url("../img/icon_86.svg");
 }
-/* line 81, sass/_infoVisSystem.scss */
+/* line 86, sass/_infoVisSystem.scss */
 #legendView .sub-container .subcat-container .icon.cat-community {
   background-image: url("../img/icon_02.svg");
   -moz-background-size: 85%;
@@ -3169,55 +3246,55 @@ body.phone #menuView .menu-btn {
   -webkit-background-size: 85%;
   background-size: 85%;
 }
-/* line 82, sass/_infoVisSystem.scss */
+/* line 87, sass/_infoVisSystem.scss */
 #legendView .sub-container .subcat-container .icon.cat-donation {
   background-image: url("../img/icon_12.svg");
 }
-/* line 86, sass/_infoVisSystem.scss */
+/* line 91, sass/_infoVisSystem.scss */
 #legendView .sub-container .subcat-container .icon.subcat-german-course {
   background-image: url("../img/icon_18.svg");
 }
-/* line 87, sass/_infoVisSystem.scss */
+/* line 92, sass/_infoVisSystem.scss */
 #legendView .sub-container .subcat-container .icon.subcat-welcome-alliance {
   background-image: url("../img/icon_64.svg") !important;
 }
-/* line 88, sass/_infoVisSystem.scss */
+/* line 93, sass/_infoVisSystem.scss */
 #legendView .sub-container .subcat-container .icon.subcat-meeting-place {
   background-image: url("../img/icon_78.svg");
 }
-/* line 89, sass/_infoVisSystem.scss */
+/* line 94, sass/_infoVisSystem.scss */
 #legendView .sub-container .subcat-container .icon.subcat-welcome-festival {
   background-image: url("../img/icon_82.svg");
 }
-/* line 90, sass/_infoVisSystem.scss */
+/* line 95, sass/_infoVisSystem.scss */
 #legendView .sub-container .subcat-container .icon.subcat-craft-art {
   background-image: url("../img/icon_80.svg");
 }
-/* line 91, sass/_infoVisSystem.scss */
+/* line 96, sass/_infoVisSystem.scss */
 #legendView .sub-container .subcat-container .icon.subcat-volunteer-coordination {
   background-image: url("../img/icon_56.svg");
 }
-/* line 96, sass/_infoVisSystem.scss */
+/* line 101, sass/_infoVisSystem.scss */
 #legendView .sub-container .subcat-container .icon.cat-housing {
   background-image: url("../img/icon_19.svg");
 }
-/* line 99, sass/_infoVisSystem.scss */
+/* line 104, sass/_infoVisSystem.scss */
 #legendView .sub-container .subcat-container .icon.cat-christian {
   background-image: url("../img/icon_59.svg");
 }
-/* line 100, sass/_infoVisSystem.scss */
+/* line 105, sass/_infoVisSystem.scss */
 #legendView .sub-container .subcat-container .icon.cat-hospital {
   background-image: url("../img/icon_03.svg");
 }
-/* line 101, sass/_infoVisSystem.scss */
+/* line 106, sass/_infoVisSystem.scss */
 #legendView .sub-container .subcat-container .icon.cat-islam {
   background-image: url("../img/icon_61.svg");
 }
-/* line 102, sass/_infoVisSystem.scss */
+/* line 107, sass/_infoVisSystem.scss */
 #legendView .sub-container .subcat-container .icon.cat-jewish {
   background-image: url("../img/icon_21.svg");
 }
-/* line 103, sass/_infoVisSystem.scss */
+/* line 108, sass/_infoVisSystem.scss */
 #legendView .sub-container .subcat-container .icon.cat-shop {
   background-image: url("../img/icon_65.svg");
   -moz-background-size: 65%;
@@ -3225,7 +3302,7 @@ body.phone #menuView .menu-btn {
   -webkit-background-size: 65%;
   background-size: 65%;
 }
-/* line 104, sass/_infoVisSystem.scss */
+/* line 109, sass/_infoVisSystem.scss */
 #legendView .sub-container .subcat-container .icon.cat-public {
   background-image: url("../img/icon_63.svg");
   -moz-background-size: 80%;
@@ -3233,7 +3310,7 @@ body.phone #menuView .menu-btn {
   -webkit-background-size: 80%;
   background-size: 80%;
 }
-/* line 105, sass/_infoVisSystem.scss */
+/* line 110, sass/_infoVisSystem.scss */
 #legendView .sub-container .subcat-container .icon.cat-library {
   background-image: url("../img/icon_17.svg");
   -moz-background-size: 80%;
@@ -3241,12 +3318,12 @@ body.phone #menuView .menu-btn {
   -webkit-background-size: 80%;
   background-size: 80%;
 }
-/* line 106, sass/_infoVisSystem.scss */
+/* line 111, sass/_infoVisSystem.scss */
 #legendView .sub-container .subcat-container .icon.cat-trafficStop {
   background-image: url("../img/icon_57.svg");
   background-color: #fdc400;
 }
-/* line 108, sass/_infoVisSystem.scss */
+/* line 113, sass/_infoVisSystem.scss */
 #legendView .sub-container .subcat-container .icon.cat-other {
   background-image: url("../img/icon_32.svg");
   -moz-background-size: 50%;
@@ -4013,7 +4090,7 @@ body.phone #plusView {
   font-weight: 300;
   margin: 0;
   padding-top: 5rem;
-  font-size: 1.5em;
+  font-size: 2em;
   color: #f2f2f2;
   -moz-box-sizing: content-box;
   -webkit-box-sizing: content-box;
@@ -4110,12 +4187,224 @@ body.phone #plusView {
   font-weight: 100;
   font-style: italic;
 }
+/* line 162, sass/_includeView.scss */
+#includeView .entity-shape {
+  /* orga */
+  /* market entry */
+  /* event */
+  /* POI */
+  /* TODO find a solution to avoid setting the border on elements that dont need that and dont provide a parameter for it */
+  /* Main categories */
+  -moz-background-size: 72%;
+  -o-background-size: 72%;
+  -webkit-background-size: 72%;
+  background-size: 72%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  /* Main categories */
+  /* Sub categories */
+  /* POIs */
+  height: 1.5em;
+  width: 1.5em;
+  display: inline-block;
+  background-color: #333333;
+  position: relative;
+  bottom: -0.4em;
+  margin: 0 0.2em;
+}
+/* line 4, sass/_infoVisSystem.scss */
+#includeView .entity-shape.type-0 {
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+}
+/* line 9, sass/_infoVisSystem.scss */
+#includeView .entity-shape.type-1 {
+  -moz-border-radius: 20px;
+  -webkit-border-radius: 20px;
+  border-radius: 20px;
+}
+/* line 14, sass/_infoVisSystem.scss */
+#includeView .entity-shape.type-2 {
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+/* line 18, sass/_infoVisSystem.scss */
+#includeView .entity-shape.type-2[class^="cat-"] {
+  -moz-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+/* line 24, sass/_infoVisSystem.scss */
+#includeView .entity-shape.type-3 {
+  -moz-border-radius: 20px;
+  -webkit-border-radius: 20px;
+  border-radius: 20px;
+  -moz-box-shadow: 0px 0px 2px #555;
+  -webkit-box-shadow: 0px 0px 2px #555;
+  box-shadow: 0px 0px 2px #555;
+  background-color: #f2f2f2 !important;
+}
+/* line 37, sass/_infoVisSystem.scss */
+#includeView .entity-shape.cat-language {
+  background-color: #e4b100;
+  border-color: #e4b100;
+}
+/* line 42, sass/_infoVisSystem.scss */
+#includeView .entity-shape.cat-medic {
+  background-color: #a21c15;
+  border-color: #a21c15;
+}
+/* line 47, sass/_infoVisSystem.scss */
+#includeView .entity-shape.cat-jobs {
+  background-color: #085272;
+  border-color: #085272;
+}
+/* line 52, sass/_infoVisSystem.scss */
+#includeView .entity-shape.cat-consultation {
+  background-color: #5e6823;
+  border-color: #5e6823;
+}
+/* line 57, sass/_infoVisSystem.scss */
+#includeView .entity-shape.cat-leisure {
+  background-color: #318b86;
+  border-color: #318b86;
+}
+/* line 62, sass/_infoVisSystem.scss */
+#includeView .entity-shape.cat-community {
+  background-color: #693e75;
+  border-color: #693e75;
+}
+/* line 67, sass/_infoVisSystem.scss */
+#includeView .entity-shape.cat-donation {
+  background-color: #ca7311;
+  border-color: #ca7311;
+}
+/* line 81, sass/_infoVisSystem.scss */
+#includeView .entity-shape.cat-language {
+  background-image: url("../img/icon_06.svg");
+}
+/* line 82, sass/_infoVisSystem.scss */
+#includeView .entity-shape.cat-medic {
+  background-image: url("../img/icon_04.svg");
+}
+/* line 83, sass/_infoVisSystem.scss */
+#includeView .entity-shape.cat-jobs {
+  background-image: url("../img/icon_76.svg");
+}
+/* line 84, sass/_infoVisSystem.scss */
+#includeView .entity-shape.cat-consultation {
+  background-image: url("../img/icon_10.svg");
+}
+/* line 85, sass/_infoVisSystem.scss */
+#includeView .entity-shape.cat-leisure {
+  background-image: url("../img/icon_86.svg");
+}
+/* line 86, sass/_infoVisSystem.scss */
+#includeView .entity-shape.cat-community {
+  background-image: url("../img/icon_02.svg");
+  -moz-background-size: 85%;
+  -o-background-size: 85%;
+  -webkit-background-size: 85%;
+  background-size: 85%;
+}
+/* line 87, sass/_infoVisSystem.scss */
+#includeView .entity-shape.cat-donation {
+  background-image: url("../img/icon_12.svg");
+}
+/* line 91, sass/_infoVisSystem.scss */
+#includeView .entity-shape.subcat-german-course {
+  background-image: url("../img/icon_18.svg");
+}
+/* line 92, sass/_infoVisSystem.scss */
+#includeView .entity-shape.subcat-welcome-alliance {
+  background-image: url("../img/icon_64.svg") !important;
+}
+/* line 93, sass/_infoVisSystem.scss */
+#includeView .entity-shape.subcat-meeting-place {
+  background-image: url("../img/icon_78.svg");
+}
+/* line 94, sass/_infoVisSystem.scss */
+#includeView .entity-shape.subcat-welcome-festival {
+  background-image: url("../img/icon_82.svg");
+}
+/* line 95, sass/_infoVisSystem.scss */
+#includeView .entity-shape.subcat-craft-art {
+  background-image: url("../img/icon_80.svg");
+}
+/* line 96, sass/_infoVisSystem.scss */
+#includeView .entity-shape.subcat-volunteer-coordination {
+  background-image: url("../img/icon_56.svg");
+}
+/* line 101, sass/_infoVisSystem.scss */
+#includeView .entity-shape.cat-housing {
+  background-image: url("../img/icon_19.svg");
+}
+/* line 104, sass/_infoVisSystem.scss */
+#includeView .entity-shape.cat-christian {
+  background-image: url("../img/icon_59.svg");
+}
+/* line 105, sass/_infoVisSystem.scss */
+#includeView .entity-shape.cat-hospital {
+  background-image: url("../img/icon_03.svg");
+}
+/* line 106, sass/_infoVisSystem.scss */
+#includeView .entity-shape.cat-islam {
+  background-image: url("../img/icon_61.svg");
+}
+/* line 107, sass/_infoVisSystem.scss */
+#includeView .entity-shape.cat-jewish {
+  background-image: url("../img/icon_21.svg");
+}
+/* line 108, sass/_infoVisSystem.scss */
+#includeView .entity-shape.cat-shop {
+  background-image: url("../img/icon_65.svg");
+  -moz-background-size: 65%;
+  -o-background-size: 65%;
+  -webkit-background-size: 65%;
+  background-size: 65%;
+}
+/* line 109, sass/_infoVisSystem.scss */
+#includeView .entity-shape.cat-public {
+  background-image: url("../img/icon_63.svg");
+  -moz-background-size: 80%;
+  -o-background-size: 80%;
+  -webkit-background-size: 80%;
+  background-size: 80%;
+}
+/* line 110, sass/_infoVisSystem.scss */
+#includeView .entity-shape.cat-library {
+  background-image: url("../img/icon_17.svg");
+  -moz-background-size: 80%;
+  -o-background-size: 80%;
+  -webkit-background-size: 80%;
+  background-size: 80%;
+}
+/* line 111, sass/_infoVisSystem.scss */
+#includeView .entity-shape.cat-trafficStop {
+  background-image: url("../img/icon_57.svg");
+  background-color: #fdc400;
+}
+/* line 113, sass/_infoVisSystem.scss */
+#includeView .entity-shape.cat-other {
+  background-image: url("../img/icon_32.svg");
+  -moz-background-size: 50%;
+  -o-background-size: 50%;
+  -webkit-background-size: 50%;
+  background-size: 50%;
+}
 
-/* line 173, sass/_includeView.scss */
+/* line 186, sass/_includeView.scss */
 body.mobile #includeView {
   width: 100%;
 }
-/* line 176, sass/_includeView.scss */
+/* line 189, sass/_includeView.scss */
 body.mobile #includeView.small {
   height: 20%;
 }

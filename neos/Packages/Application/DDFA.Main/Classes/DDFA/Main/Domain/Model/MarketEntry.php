@@ -52,6 +52,12 @@ class MarketEntry extends Actor
     protected $locations;
 
     /**
+     * @var string
+     * @ORM\Column(nullable=true)
+     */
+    protected $area;
+
+    /**
      * @var int
      * @ORM\Column(nullable=false)
      */
@@ -173,5 +179,21 @@ class MarketEntry extends Actor
     public function setDatePeriodic($datePeriodic)
     {
         $this->datePeriodic = $datePeriodic;
+    }
+
+    /**
+     * @return string
+     */
+    public function getArea()
+    {
+        return $this->area;
+    }
+
+    /**
+     * @param string $area
+     */
+    public function setArea($area)
+    {
+        $this->area = $area;
     }
 }

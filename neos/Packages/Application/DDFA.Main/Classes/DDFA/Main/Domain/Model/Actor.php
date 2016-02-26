@@ -75,6 +75,7 @@ abstract class Actor extends BasicEntity
      * @var Category
      * @ORM\ManyToOne(targetEntity="DDFA\Main\Domain\Model\Category")
      * @ORM\JoinColumn(name="category_id", referencedColumnName="persistence_object_identifier")
+     * @ORM\Column(nullable=true)
      */
     protected $category;
 

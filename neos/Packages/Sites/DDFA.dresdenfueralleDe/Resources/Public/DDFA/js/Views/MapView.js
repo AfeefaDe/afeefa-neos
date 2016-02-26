@@ -325,8 +325,9 @@ qx.Class.define("MapView", {
     	if(entryId) {
     		var lookup = that.lookupMarkerById(entryId);
     		if(lookup){
-    			if(options && options.setView) that.map.setView( [lookup.location.lat, lookup.location.lon], 15);
-    			that.selectMarker(lookup.marker, lookup.location);
+    			if(options && options.setView)
+    				that.map.setView( [lookup.location.lat, lookup.location.lon], 16);
+				that.selectMarker(lookup.marker, lookup.location);
     		}
     	}
 
@@ -364,7 +365,7 @@ qx.Class.define("MapView", {
     	that.deselectMarker();
 		that.setSelectedMarker(marker);
 
-		if(setView) that.map.setView( [location.lat, location.lon], 15);
+		if(setView) that.map.setView( [location.lat, location.lon], 16);
 		$(marker._icon).addClass('active');
 		
     	APP.getDetailView().load(location);

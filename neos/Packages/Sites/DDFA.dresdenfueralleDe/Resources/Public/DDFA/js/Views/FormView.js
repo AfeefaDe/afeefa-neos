@@ -151,7 +151,7 @@ qx.Class.define("FormView", {
                         // TODO empty option
                         if(!prop.required)
                             var emptyOption = $('<option />')
-                                // .attr('disabled', true)
+                            // .attr('disabled', true)
                                 .attr('selected', true)
                                 .append('');
 
@@ -524,10 +524,7 @@ qx.Class.define("FormView", {
                                 + '_bis:_ ' + data.marketentry.dateTo + '\n'
                                 + '_Wdh.:_ ' + data.marketentry.datePeriodic + '\n\n'
                 });
-
             }
-
         }
     }
-
 });

@@ -69,7 +69,7 @@ class LocationsModuleController extends AbstractTranslationController
         $this->view->assign('iniLocations', $this->objectRepository->findAllOfInitiativeLocalized());
         $this->view->assign('basicLocations', $this->objectRepository->findAllOfBasicLocalized());
         $this->view->assign('marketLocations', $this->objectRepository->findAllOfMarketLocalized());
-        //$this->view->assign('eventLocations', $this->objectRepository->findAllOfEventLocalized());
+        $this->view->assign('eventLocations', $this->objectRepository->findAllOfEventLocalized());
     }
 
     /**

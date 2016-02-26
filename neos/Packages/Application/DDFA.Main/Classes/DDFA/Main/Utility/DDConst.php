@@ -15,6 +15,6 @@ abstract class DDConst
 
     const MEDIA_IMAGE = "typo3_media_image";
 
-    const LOCATION_SUPPLEMENT_PROPS = ["description", "arrival", "mail", "web", "facebook", "phone", "rating", "speakerPublic", "speakerPrivate", "category", "subcategory", "spokenLanguages"];
+    const LOCATION_SUPPLEMENT_PROPS = ["description", "arrival", "mail", "web", "facebook", "phone", "rating", "speakerPublic", "speakerPrivate", "category", "subcategory", "spokenLanguages", "subcategory", "forchildren", ];
 
 }

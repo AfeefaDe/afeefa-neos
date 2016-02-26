@@ -18,16 +18,16 @@ TYPO3:
               add:
                 label: 'Add location'
                 title: 'Add a new location'
-          initiatives:
-            label: 'Initiatives'
-            controller: '\DDFA\Main\Controller\Module\DDFA\InitiativesModuleController'
-            description: "The DD4all Initiatives Submodule provides all the usefull management functions to administrate initiatives like adding, editing, removing and indexing. (pretty awesome as well...)"
-            icon: 'icon-bullhorn'
-            resource: 'DDFA_Main_Module_ddfaInitiativesModule'
-            actions:
-              add:
-                label: 'Add initiative'
-                title: 'Add a new initiative'
+#          initiatives:
+#            label: 'Initiatives'
+#            controller: '\DDFA\Main\Controller\Module\DDFA\InitiativesModuleController'
+#            description: "The DD4all Initiatives Submodule provides all the usefull management functions to administrate initiatives like adding, editing, removing and indexing. (pretty awesome as well...)"
+#            icon: 'icon-bullhorn'
+#            resource: 'DDFA_Main_Module_ddfaInitiativesModule'
+#            actions:
+#              add:
+#                label: 'Add initiative'
+#                title: 'Add a new initiative'
           marketEntries:
             label: 'Market Entries'
             controller: '\DDFA\Main\Controller\Module\DDFA\MarketEntriesModuleController'

@@ -2,6 +2,24 @@
     <legend>Basic information</legend>
 
     <div class="neos-control-group">
+        <label class="neos-control-label" for="area">Admin area</label>
+
+        <div class="neos-controls">
+            <f:form.select class="neos-span12" property="area" id="area" options="{dresden: 'Dresden', pirna: 'Pirna', leipzig: 'Leipzig'}"/>
+        </div>
+    </div>
+
+    <div class="neos-control-group">
+        <label class="neos-control-label" for="type">Type</label>
+
+        <div class="neos-controls">
+            <f:form.select class="neos-span12" property="type" id="type" options="{0: '0 - Orga', 1: '1 - MarketEntry ', 2: '2 - Event', 3: '3 - POI/ Basic'}"/>
+        </div>
+    </div>
+
+    <hr />
+
+    <div class="neos-control-group">
         <label for="published">Published</label>
         <label for="published" class="neos-checkbox neos-inline">
             <f:form.checkbox property="published" id="published" value="published"/>
@@ -24,6 +42,15 @@
         <div class="neos-controls">
             <f:form.select class="neos-span12" id="category" name="cat" options="{cats}" optionValueField="name"
                            optionLabelField="name" value="{selectedCat}" sortByOptionLabel="true"/>
+        </div>
+    </div>
+
+    <div class="neos-control-group">
+        <label class="neos-control-label" for="subCategory">Subcategory</label>
+
+        <div class="neos-controls">
+            <f:form.select class="neos-span12" property="subCategory" id="subCategory"
+                           options="{german-course: 'german-course', interpreter: 'interpreter', learning-place: 'learning-place', tandem: 'tandem'}"/>
         </div>
     </div>
 

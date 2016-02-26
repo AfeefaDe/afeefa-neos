@@ -58,7 +58,7 @@ class LocationRepository extends AbstractTranslationRepository
      */
     public function findAllOfInitiative()
     {
-        $query = $this->createQuery()->setOrderings(array('updated' => QueryInterface::ORDER_DESCENDING));
+        $query = $this->createQuery()->setOrderings(array('created' => QueryInterface::ORDER_DESCENDING));
         return $query->matching(
             $query->equals('type', DDConst::OWNER_INI)
         )->execute();
@@ -69,7 +69,7 @@ class LocationRepository extends AbstractTranslationRepository
      */
     public function findAllOfMarket()
     {
-        $query = $this->createQuery()->setOrderings(array('updated' => QueryInterface::ORDER_DESCENDING));
+        $query = $this->createQuery()->setOrderings(array('created' => QueryInterface::ORDER_DESCENDING));
         return $query->matching(
             $query->equals('type', DDConst::OWNER_MARKET)
         )->execute();
@@ -91,7 +91,7 @@ class LocationRepository extends AbstractTranslationRepository
      */
     public function findAllOfEvent()
     {
-        $query = $this->createQuery()->setOrderings(array('updated' => QueryInterface::ORDER_DESCENDING));
+        $query = $this->createQuery()->setOrderings(array('created' => QueryInterface::ORDER_DESCENDING));
         return $query->matching(
             $query->equals('type', DDConst::OWNER_EVENT)
         )->execute();
@@ -103,7 +103,7 @@ class LocationRepository extends AbstractTranslationRepository
      */
     public function findAllOfInitiativeLocalized($locale = DDConst::LOCALE_STD)
     {
-        $query = $this->createQuery()->setOrderings(array('updated' => QueryInterface::ORDER_DESCENDING));
+        $query = $this->createQuery()->setOrderings(array('created' => QueryInterface::ORDER_DESCENDING));
         $locations = $query->matching(
             $query->logicalAnd(
                 $query->equals('type', DDConst::OWNER_INI),
@@ -120,7 +120,7 @@ class LocationRepository extends AbstractTranslationRepository
      */
     public function findAllOfMarketLocalized($locale = DDConst::LOCALE_STD)
     {
-        $query = $this->createQuery()->setOrderings(array('updated' => QueryInterface::ORDER_DESCENDING));
+        $query = $this->createQuery()->setOrderings(array('created' => QueryInterface::ORDER_DESCENDING));
         $locations = $query->matching(
             $query->logicalAnd(
                 $query->equals('type', DDConst::OWNER_MARKET),
@@ -154,7 +154,7 @@ class LocationRepository extends AbstractTranslationRepository
      */
     public function findAllOfEventLocalized($locale = DDConst::LOCALE_STD)
     {
-        $query = $this->createQuery()->setOrderings(array('updated' => QueryInterface::ORDER_DESCENDING));
+        $query = $this->createQuery()->setOrderings(array('created' => QueryInterface::ORDER_DESCENDING));
         $locations = $query->matching(
             $query->logicalAnd(
                 $query->equals('type', DDConst::OWNER_EVENT),
@@ -216,16 +216,16 @@ class LocationRepository extends AbstractTranslationRepository
         if ($location->getMarketEntry() == null && $location->getInitiative() == null && $location->getEvent() == null)
             return null;
 
-        switch ($location->getType()) {
-            case DDConst::OWNER_INI:
-                return $this->initiativeRepository->findByIdentifier($location->getInitiative()->getPersistenceObjectIdentifier());
-            case DDConst::OWNER_MARKET:
-                return $this->marketRepository->findByIdentifier($location->getMarketEntry()->getPersistenceObjectIdentifier());
-            case DDConst::OWNER_EVENT:
-                return $this->eventRepository->findByIdentifier($location->getEvent()->getPersistenceObjectIdentifier());
-        }
+//        switch ($location->getType()) {
+//            case DDConst::OWNER_INI:
+//                return $this->initiativeRepository->findByIdentifier($location->getInitiative()->getPersistenceObjectIdentifier());
+//            case DDConst::OWNER_MARKET:
+        return $this->marketRepository->findByIdentifier($location->getMarketEntry()->getPersistenceObjectIdentifier());
+//            case DDConst::OWNER_EVENT:
+//                return $this->eventRepository->findByIdentifier($location->getEvent()->getPersistenceObjectIdentifier());
+//        }
 
-        return null;
+//        return null;
     }
 
     /**
@@ -290,16 +290,16 @@ class LocationRepository extends AbstractTranslationRepository
         if ($location->getMarketEntry() == null && $location->getInitiative() == null && $location->getEvent() == null)
             return null;
 
-        switch ($location->getType()) {
-            case DDConst::OWNER_INI:
-                return $this->initiativeRepository->hydrate($location->getInitiative(), $locale);
-            case DDConst::OWNER_MARKET:
-                return $this->marketRepository->findByIdentifier($location->getMarketEntry()->getPersistenceObjectIdentifier());
-            case DDConst::OWNER_EVENT:
-                return $this->eventRepository->findByIdentifier($location->getEvent()->getPersistenceObjectIdentifier());
-        }
-
-        return null;
+//        switch ($location->getType()) {
+//            case DDConst::OWNER_INI:
+//                return $this->initiativeRepository->hydrate($location->getInitiative(), $locale);
+//            case DDConst::OWNER_MARKET:
+                return $this->marketRepository->hydrate($location->getMarketEntry(), $locale);
+//            case DDConst::OWNER_EVENT:
+//                return $this->eventRepository->findByIdentifier($location->getEvent()->getPersistenceObjectIdentifier());
+//        }
+//
+//        return null;
     }
 
     /**

@@ -2,16 +2,26 @@ TYPO3:
   Neos:
     modules:
       DDFA:
-        label: 'DD4All Management'
+        label: 'Afeefa Management'
         controller: '\TYPO3\Neos\Controller\Module\ManagementController'
-        description: 'The Dresden for All backend module'
+        description: 'The Afeefa backend module'
         icon: 'icon-leaf'
         resource: 'TYPO3_Neos_Backend_Module_Management'
         submodules:
+          marketEntries:
+            label: 'Entries (location owners)'
+            controller: '\DDFA\Main\Controller\Module\DDFA\MarketEntriesModuleController'
+            description: "The Entries Submodule provides all the usefull management functions to administrate the user added entries of the Afeefa-Market. See the work of the crowd!"
+            icon: 'icon-heart'
+            resource: 'DDFA_Main_Module_ddfaMarketEntriesModule'
+            actions:
+              add:
+                label: 'Add entry'
+                title: 'Add a new entry'
           locations:
             label: 'Locations'
             controller: '\DDFA\Main\Controller\Module\DDFA\LocationsModuleController'
-            description: "The DD4all Locations Submodule provides all the usefull management functions to administrate locations like adding, editing, removing and indexing. (It's awesome!)"
+            description: "The Locations Submodule provides all the usefull management functions to administrate locations like adding, editing, removing and indexing. (It's awesome!)"
             icon: 'icon-map-marker'
             resource: 'DDFA_Main_Module_ddfaLocationsModule'
             actions:
@@ -28,16 +38,6 @@ TYPO3:
 #              add:
 #                label: 'Add initiative'
 #                title: 'Add a new initiative'
-          marketEntries:
-            label: 'Market Entries'
-            controller: '\DDFA\Main\Controller\Module\DDFA\MarketEntriesModuleController'
-            description: "The DD4all Market Entries Submodule provides all the usefull management functions to administrate the user added entries of the Afeefa-Market. See the work of the crowd!"
-            icon: 'icon-heart'
-            resource: 'DDFA_Main_Module_ddfaMarketEntriesModule'
-            actions:
-              add:
-                label: 'Add entry'
-                title: 'Add a new entry'
           categories:
             label: 'Categories'
             controller: '\DDFA\Main\Controller\Module\DDFA\CategoriesModuleController'

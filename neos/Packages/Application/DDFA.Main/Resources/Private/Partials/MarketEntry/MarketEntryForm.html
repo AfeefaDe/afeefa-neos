@@ -50,7 +50,13 @@
 
         <div class="neos-controls">
             <f:form.select class="neos-span12" property="subCategory" id="subCategory"
-                           options="{german-course: 'german-course', interpreter: 'interpreter', learning-place: 'learning-place', tandem: 'tandem'}"/>
+                           options="{
+                               german-course: '1 language: German course',
+                               interpreter: '1 language: Interpreter',
+                               learning-place: '1 language: learning place',
+                               tandem: '1 language: tandem',
+                               music: '5 leisure: music'
+                           }" prependOptionLabel="- none -" sortByOptionLabel="1"/>
         </div>
     </div>
 
@@ -106,6 +112,22 @@
                               value="3"/>
         </div>
     </div>-->
+
+    <div class="neos-control-group">
+        <!-- <label for="forChildren">for children</label> -->
+        <label for="forChildren" class="neos-checkbox neos-inline">
+            <f:form.checkbox property="forChildren" id="forChildren" value="forChildren"/>
+            forChildren<span></span>
+        </label>
+    </div>
+
+    <div class="neos-control-group">
+        <label for="supportWanted" class="neos-checkbox neos-inline">
+            <f:form.checkbox property="supportWanted" id="supportWanted" value="supportWanted"/>
+            support wanted<span></span>
+        </label>
+    </div>
+
 </fieldset>
 
 <fieldset class="neos-span3 neos-offset1">

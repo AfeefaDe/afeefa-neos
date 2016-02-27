@@ -13,7 +13,7 @@
         <label class="neos-control-label" for="type">Type</label>
 
         <div class="neos-controls">
-            <f:form.select class="neos-span12" property="type" id="type" options="{0: '0 - Orga', 1: '1 - MarketEntry ', 2: '2 - Event', 3: '3 - POI/ Basic'}"/>
+            <f:form.select class="neos-span12" property="type" id="type" options="{0: '0 - Orga', 1: '1 - MarketEntry ', 2: '2 - Event', 3: '3 - POI/ Basic'}" prependOptionLabel="- none -"/>
         </div>
     </div>
 
@@ -41,7 +41,7 @@
 
     <f:if condition="{entries}">
         <div class="neos-control-group">
-            <label class="neos-control-label" for="entry">Market Entry</label>
+            <label class="neos-control-label" for="entry">Owner</label>
 
             <div class="neos-controls">
                 <f:form.select class="neos-span12" id="entry" name="entry" options="{entries}" optionValueField="name"
@@ -65,7 +65,13 @@
 
         <div class="neos-controls">
             <f:form.select class="neos-span12" property="subCategory" id="subCategory"
-                           options="{german-course: 'german-course', interpreter: 'interpreter', learning-place: 'learning-place', tandem: 'tandem'}"/>
+                           options="{
+                               german-course: '1 language: German course',
+                               interpreter: '1 language: Interpreter',
+                               learning-place: '1 language: learning place',
+                               tandem: '1 language: tandem',
+                               music: '5 leisure: music'
+                           }" prependOptionLabel="- none -" sortByOptionLabel="1"/>
         </div>
     </div>
 

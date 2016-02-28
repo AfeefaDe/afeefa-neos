@@ -16,13 +16,10 @@
 		@include border-radius(.2em);
 		@include box-shadow(0px 0px 2px #000);
 
-		.menu-btn {
+		.btn {
 			position: absolute;
-			top: 0;
-			left: 0;
 			width: 3em;
 			height: 2.5em;
-			background-image: url("../img/icon_38.svg");
 			@include background-size(40%);
 			background-repeat: no-repeat;
 			background-position: center center;
@@ -32,6 +29,27 @@
 			&:hover {
 				opacity: 1;
 			}
+		}
+		.menu-btn {
+			top: 0;
+			left: 0;
+			background-image: url("../img/icon_38.svg");
+		}
+
+		.refugee-btn {
+			top: 0;
+			right: 0;
+	    background-image: url("../img/icon_54.svg");
+			@include background-size(55%);
+		}
+
+		.cancel-btn {
+			top: 0;
+			right: 0;
+	    background-image: url("../img/icon_34.svg");
+			@include transform(rotate(45deg));
+			opacity: 1;
+			display: none;
 		}
 
 		input {
@@ -47,6 +65,7 @@
 
 			&:focus {
 				color: $white;
+				outline-color: rgba(0,0,0,0) !important;
 			}
 		}
 	}
@@ -55,13 +74,50 @@
 		position: relative;
 		width: 100%;
 		max-height: calc(100vh - 10em);
+		padding-top: 1em;
 		background-color: $black_alpha;
 		@include border-radius(.2em);
 		@include box-shadow(0px 0px 2px #000);
 
+		display: none;
+
 		.result {
+			margin-bottom: 1em;
 			color: $white;
-			padding: .5em;
+			cursor: pointer;
+			@include transition(background-color 150ms);
+
+			@include display-flex;
+
+			&:hover {
+				background-color: $black_alpha;
+			}
+		}
+
+		.icon {
+			@include entityShapes;
+			@include categoryColors;
+			@include categorySymbols;
+			width: 2em;
+			height: 2em;
+			margin: .5em 1em;
+		}
+
+		.labels {
+			@include flex(1);
+
+			@include display-flex;
+			@include flex-direction(column);
+
+			label {
+				line-height: 1.5em;
+				cursor: pointer;
+			}
+
+			.sub-label {
+				color: $gray50;
+				font-size: .8em;
+			}
 		}
 
 		&.minimized {
@@ -69,4 +125,21 @@
 		}
 	}
 
+	&.active {
+		#search-bar input {
+	    width: calc(100% - 3em - 3em);
+		}
+
+		.cancel-btn {
+			display: block !important;
+		}
+
+		.refugee-btn {
+			display: none;
+		}
+
+		#results {
+			display: block;
+		}
+	}
 }

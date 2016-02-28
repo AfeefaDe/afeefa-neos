@@ -71,7 +71,6 @@ class Location extends Actor
     //TODO: remove type and ini and event relation
     /**
      * @var int
-     * @ORM\Column(nullable=true)
      */
     protected $type;
 

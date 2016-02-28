@@ -33,10 +33,13 @@ class MarketEntryAPIController extends ActionController
      * @var array
      */
     protected $supportedMediaTypes = array('application/json');
-
-    public function listAction()
+    
+    /**
+     * @param string $locale
+     */
+    public function listAction($locale = 'de')
     {
-        $this->view->assign('value', ['marketentries' => $this->marketEntryRepository->findAllLocalized(DDConst::LOCALE_STD, true)]);
+        $this->view->assign('value', ['marketentries' => $this->marketEntryRepository->findAllLocalized($locale, false)]);
     }
 
     public function showAction(MarketEntry $marketentry)

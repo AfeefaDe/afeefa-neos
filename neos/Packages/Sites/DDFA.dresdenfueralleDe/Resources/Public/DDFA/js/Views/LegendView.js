@@ -1,253 +1,325 @@
 qx.Class.define("LegendView", {
-    
+	
   extend : View,
   type: "singleton",
 
   properties: {
-    categories: {}
+	categories: {}
   },
 
   construct: function(){
-    var that = this;
+	var that = this;
 
-    that.setViewId('legendView');
-    that.setCategories( APP.getConfig().categories);
-    // that.setCategories( _.union( APP.getConfig().categoriesIni, APP.getConfig().categoriesMarket ) );
+	that.setViewId('legendView');
+	that.setCategories( APP.getConfig().categories);
+	// that.setCategories( _.union( APP.getConfig().categoriesIni, APP.getConfig().categoriesMarket ) );
   },
 
   members : {
-      
-    render: function(){
-      var that = this;
+	  
+	render: function(){
+	  var that = this;
 
-      // view container
-      that.view = $("<div />");
-      that.view.attr('id', that.getViewId());
+	  // view container
+	  that.view = $("<div />");
+	  that.view.attr('id', that.getViewId());
 
-      if( APP.getUserDevice() == 'desktop') that.view.perfectScrollbar();
+	  if( APP.getUserDevice() == 'desktop') that.view.perfectScrollbar();
 
-      /////////////
-      // Heading //
-      /////////////
-      that.headingContainer = $("<div />").addClass('heading');
-      that.heading = $("<h2 />");
-      that.headingContainer.append(that.heading);
+	  /////////////
+	  // Heading //
+	  /////////////
+	  // that.headingContainer = $("<div />").addClass('heading');
+	  // that.heading = $("<h2 />");
+	  // that.headingContainer.append(that.heading);
 
-      ///////////////////
-      // Entity filter //
-      ///////////////////
-      that.filterModuleEntity  = $("<div />");
-      that.filterModuleEntity.attr('class', 'filter-module');
-      that.view.append(that.filterModuleEntity);
+	  //////////////////
+		// Filter Reset //
+		//////////////////
+	  that.filterModuleReset  = $("<div />");
+	  that.filterModuleReset.attr('class', 'filter-module reset-module');
+	  that.view.append(that.filterModuleReset);
+		
+		// button
+		var resetBtn = $("<div />")
+			.addClass('button btn-reset')
+			.click(function() {
+				that.resetFilter();
+			});
+		// label
+		that['label-filter-reset'] = $("<p />");
+		resetBtn.append(that['label-filter-reset']);
+		that.filterModuleReset.append(resetBtn);
 
-      // module heading
-      var moduleHeading = $("<h3 />");
-      moduleHeading.append('Entry types');
-      that.filterModuleEntity.append(moduleHeading);
+	  ///////////////////
+	  // Entity filter //
+	  ///////////////////
+	  that.filterModuleEntity  = $("<div />");
+	  that.filterModuleEntity.attr('class', 'filter-module entity-module');
+	  that.view.append(that.filterModuleEntity);
 
-      //////////////////////
-      // Categoriy filter //
-      //////////////////////
-      that.filterModuleCat  = $("<div />");
-      that.filterModuleCat.attr('class', 'filter-module');
-      that.view.append(that.filterModuleCat);
+	  // module heading
+	  var moduleHeading = $("<h3 />");
+	  moduleHeading.append('Entry types');
+	  that.filterModuleEntity.append(moduleHeading);
 
-      // module heading
-      var moduleHeading = $("<h3 />");
-      moduleHeading.append('Categories');
-      that.filterModuleCat.append(moduleHeading);
+	  // entities
+	  var rowContainer = $("<div />")
+		.addClass('row-container');
+	  
+	  _.each( {0: 'orga', 1: 'market', 2: 'event'}, function(value, key){
+			var entityContainer = $("<div />")
+			  .addClass('entity-container')
+			  .click(function() {
+					that.setFilter( {type: key} );
+			  });
+			var entity = $("<div />")
+			  .addClass('entity type-' + key);
+			var entityLabel = $("<span />")
+			  .addClass('label')
+			  .append(that.getWording('entity_' + value));
+			entityContainer.append(entity);
+			entityContainer.append(entityLabel);
+			rowContainer.append(entityContainer);
+	  });
+	  
+	  that.filterModuleEntity.append(rowContainer);
 
-      // categories
-      _.each( that.getCategories(), function(cat){
-        // container
-        var container = $("<div />");
-        container.addClass('std-container');
+	  //////////////////////
+	  // Categoriy filter //
+	  //////////////////////
+	  that.filterModuleCat  = $("<div />");
+	  that.filterModuleCat.attr('class', 'filter-module category-module');
+	  that.view.append(that.filterModuleCat);
 
-        // cat container
-        var catContainer = $("<div />");
-        catContainer.addClass('cat-container');
-        catContainer.addClass('cat-' + cat.name);
-        
-          // icon
-          var icon = $("<div />");
-          icon.addClass('icon ' + 'cat-' + cat.name);
-          catContainer.append(icon);
-          icon.click(function() {
-            that.setFilter( {category: cat.name} );
-          });
-          
-          // label
-          that['label-' + cat.id] = $("<p />");
-          catContainer.append(that['label-' + cat.id]);
-          that['label-' + cat.id].click(function() {
-            that.setFilter( {category: cat.name} );
-          });
-          
-          // nippus
-          var nippus = $("<div />");
-          nippus.addClass('nippus');
-          nippus.click(function() {
-            container.toggleClass('extended');
-          });
-          catContainer.append(nippus);
+	  // module heading
+	  var moduleHeading = $("<h3 />");
+	  moduleHeading.append('Categories');
+	  that.filterModuleCat.append(moduleHeading);
 
-          container.append(catContainer);
-          
-        // sub cat container
-        var subContainer = $("<div />");
-        subContainer.addClass('sub-container');
-        subContainer.addClass('cat-' + cat.name);
-        catContainer.append(subContainer);
+	  // categories
+	  _.each( that.getCategories(), function(cat){
+			// container
+			var container = $("<div />");
+			container.addClass('std-container');
 
-          // sub categories
-          // TODO replace dummy data
-          _.each( cat.sub, function(subcat){
-            var subCatContainer = $("<div />");
-            subCatContainer.addClass('subcat-container');
-            subCatContainer.addClass('cat-' + cat.name + ' subcat-' + subcat.name);
+			// cat container
+			var catContainer = $("<div />");
+			catContainer.addClass('cat-container');
+			catContainer.addClass('cat-' + cat.name);
+		
+		  // icon
+		  var icon = $("<div />");
+		  icon.addClass('icon ' + 'cat-' + cat.name);
+		  catContainer.append(icon);
+		  icon.click(function() {
+			that.setFilter( {category: cat.name} );
+		  });
+		  
+		  // label
+		  that['label-' + cat.id] = $("<p />");
+		  catContainer.append(that['label-' + cat.id]);
+		  that['label-' + cat.id].click(function() {
+			that.setFilter( {category: cat.name} );
+		  });
+		  
+		  // nippus
+		  var nippus = $("<div />");
+		  nippus.addClass('nippus');
+		  nippus.click(function() {
+			container.toggleClass('extended');
+		  });
+		  catContainer.append(nippus);
 
-            // icon
-            var subIcon = $("<div />");
-            subIcon.addClass('icon ' + 'subcat-' + subcat.name);
-            subIcon.click(function(){
-              that.setFilter( {subcategory: subcat.name} );
-            });
-            subCatContainer.append(subIcon);
+		  container.append(catContainer);
+		  
+			// sub cat container
+			var subContainer = $("<div />");
+			subContainer.addClass('sub-container');
+			subContainer.addClass('cat-' + cat.name);
+			catContainer.append(subContainer);
 
-            // label
-            that['label-' + subcat.id] = $("<p />");
-            that['label-' + subcat.id].click(function() {
-              that.setFilter( {subcategory: subcat.name} );
-            });
-            subCatContainer.append(that['label-' + subcat.id]);
-            
-            subContainer.append(subCatContainer);
-          });
-          
-          container.append(subContainer);
+		  // sub categories
+		  // TODO replace dummy data
+		  _.each( cat.sub, function(subcat){
+				var subCatContainer = $("<div />");
+				subCatContainer.addClass('subcat-container');
+				subCatContainer.addClass('cat-' + cat.name + ' subcat-' + subcat.name);
 
-        that.filterModuleCat.append(container);
-      });
+				// icon
+				var subIcon = $("<div />");
+				subIcon.addClass('icon ' + 'subcat-' + subcat.name);
+				subIcon.click(function(){
+				  that.setFilter( {subCategory: subcat.name} );
+				});
+				subCatContainer.append(subIcon);
 
-      createFilterResetBtn();
-      function createFilterResetBtn(){
-        // container
-        var resetBtn = $("<div />");
-                resetBtn.addClass('button btn-reset');
-        resetBtn.click(function() {
-                    that.resetFilter();
-                });
-                
-                // label
-                that['label-filter-reset'] = $("<p />");
-                resetBtn.append(that['label-filter-reset']);
-                
-                that.filterModuleCat.append(resetBtn);
-      }
+				// label
+				that['label-' + subcat.id] = $("<p />");
+				that['label-' + subcat.id].click(function() {
+				  that.setFilter( {subCategory: subcat.name} );
+				});
+				subCatContainer.append(that['label-' + subcat.id]);
+				
+				subContainer.append(subCatContainer);
+		  });
+		  
+		  container.append(subContainer);
+			
+			that.filterModuleCat.append(container);
+	  });
 
-      $('#main-container').append(that.view);
 
-      this.base(arguments);
+		//////////////////////
+	  // Attribute filter //
+	  //////////////////////
+	  that.filterModuleAttribute  = $("<div />");
+	  that.filterModuleAttribute.attr('class', 'filter-module attribute-module');
+	  that.view.append(that.filterModuleAttribute);
 
-      that.load();
-    },
+	  // module heading
+	  var moduleHeading = $("<h3 />");
+	  moduleHeading.append('Details');
+	  that.filterModuleAttribute.append(moduleHeading);
 
-      load: function(){
-          var that = this;
+	  // attributes
+	  _.each( {'forChildren': 'bool', 'supportWanted': 'bool'}, function(value, key){
+			
+			function setAttrFilter(value) {
+				if( value ) {
+					const filter = {};
+					filter[key] = value;
+					that.setFilter(filter);
+				} else {
+					that.resetFilter();	
+				}
+			}
+			
+			var attributeContainer = $("<div />")
+			  .addClass('attribute-container');
+			
+			var attrFormElement = $("<input />")
+				.attr('type', 'checkbox')
+				.click(function() {
+					var value = $(this).prop("checked");
+					setAttrFilter( value );
+			  });
+			attributeContainer.append(attrFormElement);
 
-          _.each( that.getCategories(), function(cat){
-              
-              that['label-' + cat.id].append( that.getWording('cat_' + cat.name) );
+			var attrLabel = $("<label />")
+				.append(that.getWording('prop_' + key))
+				.click(function(){
+					attrFormElement.prop("checked", !(attrFormElement.prop("checked")) );
+					setAttrFilter( attrFormElement.prop("checked") );
+				});
+			attributeContainer.append(attrLabel);
 
-              _.each( cat.sub, function(subcat){
-                  that['label-' + subcat.id].append( that.getWording('cat_' + subcat.name) );
-              });
+	  	that.filterModuleAttribute.append(attributeContainer);
+	  });
 
-          });
+	  $('#main-container').append(that.view);
 
-          that['label-filter-reset'].append( that.getWording('misc_filterReset') );
-      },
+	  this.base(arguments);
 
-      setFilter: function( filterOptions ){
-          var that = this;
+	  that.load();
+	},
 
-          // consequences
-          // TODO close detailView if location gets unavailable
-          // TODO if an unavailable location is selected inside the guides, the filter has to be disabled
-          
-          APP.setActiveFilter(filterOptions);
-          that.say('filterSet');
-      },
+	  load: function(){
+		  var that = this;
 
-      resetFilter: function(){
-          var that = this;
+		  _.each( that.getCategories(), function(cat){
+			  
+			  that['label-' + cat.id].append( that.getWording('cat_' + cat.name) );
 
-          APP.setActiveFilter(null);
-          that.say('filterSet');
-      },
+			  _.each( cat.sub, function(subcat){
+				  that['label-' + subcat.id].append( that.getWording('cat_' + subcat.name) );
+			  });
 
-      reset: function(){
-          var that = this;
+		  });
 
-          _.each( that.getCategories(), function(cat){
-              that['label-' + cat.id].empty();
+		  that['label-filter-reset'].append( that.getWording('misc_filterReset') );
+	  },
 
-              _.each( cat.sub, function(subcat){
-                  that['label-' + subcat.id].empty();
-              });
-          });
+	  setFilter: function( filterOptions ){
+		  var that = this;
 
-          that['label-filter-reset'].empty();
-      },
+		  // consequences
+		  // TODO close detailView if location gets unavailable
+		  // TODO if an unavailable location is selected inside the guides, the filter has to be disabled
+		  
+		  APP.setActiveFilter(filterOptions);
+		  that.say('filterSet', APP.getActiveFilter());
+	  },
 
-      addEvents: function(){
-          var that = this;
+	  resetFilter: function(){
+		  var that = this;
 
-          // call superclass
-          this.base(arguments);
-          
-          that.listen('filterSet', function(){
+		  APP.setActiveFilter(null);
+		  that.say('filterSet');
+	  },
 
-              var filter = APP.getActiveFilter();
+	  reset: function(){
+		  var that = this;
 
-              if( filter ) {
-                  
-                  that.view.addClass('filter-active');  
-                  
-                  that.view.find('.cat-container, .subcat-container').addClass('inactive');
-                  
-                  const currentCatContainers = that.view.find('.cat-container.cat-' + filter.category);
-                  currentCatContainers.removeClass('inactive');
-                  currentCatContainers.parent().find('.subcat-container').removeClass('inactive');
-                  
-                  const currentSubcatContainers = that.view.find('.subcat-container.subcat-' + filter.subcategory);
-                  currentSubcatContainers.removeClass('inactive');
-                  currentSubcatContainers.parents('.std-container').find('.cat-container').removeClass('inactive');
-              
-              } else {
-              
-                  that.view.removeClass('filter-active');
-                  that.filterModuleCat.find('.cat-container, .subcat-container').removeClass('inactive');
-                  that.filterModuleCat.find('.std-container').removeClass('extended');
-              }
+		  _.each( that.getCategories(), function(cat){
+			  that['label-' + cat.id].empty();
 
-          });
-      },
+			  _.each( cat.sub, function(subcat){
+				  that['label-' + subcat.id].empty();
+			  });
+		  });
 
-      close: function(){
-          var that = this;
+		  that['label-filter-reset'].empty();
+	  },
 
-          // TODO: only do in mobile version
-          // that.addRequestBtn.css('display', 'none');
-          // that.addOfferBtn.css('display', 'none');
-      },
+	  addEvents: function(){
+		  var that = this;
 
-      changeLanguage: function(){
-          var that = this;
+		  // call superclass
+		  this.base(arguments);
+		  
+		  that.listen('filterSet', function(){
 
-          that.reset();
-          that.load();
-      }
+			  var filter = APP.getActiveFilter();
+
+			  if( filter ) {
+				  
+				  that.view.addClass('filter-active');  
+				  
+				  that.view.find('.cat-container, .subcat-container').addClass('inactive');
+				  
+				  const currentCatContainers = that.view.find('.cat-container.cat-' + filter.category);
+				  currentCatContainers.removeClass('inactive');
+				  currentCatContainers.parent().find('.subcat-container').removeClass('inactive');
+				  
+				  const currentSubcatContainers = that.view.find('.subcat-container.subcat-' + filter.subCategory);
+				  currentSubcatContainers.removeClass('inactive');
+				  currentSubcatContainers.parents('.std-container').find('.cat-container').removeClass('inactive');
+			  
+			  } else {
+			  
+				  that.view.removeClass('filter-active');
+				  that.filterModuleCat.find('.cat-container, .subcat-container').removeClass('inactive');
+				  that.filterModuleCat.find('.std-container').removeClass('extended');
+			  }
+
+		  });
+	  },
+
+	  close: function(){
+		  var that = this;
+
+		  // TODO: only do in mobile version
+		  // that.addRequestBtn.css('display', 'none');
+		  // that.addOfferBtn.css('display', 'none');
+	  },
+
+	  changeLanguage: function(){
+		  var that = this;
+
+		  that.reset();
+		  that.load();
+	  }
   }
 
 });

@@ -853,7 +853,7 @@
                   "ti":"",
                   "ur":""
             },
-            "prop_supportNeeded":{
+            "prop_supportWanted":{
                   "de":"Unterstützer gesucht",
                   "en":"supporters wanted",
                   "ar":"",
@@ -985,7 +985,7 @@
                   "ti":"",
                   "ur":""
             },
-            "prop_children":{
+            "prop_forChildren":{
                   "de":"für Kinder + Jugendliche",
                   "en":"for children + young adults",
                   "ar":"للأطفال",
@@ -1085,7 +1085,7 @@
             },
 
             "misc_filterReset":{
-                  "de":"Filter deaktivieren",
+                  "de":"Filter zurücksetzen",
                   "en":"Reset filter",
                   "ar":"",
                   "fa":"",
@@ -1215,6 +1215,18 @@
                   "ru":"меню",
                   "sr":"Мени",
                   "ti":"ሜኑ",
+                  "ur":""
+            },
+            "menu_cancel":{
+                  "de":"Suche abbrechen",
+                  "en":"Cancel search",
+                  "ar":"",
+                  "fa":"",
+                  "fr":"",
+                  "it":"",
+                  "ru":"",
+                  "sr":"",
+                  "ti":"",
                   "ur":""
             },
             "menu_refugee":{

@@ -1251,10 +1251,10 @@ textarea {
 }
 /* line 90, sass/_afeefa-styles.scss */
 button {
-  -moz-transition: all 250ms;
-  -o-transition: all 250ms;
-  -webkit-transition: all 250ms;
-  transition: all 250ms;
+  -moz-transition: all 150ms;
+  -o-transition: all 150ms;
+  -webkit-transition: all 150ms;
+  transition: all 150ms;
   -moz-border-radius: 0.2em;
   -webkit-border-radius: 0.2em;
   border-radius: 0.2em;
@@ -1294,10 +1294,10 @@ button.btn-secondary:hover {
 
 /* line 95, sass/_afeefa-styles.scss */
 .button {
-  -moz-transition: all 250ms;
-  -o-transition: all 250ms;
-  -webkit-transition: all 250ms;
-  transition: all 250ms;
+  -moz-transition: all 150ms;
+  -o-transition: all 150ms;
+  -webkit-transition: all 150ms;
+  transition: all 150ms;
   -moz-border-radius: 0.2em;
   -webkit-border-radius: 0.2em;
   border-radius: 0.2em;
@@ -1813,13 +1813,10 @@ body.phone #mapView #locate-btn {
   box-shadow: 0px 0px 2px #000;
 }
 /* line 19, sass/_searchView.scss */
-#searchView #search-bar .menu-btn {
+#searchView #search-bar .btn {
   position: absolute;
-  top: 0;
-  left: 0;
   width: 3em;
   height: 2.5em;
-  background-image: url("../img/icon_38.svg");
   -moz-background-size: 40%;
   -o-background-size: 40%;
   -webkit-background-size: 40%;
@@ -1829,11 +1826,39 @@ body.phone #mapView #locate-btn {
   cursor: pointer;
   opacity: .5;
 }
-/* line 32, sass/_searchView.scss */
-#searchView #search-bar .menu-btn:hover {
+/* line 29, sass/_searchView.scss */
+#searchView #search-bar .btn:hover {
   opacity: 1;
 }
-/* line 37, sass/_searchView.scss */
+/* line 33, sass/_searchView.scss */
+#searchView #search-bar .menu-btn {
+  top: 0;
+  left: 0;
+  background-image: url("../img/icon_38.svg");
+}
+/* line 39, sass/_searchView.scss */
+#searchView #search-bar .refugee-btn {
+  top: 0;
+  right: 0;
+  background-image: url("../img/icon_54.svg");
+  -moz-background-size: 55%;
+  -o-background-size: 55%;
+  -webkit-background-size: 55%;
+  background-size: 55%;
+}
+/* line 46, sass/_searchView.scss */
+#searchView #search-bar .cancel-btn {
+  top: 0;
+  right: 0;
+  background-image: url("../img/icon_34.svg");
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+  opacity: 1;
+  display: none;
+}
+/* line 55, sass/_searchView.scss */
 #searchView #search-bar input {
   position: absolute;
   top: 0;
@@ -1845,15 +1870,17 @@ body.phone #mapView #locate-btn {
   background: none;
   border: none;
 }
-/* line 48, sass/_searchView.scss */
+/* line 66, sass/_searchView.scss */
 #searchView #search-bar input:focus {
   color: #f2f2f2;
+  outline-color: transparent !important;
 }
-/* line 54, sass/_searchView.scss */
+/* line 73, sass/_searchView.scss */
 #searchView #results {
   position: relative;
   width: 100%;
   max-height: calc(100vh - 10em);
+  padding-top: 1em;
   background-color: rgba(0, 0, 0, 0.8);
   -moz-border-radius: 0.2em;
   -webkit-border-radius: 0.2em;
@@ -1861,18 +1888,273 @@ body.phone #mapView #locate-btn {
   -moz-box-shadow: 0px 0px 2px #000;
   -webkit-box-shadow: 0px 0px 2px #000;
   box-shadow: 0px 0px 2px #000;
+  display: none;
 }
-/* line 62, sass/_searchView.scss */
+/* line 84, sass/_searchView.scss */
 #searchView #results .result {
+  margin-bottom: 1em;
   color: #f2f2f2;
-  padding: .5em;
+  cursor: pointer;
+  -moz-transition: background-color 150ms;
+  -o-transition: background-color 150ms;
+  -webkit-transition: background-color 150ms;
+  transition: background-color 150ms;
+  display: -webkit-flex;
+  display: flex;
 }
-/* line 67, sass/_searchView.scss */
+/* line 92, sass/_searchView.scss */
+#searchView #results .result:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+/* line 97, sass/_searchView.scss */
+#searchView #results .icon {
+  /* orga */
+  /* market entry */
+  /* event */
+  /* POI */
+  /* TODO find a solution to avoid setting the border on elements that dont need that and dont provide a parameter for it */
+  /* Main categories */
+  -moz-background-size: 72%;
+  -o-background-size: 72%;
+  -webkit-background-size: 72%;
+  background-size: 72%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  /* Main categories */
+  /* Sub categories */
+  /* POIs */
+  width: 2em;
+  height: 2em;
+  margin: .5em 1em;
+}
+/* line 4, sass/_infoVisSystem.scss */
+#searchView #results .icon.type-0 {
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+}
+/* line 9, sass/_infoVisSystem.scss */
+#searchView #results .icon.type-1 {
+  -moz-border-radius: 20px;
+  -webkit-border-radius: 20px;
+  border-radius: 20px;
+}
+/* line 14, sass/_infoVisSystem.scss */
+#searchView #results .icon.type-2 {
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+/* line 18, sass/_infoVisSystem.scss */
+#searchView #results .icon.type-2[class^="cat-"] {
+  -moz-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+/* line 24, sass/_infoVisSystem.scss */
+#searchView #results .icon.type-3 {
+  -moz-border-radius: 20px;
+  -webkit-border-radius: 20px;
+  border-radius: 20px;
+  -moz-box-shadow: 0px 0px 2px #555;
+  -webkit-box-shadow: 0px 0px 2px #555;
+  box-shadow: 0px 0px 2px #555;
+  background-color: #f2f2f2 !important;
+}
+/* line 37, sass/_infoVisSystem.scss */
+#searchView #results .icon.cat-language {
+  background-color: #e4b100;
+  border-color: #e4b100;
+}
+/* line 42, sass/_infoVisSystem.scss */
+#searchView #results .icon.cat-medic {
+  background-color: #a21c15;
+  border-color: #a21c15;
+}
+/* line 47, sass/_infoVisSystem.scss */
+#searchView #results .icon.cat-jobs {
+  background-color: #085272;
+  border-color: #085272;
+}
+/* line 52, sass/_infoVisSystem.scss */
+#searchView #results .icon.cat-consultation {
+  background-color: #5e6823;
+  border-color: #5e6823;
+}
+/* line 57, sass/_infoVisSystem.scss */
+#searchView #results .icon.cat-leisure {
+  background-color: #318b86;
+  border-color: #318b86;
+}
+/* line 62, sass/_infoVisSystem.scss */
+#searchView #results .icon.cat-community {
+  background-color: #693e75;
+  border-color: #693e75;
+}
+/* line 67, sass/_infoVisSystem.scss */
+#searchView #results .icon.cat-donation {
+  background-color: #ca7311;
+  border-color: #ca7311;
+}
+/* line 81, sass/_infoVisSystem.scss */
+#searchView #results .icon.cat-language {
+  background-image: url("../img/icon_06.svg");
+}
+/* line 82, sass/_infoVisSystem.scss */
+#searchView #results .icon.cat-medic {
+  background-image: url("../img/icon_04.svg");
+}
+/* line 83, sass/_infoVisSystem.scss */
+#searchView #results .icon.cat-jobs {
+  background-image: url("../img/icon_76.svg");
+}
+/* line 84, sass/_infoVisSystem.scss */
+#searchView #results .icon.cat-consultation {
+  background-image: url("../img/icon_10.svg");
+}
+/* line 85, sass/_infoVisSystem.scss */
+#searchView #results .icon.cat-leisure {
+  background-image: url("../img/icon_86.svg");
+}
+/* line 86, sass/_infoVisSystem.scss */
+#searchView #results .icon.cat-community {
+  background-image: url("../img/icon_02.svg");
+  -moz-background-size: 85%;
+  -o-background-size: 85%;
+  -webkit-background-size: 85%;
+  background-size: 85%;
+}
+/* line 87, sass/_infoVisSystem.scss */
+#searchView #results .icon.cat-donation {
+  background-image: url("../img/icon_12.svg");
+}
+/* line 91, sass/_infoVisSystem.scss */
+#searchView #results .icon.subcat-german-course {
+  background-image: url("../img/icon_18.svg");
+}
+/* line 92, sass/_infoVisSystem.scss */
+#searchView #results .icon.subcat-welcome-alliance {
+  background-image: url("../img/icon_64.svg") !important;
+}
+/* line 93, sass/_infoVisSystem.scss */
+#searchView #results .icon.subcat-meeting-place {
+  background-image: url("../img/icon_78.svg");
+}
+/* line 94, sass/_infoVisSystem.scss */
+#searchView #results .icon.subcat-welcome-festival {
+  background-image: url("../img/icon_82.svg");
+}
+/* line 95, sass/_infoVisSystem.scss */
+#searchView #results .icon.subcat-craft-art {
+  background-image: url("../img/icon_80.svg");
+}
+/* line 96, sass/_infoVisSystem.scss */
+#searchView #results .icon.subcat-volunteer-coordination {
+  background-image: url("../img/icon_56.svg");
+}
+/* line 101, sass/_infoVisSystem.scss */
+#searchView #results .icon.cat-housing {
+  background-image: url("../img/icon_19.svg");
+}
+/* line 104, sass/_infoVisSystem.scss */
+#searchView #results .icon.cat-christian {
+  background-image: url("../img/icon_59.svg");
+}
+/* line 105, sass/_infoVisSystem.scss */
+#searchView #results .icon.cat-hospital {
+  background-image: url("../img/icon_03.svg");
+}
+/* line 106, sass/_infoVisSystem.scss */
+#searchView #results .icon.cat-islam {
+  background-image: url("../img/icon_61.svg");
+}
+/* line 107, sass/_infoVisSystem.scss */
+#searchView #results .icon.cat-jewish {
+  background-image: url("../img/icon_21.svg");
+}
+/* line 108, sass/_infoVisSystem.scss */
+#searchView #results .icon.cat-shop {
+  background-image: url("../img/icon_65.svg");
+  -moz-background-size: 65%;
+  -o-background-size: 65%;
+  -webkit-background-size: 65%;
+  background-size: 65%;
+}
+/* line 109, sass/_infoVisSystem.scss */
+#searchView #results .icon.cat-public {
+  background-image: url("../img/icon_63.svg");
+  -moz-background-size: 80%;
+  -o-background-size: 80%;
+  -webkit-background-size: 80%;
+  background-size: 80%;
+}
+/* line 110, sass/_infoVisSystem.scss */
+#searchView #results .icon.cat-library {
+  background-image: url("../img/icon_17.svg");
+  -moz-background-size: 80%;
+  -o-background-size: 80%;
+  -webkit-background-size: 80%;
+  background-size: 80%;
+}
+/* line 111, sass/_infoVisSystem.scss */
+#searchView #results .icon.cat-trafficStop {
+  background-image: url("../img/icon_57.svg");
+  background-color: #fdc400;
+}
+/* line 113, sass/_infoVisSystem.scss */
+#searchView #results .icon.cat-other {
+  background-image: url("../img/icon_32.svg");
+  -moz-background-size: 50%;
+  -o-background-size: 50%;
+  -webkit-background-size: 50%;
+  background-size: 50%;
+}
+/* line 106, sass/_searchView.scss */
+#searchView #results .labels {
+  -webkit-flex: 1;
+  flex: 1;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+}
+/* line 112, sass/_searchView.scss */
+#searchView #results .labels label {
+  line-height: 1.5em;
+  cursor: pointer;
+}
+/* line 117, sass/_searchView.scss */
+#searchView #results .labels .sub-label {
+  color: #999999;
+  font-size: .8em;
+}
+/* line 123, sass/_searchView.scss */
 #searchView #results.minimized {
   height: 2em;
 }
+/* line 129, sass/_searchView.scss */
+#searchView.active #search-bar input {
+  width: calc(100% - 3em - 3em);
+}
+/* line 133, sass/_searchView.scss */
+#searchView.active .cancel-btn {
+  display: block !important;
+}
+/* line 137, sass/_searchView.scss */
+#searchView.active .refugee-btn {
+  display: none;
+}
+/* line 141, sass/_searchView.scss */
+#searchView.active #results {
+  display: block;
+}
 
-/* line 123, sass/_detailView.scss */
+/* line 134, sass/_detailView.scss */
 #detailView {
   visibility: hidden;
   opacity: 0;
@@ -1883,16 +2165,13 @@ body.phone #mapView #locate-btn {
   position: absolute;
   left: 3em;
   top: 7em;
-  /*display: flex;*/
   display: -webkit-flex;
   display: flex;
   -webkit-flex-direction: column;
   flex-direction: column;
   width: 23em;
-  /*min-width: 300px;*/
   min-height: 20%;
   max-height: 70%;
-  /*padding-bottom: 1em;*/
   background-color: #f2f2f2;
   -moz-box-shadow: 0px 0px 2px #333;
   -webkit-box-shadow: 0px 0px 2px #333;
@@ -1902,18 +2181,18 @@ body.phone #mapView #locate-btn {
   /* OTHER PROPERTIES */
   /* overwrite for POIs */
 }
-/* line 148, sass/_detailView.scss */
+/* line 156, sass/_detailView.scss */
 #detailView.active {
   visibility: visible;
   opacity: 1;
 }
-/* line 153, sass/_detailView.scss */
+/* line 161, sass/_detailView.scss */
 #detailView.right {
   left: auto;
   /*right: 6em;*/
   left: calc(100% - 23em - 4em);
 }
-/* line 159, sass/_detailView.scss */
+/* line 167, sass/_detailView.scss */
 #detailView .scroll-container {
   -webkit-flex-grow: 1;
   flex-grow: 1;
@@ -1924,7 +2203,7 @@ body.phone #mapView #locate-btn {
 }
 /* line 5, sass/_detailView.scss */
 #detailView .heading {
-  height: 3em;
+  min-height: 3em;
   -webkit-flex-shrink: 0;
   flex-shrink: 0;
   color: #f2f2f2;
@@ -1972,44 +2251,61 @@ body.phone #mapView #locate-btn {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  height: 3em;
   margin: 0;
-  padding: 1em 1em 0 1em;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  padding: 1em 1em 0.3em 1em;
   font-weight: 300;
   font-size: 1.1em;
+  line-height: 1.1em;
   text-align: center;
 }
-/* line 30, sass/_detailView.scss */
+/* line 26, sass/_detailView.scss */
+#detailView .close-btn {
+  position: absolute;
+  top: 1em;
+  right: 1em;
+  width: 1.5em;
+  height: 1.5em;
+  cursor: pointer;
+  background-image: url("../img/icon_34.svg");
+  -moz-background-size: 100%;
+  -o-background-size: 100%;
+  -webkit-background-size: 100%;
+  background-size: 100%;
+  background-position: center center;
+  background-repeat: no-repeat;
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+/* line 41, sass/_detailView.scss */
 #detailView .image {
   /*height: 10em;*/
   text-align: center;
   overflow: hidden;
 }
-/* line 35, sass/_detailView.scss */
+/* line 46, sass/_detailView.scss */
 #detailView .image img {
   position: relative;
   top: 50%;
   transform: translateY(-50%);
 }
-/* line 41, sass/_detailView.scss */
+/* line 52, sass/_detailView.scss */
 #detailView .image.logo img {
   height: 80%;
 }
-/* line 42, sass/_detailView.scss */
+/* line 53, sass/_detailView.scss */
 #detailView .image.photo img {
   width: 100%;
 }
-/* line 46, sass/_detailView.scss */
+/* line 57, sass/_detailView.scss */
 #detailView .property {
   display: none;
   padding: 0 5%;
   margin-top: 1em;
   min-height: 2em;
 }
-/* line 55, sass/_detailView.scss */
+/* line 66, sass/_detailView.scss */
 #detailView .property.category .property-icon {
   /* orga */
   /* market entry */
@@ -2214,12 +2510,12 @@ body.phone #mapView #locate-btn {
   -webkit-background-size: 50%;
   background-size: 50%;
 }
-/* line 60, sass/_detailView.scss */
+/* line 71, sass/_detailView.scss */
 #detailView .property.category .property-value {
   font-style: italic;
   color: #999999;
 }
-/* line 66, sass/_detailView.scss */
+/* line 77, sass/_detailView.scss */
 #detailView .property .property-icon {
   width: 2.5em;
   height: 2.5em;
@@ -2228,61 +2524,61 @@ body.phone #mapView #locate-btn {
   background-position: center 0.2em;
   /* property icons */
 }
-/* line 75, sass/_detailView.scss */
+/* line 86, sass/_detailView.scss */
 #detailView .property .property-icon.icon-location {
   background-image: url("../img/icon_35.svg");
 }
-/* line 76, sass/_detailView.scss */
+/* line 87, sass/_detailView.scss */
 #detailView .property .property-icon.icon-phone {
   background-image: url("../img/icon_23.svg");
 }
-/* line 77, sass/_detailView.scss */
+/* line 88, sass/_detailView.scss */
 #detailView .property .property-icon.icon-mail {
   background-image: url("../img/icon_25.svg");
 }
-/* line 78, sass/_detailView.scss */
+/* line 89, sass/_detailView.scss */
 #detailView .property .property-icon.icon-web {
   background-image: url("../img/icon_27.svg");
 }
-/* line 79, sass/_detailView.scss */
+/* line 90, sass/_detailView.scss */
 #detailView .property .property-icon.icon-openingHours {
   background-image: url("../img/icon_29.svg");
 }
-/* line 80, sass/_detailView.scss */
+/* line 91, sass/_detailView.scss */
 #detailView .property .property-icon.icon-description {
   background-image: url("../img/icon_31.svg");
 }
-/* line 81, sass/_detailView.scss */
+/* line 92, sass/_detailView.scss */
 #detailView .property .property-icon.icon-facebook {
   background-image: url("../img/icon_45.svg");
 }
-/* line 82, sass/_detailView.scss */
+/* line 93, sass/_detailView.scss */
 #detailView .property .property-icon.icon-spokenLanguages {
   background-image: url("../img/icon_43.svg");
 }
-/* line 83, sass/_detailView.scss */
+/* line 94, sass/_detailView.scss */
 #detailView .property .property-icon.icon-speakerPublic {
   background-image: url("../img/icon_41.svg");
 }
-/* line 86, sass/_detailView.scss */
+/* line 97, sass/_detailView.scss */
 #detailView .property .property-text {
   margin-left: calc(5% + 2.5em);
 }
-/* line 89, sass/_detailView.scss */
+/* line 100, sass/_detailView.scss */
 #detailView .property .property-text.ar, #detailView .property .property-text.ur, #detailView .property .property-text.fa {
   margin-right: calc(5% + 2.5em);
 }
-/* line 93, sass/_detailView.scss */
+/* line 104, sass/_detailView.scss */
 #detailView .property .property-text p {
   margin: 0;
   line-height: 1.3em;
 }
-/* line 97, sass/_detailView.scss */
+/* line 108, sass/_detailView.scss */
 #detailView .property .property-text p.property-name {
   font-weight: 500;
   text-transform: capitalize;
 }
-/* line 103, sass/_detailView.scss */
+/* line 114, sass/_detailView.scss */
 #detailView .property .property-text a, #detailView .property .property-text #includeView .content span.locationLink, #includeView .content #detailView .property .property-text span.locationLink {
   width: 100%;
   display: inline-block;
@@ -2290,21 +2586,21 @@ body.phone #mapView #locate-btn {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-/* line 117, sass/_detailView.scss */
+/* line 128, sass/_detailView.scss */
 #detailView.type-3 .property.category .property-name {
   line-height: 2.6em !important;
 }
-/* line 118, sass/_detailView.scss */
+/* line 129, sass/_detailView.scss */
 #detailView.type-3 .property.category .property-value {
   display: none;
 }
 
-/* line 172, sass/_detailView.scss */
+/* line 180, sass/_detailView.scss */
 .tablet #detailViewMobile {
   width: 30%;
 }
 
-/* line 177, sass/_detailView.scss */
+/* line 185, sass/_detailView.scss */
 #detailViewMobile {
   -moz-transition: all 200ms;
   -o-transition: all 200ms;
@@ -2324,17 +2620,17 @@ body.phone #mapView #locate-btn {
   /* OTHER PROPERTIES */
   /* overwrite for POIs */
 }
-/* line 189, sass/_detailView.scss */
+/* line 197, sass/_detailView.scss */
 #detailViewMobile.active {
   bottom: 0;
 }
-/* line 193, sass/_detailView.scss */
+/* line 201, sass/_detailView.scss */
 #detailViewMobile.active-large {
   bottom: 0;
   height: 80%;
   /*overflow-y: scroll;*/
 }
-/* line 199, sass/_detailView.scss */
+/* line 207, sass/_detailView.scss */
 #detailViewMobile .scroll-container {
   height: calc(100% - 4em);
   overflow-y: auto;
@@ -2342,7 +2638,7 @@ body.phone #mapView #locate-btn {
 }
 /* line 5, sass/_detailView.scss */
 #detailViewMobile .heading {
-  height: 3em;
+  min-height: 3em;
   -webkit-flex-shrink: 0;
   flex-shrink: 0;
   color: #f2f2f2;
@@ -2390,44 +2686,61 @@ body.phone #mapView #locate-btn {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  height: 3em;
   margin: 0;
-  padding: 1em 1em 0 1em;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  padding: 1em 1em 0.3em 1em;
   font-weight: 300;
   font-size: 1.1em;
+  line-height: 1.1em;
   text-align: center;
 }
-/* line 30, sass/_detailView.scss */
+/* line 26, sass/_detailView.scss */
+#detailViewMobile .close-btn {
+  position: absolute;
+  top: 1em;
+  right: 1em;
+  width: 1.5em;
+  height: 1.5em;
+  cursor: pointer;
+  background-image: url("../img/icon_34.svg");
+  -moz-background-size: 100%;
+  -o-background-size: 100%;
+  -webkit-background-size: 100%;
+  background-size: 100%;
+  background-position: center center;
+  background-repeat: no-repeat;
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+/* line 41, sass/_detailView.scss */
 #detailViewMobile .image {
   /*height: 10em;*/
   text-align: center;
   overflow: hidden;
 }
-/* line 35, sass/_detailView.scss */
+/* line 46, sass/_detailView.scss */
 #detailViewMobile .image img {
   position: relative;
   top: 50%;
   transform: translateY(-50%);
 }
-/* line 41, sass/_detailView.scss */
+/* line 52, sass/_detailView.scss */
 #detailViewMobile .image.logo img {
   height: 80%;
 }
-/* line 42, sass/_detailView.scss */
+/* line 53, sass/_detailView.scss */
 #detailViewMobile .image.photo img {
   width: 100%;
 }
-/* line 46, sass/_detailView.scss */
+/* line 57, sass/_detailView.scss */
 #detailViewMobile .property {
   display: none;
   padding: 0 5%;
   margin-top: 1em;
   min-height: 2em;
 }
-/* line 55, sass/_detailView.scss */
+/* line 66, sass/_detailView.scss */
 #detailViewMobile .property.category .property-icon {
   /* orga */
   /* market entry */
@@ -2632,12 +2945,12 @@ body.phone #mapView #locate-btn {
   -webkit-background-size: 50%;
   background-size: 50%;
 }
-/* line 60, sass/_detailView.scss */
+/* line 71, sass/_detailView.scss */
 #detailViewMobile .property.category .property-value {
   font-style: italic;
   color: #999999;
 }
-/* line 66, sass/_detailView.scss */
+/* line 77, sass/_detailView.scss */
 #detailViewMobile .property .property-icon {
   width: 2.5em;
   height: 2.5em;
@@ -2646,61 +2959,61 @@ body.phone #mapView #locate-btn {
   background-position: center 0.2em;
   /* property icons */
 }
-/* line 75, sass/_detailView.scss */
+/* line 86, sass/_detailView.scss */
 #detailViewMobile .property .property-icon.icon-location {
   background-image: url("../img/icon_35.svg");
 }
-/* line 76, sass/_detailView.scss */
+/* line 87, sass/_detailView.scss */
 #detailViewMobile .property .property-icon.icon-phone {
   background-image: url("../img/icon_23.svg");
 }
-/* line 77, sass/_detailView.scss */
+/* line 88, sass/_detailView.scss */
 #detailViewMobile .property .property-icon.icon-mail {
   background-image: url("../img/icon_25.svg");
 }
-/* line 78, sass/_detailView.scss */
+/* line 89, sass/_detailView.scss */
 #detailViewMobile .property .property-icon.icon-web {
   background-image: url("../img/icon_27.svg");
 }
-/* line 79, sass/_detailView.scss */
+/* line 90, sass/_detailView.scss */
 #detailViewMobile .property .property-icon.icon-openingHours {
   background-image: url("../img/icon_29.svg");
 }
-/* line 80, sass/_detailView.scss */
+/* line 91, sass/_detailView.scss */
 #detailViewMobile .property .property-icon.icon-description {
   background-image: url("../img/icon_31.svg");
 }
-/* line 81, sass/_detailView.scss */
+/* line 92, sass/_detailView.scss */
 #detailViewMobile .property .property-icon.icon-facebook {
   background-image: url("../img/icon_45.svg");
 }
-/* line 82, sass/_detailView.scss */
+/* line 93, sass/_detailView.scss */
 #detailViewMobile .property .property-icon.icon-spokenLanguages {
   background-image: url("../img/icon_43.svg");
 }
-/* line 83, sass/_detailView.scss */
+/* line 94, sass/_detailView.scss */
 #detailViewMobile .property .property-icon.icon-speakerPublic {
   background-image: url("../img/icon_41.svg");
 }
-/* line 86, sass/_detailView.scss */
+/* line 97, sass/_detailView.scss */
 #detailViewMobile .property .property-text {
   margin-left: calc(5% + 2.5em);
 }
-/* line 89, sass/_detailView.scss */
+/* line 100, sass/_detailView.scss */
 #detailViewMobile .property .property-text.ar, #detailViewMobile .property .property-text.ur, #detailViewMobile .property .property-text.fa {
   margin-right: calc(5% + 2.5em);
 }
-/* line 93, sass/_detailView.scss */
+/* line 104, sass/_detailView.scss */
 #detailViewMobile .property .property-text p {
   margin: 0;
   line-height: 1.3em;
 }
-/* line 97, sass/_detailView.scss */
+/* line 108, sass/_detailView.scss */
 #detailViewMobile .property .property-text p.property-name {
   font-weight: 500;
   text-transform: capitalize;
 }
-/* line 103, sass/_detailView.scss */
+/* line 114, sass/_detailView.scss */
 #detailViewMobile .property .property-text a, #detailViewMobile .property .property-text #includeView .content span.locationLink, #includeView .content #detailViewMobile .property .property-text span.locationLink {
   width: 100%;
   display: inline-block;
@@ -2708,11 +3021,11 @@ body.phone #mapView #locate-btn {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-/* line 117, sass/_detailView.scss */
+/* line 128, sass/_detailView.scss */
 #detailViewMobile.type-3 .property.category .property-name {
   line-height: 2.6em !important;
 }
-/* line 118, sass/_detailView.scss */
+/* line 129, sass/_detailView.scss */
 #detailViewMobile.type-3 .property.category .property-value {
   display: none;
 }
@@ -2837,39 +3150,126 @@ body.phone #menuView .menu-btn {
   height: 100%;
   padding: 2em 0;
   background-color: rgba(0, 0, 0, 0.8);
+  color: #999999;
+  /*@include flex-grow(1);*/
+  /*@include flex-basis(100%);*/
+  /*@include flex-direction(column);*/
 }
-/* line 16, sass/_legendView.scss */
+/* line 17, sass/_legendView.scss */
 #legendView .filter-module {
+  margin-bottom: 3em;
   text-align: center;
 }
-/* line 20, sass/_legendView.scss */
+/* line 22, sass/_legendView.scss */
 #legendView .filter-module h3 {
   text-align: left;
   font-weight: normal;
   text-transform: uppercase;
   color: #999999;
-  padding-left: .5rem;
+  padding-left: .5em;
   font-size: 0.9em;
   visibility: hidden;
 }
-/* line 31, sass/_legendView.scss */
+/* line 33, sass/_legendView.scss */
+#legendView .entity-module {
+  visibility: hidden;
+}
+/* line 37, sass/_legendView.scss */
+#legendView .row-container {
+  display: -webkit-flex;
+  display: flex;
+}
+/* line 40, sass/_legendView.scss */
+#legendView .row-container .entity-container {
+  -webkit-flex-grow: 1;
+  flex-grow: 1;
+  -webkit-flex-basis: 100%;
+  flex-basis: 100%;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center;
+  align-items: center;
+  cursor: pointer;
+}
+/* line 50, sass/_legendView.scss */
+#legendView .row-container .entity-container .entity {
+  /* orga */
+  /* market entry */
+  /* event */
+  /* POI */
+  height: 2.5em;
+  width: 2.5em;
+  border: 2px solid #f2f2f2;
+}
+/* line 4, sass/_infoVisSystem.scss */
+#legendView .row-container .entity-container .entity.type-0 {
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+}
+/* line 9, sass/_infoVisSystem.scss */
+#legendView .row-container .entity-container .entity.type-1 {
+  -moz-border-radius: 20px;
+  -webkit-border-radius: 20px;
+  border-radius: 20px;
+}
+/* line 14, sass/_infoVisSystem.scss */
+#legendView .row-container .entity-container .entity.type-2 {
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+/* line 18, sass/_infoVisSystem.scss */
+#legendView .row-container .entity-container .entity.type-2[class^="cat-"] {
+  -moz-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+/* line 24, sass/_infoVisSystem.scss */
+#legendView .row-container .entity-container .entity.type-3 {
+  -moz-border-radius: 20px;
+  -webkit-border-radius: 20px;
+  border-radius: 20px;
+  -moz-box-shadow: 0px 0px 2px #555;
+  -webkit-box-shadow: 0px 0px 2px #555;
+  box-shadow: 0px 0px 2px #555;
+  background-color: #f2f2f2 !important;
+}
+/* line 57, sass/_legendView.scss */
+#legendView .row-container .entity-container .label {
+  color: #999999;
+  font-size: .9em;
+  padding-top: 0.5em;
+}
+/* line 64, sass/_legendView.scss */
+#legendView .row-container .entity-container:hover .label {
+  color: #f2f2f2;
+}
+/* line 70, sass/_legendView.scss */
 #legendView .std-container {
   margin-bottom: 1em;
   color: #f2f2f2;
 }
-/* line 36, sass/_legendView.scss */
+/* line 75, sass/_legendView.scss */
 #legendView .std-container.extended .cat-container .nippus {
   -moz-transform: rotate(180deg);
   -ms-transform: rotate(180deg);
   -webkit-transform: rotate(180deg);
   transform: rotate(180deg);
 }
-/* line 40, sass/_legendView.scss */
+/* line 79, sass/_legendView.scss */
 #legendView .std-container.extended .sub-container {
   max-height: 300px;
   /* the height is not real, just a work around to make the transition working, because it needs a specific value */
 }
-/* line 46, sass/_legendView.scss */
+/* line 85, sass/_legendView.scss */
 #legendView .cat-container {
   position: relative;
   width: 100%;
@@ -2915,7 +3315,7 @@ body.phone #menuView .menu-btn {
   background-color: rgba(202, 115, 17, 0.4);
   border-color: #ca7311;
 }
-/* line 57, sass/_legendView.scss */
+/* line 96, sass/_legendView.scss */
 #legendView .cat-container .icon {
   -moz-background-size: 72%;
   -o-background-size: 72%;
@@ -3049,7 +3449,7 @@ body.phone #menuView .menu-btn {
   -webkit-background-size: 50%;
   background-size: 50%;
 }
-/* line 69, sass/_legendView.scss */
+/* line 108, sass/_legendView.scss */
 #legendView .cat-container p {
   position: absolute;
   top: 0;
@@ -3063,7 +3463,7 @@ body.phone #menuView .menu-btn {
   overflow: hidden;
   white-space: nowrap;
 }
-/* line 83, sass/_legendView.scss */
+/* line 122, sass/_legendView.scss */
 #legendView .cat-container .nippus {
   position: absolute;
   top: 0;
@@ -3084,32 +3484,32 @@ body.phone #menuView .menu-btn {
   transition: transform 100ms;
   opacity: .8;
 }
-/* line 97, sass/_legendView.scss */
+/* line 136, sass/_legendView.scss */
 #legendView .cat-container .nippus:hover {
   opacity: 1;
 }
-/* line 102, sass/_legendView.scss */
+/* line 141, sass/_legendView.scss */
 #legendView .cat-container.filter-reset {
   display: none;
   opacity: 1 !important;
 }
-/* line 105, sass/_legendView.scss */
+/* line 144, sass/_legendView.scss */
 #legendView .cat-container.filter-reset .icon {
   visibility: hidden;
 }
-/* line 108, sass/_legendView.scss */
+/* line 147, sass/_legendView.scss */
 #legendView .cat-container:hover {
   opacity: 1 !important;
 }
-/* line 111, sass/_legendView.scss */
+/* line 150, sass/_legendView.scss */
 #legendView .cat-container:hover p {
   text-shadow: 0px 0px 2px white;
 }
-/* line 115, sass/_legendView.scss */
+/* line 154, sass/_legendView.scss */
 #legendView .cat-container.inactive {
   opacity: .3;
 }
-/* line 121, sass/_legendView.scss */
+/* line 160, sass/_legendView.scss */
 #legendView .sub-container {
   -moz-transition: max-height 250ms;
   -o-transition: max-height 250ms;
@@ -3155,7 +3555,7 @@ body.phone #menuView .menu-btn {
   background-color: rgba(202, 115, 17, 0.1);
   border-color: #ca7311;
 }
-/* line 128, sass/_legendView.scss */
+/* line 167, sass/_legendView.scss */
 #legendView .sub-container .subcat-container {
   /* TODO find a solution to avoid setting the border on elements that dont need that and dont provide a parameter for it */
   /* Main categories */
@@ -3197,7 +3597,7 @@ body.phone #menuView .menu-btn {
   background-color: #ca7311;
   border-color: #ca7311;
 }
-/* line 133, sass/_legendView.scss */
+/* line 172, sass/_legendView.scss */
 #legendView .sub-container .subcat-container .icon {
   -moz-background-size: 72%;
   -o-background-size: 72%;
@@ -3331,7 +3731,7 @@ body.phone #menuView .menu-btn {
   -webkit-background-size: 50%;
   background-size: 50%;
 }
-/* line 145, sass/_legendView.scss */
+/* line 184, sass/_legendView.scss */
 #legendView .sub-container .subcat-container p {
   margin: 0 0 0 3.5em;
   text-overflow: ellipsis;
@@ -3342,31 +3742,67 @@ body.phone #menuView .menu-btn {
   overflow: hidden;
   white-space: nowrap;
 }
-/* line 156, sass/_legendView.scss */
+/* line 195, sass/_legendView.scss */
 #legendView .sub-container .subcat-container.inactive {
   opacity: .3;
 }
-/* line 160, sass/_legendView.scss */
+/* line 199, sass/_legendView.scss */
 #legendView .sub-container .subcat-container:hover {
   opacity: 1 !important;
 }
-/* line 163, sass/_legendView.scss */
+/* line 202, sass/_legendView.scss */
 #legendView .sub-container .subcat-container:hover p {
   text-shadow: 0px 0px 2px white;
 }
-/* line 171, sass/_legendView.scss */
+/* line 213, sass/_legendView.scss */
+#legendView .attribute-module {
+  visibility: hidden;
+}
+/* line 216, sass/_legendView.scss */
+#legendView .attribute-module .attribute-container {
+  padding-left: 2em;
+  margin-bottom: 1em;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: center;
+  align-items: center;
+}
+/* line 223, sass/_legendView.scss */
+#legendView .attribute-module .attribute-container input {
+  width: 1.5em;
+  height: 1.5em;
+  cursor: pointer;
+}
+/* line 229, sass/_legendView.scss */
+#legendView .attribute-module .attribute-container label {
+  text-indent: 1em;
+  cursor: pointer;
+}
+/* line 235, sass/_legendView.scss */
+#legendView .attribute-module .attribute-container:hover label {
+  color: #f2f2f2;
+}
+/* line 244, sass/_legendView.scss */
 #legendView.filter-active .cat-container.filter-reset {
   display: block;
 }
-/* line 174, sass/_legendView.scss */
+/* line 247, sass/_legendView.scss */
 #legendView:hover {
   right: 0;
 }
-/* line 179, sass/_legendView.scss */
+/* line 252, sass/_legendView.scss */
 #legendView:hover .filter-module h3 {
   visibility: visible;
 }
-/* line 181, sass/_legendView.scss */
+/* line 254, sass/_legendView.scss */
+#legendView:hover .entity-module {
+  visibility: visible;
+}
+/* line 255, sass/_legendView.scss */
+#legendView:hover .attribute-module {
+  visibility: visible;
+}
+/* line 257, sass/_legendView.scss */
 #legendView:hover .cat-container .icon {
   margin-left: .5em;
 }

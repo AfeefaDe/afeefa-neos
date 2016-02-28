@@ -75,6 +75,22 @@ qx.Class.define("DataManager", {
 
         },
 
+        getAllEntries: function( cb ){
+
+            $.ajax({
+                url: "api/marketentries?locale=" + APP.getLM().getCurrentLang(),
+                type: 'GET',
+                dataType: 'json'
+            })
+            .done(function( data ) {
+                cb(data);
+            })
+            .fail(function(a) {
+                console.debug(a);
+            });
+
+        },
+
         getAllLocations: function( cb ){
 
             $.ajax({

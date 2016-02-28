@@ -144,8 +144,12 @@ qx.Class.define("MapView", {
 		}
 
 		that.listen('mapclicked', function(){
-            that.deselectMarker();
-        });
+        that.deselectMarker();
+    });
+
+    that.listen('DetailViewClosed', function(){
+        that.deselectMarker();
+    });
 
 		that.listen('DetailViewMobileRendered', function(){
 			that.loadFromUrl( {setView: true} );
@@ -174,10 +178,26 @@ qx.Class.define("MapView", {
         if( filter ) {
         	
             locations = _.filter(locations, function(location){
-        		// don't filter these location types:
-        		if( _.contains([2, 3], location.type) ) return true;
-                
-                return location.category.name === filter.category;
+	        		// don't filter these location types:
+	        		if( _.contains([3], location.type) )
+	        			return true;
+              
+              if( filter.category !== undefined )
+              	if( !(location.category.name === filter.category) ) return false;
+
+              if( filter.subCategory !== undefined )
+              	if( !(location.subCategory === filter.subCategory) ) return false;
+
+              if( filter.type !== undefined )
+              	if( !(location.type === parseInt(filter.type)) ) return false;
+
+              if( filter.forChildren !== undefined )
+              	if( !(location.forChildren === filter.forChildren) ) return false;
+
+              if( filter.supportWanted !== undefined )
+              	if( !(location.supportWanted === filter.supportWanted) ) return false;
+
+              return true;
             });
 
         }
@@ -268,7 +288,13 @@ qx.Class.define("MapView", {
 				offset: [0, 0]
 			})
 			    .setLatLng([location.lat, location.lon])
-			    .setContent('<span class="title">' + locationName + '</span><span class="category">' +that.getWording('cat_' + location.category.name)+ '</span>');
+			    .setContent(function(){
+			    	var label = that.getWording('cat_' + location.category.name);
+			    	if(location.subCategory)
+			    		label += ' (' + that.getWording('cat_' + location.subCategory) + ')';
+
+			    	return '<span class="title">' + locationName + '</span><span class="category">' +label+ '</span>';
+			    }());
 
 			marker.on('mouseover', function (e) {
 	            that.map.openPopup(popup);

@@ -60,7 +60,7 @@
 }
 
 @mixin button {
-	@include transition(all 250ms);
+	@include transition(all 150ms);
 	@include roundedCorners();
 	@include shadow();
 	background-color: $black_alpha;

@@ -12,9 +12,11 @@
 	padding: 2em 0;
 
 	background-color: $black_alpha;
+	color: $gray50;
 
 	.filter-module {
 
+	    margin-bottom: 3em;
 		text-align: center;
 
 		h3 {
@@ -22,10 +24,47 @@
 			font-weight: normal;
 			text-transform: uppercase;
 			color: $gray50;
-			padding-left: .5rem;
+			padding-left: .5em;
 			font-size: 0.9em;
 			visibility: hidden;
 		}
+	}
+
+	.entity-module {
+		visibility: hidden;
+	}
+
+	.row-container {
+		@include display-flex;
+
+		.entity-container {
+			@include flex-grow(1);
+			@include flex-basis(100%);
+			
+			@include display-flex;
+		    @include flex-direction(column);
+		    @include align-items(center);
+			
+			cursor: pointer;
+
+			.entity {
+				@include entityShapes;
+				height: 2.5em;
+				width: 2.5em;
+		        border: 2px solid $white;
+			}
+			
+			.label {
+				color: $gray50;
+				font-size: .9em;
+			    padding-top: 0.5em;
+			}
+
+			&:hover {
+				.label { color: $white; }
+			}
+		}
+
 	}
 
 	.std-container {
@@ -166,6 +205,40 @@
 
 	}
 
+			/*@include flex-grow(1);*/
+			/*@include flex-basis(100%);*/
+			
+		    /*@include flex-direction(column);*/
+
+	.attribute-module {
+		visibility: hidden;
+
+		.attribute-container {
+			padding-left: 2em;
+		    margin-bottom: 1em;
+			
+			@include display-flex;
+	    	@include align-items(center);
+
+			input {
+				width: 1.5em;
+				height: 1.5em;
+	    		cursor: pointer;
+			}
+
+			label {
+				text-indent: 1em;
+	    		cursor: pointer;
+			}
+
+			&:hover {
+				label {
+					color: $white;
+				}				
+			}
+		}
+	}
+
 	&.filter-active {
 
 		.cat-container.filter-reset { display: block; }
@@ -178,6 +251,9 @@
 		.filter-module {
 			h3 { visibility: visible; }
 		}
+		.entity-module { visibility: visible; }
+		.attribute-module { visibility: visible; }
+
 		.cat-container .icon { margin-left: .5em; }
 
 	}

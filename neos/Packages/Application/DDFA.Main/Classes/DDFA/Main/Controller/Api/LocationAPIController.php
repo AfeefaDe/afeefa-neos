@@ -3,7 +3,7 @@
 namespace DDFA\Main\Controller\Api;
 
 /*                                                                        *
- * This script belongs to the TYPO3 Flow package "DDFA.Main".              *
+ * This script belongs to the TYPO3 Flow package "DDFA.Main".             *
  *                                                                        *
  *                                                                        */
 
@@ -41,7 +41,7 @@ class LocationAPIController extends ActionController {
      * @param Location $location
      * @param string $locale
      */
-    public function showAction(Location $location, $locale) {
+    public function showAction(Location $location, $locale = 'de') {
         $location = $this->iniLocationRepository->findOneLocalized($location, $locale);
         $this->view->assign('value', ['location' => $location]);
     }

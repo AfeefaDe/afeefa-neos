@@ -159,14 +159,16 @@ abstract class AbstractTranslationRepository extends Repository
 
     /**
      * @param string $locale
+     * @param bool $onlyPublished
      * @return array
      */
-    public function findAllHydrated($locale)
+    public function findAllHydrated($locale, $onlyPublished = false)
     {
         $all = $this->findByLocale(DDConst::LOCALE_STD);
         $result = array();
         foreach ($all as $o) {
-            array_push($result, $this->hydrate($o, $locale));
+            if(!$onlyPublished || $o->getPublished())
+                array_push($result, $this->hydrate($o, $locale));
         }
         return $result;
     }

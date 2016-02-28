@@ -36,7 +36,7 @@ class MarketEntryAPIController extends ActionController
 
     public function listAction()
     {
-        $this->view->assign('value', ['marketentries' => $this->marketEntryRepository->findAllLocalized(DDConst::LOCALE_STD, true)]);
+        $this->view->assign('value', ['marketentries' => $this->marketEntryRepository->findAllHydrated(DDConst::LOCALE_STD)]);
     }
 
     public function showAction(MarketEntry $marketentry)

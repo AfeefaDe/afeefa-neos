@@ -55,7 +55,7 @@ qx.Class.define("IncludeView", {
 			
 			that.view.addClass('active');
 			that.view.addClass(includeKey);
-			that.setViewState(0);
+			that.setViewState(1);
 
 			that.say('includeViewOpened');
 			
@@ -100,11 +100,17 @@ qx.Class.define("IncludeView", {
 						.perfectScrollbar()
 						.on('ps-scroll-down', function() {
 							headerEl.addClass('min');
+							$(this).perfectScrollbar('update');
 						})
 						.on('ps-y-reach-start', function() {
 							headerEl.removeClass('min');
 						});
 				}
+
+				// minimizing
+				headerEl.click(function(){
+					if(that.getViewState() == 2) that.minimize(false);
+				});
 
 				// scan buttons
 				$('button').click(function(){
@@ -130,14 +136,17 @@ qx.Class.define("IncludeView", {
 		minimize: function(bool){
 			var that = this;
 
+			// only min/max if view is active
+			if( that.getViewState() === 0 ) return false;
+
 			if( bool ) {
-				that.view.addClass('small')
-				that.setViewState(1);
+				that.view.addClass('min')
+				that.setViewState(2);
 			}
 			else {
-				that.view.removeClass('small')  
-				that.setViewState(0);
-			} 
+				that.view.removeClass('min')  
+				that.setViewState(1);
+			}
 		},
 
 		addEvents: function(){
@@ -171,6 +180,10 @@ qx.Class.define("IncludeView", {
 				that.minimize(false);
 			});
 
+			that.listen('searchFieldFocused', function(){
+				that.close();
+			});
+
 
 			// that.menuBtn.click(function(){
 			//     $('#main-container').addClass('shifted-left');
@@ -190,6 +203,8 @@ qx.Class.define("IncludeView", {
 				that.view.removeClass(value);
 			});
 			
+			that.setViewState(0);
+
 			that.say('includeViewClosed');
 		},
 

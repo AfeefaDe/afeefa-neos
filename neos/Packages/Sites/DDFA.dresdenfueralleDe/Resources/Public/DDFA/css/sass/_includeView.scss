@@ -15,7 +15,6 @@
 	@include box-sizing(border-box);
 	max-width: 70%;
 	max-height: 80%;
-	padding: 0 0 2rem 0;
 
 	background-color: $white;
 	color: $black;
@@ -25,6 +24,17 @@
 	&.active {
 		visibility: visible;
 		opacity: 1;
+	}
+
+	&.min {
+    top: auto;
+		left: 3em;
+    bottom: 3em;
+		.header { cursor: pointer; }
+		h1 { padding-top: 1rem !important; cursor: pointer; }
+		p.subheading { display: none; }
+		.content { display: none; }
+		.closeBtn { display: none; }
 	}
 
 	&.imprint {
@@ -50,15 +60,11 @@
 	}
 
 	.content-container {
-		/*height: 100%;*/
 		@include flex-grow(1);
-		/*position: relative;*/
-		/*overflow: hidden;*/
 		@include display-flex;
 		@include flex-direction(column);
 		
 		.header {
-			/*@include flex-grow(1);*/
 			background-color: $black;
 			padding: 0 3rem;
 
@@ -163,8 +169,19 @@
 				padding: .3em;
 				font-weight: 100;
 				font-style: italic;
+				font-size: .8em;
 			}
 		}
+	}
+
+	.float-right-in-text {
+		float: right;
+		padding: 1em 0 1em 1em;
+	}
+
+	.float-left-in-text {
+		float: left;
+		padding: 1em 1em 1em 0;
 	}
 
 	.chapters {

@@ -276,25 +276,22 @@ qx.Class.define("DetailView", {
 			this.base(arguments);
 
 			that.listen('searchFieldFocused', function(){
-				if( APP.getUserDevice() === 'mobile' )
+				// if( APP.getUserDevice() === 'mobile' )
 					that.close();
-				else
-					that.view.addClass('right');
+				// else
+				// 	that.view.addClass('right');
 			});
 
 			that.listen('searchViewClosed', function(){
-				that.view.removeClass('right');
+				// that.view.removeClass('right');
 			});
 
 			that.listen('includeViewOpened', function(){
 				if( APP.getUserDevice() === 'mobile' )
 					that.close();
-				else
-					that.view.addClass('right');
 			});
 
 			that.listen('includeViewClosed', function(){
-				that.view.removeClass('right');
 			});
 
 			that.listen('mapclicked', function(){

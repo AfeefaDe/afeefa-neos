@@ -186,10 +186,6 @@ qx.Class.define("SearchView", {
           createEntryResult(entry);
         });
       }
-
-
-      // if( APP.getUserDevice() == 'desktop') that.results.perfectScrollbar();
-
     },
 
     addEvents: function(){
@@ -211,13 +207,20 @@ qx.Class.define("SearchView", {
         that.loadResults( that.inputField.val() );
       });
 
-      // that.listen('detailViewOpened', function(){
-      //   that.minimize();
-      // });
+      that.listen('detailViewOpened', function(){
+        // if( !that.inputField.val() )
+        //   that.close();
+        // else
+          that.minimize();
+      });
 
-      // that.listen('detailViewClosed', function(){
-      //   that.maximize();
-      // });
+      that.listen('detailViewClosed', function(){
+        that.maximize();
+      });
+
+      that.listen('includeViewOpened', function(){
+        that.close();
+      });
     },
 
     minimize: function(){
@@ -235,15 +238,19 @@ qx.Class.define("SearchView", {
     reset: function(){
         var that = this;
 
+        that.results.scrollTop(0);
+
         that.inputField.val(null);
         that.results.empty();
+        
+        if( APP.getUserDevice() == 'desktop') that.results.perfectScrollbar('update');
     },
 
     close: function(){
         var that = this;
 
-        that.view.removeClass('active');
         that.reset();
+        that.view.removeClass('active');
 
         that.say('searchViewClosed');
     },

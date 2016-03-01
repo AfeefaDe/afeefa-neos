@@ -1,191 +1,202 @@
 qx.Class.define("IncludeView", {
-    
-    extend : View,
+	
+	extend : View,
 	type: "singleton",
 
-    properties: {
-        includes: {},
-        baseUrl: {}
-    },
+	properties: {
+		includes: {},
+		baseUrl: {}
+	},
 
-    construct: function(){
-    	var that = this;
+	construct: function(){
+		var that = this;
 
-        that.setViewId('includeView');
-        that.setIncludes({
-            refugeeGuide: 'refugeeGuide',
-            supporterGuide: 'supporterGuide',
-            imprint: 'imprint',
-            press: 'press',
-            about: 'about',
-            intro: 'intro'
-        });
-        that.setBaseUrl( '_Resources/Static/Packages/DDFA.dresdenfueralleDe/DDFA/inc/' );
-    },
+		that.setViewId('includeView');
+		that.setIncludes({
+			refugeeGuide: 'refugeeGuide',
+			supporterGuide: 'supporterGuide',
+			imprint: 'imprint',
+			press: 'press',
+			about: 'about',
+			intro: 'intro'
+		});
+		that.setBaseUrl( '_Resources/Static/Packages/DDFA.dresdenfueralleDe/DDFA/inc/' );
+	},
 
-    members : {
-        
-    	render: function(){
-    		var that = this;
+	members : {
+		
+		render: function(){
+			var that = this;
 
-            // view container
-            that.view = $("<div />");
-            that.view.attr('id', that.getViewId());
+			// view container
+			that.view = $("<div />");
+			that.view.attr('id', that.getViewId());
 
-            // content container
-            that.contentContainer  = $("<div />");
-            that.contentContainer.addClass('content-container');
-            that.view.append(that.contentContainer);
+			// content container
+			that.contentContainer  = $("<div />");
+			that.contentContainer.addClass('content-container');
+			that.view.append(that.contentContainer);
 
-            that.closeBtn = $("<div />").addClass('closeBtn').append('');
-            that.view.append(that.closeBtn);
+			that.closeBtn = $("<div />").addClass('closeBtn').append('');
+			that.view.append(that.closeBtn);
 
-            $('#main-container').append(that.view);
+			$('#main-container').append(that.view);
 
-            if( APP.getUserDevice() == 'desktop') that.contentContainer.perfectScrollbar();
+			// if( APP.getUserDevice() == 'desktop') that.contentContainer.perfectScrollbar();
 
-            this.base(arguments);
-    	},
+			this.base(arguments);
+		},
 
-        // TODO option: modal
-        load: function( includeKey ){
-            var that = this;
+		// TODO option: modal
+		load: function( includeKey ){
+			var that = this;
 
-            that.reset();
-            
-            that.view.addClass('active');
-            that.view.addClass(includeKey);
-            that.setViewState(0);
+			that.reset();
+			
+			that.view.addClass('active');
+			that.view.addClass(includeKey);
+			that.setViewState(0);
 
-            that.say('includeViewOpened');
-            
-                
-            that.contentContainer.load( that.getBaseUrl() + that.getIncludes()[includeKey] + '_' + APP.getLM().getCurrentLang() + ".html", function( response, status, xhr ) {
+			that.say('includeViewOpened');
+			
+				
+			that.contentContainer.load( that.getBaseUrl() + that.getIncludes()[includeKey] + '_' + APP.getLM().getCurrentLang() + ".html", function( response, status, xhr ) {
 
-                if ( status == "error" ) {
+				if ( status == "error" ) {
 
-                    that.contentContainer.load( that.getBaseUrl() + that.getIncludes()[includeKey] + '_en.html', function( response, status, xhr ) {
-                        
-                        if ( status == "error" ) {
+					that.contentContainer.load( that.getBaseUrl() + that.getIncludes()[includeKey] + '_en.html', function( response, status, xhr ) {
+						
+						if ( status == "error" ) {
 
-                            that.contentContainer.load( that.getBaseUrl() + that.getIncludes()[includeKey] + '_de.html', function( response, status, xhr ) {
-                                loadComplete();
-                            });
+							that.contentContainer.load( that.getBaseUrl() + that.getIncludes()[includeKey] + '_de.html', function( response, status, xhr ) {
+								loadComplete();
+							});
 
-                        }
+						}
 
-                        loadComplete();
+						loadComplete();
 
-                    });
+					});
 
-                }
+				}
 
-                loadComplete();
+				loadComplete();
 
-            });
+			});
 
-            function loadComplete(){
-                
-                $('span.locationLink').click(function(){
-                    APP.getMapView().selectMarkerFromLink( $(this).attr('name') );
-                });
+			function loadComplete(){
+				
+				// location links
+				$('span.locationLink').click(function(){
+					APP.getMapView().selectMarkerFromLink( $(this).attr('name') );
+				});
 
-                // var heading = that.content.find('h1').first().detach();
-                // that.content.before(heading);
+				// scrolling
+				const headerEl = that.contentContainer.find('.header');
+				const contentEl = that.contentContainer.find('.content');
 
-                if( APP.getUserDevice() == 'desktop') that.contentContainer.perfectScrollbar('update');
+				if( APP.getUserDevice() == 'desktop') {
+					contentEl
+						.perfectScrollbar()
+						.on('ps-scroll-down', function() {
+							headerEl.addClass('min');
+						})
+						.on('ps-y-reach-start', function() {
+							headerEl.removeClass('min');
+						});
+				}
 
-                // scan buttons
-                $('button').click(function(){
-                    const action = $(this).attr('data-action');
-                    switch(action) {
-                        case 'close':
-                            that.close();
-                            break;
-                        default:
-                    }
-                });
-            }
+				// scan buttons
+				$('button').click(function(){
+					const action = $(this).attr('data-action');
+					switch(action) {
+						case 'close':
+							that.close();
+							break;
+						default:
+					}
+				});
+			}
 
-        },
+		},
 
-        reset: function(){
-            var that = this;
+		reset: function(){
+			var that = this;
 
-            // that.view.find('h1').remove();
-            that.contentContainer.empty();
-        },
+			// that.view.find('h1').remove();
+			that.contentContainer.empty();
+		},
 
-        minimize: function(bool){
-            var that = this;
+		minimize: function(bool){
+			var that = this;
 
-            if( bool ) {
-                that.view.addClass('small')
-                that.setViewState(1);
-            }
-            else {
-                that.view.removeClass('small')  
-                that.setViewState(0);
-            } 
-        },
+			if( bool ) {
+				that.view.addClass('small')
+				that.setViewState(1);
+			}
+			else {
+				that.view.removeClass('small')  
+				that.setViewState(0);
+			} 
+		},
 
-        addEvents: function(){
-            var that = this;
+		addEvents: function(){
+			var that = this;
 
-            // call superclass
-            this.base(arguments);
-            
-            that.view.click(function(){
-                that.say('includeViewClicked', {viewState: that.getViewState()} );
-            });
+			// call superclass
+			this.base(arguments);
+			
+			that.view.click(function(){
+				that.say('includeViewClicked', {viewState: that.getViewState()} );
+			});
 
-            that.closeBtn.click(function(){
-                that.close();
-                that.say('includeViewClosed');
-            });
+			that.closeBtn.click(function(){
+				that.close();
+				that.say('includeViewClosed');
+			});
 
-            that.listen('detailViewOpened', function(){
-                that.minimize(true);
-            });
+			that.listen('detailViewOpened', function(){
+				that.minimize(true);
+			});
 
-            // that.listen('detailViewMobileMaximized', function(){
-            //     that.minimize(true);
-            // });
+			// that.listen('detailViewMobileMaximized', function(){
+			//     that.minimize(true);
+			// });
 
-            // that.listen('detailViewMobileMinimized', function(){
-            //     that.minimize(true);
-            // });
+			// that.listen('detailViewMobileMinimized', function(){
+			//     that.minimize(true);
+			// });
 
-            that.listen('detailViewClosed', function(){
-                that.minimize(false);
-            });
+			that.listen('detailViewClosed', function(){
+				that.minimize(false);
+			});
 
 
-            // that.menuBtn.click(function(){
-            //     $('#main-container').addClass('shifted-left');
-            // });
+			// that.menuBtn.click(function(){
+			//     $('#main-container').addClass('shifted-left');
+			// });
 
-            // that.listen('curtainclicked', function(){
-            //     $('#main-container').removeClass('shifted-left');
-            // });
-            
-        },
+			// that.listen('curtainclicked', function(){
+			//     $('#main-container').removeClass('shifted-left');
+			// });
+			
+		},
 
-        close: function(){
-            var that = this;
+		close: function(){
+			var that = this;
 
-            that.view.removeClass('active');
-            _.each(that.getIncludes(), function(value, key){
-                that.view.removeClass(value);
-            });
-            
-            that.say('includeViewClosed');
-        },
+			that.view.removeClass('active');
+			_.each(that.getIncludes(), function(value, key){
+				that.view.removeClass(value);
+			});
+			
+			that.say('includeViewClosed');
+		},
 
-        changeLanguage: function(){
-            var that = this;
+		changeLanguage: function(){
+			var that = this;
 
-        }
-    }
+		}
+	}
 
 });

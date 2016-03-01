@@ -52,12 +52,12 @@ audio:not([controls]) {
 }
 
 /* line 14, sass/vendor/_bootstrap.min.scss */
-a, #includeView .content span.locationLink {
+a, #includeView .content-container .content span.locationLink {
   background-color: transparent;
 }
 
 /* line 14, sass/vendor/_bootstrap.min.scss */
-a:active, #includeView .content span.locationLink:active, a:hover, #includeView .content span.locationLink:hover {
+a:active, #includeView .content-container .content span.locationLink:active, a:hover, #includeView .content-container .content span.locationLink:hover {
   outline: 0;
 }
 
@@ -281,19 +281,19 @@ input, button, select, textarea {
 }
 
 /* line 14, sass/vendor/_bootstrap.min.scss */
-a, #includeView .content span.locationLink {
+a, #includeView .content-container .content span.locationLink {
   color: #337ab7;
   text-decoration: none;
 }
 
 /* line 14, sass/vendor/_bootstrap.min.scss */
-a:hover, #includeView .content span.locationLink:hover, a:focus, #includeView .content span.locationLink:focus {
+a:hover, #includeView .content-container .content span.locationLink:hover, a:focus, #includeView .content-container .content span.locationLink:focus {
   color: #23527c;
   text-decoration: underline;
 }
 
 /* line 14, sass/vendor/_bootstrap.min.scss */
-a:focus, #includeView .content span.locationLink:focus {
+a:focus, #includeView .content-container .content span.locationLink:focus {
   outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
@@ -705,7 +705,7 @@ template {
  * Remove the gray background color from active links in IE 10.
  */
 /* line 89, sass/_normalize.scss */
-a, #includeView .content span.locationLink {
+a, #includeView .content-container .content span.locationLink {
   background-color: transparent;
 }
 
@@ -713,9 +713,9 @@ a, #includeView .content span.locationLink {
  * Improve readability when focused and also mouse hovered in all browsers.
  */
 /* line 97, sass/_normalize.scss */
-a:active, #includeView .content span.locationLink:active,
+a:active, #includeView .content-container .content span.locationLink:active,
 a:hover,
-#includeView .content span.locationLink:hover {
+#includeView .content-container .content span.locationLink:hover {
   outline: 0;
 }
 
@@ -1189,14 +1189,14 @@ textarea {
   }
 
   /* line 150, sass/_main.scss */
-  a, #includeView .content span.locationLink,
+  a, #includeView .content-container .content span.locationLink,
   a:visited,
-  #includeView .content span.locationLink:visited {
+  #includeView .content-container .content span.locationLink:visited {
     text-decoration: underline;
   }
 
   /* line 155, sass/_main.scss */
-  a[href]:after, #includeView .content span[href].locationLink:after {
+  a[href]:after, #includeView .content-container .content span[href].locationLink:after {
     content: " (" attr(href) ")";
   }
 
@@ -1206,9 +1206,9 @@ textarea {
   }
 
   /* line 163, sass/_main.scss */
-  a[href^="#"]:after, #includeView .content span[href^="#"].locationLink:after,
+  a[href^="#"]:after, #includeView .content-container .content span[href^="#"].locationLink:after,
   a[href^="javascript:"]:after,
-  #includeView .content span[href^="javascript:"].locationLink:after {
+  #includeView .content-container .content span[href^="javascript:"].locationLink:after {
     content: "";
   }
 
@@ -1353,7 +1353,7 @@ body {
 }
 
 /* line 122, sass/_afeefa-styles.scss */
-a:link, a:visited, #includeView .content span.locationLink:visited, a:hover, #includeView .content span.locationLink:hover, a:active, #includeView .content span.locationLink:active, #includeView .content span.locationLink:link {
+a:link, a:visited, #includeView .content-container .content span.locationLink:visited, a:hover, #includeView .content-container .content span.locationLink:hover, a:active, #includeView .content-container .content span.locationLink:active, #includeView .content-container .content span.locationLink:link {
   color: #333;
   text-decoration: underline;
 }
@@ -2579,7 +2579,7 @@ body.phone #mapView #locate-btn {
   text-transform: capitalize;
 }
 /* line 114, sass/_detailView.scss */
-#detailView .property .property-text a, #detailView .property .property-text #includeView .content span.locationLink, #includeView .content #detailView .property .property-text span.locationLink {
+#detailView .property .property-text a, #detailView .property .property-text #includeView .content-container .content span.locationLink, #includeView .content-container .content #detailView .property .property-text span.locationLink {
   width: 100%;
   display: inline-block;
   overflow: hidden;
@@ -3014,7 +3014,7 @@ body.phone #mapView #locate-btn {
   text-transform: capitalize;
 }
 /* line 114, sass/_detailView.scss */
-#detailViewMobile .property .property-text a, #detailViewMobile .property .property-text #includeView .content span.locationLink, #includeView .content #detailViewMobile .property .property-text span.locationLink {
+#detailViewMobile .property .property-text a, #detailViewMobile .property .property-text #includeView .content-container .content span.locationLink, #includeView .content-container .content #detailViewMobile .property .property-text span.locationLink {
   width: 100%;
   display: inline-block;
   overflow: hidden;
@@ -3043,17 +3043,17 @@ body.phone #mapView #locate-btn {
   padding: 2em 0;
 }
 /* line 12, sass/_menuView.scss */
-#menuView a#logo, #menuView #includeView .content span#logo.locationLink, #includeView .content #menuView span#logo.locationLink, #menuView a#dfa-logo, #menuView #includeView .content span#dfa-logo.locationLink, #includeView .content #menuView span#dfa-logo.locationLink {
+#menuView a#logo, #menuView #includeView .content-container .content span#logo.locationLink, #includeView .content-container .content #menuView span#logo.locationLink, #menuView a#dfa-logo, #menuView #includeView .content-container .content span#dfa-logo.locationLink, #includeView .content-container .content #menuView span#dfa-logo.locationLink {
   width: 50%;
   display: block;
   margin: 0 auto 3em auto;
 }
 /* line 17, sass/_menuView.scss */
-#menuView a#logo img, #menuView #includeView .content span#logo.locationLink img, #includeView .content #menuView span#logo.locationLink img, #menuView a#dfa-logo img, #menuView #includeView .content span#dfa-logo.locationLink img, #includeView .content #menuView span#dfa-logo.locationLink img {
+#menuView a#logo img, #menuView #includeView .content-container .content span#logo.locationLink img, #includeView .content-container .content #menuView span#logo.locationLink img, #menuView a#dfa-logo img, #menuView #includeView .content-container .content span#dfa-logo.locationLink img, #includeView .content-container .content #menuView span#dfa-logo.locationLink img {
   width: 100%;
 }
 /* line 20, sass/_menuView.scss */
-#menuView a#dfa-logo, #menuView #includeView .content span#dfa-logo.locationLink, #includeView .content #menuView span#dfa-logo.locationLink {
+#menuView a#dfa-logo, #menuView #includeView .content-container .content span#dfa-logo.locationLink, #includeView .content-container .content #menuView span#dfa-logo.locationLink {
   width: 60%;
   margin: 3em auto 0 auto;
 }
@@ -3074,7 +3074,7 @@ body.phone #mapView #locate-btn {
   background-color: rgba(0, 0, 0, 0.6);
 }
 /* line 36, sass/_menuView.scss */
-#menuView .item a, #menuView .item #includeView .content span.locationLink, #includeView .content #menuView .item span.locationLink, #menuView .item span {
+#menuView .item a, #menuView .item #includeView .content-container .content span.locationLink, #includeView .content-container .content #menuView .item span.locationLink, #menuView .item span {
   line-height: 2em;
   color: #f2f2f2;
   font-weight: 100;
@@ -4452,35 +4452,34 @@ body.phone #plusView {
   max-width: 70%;
   max-height: 80%;
   padding: 0 0 2rem 0;
-  display: -webkit-flex;
-  display: flex;
-  /*@include flex-direction(column);*/
   background-color: #f2f2f2;
   color: #333333;
+  display: -webkit-flex;
+  display: flex;
 }
-/* line 26, sass/_includeView.scss */
+/* line 25, sass/_includeView.scss */
 #includeView.active {
   visibility: visible;
   opacity: 1;
 }
-/* line 31, sass/_includeView.scss */
+/* line 30, sass/_includeView.scss */
 #includeView.imprint {
   direction: ltr;
 }
-/* line 35, sass/_includeView.scss */
-#includeView a, #includeView .content span.locationLink {
+/* line 34, sass/_includeView.scss */
+#includeView a, #includeView .content-container .content span.locationLink {
   color: #333333;
   text-decoration: none;
   border-bottom: 1px #333333 dotted;
 }
 /* line 29, sass/_afeefa-styles.scss */
-#includeView a:visited, #includeView .content span.locationLink:visited, #includeView a:active, #includeView .content span.locationLink:active {
+#includeView a:visited, #includeView .content-container .content span.locationLink:visited, #includeView a:active, #includeView .content-container .content span.locationLink:active {
   color: #333333;
   text-decoration: none;
   border-bottom: 1px #333333 dotted;
 }
 /* line 35, sass/_afeefa-styles.scss */
-#includeView a:hover, #includeView .content span.locationLink:hover {
+#includeView a:hover, #includeView .content-container .content span.locationLink:hover {
   -moz-transition: background-color 300ms;
   -o-transition: background-color 300ms;
   -webkit-transition: background-color 300ms;
@@ -4489,7 +4488,7 @@ body.phone #plusView {
   background-color: #333333;
   text-decoration: none;
 }
-/* line 39, sass/_includeView.scss */
+/* line 38, sass/_includeView.scss */
 #includeView .closeBtn {
   position: absolute;
   top: 1em;
@@ -4509,98 +4508,112 @@ body.phone #plusView {
   -webkit-transform: rotate(45deg);
   transform: rotate(45deg);
 }
-/* line 53, sass/_includeView.scss */
+/* line 52, sass/_includeView.scss */
 #includeView .content-container {
   /*height: 100%;*/
   -webkit-flex-grow: 1;
   flex-grow: 1;
+  /*position: relative;*/
   /*overflow: hidden;*/
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+  flex-direction: column;
 }
-/* line 59, sass/_includeView.scss */
-#includeView .header {
+/* line 60, sass/_includeView.scss */
+#includeView .content-container .header {
+  /*@include flex-grow(1);*/
   background-color: #333333;
-  padding: 1em 3rem;
+  padding: 0 3rem;
 }
-/* line 64, sass/_includeView.scss */
-#includeView h1 {
+/* line 65, sass/_includeView.scss */
+#includeView .content-container .header h1 {
   font-weight: 300;
   margin: 0;
-  padding-top: 5rem;
+  padding: 5rem 0 1rem 0;
   font-size: 2em;
   color: #f2f2f2;
   -moz-box-sizing: content-box;
   -webkit-box-sizing: content-box;
   box-sizing: content-box;
+  -moz-transition: padding 500ms;
+  -o-transition: padding 500ms;
+  -webkit-transition: padding 500ms;
+  transition: padding 500ms;
 }
-/* line 72, sass/_includeView.scss */
-#includeView p.subheading {
+/* line 76, sass/_includeView.scss */
+#includeView .content-container .header p.subheading {
   color: #f2f2f2;
   margin: 0;
+  position: relative;
+  top: -0.5em;
 }
-/* line 77, sass/_includeView.scss */
-#includeView .chapters {
-  margin-top: 2rem;
+/* line 84, sass/_includeView.scss */
+#includeView .content-container .header.min h1 {
+  padding-top: 1rem;
 }
-/* line 81, sass/_includeView.scss */
-#includeView .chaptersReal {
-  /*@include flex-shrink(0);*/
+/* line 86, sass/_includeView.scss */
+#includeView .content-container .header.min p.subheading {
+  display: none;
 }
-/* line 85, sass/_includeView.scss */
-#includeView .content {
+/* line 90, sass/_includeView.scss */
+#includeView .content-container .content {
+  -webkit-flex-grow: 1;
+  flex-grow: 1;
   padding: 1em 3rem;
   position: relative;
   line-height: 2em;
 }
-/* line 92, sass/_includeView.scss */
-#includeView .content h2 {
+/* line 99, sass/_includeView.scss */
+#includeView .content-container .content h2 {
   font-weight: 100;
   line-height: 1.3em;
   margin-top: 2em;
   text-transform: uppercase;
 }
-/* line 98, sass/_includeView.scss */
-#includeView .content h2 a, #includeView .content h2 span.locationLink, #includeView .content h2 a:visited, #includeView .content h2 span.locationLink:visited, #includeView .content h2 a:active, #includeView .content h2 span.locationLink:active, #includeView .content h2 a:hover, #includeView .content h2 span.locationLink:hover {
+/* line 105, sass/_includeView.scss */
+#includeView .content-container .content h2 a, #includeView .content-container .content h2 span.locationLink, #includeView .content-container .content h2 a:visited, #includeView .content-container .content h2 span.locationLink:visited, #includeView .content-container .content h2 a:active, #includeView .content-container .content h2 span.locationLink:active, #includeView .content-container .content h2 a:hover, #includeView .content-container .content h2 span.locationLink:hover {
   text-decoration: none;
   border: none;
   background: none;
   color: #333333;
 }
-/* line 106, sass/_includeView.scss */
-#includeView .content h3 {
+/* line 113, sass/_includeView.scss */
+#includeView .content-container .content h3 {
   font-size: 1.2em;
   font-weight: 100;
   line-height: 1em;
   margin-top: 1.5em;
   margin-bottom: 0.4em;
 }
-/* line 114, sass/_includeView.scss */
-#includeView .content p {
+/* line 121, sass/_includeView.scss */
+#includeView .content-container .content p {
   text-align: justify;
   font-weight: 300;
   line-height: 1.3em;
 }
-/* line 120, sass/_includeView.scss */
-#includeView .content table {
+/* line 127, sass/_includeView.scss */
+#includeView .content-container .content table {
   font-weight: 300;
 }
-/* line 123, sass/_includeView.scss */
-#includeView .content table td {
+/* line 130, sass/_includeView.scss */
+#includeView .content-container .content table td {
   padding: .3em 0 .3em 1em;
 }
-/* line 125, sass/_includeView.scss */
-#includeView .content table td:first-child {
+/* line 132, sass/_includeView.scss */
+#includeView .content-container .content table td:first-child {
   padding-left: 0em;
 }
-/* line 129, sass/_includeView.scss */
-#includeView .content hr {
+/* line 136, sass/_includeView.scss */
+#includeView .content-container .content hr {
   border-color: #ccc;
 }
-/* line 133, sass/_includeView.scss */
-#includeView .content .no-top-margin {
+/* line 140, sass/_includeView.scss */
+#includeView .content-container .content .no-top-margin {
   margin-top: 0;
 }
-/* line 137, sass/_includeView.scss */
-#includeView .content span.locationLink {
+/* line 144, sass/_includeView.scss */
+#includeView .content-container .content span.locationLink {
   display: inline-block;
   cursor: pointer;
   text-indent: 1em;
@@ -4612,18 +4625,26 @@ body.phone #plusView {
   background-position: 0 2px;
   background-repeat: no-repeat;
 }
-/* line 148, sass/_includeView.scss */
-#includeView .content span.locationLink:hover {
+/* line 155, sass/_includeView.scss */
+#includeView .content-container .content span.locationLink:hover {
   background-image: url("../img/icon-35.svg");
 }
-/* line 154, sass/_includeView.scss */
-#includeView .content p.figure-caption {
+/* line 161, sass/_includeView.scss */
+#includeView .content-container .content p.figure-caption {
   margin-top: 0;
   padding: .3em;
   font-weight: 100;
   font-style: italic;
 }
-/* line 162, sass/_includeView.scss */
+/* line 170, sass/_includeView.scss */
+#includeView .chapters {
+  margin-top: 2rem;
+}
+/* line 174, sass/_includeView.scss */
+#includeView .chaptersReal {
+  /*@include flex-shrink(0);*/
+}
+/* line 178, sass/_includeView.scss */
 #includeView .entity-shape {
   /* orga */
   /* market entry */
@@ -4836,11 +4857,11 @@ body.phone #plusView {
   background-size: 50%;
 }
 
-/* line 186, sass/_includeView.scss */
+/* line 202, sass/_includeView.scss */
 body.mobile #includeView {
   width: 100%;
 }
-/* line 189, sass/_includeView.scss */
+/* line 205, sass/_includeView.scss */
 body.mobile #includeView.small {
   height: 20%;
 }

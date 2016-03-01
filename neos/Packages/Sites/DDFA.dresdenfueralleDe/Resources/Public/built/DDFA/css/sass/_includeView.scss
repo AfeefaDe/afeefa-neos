@@ -15,17 +15,26 @@
 	@include box-sizing(border-box);
 	max-width: 70%;
 	max-height: 80%;
-	padding: 0 0 2rem 0;
-
-	@include display-flex;
-	/*@include flex-direction(column);*/
 
 	background-color: $white;
 	color: $black;
 
+	@include display-flex;
+	
 	&.active {
 		visibility: visible;
 		opacity: 1;
+	}
+
+	&.min {
+    top: auto;
+		left: 3em;
+    bottom: 3em;
+		.header { cursor: pointer; }
+		h1 { padding-top: 1rem !important; cursor: pointer; }
+		p.subheading { display: none; }
+		.content { display: none; }
+		.closeBtn { display: none; }
 	}
 
 	&.imprint {
@@ -37,41 +46,142 @@
 	}
 
 	.closeBtn {
-	    position: absolute;
-        top: 1em;
-	    right: 1em;
-	    width: 1.5em;
-	    height: 1.5em;
-	    cursor: pointer;
-	    background-image: url("../img/icon_34.svg");
-	    @include background-size(100%);
+		position: absolute;
+		top: 1em;
+		right: 1em;
+		width: 1.5em;
+		height: 1.5em;
+		cursor: pointer;
+		background-image: url("../img/icon_34.svg");
+		@include background-size(100%);
 		background-position: center center;
 		background-repeat: no-repeat;
 		@include transform(rotate(45deg));
 	}
 
 	.content-container {
-		/*height: 100%;*/
 		@include flex-grow(1);
-		/*overflow: hidden;*/
-	}
-	
-	.header {
-	    background-color: $black;
-	  	padding: 1em 3rem;
+		@include display-flex;
+		@include flex-direction(column);
+		
+		.header {
+			background-color: $black;
+			padding: 0 3rem;
+
+			h1 {
+				font-weight: 300;
+				margin: 0;
+				padding: 5rem 0 1rem 0;
+				font-size: 2em;
+				color: $white;
+				@include box-sizing(content-box);
+
+				@include transition(padding 500ms);
+			}
+
+			p.subheading {
+				color: $white;
+				margin: 0;
+		    position: relative;
+    		top: -0.5em;
+			}
+
+			&.min {
+				h1 { padding-top: 1rem; }
+
+				p.subheading { display: none; }
+			}
+		}
+
+		.content {
+			
+			@include flex-grow(1);
+
+			padding: 1em 3rem;
+			position: relative;
+			
+			line-height: 2em;
+
+			h2 {
+				font-weight: 100;
+				line-height: 1.3em;
+				margin-top: 2em;
+				text-transform: uppercase;
+
+				a, a:visited, a:active, a:hover {
+					text-decoration: none;
+					border: none;
+					background: none;
+					color: $black;
+				}
+			}
+
+			h3 {
+				font-size: 1.2em;
+				font-weight: 100;
+				line-height: 1em;
+				margin-top: 1.5em;
+				margin-bottom: 0.4em;
+			}
+
+			p {
+				text-align: justify;
+				font-weight: 300;
+				line-height: 1.3em;
+			}
+
+			table {
+				font-weight: 300;
+
+				td {
+					padding: .3em 0 .3em 1em;
+					&:first-child { padding-left: 0em; }
+				}
+			}
+
+			hr {
+				border-color: #ccc;
+			}
+
+			.no-top-margin {
+				margin-top: 0;
+			}
+
+			span.locationLink {
+				@extend a;
+
+				display: inline-block;
+				cursor: pointer;
+				text-indent: 1em;
+				background-image: url('../img/icon-36.svg');
+				@include background-size(auto 1em);
+				background-position: 0 2px;
+				background-repeat: no-repeat;
+
+				&:hover {
+					background-image: url('../img/icon-35.svg');
+				}
+
+			}
+
+			p.figure-caption{
+				margin-top: 0;
+				padding: .3em;
+				font-weight: 100;
+				font-style: italic;
+				font-size: .8em;
+			}
+		}
 	}
 
-	h1 {
-	    font-weight: 300;
-	    margin: 0;
-	    padding-top: 5rem;
-	    font-size: 2em;
-	    color: $white;
-	    @include box-sizing(content-box);
+	.float-right-in-text {
+		float: right;
+		padding: 1em 0 1em 1em;
 	}
-	p.subheading {
-		color: $white;
-		margin: 0;
+
+	.float-left-in-text {
+		float: left;
+		padding: 1em 1em 1em 0;
 	}
 
 	.chapters {
@@ -79,84 +189,7 @@
 	}
 	
 	.chaptersReal {
-	  	/*@include flex-shrink(0);*/
-	}
-
-	.content {
-	  	
-	  	padding: 1em 3rem;
-		position: relative;
-		
-		line-height: 2em;
-
-		h2 {
-			font-weight: 100;
-			line-height: 1.3em;
-			margin-top: 2em;
-			text-transform: uppercase;
-
-			a, a:visited, a:active, a:hover {
-				text-decoration: none;
-				border: none;
-				background: none;
-				color: $black;
-			}
-		}
-
-		h3 {
-			font-size: 1.2em;
-			font-weight: 100;
-			line-height: 1em;
-    		margin-top: 1.5em;
-			margin-bottom: 0.4em;
-		}
-
-		p {
-			text-align: justify;
-			font-weight: 300;
-			line-height: 1.3em;
-		}
-
-		table {
-			font-weight: 300;
-
-			td {
-				padding: .3em 0 .3em 1em;
-				&:first-child { padding-left: 0em; }
-			}
-		}
-
-		hr {
-		    border-color: #ccc;
-		}
-
-		.no-top-margin {
-			margin-top: 0;
-		}
-
-		span.locationLink {
-			@extend a;
-
-			display: inline-block;
-			cursor: pointer;
-			text-indent: 1em;
-			background-image: url('../img/icon-36.svg');
-			@include background-size(auto 1em);
-			background-position: 0 2px;
-			background-repeat: no-repeat;
-
-			&:hover {
-				background-image: url('../img/icon-35.svg');
-			}
-
-		}
-
-		p.figure-caption{
-			margin-top: 0;
-		    padding: .3em;
-		    font-weight: 100;
-		    font-style: italic;
-		}
+		/*@include flex-shrink(0);*/
 	}
 
 	.entity-shape {
@@ -167,9 +200,9 @@
 		width: 1.5em;
 		display: inline-block;
 		background-color: $black;
-	    position: relative;
-    	bottom: -0.4em;
-	    margin: 0 0.2em;
+		position: relative;
+		bottom: -0.4em;
+		margin: 0 0.2em;
 	}
 }
 

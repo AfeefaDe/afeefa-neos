@@ -63,10 +63,12 @@ qx.Class.define("View", {
             that.listen(that.classname + 'Rendered', function(){
         
                 // initialize bootstrap tooltips
-                $(function () {
-                    console.debug('init tooltips');
-                    that.view.find('[data-toggle="tooltip"]').tooltip();
-                })
+                if( APP.getUserDevice == 'desktop'){
+                    $(function () {
+                        console.debug('init tooltips');
+                        that.view.find('[data-toggle="tooltip"]').tooltip();
+                    })
+                }
 
             });
         },

@@ -88,12 +88,14 @@
 	
 	/* Sub categories */
 
-	&.subcat-german-course { background-image: url("../img/icon_18.svg"); }
+	&.subcat-german-course { background-image: url("../img/icon_88.svg"); }
 	&.subcat-welcome-alliance { background-image: url("../img/icon_64.svg") !important; }
 	&.subcat-meeting-place { background-image: url("../img/icon_78.svg"); }
 	&.subcat-welcome-festival { background-image: url("../img/icon_82.svg"); }
 	&.subcat-craft-art { background-image: url("../img/icon_80.svg"); }
 	&.subcat-volunteer-coordination { background-image: url("../img/icon_56.svg"); }
+	&.subcat-family-counselling { background-image: url("../img/icon_92.svg"); }
+	&.subcat-sports { background-image: url("../img/icon_08.svg"); }
 
 	
 	/* POIs */
@@ -109,6 +111,7 @@
 	&.cat-public { background-image: url("../img/icon_63.svg"); @include background-size(80%); }
 	&.cat-library { background-image: url("../img/icon_17.svg"); @include background-size(80%); }
 	&.cat-trafficStop { background-image: url("../img/icon_57.svg"); background-color: $yellow_dvb; }
+	&.cat-library { background-image: url("../img/icon_90.svg"); }
 
 	&.cat-other { background-image: url("../img/icon_32.svg"); @include background-size(50%); }
 }

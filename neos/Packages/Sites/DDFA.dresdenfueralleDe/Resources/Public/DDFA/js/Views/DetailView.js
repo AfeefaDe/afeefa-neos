@@ -298,6 +298,9 @@ qx.Class.define("DetailView", {
 				that.close();
 			});
 
+			that.headingContainer.click(function(){
+				APP.getMapView().selectMarkerFromLink(that.record.entryId);
+			});
 		}
 
 	}

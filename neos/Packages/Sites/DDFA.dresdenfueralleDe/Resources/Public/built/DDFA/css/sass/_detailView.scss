@@ -8,6 +8,7 @@
 	  	@include flex-shrink(0);
 		color: $white;
 		background-color: $black;
+		cursor: pointer;
 
 		@include categoryColors;
 
@@ -200,8 +201,7 @@
 
 	&.active-large {
 		bottom: 0;
-		height: 80%;
-		/*overflow-y: scroll;*/
+		height: 100%;
 	}
 	
 	.scroll-container {

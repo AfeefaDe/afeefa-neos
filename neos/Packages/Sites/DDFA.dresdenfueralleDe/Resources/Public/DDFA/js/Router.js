@@ -49,11 +49,13 @@ qx.Class.define("Router", {
 				// new MapView();
 		    	APP.setMapView( new MapView() );
 		    	
+		    	APP.setSearchView( new SearchView() );
+		    	
 		    	APP.setDetailView( new DetailViewMobile() );
 		    	
 		    	APP.setMenuView( new MenuView() );
 		    	
-		    	// APP.setLegendView( new LegendView() );
+		    	APP.setLegendView( new LegendView() );
 
 		    	// APP.setPlusView( new PlusView() );
 		    	
@@ -88,9 +90,11 @@ qx.Class.define("Router", {
 	    	// TODO throw away
 	    	if( userDevice === 'mobile' ) {
 	    		APP.getMapView().render();
+		    	APP.getSearchView().render();
 		    	APP.getDetailView().render();
 		    	APP.getLanguageView().render();
 		    	APP.getMenuView().render();
+		    	APP.getLegendView().render();
 		    	APP.getIncludeView().render();
 	    	}
 	    	else {

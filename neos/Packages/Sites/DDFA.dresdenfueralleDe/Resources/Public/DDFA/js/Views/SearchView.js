@@ -55,6 +55,18 @@ qx.Class.define("SearchView", {
         });
       that.searchBar.append(that.refugeeBtn);
 
+      // filter button
+      that.filterBtn = $("<div />")
+        .addClass('btn filter-btn')
+      // bootstrap tooltip
+        .click(function(){
+          if( APP.getLegendView().view.hasClass('active') )
+            APP.getLegendView().close();
+          else
+            APP.getLegendView().show();
+        });
+      that.searchBar.append(that.filterBtn);
+
       // cancel button
       that.cancelBtn = $("<div />")
         .addClass('btn cancel-btn')

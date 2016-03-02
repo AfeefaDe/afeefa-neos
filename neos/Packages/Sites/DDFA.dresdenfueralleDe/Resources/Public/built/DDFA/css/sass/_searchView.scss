@@ -43,6 +43,10 @@
 			@include background-size(55%);
 		}
 
+		.filter-btn {
+			display: none;
+		}
+
 		.cancel-btn {
 			top: 0;
 			right: 0;
@@ -144,4 +148,34 @@
 			display: block;
 		}
 	}
+}
+
+.mobile {
+
+	#searchView {
+    position: absolute;
+    top: 0.5em;
+    left: 0.5em;
+    width: calc(100% - 1em);
+
+    .refugee-btn {
+			right: 3em !important;
+		}
+
+    .filter-btn {
+			display: block !important;
+			top: 0;
+			right: 0;
+	    background-image: url("../img/icon_94.svg");
+			@include background-size(70%);
+		}
+		
+		&.active {
+			#results {
+				max-height: calc(100vh - 3.5em);
+		    overflow: scroll;
+			}
+		}
+  }	
+	
 }

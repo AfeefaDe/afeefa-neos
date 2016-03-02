@@ -109,25 +109,30 @@ qx.Class.define("LegendView", {
 			catContainer.addClass('cat-' + cat.name);
 		
 		  // icon
-		  var icon = $("<div />");
-		  icon.addClass('icon ' + 'cat-' + cat.name);
+		  var icon = $("<div />")
+		  	.addClass('icon ' + 'cat-' + cat.name)
+			  .click(function() {
+					that.setFilter( {category: cat.name} );
+					that.reset();
+					container.addClass('extended');
+			  });
 		  catContainer.append(icon);
-		  icon.click(function() {
-			that.setFilter( {category: cat.name} );
-		  });
 		  
 		  // label
-		  that['label-' + cat.id] = $("<p />");
+		  that['label-' + cat.id] = $("<p />")
+		  	.click(function() {
+					that.setFilter( {category: cat.name} );
+					that.reset();
+					container.addClass('extended');
+			  });
 		  catContainer.append(that['label-' + cat.id]);
-		  that['label-' + cat.id].click(function() {
-			that.setFilter( {category: cat.name} );
-		  });
 		  
 		  // nippus
 		  var nippus = $("<div />");
 		  nippus.addClass('nippus');
 		  nippus.click(function() {
-			container.toggleClass('extended');
+				that.reset();
+				container.toggleClass('extended');
 		  });
 		  catContainer.append(nippus);
 
@@ -240,6 +245,13 @@ qx.Class.define("LegendView", {
 		  that['label-filter-reset'].append( that.getWording('misc_filterReset') );
 	  },
 
+	  // used for mobile instead of mouse hover
+	  show: function(){
+	  	var that = this;
+
+		  that.view.addClass('active');
+	  },
+
 	  setFilter: function( filterOptions ){
 		  var that = this;
 
@@ -261,15 +273,7 @@ qx.Class.define("LegendView", {
 	  reset: function(){
 		  var that = this;
 
-		  _.each( that.getCategories(), function(cat){
-			  that['label-' + cat.id].empty();
-
-			  _.each( cat.sub, function(subcat){
-				  that['label-' + subcat.id].empty();
-			  });
-		  });
-
-		  that['label-filter-reset'].empty();
+		  that.filterModuleCat.find('.std-container').removeClass('extended');
 	  },
 
 	  addEvents: function(){
@@ -304,11 +308,17 @@ qx.Class.define("LegendView", {
 			  }
 
 		  });
+
+		  that.listen('mapclicked', function(){
+        that.close();
+      });
 	  },
 
 	  close: function(){
 		  var that = this;
 
+		  that.view.removeClass('active');
+		  
 		  // TODO: only do in mobile version
 		  // that.addRequestBtn.css('display', 'none');
 		  // that.addOfferBtn.css('display', 'none');
@@ -317,7 +327,17 @@ qx.Class.define("LegendView", {
 	  changeLanguage: function(){
 		  var that = this;
 
-		  that.reset();
+		  // clear labels
+		  _.each( that.getCategories(), function(cat){
+			  that['label-' + cat.id].empty();
+
+			  _.each( cat.sub, function(subcat){
+				  that['label-' + subcat.id].empty();
+			  });
+		  });
+
+		  that['label-filter-reset'].empty();
+
 		  that.load();
 	  }
   }

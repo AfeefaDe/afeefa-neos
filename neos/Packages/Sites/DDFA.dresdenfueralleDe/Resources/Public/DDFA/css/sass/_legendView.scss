@@ -14,9 +14,12 @@
 	background-color: $black_alpha;
 	color: $gray50;
 
+	@include display-flex;
+	@include flex-direction(column);
+
 	.filter-module {
 
-	    margin-bottom: 3em;
+	    margin-bottom: 2em;
 		text-align: center;
 
 		h3 {
@@ -30,7 +33,15 @@
 		}
 	}
 
+	.reset-module {
+		@include order(0);
+	}
+	.category-module {
+		@include order(1);
+	}
+
 	.entity-module {
+		@include order(2);
 		visibility: hidden;
 	}
 
@@ -49,8 +60,8 @@
 
 			.entity {
 				@include entityShapes;
-				height: 2.5em;
-				width: 2.5em;
+				height: 2em;
+				width: 2em;
 		        border: 2px solid $white;
 			}
 			
@@ -211,6 +222,7 @@
 		    /*@include flex-direction(column);*/
 
 	.attribute-module {
+		@include order(3);
 		visibility: hidden;
 
 		.attribute-container {
@@ -244,9 +256,9 @@
 		.cat-container.filter-reset { display: block; }
 	}
 
-	&:hover{
+	&:hover, &.active {
 
-		right: 0;
+		right: 0 !important;
 
 		.filter-module {
 			h3 { visibility: visible; }
@@ -258,4 +270,11 @@
 
 	}
 
+}
+
+.mobile {
+	#legendView {
+		right: -20em;
+		overflow: scroll;
+	}
 }

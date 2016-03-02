@@ -255,26 +255,34 @@
 
 		.cat-container.filter-reset { display: block; }
 	}
+}
 
-	&:hover, &.active {
+@mixin activeState {
 
-		right: 0 !important;
+	right: 0 !important;
 
-		.filter-module {
-			h3 { visibility: visible; }
-		}
-		.entity-module { visibility: visible; }
-		.attribute-module { visibility: visible; }
-
-		.cat-container .icon { margin-left: .5em; }
-
+	.filter-module {
+		h3 { visibility: visible; }
 	}
+	.entity-module { visibility: visible; }
+	.attribute-module { visibility: visible; }
 
+	.cat-container .icon { margin-left: .5em; }
+}
+
+.desktop, .tablet {
+	#legendView:hover {
+		@include activeState;
+	}
 }
 
 .mobile {
 	#legendView {
 		right: -20em;
 		overflow: scroll;
+
+		&.active {
+			@include activeState;
+		}
 	}
 }

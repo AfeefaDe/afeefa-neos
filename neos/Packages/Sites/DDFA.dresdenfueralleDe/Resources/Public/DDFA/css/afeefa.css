@@ -2183,22 +2183,26 @@ body.phone #mapView #locate-btn {
   display: none;
 }
 /* line 147, sass/_searchView.scss */
+#searchView.active .filter-btn {
+  display: none !important;
+}
+/* line 151, sass/_searchView.scss */
 #searchView.active #results {
   display: block;
 }
 
-/* line 155, sass/_searchView.scss */
+/* line 159, sass/_searchView.scss */
 .mobile #searchView {
   position: absolute;
   top: 0.5em;
   left: 0.5em;
   width: calc(100% - 1em);
 }
-/* line 161, sass/_searchView.scss */
+/* line 165, sass/_searchView.scss */
 .mobile #searchView .refugee-btn {
   right: 3em !important;
 }
-/* line 165, sass/_searchView.scss */
+/* line 169, sass/_searchView.scss */
 .mobile #searchView .filter-btn {
   display: block !important;
   top: 0;
@@ -2209,7 +2213,7 @@ body.phone #mapView #locate-btn {
   -webkit-background-size: 70%;
   background-size: 70%;
 }
-/* line 174, sass/_searchView.scss */
+/* line 178, sass/_searchView.scss */
 .mobile #searchView.active #results {
   max-height: calc(100vh - 3.5em);
   overflow: scroll;
@@ -3914,31 +3918,52 @@ body.phone #menuView .menu-btn {
 #legendView.filter-active .cat-container.filter-reset {
   display: block;
 }
-/* line 259, sass/_legendView.scss */
-#legendView:hover, #legendView.active {
+
+/* line 274, sass/_legendView.scss */
+.desktop #legendView:hover, .tablet #legendView:hover {
   right: 0 !important;
 }
-/* line 264, sass/_legendView.scss */
-#legendView:hover .filter-module h3, #legendView.active .filter-module h3 {
-  visibility: visible;
-}
-/* line 266, sass/_legendView.scss */
-#legendView:hover .entity-module, #legendView.active .entity-module {
+/* line 265, sass/_legendView.scss */
+.desktop #legendView:hover .filter-module h3, .tablet #legendView:hover .filter-module h3 {
   visibility: visible;
 }
 /* line 267, sass/_legendView.scss */
-#legendView:hover .attribute-module, #legendView.active .attribute-module {
+.desktop #legendView:hover .entity-module, .tablet #legendView:hover .entity-module {
   visibility: visible;
 }
-/* line 269, sass/_legendView.scss */
-#legendView:hover .cat-container .icon, #legendView.active .cat-container .icon {
+/* line 268, sass/_legendView.scss */
+.desktop #legendView:hover .attribute-module, .tablet #legendView:hover .attribute-module {
+  visibility: visible;
+}
+/* line 270, sass/_legendView.scss */
+.desktop #legendView:hover .cat-container .icon, .tablet #legendView:hover .cat-container .icon {
   margin-left: .5em;
 }
 
-/* line 276, sass/_legendView.scss */
+/* line 280, sass/_legendView.scss */
 .mobile #legendView {
   right: -20em;
   overflow: scroll;
+}
+/* line 284, sass/_legendView.scss */
+.mobile #legendView.active {
+  right: 0 !important;
+}
+/* line 265, sass/_legendView.scss */
+.mobile #legendView.active .filter-module h3 {
+  visibility: visible;
+}
+/* line 267, sass/_legendView.scss */
+.mobile #legendView.active .entity-module {
+  visibility: visible;
+}
+/* line 268, sass/_legendView.scss */
+.mobile #legendView.active .attribute-module {
+  visibility: visible;
+}
+/* line 270, sass/_legendView.scss */
+.mobile #legendView.active .cat-container .icon {
+  margin-left: .5em;
 }
 
 /* line 1, sass/_plusView.scss */

@@ -89,9 +89,6 @@ require([
 
 							APP.say('appInitialized');
 
-							// DO STARTUP THINGS
-							APP.getIncludeView().load( APP.getIncludeView().getIncludes().intro );
-
 						// });
 					
 

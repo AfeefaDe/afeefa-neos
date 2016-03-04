@@ -255,6 +255,10 @@ body.mobile {
 			height: 20%;
 		}
 
+		.header {
+			h1 { padding-top: 1rem !important; }
+			p.subheading { display: none !important; }
+		}
 		.content {
 			overflow: scroll;
 		}

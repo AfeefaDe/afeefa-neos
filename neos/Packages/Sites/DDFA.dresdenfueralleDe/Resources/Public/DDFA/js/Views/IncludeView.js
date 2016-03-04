@@ -123,6 +123,10 @@ qx.Class.define("IncludeView", {
 						case 'close':
 							that.close();
 							break;
+						case 'openForm':
+			   			that.close();
+			   			APP.getFormView().load( APP.getFormView().getFormTypes().marketOffer );
+			   			break;
 						default:
 					}
 				});

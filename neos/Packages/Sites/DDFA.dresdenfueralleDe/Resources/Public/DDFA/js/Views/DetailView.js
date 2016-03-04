@@ -299,7 +299,8 @@ qx.Class.define("DetailView", {
 			});
 
 			that.headingContainer.click(function(){
-				APP.getMapView().selectMarkerFromLink(that.record.entryId);
+				if( APP.getUserDevice() === 'desktop' || APP.getUserDevice() === 'tablet' )
+					APP.getMapView().selectMarkerFromLink(that.record.entryId);
 			});
 		}
 

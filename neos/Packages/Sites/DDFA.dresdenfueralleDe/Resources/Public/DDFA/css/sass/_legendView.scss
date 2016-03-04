@@ -27,8 +27,8 @@
 			font-weight: normal;
 			text-transform: uppercase;
 			color: $gray50;
-			padding-left: .5em;
-			font-size: 0.9em;
+			padding-left: 1em;
+			font-size: 1em;
 			visibility: hidden;
 		}
 	}
@@ -273,6 +273,12 @@
 .desktop, .tablet {
 	#legendView:hover {
 		@include activeState;
+	}
+}
+
+.tablet {
+	#legendView {
+		overflow: scroll;
 	}
 }
 

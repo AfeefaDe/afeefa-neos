@@ -5,7 +5,8 @@ qx.Class.define("IncludeView", {
 
 	properties: {
 		includes: {},
-		baseUrl: {}
+		baseUrl: {},
+		includeKey: {}
 	},
 
 	construct: function(){
@@ -18,7 +19,8 @@ qx.Class.define("IncludeView", {
 			imprint: 'imprint',
 			press: 'press',
 			about: 'about',
-			intro: 'intro'
+			intro: 'intro',
+			entryFormGuide: 'entryFormGuide'
 		});
 		that.setBaseUrl( '_Resources/Static/Packages/DDFA.dresdenfueralleDe/DDFA/inc/' );
 	},
@@ -53,6 +55,8 @@ qx.Class.define("IncludeView", {
 
 			that.reset();
 			
+			that.setIncludeKey(includeKey);
+
 			that.view.addClass('active');
 			that.view.addClass(includeKey);
 			that.setViewState(1);
@@ -128,6 +132,8 @@ qx.Class.define("IncludeView", {
 
 		reset: function(){
 			var that = this;
+
+			that.setIncludeKey(null);
 
 			// that.view.find('h1').remove();
 			that.contentContainer.empty();
@@ -211,6 +217,7 @@ qx.Class.define("IncludeView", {
 		changeLanguage: function(){
 			var that = this;
 
+			that.load( that.getIncludeKey() );
 		}
 	}
 

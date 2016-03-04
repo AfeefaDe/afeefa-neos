@@ -204,12 +204,39 @@
 		bottom: -0.4em;
 		margin: 0 0.2em;
 	}
+
+	.entity-bunch {
+    padding-left: 3.5em;
+    line-height: 3em !important;
+    background-size: contain !important;
+
+    &.type-0 {
+			background: url("../img/icon_96.svg") left center no-repeat;
+    }
+    &.type-1 {
+			background: url("../img/icon_97.svg") left center no-repeat;
+    }
+    &.type-2 {
+			background: url("../img/icon_98.svg") left center no-repeat;
+    }
+
+	}
 }
 
 body.desktop, body.tablet {
 
 	#includeView {
 
+	}
+
+}
+
+body.tablet {
+
+	#includeView {
+		.content {
+			overflow: scroll;
+		}
 	}
 
 }

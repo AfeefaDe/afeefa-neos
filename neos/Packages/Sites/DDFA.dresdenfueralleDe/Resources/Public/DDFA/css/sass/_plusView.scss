@@ -4,44 +4,69 @@
 	right: 6em;
 	bottom: 3em;
 
+	@include display-flex;
+	@include flex-direction(column);
+	@include align-items(flex-end);
+
+	.btn-container {
+		
+		display: none;
+		@include align-items(center);
+		margin-bottom: 1em;
+
+		label {
+			background-color: $black_alpha;
+			color: $white;
+			@include transform(translate(-1em,0));
+			@include roundedCorners;
+			padding: .2em;
+			text-align: right;
+		}
+
+		&.btn-container-feedback {
+			@include order(1);
+		}
+
+		&.btn-container-entry {
+			@include order(2);
+		}
+	}
+
 	.btn {
-
-
 		@include circleBtn;
 		
-		margin: 0 auto;
+		background-color: $black_alpha;
 
 		&.plusBtn {
+			@include order(3);
 			width: 3.5em;
 			height: 3.5em;
+			margin-right: -0.25em;
 			@include border-radius(2em);
 
-			background-color: $black_alpha;
 			background-image: url("../img/icon_34.svg");
 			@include background-size(30%);
 		}
 
-		&.offerBtn, &.feedbackBtn {
-			
-			display: none;
-			margin-bottom: 15px;
-		}
+		&.entryBtn {
+			background-image: url("../img/icon_95.svg");
+			@include background-size(80%);
 
-		&.offerBtn { background-color: $black; background-image: url("../img/icon_48.svg"); }
-		&.feedbackBtn { background-color: $black; background-image: url("../img/icon_50.svg"); }
+		}
+		&.feedbackBtn {
+			background-image: url("../img/icon_50.svg");
+		}
 	}
 
 	&:hover {
-		.offerBtn, .feedbackBtn {
-			display: block;
+		.btn-container {
+			@include display-flex;
 		}
 	};
 
 }
 
-body.phone {
-
-
+.phone {
 	#plusView{
 		right: calc(50% - 1.75em) !important;
 	}

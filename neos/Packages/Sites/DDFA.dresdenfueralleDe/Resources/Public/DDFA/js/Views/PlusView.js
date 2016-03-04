@@ -1,125 +1,90 @@
 qx.Class.define("PlusView", {
-    
-    extend : View,
+	
+	extend : View,
 	type: "singleton",
 
-    properties: {
-        propertiesMarket: {},
-        propertiesFeedback: {},
-        inputTypes: {}
-    },
+	properties: {
+	},
 
-    construct: function(){
-    	var that = this;
+	construct: function(){
+		var that = this;
 
-        that.setViewId('plusView');
-    },
+		that.setViewId('plusView');
+	},
 
-    members : {
-        
-    	render: function(){
-    		var that = this;
+	members : {
+		
+		render: function(){
+			var that = this;
 
-            // view container
-            that.view = $("<div />");
-            that.view.attr('id', that.getViewId());
+			// view container
+			that.view = $("<div />");
+			that.view.attr('id', that.getViewId());
+			
+			// plus button
+			that.plusBtn = $("<div />")
+				.addClass('btn plusBtn');
+			that.view.append(that.plusBtn);
 
-            // add buttons
-            that.feedbackBtn = $("<div />");
-            that.feedbackBtn.addClass('btn feedbackBtn');
-            that.view.append(that.feedbackBtn);
+			// entry button
+			that.entryLabel = $("<label />");
+			that.entryBtn = $("<div />")
+			 	.addClass('btn entryBtn');
+			var container = $("<div />")
+				.addClass('btn-container btn-container-entry')
+				.append(that.entryLabel)
+				.append(that.entryBtn);
+			that.view.append(container);
 
-            // that.requestBtn = $("<div />");
-            // that.requestBtn.addClass('btn requestBtn');
-            // that.view.append(that.requestBtn);
+			// feedback button
+			that.feedbackLabel = $("<label />");
+			that.feedbackBtn = $("<div />")
+			 .addClass('btn feedbackBtn')
+			 .append(that.feedbackLabel);
+			var container = $("<div />")
+				.addClass('btn-container btn-container-feedback')
+				.append(that.feedbackLabel)
+				.append(that.feedbackBtn);
+			that.view.append(container);
+			
+			$('#main-container').append(that.view);
 
-            that.offerBtn = $("<div />");
-            that.offerBtn.addClass('btn offerBtn');
-            that.view.append(that.offerBtn);
-            
-            // plus button
-            that.plusBtn = $("<div />");
-            that.plusBtn.addClass('btn plusBtn');
-            that.view.append(that.plusBtn);
-            
-            $('#main-container').append(that.view);
+			this.base(arguments);
 
-            this.base(arguments);
-    	},
+			that.load();
+		},
 
-        addEvents: function(){
-            var that = this;
+		load: function(){
+			var that = this;
 
-            // call superclass
-            this.base(arguments);
-            
-            // that.listen('mapclicked', function(){
-            //     that.close();
-            // });
-            
-            that.offerBtn.click(function(){
-               APP.getFormView().load( APP.getFormView().getFormTypes().marketOffer );
-            });
-            
-            // that.requestBtn.click(function(){
-            //    APP.getFormView().load( APP.getFormView().getFormTypes().marketRequest );
-            // });
+			that.entryLabel.empty().append( that.getWording( 'plus_entry' ) );
+			that.feedbackLabel.empty().append( that.getWording( 'plus_feedback' ) );
+		},
 
-            that.feedbackBtn.click(function(){
-               APP.getFormView().load( APP.getFormView().getFormTypes().feedback );
-            });
+		addEvents: function(){
+			var that = this;
 
-            ///////////////////////
-            // bootstrap tooltip //
-            ///////////////////////
-            // that.offerBtn.attr({
-            //     // 'data-toggle': 'tooltip',
-            //     // 'data-placement': "left",
-            //     'title': that.getWording('form_newMarketOffer')
-            // });
-            // that.requestBtn.attr({
-            //     // 'data-toggle': 'tooltip',
-            //     // 'data-placement': "left",
-            //     'title': that.getWording('form_newMarketRequest')
-            // });
-            // that.feedbackBtn.attr({
-            //     // 'data-toggle': 'tooltip',
-            //     // 'data-placement': "left",
-            //     'title': that.getWording('form_feedback')
-            // });
+			// call superclass
+			this.base(arguments);
+			
+			that.entryBtn.click(function(){
+				APP.getIncludeView().load( APP.getIncludeView().getIncludes().entryFormGuide );
+			});
+			
+			that.feedbackBtn.click(function(){
+			   APP.getFormView().load( APP.getFormView().getFormTypes().feedback );
+			});
+		},
 
-        },
+		close: function(){
+			var that = this;
+		},
 
-        close: function(){
-            var that = this;
+		changeLanguage: function(){
+			var that = this;
 
-            // TODO: only do in mobile version
-            // that.requestBtn.css('display', 'none');
-            // that.offerBtn.css('display', 'none');
-        },
-
-        changeLanguage: function(){
-            var that = this;
-
-            ///////////////////////
-            // bootstrap tooltip //
-            ///////////////////////
-            // that.offerBtn.attr({
-            //     // 'data-toggle': 'tooltip',
-            //     // 'data-placement': "left",
-            //     'title': that.getWording('form_newMarketOffer')
-            // });
-            // that.requestBtn.attr({
-            //     // 'data-toggle': 'tooltip',
-            //     // 'data-placement': "left",
-            //     'title': that.getWording('form_newMarketRequest')
-            // });
-            // that.feedbackBtn.attr({
-            //     // 'data-toggle': 'tooltip',
-            //     // 'data-placement': "left",
-            //     'title': that.getWording('form_feedback')
-            // });
-        }
-    }
+			that.load();
+		}
+	}
 
 });

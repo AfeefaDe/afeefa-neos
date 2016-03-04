@@ -13,11 +13,21 @@
 	/* event */
 	&.type-2 {
 		@include border-radius(3px);
+		/*position: relative;*/
+		/*overflow: hidden;*/
 		@include transform(rotate(45deg));
 
-		&[class^="cat-"] {
+		/*&::before {
+		    content: "";
+		    position: absolute;
+		    width: 200%;
+		    height: 200%;
+		    top: -50%;
+		    left: -50%;
+		    z-index: -1;
+		    background: url("../img/icon_10.svg") center center no-repeat;
 			@include transform(rotate(-45deg));
-		}
+		}*/
 	}
 
 	/* POI */

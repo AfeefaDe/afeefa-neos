@@ -18,6 +18,7 @@
 }
 
 @mixin shadow($height: 1, $color: #000) {
+	@include transition(box-shadow 150ms);
 	@include box-shadow(0px 0px ($height * 2px) $color);
 }
 
@@ -72,6 +73,7 @@
 
 	&:hover {
 		@include shadow($height: 2);
+	    @include text-shadow(0px 0px 2px $white);
 	}
 
 	&.btn-secondary {
@@ -105,7 +107,7 @@ body {
 	padding: 0;
 	height: 100%;
 
-	font-family: 'Roboto', sans-serif !important;
+	font-family: 'Roboto light', sans-serif !important;
 	font-size: 11pt !important;
 	direction: ltr;
 	color: $black !important;

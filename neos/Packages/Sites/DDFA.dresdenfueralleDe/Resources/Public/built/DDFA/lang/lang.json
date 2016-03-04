@@ -1097,6 +1097,32 @@
                   "ur":""
             },
 
+            "plus_entry":{
+                  "de":"Eintrag hinzufügen",
+                  "en":"Add entry",
+                  "ar":"",
+                  "fa":"",
+                  "fr":"",
+                  "it":"",
+                  "ru":"",
+                  "sr":"",
+                  "ti":"",
+                  "ur":""
+            },
+
+            "plus_feedback":{
+                  "de":"Feedback senden",
+                  "en":"Send feedback",
+                  "ar":"",
+                  "fa":"",
+                  "fr":"",
+                  "it":"",
+                  "ru":"",
+                  "sr":"",
+                  "ti":"",
+                  "ur":""
+            },
+
             "form_newMarketOffer":{
                   "de":"Angebot aufgeben",
                   "en":"make an offer",

@@ -154,6 +154,18 @@
 	}
 }
 
+.tablet {
+
+	#searchView {
+		&.active {
+			#results {
+		    overflow: scroll;
+			}
+		}
+  }	
+	
+}
+
 .mobile {
 
 	#searchView {

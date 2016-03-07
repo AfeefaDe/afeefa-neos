@@ -153,13 +153,13 @@
 				display: inline-block;
 				cursor: pointer;
 				text-indent: 1em;
-				background-image: url('../img/icon-36.svg');
+				background-image: url('../img/icon-35.svg');
 				@include background-size(auto 1em);
 				background-position: 0 2px;
 				background-repeat: no-repeat;
 
 				&:hover {
-					background-image: url('../img/icon-35.svg');
+					background-image: url('../img/icon-36.svg');
 				}
 
 			}
@@ -207,8 +207,8 @@
 
 	.entity-bunch {
     padding-left: 3.5em;
-    line-height: 3em !important;
-    background-size: contain !important;
+    min-height: 3em;
+    background-size: 3em !important;
 
     &.type-0 {
 			background: url("../img/icon_96.svg") left center no-repeat;
@@ -219,7 +219,6 @@
     &.type-2 {
 			background: url("../img/icon_98.svg") left center no-repeat;
     }
-
 	}
 }
 

@@ -58,7 +58,7 @@
 		}
 	}
 
-	&:hover {
+	&.active {
 		.btn-container {
 			@include display-flex;
 		}

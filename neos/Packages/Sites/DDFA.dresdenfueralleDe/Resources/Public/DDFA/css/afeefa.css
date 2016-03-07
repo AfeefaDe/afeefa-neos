@@ -3276,7 +3276,7 @@ body.phone #mapView #locate-btn {
 }
 /* line 66, sass/_menuView.scss */
 #menuView .item.facebook {
-  background-image: url("../img/icon-46.svg");
+  background-image: url("../img/icon_46.svg");
   background-repeat: no-repeat;
   background-position: 90% center;
 }
@@ -4947,7 +4947,7 @@ body.phone #menuView .menu-btn {
   display: inline-block;
   cursor: pointer;
   text-indent: 1em;
-  background-image: url("../img/icon-36.svg");
+  background-image: url("../img/icon_35.svg");
   -moz-background-size: auto 1em;
   -o-background-size: auto 1em;
   -webkit-background-size: auto 1em;
@@ -4957,7 +4957,7 @@ body.phone #menuView .menu-btn {
 }
 /* line 161, sass/_includeView.scss */
 #includeView .content-container .content span.locationLink:hover {
-  background-image: url("../img/icon-35.svg");
+  background-image: url("../img/icon_36.svg");
 }
 /* line 167, sass/_includeView.scss */
 #includeView .content-container .content p.figure-caption {

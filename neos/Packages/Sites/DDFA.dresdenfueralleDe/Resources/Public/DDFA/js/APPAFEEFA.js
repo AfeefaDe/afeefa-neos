@@ -107,7 +107,7 @@ qx.Class.define("APPAFEEFA", {
 		DataManager: {},
 		Router: {},
 		LM: {},
-		data: {},
+		data: { init: {} },
 		curtain: {},
 		mapView: {},
 		searchView: {},
@@ -139,23 +139,21 @@ qx.Class.define("APPAFEEFA", {
 			// load view-independant UI components
 			that.loadIndependantUI();
 
-			var allData = {};
-
 			// fetch only necessary data for app startup
-			that.getDataManager().fetchInitialData(function( data ){
-				
-				console.debug('fetchedInitialData', data);
+			that.getDataManager().fetchInitialData(function(){
 				cb();
-				
 			});
 
 			// fetch other data (e.g. that takes a long time loading)
 			that.getDataManager().getAllLocations(function(data){
-					
-				allData.locations = data.locations;
-				that.setData(allData);
-				that.say('fetchedNewData');
+				// store in APP
+				var currentData = that.getData();
+				currentData.locations = data.locations;
+				that.setData(currentData);
 
+				// allData.locations = data.locations;
+				// that.setData(allData);
+				that.say('fetchedNewData');
 			});
 		},
 

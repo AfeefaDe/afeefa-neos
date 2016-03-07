@@ -63,13 +63,7 @@ qx.Class.define("LanguageManager", {
                 that.setCurrentLang( e.customData );
                 
                 APP.getDataManager().fetchAllData(function( data ){
-
-                  console.debug('fetchedAllData in ' + that.getCurrentLang(), data);
-
-                  APP.setData(data);
-
                   that.say('fetchedNewData');
-
                 });
 
                 _.each(APP.getConfig().languages, function(lang){

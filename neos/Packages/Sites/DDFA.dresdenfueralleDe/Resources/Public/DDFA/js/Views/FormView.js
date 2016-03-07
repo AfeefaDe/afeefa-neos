@@ -31,19 +31,19 @@ qx.Class.define("FormView", {
             [
                 {name: 'name', type: 'text', required: true, intoMarketEntry: true, intoLocation: true},
                 // TODO categories auch als arrays [identifier, label]
-                // {name: 'category', type: 'select', values: APP.getConfig().categoriesMarket },
-                {name: 'category', type: 'select', required: true, intoMarketEntry: true, values: [
-                    ['df402493-f467-4472-8b98-9038d2ac967e', 'consultation'],
-                    ['fa815876-ad1d-433e-87ff-8de20639e2b1', 'medic'],
-                    ['5dddf63d-ccf6-44e2-8daf-81bb44507fdd', 'german'],
-                    ['d29bbe86-ecd6-42df-8054-70a90ec7b535', 'jobs'],
-                    ['adfb2457-819c-4574-ace1-56f5b38d8f96', 'leisure'],
-                    ['b63f01d2-3573-48dc-83a5-6c9577cfbc6b', 'translation'],
-                    ['12914a3d-0cb5-4646-be56-3f671d737977', 'children'],
-                    ['744f41e9-799c-432b-a9a3-e78d471ec51a', 'donation'],
-                    ['07f88130-7d98-4a20-bbb8-d0d98f55c553', 'community'],
-                    ['5cd18ce7-923d-47ff-af66-7f4286f420d0', 'other']
-                ] },
+                {name: 'category', type: 'select', values: APP.getData().categories },
+                // {name: 'category', type: 'select', required: true, intoMarketEntry: true, values: [
+                //     ['df402493-f467-4472-8b98-9038d2ac967e', 'consultation'],
+                //     ['fa815876-ad1d-433e-87ff-8de20639e2b1', 'medic'],
+                //     ['5dddf63d-ccf6-44e2-8daf-81bb44507fdd', 'german'],
+                //     ['d29bbe86-ecd6-42df-8054-70a90ec7b535', 'jobs'],
+                //     ['adfb2457-819c-4574-ace1-56f5b38d8f96', 'leisure'],
+                //     ['b63f01d2-3573-48dc-83a5-6c9577cfbc6b', 'translation'],
+                //     ['12914a3d-0cb5-4646-be56-3f671d737977', 'children'],
+                //     ['744f41e9-799c-432b-a9a3-e78d471ec51a', 'donation'],
+                //     ['07f88130-7d98-4a20-bbb8-d0d98f55c553', 'community'],
+                //     ['5cd18ce7-923d-47ff-af66-7f4286f420d0', 'other']
+                // ] },
                 {name: 'speakerPublic', type: 'text', intoMarketEntry: true},
                 {name: 'mail', type: 'email', required: true, intoMarketEntry: true},
                 {name: 'web', type: 'url', intoMarketEntry: true},
@@ -158,12 +158,16 @@ qx.Class.define("FormView", {
                         that[type + '_field_'+prop.name].append(emptyOption);
                         
                         _.each( prop.values, function(value){
-                        
-                            var option = $("<option />")
-                                .attr('value', value[0]);
+                            
+                            var option = $("<option />");
+
+                            if( prop.name == 'category')
+                                option.attr('value', value.identifier);
+                            else
+                                option.attr('value', value[0]);
                             
                             // TODO verarbeite select values as arrays [value, label]
-                            if( prop.name == 'category'){ option.append( that.getWording('cat_' + value[1]) ); }
+                            if( prop.name == 'category'){ option.append( that.getWording('cat_' + value.name) ); }
                             else if( prop.name == 'datePeriodic'){ option.append( that.getWording('prop_' + prop.name + '_' + value[1]) ); }
                             // else if( prop.name == 'spokenLanguages'){ option.append( that.getWording('lang_' + value[1]) ); }
                             else { option.append( that.getWording('form_' + value[1]) ); }

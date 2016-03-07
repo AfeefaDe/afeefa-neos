@@ -55,6 +55,8 @@ qx.Class.define("IncludeView", {
 
 			that.reset();
 			
+			that.showCurtain(true);
+
 			that.setIncludeKey(includeKey);
 
 			that.view.addClass('active');
@@ -150,10 +152,12 @@ qx.Class.define("IncludeView", {
 			if( that.getViewState() === 0 ) return false;
 
 			if( bool ) {
+				that.showCurtain(false);
 				that.view.addClass('min')
 				that.setViewState(2);
 			}
 			else {
+				that.showCurtain(true);
 				that.view.removeClass('min')  
 				that.setViewState(1);
 			}
@@ -214,6 +218,8 @@ qx.Class.define("IncludeView", {
 			});
 			
 			that.setViewState(0);
+
+			that.showCurtain(false);
 
 			that.say('includeViewClosed');
 		},

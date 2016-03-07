@@ -181,12 +181,12 @@ strong {
 		}
 	}
 
-	/* map curtain */
-	@mixin mapCurtainActive {
+	/* dark curtain */
+	@mixin curtainActive {
 		visibility: visible;
 		opacity: 0.6;
 	}
-	#map-curtain {
+	#curtain {
 		@include transition(all 250ms);
 		background-color: $black;
 		position: absolute;
@@ -197,15 +197,15 @@ strong {
 		z-index: 9999;
 		
 		&.active {
-			@include mapCurtainActive;
+			@include curtainActive;
 		}
 	}
 
 	&.shifted {
 		left: 15em;
 
-		#map-curtain {
-			@include mapCurtainActive;
+		#curtain {
+			@include curtainActive;
 		}
 
 		#menuView { z-index: 999; }
@@ -215,8 +215,8 @@ strong {
 	&.shifted-small {
 		left: 4em;
 
-		#map-curtain {
-			@include mapCurtainActive;
+		#curtain {
+			@include curtainActive;
 		}
 
 		#languageViewMobile { z-index: 999; }

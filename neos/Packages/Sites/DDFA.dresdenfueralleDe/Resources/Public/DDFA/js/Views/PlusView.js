@@ -61,6 +61,13 @@ qx.Class.define("PlusView", {
 			that.feedbackLabel.empty().append( that.getWording( 'plus_feedback' ) );
 		},
 
+		show: function(){
+			var that = this;
+
+		  that.showCurtain(true);  
+	    that.view.addClass( "active" );
+		},
+
 		addEvents: function(){
 			var that = this;
 
@@ -68,16 +75,31 @@ qx.Class.define("PlusView", {
 			this.base(arguments);
 			
 			that.entryBtn.click(function(){
+				that.close();
 				APP.getIncludeView().load( APP.getIncludeView().getIncludes().entryFormGuide );
 			});
 			
 			that.feedbackBtn.click(function(){
-			   APP.getFormView().load( APP.getFormView().getFormTypes().feedback );
+				that.close();
+		   	APP.getFormView().load( APP.getFormView().getFormTypes().feedback );
 			});
+
+			// show on hover
+			that.view.hover(
+			  function() {
+			  	that.show();
+			  }, function() {
+			  	// only fire mouseleave if plusView is really active
+			  	if( that.view.hasClass('active') ) that.close();
+			  }
+			);
 		},
 
 		close: function(){
 			var that = this;
+
+			that.showCurtain(false);  
+	    that.view.removeClass( "active" );
 		},
 
 		changeLanguage: function(){

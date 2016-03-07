@@ -32,10 +32,6 @@ qx.Class.define("MapView", {
 
         $('#main-container').append(that.view);
 
-        // dark map curtain
-      	that.mapCurtain = $("<div />").attr('id', 'map-curtain');
-        $('#main-container').append(that.mapCurtain);
-
         // locate btn
     	that.locateBtn = $("<div />").attr('id', 'locate-btn');
         that.view.append(that.locateBtn);
@@ -130,10 +126,6 @@ qx.Class.define("MapView", {
 			that.say('mapclicked');
 		});
 
-		that.mapCurtain.on('click', function(e) {
-			that.say('curtainclicked');
-		});
-
 		if( APP.getUserDevice() == 'phone' ){
 			$('#main-container').on("transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd", function(e){
 				if( e.target != e.currentTarget ) return;
@@ -202,10 +194,9 @@ qx.Class.define("MapView", {
 
         }
 
-		that.addMarkers(locations);
-		that.loadFromUrl({setView: true});
-        that.loading(false);
-
+			that.addMarkers(locations);
+			that.loadFromUrl({setView: false});
+      that.loading(false);
     },
 
     addMarkers: function(locations) {

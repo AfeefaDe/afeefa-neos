@@ -50,6 +50,19 @@ qx.Class.define("View", {
                 
         },
 
+        showCurtain: function(bool){
+            var that = this;
+
+            if(bool){
+                that.view.css('z-index', 10000);
+                APP.getCurtain().addClass('active');
+            }
+            else {
+                that.view.css('z-index', "");
+                APP.getCurtain().removeClass('active');
+            }
+        },
+
         addEvents: function(){
             var that = this;
 

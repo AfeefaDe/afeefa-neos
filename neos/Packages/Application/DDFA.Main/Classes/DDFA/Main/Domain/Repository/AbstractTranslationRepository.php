@@ -48,7 +48,7 @@ abstract class AbstractTranslationRepository extends Repository
      */
     public function findAllLocalized($locale = DDConst::LOCALE_STD, $onlyPublished = false)
     {
-        $query = $this->createQuery()->setOrderings(array('name' => QueryInterface::ORDER_ASCENDING));
+        $query = $this->createQuery()->setOrderings(array('created' => QueryInterface::ORDER_DESCENDING));
 
 
         if ($onlyPublished) {
@@ -226,7 +226,8 @@ abstract class AbstractTranslationRepository extends Repository
                 break;
         }
 
-        return $this->convertImgUri($returnVal);
+        // return $this->convertImgUri($returnVal);
+        return $returnVal;
     }
 
 //    public function hydrate(Actor $object, $locale) {

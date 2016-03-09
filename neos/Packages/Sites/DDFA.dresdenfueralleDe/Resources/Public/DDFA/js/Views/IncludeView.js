@@ -46,6 +46,8 @@ qx.Class.define("IncludeView", {
 
 			// if( APP.getUserDevice() == 'desktop') that.contentContainer.perfectScrollbar();
 
+			that.setViewState(0);
+
 			this.base(arguments);
 		},
 
@@ -125,9 +127,17 @@ qx.Class.define("IncludeView", {
 						case 'close':
 							that.close();
 							break;
-						case 'openForm':
+						case 'openForm_initiative':
 			   			that.close();
-			   			APP.getFormView().load( APP.getFormView().getFormTypes().marketOffer );
+			   			APP.getFormView().load( 'initiative' );
+			   			break;
+		   			case 'openForm_marketentry':
+			   			that.close();
+			   			APP.getFormView().load( 'marketentry' );
+			   			break;
+		   			case 'openForm_event':
+			   			that.close();
+			   			APP.getFormView().load( 'event' );
 			   			break;
 						default:
 					}
@@ -218,6 +228,7 @@ qx.Class.define("IncludeView", {
 			});
 			
 			that.setViewState(0);
+			that.setIncludeKey(null);
 
 			that.showCurtain(false);
 
@@ -227,7 +238,7 @@ qx.Class.define("IncludeView", {
 		changeLanguage: function(){
 			var that = this;
 
-			that.load( that.getIncludeKey() );
+			if( that.getIncludeKey() !== null ) that.load( that.getIncludeKey() );
 		}
 	}
 

@@ -250,8 +250,9 @@ body.mobile {
     left: 0;
     top: 0;
 
-		&.small {
-			height: 20%;
+		&.min {
+	    visibility: hidden;
+			opacity: 0;
 		}
 
 		.header {

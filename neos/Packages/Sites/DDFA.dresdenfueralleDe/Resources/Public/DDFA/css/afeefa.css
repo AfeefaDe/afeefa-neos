@@ -1249,7 +1249,7 @@ textarea {
     page-break-after: avoid;
   }
 }
-/* line 92, sass/_afeefa-styles.scss */
+/* line 96, sass/_afeefa-styles.scss */
 button {
   -moz-transition: all 150ms;
   -o-transition: all 150ms;
@@ -1308,8 +1308,12 @@ button.btn-secondary:hover {
   box-shadow: 0px 0px 4px #999999;
   color: #333333;
 }
+/* line 91, sass/_afeefa-styles.scss */
+button.margin-left {
+  margin-left: 1em;
+}
 
-/* line 97, sass/_afeefa-styles.scss */
+/* line 101, sass/_afeefa-styles.scss */
 .button {
   -moz-transition: all 150ms;
   -o-transition: all 150ms;
@@ -1367,12 +1371,16 @@ button.btn-secondary:hover {
   box-shadow: 0px 0px 4px #999999;
   color: #333333;
 }
-/* line 100, sass/_afeefa-styles.scss */
+/* line 91, sass/_afeefa-styles.scss */
+.button.margin-left {
+  margin-left: 1em;
+}
+/* line 104, sass/_afeefa-styles.scss */
 .button p {
   margin: 0;
 }
 
-/* line 105, sass/_afeefa-styles.scss */
+/* line 109, sass/_afeefa-styles.scss */
 body {
   margin: 0;
   padding: 0;
@@ -1386,31 +1394,31 @@ body {
   background-color: #333333 !important;
 }
 
-/* line 124, sass/_afeefa-styles.scss */
+/* line 128, sass/_afeefa-styles.scss */
 a:link, a:visited, #includeView .content-container .content span.locationLink:visited, a:hover, #includeView .content-container .content span.locationLink:hover, a:active, #includeView .content-container .content span.locationLink:active, #includeView .content-container .content span.locationLink:link {
   color: #333;
   text-decoration: underline;
 }
 
-/* line 133, sass/_afeefa-styles.scss */
+/* line 137, sass/_afeefa-styles.scss */
 b,
 strong {
   font-weight: 400;
 }
 
-/* line 138, sass/_afeefa-styles.scss */
+/* line 142, sass/_afeefa-styles.scss */
 .hidden {
   display: none;
 }
 
 /* SCROLLBARS with perfect-scrollbar.js */
-/* line 141, sass/_afeefa-styles.scss */
+/* line 145, sass/_afeefa-styles.scss */
 .ps-container > .ps-scrollbar-y-rail,
 .ps-container > .ps-scrollbar-y-rail > .ps-scrollbar-y {
   width: 6px !important;
 }
 
-/* line 146, sass/_afeefa-styles.scss */
+/* line 150, sass/_afeefa-styles.scss */
 #main-container {
   -moz-transition: left 250ms;
   -o-transition: left 250ms;
@@ -1435,12 +1443,12 @@ strong {
   /* general styles for view container */
   /* dark curtain */
 }
-/* line 167, sass/_afeefa-styles.scss */
+/* line 171, sass/_afeefa-styles.scss */
 #main-container .view-container.loading {
   -webkit-filter: grayscale(1);
   filter: grayscale(1);
 }
-/* line 169, sass/_afeefa-styles.scss */
+/* line 173, sass/_afeefa-styles.scss */
 #main-container .view-container.loading .loading-curtain {
   width: 100%;
   height: 100%;
@@ -1453,7 +1461,7 @@ strong {
   top: 0;
   left: 0;
 }
-/* line 189, sass/_afeefa-styles.scss */
+/* line 193, sass/_afeefa-styles.scss */
 #main-container #curtain {
   -moz-transition: all 250ms;
   -o-transition: all 250ms;
@@ -1467,36 +1475,36 @@ strong {
   opacity: 0;
   z-index: 9999;
 }
-/* line 199, sass/_afeefa-styles.scss */
+/* line 203, sass/_afeefa-styles.scss */
 #main-container #curtain.active {
   visibility: visible;
   opacity: 0.6;
 }
-/* line 204, sass/_afeefa-styles.scss */
+/* line 208, sass/_afeefa-styles.scss */
 #main-container.shifted {
   left: 15em;
   /*#lang-menu { display: none; }*/
 }
-/* line 207, sass/_afeefa-styles.scss */
+/* line 211, sass/_afeefa-styles.scss */
 #main-container.shifted #curtain {
   visibility: visible;
   opacity: 0.6;
 }
-/* line 211, sass/_afeefa-styles.scss */
+/* line 215, sass/_afeefa-styles.scss */
 #main-container.shifted #menuView {
   z-index: 999;
 }
-/* line 215, sass/_afeefa-styles.scss */
+/* line 219, sass/_afeefa-styles.scss */
 #main-container.shifted-small {
   left: 4em;
   /*#main-menu { display: none; }*/
 }
-/* line 218, sass/_afeefa-styles.scss */
+/* line 222, sass/_afeefa-styles.scss */
 #main-container.shifted-small #curtain {
   visibility: visible;
   opacity: 0.6;
 }
-/* line 222, sass/_afeefa-styles.scss */
+/* line 226, sass/_afeefa-styles.scss */
 #main-container.shifted-small #languageViewMobile {
   z-index: 999;
 }
@@ -4477,74 +4485,79 @@ body.phone #menuView .menu-btn {
   margin-bottom: 1em;
 }
 
-/* line 89, sass/_formView.scss */
+/* line 1, sass/_formView.scss */
 #formView {
+  -moz-transition: box-shadow 150ms;
+  -o-transition: box-shadow 150ms;
+  -webkit-transition: box-shadow 150ms;
+  transition: box-shadow 150ms;
+  -moz-box-shadow: 0px 0px 4px #000;
+  -webkit-box-shadow: 0px 0px 4px #000;
+  box-shadow: 0px 0px 4px #000;
+  -moz-transition: opacity 200ms;
+  -o-transition: opacity 200ms;
+  -webkit-transition: opacity 200ms;
+  transition: opacity 200ms;
+  position: absolute;
+  left: 25%;
+  top: 12%;
   visibility: hidden;
   opacity: 0;
-  -moz-transition: all 200ms;
-  -o-transition: all 200ms;
-  -webkit-transition: all 200ms;
-  transition: all 200ms;
-  width: 30%;
-  position: absolute;
-  right: 16em;
-  top: 7em;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 50%;
+  height: 80%;
+  background-color: #f2f2f2;
+  color: #333333;
   display: -webkit-flex;
   display: flex;
   -webkit-flex-direction: column;
   flex-direction: column;
-  min-height: 20%;
-  max-height: 70%;
-  background-color: #f2f2f2;
-  -moz-box-shadow: 0px 0px 2px #333;
-  -webkit-box-shadow: 0px 0px 2px #333;
-  box-shadow: 0px 0px 2px #333;
   /* HEADING */
   /* type specific overwrites */
-  /*quick fix, because IE has no datepicker */
 }
-/* line 112, sass/_formView.scss */
+/* line 24, sass/_formView.scss */
+#formView .header {
+  background-color: #333333;
+  padding: 0 3rem;
+}
+/* line 28, sass/_formView.scss */
+#formView .header h1 {
+  font-weight: 300;
+  margin: 0;
+  padding: 1rem 0;
+  font-size: 2em;
+  color: #f2f2f2;
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box;
+}
+/* line 38, sass/_formView.scss */
+#formView .form-container {
+  position: relative;
+  -webkit-flex-grow: 1;
+  flex-grow: 1;
+  padding: 1em 3rem;
+}
+/* line 44, sass/_formView.scss */
+#formView .button-container {
+  padding: 0 3rem;
+  background-color: #DDDDDD;
+  -moz-box-shadow: #DDDDDD 0 0 15px;
+  -webkit-box-shadow: #DDDDDD 0 0 15px;
+  box-shadow: #DDDDDD 0 0 15px;
+}
+/* line 50, sass/_formView.scss */
 #formView.active {
   visibility: visible;
   opacity: 1;
 }
-/* line 117, sass/_formView.scss */
-#formView .scroll-container {
-  -webkit-flex-grow: 1;
-  flex-grow: 1;
-  overflow-y: auto;
-  padding: 1em;
-  overflow-x: hidden;
+/* line 55, sass/_formView.scss */
+#formView form {
+  display: none;
 }
-/* line 5, sass/_formView.scss */
-#formView .heading {
-  height: 3em;
-  -webkit-flex-shrink: 0;
-  flex-shrink: 0;
-  -moz-background-size: 2em;
-  -o-background-size: 2em;
-  -webkit-background-size: 2em;
-  background-size: 2em;
-  background-position: 1em center;
-  background-repeat: no-repeat;
-}
-/* line 14, sass/_formView.scss */
-#formView .heading h1 {
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  height: 3em;
-  margin: 0;
-  padding: 1em 1em 0 1em;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  font-weight: 300;
-  font-size: 1.1em;
-  text-align: center;
-  color: #f2f2f2;
-}
-/* line 32, sass/_formView.scss */
+/* line 59, sass/_formView.scss */
 #formView form input, #formView form textarea, #formView form select {
   display: block;
   -moz-box-sizing: border-box;
@@ -4556,184 +4569,110 @@ body.phone #menuView .menu-btn {
   background-color: #DDDDDD;
   margin-bottom: 1em;
 }
-/* line 41, sass/_formView.scss */
+/* line 68, sass/_formView.scss */
 #formView form input:focus, #formView form textarea:focus, #formView form select:focus {
   background-color: #f2f2f2;
 }
-/* line 46, sass/_formView.scss */
-#formView form button {
-  padding: 0.5em;
-  border: none;
-  margin-right: 1em;
-  font-weight: 100;
-  text-transform: uppercase;
+/* line 73, sass/_formView.scss */
+#formView form.active {
+  display: block;
 }
-/* line 54, sass/_formView.scss */
-#formView form button:hover {
-  -moz-box-shadow: 0px 0px 2px #333;
-  -webkit-box-shadow: 0px 0px 2px #333;
-  box-shadow: 0px 0px 2px #333;
+/* line 78, sass/_formView.scss */
+#formView .form-checkbox {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: middle;
+  align-items: middle;
+  margin-bottom: 1em;
 }
-/* line 56, sass/_formView.scss */
-#formView form button.sendBtn {
+/* line 83, sass/_formView.scss */
+#formView .form-checkbox input {
+  width: auto;
+  width: 1.5em;
+  height: 1.5em;
+  cursor: pointer;
+  margin: 0 .5em 0 0;
+}
+/* line 91, sass/_formView.scss */
+#formView .form-checkbox label {
+  line-height: 1.5em;
+}
+/* line 96, sass/_formView.scss */
+#formView .form-switch {
+  margin-bottom: 1em;
+}
+/* line 99, sass/_formView.scss */
+#formView .form-switch input {
+  display: none;
+}
+/* line 103, sass/_formView.scss */
+#formView .form-switch span {
+  display: inline-block;
+  padding: .5em 1em;
+  -moz-transition: background-color 150ms;
+  -o-transition: background-color 150ms;
+  -webkit-transition: background-color 150ms;
+  transition: background-color 150ms;
+  background-color: #DDDDDD;
+  cursor: pointer;
+  color: #999999;
+}
+/* line 112, sass/_formView.scss */
+#formView .form-switch span:hover {
+  background-color: #999999;
+  color: #DDDDDD;
+}
+/* line 117, sass/_formView.scss */
+#formView .form-switch span.active {
+  background-color: rgba(0, 0, 0, 0.8);
   color: #f2f2f2;
+  border-color: rgba(0, 0, 0, 0.8);
 }
-/* line 60, sass/_formView.scss */
-#formView form button.cancelBtn {
-  color: #f2f2f2;
-  background-color: #666666;
+/* line 126, sass/_formView.scss */
+#formView .location-container input {
+  display: none;
 }
-/* line 70, sass/_formView.scss */
+/* line 131, sass/_formView.scss */
+#formView .location-container.active input {
+  display: block;
+}
+/* line 139, sass/_formView.scss */
 #formView.marketOffer .heading, #formView.marketRequest .heading {
   background-color: #CA7311;
 }
-/* line 71, sass/_formView.scss */
+/* line 140, sass/_formView.scss */
 #formView.marketOffer .sendBtn, #formView.marketRequest .sendBtn {
   background-color: #CA7311;
 }
-/* line 75, sass/_formView.scss */
+/* line 144, sass/_formView.scss */
 #formView.marketOffer .heading {
   background-image: url("../img/icon_48.svg");
 }
-/* line 79, sass/_formView.scss */
+/* line 148, sass/_formView.scss */
 #formView.marketRequest .heading {
   background-image: url("../img/icon_52.svg");
 }
-/* line 83, sass/_formView.scss */
+/* line 152, sass/_formView.scss */
 #formView.feedback .heading {
   background-color: #333333;
   background-image: url("../img/icon_50.svg");
 }
-/* line 84, sass/_formView.scss */
+/* line 153, sass/_formView.scss */
 #formView.feedback .sendBtn {
   background-color: #333333;
 }
 
-/* line 131, sass/_formView.scss */
-#formViewMobile {
-  -moz-transition: all 200ms;
-  -o-transition: all 200ms;
-  -webkit-transition: all 200ms;
-  transition: all 200ms;
-  z-index: 100;
+/* line 160, sass/_formView.scss */
+.mobile #formView {
+  /*z-index: 100;*/
   width: 100%;
-  height: 3em;
-  position: absolute;
-  bottom: -3em;
-  background-color: #f2f2f2;
-  -moz-box-shadow: 0px 0px 2px #333;
-  -webkit-box-shadow: 0px 0px 2px #333;
-  box-shadow: 0px 0px 2px #333;
-  /* HEADING */
-  /* type specific overwrites */
+  height: 100%;
+  top: 0;
+  left: 0;
 }
-/* line 143, sass/_formView.scss */
-#formViewMobile.active {
-  bottom: 0;
-}
-/* line 147, sass/_formView.scss */
-#formViewMobile.active-large {
-  bottom: 0;
-  height: 80%;
-  /*overflow-y: scroll;*/
-}
-/* line 153, sass/_formView.scss */
-#formViewMobile .scroll-container {
-  height: calc(100% - 4em);
-  overflow-y: auto;
-  padding-bottom: 1em;
-}
-/* line 5, sass/_formView.scss */
-#formViewMobile .heading {
-  height: 3em;
-  -webkit-flex-shrink: 0;
-  flex-shrink: 0;
-  -moz-background-size: 2em;
-  -o-background-size: 2em;
-  -webkit-background-size: 2em;
-  background-size: 2em;
-  background-position: 1em center;
-  background-repeat: no-repeat;
-}
-/* line 14, sass/_formView.scss */
-#formViewMobile .heading h1 {
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  height: 3em;
-  margin: 0;
-  padding: 1em 1em 0 1em;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  font-weight: 300;
-  font-size: 1.1em;
-  text-align: center;
-  color: #f2f2f2;
-}
-/* line 32, sass/_formView.scss */
-#formViewMobile form input, #formViewMobile form textarea, #formViewMobile form select {
-  display: block;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  width: 100%;
-  padding: 0.5em;
-  border: none;
-  background-color: #DDDDDD;
-  margin-bottom: 1em;
-}
-/* line 41, sass/_formView.scss */
-#formViewMobile form input:focus, #formViewMobile form textarea:focus, #formViewMobile form select:focus {
-  background-color: #f2f2f2;
-}
-/* line 46, sass/_formView.scss */
-#formViewMobile form button {
-  padding: 0.5em;
-  border: none;
-  margin-right: 1em;
-  font-weight: 100;
-  text-transform: uppercase;
-}
-/* line 54, sass/_formView.scss */
-#formViewMobile form button:hover {
-  -moz-box-shadow: 0px 0px 2px #333;
-  -webkit-box-shadow: 0px 0px 2px #333;
-  box-shadow: 0px 0px 2px #333;
-}
-/* line 56, sass/_formView.scss */
-#formViewMobile form button.sendBtn {
-  color: #f2f2f2;
-}
-/* line 60, sass/_formView.scss */
-#formViewMobile form button.cancelBtn {
-  color: #f2f2f2;
-  background-color: #666666;
-}
-/* line 70, sass/_formView.scss */
-#formViewMobile.marketOffer .heading, #formViewMobile.marketRequest .heading {
-  background-color: #CA7311;
-}
-/* line 71, sass/_formView.scss */
-#formViewMobile.marketOffer .sendBtn, #formViewMobile.marketRequest .sendBtn {
-  background-color: #CA7311;
-}
-/* line 75, sass/_formView.scss */
-#formViewMobile.marketOffer .heading {
-  background-image: url("../img/icon_48.svg");
-}
-/* line 79, sass/_formView.scss */
-#formViewMobile.marketRequest .heading {
-  background-image: url("../img/icon_52.svg");
-}
-/* line 83, sass/_formView.scss */
-#formViewMobile.feedback .heading {
-  background-color: #333333;
-  background-image: url("../img/icon_50.svg");
-}
-/* line 84, sass/_formView.scss */
-#formViewMobile.feedback .sendBtn {
-  background-color: #333333;
+/* line 168, sass/_formView.scss */
+.mobile #formView .form-container {
+  overflow-y: scroll;
 }
 
 /* line 3, sass/_includeView.scss */
@@ -5249,18 +5188,19 @@ body.mobile #includeView {
   top: 0;
 }
 /* line 253, sass/_includeView.scss */
-body.mobile #includeView.small {
-  height: 20%;
+body.mobile #includeView.min {
+  visibility: hidden;
+  opacity: 0;
 }
-/* line 258, sass/_includeView.scss */
+/* line 259, sass/_includeView.scss */
 body.mobile #includeView .header h1 {
   padding-top: 1rem !important;
 }
-/* line 259, sass/_includeView.scss */
+/* line 260, sass/_includeView.scss */
 body.mobile #includeView .header p.subheading {
   display: none !important;
 }
-/* line 261, sass/_includeView.scss */
+/* line 262, sass/_includeView.scss */
 body.mobile #includeView .content {
   overflow: scroll;
 }

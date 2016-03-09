@@ -50,44 +50,26 @@ qx.Class.define("Router", {
 
 			if( userDevice === 'mobile' ) {
 
-				// new MapView();
 		    	APP.setMapView( new MapView() );
-		    	
 		    	APP.setSearchView( new SearchView() );
-
 		    	APP.setDetailView( new DetailViewMobile() );
-		    	
 		    	APP.setMenuView( new MenuView() );
-		    	
 		    	APP.setLegendView( new LegendView() );
-
-		    	// APP.setPlusView( new PlusView() );
-		    	
+		    	APP.setPlusView( new PlusView() );
 		    	APP.setLanguageView( new LanguageViewMobile() );
-		    	
-		    	// APP.setFormView( new FormView() );
-		    	
+		    	APP.setFormView( new FormView() );
 		    	APP.setIncludeView( new IncludeView() );
 		
 			} else {
 
-		    	// new MapView();
 		    	APP.setMapView( new MapView() );
-		    	
 		    	APP.setSearchView( new SearchView() );
-		    	
 		    	APP.setDetailView( new DetailView() );
-
 		    	APP.setMenuView( new MenuView() );
-
 		    	APP.setLegendView( new LegendView() );
-		    	
 		    	APP.setPlusView( new PlusView() );
-
 		    	APP.setLanguageView( new LanguageView() );
-
 		    	APP.setFormView( new FormView() );
-
 		    	APP.setIncludeView( new IncludeView() );
 			}
 	    	
@@ -96,9 +78,11 @@ qx.Class.define("Router", {
 	    		APP.getMapView().render();
 		    	APP.getSearchView().render();
 		    	APP.getDetailView().render();
+		    	APP.getPlusView().render();
 		    	APP.getLanguageView().render();
 		    	APP.getMenuView().render();
 		    	APP.getLegendView().render();
+		    	APP.getFormView().render();
 		    	APP.getIncludeView().render();
 	    	}
 	    	else {
@@ -214,7 +198,12 @@ qx.Class.define("Router", {
 	    	var that = this;
 
 	    	that.listen('IncludeViewRendered', function(){
-				APP.getIncludeView().load( APP.getIncludeView().getIncludes().intro );
+				// APP.getIncludeView().load( APP.getIncludeView().getIncludes().intro );
+			});
+
+			that.listen('FormViewRendered', function(){
+				// APP.getFormView().load('initiative');
+				APP.getFormView().load('marketentry');
 			});
 	    }
 

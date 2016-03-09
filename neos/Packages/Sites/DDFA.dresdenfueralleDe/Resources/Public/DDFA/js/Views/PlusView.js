@@ -81,7 +81,7 @@ qx.Class.define("PlusView", {
 			
 			that.feedbackBtn.click(function(){
 				that.close();
-		   	APP.getFormView().load( APP.getFormView().getFormTypes().feedback );
+		   	APP.getFormView().load( 'feedback' );
 			});
 
 			// show on hover

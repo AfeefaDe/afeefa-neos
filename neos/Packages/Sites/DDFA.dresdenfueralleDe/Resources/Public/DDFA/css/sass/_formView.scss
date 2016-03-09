@@ -1,33 +1,60 @@
-@mixin formViewBasic {
+#formView {
 	
+	@include shadow($height: 2);
+	@include transition(opacity 200ms);
+
+	position: absolute;
+	left: 25%;
+	top: 12%;
+
+	visibility: hidden;
+	opacity: 0;
+
+	@include box-sizing(border-box);
+	width: 50%;
+	height: 80%;
+
+	background-color: $white;
+	color: $black;
+
+	@include display-flex;
+	@include flex-direction(column);
 
 	/* HEADING */
-	.heading {
-		
-		height: 3em;
-	  	@include flex-shrink(0);
+	.header {
+		background-color: $black;
+		padding: 0 3rem;
 
-	  	@include background-size(2em);
-		background-position: 1em center;
-		background-repeat: no-repeat;
-		
 		h1 {
-			@include box-sizing(border-box);
-			height: 3em;
-			margin: 0;
-			padding: 1em 1em 0 1em;
-			overflow: hidden;
-			text-overflow: ellipsis;
-			white-space: nowrap;
-
 			font-weight: 300;
-			font-size: 1.1em;
-			text-align: center;
+			margin: 0;
+			padding: 1rem 0;
+			font-size: 2em;
 			color: $white;
+			@include box-sizing(content-box);
 		}
+	}
+	
+	.form-container {
+		position: relative;
+		@include flex-grow(1);
+		padding: 1em 3rem;
+	}
+
+	.button-container {
+		padding: 0 3rem;
+		background-color: $gray20;
+		@include box-shadow($gray20 0 0 15px);
+	}
+
+	&.active {
+		visibility: visible;
+		opacity: 1;
 	}
 
 	form {
+
+		display: none;
 
 		input, textarea, select {
 			display: block;
@@ -43,26 +70,68 @@
 			}
 		}
 
-		button {
-			padding: 0.5em;
-			border: none;
-			margin-right: 1em;
-			
-			font-weight: 100;
-			text-transform: uppercase;
+		&.active {
+			display: block;
+		}
+	}
 
-			&:hover { @include box-shadow(0px 0px 2px #333); }
+	.form-checkbox {
+		@include display-flex;
+		@include align-items(middle);
+		margin-bottom: 1em;
 
-			&.sendBtn {
-				color: $white;
-			}
-
-			&.cancelBtn {
-				color: $white;
-				background-color: $gray80;
-			}
+		input {
+			width: auto;
+			width: 1.5em;
+			height: 1.5em;
+  		cursor: pointer;
+	    margin: 0 .5em 0 0;
 		}
 
+		label {
+			line-height: 1.5em;
+		}
+	}
+
+	.form-switch {
+		margin-bottom: 1em;
+		
+		input {
+			display: none;
+		}
+
+		span {
+			display: inline-block;
+			padding: .5em 1em;
+			@include transition(background-color 150ms);
+			background-color: $gray20;
+			cursor: pointer;
+			color: $gray50;
+
+
+			&:hover {
+				background-color: $gray50;
+				color: $gray20;
+			}
+
+			&.active {
+				background-color: $black_alpha;
+				color: $white;
+				border-color: $black_alpha;
+			}
+		}
+	}
+
+	.location-container {
+		input {
+			display: none;
+		}
+
+		&.active {
+			input {
+				display: block;
+			}
+		}
 	}
 
 	/* type specific overwrites */
@@ -86,75 +155,18 @@
 
 }
 
-#formView {
-	
-	visibility: hidden;
-	opacity: 0;
-	@include transition(all 200ms);
-	
-	width: 30%;
-	position: absolute;
-	right: 16em;
-	top: 7em;
+.mobile {
 
-	@include display-flex;
-	@include flex-direction(column);
-
-	min-height: 20%;
-	max-height: 70%;
-
-	background-color: $white;
-	@include box-shadow(0px 0px 2px #333);
-
-	&.marketOffer, &.marketRequest {
+	#formView {
+		
+		/*z-index: 100;*/
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		
+		.form-container {
+			overflow-y: scroll;
+		}
 	}
-
-	&.active {
-		visibility: visible;
-		opacity: 1;
-	}
-	
-	.scroll-container {
-		@include flex-grow(1);
-		overflow-y: auto;
-		padding: 1em;
-		overflow-x: hidden;
-	}
-
-	@include formViewBasic;
-
-	/*quick fix, because IE has no datepicker */
-	
-
-}
-
-#formViewMobile {
-	
-	@include transition(all 200ms);
-	z-index: 100;
-	width: 100%;
-	height: 3em;
-	position: absolute;
-	bottom: -3em;
-	
-	background-color: $white;
-	@include box-shadow(0px 0px 2px #333);
-
-	&.active {
-		bottom: 0;
-	}
-
-	&.active-large {
-		bottom: 0;
-		height: 80%;
-		/*overflow-y: scroll;*/
-	}
-	
-	.scroll-container {
-		height: calc(100% - 4em);
-		overflow-y: auto;
-		padding-bottom: 1em;
-	}
-
-	@include formViewBasic;
 }

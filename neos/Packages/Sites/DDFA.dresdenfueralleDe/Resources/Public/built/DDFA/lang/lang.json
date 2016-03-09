@@ -660,7 +660,6 @@
                   "ti":"",
                   "ur":""
             },
-            
             "prop_name":{
                   "de":"Titel",
                   "en":"title",
@@ -695,6 +694,30 @@
                   "ru":"Категория",
                   "sr":"Категорија",
                   "ti":"ደረጃ",
+                  "ur":""
+            },
+            "prop_offer_offer":{
+                  "de":"Angebot",
+                  "en":"Offer",
+                  "ar":"",
+                  "fa":"",
+                  "fr":"",
+                  "it":"",
+                  "ru":"",
+                  "sr":"",
+                  "ti":"",
+                  "ur":""
+            },
+            "prop_offer_request":{
+                  "de":"Gesuch",
+                  "en":"Request",
+                  "ar":"",
+                  "fa":"",
+                  "fr":"",
+                  "it":"",
+                  "ru":"",
+                  "sr":"",
+                  "ti":"",
                   "ur":""
             },
             "prop_location":{
@@ -1122,10 +1145,21 @@
                   "ti":"",
                   "ur":""
             },
-
-            "form_newMarketOffer":{
-                  "de":"Angebot aufgeben",
-                  "en":"make an offer",
+            "form_initiative":{
+                  "de":"Initiative/ Projekt anlegen",
+                  "en":"Create new organization/ project",
+                  "ar":"",
+                  "fa":"",
+                  "fr":"",
+                  "it":"",
+                  "ru":"",
+                  "sr":"",
+                  "ti":"",
+                  "ur":""
+            },
+            "form_marketentry":{
+                  "de":"Inserat aufgeben",
+                  "en":"Place a small ad",
                   "ar":"تقديم عرض",
                   "fa":"آگهی عرضه",
                   "fr":"abandonner l'annonce",
@@ -1135,16 +1169,16 @@
                   "ti":"ኣቕርቦትካ ሓብር",
                   "ur":""
             },
-            "form_newMarketRequest":{
-                  "de":"Gesuch aufgeben",
-                  "en":"make a request",
-                  "ar":"تقديم طلب",
-                  "fa":"آگهی تقاضا",
-                  "fr":"abandonner la recherche",
+            "form_event":{
+                  "de":"Event eintragen",
+                  "en":"Enter new event",
+                  "ar":"",
+                  "fa":"",
+                  "fr":"",
                   "it":"",
-                  "ru":"разместить объявление",
-                  "sr":"Направити захтев",
-                  "ti":"ጠለብካ ኣቕርብ",
+                  "ru":"",
+                  "sr":"",
+                  "ti":"",
                   "ur":""
             },
             "form_feedback":{

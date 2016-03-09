@@ -153,13 +153,13 @@
 				display: inline-block;
 				cursor: pointer;
 				text-indent: 1em;
-				background-image: url('../img/icon-35.svg');
+				background-image: url('../img/icon_35.svg');
 				@include background-size(auto 1em);
 				background-position: 0 2px;
 				background-repeat: no-repeat;
 
 				&:hover {
-					background-image: url('../img/icon-36.svg');
+					background-image: url('../img/icon_36.svg');
 				}
 
 			}

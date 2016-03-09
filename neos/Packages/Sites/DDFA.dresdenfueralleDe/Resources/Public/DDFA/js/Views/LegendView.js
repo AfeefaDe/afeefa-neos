@@ -249,6 +249,7 @@ qx.Class.define("LegendView", {
 	  show: function(){
 	  	var that = this;
 
+		  that.showCurtain(true);
 		  that.view.addClass('active');
 	  },
 
@@ -309,14 +310,25 @@ qx.Class.define("LegendView", {
 
 		  });
 
-		  that.listen('mapclicked', function(){
+		  that.listen('curtainclicked', function(){
         that.close();
       });
+
+      // show on hover
+			that.view.hover(
+			  function() {
+			  	that.show();
+			  }, function() {
+			  	// only fire mouseleave if view is really active
+			  	if( that.view.hasClass('active') ) that.close();
+			  }
+			);
 	  },
 
 	  close: function(){
 		  var that = this;
 
+		  that.showCurtain(false);
 		  that.view.removeClass('active');
 		  
 		  // TODO: only do in mobile version

@@ -64,7 +64,7 @@ qx.Class.define("PlusView", {
 		show: function(){
 			var that = this;
 
-		  that.showCurtain(true);  
+		  that.showCurtain(true);
 	    that.view.addClass( "active" );
 		},
 

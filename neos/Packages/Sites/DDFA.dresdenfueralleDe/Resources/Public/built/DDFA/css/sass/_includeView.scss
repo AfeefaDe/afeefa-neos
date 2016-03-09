@@ -250,8 +250,13 @@ body.mobile {
     left: 0;
     top: 0;
 
-		&.small {
-			height: 20%;
+		&.min {
+			/*.header { cursor: pointer; }*/
+			height: 1em;
+			h1 { padding-top: 1rem !important; cursor: pointer; }
+			p.subheading { display: none; }
+			.content { display: none; }
+			.closeBtn { display: none; }
 		}
 
 		.header {

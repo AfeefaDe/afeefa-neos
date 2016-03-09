@@ -4,7 +4,7 @@ qx.Class.define("FormView", {
 	type: "singleton",
 
 	properties: {
-		currentFormType: {},
+		currentFormType: {init: null},
 		entryTypeEnum: {},
 		properties: {},
 		html5InputTypes: {},
@@ -38,7 +38,7 @@ qx.Class.define("FormView", {
 					{
 						name: {name: 'name', type: 'text', intoOwner: true, intoLocation: true},
 						category: {name: 'category', type: 'select', values: mainCategories, intoOwner: true },
-						subCategory: {name: 'subCategory', type: 'select', values: [ ['german-course', 'german-course'] ], intoOwner: true },
+						subCategory: {name: 'subCategory', type: 'select', values: APP.getConfig().categories[0].sub, intoOwner: true },
 						speakerPublic: {name: 'speakerPublic', type: 'text', intoOwner: true},
 						mail: {name: 'mail', type: 'email', required: true, intoOwner: true},
 						web: {name: 'web', type: 'url', intoOwner: true},
@@ -57,7 +57,7 @@ qx.Class.define("FormView", {
 						offer: {name: 'offer', type: 'switch', intoOwner: true, values: [ [true, 'offer'], [false, 'request'] ]},
 						name: {name: 'name', type: 'text', intoOwner: true, intoLocation: true},
 						category: {name: 'category', type: 'select', values: mainCategories, intoOwner: true },
-						subCategory: {name: 'subCategory', type: 'select', values: [ ['german-course', 'german-course'] ], intoOwner: true },
+						subCategory: {name: 'subCategory', type: 'select', values: APP.getConfig().categories[0].sub, intoOwner: true },
 						speakerPublic: {name: 'speakerPublic', type: 'text', intoOwner: true},
 						mail: {name: 'mail', type: 'email', required: true, intoOwner: true},
 						web: {name: 'web', type: 'url', intoOwner: true},
@@ -78,7 +78,7 @@ qx.Class.define("FormView", {
 					{
 						name: {name: 'name', type: 'text', intoOwner: true, intoLocation: true},
 						category: {name: 'category', type: 'select', values: mainCategories, intoOwner: true },
-						subCategory: {name: 'subCategory', type: 'select', values: [ ['german-course', 'german-course'] ], intoOwner: true },
+						subCategory: {name: 'subCategory', type: 'select', values: APP.getConfig().categories[0].sub, intoOwner: true },
 						speakerPublic: {name: 'speakerPublic', type: 'text', intoOwner: true},
 						mail: {name: 'mail', type: 'email', required: true, intoOwner: true},
 						web: {name: 'web', type: 'url', intoOwner: true},
@@ -162,6 +162,12 @@ qx.Class.define("FormView", {
 			var returnEl = null;  // optional alternative for return
 			var labelEl = null;			// optional
 
+			// if( property.type == 'datetime' || property.type == 'datetime-local' ){
+			// 	inputEl = $("<input />")
+			// 		.attr('type', 'text')
+			// 		.attr('name', property.name)
+			// 		.pickadate();
+			// }
 			if( _.contains( that.getHtml5InputTypes() , property.type ) ){
 				inputEl = $("<input />")
 					.attr('type', property.type)
@@ -186,33 +192,32 @@ qx.Class.define("FormView", {
 
 				inputEl = $("<select />");
 				
-				// TODO empty option
-				if(!property.required)
-					var emptyOption = $('<option />')
-						.attr('selected', true)
-						.attr('value', '');
+				// if(!property.required)
+				// 	var emptyOption = $('<option />')
+				// 		.attr('selected', true)
+				// 		.attr('value', '');
 
-				inputEl.append(emptyOption);
+				// inputEl.append(emptyOption);
 				
-				_.each( property.values, function(value){
+				// _.each( property.values, function(value){
 					
-					var option = $("<option />");
+				// 	var option = $("<option />");
 
-					if( property.name == 'category')
-						option.attr('value', value.identifier);
-					else
-						option.attr('value', value[0]);
+				// 	if( property.name == 'category')
+				// 		option.attr('value', value.identifier);
+				// 	else
+				// 		option.attr('value', value[0]);
 					
-					// TODO verarbeite select values as arrays [value, label]
-					if( property.name == 'category'){ option.append( that.getWording('cat_' + value.name) ); }
-					else if( property.name == 'datePeriodic'){ option.append( that.getWording('prop_' + property.name + '_' + value[1]) ); }
-					// else if( property.name == 'spokenLanguages'){ option.append( that.getWording('lang_' + value[1]) ); }
-					else { option.append( that.getWording('form_' + value[1]) ); }
+				// 	// TODO verarbeite select values as arrays [value, label]
+				// 	if( property.name == 'category'){ option.append( that.getWording('cat_' + value.name) ); }
+				// 	else if( property.name == 'datePeriodic'){ option.append( that.getWording('prop_' + property.name + '_' + value[1]) ); }
+				// 	// else if( property.name == 'spokenLanguages'){ option.append( that.getWording('lang_' + value[1]) ); }
+				// 	else { option.append( that.getWording('form_' + value[1]) ); }
 					
-					inputEl.append(option);
-					inputEl.attr('name', property.name);
-				});
-
+				// 	inputEl.append(option);
+				// });
+				
+				inputEl.attr('name', property.name);
 			}
 			// textarea
 			else if( property.type == 'textarea' ){
@@ -646,9 +651,42 @@ qx.Class.define("FormView", {
 					// 	.append(that.getWording('cat_' + property.name));
 
 					// empty option field
-					that.forms[type].fields[property.name].find('option').first()
-						.empty()
+					// that.forms[type].fields[property.name].find('option').first()
+					// 	.empty()
+					// 	.append(that.getWording('form_emptyOption_' + property.name));
+
+					// remove all options
+					that.forms[type].fields[property.name].empty();
+					
+					// add empty option
+					var emptyOption = $('<option />')
+						.attr('selected', true)
+						.attr('value', '')
 						.append(that.getWording('form_emptyOption_' + property.name));
+					that.forms[type].fields[property.name].append(emptyOption);
+					
+					_.each( property.values, function(value, key){
+						
+						var option = $("<option />");
+
+						if( property.name == 'category') {
+							option
+								.attr('value', value.identifier)
+								.append( that.getWording('cat_' + value.name) );
+						}
+						else if( property.name == 'subCategory') {
+							option
+								.attr('value', value.name)
+								.append( that.getWording('cat_' + value.name) );
+						}
+						else { 
+							option
+								.attr('value', value[0])
+								.append( that.getWording('prop_' + property.name + '_' + value[1]) );
+						} 
+						
+						that.forms[type].fields[property.name].append(option);
+					});
 				}
 			});
 
@@ -684,7 +722,7 @@ qx.Class.define("FormView", {
 		changeLanguage: function(){
 			var that = this;
 
-			that.load( that.getCurrentFormType() );
+			if( that.getCurrentFormType() ) that.load( that.getCurrentFormType() );
 		},
 
 		sendForm: function(){

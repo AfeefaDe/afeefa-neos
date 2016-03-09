@@ -50,11 +50,7 @@ qx.Class.define("DetailView", {
 			////////////////////
 			// image property //
 			////////////////////
-			that.imageContainer = $("<div />").addClass('image');
-			
-			that.image = $("<img />");
-			that.imageContainer.append(that.image);
-
+			that.imageContainer = $("<div />").addClass('image-container');
 			that.scrollContainer.append(that.imageContainer);
 			
 			//////////////////////
@@ -98,6 +94,7 @@ qx.Class.define("DetailView", {
 			that.record = record;
 
 			// view
+			that.setViewState(1);
 			that.view.addClass('type-' + record.type);
 			that.view.addClass('cat-' + record.category.name);
 
@@ -108,14 +105,24 @@ qx.Class.define("DetailView", {
 			////////////////////
 			// image property //
 			////////////////////
-			// var imagePath = '_Resources/Static/Packages/DDFA.dresdenfueralleDe/DDFA/img/';
-			if( record.image ) {
-				that.imageContainer.css('height', that.view.innerWidth()*0.6);
-				that.imageContainer.addClass(record.imageType);
-				that.imageContainer.show();
+			if( record.imageType && record.image ) {
+				
+				switch(record.imageType){
+					case 'youtube':
+					case 'logo':  // TODO remove logo, just a walkaround because imageType is not supplementet
+						// supposed, yt link is as 'https://www.youtube.com/watch?v=RURToWXI6QM'
+						var ytid = record.image.substr(32);
+						var ytEmbed = $( '<iframe width="100%" src="https://www.youtube.com/embed/' + ytid + '?rel=0&amp;showinfo=0' + '" frameborder="0" allowfullscreen></iframe>');
+						that.imageContainer.append(ytEmbed);
+						break;
+					case 'image':
+						// that.imageContainer.css('height', that.view.innerWidth()*0.6);
+						// that.imageContainer.addClass(record.imageType);
+						// that.image.attr('src', record.image);
+						break;
+				}
 
-				// that.image.attr('src', imagePath + record.image.src);
-				that.image.attr('src', record.image);
+				that.imageContainer.addClass('active');
 			}
 
 			//////////////////////
@@ -214,8 +221,8 @@ qx.Class.define("DetailView", {
 			});
 
 			// image property
-			that.imageContainer.hide();
-			that.imageContainer.removeClass('logo photo');
+			that.imageContainer.empty();
+			that.imageContainer.removeClass('active image youtube');
 
 			// entry icon
 			that['propertyIconcategory'].removeClass('type-0 type-1 type-2 type-3');
@@ -244,9 +251,14 @@ qx.Class.define("DetailView", {
 
 		close: function() {
 			var that = this;
+			
+			// only close if active
+			if(!that.getViewState()) return;
+
 			that.view.removeClass('active');
 			that.reset();
-			that.say('detailViewClosed');
+			that.setViewState(0);
+			that.say('DetailViewClosed');
 		},
 
 		changeLanguage: function(){
@@ -292,6 +304,10 @@ qx.Class.define("DetailView", {
 			});
 
 			that.listen('includeViewClosed', function(){
+			});
+
+			that.listen('mapMarkerDeselected', function(){
+				that.close();
 			});
 
 			that.listen('mapclicked', function(){

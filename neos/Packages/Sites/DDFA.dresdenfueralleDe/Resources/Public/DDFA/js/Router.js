@@ -198,12 +198,12 @@ qx.Class.define("Router", {
 	    	var that = this;
 
 	    	that.listen('IncludeViewRendered', function(){
-				// APP.getIncludeView().load( APP.getIncludeView().getIncludes().intro );
+				APP.getIncludeView().load( APP.getIncludeView().getIncludes().intro );
 			});
 
 			that.listen('FormViewRendered', function(){
 				// APP.getFormView().load('initiative');
-				APP.getFormView().load('marketentry');
+				// APP.getFormView().load('marketentry');
 			});
 	    }
 

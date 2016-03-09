@@ -251,8 +251,12 @@ body.mobile {
     top: 0;
 
 		&.min {
-	    visibility: hidden;
-			opacity: 0;
+			/*.header { cursor: pointer; }*/
+			height: 1em;
+			h1 { padding-top: 1rem !important; cursor: pointer; }
+			p.subheading { display: none; }
+			.content { display: none; }
+			.closeBtn { display: none; }
 		}
 
 		.header {

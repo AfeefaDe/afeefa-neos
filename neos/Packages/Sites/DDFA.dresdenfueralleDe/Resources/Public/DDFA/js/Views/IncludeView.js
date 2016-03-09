@@ -6,7 +6,7 @@ qx.Class.define("IncludeView", {
 	properties: {
 		includes: {},
 		baseUrl: {},
-		includeKey: {}
+		includeKey: {init: null}
 	},
 
 	construct: function(){

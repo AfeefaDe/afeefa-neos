@@ -270,7 +270,7 @@
 	.cat-container .icon { margin-left: .5em; }
 }
 
-.desktop, .tablet {
+.desktop {
 	#legendView:hover {
 		@include activeState;
 	}
@@ -279,6 +279,10 @@
 .tablet {
 	#legendView {
 		overflow: scroll;
+
+		&.active {
+			@include activeState;
+		}
 	}
 }
 

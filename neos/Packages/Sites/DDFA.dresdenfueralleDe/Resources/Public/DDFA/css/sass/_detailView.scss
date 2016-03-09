@@ -39,7 +39,7 @@
 	}
 
 	/* IMAGE PROPERTY */
-	.image {
+	.image-container {
 		/*height: 10em;*/
 		text-align: center;
 		overflow: hidden;
@@ -49,9 +49,6 @@
 		  	top: 50%;
 		  	transform: translateY(-50%);
 		}
-
-		&.logo img { height: 80%; }
-		&.photo img { width: 100%; }
 	}
 
 	/* OTHER PROPERTIES */

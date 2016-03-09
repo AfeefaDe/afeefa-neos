@@ -5,7 +5,7 @@ qx.Class.define("View", {
 
     properties: {
         viewId: {},
-        viewState: {},
+        viewState: { init: 0 },
         loadable: { init : false }
     },
 

@@ -50,7 +50,6 @@ abstract class AbstractTranslationRepository extends Repository
     {
         $query = $this->createQuery()->setOrderings(array('created' => QueryInterface::ORDER_DESCENDING));
 
-
         if ($onlyPublished) {
             $query = $query->matching(
                 $query->logicalAnd(
@@ -160,14 +159,16 @@ abstract class AbstractTranslationRepository extends Repository
 
     /**
      * @param string $locale
+     * @param bool $onlyPublished
      * @return array
      */
-    protected function findAllHydrated($locale)
+    public function findAllHydrated($locale, $onlyPublished = false)
     {
-        $allLocations = $this->findByLocale(DDConst::LOCALE_STD);
+        $all = $this->findByLocale(DDConst::LOCALE_STD);
         $result = array();
-        foreach ($allLocations as $location) {
-            array_push($result, $this->hydrate($location, $locale));
+        foreach ($all as $o) {
+            if(!$onlyPublished || $o->getPublished())
+                array_push($result, $this->hydrate($o, $locale));
         }
         return $result;
     }

@@ -28,13 +28,13 @@
 
 -
   name: 'api marketentries'
-  uriPattern: 'api/marketentries<MarketEntriesSubroutes>(.{@format})'
+  uriPattern: 'api/marketentries<MarketentrySubroutes>(?{@locale})'
   defaults:
     '@controller': 'Api\MarketEntryAPI'
     '@action': 'list'
-    '@format': 'json'
+    '@locale': 'de'
   subRoutes:
-    MarketEntriesSubroutes:
+    MarketentrySubroutes:
       package: 'DDFA.Main'
       suffix: 'Entity'
       variables:

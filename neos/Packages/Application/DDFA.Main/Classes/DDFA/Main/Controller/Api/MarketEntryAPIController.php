@@ -11,7 +11,6 @@ namespace DDFA\Main\Controller\Api;
 
 use DDFA\Main\Domain\Model\MarketEntry;
 use DDFA\Main\Domain\Repository\MarketEntryRepository;
-use DDFA\Main\Utility\DDConst;
 use TYPO3\Flow\Annotations as Flow;
 use TYPO3\Flow\Mvc\Controller\ActionController;
 use TYPO3\Flow\Mvc\View\JsonView;
@@ -33,20 +32,27 @@ class MarketEntryAPIController extends ActionController
      * @var array
      */
     protected $supportedMediaTypes = array('application/json');
-    
+
     /**
      * @param string $locale
      */
     public function listAction($locale = 'de')
     {
-        $this->view->assign('value', ['marketentries' => $this->marketEntryRepository->findAllLocalized($locale, false)]);
+        $this->view->assign('value', ['marketentries' => $this->marketEntryRepository->findAllHydrated($locale, true)]);
     }
 
-    public function showAction(MarketEntry $marketentry)
+    /**
+     * @param MarketEntry $marketentry
+     * @param string $locale
+     */
+    public function showAction(MarketEntry $marketentry, $locale = 'de')
     {
         $this->view->assign('value', ['marketentry' => $marketentry]);
     }
 
+    /**
+     * @param MarketEntry $marketentry
+     */
     public function createAction(MarketEntry $marketentry)
     {
         $this->marketEntryRepository->add($marketentry);

@@ -6,6 +6,7 @@ namespace DDFA\Main\Domain\Repository;
  *                                                                        *
  *                                                                        */
 
+use DDFA\Main\Utility\DDConst;
 use TYPO3\Flow\Annotations as Flow;
 
 /**
@@ -18,4 +19,5 @@ class MarketEntryRepository extends AbstractTranslationRepository
      * @var LanguageRepository
      */
     protected $languageRepository;
+
 }

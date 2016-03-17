@@ -74,6 +74,7 @@
         domReady: '../../requirejs/domReady',
         jquery: '../../jquery/jquery-2.1.3',
         perfectScrollbarJQuery: 'empty:',
+        chosenJQuery: '../../chosen/chosen.jquery.min',
         restive: '../../restive/restive.min',
         qx: '../../qooxdoo/qx-oo-4.1.min',
         underscore: '../../underscore/underscore-min',

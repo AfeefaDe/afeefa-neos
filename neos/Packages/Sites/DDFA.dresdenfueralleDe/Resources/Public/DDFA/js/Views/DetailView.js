@@ -175,9 +175,19 @@ qx.Class.define("DetailView", {
 					// may create link
 					if( _.contains( ['web', 'facebook'], prop) ){
 						that['propertyValue'+prop].append('<a target="_blank" href="' + record[prop] + '">' + record[prop] + '</a>');
-					} else if( _.contains( ['description'], prop) ){
+					}
+					else if( _.contains( ['description'], prop) ){
 						that['propertyValue'+prop].append(record[prop].replace(/(?:\r\n|\r|\n)/g, '<br />'));
-					} else {
+					}
+					else if( _.contains( ['spokenLanguages'], prop) ){
+						_.each( record[prop].split(',') , function( langCode ){
+							const span = $('<span />')
+								.addClass('multiselect-value')
+								.append( that.getWording('lan_' + langCode) );
+							that['propertyValue'+prop].append( span );
+						});
+					}
+					else {
 						that['propertyValue'+prop].append(record[prop]);
 					}
 

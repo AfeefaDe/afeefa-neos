@@ -47,7 +47,7 @@ qx.Class.define("FormView", {
 						forChildren: {name: 'forChildren', type: 'checkbox', intoOwner: true},
 						supportWanted: {name: 'supportWanted', type: 'checkbox', intoOwner: true},
 						phone: {name: 'phone', type: 'tel', intoOwner: true},
-						spokenLanguages: {name: 'spokenLanguages', type: 'text', intoOwner: true},
+						spokenLanguages: {name: 'spokenLanguages', type: 'multiselect', values: APP.getConfig().languages, intoOwner: true},
 						street: {name: 'street', type: 'text', intoLocation: true},
 						zip: {name: 'zip', type: 'text', intoLocation: true},
 						city: {name: 'city', type: 'text', intoLocation: true}
@@ -66,7 +66,7 @@ qx.Class.define("FormView", {
 						forChildren: {name: 'forChildren', type: 'checkbox', intoOwner: true},
 						supportWanted: {name: 'supportWanted', type: 'checkbox', intoOwner: true},
 						phone: {name: 'phone', type: 'tel', intoOwner: true},
-						spokenLanguages: {name: 'spokenLanguages', type: 'text', intoOwner: true},
+						spokenLanguages: {name: 'spokenLanguages', type: 'multiselect', values: APP.getConfig().languages, intoOwner: true},
 						street: {name: 'street', type: 'text', intoLocation: true},
 						zip: {name: 'zip', type: 'text', intoLocation: true},
 						city: {name: 'city', type: 'text', intoLocation: true},
@@ -87,7 +87,7 @@ qx.Class.define("FormView", {
 						forChildren: {name: 'forChildren', type: 'checkbox', intoOwner: true},
 						supportWanted: {name: 'supportWanted', type: 'checkbox', intoOwner: true},
 						phone: {name: 'phone', type: 'tel', intoOwner: true},
-						spokenLanguages: {name: 'spokenLanguages', type: 'text', intoOwner: true},
+						spokenLanguages: {name: 'spokenLanguages', type: 'multiselect', values: APP.getConfig().languages, intoOwner: true},
 						street: {name: 'street', type: 'text', intoLocation: true},
 						zip: {name: 'zip', type: 'text', intoLocation: true},
 						city: {name: 'city', type: 'text', intoLocation: true},
@@ -189,35 +189,14 @@ qx.Class.define("FormView", {
 			} 
 			// select
 			else if( property.type == 'select' ){
-
-				inputEl = $("<select />");
-				
-				// if(!property.required)
-				// 	var emptyOption = $('<option />')
-				// 		.attr('selected', true)
-				// 		.attr('value', '');
-
-				// inputEl.append(emptyOption);
-				
-				// _.each( property.values, function(value){
-					
-				// 	var option = $("<option />");
-
-				// 	if( property.name == 'category')
-				// 		option.attr('value', value.identifier);
-				// 	else
-				// 		option.attr('value', value[0]);
-					
-				// 	// TODO verarbeite select values as arrays [value, label]
-				// 	if( property.name == 'category'){ option.append( that.getWording('cat_' + value.name) ); }
-				// 	else if( property.name == 'datePeriodic'){ option.append( that.getWording('prop_' + property.name + '_' + value[1]) ); }
-				// 	// else if( property.name == 'spokenLanguages'){ option.append( that.getWording('lang_' + value[1]) ); }
-				// 	else { option.append( that.getWording('form_' + value[1]) ); }
-					
-				// 	inputEl.append(option);
-				// });
-				
-				inputEl.attr('name', property.name);
+				inputEl = $("<select />")
+					.attr('name', property.name);
+			}
+			// multiselect
+			else if( property.type == 'multiselect' ){
+				inputEl = $("<select />")
+					.attr('name', property.name)
+					.attr('multiple', true);
 			}
 			// textarea
 			else if( property.type == 'textarea' ){
@@ -277,6 +256,31 @@ qx.Class.define("FormView", {
 				return inputEl;
 		},
 
+		createLocationButton: function( locationContainer ){
+			var that = this;
+
+			var btn = $('<button />')
+				.append(that.getWording('form_locationBtn_add'))
+				.click(function(e){
+					e.preventDefault();
+					
+					// show addition input fields
+					locationContainer.toggleClass('active');
+
+					// change button
+					if( locationContainer.hasClass('active') ){
+						$(this).empty().append( that.getWording('form_locationBtn_remove') );
+					}
+					else {
+						$(this).empty().append( that.getWording('form_locationBtn_add') );
+						// empty additional input fields
+						locationContainer.find('input').val('');
+					}
+				});
+
+			return btn;
+		},
+
 		renderInitiativeForm: function(){
 			var that = this;
 
@@ -317,16 +321,14 @@ qx.Class.define("FormView", {
 			var sectionHeader = $('<h3 />').append('Ortsangaben');
 			form.append(sectionHeader);
 
+			var notice = $('<p />').append('Falls dein Eintrag an einen bestimmten Ort geknüpft ist, kannst du diesen hier angeben. Die Angabe eines Ortes ist aber keine Pflicht.');
+			form.append(notice);
+
 			var locationContainer = $('<div />').addClass('location-container');
 			form.append(locationContainer);
 
 			var buttonContainer = $('<p />');
-			var addLocationBtn = $('<button />')
-				.append('Ort hinzufügen')
-				.click(function(e){
-					e.preventDefault();
-					locationContainer.toggleClass('active');
-				});
+			var addLocationBtn = that.createLocationButton( locationContainer );
 			buttonContainer.append(addLocationBtn);
 			locationContainer.append(buttonContainer);
 
@@ -420,12 +422,7 @@ qx.Class.define("FormView", {
 			form.append(locationContainer);
 
 			var buttonContainer = $('<p />');
-			var addLocationBtn = $('<button />')
-				.append('Ort hinzufügen')
-				.click(function(e){
-					e.preventDefault();
-					locationContainer.toggleClass('active');
-				});
+			var addLocationBtn = that.createLocationButton( locationContainer );
 			buttonContainer.append(addLocationBtn);
 			locationContainer.append(buttonContainer);
 
@@ -516,12 +513,7 @@ qx.Class.define("FormView", {
 			form.append(locationContainer);
 
 			var buttonContainer = $('<p />');
-			var addLocationBtn = $('<button />')
-				.append('Ort hinzufügen')
-				.click(function(e){
-					e.preventDefault();
-					locationContainer.toggleClass('active');
-				});
+			var addLocationBtn = that.createLocationButton( locationContainer );
 			buttonContainer.append(addLocationBtn);
 			locationContainer.append(buttonContainer);
 
@@ -644,23 +636,14 @@ qx.Class.define("FormView", {
 						.empty()
 						.append(that.getWording('prop_' + property.name) );
 
+				// options in select + multiselect inputs
 				if( property.type == 'select' ){
-					// option fields
-					// that.forms[type].fields[property.name].find('option')
-					// 	.empty()
-					// 	.append(that.getWording('cat_' + property.name));
-
-					// empty option field
-					// that.forms[type].fields[property.name].find('option').first()
-					// 	.empty()
-					// 	.append(that.getWording('form_emptyOption_' + property.name));
-
 					// remove all options
 					that.forms[type].fields[property.name].empty();
 					
 					// add empty option
 					var emptyOption = $('<option />')
-						.attr('selected', true)
+						// .attr('selected', true)
 						.attr('value', '')
 						.append(that.getWording('form_emptyOption_' + property.name));
 					that.forms[type].fields[property.name].append(emptyOption);
@@ -687,6 +670,37 @@ qx.Class.define("FormView", {
 						
 						that.forms[type].fields[property.name].append(option);
 					});
+				}
+				else if( property.type == 'multiselect' ){
+					
+					// remove all options
+					that.forms[type].fields[property.name].empty();
+					
+					// placeholder for desktop (using "chosen" jQ plugin)
+					that.forms[type].fields[property.name]
+						.attr('data-placeholder', that.getWording('form_placeholder_' + property.name) );
+
+					// TODO not working, because mobile browsers show "N selected" instead of placeholder or first option
+					// placeholder for mobiles (using empty option, because placeholder is not natively supported for multi select)
+					// if( APP.getUserDevice() != 'desktop' ){
+					// 	var emptyOption = $('<option />')
+					// 		.attr('value', '')
+					// 		.append(that.getWording('form_placeholder_' + property.name));
+					// 	that.forms[type].fields[property.name].append(emptyOption);
+					// }
+
+					_.each( property.values, function(value){
+						
+						var option = $("<option />");
+
+						option.attr('value', value);
+						option.append( that.getWording('lan_' + value) );
+
+						that.forms[type].fields[property.name].append(option);
+					});
+
+					if( APP.getUserDevice() == 'desktop' )
+						that.forms[type].fields[property.name].chosen();
 				}
 			});
 
@@ -755,7 +769,9 @@ qx.Class.define("FormView", {
 					else if( property.type == 'checkbox' || property.type == 'switch' ){
 						value = that.forms[type].fields[property.name].prop('checked');
 					}
-
+					else if( property.type == 'multiselect' && value ){
+						value = value.join(",");
+					}
 					
 					if(property.intoOwner) dataMarketEntry.marketentry[property.name] = value;
 					if(property.intoLocation) dataLocation.location[property.name] = value;
@@ -806,29 +822,33 @@ qx.Class.define("FormView", {
 
 			});
 
-			// to github
-			APP.getDataManager().githubCreateIssue({
-				type: 'marketentry',
-				data: _.extend({}, dataMarketEntry.marketentry, dataLocation.location)
-			});
+			// sendToGithub();
+			function sendToGithub(){
+				APP.getDataManager().githubCreateIssue({
+					type: 'marketentry',
+					data: _.extend({}, dataMarketEntry.marketentry, dataLocation.location)
+				});
+			}
 
-			// to slack
-			var type = (dataMarketEntry.marketentry.offer) ? 'Angebot' : 'Gesuch';
-			APP.getDataManager().sendToSlack({
-				heading: type + ' von _' + dataMarketEntry.marketentry.speakerPublic + '_ (' + dataMarketEntry.marketentry.mail + ')',
-				message:    '_Titel:_ ' + dataMarketEntry.marketentry.name + '\n'
-							+ '_Beschreibung:_ ' + dataMarketEntry.marketentry.description + '\n'
-							+ '_web:_ ' + dataMarketEntry.marketentry.web + '\n'
-							+ '_facebook:_ ' + dataMarketEntry.marketentry.facebook + '\n'
-							+ '_phone:_ ' + dataMarketEntry.marketentry.phone + '\n'
-							+ '_Sprachen:_ ' + dataMarketEntry.marketentry.spokenLanguages + '\n'
-							+ '_Str:_ ' + dataLocation.location.street + '\n'
-							+ '_PLZ:_ ' + dataLocation.location.zip + '\n'
-							+ '_Ort:_ ' + dataLocation.location.city + '\n'
-							+ '_von:_ ' + dataMarketEntry.marketentry.dateFrom + '\n'
-							+ '_bis:_ ' + dataMarketEntry.marketentry.dateTo + '\n'
-							+ '_Wdh.:_ ' + dataMarketEntry.marketentry.datePeriodic + '\n\n'
-			});
+			// sendToSlack();
+			function sendToSlack(){
+				var type = (dataMarketEntry.marketentry.offer) ? 'Angebot' : 'Gesuch';
+				APP.getDataManager().sendToSlack({
+					heading: type + ' von _' + dataMarketEntry.marketentry.speakerPublic + '_ (' + dataMarketEntry.marketentry.mail + ')',
+					message:    '_Titel:_ ' + dataMarketEntry.marketentry.name + '\n'
+								+ '_Beschreibung:_ ' + dataMarketEntry.marketentry.description + '\n'
+								+ '_web:_ ' + dataMarketEntry.marketentry.web + '\n'
+								+ '_facebook:_ ' + dataMarketEntry.marketentry.facebook + '\n'
+								+ '_phone:_ ' + dataMarketEntry.marketentry.phone + '\n'
+								+ '_Sprachen:_ ' + dataMarketEntry.marketentry.spokenLanguages + '\n'
+								+ '_Str:_ ' + dataLocation.location.street + '\n'
+								+ '_PLZ:_ ' + dataLocation.location.zip + '\n'
+								+ '_Ort:_ ' + dataLocation.location.city + '\n'
+								+ '_von:_ ' + dataMarketEntry.marketentry.dateFrom + '\n'
+								+ '_bis:_ ' + dataMarketEntry.marketentry.dateTo + '\n'
+								+ '_Wdh.:_ ' + dataMarketEntry.marketentry.datePeriodic + '\n\n'
+				});
+			}
 		},
 
 		createFeedback: function(data){

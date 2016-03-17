@@ -781,7 +781,7 @@
                   "ur":""
             },
             "prop_speakerPublic":{
-                  "de":"Kontaktperson",
+                  "de":"Ansprechpartner",
                   "en":"contact person",
                   "ar":"الشخص الذي يمكن الاتصال به",
                   "fa":"تماس",
@@ -793,7 +793,7 @@
                   "ur":""
             },
             "prop_spokenLanguages":{
-                  "de":"Sprachen",
+                  "de":"Wir verstehen folgende Sprachen",
                   "en":"languages",
                   "ar":"لغات",
                   "fa":"زبان",

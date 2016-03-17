@@ -93,16 +93,15 @@ qx.Class.define("IncludeView", {
 			});
 
 			function loadComplete(){
-				
-				// location links
-				$('span.locationLink').click(function(){
-					APP.getMapView().selectMarkerFromLink( $(this).attr('name') );
-				});
 
-				// scrolling
 				const headerEl = that.contentContainer.find('.header');
 				const contentEl = that.contentContainer.find('.content');
+				
+				// TODO remove this workaround
+				// fix nested flexbox issue in firefox
+				contentEl.outerHeight( that.view.outerHeight() - headerEl.outerHeight() );
 
+				// scrolling
 				if( APP.getUserDevice() == 'desktop') {
 					contentEl
 						.perfectScrollbar()
@@ -118,6 +117,11 @@ qx.Class.define("IncludeView", {
 				// minimizing
 				headerEl.click(function(){
 					if(that.getViewState() == 2) that.minimize(false);
+				});
+
+				// location links
+				$('span.locationLink').click(function(){
+					APP.getMapView().selectMarkerFromLink( $(this).attr('name') );
 				});
 
 				// scan buttons

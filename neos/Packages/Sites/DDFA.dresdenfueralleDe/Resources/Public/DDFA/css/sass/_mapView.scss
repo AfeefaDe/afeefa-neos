@@ -21,16 +21,16 @@
 		
 		&.marker-cluster {
 			background-color: $white;
-		  	text-align: center;
-		  	font-size: 20px;
-	  		padding-top: 4px;
+			text-align: center;
+			font-size: 20px;
+			padding-top: 4px;
 		}
 
-	  	&.active {
-	  		border: 1px solid $white;
+		&.active {
+			border: 1px solid $white;
 			@include box-shadow(1px 1px 3px #000);
 			/*@include box-sizing(content-box);*/
-	  	}
+		}
 	}
 
 	div.marker {
@@ -39,12 +39,12 @@
 		background-position: center;
 		background-repeat: no-repeat;
 		font-size: 14px;
-  		text-align: center;
-	  	padding-top: 8px;
+		text-align: center;
+		padding-top: 8px;
 
-	  	&.support-needed {
+		&.support-needed {
 			background-image: url('../img/marker_support-needed.svg');
-	  	}
+		}
 	}
 
 	div.marker-station {
@@ -109,8 +109,8 @@ body.phone {
 		#locate-btn {
 			width: 4em;
 			height: 4em;
-			right: 2em;
-			bottom: 2em;
+			right: 2.25em;
+			bottom: 7.5em;
 		}
 
 	}

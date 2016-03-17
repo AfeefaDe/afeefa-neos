@@ -20,6 +20,7 @@
 	color: $black;
 
 	@include display-flex;
+	@include flex-direction(column);
 	
 	&.active {
 		visibility: visible;
@@ -60,7 +61,6 @@
 	}
 
 	.content-container {
-		@include flex-grow(1);
 		@include display-flex;
 		@include flex-direction(column);
 		

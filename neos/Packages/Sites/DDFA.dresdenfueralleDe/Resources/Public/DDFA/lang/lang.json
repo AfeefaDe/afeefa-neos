@@ -781,7 +781,7 @@
                   "ur":""
             },
             "prop_speakerPublic":{
-                  "de":"Kontaktperson",
+                  "de":"Ansprechpartner",
                   "en":"contact person",
                   "ar":"الشخص الذي يمكن الاتصال به",
                   "fa":"تماس",
@@ -793,7 +793,7 @@
                   "ur":""
             },
             "prop_spokenLanguages":{
-                  "de":"Sprachen",
+                  "de":"Wir verstehen folgende Sprachen",
                   "en":"languages",
                   "ar":"لغات",
                   "fa":"زبان",
@@ -1229,6 +1229,42 @@
                   "ti":"",
                   "ur":""
             },
+            "form_placeholder_spokenLanguages":{
+                  "de":"Wähle die Sprachen, die ihr versteht ...",
+                  "en":"Select the languages, you understand ...",
+                  "ar":"",
+                  "fa":"",
+                  "fr":"",
+                  "it":"",
+                  "ru":"",
+                  "sr":"",
+                  "ti":"",
+                  "ur":""
+            },
+            "form_locationBtn_add":{
+                  "de":"+ Ort hinzufügen",
+                  "en":"+ Add location",
+                  "ar":"",
+                  "fa":"",
+                  "fr":"",
+                  "it":"",
+                  "ru":"",
+                  "sr":"",
+                  "ti":"",
+                  "ur":""
+            },
+            "form_locationBtn_remove":{
+                  "de":"- Ort entfernen",
+                  "en":"- Remove location",
+                  "ar":"",
+                  "fa":"",
+                  "fr":"",
+                  "it":"",
+                  "ru":"",
+                  "sr":"",
+                  "ti":"",
+                  "ur":""
+            },
             "form_sendBtn":{
                   "de":"Abschicken",
                   "en":"Send",
@@ -1408,6 +1444,18 @@
                   "sr":"Енглески",
                   "ti":"ቋንቋ እንግሊዝ",
                   "ur":"عربی"
+            },
+            "lan_pt":{
+                  "de":"Portugiesisch",
+                  "en":"",
+                  "ar":"",
+                  "fa":"",
+                  "fr":"",
+                  "it":"",
+                  "ru":"",
+                  "sr":"",
+                  "ti":"",
+                  "ur":""
             },
             "lan_ar":{
                   "de":"Arabisch",

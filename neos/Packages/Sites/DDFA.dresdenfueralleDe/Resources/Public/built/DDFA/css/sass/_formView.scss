@@ -56,7 +56,7 @@
 
 		display: none;
 
-		input, textarea, select {
+		input, textarea, select, .chosen-container {
 			display: block;
 			@include box-sizing(border-box);
 			width: 100%;
@@ -68,6 +68,20 @@
 			&:focus{
 				background-color: $white;
 			}
+		}
+
+		.chosen-choices {
+	    border: none !important;
+	    box-shadow: none !important;
+	    background: none !important;
+
+	    li.search-field input[type=text] {
+	    	font-family: inherit !important;
+	    }
+		}
+
+		.search-field input {
+			margin: 0;
 		}
 
 		&.active {

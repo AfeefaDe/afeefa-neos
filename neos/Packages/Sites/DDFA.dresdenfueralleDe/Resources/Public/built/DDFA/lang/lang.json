@@ -1120,6 +1120,45 @@
                   "ur":""
             },
 
+            "search_label_intro":{
+                  "de":"Willkommen auf Afeefa.de",
+                  "en":"Welcome to Afeefa.de",
+                  "ar":"",
+                  "fa":"",
+                  "fr":"",
+                  "it":"",
+                  "ru":"",
+                  "sr":"",
+                  "ti":"",
+                  "ur":""
+            },
+
+            "search_label_refugeeGuide":{
+                  "de":"Leitfaden für Geflüchtete",
+                  "en":"Guide for asylum seekers",
+                  "ar":"",
+                  "fa":"",
+                  "fr":"",
+                  "it":"",
+                  "ru":"",
+                  "sr":"",
+                  "ti":"",
+                  "ur":""
+            },
+
+            "search_label_supporterGuide":{
+                  "de":"Leitfaden für Engagierte",
+                  "en":"Guide for supporters",
+                  "ar":"",
+                  "fa":"",
+                  "fr":"",
+                  "it":"",
+                  "ru":"",
+                  "sr":"",
+                  "ti":"",
+                  "ur":""
+            },
+
             "plus_entry":{
                   "de":"Eintrag hinzufügen",
                   "en":"Add entry",
@@ -1220,6 +1259,42 @@
             "form_emptyOption_datePeriodic":{
                   "de":"Wiederholung wählen",
                   "en":"Select repetition",
+                  "ar":"",
+                  "fa":"",
+                  "fr":"",
+                  "it":"",
+                  "ru":"",
+                  "sr":"",
+                  "ti":"",
+                  "ur":""
+            },
+            "form_placeholder_spokenLanguages":{
+                  "de":"Wähle die Sprachen, die ihr versteht ...",
+                  "en":"Select the languages, you understand ...",
+                  "ar":"",
+                  "fa":"",
+                  "fr":"",
+                  "it":"",
+                  "ru":"",
+                  "sr":"",
+                  "ti":"",
+                  "ur":""
+            },
+            "form_locationBtn_add":{
+                  "de":"+ Ort hinzufügen",
+                  "en":"+ Add location",
+                  "ar":"",
+                  "fa":"",
+                  "fr":"",
+                  "it":"",
+                  "ru":"",
+                  "sr":"",
+                  "ti":"",
+                  "ur":""
+            },
+            "form_locationBtn_remove":{
+                  "de":"- Ort entfernen",
+                  "en":"- Remove location",
                   "ar":"",
                   "fa":"",
                   "fr":"",
@@ -1408,6 +1483,18 @@
                   "sr":"Енглески",
                   "ti":"ቋንቋ እንግሊዝ",
                   "ur":"عربی"
+            },
+            "lan_pt":{
+                  "de":"Portugiesisch",
+                  "en":"",
+                  "ar":"",
+                  "fa":"",
+                  "fr":"",
+                  "it":"",
+                  "ru":"",
+                  "sr":"",
+                  "ti":"",
+                  "ur":""
             },
             "lan_ar":{
                   "de":"Arabisch",

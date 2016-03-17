@@ -1,1 +1,79 @@
-qx.Class.define("DetailViewMobile",{extend:DetailView,type:"singleton",properties:{},construct:function(){var e=this;e.setViewId("detailViewMobile"),e.setLoadable(!0),e.record=null},members:{addEvents:function(){var e=this;this.base(arguments),e.headingContainer.click(function(){e.view.hasClass("active-large")&&e.view.hasClass("active")?(e.resize(1),e.say("detailViewMobileMinimized")):e.view.hasClass("active")?(e.resize(2),e.say("detailViewMobileMaximized")):e.view.hasClass("active-large")&&e.resize(1)})},resize:function(e){var t=this;e?e==1?(t.view.removeClass("active-large"),t.view.addClass("active")):e==2&&(t.view.removeClass("active"),t.view.addClass("active-large")):t.close()},close:function(){var e=this;this.base(arguments),e.view.removeClass("active-large")}}});
+qx.Class.define("DetailViewMobile", {
+    
+    extend : DetailView,
+	type: "singleton",
+
+    properties: {
+    },
+
+    construct: function(){
+    	var that = this;
+
+        that.setViewId('detailViewMobile');
+        that.setLoadable(true);
+        that.record = null;
+    },
+
+    members : {
+        
+    	addEvents: function(){
+    		var that = this;
+
+            // call superclass
+            this.base(arguments);
+
+            // enlargement steps
+            that.headingContainer.click(function(){
+                if( that.view.hasClass('active-large') && that.view.hasClass('active') ){
+                    that.resize(1);
+                    that.say('detailViewMobileMinimized');
+                }
+                else if ( that.view.hasClass('active') ){
+                    that.resize(2);
+                    that.say('detailViewMobileMaximized');
+                }
+                else if ( that.view.hasClass('active-large') ){
+                    that.resize(1);
+                }
+            });
+
+            // that.listen('includeViewClicked', function(e){
+            //     if( e.customData.viewState == 1 )
+            //         that.close();
+            // });
+
+        },
+
+        // parameter state: 0 = complete close, 1 = small, 2 = large
+        resize: function( state ){
+            var that = this;
+
+            // close completely
+            if( !state ){
+                that.close();
+            }
+            // small state
+            else if( state == 1 ){
+                that.view.removeClass('active-large');
+                that.view.addClass('active');
+            }
+            // large state
+            else if( state == 2 ){
+                that.view.removeClass('active');
+                that.view.addClass('active-large');
+            }
+            
+        },
+
+        close: function() {
+            var that = this;
+            
+            // call superclass
+            this.base(arguments);
+            
+            that.view.removeClass('active-large');
+        },
+
+    }
+
+});

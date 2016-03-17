@@ -1120,6 +1120,45 @@
                   "ur":""
             },
 
+            "search_label_intro":{
+                  "de":"Willkommen auf Afeefa.de",
+                  "en":"Welcome to Afeefa.de",
+                  "ar":"",
+                  "fa":"",
+                  "fr":"",
+                  "it":"",
+                  "ru":"",
+                  "sr":"",
+                  "ti":"",
+                  "ur":""
+            },
+
+            "search_label_refugeeGuide":{
+                  "de":"Leitfaden für Geflüchtete",
+                  "en":"Guide for asylum seekers",
+                  "ar":"",
+                  "fa":"",
+                  "fr":"",
+                  "it":"",
+                  "ru":"",
+                  "sr":"",
+                  "ti":"",
+                  "ur":""
+            },
+
+            "search_label_supporterGuide":{
+                  "de":"Leitfaden für Engagierte",
+                  "en":"Guide for supporters",
+                  "ar":"",
+                  "fa":"",
+                  "fr":"",
+                  "it":"",
+                  "ru":"",
+                  "sr":"",
+                  "ti":"",
+                  "ur":""
+            },
+
             "plus_entry":{
                   "de":"Eintrag hinzufügen",
                   "en":"Add entry",

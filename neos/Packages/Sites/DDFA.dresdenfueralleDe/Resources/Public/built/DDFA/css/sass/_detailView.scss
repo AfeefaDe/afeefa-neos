@@ -5,7 +5,7 @@
 	.heading {
 		
 		min-height: 3em;
-	  	@include flex-shrink(0);
+		@include flex-shrink(0);
 		color: $white;
 		background-color: $black;
 		cursor: pointer;
@@ -25,14 +25,14 @@
 	}
 
 	.close-btn {
-	    position: absolute;
-        top: 1em;
-	    right: 1em;
-	    width: 1.5em;
-	    height: 1.5em;
-	    cursor: pointer;
-	    background-image: url("../img/icon_34.svg");
-	    @include background-size(100%);
+		position: absolute;
+		top: 1em;
+		right: 1em;
+		width: 1.5em;
+		height: 1.5em;
+		cursor: pointer;
+		background-image: url("../img/icon_34.svg");
+		@include background-size(100%);
 		background-position: center center;
 		background-repeat: no-repeat;
 		@include transform(rotate(45deg));
@@ -46,8 +46,8 @@
 
 		img {
 			position: relative;
-		  	top: 50%;
-		  	transform: translateY(-50%);
+			top: 50%;
+			transform: translateY(-50%);
 		}
 	}
 
@@ -104,8 +104,10 @@
 				line-height: 1.3em;
 
 				&.property-name {
-					font-weight: 500;
-					text-transform: capitalize;
+					color: $gray50;
+					font-size: 0.9em;
+					padding-bottom: 0.3em;
+					text-transform: uppercase;
 				}
 			}
 
@@ -116,6 +118,19 @@
 				  text-overflow: ellipsis;
 				  white-space: nowrap;
 			}
+		}
+
+		.multiselect-value {
+			display: inline-block;
+			margin: 0 .5em .5em 0;
+			background-color: white;
+		}
+
+		&.category .property-name {
+			font-size: 1em !important;
+			padding: 0 !important;
+			color: $black !important;
+			text-transform: none !important;
 		}
 
 	}
@@ -167,7 +182,7 @@
 		overflow-y: auto;
 		padding-bottom: 1em;
 		overflow-x: hidden;
-	    position: relative;
+		position: relative;
 	}
 
 	@include detailViewBasic;
@@ -199,6 +214,12 @@
 	&.active-large {
 		bottom: 0;
 		height: 100%;
+
+		.heading h1 {
+			overflow: inherit;
+			text-overflow: inherit;
+			white-space: inherit;
+		}
 	}
 	
 	.scroll-container {
@@ -208,4 +229,10 @@
 	}
 
 	@include detailViewBasic;
+
+	.heading h1 {
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
 }

@@ -59,7 +59,7 @@ qx.Class.define("DetailView", {
 			
 			// generic
 			// var properties = _.union( ['category'], APP.getConfig().simpleProperties,  ['location'] );, 
-			var properties = ['category', 'description', 'speakerPublic', 'spokenLanguages', 'location', 'openingHours', 'phone', 'mail', 'web', 'facebook', 'dateFrom', 'dateTo'];
+			var properties = ['category', 'times', 'description', 'speakerPublic', 'spokenLanguages', 'location', 'openingHours', 'phone', 'mail', 'web', 'facebook', 'dateFrom', 'dateTo'];
 			_.each(properties, function(prop){
 
 				that['propertyContainer'+prop] = $("<div />").addClass('property ' + prop);
@@ -109,16 +109,14 @@ qx.Class.define("DetailView", {
 				
 				switch(record.imageType){
 					case 'youtube':
-					case 'logo':  // TODO remove logo, just a walkaround because imageType is not supplementet
 						// supposed, yt link is as 'https://www.youtube.com/watch?v=RURToWXI6QM'
 						var ytid = record.image.substr(32);
 						var ytEmbed = $( '<iframe width="100%" src="https://www.youtube.com/embed/' + ytid + '?rel=0&amp;showinfo=0' + '" frameborder="0" allowfullscreen></iframe>');
 						that.imageContainer.append(ytEmbed);
 						break;
 					case 'image':
-						// that.imageContainer.css('height', that.view.innerWidth()*0.6);
-						// that.imageContainer.addClass(record.imageType);
-						// that.image.attr('src', record.image);
+						var image = $( '<img src="' + record.image + '"/>');
+						that.imageContainer.append(image);
 						break;
 				}
 
@@ -151,11 +149,61 @@ qx.Class.define("DetailView", {
 			var value = buildLocation(record);
 			function buildLocation(record){
 				var location = '';
+				if( record.placename ) location += record.placename + '<br>';
 				if( record.street ) location += record.street + '<br>';
-				// if( record.district ) location += ' ' + '(' + record.district + ')';
 				if( record.zip && record.city) location += record.zip + ' ' + record.city + '<br>';
 				else if( record.city ) location += record.city + '<br>';
 				return location;
+			}
+			if( value.length > 0 ) {
+				that['propertyValue'+prop].append(value);
+				that['propertyContainer'+prop].show();
+			}
+
+			// time information
+			var prop = 'times';
+			that['propertyIcon'+prop].addClass('icon-' + prop);
+			that['propertyName'+prop].append( that.getWording( 'prop_' + prop ) );
+			
+			var value = buildTimes(record.marketEntry);
+			function buildTimes(record){
+				var times = '';
+				
+				var dateFrom = record.dateFrom? convertTime(record.dateFrom) : record.dateFrom;
+				var dateTo = record.dateTo? convertTime(record.dateTo) : record.dateTo;
+				var timeFrom = record.timeFrom;
+				var timeTo = record.timeTo;
+
+				if( dateFrom && timeFrom && dateTo && timeTo){
+					times += 'vom ' + dateFrom + ' um ' + timeFrom + '<br>';
+					times += 'bis ' + dateTo + ' um ' + timeTo;
+				}
+				else if( dateFrom && timeFrom && timeTo){
+					times += dateFrom + ' von ' + timeFrom + ' bis ' + timeTo;
+				}
+				else if( dateFrom && timeFrom){
+					times += dateFrom + ' um ' + timeFrom;
+				}
+				else if( dateFrom && dateTo){
+					times += 'vom ' + dateFrom + ' bis ' + dateTo;
+				}
+				else if( dateFrom ){
+					times += dateFrom;
+				}
+				
+				function convertTime( timeValue ){
+					var dateObj = new Date(timeValue);
+					var formattedString = '';
+					if( record.locale == 'de' ){
+						formattedString = (dateObj.getDate() + 1) +'.'+ (dateObj.getMonth()+1) +'.'+ (dateObj.getFullYear())
+					} else {
+						formattedString = timeValue;
+					}
+
+					return formattedString;
+				}
+
+				return times;
 			}
 			if( value.length > 0 ) {
 				that['propertyValue'+prop].append(value);
@@ -244,7 +292,7 @@ qx.Class.define("DetailView", {
 			});
 			
 			// generic
-			var properties = _.union( ['category', 'location'], APP.getConfig().simpleProperties );
+			var properties = _.union( ['category', 'location', 'times'], APP.getConfig().simpleProperties );
 			
 			_.each(properties, function(prop){
 				that['propertyIcon'+prop].removeClass (function (index, css) {

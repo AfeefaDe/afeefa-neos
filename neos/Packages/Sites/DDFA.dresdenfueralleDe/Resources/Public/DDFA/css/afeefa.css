@@ -1714,7 +1714,7 @@ body.phone #mapView #locate-btn {
   display: none !important;
 }
 
-/* line 147, sass/_detailView.scss */
+/* line 146, sass/_detailView.scss */
 #detailView {
   visibility: hidden;
   opacity: 0;
@@ -1741,18 +1741,18 @@ body.phone #mapView #locate-btn {
   /* OTHER PROPERTIES */
   /* overwrite for POIs */
 }
-/* line 169, sass/_detailView.scss */
+/* line 168, sass/_detailView.scss */
 #detailView.active {
   visibility: visible;
   opacity: 1;
 }
-/* line 174, sass/_detailView.scss */
+/* line 173, sass/_detailView.scss */
 #detailView.right {
   left: auto;
   /*right: 6em;*/
   left: calc(100% - 23em - 4em);
 }
-/* line 180, sass/_detailView.scss */
+/* line 179, sass/_detailView.scss */
 #detailView .scroll-container {
   -webkit-flex-grow: 1;
   flex-grow: 1;
@@ -1841,24 +1841,22 @@ body.phone #mapView #locate-btn {
 }
 /* line 42, sass/_detailView.scss */
 #detailView .image-container {
-  /*height: 10em;*/
+  max-height: 10em;
   text-align: center;
   overflow: hidden;
 }
 /* line 47, sass/_detailView.scss */
 #detailView .image-container img {
-  position: relative;
-  top: 50%;
-  transform: translateY(-50%);
+  width: 100%;
 }
-/* line 55, sass/_detailView.scss */
+/* line 53, sass/_detailView.scss */
 #detailView .property {
   display: none;
   padding: 0 5%;
   margin-top: 1em;
   min-height: 2em;
 }
-/* line 64, sass/_detailView.scss */
+/* line 62, sass/_detailView.scss */
 #detailView .property.category .property-icon {
   /* orga */
   /* market entry */
@@ -2081,12 +2079,12 @@ body.phone #mapView #locate-btn {
   -webkit-background-size: 50%;
   background-size: 50%;
 }
-/* line 69, sass/_detailView.scss */
+/* line 67, sass/_detailView.scss */
 #detailView .property.category .property-value {
   font-style: italic;
   color: #999999;
 }
-/* line 75, sass/_detailView.scss */
+/* line 73, sass/_detailView.scss */
 #detailView .property .property-icon {
   width: 2.5em;
   height: 2.5em;
@@ -2095,63 +2093,67 @@ body.phone #mapView #locate-btn {
   background-position: center 0.2em;
   /* property icons */
 }
-/* line 84, sass/_detailView.scss */
+/* line 82, sass/_detailView.scss */
+#detailView .property .property-icon.icon-times {
+  background-image: url("../img/icon_29.svg");
+}
+/* line 83, sass/_detailView.scss */
 #detailView .property .property-icon.icon-location {
   background-image: url("../img/icon_35.svg");
 }
-/* line 85, sass/_detailView.scss */
+/* line 84, sass/_detailView.scss */
 #detailView .property .property-icon.icon-phone {
   background-image: url("../img/icon_23.svg");
 }
-/* line 86, sass/_detailView.scss */
+/* line 85, sass/_detailView.scss */
 #detailView .property .property-icon.icon-mail {
   background-image: url("../img/icon_25.svg");
 }
-/* line 87, sass/_detailView.scss */
+/* line 86, sass/_detailView.scss */
 #detailView .property .property-icon.icon-web {
   background-image: url("../img/icon_27.svg");
 }
-/* line 88, sass/_detailView.scss */
+/* line 87, sass/_detailView.scss */
 #detailView .property .property-icon.icon-openingHours {
   background-image: url("../img/icon_29.svg");
 }
-/* line 89, sass/_detailView.scss */
+/* line 88, sass/_detailView.scss */
 #detailView .property .property-icon.icon-description {
   background-image: url("../img/icon_31.svg");
 }
-/* line 90, sass/_detailView.scss */
+/* line 89, sass/_detailView.scss */
 #detailView .property .property-icon.icon-facebook {
   background-image: url("../img/icon_45.svg");
 }
-/* line 91, sass/_detailView.scss */
+/* line 90, sass/_detailView.scss */
 #detailView .property .property-icon.icon-spokenLanguages {
   background-image: url("../img/icon_43.svg");
 }
-/* line 92, sass/_detailView.scss */
+/* line 91, sass/_detailView.scss */
 #detailView .property .property-icon.icon-speakerPublic {
   background-image: url("../img/icon_41.svg");
 }
-/* line 95, sass/_detailView.scss */
+/* line 94, sass/_detailView.scss */
 #detailView .property .property-text {
   margin-left: calc(5% + 2.5em);
 }
-/* line 98, sass/_detailView.scss */
+/* line 97, sass/_detailView.scss */
 #detailView .property .property-text.ar, #detailView .property .property-text.ur, #detailView .property .property-text.fa {
   margin-right: calc(5% + 2.5em);
 }
-/* line 102, sass/_detailView.scss */
+/* line 101, sass/_detailView.scss */
 #detailView .property .property-text p {
   margin: 0;
   line-height: 1.3em;
 }
-/* line 106, sass/_detailView.scss */
+/* line 105, sass/_detailView.scss */
 #detailView .property .property-text p.property-name {
   color: #999999;
   font-size: 0.9em;
   padding-bottom: 0.3em;
   text-transform: uppercase;
 }
-/* line 114, sass/_detailView.scss */
+/* line 113, sass/_detailView.scss */
 #detailView .property .property-text a, #detailView .property .property-text #includeView .content-container .content span.locationLink, #includeView .content-container .content #detailView .property .property-text span.locationLink {
   width: 100%;
   display: inline-block;
@@ -2159,34 +2161,34 @@ body.phone #mapView #locate-btn {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-/* line 123, sass/_detailView.scss */
+/* line 122, sass/_detailView.scss */
 #detailView .property .multiselect-value {
   display: inline-block;
   margin: 0 .5em .5em 0;
   background-color: white;
 }
-/* line 129, sass/_detailView.scss */
+/* line 128, sass/_detailView.scss */
 #detailView .property.category .property-name {
   font-size: 1em !important;
   padding: 0 !important;
   color: #333333 !important;
   text-transform: none !important;
 }
-/* line 141, sass/_detailView.scss */
+/* line 140, sass/_detailView.scss */
 #detailView.type-3 .property.category .property-name {
   line-height: 2.6em !important;
 }
-/* line 142, sass/_detailView.scss */
+/* line 141, sass/_detailView.scss */
 #detailView.type-3 .property.category .property-value {
   display: none;
 }
 
-/* line 193, sass/_detailView.scss */
+/* line 192, sass/_detailView.scss */
 .tablet #detailViewMobile {
   width: 30%;
 }
 
-/* line 198, sass/_detailView.scss */
+/* line 197, sass/_detailView.scss */
 #detailViewMobile {
   -moz-transition: all 200ms;
   -o-transition: all 200ms;
@@ -2206,22 +2208,22 @@ body.phone #mapView #locate-btn {
   /* OTHER PROPERTIES */
   /* overwrite for POIs */
 }
-/* line 210, sass/_detailView.scss */
+/* line 209, sass/_detailView.scss */
 #detailViewMobile.active {
   bottom: 0;
 }
-/* line 214, sass/_detailView.scss */
+/* line 213, sass/_detailView.scss */
 #detailViewMobile.active-large {
   bottom: 0;
   height: 100%;
 }
-/* line 218, sass/_detailView.scss */
+/* line 217, sass/_detailView.scss */
 #detailViewMobile.active-large .heading h1 {
   overflow: inherit;
   text-overflow: inherit;
   white-space: inherit;
 }
-/* line 225, sass/_detailView.scss */
+/* line 224, sass/_detailView.scss */
 #detailViewMobile .scroll-container {
   height: calc(100% - 4em);
   overflow-y: auto;
@@ -2307,24 +2309,22 @@ body.phone #mapView #locate-btn {
 }
 /* line 42, sass/_detailView.scss */
 #detailViewMobile .image-container {
-  /*height: 10em;*/
+  max-height: 10em;
   text-align: center;
   overflow: hidden;
 }
 /* line 47, sass/_detailView.scss */
 #detailViewMobile .image-container img {
-  position: relative;
-  top: 50%;
-  transform: translateY(-50%);
+  width: 100%;
 }
-/* line 55, sass/_detailView.scss */
+/* line 53, sass/_detailView.scss */
 #detailViewMobile .property {
   display: none;
   padding: 0 5%;
   margin-top: 1em;
   min-height: 2em;
 }
-/* line 64, sass/_detailView.scss */
+/* line 62, sass/_detailView.scss */
 #detailViewMobile .property.category .property-icon {
   /* orga */
   /* market entry */
@@ -2547,12 +2547,12 @@ body.phone #mapView #locate-btn {
   -webkit-background-size: 50%;
   background-size: 50%;
 }
-/* line 69, sass/_detailView.scss */
+/* line 67, sass/_detailView.scss */
 #detailViewMobile .property.category .property-value {
   font-style: italic;
   color: #999999;
 }
-/* line 75, sass/_detailView.scss */
+/* line 73, sass/_detailView.scss */
 #detailViewMobile .property .property-icon {
   width: 2.5em;
   height: 2.5em;
@@ -2561,63 +2561,67 @@ body.phone #mapView #locate-btn {
   background-position: center 0.2em;
   /* property icons */
 }
-/* line 84, sass/_detailView.scss */
+/* line 82, sass/_detailView.scss */
+#detailViewMobile .property .property-icon.icon-times {
+  background-image: url("../img/icon_29.svg");
+}
+/* line 83, sass/_detailView.scss */
 #detailViewMobile .property .property-icon.icon-location {
   background-image: url("../img/icon_35.svg");
 }
-/* line 85, sass/_detailView.scss */
+/* line 84, sass/_detailView.scss */
 #detailViewMobile .property .property-icon.icon-phone {
   background-image: url("../img/icon_23.svg");
 }
-/* line 86, sass/_detailView.scss */
+/* line 85, sass/_detailView.scss */
 #detailViewMobile .property .property-icon.icon-mail {
   background-image: url("../img/icon_25.svg");
 }
-/* line 87, sass/_detailView.scss */
+/* line 86, sass/_detailView.scss */
 #detailViewMobile .property .property-icon.icon-web {
   background-image: url("../img/icon_27.svg");
 }
-/* line 88, sass/_detailView.scss */
+/* line 87, sass/_detailView.scss */
 #detailViewMobile .property .property-icon.icon-openingHours {
   background-image: url("../img/icon_29.svg");
 }
-/* line 89, sass/_detailView.scss */
+/* line 88, sass/_detailView.scss */
 #detailViewMobile .property .property-icon.icon-description {
   background-image: url("../img/icon_31.svg");
 }
-/* line 90, sass/_detailView.scss */
+/* line 89, sass/_detailView.scss */
 #detailViewMobile .property .property-icon.icon-facebook {
   background-image: url("../img/icon_45.svg");
 }
-/* line 91, sass/_detailView.scss */
+/* line 90, sass/_detailView.scss */
 #detailViewMobile .property .property-icon.icon-spokenLanguages {
   background-image: url("../img/icon_43.svg");
 }
-/* line 92, sass/_detailView.scss */
+/* line 91, sass/_detailView.scss */
 #detailViewMobile .property .property-icon.icon-speakerPublic {
   background-image: url("../img/icon_41.svg");
 }
-/* line 95, sass/_detailView.scss */
+/* line 94, sass/_detailView.scss */
 #detailViewMobile .property .property-text {
   margin-left: calc(5% + 2.5em);
 }
-/* line 98, sass/_detailView.scss */
+/* line 97, sass/_detailView.scss */
 #detailViewMobile .property .property-text.ar, #detailViewMobile .property .property-text.ur, #detailViewMobile .property .property-text.fa {
   margin-right: calc(5% + 2.5em);
 }
-/* line 102, sass/_detailView.scss */
+/* line 101, sass/_detailView.scss */
 #detailViewMobile .property .property-text p {
   margin: 0;
   line-height: 1.3em;
 }
-/* line 106, sass/_detailView.scss */
+/* line 105, sass/_detailView.scss */
 #detailViewMobile .property .property-text p.property-name {
   color: #999999;
   font-size: 0.9em;
   padding-bottom: 0.3em;
   text-transform: uppercase;
 }
-/* line 114, sass/_detailView.scss */
+/* line 113, sass/_detailView.scss */
 #detailViewMobile .property .property-text a, #detailViewMobile .property .property-text #includeView .content-container .content span.locationLink, #includeView .content-container .content #detailViewMobile .property .property-text span.locationLink {
   width: 100%;
   display: inline-block;
@@ -2625,28 +2629,28 @@ body.phone #mapView #locate-btn {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-/* line 123, sass/_detailView.scss */
+/* line 122, sass/_detailView.scss */
 #detailViewMobile .property .multiselect-value {
   display: inline-block;
   margin: 0 .5em .5em 0;
   background-color: white;
 }
-/* line 129, sass/_detailView.scss */
+/* line 128, sass/_detailView.scss */
 #detailViewMobile .property.category .property-name {
   font-size: 1em !important;
   padding: 0 !important;
   color: #333333 !important;
   text-transform: none !important;
 }
-/* line 141, sass/_detailView.scss */
+/* line 140, sass/_detailView.scss */
 #detailViewMobile.type-3 .property.category .property-name {
   line-height: 2.6em !important;
 }
-/* line 142, sass/_detailView.scss */
+/* line 141, sass/_detailView.scss */
 #detailViewMobile.type-3 .property.category .property-value {
   display: none;
 }
-/* line 233, sass/_detailView.scss */
+/* line 232, sass/_detailView.scss */
 #detailViewMobile .heading h1 {
   overflow: hidden;
   text-overflow: ellipsis;
@@ -4270,18 +4274,63 @@ body.phone #menuView .menu-btn {
   transform: rotate(45deg);
 }
 /* line 63, sass/_includeView.scss */
+#includeView .btn {
+  width: 3em;
+  height: 3em;
+  -moz-border-radius: 2em;
+  -webkit-border-radius: 2em;
+  border-radius: 2em;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -moz-transition: box-shadow 150ms;
+  -o-transition: box-shadow 150ms;
+  -webkit-transition: box-shadow 150ms;
+  transition: box-shadow 150ms;
+  -moz-box-shadow: 0px 0px 2px #000;
+  -webkit-box-shadow: 0px 0px 2px #000;
+  box-shadow: 0px 0px 2px #000;
+  -moz-background-size: 50%;
+  -o-background-size: 50%;
+  -webkit-background-size: 50%;
+  background-size: 50%;
+  background-position: center center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+/* line 58, sass/_afeefa-styles.scss */
+#includeView .btn:hover {
+  -moz-box-shadow: 0px 0px 5px #111;
+  -webkit-box-shadow: 0px 0px 5px #111;
+  box-shadow: 0px 0px 5px #111;
+}
+/* line 68, sass/_includeView.scss */
+#includeView .btn.plusBtn {
+  width: 1em;
+  height: 1em;
+  -moz-border-radius: 2em;
+  -webkit-border-radius: 2em;
+  border-radius: 2em;
+  background-image: url("../img/icon_34.svg");
+  -moz-background-size: 30%;
+  -o-background-size: 30%;
+  -webkit-background-size: 30%;
+  background-size: 30%;
+}
+/* line 77, sass/_includeView.scss */
 #includeView .content-container {
   display: -webkit-flex;
   display: flex;
   -webkit-flex-direction: column;
   flex-direction: column;
 }
-/* line 67, sass/_includeView.scss */
+/* line 81, sass/_includeView.scss */
 #includeView .content-container .header {
   background-color: #333333;
   padding: 0 3rem;
 }
-/* line 71, sass/_includeView.scss */
+/* line 85, sass/_includeView.scss */
 #includeView .content-container .header h1 {
   font-weight: 300;
   margin: 0;
@@ -4296,22 +4345,22 @@ body.phone #menuView .menu-btn {
   -webkit-transition: padding 500ms;
   transition: padding 500ms;
 }
-/* line 82, sass/_includeView.scss */
+/* line 96, sass/_includeView.scss */
 #includeView .content-container .header p.subheading {
   color: #f2f2f2;
   margin: 0;
   position: relative;
   top: -0.5em;
 }
-/* line 90, sass/_includeView.scss */
+/* line 104, sass/_includeView.scss */
 #includeView .content-container .header.min h1 {
   padding-top: 1rem;
 }
-/* line 92, sass/_includeView.scss */
+/* line 106, sass/_includeView.scss */
 #includeView .content-container .header.min p.subheading {
   display: none;
 }
-/* line 96, sass/_includeView.scss */
+/* line 110, sass/_includeView.scss */
 #includeView .content-container .content {
   -webkit-flex-grow: 1;
   flex-grow: 1;
@@ -4319,21 +4368,21 @@ body.phone #menuView .menu-btn {
   position: relative;
   line-height: 2em;
 }
-/* line 105, sass/_includeView.scss */
+/* line 119, sass/_includeView.scss */
 #includeView .content-container .content h2 {
   font-weight: 100;
   line-height: 1.3em;
   margin-top: 2em;
   text-transform: uppercase;
 }
-/* line 111, sass/_includeView.scss */
+/* line 125, sass/_includeView.scss */
 #includeView .content-container .content h2 a, #includeView .content-container .content h2 span.locationLink, #includeView .content-container .content h2 a:visited, #includeView .content-container .content h2 span.locationLink:visited, #includeView .content-container .content h2 a:active, #includeView .content-container .content h2 span.locationLink:active, #includeView .content-container .content h2 a:hover, #includeView .content-container .content h2 span.locationLink:hover {
   text-decoration: none;
   border: none;
   background: none;
   color: #333333;
 }
-/* line 119, sass/_includeView.scss */
+/* line 133, sass/_includeView.scss */
 #includeView .content-container .content h3 {
   font-size: 1.2em;
   font-weight: 100;
@@ -4341,33 +4390,33 @@ body.phone #menuView .menu-btn {
   margin-top: 1.5em;
   margin-bottom: 0.4em;
 }
-/* line 127, sass/_includeView.scss */
+/* line 141, sass/_includeView.scss */
 #includeView .content-container .content p {
   text-align: justify;
   font-weight: 300;
   line-height: 1.3em;
 }
-/* line 133, sass/_includeView.scss */
+/* line 147, sass/_includeView.scss */
 #includeView .content-container .content table {
   font-weight: 300;
 }
-/* line 136, sass/_includeView.scss */
+/* line 150, sass/_includeView.scss */
 #includeView .content-container .content table td {
   padding: .3em 0 .3em 1em;
 }
-/* line 138, sass/_includeView.scss */
+/* line 152, sass/_includeView.scss */
 #includeView .content-container .content table td:first-child {
   padding-left: 0em;
 }
-/* line 142, sass/_includeView.scss */
+/* line 156, sass/_includeView.scss */
 #includeView .content-container .content hr {
   border-color: #ccc;
 }
-/* line 146, sass/_includeView.scss */
+/* line 160, sass/_includeView.scss */
 #includeView .content-container .content .no-top-margin {
   margin-top: 0;
 }
-/* line 150, sass/_includeView.scss */
+/* line 164, sass/_includeView.scss */
 #includeView .content-container .content span.locationLink {
   display: inline-block;
   cursor: pointer;
@@ -4380,11 +4429,11 @@ body.phone #menuView .menu-btn {
   background-position: 0 2px;
   background-repeat: no-repeat;
 }
-/* line 161, sass/_includeView.scss */
+/* line 175, sass/_includeView.scss */
 #includeView .content-container .content span.locationLink:hover {
   background-image: url("../img/icon_36.svg");
 }
-/* line 167, sass/_includeView.scss */
+/* line 181, sass/_includeView.scss */
 #includeView .content-container .content p.figure-caption {
   margin-top: 0;
   padding: .3em;
@@ -4392,25 +4441,25 @@ body.phone #menuView .menu-btn {
   font-style: italic;
   font-size: .8em;
 }
-/* line 177, sass/_includeView.scss */
+/* line 191, sass/_includeView.scss */
 #includeView .float-right-in-text {
   float: right;
   padding: 1em 0 1em 1em;
 }
-/* line 182, sass/_includeView.scss */
+/* line 196, sass/_includeView.scss */
 #includeView .float-left-in-text {
   float: left;
   padding: 1em 1em 1em 0;
 }
-/* line 187, sass/_includeView.scss */
+/* line 201, sass/_includeView.scss */
 #includeView .chapters {
   margin-top: 2rem;
 }
-/* line 191, sass/_includeView.scss */
+/* line 205, sass/_includeView.scss */
 #includeView .chaptersReal {
   /*@include flex-shrink(0);*/
 }
-/* line 195, sass/_includeView.scss */
+/* line 209, sass/_includeView.scss */
 #includeView .entity-shape {
   /* orga */
   /* market entry */
@@ -4640,31 +4689,35 @@ body.phone #menuView .menu-btn {
   -webkit-background-size: 50%;
   background-size: 50%;
 }
-/* line 208, sass/_includeView.scss */
+/* line 222, sass/_includeView.scss */
 #includeView .entity-bunch {
   padding-left: 3.5em;
   min-height: 3em;
   background-size: 3em !important;
 }
-/* line 213, sass/_includeView.scss */
+/* line 227, sass/_includeView.scss */
 #includeView .entity-bunch.type-0 {
   background: url("../img/icon_96.svg") left center no-repeat;
 }
-/* line 216, sass/_includeView.scss */
+/* line 230, sass/_includeView.scss */
 #includeView .entity-bunch.type-1 {
   background: url("../img/icon_97.svg") left center no-repeat;
 }
-/* line 219, sass/_includeView.scss */
+/* line 233, sass/_includeView.scss */
 #includeView .entity-bunch.type-2 {
   background: url("../img/icon_98.svg") left center no-repeat;
 }
-
 /* line 236, sass/_includeView.scss */
+#includeView .entity-bunch.refugee-guide {
+  background: url("../img/icon_53.svg") left center no-repeat;
+}
+
+/* line 253, sass/_includeView.scss */
 body.tablet #includeView .content {
   overflow: scroll;
 }
 
-/* line 245, sass/_includeView.scss */
+/* line 262, sass/_includeView.scss */
 body.mobile #includeView {
   width: 100%;
   height: 100%;
@@ -4673,37 +4726,37 @@ body.mobile #includeView {
   left: 0;
   top: 0;
 }
-/* line 253, sass/_includeView.scss */
+/* line 270, sass/_includeView.scss */
 body.mobile #includeView.min {
   /*.header { cursor: pointer; }*/
   height: 1em;
 }
-/* line 256, sass/_includeView.scss */
+/* line 273, sass/_includeView.scss */
 body.mobile #includeView.min h1 {
   padding-top: 1rem !important;
   cursor: pointer;
 }
-/* line 257, sass/_includeView.scss */
+/* line 274, sass/_includeView.scss */
 body.mobile #includeView.min p.subheading {
   display: none;
 }
-/* line 258, sass/_includeView.scss */
+/* line 275, sass/_includeView.scss */
 body.mobile #includeView.min .content {
   display: none;
 }
-/* line 259, sass/_includeView.scss */
+/* line 276, sass/_includeView.scss */
 body.mobile #includeView.min .closeBtn {
   display: none;
 }
-/* line 263, sass/_includeView.scss */
+/* line 280, sass/_includeView.scss */
 body.mobile #includeView .header h1 {
   padding-top: 1rem !important;
 }
-/* line 264, sass/_includeView.scss */
+/* line 281, sass/_includeView.scss */
 body.mobile #includeView .header p.subheading {
   display: none !important;
 }
-/* line 266, sass/_includeView.scss */
+/* line 283, sass/_includeView.scss */
 body.mobile #includeView .content {
   overflow: scroll;
 }

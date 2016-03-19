@@ -48,6 +48,7 @@ qx.Class.define("FormView", {
 						supportWanted: {name: 'supportWanted', type: 'checkbox', intoOwner: true},
 						phone: {name: 'phone', type: 'tel', intoOwner: true},
 						spokenLanguages: {name: 'spokenLanguages', type: 'multiselect', values: APP.getConfig().languages, intoOwner: true},
+						placename: {name: 'placename', type: 'text', intoLocation: true},
 						street: {name: 'street', type: 'text', intoLocation: true},
 						zip: {name: 'zip', type: 'text', intoLocation: true},
 						city: {name: 'city', type: 'text', intoLocation: true}
@@ -67,11 +68,14 @@ qx.Class.define("FormView", {
 						supportWanted: {name: 'supportWanted', type: 'checkbox', intoOwner: true},
 						phone: {name: 'phone', type: 'tel', intoOwner: true},
 						spokenLanguages: {name: 'spokenLanguages', type: 'multiselect', values: APP.getConfig().languages, intoOwner: true},
+						placename: {name: 'placename', type: 'text', intoLocation: true},
 						street: {name: 'street', type: 'text', intoLocation: true},
 						zip: {name: 'zip', type: 'text', intoLocation: true},
 						city: {name: 'city', type: 'text', intoLocation: true},
-						dateFrom: {name: 'dateFrom', type: 'datetime-local', intoOwner: true},
-						dateTo: {name: 'dateTo', type: 'datetime-local', intoOwner: true},
+						dateFrom: {name: 'dateFrom', type: 'date', intoOwner: true},
+						dateTo: {name: 'dateTo', type: 'date', intoOwner: true},
+						timeFrom: {name: 'timeFrom', type: 'time', intoOwner: true},
+						timeTo: {name: 'timeTo', type: 'time', intoOwner: true},
 						datePeriodic: {name: 'datePeriodic', type: 'select', intoOwner: true, values: [ [0, 'daily'], [1, 'weekly'], [2, 'secondWeekly'], [3, 'monthly'] ] }
 					},
 				event:
@@ -88,11 +92,14 @@ qx.Class.define("FormView", {
 						supportWanted: {name: 'supportWanted', type: 'checkbox', intoOwner: true},
 						phone: {name: 'phone', type: 'tel', intoOwner: true},
 						spokenLanguages: {name: 'spokenLanguages', type: 'multiselect', values: APP.getConfig().languages, intoOwner: true},
+						placename: {name: 'placename', type: 'text', intoLocation: true},
 						street: {name: 'street', type: 'text', intoLocation: true},
 						zip: {name: 'zip', type: 'text', intoLocation: true},
 						city: {name: 'city', type: 'text', intoLocation: true},
-						dateFrom: {name: 'dateFrom', type: 'datetime-local', intoOwner: true},
-						dateTo: {name: 'dateTo', type: 'datetime-local', intoOwner: true},
+						dateFrom: {name: 'dateFrom', type: 'date', intoOwner: true},
+						dateTo: {name: 'dateTo', type: 'date', intoOwner: true},
+						timeFrom: {name: 'timeFrom', type: 'time', intoOwner: true},
+						timeTo: {name: 'timeTo', type: 'time', intoOwner: true},
 						datePeriodic: {name: 'datePeriodic', type: 'select', intoOwner: true, values: [ [0, 'daily'], [1, 'weekly'], [2, 'secondWeekly'], [3, 'monthly'] ] }
 					},
 				feedback:
@@ -168,7 +175,16 @@ qx.Class.define("FormView", {
 			// 		.attr('name', property.name)
 			// 		.pickadate();
 			// }
-			if( _.contains( that.getHtml5InputTypes() , property.type ) ){
+			if( _.contains(['date', 'time'], property.type) ){
+				inputEl = $("<input />")
+					.attr('type', 'text')
+					.attr('name', property.name)
+					.click(function(){
+						if( $(this).attr('type') == 'text' )
+							$(this).attr('type', property.type);
+					});
+			}
+			else if( _.contains( that.getHtml5InputTypes() , property.type ) ){
 				inputEl = $("<input />")
 					.attr('type', property.type)
 					.attr('name', property.name);
@@ -332,6 +348,9 @@ qx.Class.define("FormView", {
 			buttonContainer.append(addLocationBtn);
 			locationContainer.append(buttonContainer);
 
+			var placenameEl = that.createInput(properties.placename, type);
+			locationContainer.append(placenameEl);
+
 			var streetEl = that.createInput(properties.street, type);
 			locationContainer.append(streetEl);
 
@@ -403,6 +422,12 @@ qx.Class.define("FormView", {
 			var dateToEl = that.createInput(properties.dateTo, type);
 			form.append(dateToEl);
 
+			var timeFromEl = that.createInput(properties.timeFrom, type);
+			form.append(timeFromEl);
+
+			var timeToEl = that.createInput(properties.timeTo, type);
+			form.append(timeToEl);
+
 			var datePeriodicEl = that.createInput(properties.datePeriodic, type);
 			form.append(datePeriodicEl);
 
@@ -425,6 +450,9 @@ qx.Class.define("FormView", {
 			var addLocationBtn = that.createLocationButton( locationContainer );
 			buttonContainer.append(addLocationBtn);
 			locationContainer.append(buttonContainer);
+
+			var placenameEl = that.createInput(properties.placename, type);
+			locationContainer.append(placenameEl);
 
 			var streetEl = that.createInput(properties.street, type);
 			locationContainer.append(streetEl);
@@ -494,6 +522,12 @@ qx.Class.define("FormView", {
 			var dateToEl = that.createInput(properties.dateTo, type);
 			form.append(dateToEl);
 
+			var timeFromEl = that.createInput(properties.timeFrom, type);
+			form.append(timeFromEl);
+
+			var timeToEl = that.createInput(properties.timeTo, type);
+			form.append(timeToEl);
+
 			var datePeriodicEl = that.createInput(properties.datePeriodic, type);
 			form.append(datePeriodicEl);
 
@@ -517,6 +551,9 @@ qx.Class.define("FormView", {
 			buttonContainer.append(addLocationBtn);
 			locationContainer.append(buttonContainer);
 
+			var placenameEl = that.createInput(properties.placename, type);
+			locationContainer.append(placenameEl);
+			
 			var streetEl = that.createInput(properties.street, type);
 			locationContainer.append(streetEl);
 
@@ -628,13 +665,13 @@ qx.Class.define("FormView", {
 			_.each( that.getProperties()[type], function(property){
 				// set placeholder value
 				that.forms[type].fields[property.name]
-					.attr('placeholder', that.getWording('prop_' + property.name) );
+					.attr('placeholder', that.getWording('form_placeholder_' + property.name) );
 
 				// set label value if a lable exists
 				if( that.forms[type].fields[property.name + '_label'] )
 					that.forms[type].fields[property.name + '_label']
 						.empty()
-						.append(that.getWording('prop_' + property.name) );
+						.append(that.getWording('form_placeholder_' + property.name) );
 
 				// options in select + multiselect inputs
 				if( property.type == 'select' ){
@@ -760,13 +797,13 @@ qx.Class.define("FormView", {
 					if( value === '' ) value = null;
 					
 					// may handle special types
-					if( value && (property.type == 'datetime' || property.type == 'datetime-local') ){
-						// convert to sql datetime
-						var d = new Date( value );
-						// value = d.toISOString().slice(0, 19).replace('T', ' ');
-						value = d.toISOString().slice(0, 19) + '+0200';
-					}
-					else if( property.type == 'checkbox' || property.type == 'switch' ){
+					// if( value && (property.type == 'datetime' || property.type == 'datetime-local') ){
+					// 	// convert to sql datetime
+					// 	var d = new Date( value );
+					// 	// value = d.toISOString().slice(0, 19).replace('T', ' ');
+					// 	value = d.toISOString().slice(0, 19) + '+0200';
+					// }
+					if( property.type == 'checkbox' || property.type == 'switch' ){
 						value = that.forms[type].fields[property.name].prop('checked');
 					}
 					else if( property.type == 'multiselect' && value ){

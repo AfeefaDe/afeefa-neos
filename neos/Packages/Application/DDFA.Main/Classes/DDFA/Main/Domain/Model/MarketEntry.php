@@ -22,28 +22,28 @@ class MarketEntry extends Actor
     protected $offer;
 
     /**
-     * @var \DateTime
-     * @ORM\Column(type="datetime", nullable=true)
+     * @var string
+     * @ORM\Column(nullable=true)
      */
     protected $dateFrom;
 
     /**
-     * @var \DateTime
-     * @ORM\Column(type="datetime", nullable=true)
+     * @var string
+     * @ORM\Column(nullable=true)
      */
     protected $dateTo;
 
     /**
-     * @var int
+     * @var string
      * @ORM\Column(nullable=true)
      */
-    protected $dateDay;
+    protected $timeFrom;
 
     /**
-     * @var int
+     * @var string
      * @ORM\Column(nullable=true)
      */
-    protected $datePeriodic;
+    protected $timeTo;
 
     /**
      * @var \Doctrine\Common\Collections\Collection<\DDFA\Main\Domain\Model\Location>
@@ -118,70 +118,6 @@ class MarketEntry extends Actor
     }
 
     /**
-     * @return \DateTime
-     */
-    public function getDateFrom()
-    {
-        return $this->dateFrom;
-    }
-
-    /**
-     * @param \DateTime $dateFrom
-     */
-    public function setDateFrom($dateFrom)
-    {
-        $this->dateFrom = $dateFrom;
-    }
-
-    /**
-     * @return \DateTime
-     */
-    public function getDateTo()
-    {
-        return $this->dateTo;
-    }
-
-    /**
-     * @param \DateTime $dateTo
-     */
-    public function setDateTo($dateTo)
-    {
-        $this->dateTo = $dateTo;
-    }
-
-    /**
-     * @return int
-     */
-    public function getDateDay()
-    {
-        return $this->dateDay;
-    }
-
-    /**
-     * @param int $dateDay
-     */
-    public function setDateDay($dateDay)
-    {
-        $this->dateDay = $dateDay;
-    }
-
-    /**
-     * @return int
-     */
-    public function getDatePeriodic()
-    {
-        return $this->datePeriodic;
-    }
-
-    /**
-     * @param int $datePeriodic
-     */
-    public function setDatePeriodic($datePeriodic)
-    {
-        $this->datePeriodic = $datePeriodic;
-    }
-
-    /**
      * @return string
      */
     public function getArea()
@@ -195,5 +131,69 @@ class MarketEntry extends Actor
     public function setArea($area)
     {
         $this->area = $area;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDateFrom()
+    {
+        return $this->dateFrom;
+    }
+
+    /**
+     * @param string $dateFrom
+     */
+    public function setDateFrom($dateFrom)
+    {
+        $this->dateFrom = $dateFrom;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDateTo()
+    {
+        return $this->dateTo;
+    }
+
+    /**
+     * @param string $dateTo
+     */
+    public function setDateTo($dateTo)
+    {
+        $this->dateTo = $dateTo;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTimeFrom()
+    {
+        return $this->timeFrom;
+    }
+
+    /**
+     * @param string $timeFrom
+     */
+    public function setTimeFrom($timeFrom)
+    {
+        $this->timeFrom = $timeFrom;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTimeTo()
+    {
+        return $this->timeTo;
+    }
+
+    /**
+     * @param string $timeTo
+     */
+    public function setTimeTo($timeTo)
+    {
+        $this->timeTo = $timeTo;
     }
 }

@@ -10,6 +10,7 @@ use DDFA\Main\Domain\Model\Actor;
 use DDFA\Main\Utility\DDConst;
 use ReflectionObject;
 use TYPO3\Flow\Annotations as Flow;
+use TYPO3\Flow\Log\Logger;
 use TYPO3\Flow\Persistence\QueryInterface;
 use TYPO3\Flow\Persistence\Repository;
 use TYPO3\Flow\Resource\ResourceManager;
@@ -167,7 +168,7 @@ abstract class AbstractTranslationRepository extends Repository
         $all = $this->findByLocale(DDConst::LOCALE_STD);
         $result = array();
         foreach ($all as $o) {
-            if(!$onlyPublished || $o->getPublished())
+            if (!$onlyPublished || $o->getPublished())
                 array_push($result, $this->hydrate($o, $locale));
         }
         return $result;
@@ -292,7 +293,7 @@ abstract class AbstractTranslationRepository extends Repository
                 $property->setAccessible(true);
 
                 $value = $property->getValue($object);
-                if ($value == NULL || $value == "") {
+                if ($value == null || $value == "") {
                     array_push($props, $property->getName());
                 }
             }

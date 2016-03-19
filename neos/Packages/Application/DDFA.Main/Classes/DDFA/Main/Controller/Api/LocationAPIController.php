@@ -42,7 +42,7 @@ class LocationAPIController extends ActionController {
      * @param string $locale
      */
     public function showAction(Location $location, $locale = 'de') {
-        $location = $this->iniLocationRepository->findOneLocalized($location, $locale);
+        $location = $this->iniLocationRepository->findOneSupplemented($location, $locale, true);
         $this->view->assign('value', ['location' => $location]);
     }
 

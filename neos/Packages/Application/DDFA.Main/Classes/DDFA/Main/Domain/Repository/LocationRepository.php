@@ -246,6 +246,7 @@ class LocationRepository extends AbstractTranslationRepository
             $sourceReflection = new ReflectionObject($location);
 
             foreach ($sourceReflection->getProperties() as $property) {
+
                 if (in_array($property->getName(), $emptyParams)) {
                     $property->setAccessible(true);
 

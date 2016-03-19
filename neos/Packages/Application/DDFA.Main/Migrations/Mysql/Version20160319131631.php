@@ -32,10 +32,6 @@ class Version20160319131631 extends AbstractMigration {
 		$this->addSql("ALTER TABLE ddfa_main_domain_model_tag CHANGE persistence_object_identifier persistence_object_identifier VARCHAR(40) NOT NULL");
 		$this->addSql("ALTER TABLE ddfa_main_domain_model_targetgroup CHANGE persistence_object_identifier persistence_object_identifier VARCHAR(40) NOT NULL");
 		$this->addSql("ALTER TABLE ddfa_main_domain_model_location ADD placename VARCHAR(255) DEFAULT NULL, CHANGE persistence_object_identifier persistence_object_identifier VARCHAR(40) NOT NULL, CHANGE initiative_id initiative_id VARCHAR(255) DEFAULT NULL, CHANGE market_entry_id market_entry_id VARCHAR(255) DEFAULT NULL, CHANGE event_id event_id VARCHAR(255) DEFAULT NULL, CHANGE category_id category_id VARCHAR(255) DEFAULT NULL");
-		$this->addSql("ALTER TABLE ddfa_main_domain_model_location ADD CONSTRAINT FK_942C6305AB7D9771 FOREIGN KEY (initiative_id) REFERENCES ddfa_main_domain_model_initiative (persistence_object_identifier)");
-		$this->addSql("ALTER TABLE ddfa_main_domain_model_location ADD CONSTRAINT FK_942C630557875C8A FOREIGN KEY (market_entry_id) REFERENCES ddfa_main_domain_model_marketentry (persistence_object_identifier)");
-		$this->addSql("ALTER TABLE ddfa_main_domain_model_location ADD CONSTRAINT FK_942C630571F7E88B FOREIGN KEY (event_id) REFERENCES ddfa_main_domain_model_event (persistence_object_identifier)");
-		$this->addSql("ALTER TABLE ddfa_main_domain_model_location ADD CONSTRAINT FK_942C630512469DE2 FOREIGN KEY (category_id) REFERENCES ddfa_main_domain_model_category (persistence_object_identifier)");
 		$this->addSql("ALTER TABLE ddfa_main_domain_model_location_tags_join CHANGE main_actor main_actor VARCHAR(255) NOT NULL, CHANGE main_tag main_tag VARCHAR(255) NOT NULL");
 		$this->addSql("ALTER TABLE ddfa_main_domain_model_location_targetgroups_join CHANGE main_actor main_actor VARCHAR(255) NOT NULL, CHANGE main_targetgroup main_targetgroup VARCHAR(255) NOT NULL");
 	}
@@ -57,10 +53,6 @@ class Version20160319131631 extends AbstractMigration {
 		$this->addSql("ALTER TABLE ddfa_main_domain_model_initiative_tags_join CHANGE main_actor main_actor VARCHAR(255) NOT NULL, CHANGE main_tag main_tag VARCHAR(255) NOT NULL");
 		$this->addSql("ALTER TABLE ddfa_main_domain_model_initiative_targetgroups_join CHANGE main_actor main_actor VARCHAR(255) NOT NULL, CHANGE main_targetgroup main_targetgroup VARCHAR(255) NOT NULL");
 		$this->addSql("ALTER TABLE ddfa_main_domain_model_language CHANGE persistence_object_identifier persistence_object_identifier VARCHAR(40) NOT NULL");
-		$this->addSql("ALTER TABLE ddfa_main_domain_model_location DROP FOREIGN KEY FK_942C6305AB7D9771");
-		$this->addSql("ALTER TABLE ddfa_main_domain_model_location DROP FOREIGN KEY FK_942C630557875C8A");
-		$this->addSql("ALTER TABLE ddfa_main_domain_model_location DROP FOREIGN KEY FK_942C630571F7E88B");
-		$this->addSql("ALTER TABLE ddfa_main_domain_model_location DROP FOREIGN KEY FK_942C630512469DE2");
 		$this->addSql("ALTER TABLE ddfa_main_domain_model_location DROP placename, CHANGE persistence_object_identifier persistence_object_identifier VARCHAR(40) NOT NULL, CHANGE initiative_id initiative_id VARCHAR(255) DEFAULT NULL, CHANGE market_entry_id market_entry_id VARCHAR(255) DEFAULT NULL, CHANGE event_id event_id VARCHAR(255) DEFAULT NULL, CHANGE category_id category_id VARCHAR(255) DEFAULT NULL");
 		$this->addSql("ALTER TABLE ddfa_main_domain_model_location_tags_join CHANGE main_actor main_actor VARCHAR(255) NOT NULL, CHANGE main_tag main_tag VARCHAR(255) NOT NULL");
 		$this->addSql("ALTER TABLE ddfa_main_domain_model_location_targetgroups_join CHANGE main_actor main_actor VARCHAR(255) NOT NULL, CHANGE main_targetgroup main_targetgroup VARCHAR(255) NOT NULL");

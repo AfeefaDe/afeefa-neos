@@ -58,6 +58,12 @@ class Location extends Actor
 
     /**
      * @var string
+     * @ORM\Column(nullable=true)
+     */
+    protected $placename;
+
+    /**
+     * @var string
      * @ORM\Column(nullable=true,type="text")
      */
     protected $openingHours;
@@ -315,5 +321,21 @@ class Location extends Actor
     public function setArrival($arrival)
     {
         $this->arrival = $arrival;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPlacename()
+    {
+        return $this->placename;
+    }
+
+    /**
+     * @param string $placename
+     */
+    public function setPlacename($placename)
+    {
+        $this->placename = $placename;
     }
 }

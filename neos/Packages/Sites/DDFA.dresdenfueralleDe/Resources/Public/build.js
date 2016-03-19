@@ -72,7 +72,8 @@
     paths: {
         modernizr: '../../H5BP/js/vendor/modernizr-2.8.3.min',
         domReady: '../../requirejs/domReady',
-        jquery: 'empty:',
+        jquery: '../../jquery/jquery-2.2.2.min',
+        // jquery: 'empty:',
         perfectScrollbarJQuery: 'empty:',
         chosenJQuery: '../../chosen/chosen.jquery.min',
         restive: '../../restive/restive.min',

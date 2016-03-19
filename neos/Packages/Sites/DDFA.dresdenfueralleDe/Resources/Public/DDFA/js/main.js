@@ -5,8 +5,8 @@ require.config({
     paths: {
         modernizr: '../../H5BP/js/vendor/modernizr-2.8.3.min',
         domReady: '../../requirejs/domReady',
-        // jquery: '../../jquery/jquery-2.1.3',
-        jquery: 'https://code.jquery.com/jquery-2.2.2.min',
+        jquery: '../../jquery/jquery-2.2.2.min',
+        // jquery: 'https://code.jquery.com/jquery-2.2.2.min',
         perfectScrollbarJQuery: 'https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/0.6.7/js/min/perfect-scrollbar.jquery.min',
         chosenJQuery: '../../chosen/chosen.jquery.min',
         // datepickercore: '../../pickadatejs/picker',

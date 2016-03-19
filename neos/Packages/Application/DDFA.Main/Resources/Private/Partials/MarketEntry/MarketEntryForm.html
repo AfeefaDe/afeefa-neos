@@ -20,14 +20,25 @@
     </div>
 
     <div class="neos-control-group">
-        <label for="published">Published</label>
         <label for="published" class="neos-checkbox neos-inline">
             <f:form.checkbox property="published" id="published" value="published"/>
-            yes/no<span></span>
+            published<span></span>
         </label>
     </div>
 
     <hr/>
+
+    <div>
+        <label for="forChildren" class="neos-checkbox neos-inline">
+            <f:form.checkbox property="forChildren" id="forChildren" value="forChildren"/>
+            forChildren<span></span>
+        </label>
+        <label for="supportWanted" class="neos-checkbox neos-inline">
+            <f:form.checkbox property="supportWanted" id="supportWanted" value="supportWanted"/>
+            support wanted<span></span>
+        </label>
+    </div>
+
 
     <div class="neos-control-group">
         <label class="neos-control-label">Offer or demand</label>
@@ -89,28 +100,6 @@
     </div>
     !-->
 
-    <div class="neos-control-group">
-        <label class="neos-control-label">Media</label>
-
-        <div class="neos-controls">
-            <label for="typeImage" class="neos-radio neos-inline">
-                <f:form.radio property="imageType" value="image" id="typeImage"/>
-                Image<span></span>
-            </label>
-            <label for="typeYouTube" class="neos-radio neos-inline">
-                <f:form.radio property="imageType" value="youtube" checked="true" id="typeYouTube"/>
-                YouTube<span></span>
-            </label>
-        </div>
-    </div>
-
-    <div class="neos-control-group">
-        <!-- <label class="neos-control-label" for="image">Image/ Video</label> -->
-
-        <div class="neos-controls">
-            <f:form.textfield class="neos-span12" property="image" id="image" placeholder="Enter URL"/>
-        </div>
-    </div>
 
     <div class="neos-control-group">
         <label class="neos-control-label" for="description">Description</label>
@@ -139,21 +128,6 @@
                               value="3"/>
         </div>
     </div>-->
-
-    <div class="neos-control-group">
-        <!-- <label for="forChildren">for children</label> -->
-        <label for="forChildren" class="neos-checkbox neos-inline">
-            <f:form.checkbox property="forChildren" id="forChildren" value="forChildren"/>
-            forChildren<span></span>
-        </label>
-    </div>
-
-    <div class="neos-control-group">
-        <label for="supportWanted" class="neos-checkbox neos-inline">
-            <f:form.checkbox property="supportWanted" id="supportWanted" value="supportWanted"/>
-            support wanted<span></span>
-        </label>
-    </div>
 
 </fieldset>
 
@@ -212,6 +186,37 @@
                               placeholder="Enter public speaker"/>
         </div>
     </div>
+</fieldset>
+
+<fieldset class="neos-span3 neos-offset1">
+    <legend>Media</legend>
+    <div class="neos-control-group">
+        <label class="neos-control-label">Media type</label>
+
+        <div class="neos-controls">
+            <label for="typeNone" class="neos-radio neos-inline">
+                <f:form.radio property="imageType" value="" id="typeNone" checked="true"/>
+                No media<span></span>
+            </label>
+            <label for="typeImage" class="neos-radio neos-inline">
+                <f:form.radio property="imageType" value="image" id="typeImage"/>
+                Image<span></span>
+            </label>
+            <label for="typeYouTube" class="neos-radio neos-inline">
+                <f:form.radio property="imageType" value="youtube" id="typeYouTube"/>
+                YouTube<span></span>
+            </label>
+        </div>
+    </div>
+
+    <div class="neos-control-group">
+        <label class="neos-control-label" for="image">Media URL</label>
+
+        <div class="neos-controls">
+            <f:form.textfield class="neos-span12" property="image" id="image" placeholder="Enter URL"/>
+        </div>
+    </div>
+
 </fieldset>
 
 <fieldset class="neos-span3 neos-offset1">

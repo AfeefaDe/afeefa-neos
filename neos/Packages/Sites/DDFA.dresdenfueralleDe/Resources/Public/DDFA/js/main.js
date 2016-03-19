@@ -5,7 +5,8 @@ require.config({
     paths: {
         modernizr: '../../H5BP/js/vendor/modernizr-2.8.3.min',
         domReady: '../../requirejs/domReady',
-        jquery: '../../jquery/jquery-2.1.3',
+        // jquery: '../../jquery/jquery-2.1.3',
+        jquery: 'https://code.jquery.com/jquery-2.2.2.min',
         perfectScrollbarJQuery: 'https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/0.6.7/js/min/perfect-scrollbar.jquery.min',
         chosenJQuery: '../../chosen/chosen.jquery.min',
         // datepickercore: '../../pickadatejs/picker',
@@ -14,14 +15,14 @@ require.config({
         restive: '../../restive/restive.min',
         qx: '../../qooxdoo/qx-oo-4.1.min',
         underscore: '../../underscore/underscore-min',
-        leaflet: '../../leaflet/leaflet',
-        leafletCluster: 'https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/leaflet.markercluster',
+        // leaflet: '../../leaflet/leaflet',
+        // leafletCluster: 'https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/leaflet.markercluster',
         hammer: '../../hammerjs/hammer.min',
-        cartodb: 'http://libs.cartocdn.com/cartodb.js/v3/3.12/cartodb',
-        // bootstrap: 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min',
-        bootstrap: '../../bootstrap/js/bootstrap.min',
-        mapbox: 'https://api.tiles.mapbox.com/mapbox.js/v2.1.9/mapbox',
-        d3: 'http://d3js.org/d3.v3.min'
+        // cartodb: 'http://libs.cartocdn.com/cartodb.js/v3/3.12/cartodb',
+        bootstrap: 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min',
+        // bootstrap: '../../bootstrap/js/bootstrap.min',
+        // mapbox: 'https://api.tiles.mapbox.com/mapbox.js/v2.1.9/mapbox',
+        // d3: 'http://d3js.org/d3.v3.min'
     },
 
     waitSeconds: 0	// disable "Load timeout for modules" error

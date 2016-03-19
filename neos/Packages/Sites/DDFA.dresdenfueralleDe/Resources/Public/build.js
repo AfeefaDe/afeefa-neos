@@ -72,19 +72,19 @@
     paths: {
         modernizr: '../../H5BP/js/vendor/modernizr-2.8.3.min',
         domReady: '../../requirejs/domReady',
-        jquery: '../../jquery/jquery-2.1.3',
+        jquery: 'empty:',
         perfectScrollbarJQuery: 'empty:',
         chosenJQuery: '../../chosen/chosen.jquery.min',
         restive: '../../restive/restive.min',
         qx: '../../qooxdoo/qx-oo-4.1.min',
         underscore: '../../underscore/underscore-min',
-        leaflet: '../../leaflet/leaflet',
-        leafletCluster: 'empty:',
+        // leaflet: '../../leaflet/leaflet',
+        // leafletCluster: 'empty:',
         hammer: '../../hammerjs/hammer.min',
-        cartodb: 'empty:',
+        // cartodb: 'empty:',
         bootstrap: 'empty:',
-        mapbox: 'empty:',
-        d3: 'empty:'
+        // mapbox: 'empty:',
+        // d3: 'empty:'
     },
 
     //Sets up a map of module IDs to other module IDs. For more details, see

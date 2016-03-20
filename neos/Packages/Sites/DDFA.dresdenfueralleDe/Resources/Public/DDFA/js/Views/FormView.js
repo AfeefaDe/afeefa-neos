@@ -36,7 +36,7 @@ qx.Class.define("FormView", {
 			{
 				initiative:
 					{
-						name: {name: 'name', type: 'text', intoOwner: true, intoLocation: true},
+						name: {name: 'name', type: 'text', intoOwner: true},
 						category: {name: 'category', type: 'select', values: mainCategories, intoOwner: true },
 						subCategory: {name: 'subCategory', type: 'select', values: APP.getConfig().categories[0].sub, intoOwner: true },
 						speakerPublic: {name: 'speakerPublic', type: 'text', intoOwner: true},
@@ -56,7 +56,7 @@ qx.Class.define("FormView", {
 				marketentry:
 					{
 						offer: {name: 'offer', type: 'switch', intoOwner: true, values: [ [true, 'offer'], [false, 'request'] ]},
-						name: {name: 'name', type: 'text', intoOwner: true, intoLocation: true},
+						name: {name: 'name', type: 'text', intoOwner: true},
 						category: {name: 'category', type: 'select', values: mainCategories, intoOwner: true },
 						subCategory: {name: 'subCategory', type: 'select', values: APP.getConfig().categories[0].sub, intoOwner: true },
 						speakerPublic: {name: 'speakerPublic', type: 'text', intoOwner: true},
@@ -75,12 +75,11 @@ qx.Class.define("FormView", {
 						dateFrom: {name: 'dateFrom', type: 'date', intoOwner: true},
 						dateTo: {name: 'dateTo', type: 'date', intoOwner: true},
 						timeFrom: {name: 'timeFrom', type: 'time', intoOwner: true},
-						timeTo: {name: 'timeTo', type: 'time', intoOwner: true},
-						datePeriodic: {name: 'datePeriodic', type: 'select', intoOwner: true, values: [ [0, 'daily'], [1, 'weekly'], [2, 'secondWeekly'], [3, 'monthly'] ] }
+						timeTo: {name: 'timeTo', type: 'time', intoOwner: true}
 					},
 				event:
 					{
-						name: {name: 'name', type: 'text', intoOwner: true, intoLocation: true},
+						name: {name: 'name', type: 'text', intoOwner: true},
 						category: {name: 'category', type: 'select', values: mainCategories, intoOwner: true },
 						subCategory: {name: 'subCategory', type: 'select', values: APP.getConfig().categories[0].sub, intoOwner: true },
 						speakerPublic: {name: 'speakerPublic', type: 'text', intoOwner: true},
@@ -99,8 +98,7 @@ qx.Class.define("FormView", {
 						dateFrom: {name: 'dateFrom', type: 'date', intoOwner: true},
 						dateTo: {name: 'dateTo', type: 'date', intoOwner: true},
 						timeFrom: {name: 'timeFrom', type: 'time', intoOwner: true},
-						timeTo: {name: 'timeTo', type: 'time', intoOwner: true},
-						datePeriodic: {name: 'datePeriodic', type: 'select', intoOwner: true, values: [ [0, 'daily'], [1, 'weekly'], [2, 'secondWeekly'], [3, 'monthly'] ] }
+						timeTo: {name: 'timeTo', type: 'time', intoOwner: true}
 					},
 				feedback:
 					{
@@ -419,17 +417,14 @@ qx.Class.define("FormView", {
 			var dateFromEl = that.createInput(properties.dateFrom, type);
 			form.append(dateFromEl);
 
-			var dateToEl = that.createInput(properties.dateTo, type);
-			form.append(dateToEl);
-
 			var timeFromEl = that.createInput(properties.timeFrom, type);
 			form.append(timeFromEl);
 
+			var dateToEl = that.createInput(properties.dateTo, type);
+			form.append(dateToEl);
+
 			var timeToEl = that.createInput(properties.timeTo, type);
 			form.append(timeToEl);
-
-			var datePeriodicEl = that.createInput(properties.datePeriodic, type);
-			form.append(datePeriodicEl);
 
 			var descEl = that.createInput(properties.description, type);
 			form.append(descEl);
@@ -519,17 +514,14 @@ qx.Class.define("FormView", {
 			var dateFromEl = that.createInput(properties.dateFrom, type);
 			form.append(dateFromEl);
 
-			var dateToEl = that.createInput(properties.dateTo, type);
-			form.append(dateToEl);
-
 			var timeFromEl = that.createInput(properties.timeFrom, type);
 			form.append(timeFromEl);
 
+			var dateToEl = that.createInput(properties.dateTo, type);
+			form.append(dateToEl);
+
 			var timeToEl = that.createInput(properties.timeTo, type);
 			form.append(timeToEl);
-
-			var datePeriodicEl = that.createInput(properties.datePeriodic, type);
-			form.append(datePeriodicEl);
 
 			var descEl = that.createInput(properties.description, type);
 			form.append(descEl);

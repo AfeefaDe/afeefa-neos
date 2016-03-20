@@ -47,7 +47,7 @@ class LocationAPIController extends ActionController {
     }
 
     public function createAction(Location $location) {
-        if($location->getType()==1) {
+        if( $location->getType()==0 || $location->getType()==1 || $location->getType()==2 ) {
             $this->iniLocationRepository->add($location);
             $this->response->setStatus(201);
             $this->view->assign('value', ['location' => $location]);

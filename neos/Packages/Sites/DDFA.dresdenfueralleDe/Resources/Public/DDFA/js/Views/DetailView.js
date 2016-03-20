@@ -195,7 +195,7 @@ qx.Class.define("DetailView", {
 					var dateObj = new Date(timeValue);
 					var formattedString = '';
 					if( record.locale == 'de' ){
-						formattedString = (dateObj.getDate() + 1) +'.'+ (dateObj.getMonth()+1) +'.'+ (dateObj.getFullYear())
+						formattedString = (dateObj.getDate()) +'.'+ (dateObj.getMonth()+1) +'.'+ (dateObj.getFullYear())
 					} else {
 						formattedString = timeValue;
 					}

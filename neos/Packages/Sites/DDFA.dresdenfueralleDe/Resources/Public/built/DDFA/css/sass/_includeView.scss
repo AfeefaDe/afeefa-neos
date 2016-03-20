@@ -60,6 +60,20 @@
 		@include transform(rotate(45deg));
 	}
 
+	.btn {
+		@include circleBtn;
+		
+		background-color: $black_alpha;
+
+		&.plusBtn {
+			width: 1em;
+			height: 1em;
+			@include border-radius(2em);
+
+			background-image: url("../img/icon_34.svg");
+			@include background-size(30%);
+		}
+	}
 	.content-container {
 		@include display-flex;
 		@include flex-direction(column);
@@ -218,6 +232,9 @@
     }
     &.type-2 {
 			background: url("../img/icon_98.svg") left center no-repeat;
+    }
+    &.refugee-guide {
+			background: url("../img/icon_53.svg") left center no-repeat;
     }
 	}
 }

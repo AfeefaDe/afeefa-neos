@@ -40,14 +40,12 @@
 
 	/* IMAGE PROPERTY */
 	.image-container {
-		/*height: 10em;*/
+		max-height: 10em;
 		text-align: center;
 		overflow: hidden;
 
 		img {
-			position: relative;
-			top: 50%;
-			transform: translateY(-50%);
+			width: 100%;
 		}
 	}
 
@@ -81,6 +79,7 @@
 			background-position: center 0.2em;
 
 			/* property icons */
+			&.icon-times { background-image: url("../img/icon_29.svg"); }
 			&.icon-location { background-image: url("../img/icon_35.svg"); }
 			&.icon-phone { background-image: url("../img/icon_23.svg"); }
 			&.icon-mail { background-image: url("../img/icon_25.svg"); }

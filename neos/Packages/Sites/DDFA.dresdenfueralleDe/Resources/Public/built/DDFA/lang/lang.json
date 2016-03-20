@@ -720,6 +720,18 @@
                   "ti":"",
                   "ur":""
             },
+            "prop_times":{
+                  "de":"Zeit",
+                  "en":"Time",
+                  "ar":"",
+                  "fa":"",
+                  "fr":"",
+                  "it":"",
+                  "ru":"",
+                  "sr":"",
+                  "ti":"",
+                  "ur":""
+            },
             "prop_location":{
                   "de":"Ort",
                   "en":"location",
@@ -1271,6 +1283,54 @@
             "form_placeholder_spokenLanguages":{
                   "de":"Wähle die Sprachen, die ihr versteht ...",
                   "en":"Select the languages, you understand ...",
+                  "ar":"",
+                  "fa":"",
+                  "fr":"",
+                  "it":"",
+                  "ru":"",
+                  "sr":"",
+                  "ti":"",
+                  "ur":""
+            },
+            "form_placeholder_dateFrom":{
+                  "de":"Startdatum",
+                  "en":"Start date",
+                  "ar":"",
+                  "fa":"",
+                  "fr":"",
+                  "it":"",
+                  "ru":"",
+                  "sr":"",
+                  "ti":"",
+                  "ur":""
+            },
+            "form_placeholder_dateTo":{
+                  "de":"Enddatum",
+                  "en":"End date",
+                  "ar":"",
+                  "fa":"",
+                  "fr":"",
+                  "it":"",
+                  "ru":"",
+                  "sr":"",
+                  "ti":"",
+                  "ur":""
+            },
+            "form_placeholder_timeFrom":{
+                  "de":"Startzeit",
+                  "en":"Start time",
+                  "ar":"",
+                  "fa":"",
+                  "fr":"",
+                  "it":"",
+                  "ru":"",
+                  "sr":"",
+                  "ti":"",
+                  "ur":""
+            },
+            "form_placeholder_timeTo":{
+                  "de":"Endzeit",
+                  "en":"End date",
                   "ar":"",
                   "fa":"",
                   "fr":"",

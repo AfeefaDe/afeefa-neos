@@ -174,13 +174,20 @@ qx.Class.define("FormView", {
 			// 		.pickadate();
 			// }
 			if( _.contains(['date', 'time'], property.type) ){
-				inputEl = $("<input />")
-					.attr('type', 'text')
-					.attr('name', property.name)
-					.click(function(){
-						if( $(this).attr('type') == 'text' )
-							$(this).attr('type', property.type);
-					});
+				
+				if( APP.getUserDevice() == 'desktop' && !Modernizr.inputtypes.date ){
+					inputEl = $("<input />")
+						.attr('type', property.type)
+						.attr('name', property.name);
+				} else {
+					inputEl = $("<input />")
+						.attr('type', 'text')
+						.attr('name', property.name)
+						.click(function(){
+							if( $(this).attr('type') == 'text' )
+								$(this).attr('type', property.type);
+						});
+				}
 			}
 			else if( _.contains( that.getHtml5InputTypes() , property.type ) ){
 				inputEl = $("<input />")
@@ -665,8 +672,11 @@ qx.Class.define("FormView", {
 						.empty()
 						.append(that.getWording('form_placeholder_' + property.name) );
 
+				if( _.contains(['date', 'time'], property.type) ){
+					// that.forms[type].fields[property.name].pickadate();
+				}
 				// options in select + multiselect inputs
-				if( property.type == 'select' ){
+				else if( property.type == 'select' ){
 					// remove all options
 					that.forms[type].fields[property.name].empty();
 					
@@ -734,9 +744,6 @@ qx.Class.define("FormView", {
 			});
 
 			that.view.addClass('active');
-
-			// TODO dirty fix for IE
-			if( !Modernizr.inputtypes.date ) that.view.find('.dateFrom, .dateTo, .datePeriodic').hide();
 		},
 
 		reset: function(){

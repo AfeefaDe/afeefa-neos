@@ -88,6 +88,21 @@
 		}
 	}
 
+	&.btn-facebook {
+		background: $black_alpha url("../img/icon_46.svg") no-repeat .5em center;
+		@include background-size(1.4em);
+		padding: .3em .5em;
+	    text-indent: 2em;
+	}
+
+	&.large {
+		padding: .75em 1.2em;
+	}
+
+	&.blue {
+		background-color: $blue_dark;
+	}
+
 	&.margin-left {
 		margin-left: 1em;
 	}

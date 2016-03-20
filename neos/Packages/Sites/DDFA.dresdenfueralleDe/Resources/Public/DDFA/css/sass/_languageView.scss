@@ -21,6 +21,7 @@
 	@include languageViewBasic;
 
 	left: 3em;
+	z-index: 99999;
 	
 	.btn {
 		display: none;

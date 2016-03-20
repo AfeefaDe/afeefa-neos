@@ -668,7 +668,7 @@ textarea {
     page-break-after: avoid;
   }
 }
-/* line 96, sass/_afeefa-styles.scss */
+/* line 111, sass/_afeefa-styles.scss */
 button {
   -moz-transition: all 150ms;
   -o-transition: all 150ms;
@@ -728,11 +728,29 @@ button.btn-secondary:hover {
   color: #333333;
 }
 /* line 91, sass/_afeefa-styles.scss */
+button.btn-facebook {
+  background: rgba(0, 0, 0, 0.8) url("../img/icon_46.svg") no-repeat 0.5em center;
+  -moz-background-size: 1.4em;
+  -o-background-size: 1.4em;
+  -webkit-background-size: 1.4em;
+  background-size: 1.4em;
+  padding: .3em .5em;
+  text-indent: 2em;
+}
+/* line 98, sass/_afeefa-styles.scss */
+button.large {
+  padding: .75em 1.2em;
+}
+/* line 102, sass/_afeefa-styles.scss */
+button.blue {
+  background-color: #085272;
+}
+/* line 106, sass/_afeefa-styles.scss */
 button.margin-left {
   margin-left: 1em;
 }
 
-/* line 101, sass/_afeefa-styles.scss */
+/* line 116, sass/_afeefa-styles.scss */
 .button {
   -moz-transition: all 150ms;
   -o-transition: all 150ms;
@@ -791,15 +809,33 @@ button.margin-left {
   color: #333333;
 }
 /* line 91, sass/_afeefa-styles.scss */
+.button.btn-facebook {
+  background: rgba(0, 0, 0, 0.8) url("../img/icon_46.svg") no-repeat 0.5em center;
+  -moz-background-size: 1.4em;
+  -o-background-size: 1.4em;
+  -webkit-background-size: 1.4em;
+  background-size: 1.4em;
+  padding: .3em .5em;
+  text-indent: 2em;
+}
+/* line 98, sass/_afeefa-styles.scss */
+.button.large {
+  padding: .75em 1.2em;
+}
+/* line 102, sass/_afeefa-styles.scss */
+.button.blue {
+  background-color: #085272;
+}
+/* line 106, sass/_afeefa-styles.scss */
 .button.margin-left {
   margin-left: 1em;
 }
-/* line 104, sass/_afeefa-styles.scss */
+/* line 119, sass/_afeefa-styles.scss */
 .button p {
   margin: 0;
 }
 
-/* line 109, sass/_afeefa-styles.scss */
+/* line 124, sass/_afeefa-styles.scss */
 body {
   margin: 0;
   padding: 0;
@@ -813,31 +849,31 @@ body {
   background-color: #333333 !important;
 }
 
-/* line 128, sass/_afeefa-styles.scss */
+/* line 143, sass/_afeefa-styles.scss */
 a:link, a:visited, #includeView .content-container .content span.locationLink:visited, a:hover, #includeView .content-container .content span.locationLink:hover, a:active, #includeView .content-container .content span.locationLink:active, #includeView .content-container .content span.locationLink:link {
   color: #333;
   text-decoration: underline;
 }
 
-/* line 137, sass/_afeefa-styles.scss */
+/* line 152, sass/_afeefa-styles.scss */
 b,
 strong {
   font-weight: 400;
 }
 
-/* line 142, sass/_afeefa-styles.scss */
+/* line 157, sass/_afeefa-styles.scss */
 .hidden {
   display: none;
 }
 
 /* SCROLLBARS with perfect-scrollbar.js */
-/* line 145, sass/_afeefa-styles.scss */
+/* line 160, sass/_afeefa-styles.scss */
 .ps-container > .ps-scrollbar-y-rail,
 .ps-container > .ps-scrollbar-y-rail > .ps-scrollbar-y {
   width: 6px !important;
 }
 
-/* line 150, sass/_afeefa-styles.scss */
+/* line 165, sass/_afeefa-styles.scss */
 #main-container {
   -moz-transition: left 250ms;
   -o-transition: left 250ms;
@@ -862,12 +898,12 @@ strong {
   /* general styles for view container */
   /* dark curtain */
 }
-/* line 171, sass/_afeefa-styles.scss */
+/* line 186, sass/_afeefa-styles.scss */
 #main-container .view-container.loading {
   -webkit-filter: grayscale(1);
   filter: grayscale(1);
 }
-/* line 173, sass/_afeefa-styles.scss */
+/* line 188, sass/_afeefa-styles.scss */
 #main-container .view-container.loading .loading-curtain {
   width: 100%;
   height: 100%;
@@ -880,7 +916,7 @@ strong {
   top: 0;
   left: 0;
 }
-/* line 193, sass/_afeefa-styles.scss */
+/* line 208, sass/_afeefa-styles.scss */
 #main-container #curtain {
   -moz-transition: all 250ms;
   -o-transition: all 250ms;
@@ -894,36 +930,36 @@ strong {
   opacity: 0;
   z-index: 9999;
 }
-/* line 203, sass/_afeefa-styles.scss */
+/* line 218, sass/_afeefa-styles.scss */
 #main-container #curtain.active {
   visibility: visible;
   opacity: 0.6;
 }
-/* line 208, sass/_afeefa-styles.scss */
+/* line 223, sass/_afeefa-styles.scss */
 #main-container.shifted {
   left: 15em;
   /*#lang-menu { display: none; }*/
 }
-/* line 211, sass/_afeefa-styles.scss */
+/* line 226, sass/_afeefa-styles.scss */
 #main-container.shifted #curtain {
   visibility: visible;
   opacity: 0.6;
 }
-/* line 215, sass/_afeefa-styles.scss */
+/* line 230, sass/_afeefa-styles.scss */
 #main-container.shifted #menuView {
   z-index: 999;
 }
-/* line 219, sass/_afeefa-styles.scss */
+/* line 234, sass/_afeefa-styles.scss */
 #main-container.shifted-small {
   left: 4em;
   /*#main-menu { display: none; }*/
 }
-/* line 222, sass/_afeefa-styles.scss */
+/* line 237, sass/_afeefa-styles.scss */
 #main-container.shifted-small #curtain {
   visibility: visible;
   opacity: 0.6;
 }
-/* line 226, sass/_afeefa-styles.scss */
+/* line 241, sass/_afeefa-styles.scss */
 #main-container.shifted-small #languageViewMobile {
   z-index: 999;
 }
@@ -3429,11 +3465,12 @@ body.phone #menuView .menu-btn {
 }
 /* line 224, sass/_legendView.scss */
 #legendView .attribute-module {
+  display: none;
   -webkit-order: 3;
   order: 3;
   visibility: hidden;
 }
-/* line 228, sass/_legendView.scss */
+/* line 230, sass/_legendView.scss */
 #legendView .attribute-module .attribute-container {
   padding-left: 2em;
   margin-bottom: 1em;
@@ -3442,94 +3479,94 @@ body.phone #menuView .menu-btn {
   -webkit-align-items: center;
   align-items: center;
 }
-/* line 235, sass/_legendView.scss */
+/* line 237, sass/_legendView.scss */
 #legendView .attribute-module .attribute-container input {
   width: 1.5em;
   height: 1.5em;
   cursor: pointer;
 }
-/* line 241, sass/_legendView.scss */
+/* line 243, sass/_legendView.scss */
 #legendView .attribute-module .attribute-container label {
   text-indent: 1em;
   cursor: pointer;
 }
-/* line 247, sass/_legendView.scss */
+/* line 249, sass/_legendView.scss */
 #legendView .attribute-module .attribute-container:hover label {
   color: #f2f2f2;
 }
-/* line 256, sass/_legendView.scss */
+/* line 258, sass/_legendView.scss */
 #legendView.filter-active .cat-container.filter-reset {
   display: block;
 }
 
-/* line 274, sass/_legendView.scss */
+/* line 276, sass/_legendView.scss */
 .desktop #legendView:hover {
   right: 0 !important;
 }
-/* line 265, sass/_legendView.scss */
+/* line 267, sass/_legendView.scss */
 .desktop #legendView:hover .filter-module h3 {
   visibility: visible;
 }
-/* line 267, sass/_legendView.scss */
+/* line 269, sass/_legendView.scss */
 .desktop #legendView:hover .entity-module {
   visibility: visible;
 }
-/* line 268, sass/_legendView.scss */
+/* line 270, sass/_legendView.scss */
 .desktop #legendView:hover .attribute-module {
   visibility: visible;
 }
-/* line 270, sass/_legendView.scss */
+/* line 272, sass/_legendView.scss */
 .desktop #legendView:hover .cat-container .icon {
   margin-left: .5em;
 }
 
-/* line 280, sass/_legendView.scss */
+/* line 282, sass/_legendView.scss */
 .tablet #legendView {
   overflow: scroll;
 }
-/* line 283, sass/_legendView.scss */
+/* line 285, sass/_legendView.scss */
 .tablet #legendView.active {
   right: 0 !important;
 }
-/* line 265, sass/_legendView.scss */
+/* line 267, sass/_legendView.scss */
 .tablet #legendView.active .filter-module h3 {
   visibility: visible;
 }
-/* line 267, sass/_legendView.scss */
+/* line 269, sass/_legendView.scss */
 .tablet #legendView.active .entity-module {
   visibility: visible;
 }
-/* line 268, sass/_legendView.scss */
+/* line 270, sass/_legendView.scss */
 .tablet #legendView.active .attribute-module {
   visibility: visible;
 }
-/* line 270, sass/_legendView.scss */
+/* line 272, sass/_legendView.scss */
 .tablet #legendView.active .cat-container .icon {
   margin-left: .5em;
 }
 
-/* line 290, sass/_legendView.scss */
+/* line 292, sass/_legendView.scss */
 .mobile #legendView {
   right: -20em;
   overflow: scroll;
 }
-/* line 294, sass/_legendView.scss */
+/* line 296, sass/_legendView.scss */
 .mobile #legendView.active {
   right: 0 !important;
 }
-/* line 265, sass/_legendView.scss */
+/* line 267, sass/_legendView.scss */
 .mobile #legendView.active .filter-module h3 {
   visibility: visible;
 }
-/* line 267, sass/_legendView.scss */
+/* line 269, sass/_legendView.scss */
 .mobile #legendView.active .entity-module {
   visibility: visible;
 }
-/* line 268, sass/_legendView.scss */
+/* line 270, sass/_legendView.scss */
 .mobile #legendView.active .attribute-module {
   visibility: visible;
 }
-/* line 270, sass/_legendView.scss */
+/* line 272, sass/_legendView.scss */
 .mobile #legendView.active .cat-container .icon {
   margin-left: .5em;
 }
@@ -3655,6 +3692,7 @@ body.phone #menuView .menu-btn {
   bottom: 2em;
   direction: ltr;
   left: 3em;
+  z-index: 99999;
 }
 /* line 7, sass/_languageView.scss */
 #languageView .btn {
@@ -3732,7 +3770,7 @@ body.phone #menuView .menu-btn {
 #languageView .btn.it {
   background-image: url("../img/flag_it.svg");
 }
-/* line 25, sass/_languageView.scss */
+/* line 26, sass/_languageView.scss */
 #languageView .btn {
   display: none;
   cursor: pointer;
@@ -3741,15 +3779,15 @@ body.phone #menuView .menu-btn {
   -webkit-filter: grayscale(0.5);
   filter: grayscale(0.5);
 }
-/* line 32, sass/_languageView.scss */
+/* line 33, sass/_languageView.scss */
 #languageView .btn.active {
   display: block;
 }
-/* line 39, sass/_languageView.scss */
+/* line 40, sass/_languageView.scss */
 #languageView:hover .btn {
   display: inline-block;
 }
-/* line 43, sass/_languageView.scss */
+/* line 44, sass/_languageView.scss */
 #languageView:hover .btn:hover {
   -moz-box-shadow: 0px 0px 5px #111;
   -webkit-box-shadow: 0px 0px 5px #111;
@@ -3758,7 +3796,7 @@ body.phone #menuView .menu-btn {
   filter: grayscale(0.2);
 }
 
-/* line 53, sass/_languageView.scss */
+/* line 54, sass/_languageView.scss */
 #languageViewMobile {
   position: absolute;
   bottom: 2em;
@@ -3860,7 +3898,7 @@ body.phone #menuView .menu-btn {
 #languageViewMobile .btn.it {
   background-image: url("../img/flag_it.svg");
 }
-/* line 67, sass/_languageView.scss */
+/* line 68, sass/_languageView.scss */
 #languageViewMobile .root-btn {
   width: 3em;
   height: 3em;
@@ -3940,16 +3978,16 @@ body.phone #menuView .menu-btn {
 #languageViewMobile .root-btn.it {
   background-image: url("../img/flag_it.svg");
 }
-/* line 91, sass/_languageView.scss */
+/* line 92, sass/_languageView.scss */
 #languageViewMobile.open {
   height: 100%;
   z-index: 9999;
 }
-/* line 96, sass/_languageView.scss */
+/* line 97, sass/_languageView.scss */
 #languageViewMobile.open .shiftMenu {
   left: 0;
 }
-/* line 100, sass/_languageView.scss */
+/* line 101, sass/_languageView.scss */
 #languageViewMobile.open .btn {
   display: block !important;
   margin-bottom: 1em;
@@ -4364,25 +4402,26 @@ body.phone #menuView .menu-btn {
 #includeView .content-container .content {
   -webkit-flex-grow: 1;
   flex-grow: 1;
+  width: 100%;
   padding: 1em 3rem;
   position: relative;
   line-height: 2em;
 }
-/* line 119, sass/_includeView.scss */
+/* line 120, sass/_includeView.scss */
 #includeView .content-container .content h2 {
   font-weight: 100;
   line-height: 1.3em;
   margin-top: 2em;
   text-transform: uppercase;
 }
-/* line 125, sass/_includeView.scss */
+/* line 126, sass/_includeView.scss */
 #includeView .content-container .content h2 a, #includeView .content-container .content h2 span.locationLink, #includeView .content-container .content h2 a:visited, #includeView .content-container .content h2 span.locationLink:visited, #includeView .content-container .content h2 a:active, #includeView .content-container .content h2 span.locationLink:active, #includeView .content-container .content h2 a:hover, #includeView .content-container .content h2 span.locationLink:hover {
   text-decoration: none;
   border: none;
   background: none;
   color: #333333;
 }
-/* line 133, sass/_includeView.scss */
+/* line 134, sass/_includeView.scss */
 #includeView .content-container .content h3 {
   font-size: 1.2em;
   font-weight: 100;
@@ -4390,33 +4429,33 @@ body.phone #menuView .menu-btn {
   margin-top: 1.5em;
   margin-bottom: 0.4em;
 }
-/* line 141, sass/_includeView.scss */
+/* line 142, sass/_includeView.scss */
 #includeView .content-container .content p {
   text-align: justify;
   font-weight: 300;
   line-height: 1.3em;
 }
-/* line 147, sass/_includeView.scss */
+/* line 148, sass/_includeView.scss */
 #includeView .content-container .content table {
   font-weight: 300;
 }
-/* line 150, sass/_includeView.scss */
+/* line 151, sass/_includeView.scss */
 #includeView .content-container .content table td {
   padding: .3em 0 .3em 1em;
 }
-/* line 152, sass/_includeView.scss */
+/* line 153, sass/_includeView.scss */
 #includeView .content-container .content table td:first-child {
   padding-left: 0em;
 }
-/* line 156, sass/_includeView.scss */
+/* line 157, sass/_includeView.scss */
 #includeView .content-container .content hr {
   border-color: #ccc;
 }
-/* line 160, sass/_includeView.scss */
+/* line 161, sass/_includeView.scss */
 #includeView .content-container .content .no-top-margin {
   margin-top: 0;
 }
-/* line 164, sass/_includeView.scss */
+/* line 165, sass/_includeView.scss */
 #includeView .content-container .content span.locationLink {
   display: inline-block;
   cursor: pointer;
@@ -4429,11 +4468,11 @@ body.phone #menuView .menu-btn {
   background-position: 0 2px;
   background-repeat: no-repeat;
 }
-/* line 175, sass/_includeView.scss */
+/* line 176, sass/_includeView.scss */
 #includeView .content-container .content span.locationLink:hover {
   background-image: url("../img/icon_36.svg");
 }
-/* line 181, sass/_includeView.scss */
+/* line 182, sass/_includeView.scss */
 #includeView .content-container .content p.figure-caption {
   margin-top: 0;
   padding: .3em;
@@ -4441,25 +4480,25 @@ body.phone #menuView .menu-btn {
   font-style: italic;
   font-size: .8em;
 }
-/* line 191, sass/_includeView.scss */
+/* line 192, sass/_includeView.scss */
 #includeView .float-right-in-text {
   float: right;
   padding: 1em 0 1em 1em;
 }
-/* line 196, sass/_includeView.scss */
+/* line 197, sass/_includeView.scss */
 #includeView .float-left-in-text {
   float: left;
   padding: 1em 1em 1em 0;
 }
-/* line 201, sass/_includeView.scss */
+/* line 202, sass/_includeView.scss */
 #includeView .chapters {
   margin-top: 2rem;
 }
-/* line 205, sass/_includeView.scss */
+/* line 206, sass/_includeView.scss */
 #includeView .chaptersReal {
   /*@include flex-shrink(0);*/
 }
-/* line 209, sass/_includeView.scss */
+/* line 210, sass/_includeView.scss */
 #includeView .entity-shape {
   /* orga */
   /* market entry */
@@ -4689,35 +4728,35 @@ body.phone #menuView .menu-btn {
   -webkit-background-size: 50%;
   background-size: 50%;
 }
-/* line 222, sass/_includeView.scss */
+/* line 223, sass/_includeView.scss */
 #includeView .entity-bunch {
   padding-left: 3.5em;
   min-height: 3em;
   background-size: 3em !important;
 }
-/* line 227, sass/_includeView.scss */
+/* line 228, sass/_includeView.scss */
 #includeView .entity-bunch.type-0 {
   background: url("../img/icon_96.svg") left center no-repeat;
 }
-/* line 230, sass/_includeView.scss */
+/* line 231, sass/_includeView.scss */
 #includeView .entity-bunch.type-1 {
   background: url("../img/icon_97.svg") left center no-repeat;
 }
-/* line 233, sass/_includeView.scss */
+/* line 234, sass/_includeView.scss */
 #includeView .entity-bunch.type-2 {
   background: url("../img/icon_98.svg") left center no-repeat;
 }
-/* line 236, sass/_includeView.scss */
+/* line 237, sass/_includeView.scss */
 #includeView .entity-bunch.refugee-guide {
   background: url("../img/icon_53.svg") left center no-repeat;
 }
 
-/* line 253, sass/_includeView.scss */
+/* line 254, sass/_includeView.scss */
 body.tablet #includeView .content {
   overflow: scroll;
 }
 
-/* line 262, sass/_includeView.scss */
+/* line 263, sass/_includeView.scss */
 body.mobile #includeView {
   width: 100%;
   height: 100%;
@@ -4726,37 +4765,37 @@ body.mobile #includeView {
   left: 0;
   top: 0;
 }
-/* line 270, sass/_includeView.scss */
+/* line 271, sass/_includeView.scss */
 body.mobile #includeView.min {
   /*.header { cursor: pointer; }*/
   height: 1em;
 }
-/* line 273, sass/_includeView.scss */
+/* line 274, sass/_includeView.scss */
 body.mobile #includeView.min h1 {
   padding-top: 1rem !important;
   cursor: pointer;
 }
-/* line 274, sass/_includeView.scss */
+/* line 275, sass/_includeView.scss */
 body.mobile #includeView.min p.subheading {
   display: none;
 }
-/* line 275, sass/_includeView.scss */
+/* line 276, sass/_includeView.scss */
 body.mobile #includeView.min .content {
   display: none;
 }
-/* line 276, sass/_includeView.scss */
+/* line 277, sass/_includeView.scss */
 body.mobile #includeView.min .closeBtn {
   display: none;
 }
-/* line 280, sass/_includeView.scss */
+/* line 281, sass/_includeView.scss */
 body.mobile #includeView .header h1 {
   padding-top: 1rem !important;
 }
-/* line 281, sass/_includeView.scss */
+/* line 282, sass/_includeView.scss */
 body.mobile #includeView .header p.subheading {
   display: none !important;
 }
-/* line 283, sass/_includeView.scss */
+/* line 284, sass/_includeView.scss */
 body.mobile #includeView .content {
   overflow: scroll;
 }

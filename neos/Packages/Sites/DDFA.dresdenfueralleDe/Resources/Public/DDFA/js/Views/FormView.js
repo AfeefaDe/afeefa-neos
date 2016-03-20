@@ -38,7 +38,7 @@ qx.Class.define("FormView", {
 					{
 						name: {name: 'name', type: 'text', intoOwner: true},
 						category: {name: 'category', type: 'select', values: mainCategories, intoOwner: true },
-						subCategory: {name: 'subCategory', type: 'select', values: APP.getConfig().categories[0].sub, intoOwner: true },
+						// subCategory: {name: 'subCategory', type: 'select', values: APP.getConfig().categories[0].sub, intoOwner: true },
 						speakerPublic: {name: 'speakerPublic', type: 'text', intoOwner: true},
 						mail: {name: 'mail', type: 'email', required: true, intoOwner: true},
 						web: {name: 'web', type: 'url', intoOwner: true},
@@ -58,7 +58,7 @@ qx.Class.define("FormView", {
 						offer: {name: 'offer', type: 'switch', intoOwner: true, values: [ [true, 'offer'], [false, 'request'] ]},
 						name: {name: 'name', type: 'text', intoOwner: true},
 						category: {name: 'category', type: 'select', values: mainCategories, intoOwner: true },
-						subCategory: {name: 'subCategory', type: 'select', values: APP.getConfig().categories[0].sub, intoOwner: true },
+						// subCategory: {name: 'subCategory', type: 'select', values: APP.getConfig().categories[0].sub, intoOwner: true },
 						speakerPublic: {name: 'speakerPublic', type: 'text', intoOwner: true},
 						mail: {name: 'mail', type: 'email', required: true, intoOwner: true},
 						web: {name: 'web', type: 'url', intoOwner: true},
@@ -81,7 +81,7 @@ qx.Class.define("FormView", {
 					{
 						name: {name: 'name', type: 'text', intoOwner: true},
 						category: {name: 'category', type: 'select', values: mainCategories, intoOwner: true },
-						subCategory: {name: 'subCategory', type: 'select', values: APP.getConfig().categories[0].sub, intoOwner: true },
+						// subCategory: {name: 'subCategory', type: 'select', values: APP.getConfig().categories[0].sub, intoOwner: true },
 						speakerPublic: {name: 'speakerPublic', type: 'text', intoOwner: true},
 						mail: {name: 'mail', type: 'email', required: true, intoOwner: true},
 						web: {name: 'web', type: 'url', intoOwner: true},
@@ -177,7 +177,9 @@ qx.Class.define("FormView", {
 				
 				if( APP.getUserDevice() == 'desktop' && !Modernizr.inputtypes.date ){
 					inputEl = $("<input />")
-						.attr('type', property.type)
+						// .attr('type', property.type)
+						.attr('data-format', 'YYYY-MM-DD')
+						.attr('data-template', 'D MMM YYYY')
 						.attr('name', property.name);
 				} else {
 					inputEl = $("<input />")
@@ -327,8 +329,8 @@ qx.Class.define("FormView", {
 			var catEl = that.createInput(properties.category, type);
 			form.append(catEl);
 
-			var subCatEl = that.createInput(properties.subCategory, type);
-			form.append(subCatEl);
+			// var subCatEl = that.createInput(properties.subCategory, type);
+			// form.append(subCatEl);
 
 			var descEl = that.createInput(properties.description, type);
 			form.append(descEl);
@@ -368,7 +370,7 @@ qx.Class.define("FormView", {
 			var sectionHeader = $('<h3 />').append('Kontaktdaten');
 			form.append(sectionHeader);
 
-			var notice = $('<p />').append('Deine Kontaktdaten werden veröffentlicht, damit Interessenten mit dir in Kontakt treten können. Bitte sei dir bewusst, welche Angaben du hier machen möchtest.');
+			var notice = $('<p />').append(that.getWording('form_text_contactinfo'));
 			form.append(notice);
 
 			var speakerEl = that.createInput(properties.speakerPublic, type);
@@ -418,8 +420,8 @@ qx.Class.define("FormView", {
 			var catEl = that.createInput(properties.category, type);
 			form.append(catEl);
 
-			var subCatEl = that.createInput(properties.subCategory, type);
-			form.append(subCatEl);
+			// var subCatEl = that.createInput(properties.subCategory, type);
+			// form.append(subCatEl);
 
 			var dateFromEl = that.createInput(properties.dateFrom, type);
 			form.append(dateFromEl);
@@ -468,7 +470,7 @@ qx.Class.define("FormView", {
 			var sectionHeader = $('<h3 />').append('Kontaktdaten');
 			form.append(sectionHeader);
 
-			var notice = $('<p />').append('Deine Kontaktdaten werden veröffentlicht, damit Interessenten mit dir in Kontakt treten können. Bitte sei dir bewusst, welche Angaben du hier machen möchtest.');
+			var notice = $('<p />').append(that.getWording('form_text_contactinfo'));
 			form.append(notice);
 
 			var speakerEl = that.createInput(properties.speakerPublic, type);
@@ -515,8 +517,8 @@ qx.Class.define("FormView", {
 			var catEl = that.createInput(properties.category, type);
 			form.append(catEl);
 
-			var subCatEl = that.createInput(properties.subCategory, type);
-			form.append(subCatEl);
+			// var subCatEl = that.createInput(properties.subCategory, type);
+			// form.append(subCatEl);
 
 			var dateFromEl = that.createInput(properties.dateFrom, type);
 			form.append(dateFromEl);
@@ -565,7 +567,7 @@ qx.Class.define("FormView", {
 			var sectionHeader = $('<h3 />').append('Kontaktdaten');
 			form.append(sectionHeader);
 
-			var notice = $('<p />').append('Deine Kontaktdaten werden veröffentlicht, damit Interessenten mit dir in Kontakt treten können. Bitte sei dir bewusst, welche Angaben du hier machen möchtest.');
+			var notice = $('<p />').append(that.getWording('form_text_contactinfo'));
 			form.append(notice);
 
 			var speakerEl = that.createInput(properties.speakerPublic, type);
@@ -673,7 +675,14 @@ qx.Class.define("FormView", {
 						.append(that.getWording('form_placeholder_' + property.name) );
 
 				if( _.contains(['date', 'time'], property.type) ){
-					// that.forms[type].fields[property.name].pickadate();
+					if( APP.getUserDevice() == 'desktop' && !Modernizr.inputtypes.date ){
+						that.forms[type].fields[property.name].hide();
+						// that.forms[type].fields[property.name].combodate({
+						// 	minYear: 2016,
+					 //    maxYear: 2017,
+					 //    minuteStep: 10
+						// });
+					}
 				}
 				// options in select + multiselect inputs
 				else if( property.type == 'select' ){
@@ -858,7 +867,7 @@ qx.Class.define("FormView", {
 
 			});
 
-			// sendToGithub();
+			sendToGithub();
 			function sendToGithub(){
 				APP.getDataManager().githubCreateIssue({
 					type: 'marketentry',
@@ -866,7 +875,7 @@ qx.Class.define("FormView", {
 				});
 			}
 
-			// sendToSlack();
+			sendToSlack();
 			function sendToSlack(){
 				var type = (dataMarketEntry.marketentry.offer) ? 'Angebot' : 'Gesuch';
 				APP.getDataManager().sendToSlack({
@@ -877,12 +886,14 @@ qx.Class.define("FormView", {
 								+ '_facebook:_ ' + dataMarketEntry.marketentry.facebook + '\n'
 								+ '_phone:_ ' + dataMarketEntry.marketentry.phone + '\n'
 								+ '_Sprachen:_ ' + dataMarketEntry.marketentry.spokenLanguages + '\n'
+								+ '_Ort:_ ' + dataLocation.location.placename + '\n'
 								+ '_Str:_ ' + dataLocation.location.street + '\n'
 								+ '_PLZ:_ ' + dataLocation.location.zip + '\n'
 								+ '_Ort:_ ' + dataLocation.location.city + '\n'
 								+ '_von:_ ' + dataMarketEntry.marketentry.dateFrom + '\n'
 								+ '_bis:_ ' + dataMarketEntry.marketentry.dateTo + '\n'
-								+ '_Wdh.:_ ' + dataMarketEntry.marketentry.datePeriodic + '\n\n'
+								+ '_für Kinder:_ ' + dataMarketEntry.marketentry.forChildren + '\n'
+								+ '_Unterstützer?:_ ' + dataMarketEntry.marketentry.supportWanted + '\n\n'
 				});
 			}
 		},

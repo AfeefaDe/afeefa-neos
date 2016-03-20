@@ -36,7 +36,7 @@ qx.Class.define("LanguageView", {
                 // bootstrap tooltip
                 langBtn.attr({
                     'data-toggle': 'tooltip',
-                    'data-placement': "bottom"
+                    'data-placement': "top"
                 });
 
                 langBtn.click(function(){

@@ -76,6 +76,8 @@
         // jquery: 'empty:',
         perfectScrollbarJQuery: 'empty:',
         chosenJQuery: '../../chosen/chosen.jquery.min',
+        momentjs: '../../momentjs/moment.min',
+        combodate: '../../combodate/combodate',
         restive: '../../restive/restive.min',
         qx: '../../qooxdoo/qx-oo-4.1.min',
         underscore: '../../underscore/underscore-min',

@@ -119,6 +119,15 @@ qx.Class.define("IncludeView", {
 					if(that.getViewState() == 2) that.minimize(false);
 				});
 
+				// mobile language selection
+				if( APP.getUserDevice() != 'desktop' ){
+					$('select#language-select')
+						.val( APP.getLM().getCurrentLang() )
+						.change(function(){
+	            that.say('languageChanged', $(this).val());
+						});
+				}
+
 				// location links
 				$('span.locationLink').click(function(){
 					APP.getMapView().selectMarkerFromLink( $(this).attr('name') );

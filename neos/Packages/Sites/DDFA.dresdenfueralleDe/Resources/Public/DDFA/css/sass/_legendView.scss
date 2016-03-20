@@ -222,6 +222,8 @@
 		    /*@include flex-direction(column);*/
 
 	.attribute-module {
+		display: none;
+
 		@include order(3);
 		visibility: hidden;
 

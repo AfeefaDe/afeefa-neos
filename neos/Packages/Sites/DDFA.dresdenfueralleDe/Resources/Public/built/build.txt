@@ -46,6 +46,8 @@ requirejs/domReady.js
 qooxdoo/qx-oo-4.1.min.js
 jquery/jquery-2.2.2.min.js
 chosen/chosen.jquery.min.js
+momentjs/moment.min.js
+combodate/combodate.js
 underscore/underscore-min.js
 hammerjs/hammer.min.js
 H5BP/js/vendor/modernizr-2.8.3.min.js

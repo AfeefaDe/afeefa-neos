@@ -434,7 +434,7 @@
                   },
                   "cat_lgbt":{
                         "de":"LGBT",
-                        "en":"",
+                        "en":"LGBT",
                         "ar":"",
                         "fa":"",
                         "fr":"",
@@ -530,7 +530,7 @@
             },
                   "cat_hospital":{
                         "de":"Krankenhaus",
-                        "en":"Hospital",
+                        "en":"hospital",
                         "ar":"",
                         "fa":"",
                         "fr":"",
@@ -554,7 +554,7 @@
                   },
                   "cat_tram":{
                         "de":"Straßenbahn",
-                        "en":"Tram",
+                        "en":"tram",
                         "ar":"قطار الشارع (الترام)",
                         "fa":"تراموای",
                         "fr":"tramway",

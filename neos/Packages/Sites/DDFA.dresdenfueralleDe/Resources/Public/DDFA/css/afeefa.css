@@ -1750,7 +1750,7 @@ body.phone #mapView #locate-btn {
   display: none !important;
 }
 
-/* line 146, sass/_detailView.scss */
+/* line 145, sass/_detailView.scss */
 #detailView {
   visibility: hidden;
   opacity: 0;
@@ -1777,18 +1777,18 @@ body.phone #mapView #locate-btn {
   /* OTHER PROPERTIES */
   /* overwrite for POIs */
 }
-/* line 168, sass/_detailView.scss */
+/* line 167, sass/_detailView.scss */
 #detailView.active {
   visibility: visible;
   opacity: 1;
 }
-/* line 173, sass/_detailView.scss */
+/* line 172, sass/_detailView.scss */
 #detailView.right {
   left: auto;
   /*right: 6em;*/
   left: calc(100% - 23em - 4em);
 }
-/* line 179, sass/_detailView.scss */
+/* line 178, sass/_detailView.scss */
 #detailView .scroll-container {
   -webkit-flex-grow: 1;
   flex-grow: 1;
@@ -2201,30 +2201,29 @@ body.phone #mapView #locate-btn {
 #detailView .property .multiselect-value {
   display: inline-block;
   margin: 0 .5em .5em 0;
-  background-color: white;
 }
-/* line 128, sass/_detailView.scss */
+/* line 127, sass/_detailView.scss */
 #detailView .property.category .property-name {
   font-size: 1em !important;
   padding: 0 !important;
   color: #333333 !important;
   text-transform: none !important;
 }
-/* line 140, sass/_detailView.scss */
+/* line 139, sass/_detailView.scss */
 #detailView.type-3 .property.category .property-name {
   line-height: 2.6em !important;
 }
-/* line 141, sass/_detailView.scss */
+/* line 140, sass/_detailView.scss */
 #detailView.type-3 .property.category .property-value {
   display: none;
 }
 
-/* line 192, sass/_detailView.scss */
+/* line 191, sass/_detailView.scss */
 .tablet #detailViewMobile {
   width: 30%;
 }
 
-/* line 197, sass/_detailView.scss */
+/* line 196, sass/_detailView.scss */
 #detailViewMobile {
   -moz-transition: all 200ms;
   -o-transition: all 200ms;
@@ -2244,22 +2243,22 @@ body.phone #mapView #locate-btn {
   /* OTHER PROPERTIES */
   /* overwrite for POIs */
 }
-/* line 209, sass/_detailView.scss */
+/* line 208, sass/_detailView.scss */
 #detailViewMobile.active {
   bottom: 0;
 }
-/* line 213, sass/_detailView.scss */
+/* line 212, sass/_detailView.scss */
 #detailViewMobile.active-large {
   bottom: 0;
   height: 100%;
 }
-/* line 217, sass/_detailView.scss */
+/* line 216, sass/_detailView.scss */
 #detailViewMobile.active-large .heading h1 {
   overflow: inherit;
   text-overflow: inherit;
   white-space: inherit;
 }
-/* line 224, sass/_detailView.scss */
+/* line 223, sass/_detailView.scss */
 #detailViewMobile .scroll-container {
   height: calc(100% - 4em);
   overflow-y: auto;
@@ -2669,24 +2668,23 @@ body.phone #mapView #locate-btn {
 #detailViewMobile .property .multiselect-value {
   display: inline-block;
   margin: 0 .5em .5em 0;
-  background-color: white;
 }
-/* line 128, sass/_detailView.scss */
+/* line 127, sass/_detailView.scss */
 #detailViewMobile .property.category .property-name {
   font-size: 1em !important;
   padding: 0 !important;
   color: #333333 !important;
   text-transform: none !important;
 }
-/* line 140, sass/_detailView.scss */
+/* line 139, sass/_detailView.scss */
 #detailViewMobile.type-3 .property.category .property-name {
   line-height: 2.6em !important;
 }
-/* line 141, sass/_detailView.scss */
+/* line 140, sass/_detailView.scss */
 #detailViewMobile.type-3 .property.category .property-value {
   display: none;
 }
-/* line 232, sass/_detailView.scss */
+/* line 231, sass/_detailView.scss */
 #detailViewMobile .heading h1 {
   overflow: hidden;
   text-overflow: ellipsis;

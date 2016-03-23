@@ -174,6 +174,13 @@ qx.Class.define("SearchView", {
 
       if( !query ) {  // show "just click" version
 
+        // supporters wanted
+        // var action = function(){
+        //   that.inputField.blur();
+        //   that.loadResults( 'supportWanted' );
+        // };
+        // createResult('supportWanted', 'Unterstützer gesucht', 'Projekte, die noch Verstärkung brauchen', action );
+
         // link to intro
         var action = function(){
           APP.getIncludeView().load( APP.getIncludeView().getIncludes().intro );
@@ -198,19 +205,36 @@ qx.Class.define("SearchView", {
         });
 
       } else {  // find by query
-        var entriesFiltered = _.filter( entries, function(entry){
-          // in name?
-          if( entry.name.toLowerCase().indexOf(query) >= 0 ) return true;
-          // in category?
-          var cat = that.getWording('cat_' + entry.category.name);
-          if( cat.toLowerCase().indexOf(query) >= 0 ) return true;
-          // in subCategory?
-          if( entry.subCategory ) {
-            var subcat = that.getWording('cat_' + entry.subCategory);
-            if( subcat.toLowerCase().indexOf(query) >= 0 ) return true;
-          }
-          return false;
-        });
+        
+        var entriesFiltered;
+
+        // predefined query: support wanted
+        if( query == 'supportwanted' ){
+          entriesFiltered = _.filter( entries, function(entry){
+            return entry.supportWanted;
+          });
+        }
+        // free search
+        else {
+          entriesFiltered = _.filter( entries, function(entry){
+            // in name?
+            if( entry.name.toLowerCase().indexOf(query) >= 0 ) return true;
+            // in category?
+            var cat = that.getWording('cat_' + entry.category.name);
+            if( cat.toLowerCase().indexOf(query) >= 0 ) return true;
+            // in subCategory?
+            if( entry.subCategory ) {
+              var subcat = that.getWording('cat_' + entry.subCategory);
+              if( subcat.toLowerCase().indexOf(query) >= 0 ) return true;
+            }
+            // children?
+            if( entry.forChildren ) {
+              var children = that.getWording('prop_forChildren');
+              if( children.toLowerCase().indexOf(query) >= 0 ) return true;
+            }
+            return false;
+          });
+        }
 
         _.each(entriesFiltered, function(entry) {
           createEntryResult(entry);

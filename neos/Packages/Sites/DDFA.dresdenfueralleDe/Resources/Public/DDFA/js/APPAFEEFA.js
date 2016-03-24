@@ -41,7 +41,8 @@ qx.Class.define("APPAFEEFA", {
 						sub: [
 							{ name: 'job-counselling', id: '3-1' },
 							{ name: 'political-education', id: '3-2' },
-							{ name: 'education-sponsorship', id: '3-3' }
+							{ name: 'education-sponsorship', id: '3-3' },
+							{ name: 'library', id: '3-4' }
 						]
 
 					},

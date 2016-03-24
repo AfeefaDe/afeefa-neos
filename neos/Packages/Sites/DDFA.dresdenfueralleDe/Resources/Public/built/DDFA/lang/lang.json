@@ -168,6 +168,18 @@
                         "ti":"",
                         "ur":""
                   },
+                  "cat_library":{
+                        "de":"Bibliothek",
+                        "en":"Library",
+                        "ar":"",
+                        "fa":"",
+                        "fr":"",
+                        "it":"",
+                        "ru":"",
+                        "sr":"",
+                        "ti":"",
+                        "ur":""
+                  },
             "cat_consultation":{
                   "de":"Beratung",
                   "en":"consultation",

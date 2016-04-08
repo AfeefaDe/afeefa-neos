@@ -73,8 +73,8 @@
                         "ur":""
                   },
             "cat_medic":{
-                  "de":"Medizin",
-                  "en":"Healthcare",
+                  "de":"Gesundheit",
+                  "en":"Health care",
                   "ar":"الرعاىة الصحية",
                   "fa":"مراقبت های بهداشتی",
                   "fr":"soins de santé",
@@ -84,9 +84,9 @@
                   "ti":"ሕክምናዊ ኣገልግሎት",
                   "ur":"صحت کی دیکھ بھال"
             },
-                  "cat_medical-counselling":{
-                        "de":"Medizinische Beratung",
-                        "en":"medical counselling",
+                  "cat_medical-care":{
+                        "de":"Medizinische Versorgung",
+                        "en":"medical care",
                         "ar":"",
                         "fa":"",
                         "fr":"",
@@ -96,9 +96,9 @@
                         "ti":"",
                         "ur":""
                   },
-                  "cat_medical-care":{
-                        "de":"Medizinische Versorgung",
-                        "en":"medical care",
+                  "cat_medical-counselling":{
+                        "de":"Medizinische Beratung",
+                        "en":"medical counselling",
                         "ar":"",
                         "fa":"",
                         "fr":"",

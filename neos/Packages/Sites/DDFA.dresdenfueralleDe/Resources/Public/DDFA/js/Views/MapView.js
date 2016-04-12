@@ -526,7 +526,7 @@ qx.Class.define("MapView", {
 		});
 
 		that.map.on('locationerror', function(e) {
-				alert('Locating failed');
+				// alert('Locating failed');
 		});
 		},
 

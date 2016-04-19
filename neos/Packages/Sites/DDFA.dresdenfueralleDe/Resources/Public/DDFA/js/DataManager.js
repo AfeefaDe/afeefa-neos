@@ -1,7 +1,7 @@
 qx.Class.define("DataManager", {
 	
 	extend : Daddy,
-	type: "singleton",	
+	type: "singleton",  
 
 	construct: function(){
 		var that = this;
@@ -17,7 +17,7 @@ qx.Class.define("DataManager", {
 			// var allData = {};
 
 			// snychronous data calls (wait for all data calls to finish)
-			that.getAllLocations(function(data){	// locations
+			that.getAllLocations(function(data){    // locations
 				// store in APP
 				var currentData = APP.getData();
 				currentData.locations = data.locations;
@@ -95,6 +95,30 @@ qx.Class.define("DataManager", {
 				dataType: 'json'
 			})
 			.done(function( data ) {
+				
+				// TIME FILTER
+				// TODO move filter into API controller
+				var locations = _.filter(data.locations, function(location){
+						
+				// skip orgas and basic locations
+				if(location.type == 0 || location.type == 3) return true;
+
+					var dateFrom = location.marketEntry.dateFrom ? new Date(location.marketEntry.dateFrom) : null;
+					var dateTo = location.marketEntry.dateTo ? new Date(location.marketEntry.dateTo) : null;
+
+					if( dateFrom || dateTo ){
+							// add one day to the event to make it comparable with today (only the date matters, not the hour)
+							if(dateFrom) dateFrom.setDate(dateFrom.getDate() + 1);
+							if(dateTo) dateTo.setDate(dateTo.getDate() + 1);
+
+							if( dateTo && dateTo < new Date() ) return false;
+							if( dateFrom && dateFrom < new Date() ) return false;
+					}
+					
+					return true;
+				});
+
+				data.locations = locations;
 				cb(data);
 			})
 			.fail(function(a) {

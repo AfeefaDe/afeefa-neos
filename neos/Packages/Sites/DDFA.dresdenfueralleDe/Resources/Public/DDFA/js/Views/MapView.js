@@ -6,7 +6,8 @@ qx.Class.define("MapView", {
 	properties : {
 		userLocation: {},
 		markerLocationLookup: {},
-		selectedMarker: {}
+		selectedMarker: {},
+		viewCoords: {}
 	},
 	
 	construct: function(){
@@ -18,6 +19,10 @@ qx.Class.define("MapView", {
 		that.setUserLocation(null);
 		that.setSelectedMarker(null);
 		that.setMarkerLocationLookup([]);
+		that.setViewCoords({
+			dresden: { lat: 51.051, lon: 13.74, zoom: 14 },
+			pirna: { lat: 50.957456, lon: 13.937007, zoom: 14 }
+		});
 	},
 
 	members : {
@@ -45,20 +50,20 @@ qx.Class.define("MapView", {
 
 
 			/////////////////
-				// MAPBOX INIT //
+			// MAPBOX INIT //
 			/////////////////
-				L.mapbox.accessToken = 'pk.eyJ1IjoiZmVsaXhrYW1pbGxlIiwiYSI6Ilo1SHFOX0EifQ.pfAzun90Lj1UlVapKI3LiA';
-		that.map = L.mapbox.map(that.getViewId(), 'felixkamille.4128d9e7', {
+			L.mapbox.accessToken = 'pk.eyJ1IjoiZmVsaXhrYW1pbGxlIiwiYSI6Ilo1SHFOX0EifQ.pfAzun90Lj1UlVapKI3LiA';
+			that.map = L.mapbox.map(that.getViewId(), 'felixkamille.4128d9e7', {
 			zoomControl: false,
 			maxBounds: [
-					L.latLng(50.835169, 13.099075), // south-west corner
-					L.latLng(51.365345, 14.759512)  // north-east corner
+					L.latLng(47.070122, 5.383301), // south-west corner
+					L.latLng(55.034167, 15.589307)  // north-east corner
 			],
 			// attributionControl: true,
 			tileLayer: {format: 'jpg70'},  // valid values are png, jpg, png32, png64, png128, png256, jpg70, jpg80, jpg90
 			tapTolerance: 30,
 			maxZoom: 20
-			}).setView([ 51.051, 13.74 ], 14);
+			}).setView([ that.getViewCoords().dresden.lat, that.getViewCoords().dresden.lon ], that.getViewCoords().dresden.zoom);
 		
 		// Layer group for main markers (with clustering)
 		that.layerForMainMarkers = new L.MarkerClusterGroup({
@@ -336,12 +341,18 @@ qx.Class.define("MapView", {
 		loadFromUrl: function( options ){
 			var that = this;
 
-		var url = window.location.hash.split('#');
+			var url = window.location.hash.split('#');
 			url = _.without(url, '');
-			var entryId = url[0];
 			
-			if(entryId) {
-				var lookup = that.lookupMarkerById(entryId);
+			var firstParam = url[0] ? url[0].toLowerCase() : null;
+			
+			if( firstParam == 'pirna' ) {
+				// set view to pirna
+				that.map.setView([ that.getViewCoords().pirna.lat, that.getViewCoords().pirna.lon ], that.getViewCoords().pirna.zoom);
+			}
+			// param is an entryId
+			else {
+				var lookup = that.lookupMarkerById(firstParam);
 				if(lookup){
 					if(options && options.setView)
 						that.map.setView( [lookup.location.lat, lookup.location.lon], 16);
@@ -349,7 +360,7 @@ qx.Class.define("MapView", {
 				}
 			}
 
-			// if(entryId) that.selectMarkerById(entryId);
+			// if(firstParam) that.selectMarkerById(firstParam);
 		},
 
 		lookupMarkerById: function( id ){

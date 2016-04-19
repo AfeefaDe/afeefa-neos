@@ -9,7 +9,6 @@ namespace DDFA\Main\Controller\Module\DDFA;
 use DateTime;
 use DDFA\Main\Domain\Model\Location;
 use DDFA\Main\Domain\Repository\CategoryRepository;
-use DDFA\Main\Domain\Repository\InitiativeRepository;
 use DDFA\Main\Domain\Repository\LanguageRepository;
 use DDFA\Main\Domain\Repository\LocationRepository;
 use DDFA\Main\Domain\Repository\MarketEntryRepository;
@@ -36,12 +35,6 @@ class LocationsModuleController extends AbstractTranslationController
      * @var AssetRepository
      */
     protected $assetRepository;
-
-    /**
-     * @Flow\Inject
-     * @var InitiativeRepository
-     */
-    protected $initiativeRepository;
 
     /**
      * @Flow\Inject
@@ -103,7 +96,7 @@ class LocationsModuleController extends AbstractTranslationController
 
             switch ($type) {
                 case DDConst::OWNER_INI:
-                    $this->view->assign('inis', $this->initiativeRepository->findAllLocalized());
+                    //$this->view->assign('inis', $this->initiativeRepository->findAllLocalized());
                     break;
                 case DDConst::OWNER_MARKET:
                     //TODO localize
@@ -139,8 +132,8 @@ class LocationsModuleController extends AbstractTranslationController
             switch ($type) {
                 case DDConst::OWNER_INI:
                     //TODO refactor:
-                    if (isset($_POST['moduleArguments']['ini']))
-                        $newObject->setInitiative($this->initiativeRepository->findOneByName($_POST['moduleArguments']['ini']));
+                    //if (isset($_POST['moduleArguments']['ini']))
+                     //   $newObject->setInitiative($this->initiativeRepository->findOneByName($_POST['moduleArguments']['ini']));
                     break;
                 case DDConst::OWNER_MARKET:
                     if (isset($_POST['moduleArguments']['entry']))
@@ -236,7 +229,7 @@ class LocationsModuleController extends AbstractTranslationController
 
             switch ($editObject->getType()) {
                 case DDConst::OWNER_INI:
-                    $this->view->assign('inis', $this->initiativeRepository->findAllLocalized());
+                   // $this->view->assign('inis', $this->initiativeRepository->findAllLocalized());
                     break;
                 case DDConst::OWNER_MARKET:
                     //TODO localize
@@ -265,8 +258,8 @@ class LocationsModuleController extends AbstractTranslationController
     public
     function updateAction(Location $editObject)
     {
-        if (isset($_POST['moduleArguments']['ini']))
-            $editObject->setInitiative($this->initiativeRepository->findOneByName($_POST['moduleArguments']['ini']));
+        //if (isset($_POST['moduleArguments']['ini']))
+          //  $editObject->setInitiative($this->initiativeRepository->findOneByName($_POST['moduleArguments']['ini']));
 
         if (isset($_POST['moduleArguments']['entry']))
             $editObject->setMarketEntry($this->marketRepository->findOneByName($_POST['moduleArguments']['entry']));

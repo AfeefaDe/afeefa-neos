@@ -13,20 +13,6 @@
         entity: 'location'
 
 -
-  name: 'api initiatives'
-  uriPattern: 'api/initiatives<InitiativeSubroutes>(?{@locale})'
-  defaults:
-    '@controller': 'Api\InitiativeAPI'
-    '@action': 'list'
-    '@locale': 'de'
-  subRoutes:
-    InitiativeSubroutes:
-      package: 'DDFA.Main'
-      suffix: 'Entity'
-      variables:
-        entity: 'initiative'
-
--
   name: 'api marketentries'
   uriPattern: 'api/marketentries<MarketentrySubroutes>(?{@locale})'
   defaults:
@@ -67,4 +53,3 @@
       suffix: 'Entity'
       variables:
         entity: 'feedback'
-

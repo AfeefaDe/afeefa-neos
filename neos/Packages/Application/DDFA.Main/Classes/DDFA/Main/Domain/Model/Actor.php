@@ -66,12 +66,6 @@ abstract class Actor extends BasicEntity
     protected $rating;
 
     /**
-     * @var Collection<\DDFA\Main\Domain\Model\Tag>
-     * @ORM\ManyToMany()
-     */
-    protected $tags;
-
-    /**
      * @var Category
      * @ORM\ManyToOne(targetEntity="DDFA\Main\Domain\Model\Category")
      * @ORM\JoinColumn(name="category_id", referencedColumnName="persistence_object_identifier")
@@ -84,12 +78,6 @@ abstract class Actor extends BasicEntity
      * @ORM\Column(nullable=true)
      */
     protected $subCategory;
-
-    /**
-     * @var Collection<\DDFA\Main\Domain\Model\TargetGroup>
-     * @ORM\ManyToMany()
-     */
-    protected $targetGroups;
 
     /**
      * @var string
@@ -263,23 +251,6 @@ abstract class Actor extends BasicEntity
     /**
      * @return Collection
      */
-    public function getTags()
-    {
-        return $this->tags;
-    }
-
-    /**
-     * @param Collection $tags
-     * @return void
-     */
-    public function setTags(Collection $tags)
-    {
-        $this->tags = $tags;
-    }
-
-    /**
-     * @return Collection
-     */
     public function getCategory()
     {
         return $this->category;
@@ -293,24 +264,6 @@ abstract class Actor extends BasicEntity
     {
         $this->category = $category;
     }
-
-    /**
-     * @return Collection
-     */
-    public function getTargetGroups()
-    {
-        return $this->targetGroups;
-    }
-
-    /**
-     * @param Collection $targetGroups
-     * @return void
-     */
-    public function setTargetGroups($targetGroups)
-    {
-        $this->targetGroups = $targetGroups;
-    }
-
     /**
      * @return int
      */

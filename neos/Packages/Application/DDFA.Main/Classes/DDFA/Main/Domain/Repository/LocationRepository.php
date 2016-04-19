@@ -7,8 +7,6 @@ namespace DDFA\Main\Domain\Repository;
  *                                                                        */
 
 use DDFA\Main\Domain\Model\Actor;
-use DDFA\Main\Domain\Model\Event;
-use DDFA\Main\Domain\Model\Initiative;
 use DDFA\Main\Domain\Model\Location;
 use DDFA\Main\Domain\Model\MarketEntry;
 use DDFA\Main\Utility\DDConst;
@@ -23,21 +21,9 @@ class LocationRepository extends AbstractTranslationRepository
 {
     /**
      * @Flow\Inject
-     * @var InitiativeRepository
-     */
-    protected $initiativeRepository;
-
-    /**
-     * @Flow\Inject
      * @var MarketEntryRepository
      */
     protected $marketRepository;
-
-    /**
-     * @Flow\Inject
-     * @var EventRepository
-     */
-    protected $eventRepository;
 
     /**
      * @Flow\Inject
@@ -262,13 +248,13 @@ class LocationRepository extends AbstractTranslationRepository
             $iniProp = null;
             switch ($location->getType()) {
                 case DDConst::OWNER_INI:
-                    $iniProp = $sourceReflection->getProperty("initiative");
+                    //$iniProp = $sourceReflection->getProperty("initiative");
                     break;
                 case DDConst::OWNER_MARKET:
                     $iniProp = $sourceReflection->getProperty("marketEntry");
                     break;
                 case DDConst::OWNER_EVENT:
-                    $iniProp = $sourceReflection->getProperty("event");
+                    //$iniProp = $sourceReflection->getProperty("event");
                     break;
             }
 
@@ -304,7 +290,7 @@ class LocationRepository extends AbstractTranslationRepository
     }
 
     /**
-     * @param Actor|Initiative|MarketEntry|Event $owner
+     * @param Actor|MarketEntry $owner
      * @return boolean
      */
     public function existsReferringLocation(Actor $owner)
@@ -313,10 +299,6 @@ class LocationRepository extends AbstractTranslationRepository
 
         if ($owner instanceof MarketEntry)
             $query->matching($query->equals('marketEntry', $owner->getPersistenceObjectIdentifier()));
-        else if ($owner instanceof Initiative)
-            $query->matching($query->equals('initiative', $owner->getPersistenceObjectIdentifier()));
-        else if ($owner instanceof Event)
-            $query->matching($query->equals('event', $owner->getPersistenceObjectIdentifier()));
         else
             return false;
 

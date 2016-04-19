@@ -27,17 +27,6 @@
         </div>
     </div>
 
-    <f:if condition="{inis}">
-        <div class="neos-control-group">
-            <label class="neos-control-label" for="initiative">Initiative</label>
-
-            <div class="neos-controls">
-                <f:form.select class="neos-span12" id="initiative" name="ini" options="{inis}" optionValueField="name"
-                               optionLabelField="name" value="{selectedIni}" sortByOptionLabel="true"/>
-            </div>
-        </div>
-    </f:if>
-
     <f:if condition="{entries}">
         <div class="neos-control-group">
             <label class="neos-control-label" for="entry">Owner</label>

@@ -41,7 +41,7 @@ TYPO3:
           categories:
             label: 'Categories'
             controller: '\DDFA\Main\Controller\Module\DDFA\CategoriesModuleController'
-            description: "The DD4all Categories Submodule provides all the usefull management functions to administrate initiatives like adding, editing, removing and indexing. (nothing left so say...)"
+            description: "The DD4all Categories Submodule provides all the usefull management functions to administrate categories like adding, editing, removing and indexing. (nothing left so say...)"
             icon: 'icon-key'
             resource: 'DDFA_Main_Module_ddfaCategoriesModule'
             actions:

@@ -144,11 +144,11 @@ qx.Class.define("MapView", {
 		});
 
 		that.listen('DetailViewMobileRendered', function(){
-			that.loadFromUrl( {setView: true} );
+			// that.loadFromUrl( {setView: true} );
 		});
 
 		that.listen('DetailViewRendered', function(){
-			that.loadFromUrl( {setView: true} );
+			// that.loadFromUrl( {setView: true} );
 		});
 
 		},
@@ -195,7 +195,7 @@ qx.Class.define("MapView", {
 				}
 
 			that.addMarkers(locations);
-			that.loadFromUrl({setView: false});
+			that.loadFromUrl({setView: true});
 			that.loading(false);
 		},
 

@@ -58,6 +58,13 @@ class MarketEntry extends Actor
     protected $area;
 
     /**
+     * @var MarketEntry
+     * @ORM\ManyToOne(targetEntity="DDFA\Main\Domain\Model\MarketEntry")
+     * @ORM\JoinColumn(name="parent_entry_id", referencedColumnName="persistence_object_identifier")
+     */
+    protected $parentEntry;
+
+    /**
      * @var int
      * @ORM\Column(nullable=false)
      */

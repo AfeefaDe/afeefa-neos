@@ -7,16 +7,16 @@ function sql($request, $variant = 1)
     ///////////////
 
     // localhost joschka
-    // $server = "localhost";
-    // $user = "dude";
-    // $pass = "";
-    // $db = "neos";
+    $server = "localhost";
+    $user = "dude";
+    $pass = "";
+    $db = "neos";
 
-//    localhost felix
-   $server = "localhost";
-   $user = "root";
-   $pass = "";
-   $db = "afeefa_neos";
+    // localhost felix
+//    $server = "localhost";
+//    $user = "root";
+//    $pass = "";
+//    $db = "afeefa_neos";
 
 
     /////////////

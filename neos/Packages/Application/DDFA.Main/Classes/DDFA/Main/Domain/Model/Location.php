@@ -74,12 +74,6 @@ class Location extends Actor
      */
     protected $arrival;
 
-    //TODO: remove type and ini and event relation
-    /**
-     * @var int
-     */
-    protected $type;
-
     /**
      * @var MarketEntry
      * @ORM\ManyToOne(targetEntity="DDFA\Main\Domain\Model\MarketEntry")

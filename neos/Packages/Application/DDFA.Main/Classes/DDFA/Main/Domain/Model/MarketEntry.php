@@ -65,6 +65,11 @@ class MarketEntry extends Actor
      */
     protected $parentEntry;
 
+    /**
+     * @var \Doctrine\Common\Collections\Collection<\DDFA\Main\Domain\Model\MarketEntry>
+     * @ORM\OneToMany(mappedBy="parentEntry")
+     */
+    protected $childEntries;
 
     /**
      * @var string
@@ -610,5 +615,21 @@ class MarketEntry extends Actor
     public function setForChildren($forChildren)
     {
         $this->forChildren = $forChildren;
+    }
+
+    /**
+     * @return Collection
+     */
+    public function getChildEntries()
+    {
+        return $this->childEntries;
+    }
+
+    /**
+     * @param Collection $childEntries
+     */
+    public function setChildEntries($childEntries)
+    {
+        $this->childEntries = $childEntries;
     }
 }

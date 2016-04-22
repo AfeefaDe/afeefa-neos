@@ -1,50 +1,71 @@
-<tr>
-    <td>
+<f:if condition="{lvl} != 0">
+    <f:then>
+        <tr class="afeefa-intended">
+    </f:then>
+    <f:else>
+        <tr>
+    </f:else>
+</f:if>
+
+<td>
+    <div class="onoffswitch">
         <f:if condition="{entry.published}">
             <f:then>
-                <i class="icon-ok-sign"></i>
+                <input type="checkbox" name="published-{entry.persistenceObjectIdentifier}" class="onoffswitch-checkbox" id="published-{entry.persistenceObjectIdentifier}" checked>
             </f:then>
             <f:else>
-                <f:form action="publish" arguments="{object: entry}" class="actionForm">
-                    <button type="submit" class="neos-button" title="publish">
-                        <i class="icon-ok icon-white"></i></button>
-                </f:form>
+                <input type="checkbox" name="published-{entry.persistenceObjectIdentifier}" class="onoffswitch-checkbox" id="published-{entry.persistenceObjectIdentifier}">
             </f:else>
         </f:if>
-    </td>
+        <label class="onoffswitch-label" for="published-{entry.persistenceObjectIdentifier}"></label>
+    </div>
+</td>
 
-    <td class="neos-action">
+<td class="neos-action">
+    <div>
+        <f:link.action action="simpleEdit" controller="marketEntriesModuleController"
+                       arguments="{editObject: entry}"
+                       class="neos-button" title="Edit market entry">
+            <i class="icon-pencil icon-white"></i>
+        </f:link.action>
+        <f:form action="delete" arguments="{deleteObject: entry}" class="actionForm afeefa-form">
+            <button type="submit" class="neos-button" title="Delete market entry">
+                <i class="icon-trash icon-white"></i>
+            </button>
+        </f:form>
+    </div>
+</td>
+<td>
+    <f:if condition="{entry.internalComment}">
         <div>
-            <f:link.action action="view" controller="marketEntriesModuleController" arguments="{viewObject: entry}"
-                           class="neos-button " title="View market entry">
-                <i class="icon-eye-open icon-white"></i>
-            </f:link.action><f:link.action action="simpleEdit" controller="marketEntriesModuleController"
-                           arguments="{editObject: entry}"
-                           class="neos-button" title="Edit market entry">
-                <i class="icon-pencil icon-white"></i>
-            </f:link.action><f:form action="delete" arguments="{deleteObject: entry}" class="actionForm afeefa-form">
-                <button type="submit" class="neos-button" title="Delete market entry">
-                    <i class="icon-trash icon-white"></i>
-                </button>
-            </f:form>
+            <a class="tooltip"><i class="icon-info-sign"></i><span>{entry.internalComment}</span></a>
         </div>
-    </td>
-    <td>
-        <f:if condition="{entry.internalComment}">
-            <div>
-                <a class="tooltip"><i class="icon-info-sign"></i><span>{entry.internalComment}</span></a>
-            </div>
-        </f:if>
-    </td>
-    <td>
-        <div>{entry.type}</div>
-    </td>
-    <td>
-        <div>{entry.name}</div>
-    </td>
-    <td>
-        <div>{entry.numLocales}
-            <f:if condition="{entry.numLocales} > 0"><p class="afeefa-small">({entry.locales})</p></f:if>
-        </div>
-    </td>
+    </f:if>
+</td>
+<td>
+    <div>
+        <f:switch expression="{entry.type}">
+            <f:case value="0">■</f:case>
+            <f:case value="1">●</f:case>
+            <f:case value="2">♦</f:case>
+            <f:case value="3">_</f:case>
+        </f:switch>
+    </div>
+</td>
+<td>
+    <div>
+        <f:for each="{entry.locations}" as="location">
+            <i class="icon-map-marker icon-white"></i>
+        </f:for>
+        {entry.name}
+    </div>
+</td>
 </tr>
+<f:for each="{entry.childEntries}" as="child">
+    <f:if condition="{lvl} == '0'">
+        <f:render partial="MarketEntry/MarketEntryEntry" arguments="{entry: child, lvl : '1'}"/>
+    </f:if>
+    <f:if condition="{lvl} == '1'">
+        <f:render partial="MarketEntry/MarketEntryEntry" arguments="{entry: child, lvl : '2'}"/>
+    </f:if>
+</f:for>

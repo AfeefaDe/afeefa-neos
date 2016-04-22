@@ -67,6 +67,28 @@ abstract class AbstractTranslationRepository extends Repository
         return $this->includeLocales($query->execute());
     }
 
+    public function findAllParents($locale = DDConst::LOCALE_STD, $onlyPublished = false)
+    {
+        $query = $this->createQuery()->setOrderings(array('created' => QueryInterface::ORDER_DESCENDING));
+
+        if ($onlyPublished) {
+            $query = $query->matching(
+                $query->logicalAnd(
+                    $query->equals('published', '1'), $query->equals('locale', $locale), $query->equals('parentEntry', null)
+                )
+            );
+
+        } else {
+            $query = $query->matching(
+                $query->logicalAnd(
+                    $query->equals('locale', $locale), $query->equals('parentEntry', null)
+                )
+            );
+        }
+
+        return $this->includeLocales($query->execute());
+    }
+
     /**
      * adds number of translations (numLocales) and a string of the according locale codes (locales) to a number of objects
      * @param $objects

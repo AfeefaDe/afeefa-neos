@@ -52,7 +52,7 @@ class MarketEntriesModuleController extends AbstractTranslationController
      */
     public function indexAction()
     {
-        $this->view->assign('entries', $this->objectRepository->findAllLocalized());
+        $this->view->assign('entries', $this->objectRepository->findAllParents());
         $this->view->assign('numLanguages', $this->languageRepository->findAll()->count() - 1);
     }
 

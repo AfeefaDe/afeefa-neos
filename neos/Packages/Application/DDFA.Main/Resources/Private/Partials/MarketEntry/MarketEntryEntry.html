@@ -11,10 +11,10 @@
     <div class="onoffswitch">
         <f:if condition="{entry.published}">
             <f:then>
-                <input type="checkbox" name="published-{entry.persistenceObjectIdentifier}" class="onoffswitch-checkbox" id="published-{entry.persistenceObjectIdentifier}" checked>
+                <input type="checkbox" name="published-{entry.persistenceObjectIdentifier}" class="onoffswitch-checkbox" id="published-{entry.persistenceObjectIdentifier}" checked onclick="activate()">
             </f:then>
             <f:else>
-                <input type="checkbox" name="published-{entry.persistenceObjectIdentifier}" class="onoffswitch-checkbox" id="published-{entry.persistenceObjectIdentifier}">
+                <input type="checkbox" name="published-{entry.persistenceObjectIdentifier}" class="onoffswitch-checkbox" id="published-{entry.persistenceObjectIdentifier}" onclick="activate()">
             </f:else>
         </f:if>
         <label class="onoffswitch-label" for="published-{entry.persistenceObjectIdentifier}"></label>
@@ -54,7 +54,7 @@
 </td>
 <td>
     <div>
-        <f:for each="{entry.locations}" as="location">
+        <f:for each="{entry.location}" as="location">
             <i class="icon-map-marker icon-white"></i>
         </f:for>
         {entry.name}

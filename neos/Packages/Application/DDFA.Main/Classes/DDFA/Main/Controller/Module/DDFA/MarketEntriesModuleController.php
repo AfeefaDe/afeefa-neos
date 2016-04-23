@@ -144,6 +144,8 @@ class MarketEntriesModuleController extends AbstractTranslationController
         } else {
             $this->view->assign('editObject', $editObject);
             $this->view->assign('languages', $this->languageRepository->findAll());
+            $this->view->assign('location', $editObject->getLocation()->first());
+            $this->view->assign('parents', $this->objectRepository->findAllParents());
             $this->view->assign('cats', $this->categoryRepository->findByType(DDConst::OWNER_MARKET));
         }
     }
@@ -156,10 +158,16 @@ class MarketEntriesModuleController extends AbstractTranslationController
     public function updateAction(MarketEntry $editObject)
     {
         $editObject->setUpdated(new DateTime());
-
-        //TODO refactor:
-        if (isset($_POST['moduleArguments']['cat'])) {
-            $editObject->setCategory($this->categoryRepository->findOneByName($_POST['moduleArguments']['cat']));
+        if ($_POST['moduleArguments']['hasLocation'] == "on") {
+            if ($editObject->getLocations()->first() == null) {
+                //TODO create location
+            } else {
+                //TODO update location
+            }
+        } else {
+            if ($editObject->getLocations()->first() != null) {
+                //TODO: delete location
+            }
         }
 
         $this->addFlashMessage('The market entry has been updated successfully.');

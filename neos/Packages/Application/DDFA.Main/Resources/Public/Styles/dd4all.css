@@ -27,6 +27,10 @@ div.afeefa-infoBox p, div.afeefa-grayBox p {
     margin-bottom: 10px;
 }
 
+tr.afeefa-intended td{
+    background-color: #3f3f3f !important;
+}
+
 tr.afeefa-intended td:nth-child(5) {
     padding-left: 50px !important;
 }

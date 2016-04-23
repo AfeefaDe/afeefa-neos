@@ -1,5 +1,18 @@
 <fieldset class="neos-span3">
-    <legend>Basic information</legend>
+    <legend>Structural</legend>
+
+    <div class="neos-control-group">
+        <label class="neos-control-label" for="parentEntry">Parent entry</label> <a onclick="$('#parentEntry').val('')"
+                                                                                    style="cursor: pointer;"><i
+            class="icon-remove"></i></a>
+
+        <div class="neos-controls">
+            <f:form.select class="neos-span12" property="parentEntry" id="parentEntry" options="{parents}"
+                           optionValueField="persistenceObjectIdentifier"
+                           optionLabelField="name" sortByOptionLabel="true" prependOptionLabel="- none -"
+                           prependOptionValue=""/>
+        </div>
+    </div>
 
     <div class="neos-control-group">
         <label class="neos-control-label" for="area">Admin area</label>
@@ -15,7 +28,7 @@
 
         <div class="neos-controls">
             <f:form.select class="neos-span12" property="type" id="type"
-                           options="{0: '0 - Orga/ Ini/ Project', 1: '1 - Market entry ', 2: '2 - Event', 3: '3 - POI/ Basic'}"/>
+                           options="{0: '■ Orga', 1: '● Market ', 2: '♦ Event', 3: '_ Basic'}"/>
         </div>
     </div>
 
@@ -26,7 +39,76 @@
         </label>
     </div>
 
-    <hr/>
+    <legend>Date</legend>
+
+    <div class="neos-control-group">
+        <label class="neos-control-label" for="dateFrom">Date from</label>
+
+        <div class="neos-controls">
+            <f:form.textfield class="neos-span12" property="dateFrom" id="dateFrom" type="date"/>
+            <span class="afeefa-small">(Format: yyyy-mm-dd)</span>
+        </div>
+    </div>
+
+    <div class="neos-control-group">
+        <label class="neos-control-label" for="timeFrom">Time from</label>
+
+        <div class="neos-controls">
+            <f:form.textfield class="neos-span12" property="timeFrom" id="timeFrom" type="time"/>
+            <span class="afeefa-small">(Format: hh:mm)</span>
+        </div>
+    </div>
+
+    <div class="neos-control-group">
+        <label class="neos-control-label" for="dateTo">Date to</label>
+
+        <div class="neos-controls">
+            <f:form.textfield class="neos-span12" property="dateTo" id="dateTo" type="date"/>
+            <span class="afeefa-small">(Format: yyyy-mm-dd)</span>
+        </div>
+    </div>
+
+    <div class="neos-control-group">
+        <label class="neos-control-label" for="timeTo">Time to</label>
+
+        <div class="neos-controls">
+            <f:form.textfield class="neos-span12" property="timeTo" id="timeTo" type="time"/>
+            <span class="afeefa-small">(Format: hh:mm)</span>
+        </div>
+    </div>
+
+    <legend>Media</legend>
+    <div class="neos-control-group">
+        <label class="neos-control-label">Media type</label>
+
+        <div class="neos-controls">
+            <label for="typeNone" class="neos-radio neos-inline">
+                <f:form.radio property="imageType" value="" id="typeNone" checked="true"/>
+                No media<span></span>
+            </label>
+            <label for="typeImage" class="neos-radio neos-inline">
+                <f:form.radio property="imageType" value="image" id="typeImage"/>
+                Image<span></span>
+            </label>
+            <label for="typeYouTube" class="neos-radio neos-inline">
+                <f:form.radio property="imageType" value="youtube" id="typeYouTube"/>
+                YouTube<span></span>
+            </label>
+        </div>
+    </div>
+
+    <div class="neos-control-group">
+        <label class="neos-control-label" for="image">Media URL</label>
+
+        <div class="neos-controls">
+            <f:form.textfield class="neos-span12" property="image" id="image" placeholder="Enter URL"/>
+        </div>
+    </div>
+
+</fieldset>
+
+<fieldset class="neos-span5">
+    <legend>Basic Info</legend>
 
     <div>
         <label for="forChildren" class="neos-checkbox neos-inline">
@@ -39,21 +121,22 @@
         </label>
     </div>
 
+    <f:if condition="{editObject.type} == 1">
+        <div class="neos-control-group">
+            <label class="neos-control-label">Offer/ Request</label>
 
-    <div class="neos-control-group">
-        <label class="neos-control-label">Offer or demand</label>
-
-        <div class="neos-controls">
-            <label for="isOffer" class="neos-radio neos-inline">
-                <f:form.radio property="offer" value="offer" checked="true" id="isOffer"/>
-                offer<span></span>
-            </label>
-            <label for="isDemand" class="neos-radio neos-inline">
-                <f:form.radio property="offer" value="demand" id="isDemand"/>
-                demand<span></span>
-            </label>
+            <div class="neos-controls">
+                <label for="isOffer" class="neos-radio neos-inline">
+                    <f:form.radio property="offer" value="offer" checked="true" id="isOffer"/>
+                    offer<span></span>
+                </label>
+                <label for="isDemand" class="neos-radio neos-inline">
+                    <f:form.radio property="offer" value="demand" id="isDemand"/>
+                    request<span></span>
+                </label>
+            </div>
         </div>
-    </div>
+    </f:if>
 
     <div class="neos-control-group">
         <label class="neos-control-label" for="name">Name</label>
@@ -68,8 +151,9 @@
         <label class="neos-control-label" for="category">Category</label>
 
         <div class="neos-controls">
-            <f:form.select class="neos-span12" id="category" name="cat" options="{cats}" optionValueField="name"
-                           optionLabelField="name" value="{selectedCat}" sortByOptionLabel="true"/>
+            <f:form.select class="neos-span12" property="category" id="category" options="{cats}"
+                           optionValueField="persistenceObjectIdentifier"
+                           optionLabelField="name" sortByOptionLabel="true"/>
         </div>
     </div>
 
@@ -121,22 +205,10 @@
                                islam: '8 general: mosque',
                                jewish: '8 general: synagogue',
                                shop: '8 general: international shop',
-                               public: '8 general: authority'}" prependOptionLabel="" prependOptionValue="" sortByOptionLabel="1"/>
+                               public: '8 general: authority'}" prependOptionLabel="" prependOptionValue=""
+                           sortByOptionLabel="1"/>
         </div>
     </div>
-
-    <!--
-    <div class="neos-control-group">
-        <label class="neos-control-label" for="image">Logo / Image</label>
-
-        <div class="neos-controls">
-            <f:form.select class="neos-span12" id="image" property="image" options="{imgs}"
-                           optionValueField="identifier" optionLabelField="title" value="{selectedImg}"
-                           sortByOptionLabel="true" prependOptionLabel="- none -"/>
-        </div>
-    </div>
-    !-->
-
 
     <div class="neos-control-group">
         <label class="neos-control-label" for="description">Description</label>
@@ -156,19 +228,118 @@
         </div>
     </div>
 
-    <!-- TODO  min="1" max="5" -->
-    <!--<div class="neos-control-group">
-        <label class="neos-control-label" for="rating">Rating</label>
+    <legend>Location</legend>
+    <div class="onoffswitch" style="display: inline-block">
+        <f:if condition="{location}">
+            <f:then>
+                <input type="checkbox" name="moduleArguments[hasLocation]"
+                       class="onoffswitch-checkbox" id="hasLocation"
+                       checked onclick="$('#location-form').hide();">
+            </f:then>
+            <f:else>
+                <input type="checkbox" name="moduleArguments[hasLocation]"
+                       class="onoffswitch-checkbox" id="hasLocation"
+                       onclick="$('#location-form').show();">
+            </f:else>
+        </f:if>
+        <label class="onoffswitch-label" for="hasLocation"></label>
+    </div>
+    <f:if condition="{location}">
+        <f:then>
+            <script type="text/javascript">
+                $(function () {
+                    $('#location-form').show();
+                });
+            </script>
+        </f:then>
+        <f:else>
+            <script type="text/javascript">
+                $(function () {
+                    $('#location-form').hide();
+                });
+            </script>
+        </f:else>
+    </f:if>
+    <div id=location-form">
 
-        <div class="neos-controls">
-            <f:form.textfield class="neos-span12" property="rating" id="rating" type="number" required="true"
-                              value="3"/>
+        <div class="neos-control-group">
+            <label class="neos-control-label" for="street">Street</label>
+
+            <div class="neos-controls">
+                <f:form.textfield class="neos-span12" name="moduleArguments[location][street]" id="street"
+                                  placeholder="Enter street"/>
+            </div>
         </div>
-    </div>-->
 
+        <div class="neos-control-group">
+            <label class="neos-control-label" for="street">Addition (placename)</label>
+
+            <div class="neos-controls">
+                <f:form.textfield class="neos-span12" name="moduleArguments[location][placename]" id="placename"
+                                  placeholder="Enter additional precise place description"/>
+            </div>
+        </div>
+
+        <div class="neos-control-group">
+            <label class="neos-control-label" for="zip">ZIP</label>
+
+            <div class="neos-controls">
+                <f:form.textfield class="neos-span12" name="moduleArguments[location][zip]" id="zip" type="number"
+                                  placeholder="Enter ZIP-Code"/>
+            </div>
+        </div>
+
+        <div class="neos-control-group">
+            <label class="neos-control-label" for="city">City</label>
+
+            <div class="neos-controls">
+                <f:form.textfield class="neos-span12" name="moduleArguments[location][city]" id="city"
+                                  placeholder="Enter city"/>
+            </div>
+        </div>
+
+        <div class="neos-control-group">
+            <label class="neos-control-label" for="lat">Latitude</label>
+
+            <div class="neos-controls">
+                <f:form.textfield class="neos-span12" name="moduleArguments[location][lat]" id="lat"
+                                  placeholder="Enter latitude" required="true"/>
+            </div>
+        </div>
+
+        <div class="neos-control-group">
+            <label class="neos-control-label" for="lon">Longitude</label>
+
+            <div class="neos-controls">
+                <f:form.textfield class="neos-span12" name="moduleArguments[location][lon]" id="lon"
+                                  placeholder="Enter longitude"/>
+            </div>
+        </div>
+
+        <div class="neos-control-group">
+            <label class="neos-control-label" for="arrival">Arrival</label>
+
+            <div class="neos-controls">
+                <f:form.textarea class="neos-span12" name="moduleArguments[location][arrival]" id="arrival"
+                                 placeholder="Enter a description for the arrival or the access road here... "
+                                 rows="5"/>
+            </div>
+        </div>
+
+        <div class="neos-control-group">
+            <label class="neos-control-label" for="openingHours">Opening hours</label>
+
+            <div class="neos-controls">
+                <f:form.textarea class="neos-span12" name="moduleArguments[location][openingHours]"
+                                 id="openingHours"
+                                 placeholder="Enter opening hours here..." rows="3"/>
+            </div>
+        </div>
+    </div>
 </fieldset>
 
-<fieldset class="neos-span3 neos-offset1">
+<fieldset class="neos-span4">
+
     <legend>Contact</legend>
 
     <div class="neos-control-group">
@@ -223,75 +394,5 @@
                               placeholder="Enter public speaker"/>
         </div>
     </div>
-</fieldset>
 
-<fieldset class="neos-span3 neos-offset1">
-    <legend>Media</legend>
-    <div class="neos-control-group">
-        <label class="neos-control-label">Media type</label>
-
-        <div class="neos-controls">
-            <label for="typeNone" class="neos-radio neos-inline">
-                <f:form.radio property="imageType" value="" id="typeNone" checked="true"/>
-                No media<span></span>
-            </label>
-            <label for="typeImage" class="neos-radio neos-inline">
-                <f:form.radio property="imageType" value="image" id="typeImage"/>
-                Image<span></span>
-            </label>
-            <label for="typeYouTube" class="neos-radio neos-inline">
-                <f:form.radio property="imageType" value="youtube" id="typeYouTube"/>
-                YouTube<span></span>
-            </label>
-        </div>
-    </div>
-
-    <div class="neos-control-group">
-        <label class="neos-control-label" for="image">Media URL</label>
-
-        <div class="neos-controls">
-            <f:form.textfield class="neos-span12" property="image" id="image" placeholder="Enter URL"/>
-        </div>
-    </div>
-
-</fieldset>
-
-<fieldset class="neos-span3 neos-offset1">
-    <legend>Date</legend>
-
-    <div class="neos-control-group">
-        <label class="neos-control-label" for="dateFrom">Date from</label>
-
-        <div class="neos-controls">
-            <f:form.textfield class="neos-span12" property="dateFrom" id="dateFrom" type="date"/>
-            <span class="afeefa-small">(Format: yyyy-mm-dd)</span>
-        </div>
-    </div>
-
-    <div class="neos-control-group">
-        <label class="neos-control-label" for="timeFrom">Time from</label>
-
-        <div class="neos-controls">
-            <f:form.textfield class="neos-span12" property="timeFrom" id="timeFrom" type="time"/>
-            <span class="afeefa-small">(Format: hh:mm)</span>
-        </div>
-    </div>
-
-    <div class="neos-control-group">
-        <label class="neos-control-label" for="dateTo">Date to</label>
-
-        <div class="neos-controls">
-            <f:form.textfield class="neos-span12" property="dateTo" id="dateTo" type="date"/>
-            <span class="afeefa-small">(Format: yyyy-mm-dd)</span>
-        </div>
-    </div>
-
-    <div class="neos-control-group">
-        <label class="neos-control-label" for="timeTo">Time to</label>
-
-        <div class="neos-controls">
-            <f:form.textfield class="neos-span12" property="timeTo" id="timeTo" type="time"/>
-            <span class="afeefa-small">(Format: hh:mm)</span>
-        </div>
-    </div>
 </fieldset>

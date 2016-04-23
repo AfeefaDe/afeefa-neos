@@ -50,7 +50,7 @@ class MarketEntry extends Actor
      * @var \Doctrine\Common\Collections\Collection<\DDFA\Main\Domain\Model\Location>
      * @ORM\OneToMany(mappedBy="marketEntry")
      */
-    protected $locations;
+    protected $location;
 
     /**
      * @var string
@@ -106,12 +106,6 @@ class MarketEntry extends Actor
      * @ORM\Column(nullable=true)
      */
     protected $phone;
-
-    /**
-     * @var integer
-     * @ORM\Column(nullable=true)
-     */
-    protected $rating;
 
     /**
      * @var Category
@@ -198,16 +192,16 @@ class MarketEntry extends Actor
      */
     public function getLocations()
     {
-        return $this->locations;
+        return $this->location;
     }
 
     /**
-     * @param \Doctrine\Common\Collections\Collection $locations
+     * @param \Doctrine\Common\Collections\Collection $location
      * @return void
      */
-    public function setLocations($locations)
+    public function setLocations($location)
     {
-        $this->locations = $locations;
+        $this->location = $location;
     }
 
     /**
@@ -426,22 +420,6 @@ class MarketEntry extends Actor
     }
 
     /**
-     * @return int
-     */
-    public function getRating()
-    {
-        return $this->rating;
-    }
-
-    /**
-     * @param int $rating
-     */
-    public function setRating($rating)
-    {
-        $this->rating = $rating;
-    }
-
-    /**
      * @return string
      */
     public function getSpeakerPublic()
@@ -631,5 +609,21 @@ class MarketEntry extends Actor
     public function setChildEntries($childEntries)
     {
         $this->childEntries = $childEntries;
+    }
+
+    /**
+     * @return MarketEntry
+     */
+    public function getParentEntry()
+    {
+        return $this->parentEntry;
+    }
+
+    /**
+     * @param MarketEntry $parentEntry
+     */
+    public function setParentEntry($parentEntry)
+    {
+        $this->parentEntry = $parentEntry;
     }
 }

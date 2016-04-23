@@ -78,6 +78,7 @@ class Location extends Actor
      * @var MarketEntry
      * @ORM\ManyToOne(targetEntity="DDFA\Main\Domain\Model\MarketEntry")
      * @ORM\JoinColumn(name="market_entry_id", referencedColumnName="persistence_object_identifier")
+     * @ORM\Column(nullable=true)
      */
     protected $marketEntry;
 

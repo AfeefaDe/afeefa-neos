@@ -51,12 +51,6 @@ class Location extends Actor
     protected $city;
 
     /**
-     * @var boolean
-     * @ORM\Column(nullable=true)
-     */
-    protected $scope;
-
-    /**
      * @var string
      * @ORM\Column(nullable=true)
      */
@@ -204,23 +198,6 @@ class Location extends Actor
     public function setCity($city)
     {
         $this->city = $city;
-    }
-
-    /**
-     * @return string
-     */
-    public function getScope()
-    {
-        return $this->scope;
-    }
-
-    /**
-     * @param string $scope
-     * @return void
-     */
-    public function setScope($scope)
-    {
-        $this->scope = $scope;
     }
 
     /**

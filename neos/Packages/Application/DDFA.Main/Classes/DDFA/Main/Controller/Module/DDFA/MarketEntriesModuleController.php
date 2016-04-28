@@ -78,7 +78,7 @@ class MarketEntriesModuleController extends AbstractTranslationController
      */
     public function addAction()
     {
-        $this->view->assign('cats', $this->categoryRepository->findByType(DDConst::OWNER_MARKET));
+        $this->view->assign('cats', $this->categoryRepository->findAll());
     }
 
     /**
@@ -88,20 +88,19 @@ class MarketEntriesModuleController extends AbstractTranslationController
      */
     public function createAction(MarketEntry $newObject)
     {
-        //TODO refactor:
-        if (isset($_POST['moduleArguments']['cat'])) {
-            $newObject->setCategory($this->categoryRepository->findOneByName($_POST['moduleArguments']['cat']));
-        }
-
         $this->objectRepository->add($newObject);
         $this->addFlashMessage('A new market entry has been created successfully.');
 
-        if (isset($_POST['moduleArguments']['localize'])) {
-            $editObject = $this->addTranslation($newObject->getEntryId(), DDConst::LOCALE_NXT);
-            $this->redirect('edit', NULL, NULL, array('editObject' => $editObject, 'viewObject' => $newObject));
-
-        } else
-            $this->redirect('index');
+        if ($this->isCategoryTypeValid($newObject)) {
+            if (isset($_POST['moduleArguments']['localize'])) {
+                $editObject = $this->addTranslation($newObject->getEntryId(), DDConst::LOCALE_NXT);
+                $this->redirect('edit', NULL, NULL, array('editObject' => $editObject, 'viewObject' => $newObject));
+            } else
+                $this->redirect('index');
+        } else {
+            $this->redirect('simpleEdit', NULL, NULL,
+                ['editObject' => ['__identity' => $newObject->getPersistenceObjectIdentifier()]]);
+        }
     }
 
     /**
@@ -146,7 +145,7 @@ class MarketEntriesModuleController extends AbstractTranslationController
             $this->view->assign('languages', $this->languageRepository->findAll());
             $this->view->assign('location', $editObject->getLocations()->first());
             $this->view->assign('parents', $this->objectRepository->findAllParents());
-            $this->view->assign('cats', $this->categoryRepository->findByType(DDConst::OWNER_MARKET));
+            $this->view->assign('cats', $this->categoryRepository->findAll());
         }
     }
 
@@ -158,21 +157,30 @@ class MarketEntriesModuleController extends AbstractTranslationController
     public function updateAction(MarketEntry $editObject)
     {
         $editObject->setUpdated(new DateTime());
-        if ($_POST['moduleArguments']['hasLocation'] == "on") {
-            if ($editObject->getLocations()->first() == null) {
-                //TODO create location
-            } else {
-                //TODO update location
-            }
-        } else {
-            if ($editObject->getLocations()->first() != null) {
-                //TODO: delete location
-            }
-        }
-
-        $this->addFlashMessage('The market entry has been updated successfully.');
         $this->objectRepository->update($editObject);
-        $this->redirect('index');
+
+        if ($this->isCategoryTypeValid($editObject)) {
+            if (isset($_POST['moduleArguments']['hasLocation'])) {
+                $this->addFlashMessage('[DEBUG] location', '', Message::SEVERITY_NOTICE);
+
+                if ($editObject->getLocations()->first() == null) {
+                    //TODO create location
+                } else {
+                    //TODO update location
+                }
+            } else {
+                $this->addFlashMessage('[DEBUG] no location', '', Message::SEVERITY_NOTICE);
+                if ($editObject->getLocations()->first() != null) {
+                    //TODO: delete location
+                }
+            }
+
+            $this->addFlashMessage('The market entry has been updated successfully.');
+            $this->redirect('index');
+        } else {
+            $this->redirect('simpleEdit', NULL, NULL,
+                ['editObject' => ['__identity' => $editObject->getPersistenceObjectIdentifier()]]);
+        }
     }
 
     /**
@@ -239,5 +247,29 @@ class MarketEntriesModuleController extends AbstractTranslationController
                         'viewObject' => ['__identity' => $viewObject->getPersistenceObjectIdentifier()]]);
             }
         }
+    }
+
+    /**
+     * @param MarketEntry $editObject
+     * @return bool
+     */
+    protected function isCategoryTypeValid(MarketEntry $editObject)
+    {
+        if ($editObject->getCategory() != null) {
+
+            if ($editObject->getType() == DDConst::OWNER_BASIC) {
+                if ($editObject->getCategory()->getType() != DDConst::OWNER_BASIC) {
+                    $this->addFlashMessage('The category type does not match the type of the entry (basic).', 'Typeerror', Message::SEVERITY_ERROR);
+                    return false;
+                }
+            } else {
+                if ($editObject->getCategory()->getType() != DDConst::OWNER_MARKET) {
+                    $this->addFlashMessage('The category type does not match the type of the entry.', 'Typeerror', Message::SEVERITY_ERROR);
+                    return false;
+                }
+            }
+
+        }
+        return true;
     }
 }

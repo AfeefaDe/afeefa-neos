@@ -142,8 +142,7 @@
         <label class="neos-control-label" for="name">Name</label>
 
         <div class="neos-controls">
-            <f:form.textfield class="neos-span12" property="name" id="name" placeholder="Enter name" required="true"
-                              autofocus="true"/>
+            <f:form.textfield class="neos-span12" property="name" id="name" placeholder="Enter name" autofocus="true"/>
         </div>
     </div>
 
@@ -153,7 +152,8 @@
         <div class="neos-controls">
             <f:form.select class="neos-span12" property="category" id="category" options="{cats}"
                            optionValueField="persistenceObjectIdentifier"
-                           optionLabelField="name" sortByOptionLabel="true"/>
+                           optionLabelField="name" sortByOptionLabel="true" prependOptionValue=""
+                           prependOptionLabel="- none -"/>
         </div>
     </div>
 
@@ -244,29 +244,15 @@
         </f:if>
         <label class="onoffswitch-label" for="hasLocation"></label>
     </div>
-    <f:if condition="{location}">
-        <f:then>
-            <script type="text/javascript">
-                $(function () {
-                    $('#location-form').show();
-                });
-            </script>
-        </f:then>
-        <f:else>
-            <script type="text/javascript">
-                $(function () {
-                    $('#location-form').hide();
-                });
-            </script>
-        </f:else>
-    </f:if>
+
+
     <div id=location-form">
 
         <div class="neos-control-group">
             <label class="neos-control-label" for="street">Street</label>
 
             <div class="neos-controls">
-                <f:form.textfield class="neos-span12" name="moduleArguments[location][street]" id="street"
+                <f:form.textfield class="neos-span12" name="location[street]" id="street"
                                   placeholder="Enter street"/>
             </div>
         </div>
@@ -275,7 +261,7 @@
             <label class="neos-control-label" for="street">Addition (placename)</label>
 
             <div class="neos-controls">
-                <f:form.textfield class="neos-span12" name="moduleArguments[location][placename]" id="placename"
+                <f:form.textfield class="neos-span12" name="location[placename]" id="placename"
                                   placeholder="Enter additional precise place description"/>
             </div>
         </div>
@@ -284,7 +270,7 @@
             <label class="neos-control-label" for="zip">ZIP</label>
 
             <div class="neos-controls">
-                <f:form.textfield class="neos-span12" name="moduleArguments[location][zip]" id="zip" type="number"
+                <f:form.textfield class="neos-span12" name="location[zip]" id="zip" type="number"
                                   placeholder="Enter ZIP-Code"/>
             </div>
         </div>
@@ -293,7 +279,7 @@
             <label class="neos-control-label" for="city">City</label>
 
             <div class="neos-controls">
-                <f:form.textfield class="neos-span12" name="moduleArguments[location][city]" id="city"
+                <f:form.textfield class="neos-span12" name="location[city]" id="city"
                                   placeholder="Enter city"/>
             </div>
         </div>
@@ -302,8 +288,8 @@
             <label class="neos-control-label" for="lat">Latitude</label>
 
             <div class="neos-controls">
-                <f:form.textfield class="neos-span12" name="moduleArguments[location][lat]" id="lat"
-                                  placeholder="Enter latitude" required="true"/>
+                <f:form.textfield class="neos-span12" name="location[lat]" id="lat"
+                                  placeholder="Enter latitude"/>
             </div>
         </div>
 
@@ -311,7 +297,7 @@
             <label class="neos-control-label" for="lon">Longitude</label>
 
             <div class="neos-controls">
-                <f:form.textfield class="neos-span12" name="moduleArguments[location][lon]" id="lon"
+                <f:form.textfield class="neos-span12" name="location[lon]" id="lon"
                                   placeholder="Enter longitude"/>
             </div>
         </div>
@@ -320,7 +306,7 @@
             <label class="neos-control-label" for="arrival">Arrival</label>
 
             <div class="neos-controls">
-                <f:form.textarea class="neos-span12" name="moduleArguments[location][arrival]" id="arrival"
+                <f:form.textarea class="neos-span12" name="location[arrival]" id="arrival"
                                  placeholder="Enter a description for the arrival or the access road here... "
                                  rows="5"/>
             </div>
@@ -330,7 +316,7 @@
             <label class="neos-control-label" for="openingHours">Opening hours</label>
 
             <div class="neos-controls">
-                <f:form.textarea class="neos-span12" name="moduleArguments[location][openingHours]"
+                <f:form.textarea class="neos-span12" name="location[openingHours]"
                                  id="openingHours"
                                  placeholder="Enter opening hours here..." rows="3"/>
             </div>

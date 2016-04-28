@@ -403,7 +403,7 @@ class MarketEntry extends Actor
     }
 
     /**
-     * @return Collection
+     * @return Category
      */
     public function getCategory()
     {

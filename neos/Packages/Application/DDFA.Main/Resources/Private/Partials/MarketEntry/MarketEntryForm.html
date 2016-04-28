@@ -229,99 +229,178 @@
     </div>
 
     <legend>Location</legend>
-    <div class="onoffswitch" style="display: inline-block">
-        <f:if condition="{location}">
-            <f:then>
+
+
+    <f:if condition="{location}">
+        <f:then>
+            <div class="onoffswitch" style="display: inline-block">
                 <input type="checkbox" name="moduleArguments[hasLocation]"
-                       class="onoffswitch-checkbox" id="hasLocation"
-                       checked onclick="$('#location-form').hide();">
-            </f:then>
-            <f:else>
+                       class="onoffswitch-checkbox" id="hasLocation" checked>
+                <label class="onoffswitch-label" for="hasLocation"></label>
+            </div>
+            <div id=location-form">
+
+                <div class="neos-control-group">
+                    <label class="neos-control-label" for="street">Street</label>
+
+                    <div class="neos-controls">
+                        <f:form.textfield class="neos-span12" name="location[street]" id="street"
+                                          placeholder="Enter street" value="{location.street}"/>
+                    </div>
+                </div>
+
+                <div class="neos-control-group">
+                    <label class="neos-control-label" for="street">Addition (placename)</label>
+
+                    <div class="neos-controls">
+                        <f:form.textfield class="neos-span12" name="location[placename]" id="placename"
+                                          placeholder="Enter additional precise place description"
+                                          value="{location.placename}"/>
+                    </div>
+                </div>
+
+                <div class="neos-control-group">
+                    <label class="neos-control-label" for="zip">ZIP</label>
+
+                    <div class="neos-controls">
+                        <f:form.textfield class="neos-span12" name="location[zip]" id="zip" type="number"
+                                          placeholder="Enter ZIP-Code" value="{location.zip}"/>
+                    </div>
+                </div>
+
+                <div class="neos-control-group">
+                    <label class="neos-control-label" for="city">City</label>
+
+                    <div class="neos-controls">
+                        <f:form.textfield class="neos-span12" name="location[city]" id="city"
+                                          placeholder="Enter city" value="{location.city}"/>
+                    </div>
+                </div>
+
+                <div class="neos-control-group">
+                    <label class="neos-control-label" for="lat">Latitude</label>
+
+                    <div class="neos-controls">
+                        <f:form.textfield class="neos-span12" name="location[lat]" id="lat"
+                                          placeholder="Enter latitude" value="{location.lat}"/>
+                    </div>
+                </div>
+
+                <div class="neos-control-group">
+                    <label class="neos-control-label" for="lon">Longitude</label>
+
+                    <div class="neos-controls">
+                        <f:form.textfield class="neos-span12" name="location[lon]" id="lon"
+                                          placeholder="Enter longitude" value="{location.lon}"/>
+                    </div>
+                </div>
+
+                <div class="neos-control-group">
+                    <label class="neos-control-label" for="arrival">Arrival</label>
+
+                    <div class="neos-controls">
+                        <f:form.textarea class="neos-span12" name="location[arrival]" id="arrival"
+                                         placeholder="Enter a description for the arrival or the access road here... "
+                                         rows="5" value="{location.arrival}"/>
+                    </div>
+
+                    <label class="neos-control-label" for="openingHours">Opening hours</label>
+
+                    <div class="neos-controls">
+                        <f:form.textarea class="neos-span12" name="location[openingHours]"
+                                         id="openingHours"
+                                         placeholder="Enter opening hours here..." rows="3"
+                                         value="{location.openingHours}"/>
+                    </div>
+                </div>
+
+            </div>
+
+        </f:then>
+        <f:else>
+            <div class="onoffswitch" style="display: inline-block">
                 <input type="checkbox" name="moduleArguments[hasLocation]"
-                       class="onoffswitch-checkbox" id="hasLocation"
-                       onclick="$('#location-form').show();">
-            </f:else>
-        </f:if>
-        <label class="onoffswitch-label" for="hasLocation"></label>
-    </div>
-
-
-    <div id=location-form">
-
-        <div class="neos-control-group">
-            <label class="neos-control-label" for="street">Street</label>
-
-            <div class="neos-controls">
-                <f:form.textfield class="neos-span12" name="location[street]" id="street"
-                                  placeholder="Enter street"/>
+                       class="onoffswitch-checkbox" id="hasLocation">
+                <label class="onoffswitch-label" for="hasLocation"></label>
             </div>
-        </div>
 
-        <div class="neos-control-group">
-            <label class="neos-control-label" for="street">Addition (placename)</label>
+            <div id=location-form">
 
-            <div class="neos-controls">
-                <f:form.textfield class="neos-span12" name="location[placename]" id="placename"
-                                  placeholder="Enter additional precise place description"/>
+                <div class="neos-control-group">
+                    <label class="neos-control-label" for="street">Street</label>
+
+                    <div class="neos-controls">
+                        <f:form.textfield class="neos-span12" name="location[street]" id="street"
+                                          placeholder="Enter street" onclick="$('#hasLocation').prop('checked', true)"/>
+                    </div>
+                </div>
+
+                <div class="neos-control-group">
+                    <label class="neos-control-label" for="street">Addition (placename)</label>
+
+                    <div class="neos-controls">
+                        <f:form.textfield class="neos-span12" name="location[placename]" id="placename"
+                                          placeholder="Enter additional precise place description" onclick="$('#hasLocation').prop('checked', true)"/>
+                    </div>
+                </div>
+
+                <div class="neos-control-group">
+                    <label class="neos-control-label" for="zip">ZIP</label>
+
+                    <div class="neos-controls">
+                        <f:form.textfield class="neos-span12" name="location[zip]" id="zip" type="number"
+                                          placeholder="Enter ZIP-Code" onclick="$('#hasLocation').prop('checked', true)"/>
+                    </div>
+                </div>
+
+                <div class="neos-control-group">
+                    <label class="neos-control-label" for="city">City</label>
+
+                    <div class="neos-controls">
+                        <f:form.textfield class="neos-span12" name="location[city]" id="city"
+                                          placeholder="Enter city" onclick="$('#hasLocation').prop('checked', true)"/>
+                    </div>
+                </div>
+
+                <div class="neos-control-group">
+                    <label class="neos-control-label" for="lat">Latitude</label>
+
+                    <div class="neos-controls">
+                        <f:form.textfield class="neos-span12" name="location[lat]" id="lat"
+                                          placeholder="Enter latitude" onclick="$('#hasLocation').prop('checked', true)"/>
+                    </div>
+                </div>
+
+                <div class="neos-control-group">
+                    <label class="neos-control-label" for="lon">Longitude</label>
+
+                    <div class="neos-controls">
+                        <f:form.textfield class="neos-span12" name="location[lon]" id="lon"
+                                          placeholder="Enter longitude" onclick="$('#hasLocation').prop('checked', true)"/>
+                    </div>
+                </div>
+
+                <div class="neos-control-group">
+                    <label class="neos-control-label" for="arrival">Arrival</label>
+
+                    <div class="neos-controls">
+                        <f:form.textarea class="neos-span12" name="location[arrival]" id="arrival"
+                                         placeholder="Enter a description for the arrival or the access road here... "
+                                         rows="5" onclick="$('#hasLocation').prop('checked', true)"/>
+                    </div>
+
+                    <label class="neos-control-label" for="openingHours">Opening hours</label>
+
+                    <div class="neos-controls">
+                        <f:form.textarea class="neos-span12" name="location[openingHours]"
+                                         id="openingHours"
+                                         placeholder="Enter opening hours here..." rows="3" onclick="$('#hasLocation').prop('checked', true)"/>
+                    </div>
+                </div>
+
             </div>
-        </div>
-
-        <div class="neos-control-group">
-            <label class="neos-control-label" for="zip">ZIP</label>
-
-            <div class="neos-controls">
-                <f:form.textfield class="neos-span12" name="location[zip]" id="zip" type="number"
-                                  placeholder="Enter ZIP-Code"/>
-            </div>
-        </div>
-
-        <div class="neos-control-group">
-            <label class="neos-control-label" for="city">City</label>
-
-            <div class="neos-controls">
-                <f:form.textfield class="neos-span12" name="location[city]" id="city"
-                                  placeholder="Enter city"/>
-            </div>
-        </div>
-
-        <div class="neos-control-group">
-            <label class="neos-control-label" for="lat">Latitude</label>
-
-            <div class="neos-controls">
-                <f:form.textfield class="neos-span12" name="location[lat]" id="lat"
-                                  placeholder="Enter latitude"/>
-            </div>
-        </div>
-
-        <div class="neos-control-group">
-            <label class="neos-control-label" for="lon">Longitude</label>
-
-            <div class="neos-controls">
-                <f:form.textfield class="neos-span12" name="location[lon]" id="lon"
-                                  placeholder="Enter longitude"/>
-            </div>
-        </div>
-
-        <div class="neos-control-group">
-            <label class="neos-control-label" for="arrival">Arrival</label>
-
-            <div class="neos-controls">
-                <f:form.textarea class="neos-span12" name="location[arrival]" id="arrival"
-                                 placeholder="Enter a description for the arrival or the access road here... "
-                                 rows="5"/>
-            </div>
-        </div>
-
-        <div class="neos-control-group">
-            <label class="neos-control-label" for="openingHours">Opening hours</label>
-
-            <div class="neos-controls">
-                <f:form.textarea class="neos-span12" name="location[openingHours]"
-                                 id="openingHours"
-                                 placeholder="Enter opening hours here..." rows="3"/>
-            </div>
-        </div>
-    </div>
+        </f:else>
+    </f:if>
 </fieldset>
 
 <fieldset class="neos-span4">

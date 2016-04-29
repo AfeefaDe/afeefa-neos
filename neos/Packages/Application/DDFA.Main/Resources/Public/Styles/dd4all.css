@@ -27,6 +27,20 @@ div.afeefa-infoBox p, div.afeefa-grayBox p {
     margin-bottom: 10px;
 }
 
+tr.afeefa-intended td{
+    background-color: #3f3f3f !important;
+}
+
+tr.afeefa-intended td:nth-child(5) {
+    padding-left: 50px !important;
+}
+
+table.afeefa-table-entry td:nth-child(4) {
+    font-size: 180%;
+    line-height: initial;
+    text-align: center;
+}
+
 .afeefa-small {
     font-size: smaller;
     font-style: italic;
@@ -94,4 +108,59 @@ a.tooltip:hover span {
     position: absolute;
     border: 1px solid #555;
     background: #3f3f3f;
+}
+
+.onoffswitch {
+    top:100%;
+    position: relative;
+    width: 40px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+.onoffswitch-checkbox {
+    display: none;
+}
+
+.onoffswitch-label {
+    display: block;
+    overflow: hidden;
+    cursor: pointer;
+    height: 10px;
+    padding: 0;
+    line-height: 10px;
+    border: 0 solid #FFFFFF;
+    border-radius: 16px;
+    background-color: #ddd;
+}
+
+.onoffswitch-label:before {
+    content: "";
+    display: block;
+    width: 16px;
+    margin: -3px;
+    background: #555555;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 28px;
+    border-radius: 16px;
+}
+
+.onoffswitch-checkbox:checked + .onoffswitch-label {
+    background-color: #DDDDDD;
+}
+
+.onoffswitch-checkbox:checked + .onoffswitch-label, .onoffswitch-checkbox:checked + .onoffswitch-label:before {
+    border-color: #DDDDDD;
+}
+
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
+    margin-left: 0;
+}
+
+.onoffswitch-checkbox:checked + .onoffswitch-label:before {
+    right: 0;
+    background-color: #00B5FF;
 }

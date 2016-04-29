@@ -38,7 +38,7 @@ class MarketEntryAPIController extends ActionController
      */
     public function listAction($locale = 'de')
     {
-        $this->view->assign('value', ['marketentries' => $this->marketEntryRepository->findAllHydrated($locale, true)]);
+        $this->view->assign('value', ['marketentries' => $this->marketEntryRepository->findAllSupplemented($locale, true)]);
     }
 
     /**
@@ -47,7 +47,7 @@ class MarketEntryAPIController extends ActionController
      */
     public function showAction(MarketEntry $marketentry, $locale = 'de')
     {
-        $this->view->assign('value', ['marketentry' => $marketentry]);
+        $this->view->assign('value', ['marketentry' => $this->marketEntryRepository->findOneSupplemented($marketentry, true)]);
     }
 
     /**
@@ -58,6 +58,31 @@ class MarketEntryAPIController extends ActionController
         $this->marketEntryRepository->add($marketentry);
         $this->response->setStatus(201);
         $this->view->assign('value', ['marketentry' => $marketentry]);
+    }
+
+
+    public function publishAction(MarketEntry $id)
+    {
+        $marketentry = $this->marketEntryRepository->findById($id);
+        if ($marketentry != null) {
+            $marketentry->setPublished(true);
+            $this->marketEntryRepository->update($marketentry);
+            $this->view->assign('value', true);
+        } else {
+            $this->view->assign('value', false);
+        }
+    }
+
+    public function lockAction(MarketEntry $id)
+    {
+        $marketentry = $this->marketEntryRepository->findById($id);
+        if ($marketentry != null) {
+            $marketentry->setPublished(false);
+            $this->marketEntryRepository->update($marketentry);
+            $this->view->assign('value', true);
+        } else {
+            $this->view->assign('value', false);
+        }
     }
 
     protected function initializeView(ViewInterface $view)

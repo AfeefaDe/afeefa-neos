@@ -20,7 +20,7 @@ class LocationAPIController extends ActionController {
      * @Flow\Inject
      * @var LocationRepository
      */
-    protected $iniLocationRepository;
+    protected $locationRepository;
 
     protected $viewFormatToObjectNameMap = ['json' => JsonView::class];
 
@@ -33,8 +33,7 @@ class LocationAPIController extends ActionController {
      * @param string $locale
      */
     public function listAction($locale = 'de') {
-        //TODO include language
-        $this->view->assign('value', ['locations' => $this->iniLocationRepository->findAllSupplemented($locale, true)]);
+        $this->view->assign('value', ['locations' => $this->locationRepository->findAllSupplemented($locale, true)]);
     }
 
     /**
@@ -42,13 +41,13 @@ class LocationAPIController extends ActionController {
      * @param string $locale
      */
     public function showAction(Location $location, $locale = 'de') {
-        $location = $this->iniLocationRepository->findOneSupplemented($location, $locale, true);
+        $location = $this->locationRepository->findOneSupplemented($location, $locale, true);
         $this->view->assign('value', ['location' => $location]);
     }
 
     public function createAction(Location $location) {
         if( $location->getType()==0 || $location->getType()==1 || $location->getType()==2 ) {
-            $this->iniLocationRepository->add($location);
+            $this->locationRepository->add($location);
             $this->response->setStatus(201);
             $this->view->assign('value', ['location' => $location]);
         } else {

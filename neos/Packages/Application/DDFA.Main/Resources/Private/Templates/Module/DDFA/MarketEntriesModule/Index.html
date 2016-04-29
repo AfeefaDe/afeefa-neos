@@ -6,11 +6,13 @@
     <div class="neos-module-container">
         <f:if condition="{entries}">
             <f:then>
-                <table class="neos-table">
+                <table class="neos-table afeefa-table-entry">
                     <thead>
                     <tr>
-                        <th width="46px"><i class="icon-ok-sign"></i></th>
-                        <th width="138px">
+                        <th width="46px">
+                            <div>published</div>
+                        </th>
+                        <th width="92px">
                             <div>Actions</div>
                         </th>
                         <th></th>
@@ -20,14 +22,12 @@
                         <th>
                             <div>Name</div>
                         </th>
-                        <th>
-                            <div>Translations</div>
-                        </th>
                     </tr>
                     </thead>
                     <tbody>
                     <f:for each="{entries}" as="entry">
-                        <f:render partial="MarketEntry/MarketEntryEntry" arguments="{entry: entry}"/>
+                        <f:render partial="MarketEntry/MarketEntryEntry" arguments="{entry: entry, lvl: '0'}"/>
+
                     </f:for>
                     </tbody>
                 </table>
@@ -44,4 +44,5 @@
             Add entry
         </f:link.action>
     </div>
+    <script type="application/javascript" src="{f:uri.resource(path: 'JavaScript/publish.js')}"></script>
 </f:section>

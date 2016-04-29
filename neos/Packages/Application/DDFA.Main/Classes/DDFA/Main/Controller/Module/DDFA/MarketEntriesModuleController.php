@@ -7,6 +7,7 @@ namespace DDFA\Main\Controller\Module\DDFA;
  *                                                                        */
 
 use DateTime;
+use DDFA\Main\Domain\Model\Location;
 use DDFA\Main\Domain\Model\MarketEntry;
 use DDFA\Main\Domain\Repository\CategoryRepository;
 use DDFA\Main\Domain\Repository\LanguageRepository as LanguageRepository;
@@ -52,7 +53,7 @@ class MarketEntriesModuleController extends AbstractTranslationController
      */
     public function indexAction()
     {
-        $this->view->assign('entries', $this->objectRepository->findAllLocalized());
+        $this->view->assign('entries', $this->objectRepository->findAllParents());
         $this->view->assign('numLanguages', $this->languageRepository->findAll()->count() - 1);
     }
 
@@ -66,7 +67,7 @@ class MarketEntriesModuleController extends AbstractTranslationController
             $this->redirect('view', NULL, NULL, array('viewObject' => $this->objectRepository->findOneLocalized($viewObject, $_POST['viewLocale'])));
 
         } else {
-            $viewObject = $this->objectRepository->hydrate($viewObject, $viewObject->getLocale());
+            $viewObject = $this->objectRepository->hydrate($viewObject, $viewObject->getLocale(), DDConst::OWNER_MARKET);
 
             $this->view->assign('viewObject', $viewObject);
             $this->view->assign('languages', $this->objectRepository->findLocales($viewObject));
@@ -78,7 +79,8 @@ class MarketEntriesModuleController extends AbstractTranslationController
      */
     public function addAction()
     {
-        $this->view->assign('cats', $this->categoryRepository->findByType(DDConst::OWNER_MARKET));
+        $this->view->assign('cats', $this->categoryRepository->findAll());
+        $this->view->assign('parents', $this->objectRepository->findAllParents());
     }
 
     /**
@@ -88,20 +90,19 @@ class MarketEntriesModuleController extends AbstractTranslationController
      */
     public function createAction(MarketEntry $newObject)
     {
-        //TODO refactor:
-        if (isset($_POST['moduleArguments']['cat'])) {
-            $newObject->setCategory($this->categoryRepository->findOneByName($_POST['moduleArguments']['cat']));
-        }
-
         $this->objectRepository->add($newObject);
         $this->addFlashMessage('A new market entry has been created successfully.');
 
-        if (isset($_POST['moduleArguments']['localize'])) {
-            $editObject = $this->addTranslation($newObject->getEntryId(), DDConst::LOCALE_NXT);
-            $this->redirect('edit', NULL, NULL, array('editObject' => $editObject, 'viewObject' => $newObject));
-
-        } else
-            $this->redirect('index');
+        if ($this->validateForm($newObject)) {
+            if (isset($_POST['moduleArguments']['localize'])) {
+                $editObject = $this->addTranslation($newObject->getEntryId(), DDConst::LOCALE_NXT);
+                $this->redirect('edit', NULL, NULL, array('editObject' => $editObject, 'viewObject' => $newObject));
+            } else
+                $this->redirect('index');
+        } else {
+            $this->redirect('simpleEdit', NULL, NULL,
+                ['editObject' => ['__identity' => $newObject->getPersistenceObjectIdentifier()]]);
+        }
     }
 
     /**
@@ -125,7 +126,7 @@ class MarketEntriesModuleController extends AbstractTranslationController
      */
     public function editAction(MarketEntry $editObject, MarketEntry $viewObject)
     {
-        $this->view->assign('viewObject', $this->objectRepository->hydrate($viewObject, $viewObject->getLocale()));
+        $this->view->assign('viewObject', $this->objectRepository->hydrate($viewObject, $viewObject->getLocale(), DDConst::OWNER_MARKET));
         $this->view->assign('editObject', $editObject);
         $this->view->assign('editLanguages', $this->languageRepository->findAll());
         $this->view->assign('viewLanguages', $this->objectRepository->findAllLocales($viewObject));
@@ -144,7 +145,9 @@ class MarketEntriesModuleController extends AbstractTranslationController
         } else {
             $this->view->assign('editObject', $editObject);
             $this->view->assign('languages', $this->languageRepository->findAll());
-            $this->view->assign('cats', $this->categoryRepository->findByType(DDConst::OWNER_MARKET));
+            $this->view->assign('location', $editObject->getLocations()->first());
+            $this->view->assign('parents', $this->objectRepository->findAllParents());
+            $this->view->assign('cats', $this->categoryRepository->findAll());
         }
     }
 
@@ -156,15 +159,15 @@ class MarketEntriesModuleController extends AbstractTranslationController
     public function updateAction(MarketEntry $editObject)
     {
         $editObject->setUpdated(new DateTime());
-
-        //TODO refactor:
-        if (isset($_POST['moduleArguments']['cat'])) {
-            $editObject->setCategory($this->categoryRepository->findOneByName($_POST['moduleArguments']['cat']));
-        }
-
-        $this->addFlashMessage('The market entry has been updated successfully.');
         $this->objectRepository->update($editObject);
-        $this->redirect('index');
+
+        if ($this->validateForm($editObject)) {
+            $this->addFlashMessage('The market entry has been updated successfully.');
+            $this->redirect('index');
+        } else {
+            $this->redirect('simpleEdit', NULL, NULL,
+                ['editObject' => ['__identity' => $editObject->getPersistenceObjectIdentifier()]]);
+        }
     }
 
     /**
@@ -185,14 +188,24 @@ class MarketEntriesModuleController extends AbstractTranslationController
      */
     public function deleteAction(MarketEntry $deleteObject)
     {
-        if ($this->locationRepository->existsReferringLocation($deleteObject)) {
-            $this->addFlashMessage('Cannot be delete: There is at least one location, that refers to this market entry!', 'Cannot be delete', Message::SEVERITY_ERROR);
-        } else {
-            foreach ($this->objectRepository->findAllLocalisations($deleteObject) as $localisedObject)
-                $this->objectRepository->remove($localisedObject);
-
-            $this->addFlashMessage('The market entry including all its translations has been removed successfully.');
+        //update link of children
+        foreach ($deleteObject->getChildEntries() as $child) {
+            $child->setParentEntry($deleteObject->getParentEntry());
+            $this->objectRepository->update($child);
+            $this->addFlashMessage('Linked child entry has been moved.', 'Moved child', Message::SEVERITY_NOTICE);
         }
+
+        //if there are locations: delete them all!!!1 buhahahaaa
+        if ($deleteObject->getLocations() != null || $deleteObject->getLocations()->first() != null) {
+            foreach ($this->locationRepository->findAllLocalisations($deleteObject->getLocations()->first()) as $localisedObject)
+                $this->locationRepository->remove($localisedObject);
+        }
+
+        //delete entry itself
+        foreach ($this->objectRepository->findAllLocalisations($deleteObject) as $localisedObject)
+            $this->objectRepository->remove($localisedObject);
+
+        $this->addFlashMessage('The market entry including all its translations and the location (and its translations) has been removed successfully.', 'Deleted', Message::SEVERITY_NOTICE);
 
         $this->redirect('index');
     }
@@ -231,5 +244,146 @@ class MarketEntriesModuleController extends AbstractTranslationController
                         'viewObject' => ['__identity' => $viewObject->getPersistenceObjectIdentifier()]]);
             }
         }
+    }
+
+    /**
+     * @param MarketEntry $editObject
+     * @return bool
+     */
+    protected function isCategoryTypeValid(MarketEntry $editObject)
+    {
+        if ($editObject->getCategory() != null) {
+
+            if ($editObject->getType() == DDConst::OWNER_BASIC) {
+                if ($editObject->getCategory()->getType() != DDConst::OWNER_BASIC) {
+                    $this->addFlashMessage('The category type does not match the type of the entry (basic).', 'Type error', Message::SEVERITY_ERROR);
+                    return false;
+                }
+            } else {
+                if ($editObject->getCategory()->getType() != DDConst::OWNER_MARKET) {
+                    $this->addFlashMessage('The category type does not match the type of the entry.', 'Type error', Message::SEVERITY_ERROR);
+                    return false;
+                }
+            }
+
+        }
+        return true;
+    }
+
+    /**
+     * @param MarketEntry $entry
+     * @param $arguments
+     * @return bool
+     * @throws \TYPO3\Flow\Persistence\Exception\IllegalObjectTypeException
+     */
+    protected function createLocation(MarketEntry $entry, &$arguments)
+    {
+        $location = new Location();
+
+        $location->setMarketEntry($entry);
+
+        $this->setLocationAttrs($location, $arguments);
+
+        $check = $this->checkChords($location);
+
+        $this->locationRepository->add($location);
+        $this->addFlashMessage('A new location has been created successfully.');
+
+        return $check;
+    }
+
+    /**
+     * @param MarketEntry $entry
+     * @param $arguments
+     * @return bool
+     * @throws \TYPO3\Flow\Persistence\Exception\IllegalObjectTypeException
+     */
+    protected function updateLocation(MarketEntry $entry, $arguments)
+    {
+        $location = $entry->getLocations()->first();
+
+        $this->setLocationAttrs($location, $arguments);
+
+        $check = $this->checkChords($location);
+
+        $location->setUpdated(new DateTime());
+        $this->locationRepository->update($location);
+
+        return $check;
+    }
+
+    /**
+     * @param Location $location
+     * @return bool
+     */
+    protected function checkChords(Location $location)
+    {
+        if (preg_match('/^[0-9]+\.[0-9]+,\s*[0-9]+\.[0-9]+/', $location->getLat())) {
+            $cords = explode(',', $location->getLat(), 2);
+            if (preg_match('/^[0-9]+\.[0-9]+/', trim($cords[0])) && preg_match('/^[0-9]+\.[0-9]+/', trim($cords[1]))) {
+                $location->setLat(trim($cords[0]));
+                $location->setLon(trim($cords[1]));
+            }
+        }
+
+        if ($location->getLat() == '' || $location->getLon() == '') {
+            $this->addFlashMessage('Coordinates missing in location attributes.', 'Missing Arguments', Message::SEVERITY_WARNING);
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * @param $arguments
+     * @param $location
+     */
+    protected function setLocationAttrs(Location $location, &$arguments)
+    {
+        $location->setArrival($arguments['arrival']);
+        $location->setCity($arguments['city']);
+        $location->setLat($arguments['lat']);
+        $location->setLon($arguments['lon']);
+        $location->setOpeningHours($arguments['openingHours']);
+        $location->setPlacename($arguments['placename']);
+        $location->setStreet($arguments['street']);
+        $location->setZip($arguments['zip']);
+    }
+
+    /**
+     * @param MarketEntry $editObject
+     * @return bool
+     */
+    protected function validateForm(MarketEntry $editObject)
+    {
+        $check = true;
+
+        //check if category suits for selected type
+        if (!$this->isCategoryTypeValid($editObject))
+            $check = false;
+
+        //check necessary attributes
+        if ($editObject->getParentEntry() == null && ($editObject->getName() == null || $editObject->getName() == "")) {
+            $this->addFlashMessage('This entry needs a name!', '', Message::SEVERITY_ERROR);
+            $check = false;
+        }
+
+        //check location stuff
+        if (isset($_POST['moduleArguments']['hasLocation'])) {
+            if ($editObject->getLocations() == null || $editObject->getLocations()->first() == null) {
+                if (!$this->createLocation($editObject, $_POST['moduleArguments']['location']))
+                    $check = false;
+            } else {
+                if (!$this->updateLocation($editObject, $_POST['moduleArguments']['location']))
+                    $check = false;
+            }
+        } else {
+            if ($editObject->getLocations() != null && $editObject->getLocations()->first() != null) {
+                foreach ($this->locationRepository->findAllLocalisations($editObject->getLocations()->first()) as $localisedObject)
+                    $this->locationRepository->remove($localisedObject);
+
+                $this->addFlashMessage('The location including all its translations has been removed successfully.', 'Deleted', Message::SEVERITY_NOTICE);
+            }
+        }
+        return $check;
     }
 }

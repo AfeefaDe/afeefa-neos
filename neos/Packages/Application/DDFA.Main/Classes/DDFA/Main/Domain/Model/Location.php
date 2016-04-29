@@ -51,12 +51,6 @@ class Location extends Actor
     protected $city;
 
     /**
-     * @var boolean
-     * @ORM\Column(nullable=true)
-     */
-    protected $scope;
-
-    /**
      * @var string
      * @ORM\Column(nullable=true)
      */
@@ -74,32 +68,13 @@ class Location extends Actor
      */
     protected $arrival;
 
-    //TODO: remove type and ini and event relation
-    /**
-     * @var int
-     */
-    protected $type;
-
-    /**
-     * @var Initiative
-     * @ORM\ManyToOne(targetEntity="DDFA\Main\Domain\Model\Initiative")
-     * @ORM\JoinColumn(name="initiative_id", referencedColumnName="persistence_object_identifier")
-     */
-    protected $initiative;
-
     /**
      * @var MarketEntry
      * @ORM\ManyToOne(targetEntity="DDFA\Main\Domain\Model\MarketEntry")
      * @ORM\JoinColumn(name="market_entry_id", referencedColumnName="persistence_object_identifier")
+     * @ORM\Column(nullable=true)
      */
     protected $marketEntry;
-
-    /**
-     * @var Event
-     * @ORM\ManyToOne(targetEntity="DDFA\Main\Domain\Model\Event")
-     * @ORM\JoinColumn(name="event_id", referencedColumnName="persistence_object_identifier")
-     */
-    protected $event;
 
     public function __construct()
     {
@@ -121,23 +96,6 @@ class Location extends Actor
     public function setOpeningHours($openingHours)
     {
         $this->openingHours = $openingHours;
-    }
-
-    /**
-     * @return Initiative
-     */
-    public function getInitiative()
-    {
-        return $this->initiative;
-    }
-
-    /**
-     * @param Initiative $initiative
-     * @return void
-     */
-    public function setInitiative(Initiative $initiative)
-    {
-        $this->initiative = $initiative;
     }
 
     /**
@@ -243,23 +201,6 @@ class Location extends Actor
     }
 
     /**
-     * @return string
-     */
-    public function getScope()
-    {
-        return $this->scope;
-    }
-
-    /**
-     * @param string $scope
-     * @return void
-     */
-    public function setScope($scope)
-    {
-        $this->scope = $scope;
-    }
-
-    /**
      * @return MarketEntry
      */
     public function getMarketEntry()
@@ -273,38 +214,6 @@ class Location extends Actor
     public function setMarketEntry($marketEntry)
     {
         $this->marketEntry = $marketEntry;
-    }
-
-    /**
-     * @return Event
-     */
-    public function getEvent()
-    {
-        return $this->event;
-    }
-
-    /**
-     * @param Event $event
-     */
-    public function setEvent($event)
-    {
-        $this->event = $event;
-    }
-
-    /**
-     * @return int
-     */
-    public function getType()
-    {
-        return $this->type;
-    }
-
-    /**
-     * @param int $type
-     */
-    public function setType($type)
-    {
-        $this->type = $type;
     }
 
     /**

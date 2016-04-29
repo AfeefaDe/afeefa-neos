@@ -52,6 +52,14 @@ class MarketEntryRepository extends AbstractTranslationRepository
         return $result;
     }
 
+    public function findOneSupplemented($marketentry, $locale, $onlyPublished = false) {
+        $object = $this->findOneLocalized($marketentry, DDConst::LOCALE_STD);
+        if($object->getPublished())
+            return $this->supplementFromParent($this->hydrate($object, $locale, DDConst::OWNER_MARKET));
+        else
+            return null;
+    }
+
     /**
      * @param MarketEntry $marketentry
      * @return MarketEntry

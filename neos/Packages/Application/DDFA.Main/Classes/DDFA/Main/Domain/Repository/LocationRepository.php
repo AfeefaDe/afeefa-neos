@@ -179,10 +179,8 @@ class LocationRepository extends AbstractTranslationRepository
      */
     public function findOneSupplemented(Location $location, $locale = null, $onlyPublished = false)
     {
-        if ($onlyPublished) {
-            $owner = $location->getMarketEntry();
-            if ($owner != null && ($owner->getPublished() == null || $owner->getPublished() != 1))
-                return null;
+        if ($onlyPublished && $location->getMarketEntry() != null && $location->getMarketEntry()->getPublished() != true) {
+            return null;
         }
 
         if ($locale == null)
@@ -195,9 +193,10 @@ class LocationRepository extends AbstractTranslationRepository
      * @param Actor|Location $location
      * @return Actor|Location
      */
-    public function addSupplementedOwner(Actor $location) {
+    public function addSupplementedOwner(Actor $location)
+    {
 
-        if($location->getMarketEntry() != null) {
+        if ($location->getMarketEntry() != null) {
 
             $sourceReflection = new ReflectionObject($location);
             $ownerProp = $sourceReflection->getProperty("marketEntry");

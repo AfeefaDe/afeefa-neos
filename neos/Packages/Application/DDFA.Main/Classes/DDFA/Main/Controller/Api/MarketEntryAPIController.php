@@ -38,7 +38,7 @@ class MarketEntryAPIController extends ActionController
      */
     public function listAction($locale = 'de')
     {
-        $this->view->assign('value', ['marketentries' => $this->marketEntryRepository->findAllHydrated($locale, true)]);
+        $this->view->assign('value', ['marketentries' => $this->marketEntryRepository->findAllSupplemented($locale, true)]);
     }
 
     /**
@@ -47,7 +47,7 @@ class MarketEntryAPIController extends ActionController
      */
     public function showAction(MarketEntry $marketentry, $locale = 'de')
     {
-        $this->view->assign('value', ['marketentry' => $marketentry]);
+        $this->view->assign('value', ['marketentry' => $this->marketEntryRepository->findOneSupplemented($marketentry, true)]);
     }
 
     /**

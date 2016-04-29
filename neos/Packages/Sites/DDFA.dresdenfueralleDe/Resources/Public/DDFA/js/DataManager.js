@@ -6,7 +6,7 @@ qx.Class.define("DataManager", {
 	construct: function(){
 		var that = this;
 
-		that.addEvents();
+		// that.addEvents();
 	},
 
 	members : {
@@ -209,7 +209,12 @@ qx.Class.define("DataManager", {
 			
 		},
 
-		sendToSlack: function( data, cb ) {
+
+		///////////////////////
+		// Outgoing messages //
+		///////////////////////
+
+		createSlackMessage: function( data, cb ) {
 
 			var slackMessage = '*' + data.heading + '*' + ':\n' + data.message;
 
@@ -231,12 +236,13 @@ qx.Class.define("DataManager", {
 
 		},
 
-		githubCreateIssue: function( data, cb ) {
+		createGithubIssue: function( data, cb ) {
+			data.action = 'github';
 
 			$.ajax({
 				// url: "_Resources/Static/Packages/DDFA.dresdenfueralleDe/githubAPI/",
 				// url: "http://afeefa.hejn.de/githubAPI/",
-				url: "githubAPI/",
+				url: "messageAPI/",
 				// crossDomain: true,
 				type: 'POST',
 				data: data,
@@ -254,27 +260,34 @@ qx.Class.define("DataManager", {
 
 		},
 
-		addEvents: function(){
-			var that = this;
+		sendMail: function(data, cb) {
+			data.action = 'mail';
 
-			// that.listen('filterSet', function(){
-				
-			//     APP.getDataManager().fetchAllData(function( data ){
-
-			//       console.debug('fetchedAllData in ' + APP.getLM().getCurrentLang(), data);
-
-			//       APP.setData(data);
-
-			//       that.say('localDataChanged');
-
-			//     });
-
-			// });
+			$.ajax({
+				url: "messageAPI/",
+				// crossDomain: true,
+				type: 'POST',
+				data: data,
+				cache: false,
+				dataType: 'text',
+				processData: true
+				// contentType: false
+			})
+			.done(function( data ) {
+				// cb(data);
+			})
+			.fail(function(a) {
+				// cb(a);
+			});
 		},
+
+
+		///////////////////////
+		// import data lists //
+		///////////////////////
 
 		importInis: function(){
 			var that = this;
-
 
 			// languages = APP.getConfig().languages;
 			var languages = ['de', 'en', 'ar', 'fa', 'fr', 'sr', 'ru', 'ti', 'ur', 'it'];

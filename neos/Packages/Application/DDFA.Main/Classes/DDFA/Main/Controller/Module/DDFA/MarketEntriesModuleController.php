@@ -67,7 +67,7 @@ class MarketEntriesModuleController extends AbstractTranslationController
             $this->redirect('view', NULL, NULL, array('viewObject' => $this->objectRepository->findOneLocalized($viewObject, $_POST['viewLocale'])));
 
         } else {
-            $viewObject = $this->objectRepository->hydrate($viewObject, $viewObject->getLocale());
+            $viewObject = $this->objectRepository->hydrate($viewObject, $viewObject->getLocale(), DDConst::OWNER_MARKET);
 
             $this->view->assign('viewObject', $viewObject);
             $this->view->assign('languages', $this->objectRepository->findLocales($viewObject));
@@ -80,6 +80,7 @@ class MarketEntriesModuleController extends AbstractTranslationController
     public function addAction()
     {
         $this->view->assign('cats', $this->categoryRepository->findAll());
+        $this->view->assign('parents', $this->objectRepository->findAllParents());
     }
 
     /**
@@ -125,7 +126,7 @@ class MarketEntriesModuleController extends AbstractTranslationController
      */
     public function editAction(MarketEntry $editObject, MarketEntry $viewObject)
     {
-        $this->view->assign('viewObject', $this->objectRepository->hydrate($viewObject, $viewObject->getLocale()));
+        $this->view->assign('viewObject', $this->objectRepository->hydrate($viewObject, $viewObject->getLocale(), DDConst::OWNER_MARKET));
         $this->view->assign('editObject', $editObject);
         $this->view->assign('editLanguages', $this->languageRepository->findAll());
         $this->view->assign('viewLanguages', $this->objectRepository->findAllLocales($viewObject));
@@ -376,7 +377,7 @@ class MarketEntriesModuleController extends AbstractTranslationController
                     $check = false;
             }
         } else {
-            if ($editObject->getLocations() != null || $editObject->getLocations()->first() != null) {
+            if ($editObject->getLocations() != null && $editObject->getLocations()->first() != null) {
                 foreach ($this->locationRepository->findAllLocalisations($editObject->getLocations()->first()) as $localisedObject)
                     $this->locationRepository->remove($localisedObject);
 

@@ -6,7 +6,7 @@ namespace DDFA\Main\Domain\Repository;
  *                                                                        *
  *                                                                        */
 
-use DDFA\Main\Utility\DDConst;
+use DDFA\Main\Domain\Model\MarketEntry;
 use TYPO3\Flow\Annotations as Flow;
 
 /**
@@ -20,4 +20,14 @@ class MarketEntryRepository extends AbstractTranslationRepository
      */
     protected $languageRepository;
 
+
+    /**
+     * @param $id
+     * @return MarketEntry
+     */
+    public function findById($id) {
+        $query = $this->createQuery();
+        $query = $query->matching($query->equals('Persistence_Object_Identifier', $id));
+        return $query->execute()->getFirst();
+    }
 }

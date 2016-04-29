@@ -11,10 +11,10 @@
     <div class="onoffswitch">
         <f:if condition="{entry.published}">
             <f:then>
-                <input type="checkbox" name="published-{entry.persistenceObjectIdentifier}" class="onoffswitch-checkbox" id="published-{entry.persistenceObjectIdentifier}" checked onclick="activate()">
+                <input type="checkbox" name="published-{entry.persistenceObjectIdentifier}" class="onoffswitch-checkbox" id="published-{entry.persistenceObjectIdentifier}" checked onclick="lock('{entry.persistenceObjectIdentifier}');">
             </f:then>
             <f:else>
-                <input type="checkbox" name="published-{entry.persistenceObjectIdentifier}" class="onoffswitch-checkbox" id="published-{entry.persistenceObjectIdentifier}" onclick="activate()">
+                <input type="checkbox" name="published-{entry.persistenceObjectIdentifier}" class="onoffswitch-checkbox" id="published-{entry.persistenceObjectIdentifier}" onclick="publish('{entry.persistenceObjectIdentifier}');">
             </f:else>
         </f:if>
         <label class="onoffswitch-label" for="published-{entry.persistenceObjectIdentifier}"></label>

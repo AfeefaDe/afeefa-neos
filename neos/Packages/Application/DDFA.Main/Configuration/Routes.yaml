@@ -27,6 +27,23 @@
         entity: 'marketentry'
 
 -
+  name: 'api publish marketentries'
+  uriPattern: 'api/publish/{id}'
+  defaults:
+    '@controller': 'Api\MarketEntryAPI'
+    '@action': 'publish'
+  httpMethods:
+      - PUT
+
+-
+  name: 'api lock marketentries'
+  uriPattern: 'api/lock/{id}'
+  defaults:
+    '@controller': 'Api\MarketEntryAPI'
+    '@action': 'lock'
+  httpMethods:
+    - PUT
+-
   name: 'api categories'
   uriPattern: 'api/categories<CategoriesSubroutes>(.{@format})'
   defaults:

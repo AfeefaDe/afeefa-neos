@@ -1,10 +1,9 @@
 resources:
   methods:
-    DDFA_Main_Module_ddfaLocationsModule: 'method(DDFA\Main\Controller\Module\DDFA\LocationsModuleController->(index|add|create|view|edit|simpleEdit|selectTranslation|publish|update|delete)Action())'
     DDFA_Main_Module_ddfaMarketEntriesModule: 'method(DDFA\Main\Controller\Module\DDFA\MarketEntriesModuleController->(index|add|create|view|edit|simpleEdit|selectTranslation|publish|update|delete)Action())'
     DDFA_Main_Module_ddfaCategoriesModule: 'method(DDFA\Main\Controller\Module\DDFA\CategoriesModuleController->(index|add|create|view|edit|update|delete)Action())'
-    #DDFA_Main_Module_ddfaLanguagesModule: 'method(DDFA\Main\Controller\Module\DDFA\LanguagesModuleController->(index|add|create|view|edit|update|delete)Action())'
-    DDFA_Main_Api_ddfaMarketEntryAPI: 'method(DDFA\Main\Controller\Api\MarketEntryAPIController->(list|show|create)Action())'
+    DDFA_Main_Api_ddfaLocationAPI: 'method(DDFA\Main\Controller\Api\LocationAPIController->(list|show|create)Action())'
+    DDFA_Main_Api_ddfaMarketEntryAPI: 'method(DDFA\Main\Controller\Api\MarketEntryAPIController->(list|show|create|publish|lock)Action())'
     DDFA_Main_Api_ddfaCategoryAPI: 'method(DDFA\Main\Controller\Api\CategoryAPIController->(list|show)Action())'
     DDFA_Main_Api_ddfaFeedbackAPI: 'method(DDFA\Main\Controller\Api\FeedbackAPIController->(show|create)Action())'
 acls:

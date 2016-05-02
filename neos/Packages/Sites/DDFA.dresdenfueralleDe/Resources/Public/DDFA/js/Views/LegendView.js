@@ -76,8 +76,8 @@ qx.Class.define("LegendView", {
 			var entity = $("<div />")
 			  .addClass('entity type-' + key);
 			var entityLabel = $("<span />")
-			  .addClass('label')
-			  .append(that.getWording('entity_' + value));
+			  .addClass('label');
+			that['label-entity-' + value] = entityLabel; 
 			entityContainer.append(entity);
 			entityContainer.append(entityLabel);
 			rowContainer.append(entityContainer);
@@ -242,6 +242,10 @@ qx.Class.define("LegendView", {
 
 		  });
 
+		  _.each( {0: 'orga', 1: 'market', 2: 'event'}, function(value, key){
+		  	that['label-entity-' + value].append(that.getWording('entity_' + value));
+		  });
+
 		  that['label-filter-reset'].append( that.getWording('misc_filterReset') );
 	  },
 
@@ -346,6 +350,10 @@ qx.Class.define("LegendView", {
 			  _.each( cat.sub, function(subcat){
 				  that['label-' + subcat.id].empty();
 			  });
+		  });
+
+		  _.each( {0: 'orga', 1: 'market', 2: 'event'}, function(value, key){
+		  	that['label-entity-' + value].empty();
 		  });
 
 		  that['label-filter-reset'].empty();

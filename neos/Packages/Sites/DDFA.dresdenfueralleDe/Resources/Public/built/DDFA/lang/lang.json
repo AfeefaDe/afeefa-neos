@@ -15,26 +15,26 @@
             "cat_language":{
                   "de":"Sprache",
                   "en":"Language",
-                  "ar":"",
-                  "fa":"",
-                  "fr":"",
+                  "ar":"لغة",
+                  "fa":"زبان",
+                  "fr":"Langue",
                   "it":"",
-                  "ru":"",
-                  "sr":"",
+                  "ru":"язык",
+                  "sr":"Language",
                   "ti":"",
-                  "ur":""
+                  "ur":"زبان"
             },
                   "cat_german-course":{
                         "de":"Deutschkurs",
-                        "en":"German course",
-                        "ar":"",
-                        "fa":"",
-                        "fr":"",
+                        "en":"German course (Deutschkurs)",
+                        "ar":"دورة اللغة الألمانية (Deutschkurs)",
+                        "fa":"زبان آلمانی (Deutschkurs)",
+                        "fr":"cours d'allemand (Deutschkurs)",
                         "it":"",
-                        "ru":"",
-                        "sr":"",
+                        "ru":"Курсы немецкого языка (Deutschkurs)",
+                        "sr":"курс немачког језика (Deutschkurs)",
                         "ti":"",
-                        "ur":""
+                        "ur":"جرمن کورس (Deutschkurs)"
                   },
                   "cat_interpreter":{
                         "de":"Übersetzer/ Dolmetscher",
@@ -171,14 +171,14 @@
                   "cat_library":{
                         "de":"Bibliothek",
                         "en":"Library",
-                        "ar":"",
-                        "fa":"",
-                        "fr":"",
+                        "ar":"مكتبة",
+                        "fa":"کتابخانه",
+                        "fr":"Bibliothèque",
                         "it":"",
-                        "ru":"",
-                        "sr":"",
+                        "ru":"Библиотека",
+                        "sr":"библиотека",
                         "ti":"",
-                        "ur":""
+                        "ur":"لائبریری"
                   },
             "cat_consultation":{
                   "de":"Beratung",
@@ -279,38 +279,38 @@
                   "cat_sports":{
                         "de":"Sport",
                         "en":"sports",
-                        "ar":"",
-                        "fa":"",
-                        "fr":"",
+                        "ar":"رياضات",
+                        "fa":"ورزش ها",
+                        "fr":"des sports",
                         "it":"",
-                        "ru":"",
-                        "sr":"",
+                        "ru":"виды спорта",
+                        "sr":"спортски",
                         "ti":"",
-                        "ur":""
+                        "ur":"کھیلوں"
                   },
                   "cat_museum":{
                         "de":"Museum",
                         "en":"museum",
-                        "ar":"",
-                        "fa":"",
-                        "fr":"",
+                        "ar":"متحف",
+                        "fa":"موزه",
+                        "fr":"musée",
                         "it":"",
-                        "ru":"",
-                        "sr":"",
+                        "ru":"музей",
+                        "sr":"музеј",
                         "ti":"",
-                        "ur":""
+                        "ur":"میوزیم"
                   },
                   "cat_music":{
                         "de":"Musik",
                         "en":"music",
-                        "ar":"",
-                        "fa":"",
-                        "fr":"",
+                        "ar":"موسيقى",
+                        "fa":"موسیقی",
+                        "fr":"musique",
                         "it":"",
-                        "ru":"",
-                        "sr":"",
+                        "ru":"Музыка",
+                        "sr":"музика",
                         "ti":"",
-                        "ur":""
+                        "ur":"موسیقی"
                   },
                   "cat_stage":{
                         "de":"Bühne",
@@ -1107,28 +1107,28 @@
             },
             "entity_market":{
                   "de":"Börseneintrag",
-                  "en":"Market entry",
-                  "ar":"",
-                  "fa":"",
-                  "fr":"",
+                  "en":"small ad",
+                  "ar":"إعلان صغير",
+                  "fa":"آگهی کوچک",
+                  "fr":"petite annonce",
                   "it":"",
-                  "ru":"",
-                  "sr":"",
+                  "ru":"небольшое объявление",
+                  "sr":"мали оглас",
                   "ti":"",
-                  "ur":""
+                  "ur":"چھوٹا سا اشتہار"
             },
             
             "entity_event":{
                   "de":"Veranstaltung",
                   "en":"Event",
-                  "ar":"",
-                  "fa":"",
-                  "fr":"",
+                  "ar":"حدث",
+                  "fa":"واقعه",
+                  "fr":"événement",
                   "it":"",
-                  "ru":"",
-                  "sr":"",
+                  "ru":"мероприятие",
+                  "sr":"догађај",
                   "ti":"",
-                  "ur":""
+                  "ur":"تقریب"
             },
 
             "misc_filterReset":{
@@ -1160,14 +1160,14 @@
             "search_label_refugeeGuide":{
                   "de":"Leitfaden für Geflüchtete",
                   "en":"Guide for asylum seekers",
-                  "ar":"",
-                  "fa":"",
+                  "ar":"دليل طالبي اللجوء كنيسة",
+                  "fa":"راهنمای پناهجویان",
                   "fr":"",
                   "it":"",
                   "ru":"",
                   "sr":"",
-                  "ti":"",
-                  "ur":""
+                  "ti":"ጠቐምቲ ሓበሬታታት ንሓተቲ ዕቑባ",
+                  "ur":"پناہ کے متلاشیوں کے لئے گائیڈ"
             },
 
             "search_label_supporterGuide":{
@@ -1209,8 +1209,8 @@
                   "ur":""
             },
             "form_initiative":{
-                  "de":"Initiative/ Projekt anlegen",
-                  "en":"Create new organization/ project",
+                  "de":"Initiative oder Projekt anlegen",
+                  "en":"Create new organization or project",
                   "ar":"",
                   "fa":"",
                   "fr":"",

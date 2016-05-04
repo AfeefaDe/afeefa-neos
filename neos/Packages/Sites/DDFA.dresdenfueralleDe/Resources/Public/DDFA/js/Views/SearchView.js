@@ -118,7 +118,7 @@ qx.Class.define("SearchView", {
       that.results.empty();
 
       // TODO use marketentries instead of locations
-      const entries = APP.getData().locations;
+      const entries = APP.getData().entries;
 
       // generic function to create a single result
       function createResult( iconClass, label, subLabel, action ) {
@@ -154,14 +154,17 @@ qx.Class.define("SearchView", {
 
       // generic function to create a single entry result
       function createEntryResult( entry ) {
+        
+        var categoryName = entry.category ? entry.category.name : null;
+        
         // icon
-        var iconClass = 'cat-' + entry.category.name;
+        var iconClass = 'cat-' + categoryName;
         iconClass += ' type-' + entry.type;
         if( entry.subCategory ) iconClass += ' subcat-' + entry.subCategory;
         
         // label
         var label = entry.name;
-        var subLabel = entry.subCategory? that.getWording('cat_' + entry.subCategory) : that.getWording('cat_' + entry.category.name);
+        var subLabel = entry.subCategory ? that.getWording('cat_' + entry.subCategory) : that.getWording('cat_' + categoryName);
         
         // action
         var action = function(){
@@ -220,8 +223,10 @@ qx.Class.define("SearchView", {
             // in name?
             if( entry.name.toLowerCase().indexOf(query) >= 0 ) return true;
             // in category?
-            var cat = that.getWording('cat_' + entry.category.name);
-            if( cat.toLowerCase().indexOf(query) >= 0 ) return true;
+            if( entry.category ) {
+              var cat = that.getWording('cat_' + entry.category.name);
+              if( cat.toLowerCase().indexOf(query) >= 0 ) return true;
+            }
             // in subCategory?
             if( entry.subCategory ) {
               var subcat = that.getWording('cat_' + entry.subCategory);

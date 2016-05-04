@@ -396,7 +396,7 @@ qx.Class.define("MapView", {
 		if(setView) that.map.setView( [location.lat, location.lon], 16);
 		$(marker._icon).addClass('active');
 		
-		APP.getDetailView().load(location);
+		APP.getDetailView().load(location.marketEntry);
 
 		window.location.hash = location.entryId;
 

@@ -165,7 +165,8 @@ qx.Class.define("DetailView", {
 			that['propertyIcon'+prop].addClass('icon-' + prop);
 			that['propertyName'+prop].append( that.getWording( 'prop_' + prop ) );
 			
-			var value = record.type !== 3 ? buildTimes(record.marketEntry) : buildTimes(record);
+			// var value = record.type !== 3 ? buildTimes(record.marketEntry) : buildTimes(record);
+			var value = buildTimes(record);
 
 			function buildTimes(record){
 				var times = '';

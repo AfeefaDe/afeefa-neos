@@ -15,7 +15,8 @@ use TYPO3\Flow\Mvc\View\JsonView;
 use TYPO3\Flow\Mvc\View\ViewInterface;
 use TYPO3\Flow\Property\TypeConverter\PersistentObjectConverter;
 
-class LocationAPIController extends ActionController {
+class LocationAPIController extends ActionController
+{
     /**
      * @Flow\Inject
      * @var LocationRepository
@@ -32,7 +33,8 @@ class LocationAPIController extends ActionController {
     /**
      * @param string $locale
      */
-    public function listAction($locale = 'de') {
+    public function listAction($locale = 'de')
+    {
         $this->view->assign('value', ['locations' => $this->locationRepository->findAllSupplemented($locale, true)]);
     }
 
@@ -40,13 +42,15 @@ class LocationAPIController extends ActionController {
      * @param Location $location
      * @param string $locale
      */
-    public function showAction(Location $location, $locale = 'de') {
+    public function showAction(Location $location, $locale = 'de')
+    {
         $location = $this->locationRepository->findOneSupplemented($location, $locale, true);
         $this->view->assign('value', ['location' => $location]);
     }
 
-    public function createAction(Location $location) {
-        if( $location->getType()==0 || $location->getType()==1 || $location->getType()==2 ) {
+    public function createAction(Location $location)
+    {
+        if ($location->getType() == 0 || $location->getType() == 1 || $location->getType() == 2) {
             $this->locationRepository->add($location);
             $this->response->setStatus(201);
             $this->view->assign('value', ['location' => $location]);
@@ -55,26 +59,33 @@ class LocationAPIController extends ActionController {
         }
     }
 
-    protected function initializeView(ViewInterface $view) {
+    protected function initializeView(ViewInterface $view)
+    {
         if ($view instanceof JsonView) {
             $locationConfiguration = [
                 '_descend' => [
-                    'category' => [
-                        '_exclude' => ['__isInitialized__']
-//                        '_exposeObjectIdentifier' => TRUE,
-//                        '_exposedObjectIdentifierKey' => 'identifier'
-                    ],
                     'marketEntry' => [
-                        '_exclude' => ['__isInitialized__'],
-//                        '_exposeObjectIdentifier' => TRUE,
-//                        '_exposedObjectIdentifierKey' => 'identifier',
-                        '_descend' => ['category' => [
-                            '_exclude' => ['__isInitialized__']
-//                            '_exposeObjectIdentifier' => TRUE,
-//                            '_exposedObjectIdentifierKey' => 'identifier'
-                        ]
+                        '_exclude' => [
+                            '__isInitialized__',
+                            'internalComment',
+                            'locale',
+                            'parentEntry',
+                            'published',
+                            'speakerPrivate'
+                        ],
+                        '_descend' => [
+                            'category' => [
+                                '_exclude' => [
+                                    '__isInitialized__',
+                                    'description',
+                                    'locale'
+                                ]
+                            ]
                         ]
                     ]
+                ],
+                '_exclude' => [
+                    'locale'
                 ]
             ];
             $view->setConfiguration([
@@ -86,7 +97,8 @@ class LocationAPIController extends ActionController {
         }
     }
 
-    protected function initializeCreateAction() {
+    protected function initializeCreateAction()
+    {
         $config = $this->arguments['location']->getPropertyMappingConfiguration();
         $config->setTypeConverterOption('TYPO3\Flow\Property\TypeConverter\PersistentObjectConverter', PersistentObjectConverter::CONFIGURATION_CREATION_ALLOWED, TRUE);
         $config->allowAllProperties();

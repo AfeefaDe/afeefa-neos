@@ -96,12 +96,20 @@ qx.Class.define("DataManager", {
 			})
 			.done(function( data ) {
 				
-				// TIME FILTER
-				// TODO move filter into API controller
 				var locations = _.filter(data.locations, function(location){
-						
-				// skip orgas and basic locations
-				if(location.type == 0 || location.type == 3) return true;
+					
+					// filter out owner-less locations
+					// TODO: there shouldn't be any owner-less locations coming from the API
+					if(!location.marketEntry) return false;
+
+					// filter out category-less locations
+					// TODO: there shouldn't be any category-less locations coming from the API
+					// if(!location.marketEntry.category) return false;
+				
+					// TIME FILTER
+					// TODO move filter into API controller
+					// skip orgas and basic locations
+					if(location.marketEntry.type == 0 || location.marketEntry.type == 3) return true;
 
 					var dateFrom = location.marketEntry.dateFrom ? new Date(location.marketEntry.dateFrom) : null;
 					var dateTo = location.marketEntry.dateTo ? new Date(location.marketEntry.dateTo) : null;

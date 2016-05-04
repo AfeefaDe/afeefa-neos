@@ -210,31 +210,31 @@ qx.Class.define("MapView", {
 
 		// var newLayer = new L.LayerGroup();
 
-			_.each(locations, function(location){
+		_.each(locations, function(location){
 
 			// type specific adjustment
 			var iconSize, iconAnchor;
 
 			// IniLocation
-			if( location.type === 0 ) {
+			if( location.marketEntry.type === 0 ) {
 				iconSize = [24,24];
 				iconAnchor = [12,12];
 			}
 			// MarketLocation
-			else if( location.type === 1 ) {
+			else if( location.marketEntry.type === 1 ) {
 				iconSize = [23,23];
 				iconAnchor = [12,12];
 			}
 			// EventLocation
-			else if( location.type === 2 ) {
+			else if( location.marketEntry.type === 2 ) {
 				iconSize = [23,23];
 				iconAnchor = [15,15];
 			}
 			// BasicLocation
-			else if( location.type === 3 ) {
+			else if( location.marketEntry.type === 3 ) {
 
 				// Gemeinschaftsunterkunft
-				if( location.category && location.category.name === 'housing') {
+				if( location.marketEntry.category && location.marketEntry.category.name === 'housing') {
 					iconSize = [30,30];
 					iconAnchor = [15,15];
 				}
@@ -250,11 +250,10 @@ qx.Class.define("MapView", {
 			if( !location.lat || !location.lon ) return false;
 
 			var className = 'location';
-			className += ' type-' + location.type;
-			className += ' rating-' + location.rating;
-			if( location.category ) className += ' cat-' + location.category.name;
-			if( location.subCategory ) className += ' subcat-' + location.subCategory;
-			if( location.supportNeeded ) className += ' support-needed';
+			className += ' type-' + location.marketEntry.type;
+			if( location.marketEntry.category ) className += ' cat-' + location.marketEntry.category.name;
+			if( location.marketEntry.subCategory ) className += ' subcat-' + location.marketEntry.subCategory;
+			if( location.marketEntry.supportNeeded ) className += ' support-needed';
 
 			////////////
 			// MARKER //
@@ -266,18 +265,18 @@ qx.Class.define("MapView", {
 					iconSize: iconSize,
 					iconAnchor: iconAnchor
 				}),
-				rotationAngle: (location.type == 2)? 45 : null
+				rotationAngle: (location.marketEntry.type == 2)? 45 : null
 			});
 
 			///////////
 			// POPUP //
 			///////////
-			var locationName = location.name;
-			if (!locationName) {
-				if( location.type === 0 ) locationName = location.initiative.name;
-				else if( location.type === 1 ) locationName = location.marketEntry.name;
-				else if( location.type === 2 ) locationName = location.event.name;
-			}
+			var locationName = location.marketEntry.name;
+			// if (!locationName) {
+			// 	if( location.type === 0 ) locationName = location.initiative.name;
+			// 	else if( location.type === 1 ) locationName = location.marketEntry.name;
+			// 	else if( location.type === 2 ) locationName = location.event.name;
+			// }
 			
 			var popup = L.popup({
 				className: 'afeefa-popup',
@@ -286,9 +285,9 @@ qx.Class.define("MapView", {
 			})
 					.setLatLng([location.lat, location.lon])
 					.setContent(function(){
-						var label = that.getWording('cat_' + location.category.name);
-						if(location.subCategory)
-							label += ' (' + that.getWording('cat_' + location.subCategory) + ')';
+						var label = location.marketEntry.category ? that.getWording('cat_' + location.marketEntry.category.name) : '!category missing';
+						if(location.marketEntry.subCategory)
+							label += ' (' + that.getWording('cat_' + location.marketEntry.subCategory) + ')';
 
 						return '<span class="title">' + locationName + '</span><span class="category">' +label+ '</span>';
 					}());
@@ -306,7 +305,7 @@ qx.Class.define("MapView", {
 				that.selectMarker(marker, location);
 			});
 
-			if (location.type === 3) {
+			if (location.marketEntry.type === 3) {
 				that.layerForPOIMarkers.addLayer(marker);
 			}
 			else {

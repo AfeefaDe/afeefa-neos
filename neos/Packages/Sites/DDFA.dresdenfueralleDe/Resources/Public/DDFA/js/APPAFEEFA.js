@@ -146,15 +146,30 @@ qx.Class.define("APPAFEEFA", {
 			});
 
 			// fetch other data (e.g. that takes a long time loading)
-			that.getDataManager().getAllLocations(function(data){
-				// store in APP
-				var currentData = that.getData();
-				currentData.locations = data.locations;
-				that.setData(currentData);
+			var currentAppData = that.getData();
 
-				// allData.locations = data.locations;
-				// that.setData(allData);
-				that.say('fetchedNewData');
+			that.getDataManager().getAllEntries(function(data){
+
+				// store entries in APP
+				currentAppData.entries = data.marketentries;
+				
+				that.getDataManager().getAllLocations(function(data){
+					
+					// store locations in APP
+					currentAppData.locations = data.locations;
+					that.setData(currentAppData);
+					
+					that.say('fetchedNewData', { dataType: ['locations', 'entry'] });
+				});
+				
+				// // extract locations from entries and store in APP seperately
+				// var extracted_locations = [];
+				// _.each(data.marketentries, function(entry){
+				// 	if( entry.locations.length > 0 )
+				// 		extracted_locations = _.union(extracted_locations, entry.locations);
+				// });
+				// currentAppData.locations = extracted_locations;
+
 			});
 		},
 

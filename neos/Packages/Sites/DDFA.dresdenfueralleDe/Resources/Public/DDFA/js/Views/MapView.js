@@ -169,7 +169,7 @@ qx.Class.define("MapView", {
 
 			// get ALL data with location data
 			var entries = _.filter(APP.getData().entries, function(entry){
-				return entry.locations.length > 0;
+				return entry.location.length > 0;
 			});
 			
 			// filter active?
@@ -239,7 +239,7 @@ qx.Class.define("MapView", {
 			}
 			
 			// TODO: quickfix: skip locations without coodinates
-			if( !entry.locations[0].lat || !entry.locations[0].lon ) return false;
+			if( !entry.location[0].lat || !entry.location[0].lon ) return false;
 
 			var className = 'location';
 			className += ' type-' + entry.type;
@@ -250,14 +250,26 @@ qx.Class.define("MapView", {
 			////////////
 			// MARKER //
 			////////////
-			var marker = L.marker( [entry.locations[0].lat, entry.locations[0].lon] , {
+			var marker = L.marker( [entry.location[0].lat, entry.location[0].lon] , {
 				riseOnHover: true,
 				icon: L.divIcon({
 					className: className,
 					iconSize: iconSize,
-					iconAnchor: iconAnchor
-				}),
-				rotationAngle: (entry.type == 2)? 45 : null
+					iconAnchor: iconAnchor,
+					html: function(){
+						var html = '';
+						if(entry.type == 2){
+							var classString = 'type-' + entry.type;
+							if( entry.category ) classString += ' cat-' + entry.category.name;
+							if( entry.subCategory ) classString += ' subcat-' + entry.subCategory;
+							// the diamond
+							html = '<span class="' + classString + ' event-shape"></span>';
+							// the icon
+							html += '<span class="' + classString + ' event-icon"></span>';
+						}
+						return html;
+					}()
+				})
 			});
 
 			///////////
@@ -275,7 +287,7 @@ qx.Class.define("MapView", {
 				closeButton: false,
 				offset: [0, 0]
 			})
-					.setLatLng([entry.locations[0].lat, entry.locations[0].lon])
+					.setLatLng([entry.location[0].lat, entry.location[0].lon])
 					.setContent(function(){
 						var label = '';
 						
@@ -352,7 +364,7 @@ qx.Class.define("MapView", {
 				var lookup = that.lookupMarkerById(firstParam);
 				if(lookup){
 					if(options && options.setView)
-						that.map.setView( [lookup.entry.locations[0].lat, lookup.entry.locations[0].lon], 16);
+						that.map.setView( [lookup.entry.location[0].lat, lookup.entry.location[0].lon], 16);
 				that.selectMarker(lookup.marker, lookup.entry);
 				}
 			}
@@ -391,7 +403,7 @@ qx.Class.define("MapView", {
 			that.deselectMarker();
 			that.setSelectedMarker(marker);
 
-			if(setView) that.map.setView( [entry.locations[0].lat, entry.locations[0].lon], 16);
+			if(setView) that.map.setView( [entry.location[0].lat, entry.location[0].lon], 16);
 			$(marker._icon).addClass('active');
 			
 			APP.getDetailView().load(entry);

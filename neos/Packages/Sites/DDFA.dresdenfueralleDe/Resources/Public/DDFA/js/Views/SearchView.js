@@ -171,14 +171,14 @@ qx.Class.define("SearchView", {
         
         // action
         var action = function(){
-          if(entry.locations.length > 0)
+          if(entry.location.length > 0)
             APP.getMapView().selectMarkerFromLink(entry.entryId);
           else
             APP.getDetailView().load(entry);
         };
 
         // create entry
-        createResult( iconClass, label, subLabel, action, (entry.locations.length > 0) );
+        createResult( iconClass, label, subLabel, action, (entry.location.length > 0) );
       }
 
       if( !query ) {  // show "just click" version

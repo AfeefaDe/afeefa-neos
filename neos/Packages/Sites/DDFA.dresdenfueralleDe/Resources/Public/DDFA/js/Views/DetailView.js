@@ -139,6 +139,7 @@ qx.Class.define("DetailView", {
 			var entityLabels = { 0: that.getWording('entity_orga'), 1: that.getWording('entity_market'), 2: that.getWording('entity_event') };
 			var value = entityLabels[record.type];
 			that['propertyValue'+prop].append(value);
+			if(!record.location.length) that['propertyValue'+prop].append( $('<i />').addClass('fa fa-shield'));
 			that['propertyContainer'+prop].show();
 
 			// location
@@ -146,13 +147,13 @@ qx.Class.define("DetailView", {
 			that['propertyIcon'+prop].addClass('icon-' + prop);
 			that['propertyName'+prop].append( that.getWording( 'prop_' + prop ) );
 			
-			var value = (record.locations.length > 0) ? buildLocation(record) : '';
+			var value = (record.location.length > 0) ? buildLocation(record) : '';
 			function buildLocation(record){
 				var location = '';
-				if( record.locations[0].placename ) location += record.locations[0].placename + '<br>';
-				if( record.locations[0].street ) location += record.locations[0].street + '<br>';
-				if( record.locations[0].zip && record.locations[0].city) location += record.locations[0].zip + ' ' + record.locations[0].city + '<br>';
-				else if( record.locations[0].city ) location += record.locations[0].city + '<br>';
+				if( record.location[0].placename ) location += record.location[0].placename + '<br>';
+				if( record.location[0].street ) location += record.location[0].street + '<br>';
+				if( record.location[0].zip && record.location[0].city) location += record.location[0].zip + ' ' + record.location[0].city + '<br>';
+				else if( record.location[0].city ) location += record.location[0].city + '<br>';
 				return location;
 			}
 			if( value.length > 0 ) {

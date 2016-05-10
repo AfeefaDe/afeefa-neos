@@ -153,27 +153,6 @@ qx.Class.define("APPAFEEFA", {
 				// store entries in APP
 				currentAppData.entries = data.marketentries;
 				
-				// that.getDataManager().getAllLocations(function(data){
-					
-				// 	// store locations in APP
-				// 	currentAppData.locations = data.locations;
-				// 	that.setData(currentAppData);
-					
-				// 	that.say('fetchedNewData', { dataType: ['locations', 'entry'] });
-				// });
-				
-				// extract locations from entries and store in APP seperately
-				var extracted_locations = [];
-				_.each(data.marketentries, function(entry){
-					if( entry.locations.length > 0 ){
-						_.each(entry.locations, function(loc){
-							loc.marketEntry = entry;
-							extracted_locations = _.union(extracted_locations, [loc]);
-						});
-					}
-				});
-				currentAppData.locations = extracted_locations;
-
 				that.setData(currentAppData);
 				that.say('fetchedNewData', { dataType: ['locations', 'entry'] });
 

@@ -121,7 +121,7 @@ qx.Class.define("SearchView", {
       const entries = APP.getData().entries;
 
       // generic function to create a single result
-      function createResult( iconClass, label, subLabel, action ) {
+      function createResult( iconClass, label, subLabel, action, locationSymbol ) {
         const resultEl = $("<div />")
           .addClass('result')
           .click(function(){
@@ -148,6 +148,9 @@ qx.Class.define("SearchView", {
           const subLabelEl = $("<label />")
             .addClass('sub-label')
             .append(subLabel);
+          // show location symbol?
+          if(locationSymbol)
+            subLabelEl.append('&nbsp;&nbsp;&nbsp;&nbsp;').append( $("<span />").addClass('glyphicon glyphicon-map-marker') );
           labelsEl.append(subLabelEl);
         }
       }
@@ -168,11 +171,14 @@ qx.Class.define("SearchView", {
         
         // action
         var action = function(){
-          APP.getMapView().selectMarkerFromLink(entry.entryId);
+          if(entry.locations.length > 0)
+            APP.getMapView().selectMarkerFromLink(entry.entryId);
+          else
+            APP.getDetailView().load(entry);
         };
 
         // create entry
-        createResult( iconClass, label, subLabel, action );
+        createResult( iconClass, label, subLabel, action, (entry.locations.length > 0) );
       }
 
       if( !query ) {  // show "just click" version
@@ -237,6 +243,15 @@ qx.Class.define("SearchView", {
               var children = that.getWording('prop_forChildren');
               if( children.toLowerCase().indexOf(query) >= 0 ) return true;
             }
+            // in description?
+            if( entry.description ) {
+              if( entry.description.toLowerCase().indexOf(query) >= 0 ) return true;
+            }
+            // in speakerPublic?
+            if( entry.speakerPublic ) {
+              if( entry.speakerPublic.toLowerCase().indexOf(query) >= 0 ) return true;
+            }
+
             return false;
           });
         }

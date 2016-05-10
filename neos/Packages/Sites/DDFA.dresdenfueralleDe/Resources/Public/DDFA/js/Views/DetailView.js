@@ -96,11 +96,11 @@ qx.Class.define("DetailView", {
 			// view
 			that.setViewState(1);
 			that.view.addClass('type-' + record.type);
-			that.view.addClass('cat-' + record.category.name);
+			if(record.category) that.view.addClass('cat-' + record.category.name);
 
 			// heading
 			that.heading.append(record.name ? record.name : '');
-			that.headingContainer.addClass('cat-' + record.category.name);
+			if(record.category) that.headingContainer.addClass('cat-' + record.category.name);
 
 			////////////////////
 			// image property //
@@ -146,13 +146,13 @@ qx.Class.define("DetailView", {
 			that['propertyIcon'+prop].addClass('icon-' + prop);
 			that['propertyName'+prop].append( that.getWording( 'prop_' + prop ) );
 			
-			var value = buildLocation(record);
+			var value = (record.locations.length > 0) ? buildLocation(record) : '';
 			function buildLocation(record){
 				var location = '';
-				if( record.placename ) location += record.placename + '<br>';
-				if( record.street ) location += record.street + '<br>';
-				if( record.zip && record.city) location += record.zip + ' ' + record.city + '<br>';
-				else if( record.city ) location += record.city + '<br>';
+				if( record.locations[0].placename ) location += record.locations[0].placename + '<br>';
+				if( record.locations[0].street ) location += record.locations[0].street + '<br>';
+				if( record.locations[0].zip && record.locations[0].city) location += record.locations[0].zip + ' ' + record.locations[0].city + '<br>';
+				else if( record.locations[0].city ) location += record.locations[0].city + '<br>';
 				return location;
 			}
 			if( value.length > 0 ) {

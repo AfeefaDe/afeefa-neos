@@ -421,8 +421,8 @@
                         "ur":""
                   },
                   "cat_workshop":{
-                        "de":"Workshops",
-                        "en":"workshops",
+                        "de":"Workshop",
+                        "en":"workshop",
                         "ar":"",
                         "fa":"",
                         "fr":"",
@@ -754,6 +754,18 @@
                   "ru":"адреc",
                   "sr":"Адреса",
                   "ti":"ቦታ",
+                  "ur":""
+            },
+            "prop_location_none":{
+                  "de":"kein Ort angegeben",
+                  "en":"no location given",
+                  "ar":"",
+                  "fa":"",
+                  "fr":"",
+                  "it":"",
+                  "ru":"",
+                  "sr":"",
+                  "ti":"",
                   "ur":""
             },
             "prop_street":{
@@ -1157,6 +1169,19 @@
                   "ur":""
             },
 
+            "search_sublabel_intro":{
+                  "de":"Was ist Afeefa.de? Informationen zu dieser Plattform",
+                  "en":"What is Afeefa.de? Find information here",
+                  "ar":"",
+                  "fa":"",
+                  "fr":"",
+                  "it":"",
+                  "ru":"",
+                  "sr":"",
+                  "ti":"",
+                  "ur":""
+            },
+
             "search_label_refugeeGuide":{
                   "de":"Leitfaden für Geflüchtete",
                   "en":"Guide for asylum seekers",
@@ -1170,9 +1195,35 @@
                   "ur":"پناہ کے متلاشیوں کے لئے گائیڈ"
             },
 
+            "search_sublabel_refugeeGuide":{
+                  "de":"Nützliche Hinweise für Ankommende in Dresden",
+                  "en":"Useful facts for newcomers in Dresden",
+                  "ar":"",
+                  "fa":"",
+                  "fr":"",
+                  "it":"",
+                  "ru":"",
+                  "sr":"",
+                  "ti":"",
+                  "ur":""
+            },
+
             "search_label_supporterGuide":{
                   "de":"Leitfaden für Engagierte",
                   "en":"Guide for supporters",
+                  "ar":"",
+                  "fa":"",
+                  "fr":"",
+                  "it":"",
+                  "ru":"",
+                  "sr":"",
+                  "ti":"",
+                  "ur":""
+            },
+
+            "search_sublabel_supporterGuide":{
+                  "de":"Wichtige Infos rundum ehrenamtliches Engagement",
+                  "en":"Important information on voluntary engagement",
                   "ar":"",
                   "fa":"",
                   "fr":"",
@@ -1855,6 +1906,30 @@
                   "sr":"Урду",
                   "ti":"ቋንቋ ኡርዱ",
                   "ur":"اردو"
+            },
+            "lan_es":{
+                  "de":"Spanisch",
+                  "en":"Spanish",
+                  "ar":"الأسبانية",
+                  "fa":"اسپانیایی",
+                  "fr":"Espanol",
+                  "it":"spagnolo",
+                  "ru":"испанский",
+                  "sr":"шпански",
+                  "ti":"",
+                  "ur":"ہسپانوی"
+            },
+            "lan_cz":{
+                  "de":"Tschechisch",
+                  "en":"Czech",
+                  "ar":"تشيكي",
+                  "fa":"کشور چک",
+                  "fr":"tchèque",
+                  "it":"ceco",
+                  "ru":"Чешский",
+                  "sr":"чешки",
+                  "ti":"",
+                  "ur":"چیک"
             }
       }
 ]

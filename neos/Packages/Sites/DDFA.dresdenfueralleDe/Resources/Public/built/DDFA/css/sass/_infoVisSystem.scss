@@ -15,7 +15,7 @@
 		@include border-radius(3px);
 		/*position: relative;*/
 		/*overflow: hidden;*/
-		/*@include transform(rotate(45deg));*/
+		@include transform(rotate(45deg));
 
 		/*&::before {
 		    content: "";

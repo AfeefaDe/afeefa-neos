@@ -47,7 +47,7 @@ class MarketEntryAPIController extends ActionController
      */
     public function showAction(MarketEntry $marketentry, $locale = 'de')
     {
-        $this->view->assign('value', ['marketentry' => $this->marketEntryRepository->findOneSupplemented($marketentry, true)]);
+        $this->view->assign('value', ['marketentry' => $this->marketEntryRepository->findOneSupplemented($marketentry, $locale, true)]);
     }
 
     /**
@@ -91,24 +91,29 @@ class MarketEntryAPIController extends ActionController
             $marketentryconfig = [
                 '_descend' => [
                     'category' => [
-                        '_exclude' => ['__isInitialized__']
-//                        '_exposeObjectIdentifier' => TRUE,
-//                        '_exposedObjectIdentifierKey' => 'identifier'
+                        '_exclude' => [
+                            '__isInitialized__',
+                            'description',
+                            'locale'
+                        ]
+//                        ,'_exposeObjectIdentifier' => TRUE, '_exposedObjectIdentifierKey' => 'identifier'
                     ],
 
-                    'locations' => [
+                    'location' => [
                         '_descend' => [
-                            '_exclude' => ['__isInitialized__'],
-//                        '_exposeObjectIdentifier' => TRUE,
-//                        '_exposedObjectIdentifierKey' => 'identifier',
-                            '_descend' => ['category' => [
-                                '_exclude' => ['__isInitialized__']
-//                            '_exposeObjectIdentifier' => TRUE,
-//                            '_exposedObjectIdentifierKey' => 'identifier'
-                            ]
+                            '_exclude' => [
+                                '__isInitialized__',
+                                'locale'
                             ]
                         ]
                     ]
+                ],
+                '_exclude' => [
+                    'internalComment',
+                    'locale',
+                    'parentEntry',
+                    'published',
+                    'speakerPrivate'
                 ]
             ];
             $view->setConfiguration([

@@ -1157,6 +1157,19 @@
                   "ur":""
             },
 
+            "search_sublabel_intro":{
+                  "de":"Was ist Afeefa.de? Informationen zu dieser Plattform",
+                  "en":"What is Afeefa.de? Find information here",
+                  "ar":"",
+                  "fa":"",
+                  "fr":"",
+                  "it":"",
+                  "ru":"",
+                  "sr":"",
+                  "ti":"",
+                  "ur":""
+            },
+
             "search_label_refugeeGuide":{
                   "de":"Leitfaden für Geflüchtete",
                   "en":"Guide for asylum seekers",
@@ -1170,9 +1183,35 @@
                   "ur":"پناہ کے متلاشیوں کے لئے گائیڈ"
             },
 
+            "search_sublabel_refugeeGuide":{
+                  "de":"Nützliche Hinweise für Ankommende in Dresden",
+                  "en":"Useful facts for newcomers in Dresden",
+                  "ar":"",
+                  "fa":"",
+                  "fr":"",
+                  "it":"",
+                  "ru":"",
+                  "sr":"",
+                  "ti":"",
+                  "ur":""
+            },
+
             "search_label_supporterGuide":{
                   "de":"Leitfaden für Engagierte",
                   "en":"Guide for supporters",
+                  "ar":"",
+                  "fa":"",
+                  "fr":"",
+                  "it":"",
+                  "ru":"",
+                  "sr":"",
+                  "ti":"",
+                  "ur":""
+            },
+
+            "search_sublabel_supporterGuide":{
+                  "de":"Wichtige Infos rundum ehrenamtliches Engagement",
+                  "en":"Important information on voluntary engagement",
                   "ar":"",
                   "fa":"",
                   "fr":"",

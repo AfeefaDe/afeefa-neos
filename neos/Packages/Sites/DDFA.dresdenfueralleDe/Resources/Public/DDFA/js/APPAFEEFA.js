@@ -154,7 +154,7 @@ qx.Class.define("APPAFEEFA", {
 				currentAppData.entries = data.marketentries;
 				
 				that.setData(currentAppData);
-				that.say('fetchedNewData', { dataType: ['locations', 'entry'] });
+				that.say('fetchedNewData');
 
 			});
 		},

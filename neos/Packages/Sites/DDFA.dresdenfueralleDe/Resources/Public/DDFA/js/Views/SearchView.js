@@ -194,19 +194,19 @@ qx.Class.define("SearchView", {
         var action = function(){
           APP.getIncludeView().load( APP.getIncludeView().getIncludes().intro );
         };
-        createResult('intro', that.getWording('search_label_intro'), 'Intro', action );
+        createResult('intro', that.getWording('search_label_intro'), that.getWording('search_sublabel_intro'), action );
 
         // link to refugee guide
         var action = function(){
           APP.getIncludeView().load( APP.getIncludeView().getIncludes().refugeeGuide );
         };
-        createResult('refugee-guide', that.getWording('search_label_refugeeGuide'), null, action );
+        createResult('refugee-guide', that.getWording('search_label_refugeeGuide'), that.getWording('search_sublabel_refugeeGuide'), action );
 
         // link to supporter guide
         var action = function(){
           APP.getIncludeView().load( APP.getIncludeView().getIncludes().supporterGuide );
         };
-        createResult('supporter-guide', that.getWording('search_label_supporterGuide'), null, action );
+        createResult('supporter-guide', that.getWording('search_label_supporterGuide'), that.getWording('search_sublabel_supporterGuide'), action );
 
         // for god's sake show ALL entries
         _.each(entries, function(entry) {

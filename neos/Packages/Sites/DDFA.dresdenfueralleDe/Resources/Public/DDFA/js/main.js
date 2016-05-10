@@ -17,8 +17,7 @@ require.config({
         bootstrap: 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min',
         fontawesome: 'https://use.fontawesome.com/61b16e9b7e',
         mapbox: 'https://api.tiles.mapbox.com/mapbox.js/v2.3.0/mapbox',
-        mc: 'https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/leaflet.markercluster',
-        rm: '../../leafletPlugins/leaflet.rotatedMarker'
+        mc: 'https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/leaflet.markercluster'
     },
 
     shim: {
@@ -47,7 +46,6 @@ require.config({
             exports: 'qx'
         },
         "mc": ["mapbox"],
-        "rm": ["mapbox"],
         "Daddy": ["qx"],
         "bootstrap": ["jquery"],
         "chosen": ["jquery"],
@@ -82,7 +80,6 @@ require([
 	'hammer',
 	'mapbox',
 	'mc',
-	// 'rm',
 	'perfectScrollbarJQuery',
 	'chosen',
 	'momentjs',

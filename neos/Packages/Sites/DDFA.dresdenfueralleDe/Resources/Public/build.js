@@ -53,22 +53,6 @@
     //Useful to map module names that are to resources on a CDN or other
     //http: URL when running in the browser and during an optimization that
     //file should be skipped because it has no dependencies.
-    // paths: {
-    //     modernizr: 'H5BP/js/vendor/modernizr-2.8.3.min',
-    //     domReady: 'requirejs/domReady',
-    //     jquery: 'jquery/jquery-2.1.3',
-    //     restive: 'restive/restive.min',
-    //     qx: 'qooxdoo/qx-oo-4.1.min',
-    //     underscore: 'underscore/underscore-min',
-    //     leaflet: 'leaflet/leaflet',
-    //     leafletCluster: 'empty:',
-    //     hammer: 'hammerjs/hammer.min',
-    //     cartodb: 'empty:',
-    //     bootstrap: 'empty:',
-    //     mapbox: 'empty:',
-    //     d3: 'empty:'
-    // },
-
     paths: {
         modernizr: '../../H5BP/js/vendor/modernizr-2.8.3.min',
         domReady: '../../requirejs/domReady',
@@ -84,8 +68,7 @@
         bootstrap: 'empty:',
         fontawesome: 'empty:',
         mapbox: 'empty:',
-        mc: 'empty:',
-        rm: '../../leafletPlugins/leaflet.rotatedMarker'
+        mc: 'empty:'
     },
 
     //Sets up a map of module IDs to other module IDs. For more details, see
@@ -141,7 +124,6 @@
             exports: 'qx'
         },
         "mc": ["mapbox"],
-        "rm": ["mapbox"],
         "Daddy": ["qx"],
         "bootstrap": ["jquery"],
         "chosen": ["jquery"],

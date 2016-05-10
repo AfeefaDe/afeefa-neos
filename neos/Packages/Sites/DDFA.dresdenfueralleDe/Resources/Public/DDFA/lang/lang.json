@@ -756,6 +756,18 @@
                   "ti":"ቦታ",
                   "ur":""
             },
+            "prop_location_none":{
+                  "de":"kein Ort angegeben",
+                  "en":"no location given",
+                  "ar":"",
+                  "fa":"",
+                  "fr":"",
+                  "it":"",
+                  "ru":"",
+                  "sr":"",
+                  "ti":"",
+                  "ur":""
+            },
             "prop_street":{
                   "de":"Straße",
                   "en":"street",

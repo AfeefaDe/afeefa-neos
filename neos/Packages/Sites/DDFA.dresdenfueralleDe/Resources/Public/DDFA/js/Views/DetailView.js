@@ -86,6 +86,8 @@ qx.Class.define("DetailView", {
 		load: function( record ){
 			var that = this;
 			
+			window.location.hash = record.entryId;
+
 			if(that.record) {
 				that.reset();
 			}
@@ -139,7 +141,7 @@ qx.Class.define("DetailView", {
 			var entityLabels = { 0: that.getWording('entity_orga'), 1: that.getWording('entity_market'), 2: that.getWording('entity_event') };
 			var value = entityLabels[record.type];
 			that['propertyValue'+prop].append(value);
-			if(!record.location.length) that['propertyValue'+prop].append( $('<i />').addClass('fa fa-shield'));
+			// if(record.location.length) that['propertyValue'+prop].append('&nbsp;&nbsp;&nbsp;&nbsp;').append( $("<span />").addClass('glyphicon glyphicon-map-marker') );
 			that['propertyContainer'+prop].show();
 
 			// location
@@ -147,7 +149,7 @@ qx.Class.define("DetailView", {
 			that['propertyIcon'+prop].addClass('icon-' + prop);
 			that['propertyName'+prop].append( that.getWording( 'prop_' + prop ) );
 			
-			var value = (record.location.length > 0) ? buildLocation(record) : '';
+			var value = (record.location.length > 0) ? buildLocation(record) : that.getWording( 'prop_location_none' );
 			function buildLocation(record){
 				var location = '';
 				if( record.location[0].placename ) location += record.location[0].placename + '<br>';

@@ -407,8 +407,6 @@ qx.Class.define("MapView", {
 			$(marker._icon).addClass('active');
 			
 			APP.getDetailView().load(entry);
-
-			window.location.hash = entry.entryId;
 		},
 
 		selectMarkerFromLink: function( entryId ) {

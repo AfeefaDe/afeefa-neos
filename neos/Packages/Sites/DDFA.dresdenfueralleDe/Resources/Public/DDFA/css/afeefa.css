@@ -1,6 +1,10 @@
 @charset "UTF-8";
+/* jquery plugins */
 @import "https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/0.6.7/css/perfect-scrollbar.min.css";
 @import url(../../chosen/chosen.min.css);
+/* leaflet plugins */
+@import url(../../leafletPlugins/MarkerCluster.css);
+@import url(../../leafletPlugins/MarkerCluster.Default.css);
 /**
  * @license
  * MyFonts Webfont Build ID 2821335, 2014-06-01T08:08:57-0400

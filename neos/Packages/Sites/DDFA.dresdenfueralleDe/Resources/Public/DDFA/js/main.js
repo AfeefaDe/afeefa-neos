@@ -15,9 +15,11 @@ require.config({
         underscore: '../../underscore/underscore-min',
         hammer: '../../hammerjs/hammer.min',
         bootstrap: 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min',
-        fontawesome: 'https://use.fontawesome.com/61b16e9b7e',
-        mapbox: 'https://api.tiles.mapbox.com/mapbox.js/v2.3.0/mapbox',
-        mc: 'https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/leaflet.markercluster'
+        fontawesome: 'https://use.fontawesome.com/43c3d746ca',
+        // mapbox: 'https://api.tiles.mapbox.com/mapbox.js/v2.3.0/mapbox',
+        mapbox: 'https://api.mapbox.com/mapbox.js/v2.4.0/mapbox',
+        // mc: 'https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/leaflet.markercluster'
+        mc: '../../leafletPlugins/leaflet.markercluster'
     },
 
     shim: {

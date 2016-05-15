@@ -186,14 +186,15 @@ class LocationRepository extends AbstractTranslationRepository
         if ($locale == null)
             $locale = $location->getLocale();
 
-        return $this->addSupplementedOwner($this->hydrate($this->findOneLocalized($location, DDConst::LOCALE_STD), $locale, DDConst::LOCATION));
+        return $this->addSupplementedOwner($this->hydrate($this->findOneLocalized($location), $locale, DDConst::LOCATION), $locale);
     }
 
     /**
      * @param Actor|Location $location
+     * @param $locale
      * @return Actor|Location
      */
-    public function addSupplementedOwner(Actor $location)
+    public function addSupplementedOwner(Actor $location, $locale)
     {
 
         if ($location->getMarketEntry() != null) {
@@ -203,7 +204,7 @@ class LocationRepository extends AbstractTranslationRepository
 
             if ($ownerProp) {
                 $ownerProp->setAccessible(true);
-                $ownerProp->setValue($location, $this->marketRepository->supplementFromParent($location->getMarketEntry()));
+                $ownerProp->setValue($location, $this->marketRepository->findOneSupplemented($location->getMarketEntry(), $locale));
             }
         }
 

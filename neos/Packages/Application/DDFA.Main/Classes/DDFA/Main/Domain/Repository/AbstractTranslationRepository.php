@@ -165,6 +165,7 @@ abstract class AbstractTranslationRepository extends Repository
     /**
      * @param Actor $object
      * @param string $locale
+     * @param $type
      * @return Actor
      */
     public function hydrate(Actor $object, $locale, $type)

@@ -145,7 +145,7 @@ class MarketEntriesModuleController extends AbstractTranslationController
         } else {
             $this->view->assign('editObject', $editObject);
             $this->view->assign('languages', $this->languageRepository->findAll());
-            $this->view->assign('location', $editObject->getLocations()->first());
+            $this->view->assign('location', $editObject->getLocation()->first());
             $this->view->assign('parents', $this->objectRepository->findAllParents());
             $this->view->assign('cats', $this->categoryRepository->findAll());
         }
@@ -196,8 +196,8 @@ class MarketEntriesModuleController extends AbstractTranslationController
         }
 
         //if there are locations: delete them all!!!1 buhahahaaa
-        if ($deleteObject->getLocations() != null || $deleteObject->getLocations()->first() != null) {
-            foreach ($this->locationRepository->findAllLocalisations($deleteObject->getLocations()->first()) as $localisedObject)
+        if ($deleteObject->getLocation() != null || $deleteObject->getLocation()->first() != null) {
+            foreach ($this->locationRepository->findAllLocalisations($deleteObject->getLocation()->first()) as $localisedObject)
                 $this->locationRepository->remove($localisedObject);
         }
 
@@ -300,7 +300,7 @@ class MarketEntriesModuleController extends AbstractTranslationController
      */
     protected function updateLocation(MarketEntry $entry, $arguments)
     {
-        $location = $entry->getLocations()->first();
+        $location = $entry->getLocation()->first();
 
         $this->setLocationAttrs($location, $arguments);
 
@@ -369,7 +369,7 @@ class MarketEntriesModuleController extends AbstractTranslationController
 
         //check location stuff
         if (isset($_POST['moduleArguments']['hasLocation'])) {
-            if ($editObject->getLocations() == null || $editObject->getLocations()->first() == null) {
+            if ($editObject->getLocation() == null || $editObject->getLocation()->first() == null) {
                 if (!$this->createLocation($editObject, $_POST['moduleArguments']['location']))
                     $check = false;
             } else {
@@ -377,8 +377,8 @@ class MarketEntriesModuleController extends AbstractTranslationController
                     $check = false;
             }
         } else {
-            if ($editObject->getLocations() != null && $editObject->getLocations()->first() != null) {
-                foreach ($this->locationRepository->findAllLocalisations($editObject->getLocations()->first()) as $localisedObject)
+            if ($editObject->getLocation() != null && $editObject->getLocation()->first() != null) {
+                foreach ($this->locationRepository->findAllLocalisations($editObject->getLocation()->first()) as $localisedObject)
                     $this->locationRepository->remove($localisedObject);
 
                 $this->addFlashMessage('The location including all its translations has been removed successfully.', 'Deleted', Message::SEVERITY_NOTICE);

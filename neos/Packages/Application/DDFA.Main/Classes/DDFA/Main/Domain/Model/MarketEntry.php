@@ -190,7 +190,7 @@ class MarketEntry extends Actor
     /**
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getLocations()
+    public function getLocation()
     {
         return $this->location;
     }
@@ -199,7 +199,7 @@ class MarketEntry extends Actor
      * @param \Doctrine\Common\Collections\Collection $location
      * @return void
      */
-    public function setLocations($location)
+    public function setLocation($location)
     {
         $this->location = $location;
     }

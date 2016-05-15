@@ -118,10 +118,10 @@ qx.Class.define("SearchView", {
       that.results.empty();
 
       // TODO use marketentries instead of locations
-      const entries = APP.getData().locations;
+      const entries = APP.getData().entries;
 
       // generic function to create a single result
-      function createResult( iconClass, label, subLabel, action ) {
+      function createResult( iconClass, label, subLabel, action, locationSymbol ) {
         const resultEl = $("<div />")
           .addClass('result')
           .click(function(){
@@ -148,28 +148,37 @@ qx.Class.define("SearchView", {
           const subLabelEl = $("<label />")
             .addClass('sub-label')
             .append(subLabel);
+          // show location symbol?
+          if(locationSymbol)
+            subLabelEl.append('&nbsp;&nbsp;&nbsp;&nbsp;').append( $("<span />").addClass('glyphicon glyphicon-map-marker') );
           labelsEl.append(subLabelEl);
         }
       }
 
       // generic function to create a single entry result
       function createEntryResult( entry ) {
+        
+        var categoryName = entry.category ? entry.category.name : null;
+        
         // icon
-        var iconClass = 'cat-' + entry.category.name;
+        var iconClass = 'cat-' + categoryName;
         iconClass += ' type-' + entry.type;
         if( entry.subCategory ) iconClass += ' subcat-' + entry.subCategory;
         
         // label
         var label = entry.name;
-        var subLabel = entry.subCategory? that.getWording('cat_' + entry.subCategory) : that.getWording('cat_' + entry.category.name);
+        var subLabel = entry.subCategory ? that.getWording('cat_' + entry.subCategory) : that.getWording('cat_' + categoryName);
         
         // action
         var action = function(){
-          APP.getMapView().selectMarkerFromLink(entry.entryId);
+          if(entry.location.length > 0)
+            APP.getMapView().selectMarkerFromLink(entry.entryId);
+          else
+            APP.getDetailView().load(entry);
         };
 
         // create entry
-        createResult( iconClass, label, subLabel, action );
+        createResult( iconClass, label, subLabel, action, (entry.location.length > 0) );
       }
 
       if( !query ) {  // show "just click" version
@@ -185,19 +194,19 @@ qx.Class.define("SearchView", {
         var action = function(){
           APP.getIncludeView().load( APP.getIncludeView().getIncludes().intro );
         };
-        createResult('intro', that.getWording('search_label_intro'), 'Intro', action );
+        createResult('intro', that.getWording('search_label_intro'), that.getWording('search_sublabel_intro'), action );
 
         // link to refugee guide
         var action = function(){
           APP.getIncludeView().load( APP.getIncludeView().getIncludes().refugeeGuide );
         };
-        createResult('refugee-guide', that.getWording('search_label_refugeeGuide'), null, action );
+        createResult('refugee-guide', that.getWording('search_label_refugeeGuide'), that.getWording('search_sublabel_refugeeGuide'), action );
 
         // link to supporter guide
         var action = function(){
           APP.getIncludeView().load( APP.getIncludeView().getIncludes().supporterGuide );
         };
-        createResult('supporter-guide', that.getWording('search_label_supporterGuide'), null, action );
+        createResult('supporter-guide', that.getWording('search_label_supporterGuide'), that.getWording('search_sublabel_supporterGuide'), action );
 
         // for god's sake show ALL entries
         _.each(entries, function(entry) {
@@ -220,8 +229,10 @@ qx.Class.define("SearchView", {
             // in name?
             if( entry.name.toLowerCase().indexOf(query) >= 0 ) return true;
             // in category?
-            var cat = that.getWording('cat_' + entry.category.name);
-            if( cat.toLowerCase().indexOf(query) >= 0 ) return true;
+            if( entry.category ) {
+              var cat = that.getWording('cat_' + entry.category.name);
+              if( cat.toLowerCase().indexOf(query) >= 0 ) return true;
+            }
             // in subCategory?
             if( entry.subCategory ) {
               var subcat = that.getWording('cat_' + entry.subCategory);
@@ -232,6 +243,15 @@ qx.Class.define("SearchView", {
               var children = that.getWording('prop_forChildren');
               if( children.toLowerCase().indexOf(query) >= 0 ) return true;
             }
+            // in description?
+            if( entry.description ) {
+              if( entry.description.toLowerCase().indexOf(query) >= 0 ) return true;
+            }
+            // in speakerPublic?
+            if( entry.speakerPublic ) {
+              if( entry.speakerPublic.toLowerCase().indexOf(query) >= 0 ) return true;
+            }
+
             return false;
           });
         }

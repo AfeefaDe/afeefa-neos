@@ -86,6 +86,8 @@ qx.Class.define("DetailView", {
 		load: function( record ){
 			var that = this;
 			
+			window.location.hash = record.entryId;
+
 			if(that.record) {
 				that.reset();
 			}
@@ -96,11 +98,11 @@ qx.Class.define("DetailView", {
 			// view
 			that.setViewState(1);
 			that.view.addClass('type-' + record.type);
-			that.view.addClass('cat-' + record.category.name);
+			if(record.category) that.view.addClass('cat-' + record.category.name);
 
 			// heading
 			that.heading.append(record.name ? record.name : '');
-			that.headingContainer.addClass('cat-' + record.category.name);
+			if(record.category) that.headingContainer.addClass('cat-' + record.category.name);
 
 			////////////////////
 			// image property //
@@ -139,6 +141,7 @@ qx.Class.define("DetailView", {
 			var entityLabels = { 0: that.getWording('entity_orga'), 1: that.getWording('entity_market'), 2: that.getWording('entity_event') };
 			var value = entityLabels[record.type];
 			that['propertyValue'+prop].append(value);
+			// if(record.location.length) that['propertyValue'+prop].append('&nbsp;&nbsp;&nbsp;&nbsp;').append( $("<span />").addClass('glyphicon glyphicon-map-marker') );
 			that['propertyContainer'+prop].show();
 
 			// location
@@ -146,13 +149,13 @@ qx.Class.define("DetailView", {
 			that['propertyIcon'+prop].addClass('icon-' + prop);
 			that['propertyName'+prop].append( that.getWording( 'prop_' + prop ) );
 			
-			var value = buildLocation(record);
+			var value = (record.location.length > 0) ? buildLocation(record) : that.getWording( 'prop_location_none' );
 			function buildLocation(record){
 				var location = '';
-				if( record.placename ) location += record.placename + '<br>';
-				if( record.street ) location += record.street + '<br>';
-				if( record.zip && record.city) location += record.zip + ' ' + record.city + '<br>';
-				else if( record.city ) location += record.city + '<br>';
+				if( record.location[0].placename ) location += record.location[0].placename + '<br>';
+				if( record.location[0].street ) location += record.location[0].street + '<br>';
+				if( record.location[0].zip && record.location[0].city) location += record.location[0].zip + ' ' + record.location[0].city + '<br>';
+				else if( record.location[0].city ) location += record.location[0].city + '<br>';
 				return location;
 			}
 			if( value.length > 0 ) {
@@ -165,7 +168,8 @@ qx.Class.define("DetailView", {
 			that['propertyIcon'+prop].addClass('icon-' + prop);
 			that['propertyName'+prop].append( that.getWording( 'prop_' + prop ) );
 			
-			var value = record.type !== 3 ? buildTimes(record.marketEntry) : buildTimes(record);
+			// var value = record.type !== 3 ? buildTimes(record.marketEntry) : buildTimes(record);
+			var value = buildTimes(record);
 
 			function buildTimes(record){
 				var times = '';

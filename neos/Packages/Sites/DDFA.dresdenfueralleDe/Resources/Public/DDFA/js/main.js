@@ -6,23 +6,68 @@ require.config({
         modernizr: '../../H5BP/js/vendor/modernizr-2.8.3.min',
         domReady: '../../requirejs/domReady',
         jquery: '../../jquery/jquery-2.2.2.min',
-        // jquery: 'https://code.jquery.com/jquery-2.2.2.min',
         perfectScrollbarJQuery: 'https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/0.6.7/js/min/perfect-scrollbar.jquery.min',
-        chosenJQuery: '../../chosen/chosen.jquery.min',
+        chosen: '../../chosen/chosen.jquery.min',
         momentjs: '../../momentjs/moment.min',
 		combodate: '../../combodate/combodate',
         restive: '../../restive/restive.min',
         qx: '../../qooxdoo/qx-oo-4.1.min',
         underscore: '../../underscore/underscore-min',
-        // leaflet: '../../leaflet/leaflet',
-        // leafletCluster: 'https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/leaflet.markercluster',
         hammer: '../../hammerjs/hammer.min',
-        // cartodb: 'http://libs.cartocdn.com/cartodb.js/v3/3.12/cartodb',
         bootstrap: 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min',
-        // bootstrap: '../../bootstrap/js/bootstrap.min',
-        // mapbox: 'https://api.tiles.mapbox.com/mapbox.js/v2.1.9/mapbox',
-        // d3: 'http://d3js.org/d3.v3.min'
+        fontawesome: 'https://use.fontawesome.com/61b16e9b7e',
+        mapbox: 'https://api.tiles.mapbox.com/mapbox.js/v2.3.0/mapbox',
+        mc: 'https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/leaflet.markercluster'
     },
+
+    shim: {
+        'mapbox': {
+            //These script dependencies should be loaded before loading
+            //mapbox.js
+            // deps: ['underscore', 'jquery'],
+            //Once loaded, use the global 'L' as the
+            //module value.
+            exports: 'L'
+        },
+        'modernizr': {
+            //These script dependencies should be loaded before loading
+            //modernizr.js
+            // deps: ['underscore', 'jquery'],
+            //Once loaded, use the global 'Modernizr' as the
+            //module value.
+            exports: 'Modernizr'
+        },
+        'qx': {
+            //These script dependencies should be loaded before loading
+            //qx.js
+            // deps: ['underscore', 'jquery'],
+            //Once loaded, use the global 'qx' as the
+            //module value.
+            exports: 'qx'
+        },
+        "mc": ["mapbox"],
+        "Daddy": ["qx"],
+        "bootstrap": ["jquery"],
+        "chosen": ["jquery"],
+        "restive": ["jquery"],
+        "combodate": ["jquery"],
+        'APPAFEEFA': ["qx"],
+		'DataManager': ["qx"],
+		'Router': ["qx"],
+		'LanguageManager': ["qx"],
+		'Views/View': ["qx"],
+		'Views/MapView': ["qx"],
+		'Views/SearchView': ["qx"],
+		'Views/DetailView': ["qx"],
+		'Views/MenuView': ["qx"],
+		'Views/LegendView': ["qx"],
+		'Views/LanguageView': ["qx"],
+		'Views/PlusView': ["qx"],
+		'Views/FormView': ["qx"],
+		'Views/IncludeView': ["qx"]
+    },
+
+    // enforceDefine: true,
 
     waitSeconds: 0	// disable "Load timeout for modules" error
 });
@@ -31,14 +76,17 @@ require([
 	'domReady',
 	'qx',
 	'jquery',
-	'perfectScrollbarJQuery',
-	'chosenJQuery',
-	'momentjs',
-	'combodate',
 	'underscore',
 	'hammer',
+	'mapbox',
+	'mc',
+	'perfectScrollbarJQuery',
+	'chosen',
+	'momentjs',
+	'combodate',
 	'modernizr',
 	'bootstrap',
+	'fontawesome',
 	'Daddy',
 	'restive',
 	'APPAFEEFA',
@@ -55,7 +103,7 @@ require([
 	'Views/PlusView',
 	'Views/FormView',
 	'Views/IncludeView'
-], function(domReady, $, qx, _, Hammer) {
+], function(domReady, qx, $, _, Hammer) {
 
 	domReady(function(){
 

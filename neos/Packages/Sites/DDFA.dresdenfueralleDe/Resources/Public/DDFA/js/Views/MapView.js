@@ -167,128 +167,137 @@ qx.Class.define("MapView", {
 			// reset things
 			that.removeMarkers();
 
-		// get ALL data
-		var locations = APP.getData().locations;
-		
-		// filter active?
-				var filter = APP.getActiveFilter();
-				if( filter ) {
-					
-						locations = _.filter(locations, function(location){
-							// don't filter these location types:
-							if( _.contains([3], location.type) )
-								return true;
-							
-							if( filter.category !== undefined )
-								if( !(location.category.name === filter.category) ) return false;
-
-							if( filter.subCategory !== undefined )
-								if( !(location.subCategory === filter.subCategory) ) return false;
-
-							if( filter.type !== undefined )
-								if( !(location.type === parseInt(filter.type)) ) return false;
-
-							if( filter.forChildren !== undefined )
-								if( !(location.forChildren === filter.forChildren) ) return false;
-
-							if( filter.supportWanted !== undefined )
-								if( !(location.supportWanted === filter.supportWanted) ) return false;
-
+			// get ALL data with location data
+			var entries = _.filter(APP.getData().entries, function(entry){
+				return entry.location.length > 0;
+			});
+			
+			// filter active?
+			var filter = APP.getActiveFilter();
+			if( filter ) {
+				
+					entries = _.filter(entries, function(entry){
+						// don't filter these entry types:
+						if( _.contains([3], entry.type) )
 							return true;
-						});
+						
+						if( filter.category !== undefined )
+							if( !entry.category || !(entry.category.name === filter.category) ) return false;
 
-				}
+						if( filter.subCategory !== undefined )
+							if( !(entry.subCategory === filter.subCategory) ) return false;
 
-			that.addMarkers(locations);
+						if( filter.type !== undefined )
+							if( !(entry.type === parseInt(filter.type)) ) return false;
+
+						if( filter.forChildren !== undefined )
+							if( !(entry.forChildren === filter.forChildren) ) return false;
+
+						if( filter.supportWanted !== undefined )
+							if( !(entry.supportWanted === filter.supportWanted) ) return false;
+
+						return true;
+					});
+
+			}
+
+			that.addMarkers(entries);
 			that.loadFromUrl({setView: true});
 			that.loading(false);
 		},
 
-		addMarkers: function(locations) {
+		addMarkers: function(entries) {
 		
 		var that = this;
 
 		// var newLayer = new L.LayerGroup();
 
-			_.each(locations, function(location){
+		_.each(entries, function(entry){
 
 			// type specific adjustment
 			var iconSize, iconAnchor;
 
 			// IniLocation
-			if( location.type === 0 ) {
+			if( entry.type === 0 ) {
 				iconSize = [24,24];
 				iconAnchor = [12,12];
 			}
 			// MarketLocation
-			else if( location.type === 1 ) {
+			else if( entry.type === 1 ) {
 				iconSize = [23,23];
 				iconAnchor = [12,12];
 			}
 			// EventLocation
-			else if( location.type === 2 ) {
+			else if( entry.type === 2 ) {
 				iconSize = [23,23];
 				iconAnchor = [15,15];
 			}
 			// BasicLocation
-			else if( location.type === 3 ) {
-
-				// Gemeinschaftsunterkunft
-				if( location.category && location.category.name === 'housing') {
-					iconSize = [30,30];
-					iconAnchor = [15,15];
-				}
-				// sonstige
-				else {
-					iconSize = [15,15];
-					iconAnchor = [8,8];
-				}
-
+			else if( entry.marketEntry.type === 3 ) {
+				iconSize = [15,15];
+				iconAnchor = [8,8];
 			}
 			
 			// TODO: quickfix: skip locations without coodinates
-			if( !location.lat || !location.lon ) return false;
+			if( !entry.location[0].lat || !entry.location[0].lon ) return false;
 
 			var className = 'location';
-			className += ' type-' + location.type;
-			className += ' rating-' + location.rating;
-			if( location.category ) className += ' cat-' + location.category.name;
-			if( location.subCategory ) className += ' subcat-' + location.subCategory;
-			if( location.supportNeeded ) className += ' support-needed';
+			className += ' type-' + entry.type;
+			if( entry.category ) className += ' cat-' + entry.category.name;
+			if( entry.subCategory ) className += ' subcat-' + entry.subCategory;
+			if( entry.supportNeeded ) className += ' support-needed';
 
 			////////////
 			// MARKER //
 			////////////
-			var marker = L.marker( [location.lat, location.lon] , {
+			var marker = L.marker( [entry.location[0].lat, entry.location[0].lon] , {
 				riseOnHover: true,
 				icon: L.divIcon({
 					className: className,
 					iconSize: iconSize,
-					iconAnchor: iconAnchor
-				}),
-				rotationAngle: (location.type == 2)? 45 : null
+					iconAnchor: iconAnchor,
+					html: function(){
+						var html = '';
+						if(entry.type == 2){
+							var classString = 'type-' + entry.type;
+							if( entry.category ) classString += ' cat-' + entry.category.name;
+							if( entry.subCategory ) classString += ' subcat-' + entry.subCategory;
+							// the diamond
+							html = '<span class="' + classString + ' event-shape"></span>';
+							// the icon
+							html += '<span class="' + classString + ' event-icon"></span>';
+						}
+						return html;
+					}()
+				})
 			});
 
 			///////////
 			// POPUP //
 			///////////
-			var locationName = location.name;
-			if (!locationName) {
-				if( location.type === 0 ) locationName = location.initiative.name;
-				else if( location.type === 1 ) locationName = location.marketEntry.name;
-				else if( location.type === 2 ) locationName = location.event.name;
-			}
+			var locationName = entry.name;
+			// if (!locationName) {
+			// 	if( location.type === 0 ) locationName = location.initiative.name;
+			// 	else if( location.type === 1 ) locationName = location.marketEntry.name;
+			// 	else if( location.type === 2 ) locationName = location.event.name;
+			// }
 			
 			var popup = L.popup({
 				className: 'afeefa-popup',
 				closeButton: false,
 				offset: [0, 0]
 			})
-					.setLatLng([location.lat, location.lon])
+					.setLatLng([entry.location[0].lat, entry.location[0].lon])
 					.setContent(function(){
-						var label = that.getWording('cat_' + location.category.name);
-						if(location.subCategory)
-							label += ' (' + that.getWording('cat_' + location.subCategory) + ')';
+						var label = '';
+						
+						if(entry.subCategory){
+							label += that.getWording('cat_' + entry.subCategory);
+							label += ' (' + (entry.category ? that.getWording('cat_' + entry.category.name) : '[category missing]') + ')';
+						}
+						else {
+							label = entry.category ? that.getWording('cat_' + entry.category.name) : '[category missing]';
+						}
 
 						return '<span class="title">' + locationName + '</span><span class="category">' +label+ '</span>';
 					}());
@@ -303,10 +312,10 @@ qx.Class.define("MapView", {
 
 			// TODO load detail view
 			marker.on('click', function(){
-				that.selectMarker(marker, location);
+				that.selectMarker(marker, entry);
 			});
 
-			if (location.type === 3) {
+			if (entry.type === 3) {
 				that.layerForPOIMarkers.addLayer(marker);
 			}
 			else {
@@ -314,7 +323,7 @@ qx.Class.define("MapView", {
 			}
 
 			var currentLookup = that.getMarkerLocationLookup();
-			currentLookup.push( {location: location, marker: marker} );
+			currentLookup.push( {entry: entry, marker: marker} );
 			that.setMarkerLocationLookup( currentLookup );
 
 			// newLayer.addLayer(marker);
@@ -355,8 +364,8 @@ qx.Class.define("MapView", {
 				var lookup = that.lookupMarkerById(firstParam);
 				if(lookup){
 					if(options && options.setView)
-						that.map.setView( [lookup.location.lat, lookup.location.lon], 16);
-				that.selectMarker(lookup.marker, lookup.location);
+						that.map.setView( [lookup.entry.location[0].lat, lookup.entry.location[0].lon], 16);
+				that.selectMarker(lookup.marker, lookup.entry);
 				}
 			}
 
@@ -367,7 +376,7 @@ qx.Class.define("MapView", {
 			var that = this;
 
 			var hit = _.find( that.getMarkerLocationLookup(), function(pair){
-				return pair.location.entryId == id;
+				return pair.entry.entryId == id;
 			});
 
 			return hit;
@@ -388,19 +397,16 @@ qx.Class.define("MapView", {
 
 	 //  },
 
-		selectMarker: function( marker, location, setView ){
+		selectMarker: function( marker, entry, setView ){
 			var that = this;
 
 			that.deselectMarker();
-		that.setSelectedMarker(marker);
+			that.setSelectedMarker(marker);
 
-		if(setView) that.map.setView( [location.lat, location.lon], 16);
-		$(marker._icon).addClass('active');
-		
-		APP.getDetailView().load(location);
-
-		window.location.hash = location.entryId;
-
+			if(setView) that.map.setView( [entry.location[0].lat, entry.location[0].lon], 16);
+			$(marker._icon).addClass('active');
+			
+			APP.getDetailView().load(entry);
 		},
 
 		selectMarkerFromLink: function( entryId ) {
@@ -409,7 +415,7 @@ qx.Class.define("MapView", {
 			var lookup = that.lookupMarkerById( entryId );
 				
 				if(lookup){
-						APP.getMapView().selectMarker(lookup.marker, lookup.location, true);
+						APP.getMapView().selectMarker(lookup.marker, lookup.entry, true);
 				}
 
 		},

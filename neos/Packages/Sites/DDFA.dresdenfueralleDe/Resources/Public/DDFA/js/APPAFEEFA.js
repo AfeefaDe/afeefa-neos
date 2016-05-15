@@ -146,15 +146,16 @@ qx.Class.define("APPAFEEFA", {
 			});
 
 			// fetch other data (e.g. that takes a long time loading)
-			that.getDataManager().getAllLocations(function(data){
-				// store in APP
-				var currentData = that.getData();
-				currentData.locations = data.locations;
-				that.setData(currentData);
+			var currentAppData = that.getData();
 
-				// allData.locations = data.locations;
-				// that.setData(allData);
+			that.getDataManager().getAllEntries(function(data){
+
+				// store entries in APP
+				currentAppData.entries = data.marketentries;
+				
+				that.setData(currentAppData);
 				that.say('fetchedNewData');
+
 			});
 		},
 

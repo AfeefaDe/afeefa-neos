@@ -53,41 +53,22 @@
     //Useful to map module names that are to resources on a CDN or other
     //http: URL when running in the browser and during an optimization that
     //file should be skipped because it has no dependencies.
-    // paths: {
-    //     modernizr: 'H5BP/js/vendor/modernizr-2.8.3.min',
-    //     domReady: 'requirejs/domReady',
-    //     jquery: 'jquery/jquery-2.1.3',
-    //     restive: 'restive/restive.min',
-    //     qx: 'qooxdoo/qx-oo-4.1.min',
-    //     underscore: 'underscore/underscore-min',
-    //     leaflet: 'leaflet/leaflet',
-    //     leafletCluster: 'empty:',
-    //     hammer: 'hammerjs/hammer.min',
-    //     cartodb: 'empty:',
-    //     bootstrap: 'empty:',
-    //     mapbox: 'empty:',
-    //     d3: 'empty:'
-    // },
-
     paths: {
         modernizr: '../../H5BP/js/vendor/modernizr-2.8.3.min',
         domReady: '../../requirejs/domReady',
         jquery: '../../jquery/jquery-2.2.2.min',
-        // jquery: 'empty:',
         perfectScrollbarJQuery: 'empty:',
-        chosenJQuery: '../../chosen/chosen.jquery.min',
+        chosen: '../../chosen/chosen.jquery.min',
         momentjs: '../../momentjs/moment.min',
         combodate: '../../combodate/combodate',
         restive: '../../restive/restive.min',
         qx: '../../qooxdoo/qx-oo-4.1.min',
         underscore: '../../underscore/underscore-min',
-        // leaflet: '../../leaflet/leaflet',
-        // leafletCluster: 'empty:',
         hammer: '../../hammerjs/hammer.min',
-        // cartodb: 'empty:',
         bootstrap: 'empty:',
-        // mapbox: 'empty:',
-        // d3: 'empty:'
+        fontawesome: 'empty:',
+        mapbox: 'empty:',
+        mc: 'empty:'
     },
 
     //Sets up a map of module IDs to other module IDs. For more details, see
@@ -117,7 +98,52 @@
     //pass this information though, so that it is only listed in one place.
     //However, if mainConfigFile is not an option, the shim config can be
     //inlined in the build config.
-    shim: {},
+    shim: {
+        'mapbox': {
+            //These script dependencies should be loaded before loading
+            //mapbox.js
+            // deps: ['underscore', 'jquery'],
+            //Once loaded, use the global 'L' as the
+            //module value.
+            exports: 'L'
+        },
+        'modernizr': {
+            //These script dependencies should be loaded before loading
+            //modernizr.js
+            // deps: ['underscore', 'jquery'],
+            //Once loaded, use the global 'Modernizr' as the
+            //module value.
+            exports: 'Modernizr'
+        },
+        'qx': {
+            //These script dependencies should be loaded before loading
+            //qx.js
+            // deps: ['underscore', 'jquery'],
+            //Once loaded, use the global 'qx' as the
+            //module value.
+            exports: 'qx'
+        },
+        "mc": ["mapbox"],
+        "Daddy": ["qx"],
+        "bootstrap": ["jquery"],
+        "chosen": ["jquery"],
+        "restive": ["jquery"],
+        "combodate": ["jquery"],
+        'APPAFEEFA': ["qx"],
+        'DataManager': ["qx"],
+        'Router': ["qx"],
+        'LanguageManager': ["qx"],
+        'Views/View': ["qx"],
+        'Views/MapView': ["qx"],
+        'Views/SearchView': ["qx"],
+        'Views/DetailView': ["qx"],
+        'Views/MenuView': ["qx"],
+        'Views/LegendView': ["qx"],
+        'Views/LanguageView': ["qx"],
+        'Views/PlusView': ["qx"],
+        'Views/FormView': ["qx"],
+        'Views/IncludeView': ["qx"]
+    },
 
     //As of 2.1.11, shimmed dependencies can be wrapped in a define() wrapper
     //to help when intermediate dependencies are AMD have dependencies of their

@@ -233,7 +233,7 @@ qx.Class.define("MapView", {
 				iconAnchor = [15,15];
 			}
 			// BasicLocation
-			else if( entry.marketEntry.type === 3 ) {
+			else if( entry.type === 3 ) {
 				iconSize = [15,15];
 				iconAnchor = [8,8];
 			}

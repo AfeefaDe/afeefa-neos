@@ -47,12 +47,12 @@ $result = sql($link, "SELECT convert(cast(convert(persistence_object_identifier 
                 convert(cast(convert(placename USING utf8) AS BINARY) USING latin1) AS placename,
                 convert(cast(convert(openinghours USING utf8) AS BINARY) USING latin1) AS oh,
                 convert(cast(convert(arrival USING utf8) AS BINARY) USING latin1) AS arr
-                FROM ddfa_main_domain_model_location_old");
+                FROM ddfa_main_domain_model_old_location");
 
 while ($i = mysqli_fetch_object($result)) {
     $newUuid = createGuid();
 
-    if ($i->b != null && $i->b != '') {
+    if ($i->l == 'de') {
         echo "parent migration <br>";
 
         sql($link, "INSERT INTO ddfa_main_domain_model_marketentry SET
@@ -70,7 +70,7 @@ while ($i = mysqli_fetch_object($result)) {
                 speakerprivate = '" . $i->n . "',
                 image = NULL,
                 imagetype = NULL,
-                supportwanted = '" . ($i->o == '' ? null : $i->o) . "',
+                supportwanted = '" . ($i->o == '' ? 0 : $i->o) . "',
                 spokenlanguages = '" . $i->p . "',
                 created = '" . $i->q . "',
                 updated = '" . $i->r . "',
@@ -81,11 +81,11 @@ while ($i = mysqli_fetch_object($result)) {
                 internalcomment = '" . $i->t . "',
                 datefrom = NULL,
                 dateto = NULL,
-                forchildren = '" . $i->u . "',
+                forchildren = '" . ($i->u == '' ? 0 : $i->u) . "',
                 area = 'dresden',
                 timefrom = NULL,
                 timeto = NULL,
-                parent_entry_id = '" . $i->b . "'
+                parent_entry_id = '" . ($i->b == '' ? null : $i->b) . "'
             ");
 
         sql($link, "INSERT INTO ddfa_main_domain_model_location SET
@@ -107,7 +107,6 @@ while ($i = mysqli_fetch_object($result)) {
             ");
 
         echo "parent migration finished <br>";
-
     } else {
         echo "translation migration<br>";
 
@@ -126,7 +125,7 @@ while ($i = mysqli_fetch_object($result)) {
                 speakerprivate = '" . $i->n . "',
                 image = NULL,
                 imagetype = NULL,
-                supportwanted = '" . ($i->o == '' ? null : $i->o) . "',
+                supportwanted = '" . ($i->o == '' ? 0 : $i->o) . "',
                 spokenlanguages = '" . $i->p . "',
                 created = '" . $i->q . "',
                 updated = '" . $i->r . "',
@@ -137,7 +136,7 @@ while ($i = mysqli_fetch_object($result)) {
                 internalcomment = '" . $i->t . "',
                 datefrom = NULL,
                 dateto = NULL,
-                forchildren = '" . $i->u . "',
+                forchildren = '" . ($i->u == '' ? 0 : $i->u) . "',
                 area = 'dresden',
                 timefrom = NULL,
                 timeto = NULL,
@@ -163,7 +162,12 @@ while ($i = mysqli_fetch_object($result)) {
 
         echo "translation migration finished <br>";
     }
+
+    unset($i);
 }
 
 sql($link, "SET FOREIGN_KEY_CHECKS = 1");
+
+sql($link, "update ddfa_main_domain_model_marketentry set parent_entry_id = null where parent_entry_id = ''");
+
 mysqli_close($link);

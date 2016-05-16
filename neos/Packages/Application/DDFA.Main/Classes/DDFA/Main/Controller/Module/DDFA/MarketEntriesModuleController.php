@@ -196,7 +196,7 @@ class MarketEntriesModuleController extends AbstractTranslationController
         }
 
         //if there are locations: delete them all!!!1 buhahahaaa
-        if ($deleteObject->getLocation() != null || $deleteObject->getLocation()->first() != null) {
+        if ($deleteObject->getLocation() != null && $deleteObject->getLocation()->first() != null) {
             foreach ($this->locationRepository->findAllLocalisations($deleteObject->getLocation()->first()) as $localisedObject)
                 $this->locationRepository->remove($localisedObject);
         }

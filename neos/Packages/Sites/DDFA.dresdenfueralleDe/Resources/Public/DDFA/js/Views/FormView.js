@@ -847,7 +847,9 @@ qx.Class.define("FormView", {
 		createMarketEntryAndLocation: function( dataMarketEntry, dataLocation ){
 			var that = this;
 
-			APP.getDataManager().addMarketEntry(dataMarketEntry, function( response ){
+			var data_joined = _.extend(dataMarketEntry, dataLocation);
+
+			APP.getDataManager().addMarketEntry(data_joined, function( response ){
 				if(!response.marketentry){
 					// that.thatResponseMessage().append( that.getWording('form_fail') );
 					alert(that.getWording('form_fail'));
@@ -859,10 +861,10 @@ qx.Class.define("FormView", {
 				alert(that.getWording('form_success'));
 				that.close();
 
-				dataLocation.location['marketEntry'] = response.marketentry.persistenceObjectIdentifier;
-				APP.getDataManager().addLocation(dataLocation, function(){
-					// alert('marketLocation sent, thanks');
-				});
+				// dataLocation.location['marketEntry'] = response.marketentry.persistenceObjectIdentifier;
+				// APP.getDataManager().addLocation(dataLocation, function(){
+				// 	// alert('marketLocation sent, thanks');
+				// });
 			});
 
 			// create github issue

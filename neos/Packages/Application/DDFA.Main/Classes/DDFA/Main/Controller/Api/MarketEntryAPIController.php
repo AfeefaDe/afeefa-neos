@@ -9,7 +9,9 @@
 namespace DDFA\Main\Controller\Api;
 
 
+use DDFA\Main\Domain\Model\Location;
 use DDFA\Main\Domain\Model\MarketEntry;
+use DDFA\Main\Domain\Repository\LocationRepository;
 use DDFA\Main\Domain\Repository\MarketEntryRepository;
 use TYPO3\Flow\Annotations as Flow;
 use TYPO3\Flow\Mvc\Controller\ActionController;
@@ -19,12 +21,17 @@ use TYPO3\Flow\Property\TypeConverter\PersistentObjectConverter;
 
 class MarketEntryAPIController extends ActionController
 {
-
     /**
      * @Flow\Inject
      * @var MarketEntryRepository
      */
     protected $marketEntryRepository;
+
+    /**
+     * @Flow\Inject
+     * @var LocationRepository
+     */
+    protected $locationRepository;
 
     protected $viewFormatToObjectNameMap = ['json' => JsonView::class];
 
@@ -53,11 +60,16 @@ class MarketEntryAPIController extends ActionController
     /**
      * @param MarketEntry $marketentry
      */
-    public function createAction(MarketEntry $marketentry)
+    public function createAction(MarketEntry $marketentry, Location $location)
     {
-        $this->marketEntryRepository->add($marketentry);
-        $this->response->setStatus(201);
-        $this->view->assign('value', ['marketentry' => $marketentry]);
+        if ($location->getType() == 0 || $location->getType() == 1 || $location->getType() == 2) {
+            $this->marketEntryRepository->add($marketentry);
+            $this->locationRepository->add($location);
+            $this->response->setStatus(201);
+            $this->view->assign('value', ['marketentry' => $marketentry, 'location' => $location]);
+        } else {
+            $this->response->setStatus(412);
+        }
     }
 
 
@@ -128,6 +140,9 @@ class MarketEntryAPIController extends ActionController
     protected function initializeCreateAction()
     {
         $config = $this->arguments['marketentry']->getPropertyMappingConfiguration();
+        $config->setTypeConverterOption('TYPO3\Flow\Property\TypeConverter\PersistentObjectConverter', PersistentObjectConverter::CONFIGURATION_CREATION_ALLOWED, TRUE);
+        $config->allowAllProperties();
+        $config = $this->arguments['location']->getPropertyMappingConfiguration();
         $config->setTypeConverterOption('TYPO3\Flow\Property\TypeConverter\PersistentObjectConverter', PersistentObjectConverter::CONFIGURATION_CREATION_ALLOWED, TRUE);
         $config->allowAllProperties();
     }

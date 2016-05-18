@@ -1,3 +1,8 @@
+/* hide neos modules */
+#ember347, #ember354, #ember364, #ember365 {
+    display: none !important;
+}
+
 legend {
     margin-top: 35px;
 }

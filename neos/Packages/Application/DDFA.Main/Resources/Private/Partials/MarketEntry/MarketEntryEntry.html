@@ -11,10 +11,14 @@
     <div class="onoffswitch">
         <f:if condition="{entry.published}">
             <f:then>
-                <input type="checkbox" name="published-{entry.persistenceObjectIdentifier}" class="onoffswitch-checkbox" id="published-{entry.persistenceObjectIdentifier}" checked onclick="lock('{entry.persistenceObjectIdentifier}');">
+                <input type="checkbox" name="published-{entry.persistenceObjectIdentifier}" class="onoffswitch-checkbox"
+                       id="published-{entry.persistenceObjectIdentifier}" checked
+                       onclick="lock('{entry.persistenceObjectIdentifier}');">
             </f:then>
             <f:else>
-                <input type="checkbox" name="published-{entry.persistenceObjectIdentifier}" class="onoffswitch-checkbox" id="published-{entry.persistenceObjectIdentifier}" onclick="publish('{entry.persistenceObjectIdentifier}');">
+                <input type="checkbox" name="published-{entry.persistenceObjectIdentifier}" class="onoffswitch-checkbox"
+                       id="published-{entry.persistenceObjectIdentifier}"
+                       onclick="publish('{entry.persistenceObjectIdentifier}');">
             </f:else>
         </f:if>
         <label class="onoffswitch-label" for="published-{entry.persistenceObjectIdentifier}"></label>
@@ -58,6 +62,16 @@
             <i class="icon-map-marker icon-white"></i>
         </f:for>
         {entry.name}
+    </div>
+</td>
+<td>
+    <div>
+        <f:format.date date="{entry.created}" format="d.m.Y"/>
+    </div>
+</td>
+<td>
+    <div>
+        <f:format.date date="{entry.updated}" format="d.m.Y"/>
     </div>
 </td>
 </tr>

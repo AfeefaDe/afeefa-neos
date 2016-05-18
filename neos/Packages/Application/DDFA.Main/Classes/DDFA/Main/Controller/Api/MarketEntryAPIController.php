@@ -59,12 +59,17 @@ class MarketEntryAPIController extends ActionController
 
     /**
      * @param MarketEntry $marketentry
+     * @param Location $location
+     * @throws \TYPO3\Flow\Persistence\Exception\IllegalObjectTypeException
      */
-    public function createAction(MarketEntry $marketentry, Location $location)
+    public function createAction(MarketEntry $marketentry, Location $location = null)
     {
-        if ($location->getType() == 0 || $location->getType() == 1 || $location->getType() == 2) {
+        if ($marketentry != null) {
             $this->marketEntryRepository->add($marketentry);
-            $this->locationRepository->add($location);
+            if ($location != null) {
+                $location->setMarketEntry($marketentry);
+                $this->locationRepository->add($location);
+            }
             $this->response->setStatus(201);
             $this->view->assign('value', ['marketentry' => $marketentry, 'location' => $location]);
         } else {

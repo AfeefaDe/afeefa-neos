@@ -9,7 +9,7 @@ TYPO3:
         resource: 'TYPO3_Neos_Backend_Module_Management'
         submodules:
           marketEntries:
-            label: 'Entries (location owners)'
+            label: 'Entries'
             controller: '\DDFA\Main\Controller\Module\DDFA\MarketEntriesModuleController'
             description: "The Entries Submodule provides all the usefull management functions to administrate the user added entries of the Afeefa-Market. See the work of the crowd!"
             icon: 'icon-heart'

@@ -146,8 +146,14 @@ class MarketEntriesModuleController extends AbstractTranslationController
             $this->view->assign('editObject', $editObject);
             $this->view->assign('languages', $this->languageRepository->findAll());
             $this->view->assign('location', $editObject->getLocation()->first());
-            $this->view->assign('parents', $this->objectRepository->findAllParents());
+            $this->view->assign('parents', $this->objectRepository->findAllParentsWithout($editObject));
             $this->view->assign('cats', $this->categoryRepository->findAll());
+
+//            $collection = $editObject->getChildEntries();
+//            if ($editObject->getChildEntries() != null && $collection->count() != 0)
+//                $this->view->assign('hasChildren', "1");
+//            else
+//                $this->view->assign('hasChildren', "0");
         }
     }
 

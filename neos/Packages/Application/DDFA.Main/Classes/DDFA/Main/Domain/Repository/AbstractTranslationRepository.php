@@ -90,6 +90,24 @@ abstract class AbstractTranslationRepository extends Repository
         return $this->includeLocales($query->execute());
     }
 
+    public function findAllParentsWithout(MarketEntry $me)
+    {
+        $query = $this->createQuery()->setOrderings(array('name' => QueryInterface::ORDER_ASCENDING));
+
+
+        $query = $query->matching(
+            $query->logicalAnd(
+                $query->equals('locale', DDConst::LOCALE_STD),
+                $query->equals('parentEntry', null),
+                $query->equals('type', DDConst::OWNER_INI),
+                $query->logicalNot($query->equals('Persistence_Object_Identifier', $me->getPersistenceObjectIdentifier()))
+            )
+        );
+
+        return $query->execute();
+    }
+
+
     /**
      * adds number of translations (numLocales) and a string of the according locale codes (locales) to a number of objects
      * @param $objects

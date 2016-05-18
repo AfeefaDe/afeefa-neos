@@ -28,7 +28,8 @@ div.afeefa-infoBox p, div.afeefa-grayBox p {
 }
 
 tr.afeefa-intended td{
-    background-color: #3f3f3f !important;
+    background-color: #222 !important;
+    color: #ddd;
 }
 
 tr.afeefa-intended td:nth-child(5) {

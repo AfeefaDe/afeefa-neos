@@ -825,8 +825,8 @@ qx.Class.define("FormView", {
 				dataMarketEntry.marketentry.type = that.getEntryTypeEnum()[type];
 				dataMarketEntry.marketentry.published = false;
 
-				dataLocation.location.type = that.getEntryTypeEnum()[type];
-				dataLocation.location.published = false;
+				// dataLocation.location.type = that.getEntryTypeEnum()[type];
+				// dataLocation.location.published = false;
 
 				that.createMarketEntryAndLocation(dataMarketEntry, dataLocation);
 			}

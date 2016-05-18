@@ -22,6 +22,22 @@ div.afeefa-grayBox {
     display: inline-block;
 }
 
+div#entry-filter {
+    padding: 1em 0;
+}
+
+div#entry-filter span {
+    display: inline-block;
+    margin-right: 2em;
+}
+div#entry-filter span.filter-option {
+    cursor: pointer;
+}
+
+div#entry-filter span.filter-option:hover {
+    text-decoration: underline;
+}
+
 div.afeefa-infoBox p, div.afeefa-grayBox p {
     font-weight: bold;
     margin-bottom: 10px;

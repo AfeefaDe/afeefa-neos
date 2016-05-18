@@ -40,5 +40,15 @@ $( document ).ready(function() {
 		}
 	});
 
+	// entry type filter in index view
+	$('#entry-filter span.filter-option').click(function(){
+		var entryType = $(this).attr('data-entry-type');
+
+		$('tr.afeefa-entry').hide();
+		$('tr.afeefa-entry.afeefa-entry-type-' + entryType).show();
+	});
+	$('#entry-filter span.filter-reset').click(function(){
+		$('tr.afeefa-entry').show();
+	});
 
 });

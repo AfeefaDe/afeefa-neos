@@ -26,6 +26,8 @@ chosen/chosen.min.css
 DDFA/css/afeefa.css
 ----------------
 DDFA/css/../../chosen/chosen.min.css
+DDFA/css/../../leafletPlugins/MarkerCluster.css
+DDFA/css/../../leafletPlugins/MarkerCluster.Default.css
 DDFA/css/afeefa.css
 
 DDFA/css/sass/_ring.scss.css
@@ -39,6 +41,14 @@ H5BP/css/main.css
 H5BP/css/normalize.css
 ----------------
 H5BP/css/normalize.css
+
+leafletPlugins/MarkerCluster.css
+----------------
+leafletPlugins/MarkerCluster.css
+
+leafletPlugins/MarkerCluster.Default.css
+----------------
+leafletPlugins/MarkerCluster.Default.css
 
 DDFA/js/main.js
 ----------------

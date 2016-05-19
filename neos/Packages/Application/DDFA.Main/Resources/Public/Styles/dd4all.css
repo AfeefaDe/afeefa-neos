@@ -1,3 +1,8 @@
+/* hide neos modules */
+#ember347, #ember354, #ember364, #ember365 {
+    display: none !important;
+}
+
 legend {
     margin-top: 35px;
 }
@@ -22,13 +27,30 @@ div.afeefa-grayBox {
     display: inline-block;
 }
 
+div#entry-filter {
+    padding: 1em 0;
+}
+
+div#entry-filter span {
+    display: inline-block;
+    margin-right: 2em;
+}
+div#entry-filter span.filter-option {
+    cursor: pointer;
+}
+
+div#entry-filter span.filter-option:hover {
+    text-decoration: underline;
+}
+
 div.afeefa-infoBox p, div.afeefa-grayBox p {
     font-weight: bold;
     margin-bottom: 10px;
 }
 
 tr.afeefa-intended td{
-    background-color: #3f3f3f !important;
+    background-color: #222 !important;
+    color: #ddd;
 }
 
 tr.afeefa-intended td:nth-child(5) {

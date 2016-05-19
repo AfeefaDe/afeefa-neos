@@ -1,26 +1,33 @@
 <f:if condition="{lvl} != 0">
     <f:then>
-        <tr class="afeefa-intended">
+        <tr class="afeefa-entry afeefa-entry-type-{entry.type} afeefa-intended">
     </f:then>
     <f:else>
-        <tr>
+        <tr class="afeefa-entry afeefa-entry-type-{entry.type}">
     </f:else>
 </f:if>
 
 <td>
-    <div class="onoffswitch">
+    <div class="onoffswitch" data-entry-id="{entry.persistenceObjectIdentifier}">
+        <!-- <input type="checkbox" name="published-{entry.persistenceObjectIdentifier}" class="onoffswitch-checkbox" id="published-{entry.persistenceObjectIdentifier}" checked onclick="lock('{entry.persistenceObjectIdentifier}');"> -->
+
         <f:if condition="{entry.published}">
             <f:then>
-                <input type="checkbox" name="published-{entry.persistenceObjectIdentifier}" class="onoffswitch-checkbox"
-                       id="published-{entry.persistenceObjectIdentifier}" checked
-                       onclick="lock('{entry.persistenceObjectIdentifier}');">
+                <input type="checkbox" data-entry-id="{entry.persistenceObjectIdentifier}" name="published-{entry.persistenceObjectIdentifier}" class="onoffswitch-checkbox" id="published-{entry.persistenceObjectIdentifier}" checked>
             </f:then>
             <f:else>
-                <input type="checkbox" name="published-{entry.persistenceObjectIdentifier}" class="onoffswitch-checkbox"
-                       id="published-{entry.persistenceObjectIdentifier}"
-                       onclick="publish('{entry.persistenceObjectIdentifier}');">
+                <input type="checkbox" data-entry-id="{entry.persistenceObjectIdentifier}" name="published-{entry.persistenceObjectIdentifier}" class="onoffswitch-checkbox" id="published-{entry.persistenceObjectIdentifier}">
             </f:else>
         </f:if>
+
+        <!-- <f:if condition="{entry.published}">
+            <f:then>
+                <input type="checkbox" name="published-{entry.persistenceObjectIdentifier}" class="onoffswitch-checkbox" id="published-{entry.persistenceObjectIdentifier}" checked onclick="lock('{entry.persistenceObjectIdentifier}');">
+            </f:then>
+            <f:else>
+                <input type="checkbox" name="published-{entry.persistenceObjectIdentifier}" class="onoffswitch-checkbox" id="published-{entry.persistenceObjectIdentifier}" onclick="publish('{entry.persistenceObjectIdentifier}');">
+            </f:else>
+        </f:if> -->
         <label class="onoffswitch-label" for="published-{entry.persistenceObjectIdentifier}"></label>
     </div>
 </td>

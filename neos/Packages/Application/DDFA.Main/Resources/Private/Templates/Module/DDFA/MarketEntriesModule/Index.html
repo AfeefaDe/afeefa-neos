@@ -3,6 +3,16 @@
 <f:section name="title">Overview of all entries</f:section>
 
 <f:section name="content">
+
+    <div id="entry-filter">
+        <span><i>Filter:</i></span>
+        <span class="filter-option filter-reset">All</span>
+        <span class="filter-option" data-entry-type="0">■ Orga/ Initiative/ Project</span>
+        <span class="filter-option" data-entry-type="2">♦ Event</span>
+        <span class="filter-option" data-entry-type="1">● Börseneintrag</span>
+        <span class="filter-option" data-entry-type="3">_ POI</span>
+    </div>
+
     <div class="neos-module-container">
         <f:if condition="{entries}">
             <f:then>
@@ -50,5 +60,4 @@
             Add entry
         </f:link.action>
     </div>
-    <script type="application/javascript" src="{f:uri.resource(path: 'JavaScript/publish.js')}"></script>
 </f:section>

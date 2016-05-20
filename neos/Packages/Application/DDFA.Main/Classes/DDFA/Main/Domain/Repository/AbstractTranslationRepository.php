@@ -207,7 +207,7 @@ abstract class AbstractTranslationRepository extends Repository
                     $objectNXT = $this->findOneLocalized($object, DDConst::LOCALE_NXT);
 
                 //todo: second test maybe not efficient
-                switch($type) {
+                switch ($type) {
                     case DDConst::OWNER_MARKET:
                         $params = DDConst::ME_SUPPLEMENT_PROPS;
                         break;
@@ -220,8 +220,20 @@ abstract class AbstractTranslationRepository extends Repository
 
                 if ($objectNXT == null || sizeof($this->findEmptyParams($objectNXT, $params)) == sizeof($params))
                     $returnVal = $objectSTD;
-                else
-                    $returnVal = $this->merge($objectSTD, $objectNXT);
+                else {
+                    switch ($type) {
+                        case DDConst::OWNER_MARKET:
+                            $returnVal = $this->mergeME($objectSTD, $objectNXT);
+
+                            break;
+                        case DDConst::LOCATION:
+                            $returnVal = $this->merge($objectSTD, $objectNXT);
+
+                            break;
+                    }
+                }
+
+
                 break;
             default:
                 if ($objectNXT == null)
@@ -239,10 +251,25 @@ abstract class AbstractTranslationRepository extends Repository
                     }
                 }
 
-                if ($objectNXT != null)
-                    $returnVal = $this->merge($objectSTD, $this->merge($objectNXT, $object));
-                else
-                    $returnVal = $this->merge($objectSTD, $object);
+                if ($objectNXT != null) {
+                    switch ($type) {
+                        case DDConst::OWNER_MARKET:
+                            $returnVal = $this->mergeME($objectSTD, $this->merge($objectNXT, $object));
+                            break;
+                        case DDConst::LOCATION:
+                            $returnVal = $this->merge($objectSTD, $this->merge($objectNXT, $object));
+                            break;
+                    }
+                } else {
+                    switch ($type) {
+                        case DDConst::OWNER_MARKET:
+                            $returnVal = $this->mergeME($objectSTD, $object);
+                            break;
+                        case DDConst::LOCATION:
+                            $returnVal = $this->merge($objectSTD, $object);
+                            break;
+                    }
+                }
                 break;
         }
 
@@ -276,7 +303,7 @@ abstract class AbstractTranslationRepository extends Repository
      */
     public function findEmptyParams(Actor $object, $params)
     {
-        if(sizeof($params) == 0)
+        if (sizeof($params) == 0)
             return [];
 
         $props = [];
@@ -302,7 +329,6 @@ abstract class AbstractTranslationRepository extends Repository
      */
     protected function merge(Actor $baseObject, Actor $hydrateObject)
     {
-
         if ($baseObject->getLocale() == $hydrateObject->getLocale()) {
             return $baseObject;
         }
@@ -311,15 +337,49 @@ abstract class AbstractTranslationRepository extends Repository
         $hydrateReflection = new ReflectionObject($hydrateObject);
         foreach ($baseReflection->getProperties() as $property) {
             $property->setAccessible(true);
-            if ($hydrateReflection->hasProperty($property->getName())) {
-                $hydrateProperty = $hydrateReflection->getProperty($property->getName());
+            $name = $property->getName();
+
+            if ($hydrateReflection->hasProperty($name)) {
+                $hydrateProperty = $hydrateReflection->getProperty($name);
                 $hydrateProperty->setAccessible(true);
                 $hydrateValue = $hydrateProperty->getValue($hydrateObject);
                 if ($hydrateValue != NULL && $hydrateValue != "") {
-                    $property->setValue($baseObject, $hydrateValue);
+                    if ($name != "location") {
+                        $property->setValue($baseObject, $hydrateValue);
+                    }
                 }
             }
         }
+
+        return $baseObject;
+    }
+
+    protected function mergeME(Actor $baseObject, Actor $hydrateObject)
+    {
+        if ($baseObject->getLocale() == $hydrateObject->getLocale()) {
+            return $baseObject;
+        }
+
+        $baseObject->getLocation()->first();
+
+        $baseReflection = new ReflectionObject($baseObject);
+        $hydrateReflection = new ReflectionObject($hydrateObject);
+        foreach ($baseReflection->getProperties() as $property) {
+            $property->setAccessible(true);
+            $name = $property->getName();
+
+            if ($hydrateReflection->hasProperty($name)) {
+                $hydrateProperty = $hydrateReflection->getProperty($name);
+                $hydrateProperty->setAccessible(true);
+                $hydrateValue = $hydrateProperty->getValue($hydrateObject);
+                if ($hydrateValue != NULL && $hydrateValue != "") {
+                    if ($name != "location") {
+                        $property->setValue($baseObject, $hydrateValue);
+                    }
+                }
+            }
+        }
+
         return $baseObject;
     }
 

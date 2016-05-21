@@ -299,6 +299,7 @@ abstract class AbstractTranslationRepository extends Repository
 
     /**
      * @param Actor $object
+     * @param $params
      * @return array
      */
     public function findEmptyParams(Actor $object, $params)

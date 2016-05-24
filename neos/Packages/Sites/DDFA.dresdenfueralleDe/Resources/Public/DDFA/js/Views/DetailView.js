@@ -247,10 +247,16 @@ qx.Class.define("DetailView", {
 					that['propertyContainer'+prop].show();
 				}
 				else if( record.location[0][prop] ) {
+					
 					that['propertyIcon'+prop].addClass('icon-' + prop);
 					that['propertyName'+prop].append( that.getWording( 'prop_' + prop ) );
 
-					that['propertyValue'+prop].append(record.location[0][prop]);
+					if( _.contains( ['arrival'], prop) ){
+						that['propertyValue'+prop].append(record.location[0][prop].replace(/(?:\r\n|\r|\n)/g, '<br />'));
+					} else {
+						that['propertyValue'+prop].append(record.location[0][prop]);
+					}
+					
 					that['propertyContainer'+prop].show();
 				}
 

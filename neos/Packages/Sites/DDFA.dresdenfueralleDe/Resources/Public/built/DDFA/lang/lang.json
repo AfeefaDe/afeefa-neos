@@ -948,6 +948,18 @@
                   "ti":"ሰዓታት ስራሕ",
                   "ur":""
             },
+            "prop_arrival":{
+                  "de":"Anfahrt",
+                  "en":"Directions",
+                  "ar":"",
+                  "fa":"",
+                  "fr":"",
+                  "it":"",
+                  "ru":"",
+                  "sr":"",
+                  "ti":"",
+                  "ur":""
+            },
             "prop_dateFrom":{
                   "de":"Von",
                   "en":"from",

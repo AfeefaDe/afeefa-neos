@@ -59,7 +59,7 @@ qx.Class.define("DetailView", {
 			
 			// generic
 			// var properties = _.union( ['category'], APP.getConfig().simpleProperties,  ['location'] );, 
-			var properties = ['category', 'times', 'description', 'speakerPublic', 'spokenLanguages', 'location', 'openingHours', 'phone', 'mail', 'web', 'facebook', 'dateFrom', 'dateTo'];
+			var properties = ['category', 'times', 'description', 'speakerPublic', 'spokenLanguages', 'location', 'arrival', 'openingHours', 'phone', 'mail', 'web', 'facebook'];
 			_.each(properties, function(prop){
 
 				that['propertyContainer'+prop] = $("<div />").addClass('property ' + prop);
@@ -199,7 +199,7 @@ qx.Class.define("DetailView", {
 				function convertTime( timeValue ){
 					var dateObj = new Date(timeValue);
 					var formattedString = '';
-					if( record.locale == 'de' ){
+					if( APP.getLM().getCurrentLang() == 'de' ){
 						formattedString = (dateObj.getDate()) +'.'+ (dateObj.getMonth()+1) +'.'+ (dateObj.getFullYear())
 					} else {
 						formattedString = timeValue;
@@ -244,6 +244,19 @@ qx.Class.define("DetailView", {
 						that['propertyValue'+prop].append(record[prop]);
 					}
 
+					that['propertyContainer'+prop].show();
+				}
+				else if( record.location[0] && record.location[0][prop] ) {
+					
+					that['propertyIcon'+prop].addClass('icon-' + prop);
+					that['propertyName'+prop].append( that.getWording( 'prop_' + prop ) );
+
+					if( _.contains( ['arrival'], prop) ){
+						that['propertyValue'+prop].append(record.location[0][prop].replace(/(?:\r\n|\r|\n)/g, '<br />'));
+					} else {
+						that['propertyValue'+prop].append(record.location[0][prop]);
+					}
+					
 					that['propertyContainer'+prop].show();
 				}
 

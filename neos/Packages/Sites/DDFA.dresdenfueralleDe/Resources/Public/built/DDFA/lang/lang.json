@@ -384,7 +384,7 @@
                   "ti":"ማሕባር",
                   "ur":"کمیونٹی"
             },
-                  "cat_welcome-alliance":{
+                  "cat_welcome-network":{
                         "de":"Willkommensbündnisse",
                         "en":"welcome alliances",
                         "ar":"",
@@ -946,6 +946,18 @@
                   "ru":"время работы",
                   "sr":"Радно време",
                   "ti":"ሰዓታት ስራሕ",
+                  "ur":""
+            },
+            "prop_arrival":{
+                  "de":"Anfahrt",
+                  "en":"Directions",
+                  "ar":"",
+                  "fa":"",
+                  "fr":"",
+                  "it":"",
+                  "ru":"",
+                  "sr":"",
+                  "ti":"",
                   "ur":""
             },
             "prop_dateFrom":{

@@ -95,7 +95,7 @@ qx.Class.define("APPAFEEFA", {
 					}
 				],
 				categoriesBasic: ["housing", "christian", "islam", "jewish", 'public', 'wifi', 'shop'],
-				simpleProperties: ['description', 'speakerPublic', 'spokenLanguages', 'phone', 'mail', 'web', 'facebook', 'openingHours', 'dateFrom', 'dateTo'],
+				simpleProperties: ['description', 'speakerPublic', 'spokenLanguages', 'phone', 'mail', 'web', 'facebook', 'arrival', 'openingHours'],
 				imgPath: '_Resources/Static/Packages/DDFA.dresdenfueralleDe/DDFA/img/'
 			}
 		);
@@ -121,7 +121,6 @@ qx.Class.define("APPAFEEFA", {
 		includeView: {},
 		userDevice: {},
 		config: {},
-		currentLang: {},
 		activeFilter: {}
 	},
 

@@ -80,6 +80,38 @@ qx.Class.define("DataManager", {
 				dataType: 'json'
 			})
 			.done(function( data ) {
+				var entries = _.filter(data.marketentries, function(entry){
+					
+					// filter out owner-less entries
+					// TODO: there shouldn't be any owner-less entries coming from the API
+					if(!entry) return false;
+
+					// filter out category-less entries
+					// TODO: there shouldn't be any category-less entries coming from the API
+					// if(!entry.marketEntry.category) return false;
+				
+					// TIME FILTER
+					// TODO move filter into API controller
+					// skip orgas and basic entries
+					if(entry.type == 0 || entry.type == 3) return true;
+
+					var dateFrom = entry.dateFrom ? new Date(entry.dateFrom) : null;
+					var dateTo = entry.dateTo ? new Date(entry.dateTo) : null;
+
+					if( dateFrom || dateTo ){
+							// add one day to the event to make it comparable with today (only the date matters, not the hour)
+							if(dateFrom) dateFrom.setDate(dateFrom.getDate() + 1);
+							if(dateTo) dateTo.setDate(dateTo.getDate() + 1);
+
+							if( dateTo && dateTo < new Date() ) return false;
+							if( dateFrom && dateFrom < new Date() ) return false;
+					}
+					
+					return true;
+				});
+
+				data.marketentries = entries;
+
 				cb(data);
 			})
 			.fail(function(a) {
@@ -96,38 +128,6 @@ qx.Class.define("DataManager", {
 				dataType: 'json'
 			})
 			.done(function( data ) {
-				
-				var locations = _.filter(data.locations, function(location){
-					
-					// filter out owner-less locations
-					// TODO: there shouldn't be any owner-less locations coming from the API
-					if(!location.marketEntry) return false;
-
-					// filter out category-less locations
-					// TODO: there shouldn't be any category-less locations coming from the API
-					// if(!location.marketEntry.category) return false;
-				
-					// TIME FILTER
-					// TODO move filter into API controller
-					// skip orgas and basic locations
-					if(location.marketEntry.type == 0 || location.marketEntry.type == 3) return true;
-
-					var dateFrom = location.marketEntry.dateFrom ? new Date(location.marketEntry.dateFrom) : null;
-					var dateTo = location.marketEntry.dateTo ? new Date(location.marketEntry.dateTo) : null;
-
-					if( dateFrom || dateTo ){
-							// add one day to the event to make it comparable with today (only the date matters, not the hour)
-							if(dateFrom) dateFrom.setDate(dateFrom.getDate() + 1);
-							if(dateTo) dateTo.setDate(dateTo.getDate() + 1);
-
-							if( dateTo && dateTo < new Date() ) return false;
-							if( dateFrom && dateFrom < new Date() ) return false;
-					}
-					
-					return true;
-				});
-
-				data.locations = locations;
 				cb(data);
 			})
 			.fail(function(a) {

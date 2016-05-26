@@ -59,7 +59,7 @@ qx.Class.define("DetailView", {
 			
 			// generic
 			// var properties = _.union( ['category'], APP.getConfig().simpleProperties,  ['location'] );, 
-			var properties = ['category', 'times', 'description', 'speakerPublic', 'spokenLanguages', 'location', 'arrival', 'openingHours', 'phone', 'mail', 'web', 'facebook', 'dateFrom', 'dateTo'];
+			var properties = ['category', 'times', 'description', 'speakerPublic', 'spokenLanguages', 'location', 'arrival', 'openingHours', 'phone', 'mail', 'web', 'facebook'];
 			_.each(properties, function(prop){
 
 				that['propertyContainer'+prop] = $("<div />").addClass('property ' + prop);
@@ -199,7 +199,7 @@ qx.Class.define("DetailView", {
 				function convertTime( timeValue ){
 					var dateObj = new Date(timeValue);
 					var formattedString = '';
-					if( record.locale == 'de' ){
+					if( APP.getLM().getCurrentLang() == 'de' ){
 						formattedString = (dateObj.getDate()) +'.'+ (dateObj.getMonth()+1) +'.'+ (dateObj.getFullYear())
 					} else {
 						formattedString = timeValue;

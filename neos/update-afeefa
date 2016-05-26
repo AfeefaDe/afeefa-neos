@@ -1,0 +1,30 @@
+#!/bin/bash
+
+path=$PWD
+rel_git="../../afeefa"
+
+echo "[1] pull repository on checked out branche..."
+
+cd $rel_git
+git pull
+
+cd $path
+
+echo ""
+echo "[2] remove old packages..."
+rm -rf ./Packages/Application/DDFA.Main ./Packages/Sites/DDFA.dresdenfueralleDe ./Web
+
+echo ""
+echo "[3] copy new packages..."
+cp -R $rel_git/neos/Packages/Application/DDFA.Main ./Packages/Application
+cp -R $rel_git/neos/Packages/Sites/DDFA.dresdenfueralleDe ./Packages/Sites
+cp -R $rel_git/neos/Web .
+
+echo ""
+echo "[4] flush and warum up caches..."
+FLOW_CONTEXT=Production ./flow flow:cache:flush
+FLOW_CONTEXT=Production ./flow flow:cache:warmup
+
+echo ""
+echo "done. bye"
+echo ""

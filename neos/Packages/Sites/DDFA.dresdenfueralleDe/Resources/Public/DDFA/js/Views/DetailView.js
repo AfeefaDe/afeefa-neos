@@ -246,7 +246,7 @@ qx.Class.define("DetailView", {
 
 					that['propertyContainer'+prop].show();
 				}
-				else if( record.location[0][prop] ) {
+				else if( record.location[0] && record.location[0][prop] ) {
 					
 					that['propertyIcon'+prop].addClass('icon-' + prop);
 					that['propertyName'+prop].append( that.getWording( 'prop_' + prop ) );

@@ -14,15 +14,16 @@ qx.Class.define("DataManager", {
 		fetchAllData: function( cb ){
 			var that = this;
 
-			// var allData = {};
+			var currentAppData = APP.getData();
 
-			// snychronous data calls (wait for all data calls to finish)
-			that.getAllLocations(function(data){    // locations
-				// store in APP
-				var currentData = APP.getData();
-				currentData.locations = data.locations;
-				APP.setData(currentData);
+			that.getAllEntries(function(data){
+
+				// store entries in APP
+				currentAppData.entries = data.marketentries;
 				
+				APP.setData(currentAppData);
+				that.say('fetchedNewData');
+
 				that.getLanguageBib( function(data){  // language bib
 					// store in APP
 					APP.getLM().setBib( data[0] );

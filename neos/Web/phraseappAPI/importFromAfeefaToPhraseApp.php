@@ -7,20 +7,18 @@ use GuzzleHttp\Client;
 // SETUP //
 ///////////
 $step = isset($_GET['step']) ? $_GET['step'] : null;
+$dev = true;
 
 $configPhraseApp = array(
     
     'projects' => [
-        'initiative' => [
-            'project_id' => 'e989a075962418d0e05398d2fc107265',
-            'accessToken' => 'a1bf71362733ee24d1b170b33f9f067ebbc8b15695dbd4e6c6710f96d9b8b80a' // ini alt
+        // 'initiative' => [
             // 'accessToken' => '5b5afb74ca3d11176b44f7966963fbdd', // ini neu
             // 'de_locale_id' => 'daae43d981d643eeaf4e6c6827e8592a'
-        ],
+        // ],
         'marketentry' => [
-            'project_id'=> 'ec9761ed74fb932c0e32a989a5164d65',
-            'accessToken' => 'a1bf71362733ee24d1b170b33f9f067ebbc8b15695dbd4e6c6710f96d9b8b80a' // ini alt
-            // 'accessToken' => '3f54dc7ee6366f28c1ec60a4688a707a', // market neu
+            'project_id' => $dev ? '26a2226676a2c292ab0bcf8c8adc9e42' : 'e989a075962418d0e05398d2fc107265',
+            'accessToken' => 'a1bf71362733ee24d1b170b33f9f067ebbc8b15695dbd4e6c6710f96d9b8b80a'
         ]
     ]
 
@@ -43,8 +41,8 @@ $clientPhraseApp = new Client([
 ]);
 
 
-$locales = ['de', 'en', 'ar', 'ur', 'fr', 'it', 'ti', 'sr', 'fa', 'ru'];
-$types = ['initiative', 'marketentry'];
+$locales = ['ar', 'de', 'en', 'es', 'fa', 'fr', 'ku', 'ps', 'ru', 'sq', 'sr', 'ti', 'tr', 'ur'];
+$types = ['marketentry'];
 
 
 ////////////////////////
@@ -108,6 +106,10 @@ else if($step == 'importToPhraseApp'){
                     ],
                     [
                         'name'     => 'update_translations',
+                        'contents' => $locale == "de" ? 'true' : 'false';
+                    ],
+                    [
+                        'name'     => 'skip_unverification',
                         'contents' => 'false'
                     ]
                 )

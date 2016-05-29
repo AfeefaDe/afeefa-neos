@@ -15,7 +15,7 @@ function sql($request, $variant = 1) {
     $server = "localhost";
     $user = "root";
     $pass = "";
-    $db = "afeefa_neos";
+    $db = "afeefa_neos_new";
 
 
     /////////////

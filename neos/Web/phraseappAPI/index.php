@@ -1,8 +1,12 @@
+<style>
+li { margin-bottom: 1em; }
+a:link {text-decoration: none; }
+</style>
 <h1>Workflow Afeefa - PhraseApp</h1>
 <ol>
-	<li>export all data from Afeefa DB and save to JSON file using this script:<br>
+	<li>export all entries from Afeefa DB and save as JSON file under ../phraseappAPI/jsonExportFromAfeefa/ using this script:<br>
 		<a href="importFromAfeefaToPhraseApp.php?step=exportFromAfeefa">/importFromAfeefaToPhraseApp.php?step=exportFromAfeefa</a></li>
-	<li>upload all downloaded json files via PhraseApp API using this script:<br>
+	<li>transfer entries from downloaded json files to PhraseApp using this script:<br>
 		<a href="importFromAfeefaToPhraseApp.php?step=importToPhraseApp">/importFromAfeefaToPhraseApp.php?step=importToPhraseApp</a></li>
 	<ul>
 		<li>"Update translations" option is set TRUE</li>

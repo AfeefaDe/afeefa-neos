@@ -1,11 +1,11 @@
 <?php
 include('sql.php');
 
-$locale = isset($_GET['locale']) && in_array($_GET['locale'], ['de', 'en', 'ar', 'ur', 'fr', 'it', 'ti', 'sr', 'fa', 'ru']) ? $_GET['locale'] : false;
+$locale = isset($_GET['locale']) && in_array($_GET['locale'], ['ar', 'de', 'en', 'es', 'fa', 'fr', 'ku', 'ps', 'ru', 'sq', 'sr', 'ti', 'tr', 'ur']) ? $_GET['locale'] : false;
 $type = isset($_GET['type']) && in_array($_GET['type'], ['initiative', 'marketentry', 'location']) ? $_GET['type'] : false;
 
-if (!$locale) die("no or wrong locale, chose from 'de', 'en', 'ar', 'ur', 'fr', 'it', 'ti', 'sr', 'fa', 'ru'.");
-if (!$type) die("no or wrong type, chose from 'initiative', 'marketentry', 'location'.");
+if (!$locale) die("no or wrong locale");
+if (!$type) die("no or wrong type");
 
 header('Content-Type: application/json; charset=utf-8');
 header("Content-Disposition: attachment; filename=" . $type . "_" . date('Y_m_d', time()) . "_" . $locale . ".json");
@@ -43,4 +43,5 @@ while ($object = mysql_fetch_object($result)) {
         $objects[$object->eid] = $arr;
 }
 
-echo json_encode([$type => $objects], JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT | JSON_FORCE_OBJECT);
+echo json_encode(['entry' => $objects], JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT | JSON_FORCE_OBJECT);
+// echo json_encode([$type => $objects], JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT | JSON_FORCE_OBJECT);

@@ -13,10 +13,14 @@
 
         <f:if condition="{entry.published}">
             <f:then>
-                <input type="checkbox" data-entry-id="{entry.persistenceObjectIdentifier}" name="published-{entry.persistenceObjectIdentifier}" class="onoffswitch-checkbox" id="published-{entry.persistenceObjectIdentifier}" checked>
+                <input type="checkbox" data-entry-id="{entry.persistenceObjectIdentifier}"
+                       name="published-{entry.persistenceObjectIdentifier}" class="onoffswitch-checkbox"
+                       id="published-{entry.persistenceObjectIdentifier}" checked>
             </f:then>
             <f:else>
-                <input type="checkbox" data-entry-id="{entry.persistenceObjectIdentifier}" name="published-{entry.persistenceObjectIdentifier}" class="onoffswitch-checkbox" id="published-{entry.persistenceObjectIdentifier}">
+                <input type="checkbox" data-entry-id="{entry.persistenceObjectIdentifier}"
+                       name="published-{entry.persistenceObjectIdentifier}" class="onoffswitch-checkbox"
+                       id="published-{entry.persistenceObjectIdentifier}">
             </f:else>
         </f:if>
 
@@ -65,16 +69,26 @@
 </td>
 <td>
     <div>
+        {entry.name} &nbsp;
         <f:for each="{entry.location}" as="location">
             <i class="icon-map-marker icon-white"></i>
+            <small style="color: gray">
+                <f:if condition="{location.placename}">
+                    {location.placename},
+                </f:if>
+                <f:if condition="{location.street}">
+                    {location.street},
+                </f:if>
+                {location.city}
+            </small>
         </f:for>
-        {entry.name}
-        <small style="color: gray">{entry.location.placename}, {entry.location.street}, {entry.location.city}</small>
     </div>
 </td>
 <td>
     <div>
-        <a href="/#{entry.entry_id}" target="_blank">{entry.entry_id}</a>
+        <small>
+            <a href="/#{entry.entryId}" target="_blank" style="text-decoration: underline" title="View this entry on Afeefa">{entry.entryId}</a>
+        </small>
     </div>
 </td>
 <td>

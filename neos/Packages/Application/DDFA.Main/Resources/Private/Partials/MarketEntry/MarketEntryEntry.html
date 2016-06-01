@@ -69,6 +69,12 @@
             <i class="icon-map-marker icon-white"></i>
         </f:for>
         {entry.name}
+        <small style="color: gray">{entry.location.placename}, {entry.location.street}, {entry.location.city}</small>
+    </div>
+</td>
+<td>
+    <div>
+        <a href="/#{entry.entry_id}" target="_blank">{entry.entry_id}</a>
     </div>
 </td>
 <td>

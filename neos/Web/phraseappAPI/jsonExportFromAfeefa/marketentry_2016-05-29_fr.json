@@ -1,35 +1,87 @@
 {
-    "initiative": {
+    "entry": {
+        "556e1d403578d": {
+            "poid": "02c1b741-1db8-4a9c-a268-7fd7ae88fc06",
+            "name": "Bündnis Buntes Meißen"
+        },
         "556e1d2eaa693": {
             "poid": "0388de3b-d468-4d57-add4-487c428cefde",
             "name": "Dresden - place to be e. V."
+        },
+        "556e1d3a0df7c": {
+            "poid": "081cd45e-92b7-47a0-b22d-ee407e649182",
+            "name": "SPIKE Dresden"
+        },
+        "556e1d4c72a6e": {
+            "poid": "084a6928-3330-4ad6-b14b-bf7ed8f96b7f",
+            "name": "Sächsischer Flüchtlingsrat"
+        },
+        "556e1d5df41ad": {
+            "poid": "09af6042-3b55-4025-90b2-9064f49f61da",
+            "name": "Women* refugee meeting"
         },
         "556e1d2dbd631": {
             "poid": "0b3ac98c-ff2a-4fce-8470-96684016e63e",
             "name": "Regionalkoordination Flüchtlingssozialarbeit Prohlis\/Leuben",
             "description": "Coordination des offres pour demandeurs d'asile à Prohlis et Leuben, travail bénévole."
         },
+        "556e1d5057f02": {
+            "poid": "0bd101db-6933-4869-85a8-7e74860a2208",
+            "name": "gemeindedolmetscherdienst"
+        },
+        "556e1d4dafd4a": {
+            "poid": "0d0c06eb-affc-404a-b677-f8a147411d75",
+            "name": "traumaberatung"
+        },
         "556e1d2cbbb72": {
             "poid": "0d8f59fa-e79e-4feb-846a-ce3d117d4176",
             "name": "Netzwerk \"Gorbitz International\"",
             "description": "Le réseau « Gorbitz International » est une union de femmes et d’hommes de Gorbitz et alentours composée de représentants d’institutions, de paroisses, de partis politiques et d’associations qui veulent prendre soin de tous dans le but d'un bon voisinage dans le quartier et d'un bon accueil des étrangers. Dans le cadre du réseau, des sous-groupes et des projets existent, comme Le café des rencontres, l’organisation UAG et des relations publiques, le jardin communautaire etc."
         },
-        "556e1d2f49edc": {
-            "poid": "0eecd3a9-f084-40fa-b8d3-c27ab825bac1",
-            "name": "TOLERADE",
-            "description": "Défilé musical visant à lutter contre les tendances xénophobes à Dresde (et en Saxe). Son but est de refléter la diversité des cultures à Dresde."
+        "556e1d3f4e27d": {
+            "poid": "0e0283aa-a49b-4169-989d-864fec6d9fa2",
+            "name": "Verein Pro Pieschen e.V."
         },
         "556e1d2c436b4": {
             "poid": "10938320-d3a6-4535-b860-5e9e8b21ffe4",
             "name": "Ausländerrat Dresden e.V."
         },
+        "556e1d521c2fd": {
+            "poid": "11c229d6-1659-4fec-bcaf-af0c58e633b3",
+            "name": "Regionalkoordination Flüchtlingssozialarbeit Prohlis\/Leuben"
+        },
+        "557714121fbd6": {
+            "poid": "13d59ba6-b517-48ff-b27e-e6630c7bb3bf",
+            "name": "Faire du vélo à Dresden",
+            "description": "D`avoir un vélo est très pratique et facilite la vie quotidienne des réfugiés. Nous supportons des réfugiés qui vivent à Dresde et qu`ont besoin des vélos. Pour la deuxième fois nous avons adressé aux habitants à Dresden de nous donner des vélos qu`ils n`ont plus besoin. Car la plupart des vélos donnés va être vieux nous devons les réparer avec VOUS avant l`usage.\r\n\r\nOn se rencontre le 20 juin 2015, de 12.00 à 18.00 heures, à l`école Laborschule, Espenstrasse 3, 01169 Dresden (Prenez-vous les trams numéros 2 et 7, sortez à la station Kirschenstraße).\r\n\r\nL`action est gratuit. Nous pouvons vous s`aider d`apprendre à rouler à vélo. Des enfants sont bienvenus et sur le terrain il y a des jouets. Aussi nous vous offrons quelque chose à manger et nous nous réjouissons d`aliments apportés."
+        },
         "556e1d2db064f": {
             "poid": "17b22fba-bfaf-4874-9e25-b9718dd10d35",
             "name": "gemeindedolmetscherdienst"
         },
+        "556e1d35b069f": {
+            "poid": "1c291fd0-7b6c-404f-8d61-ec0222af3c89",
+            "name": "Willkommen in Löbtau"
+        },
+        "556e1d4a3d749": {
+            "poid": "1d9ba7fa-d237-4797-81e3-333ba60b0930",
+            "name": "Netzwerk Asyl Migration Flucht (NAMF)"
+        },
+        "556e1d528d696": {
+            "poid": "1f2ee3ea-b554-449a-894a-c0db3ada6ba9",
+            "name": "Regionalkoordination Flüchtlingssozialarbeit Altstadt\/Pauen"
+        },
+        "556e1d466087c": {
+            "poid": "224b4bdb-813d-4b5c-a3dc-6b1299b80dca",
+            "name": "AG Asylsuchende [GRH]"
+        },
         "556e1d2d4d338": {
             "poid": "22b6fe72-751c-4dc3-9ef0-df47b614bf73",
             "name": "traumaberatung"
+        },
+        "556e1d4585894": {
+            "poid": "23635ebd-8ce7-468e-97dc-225c47ce489b",
+            "name": "MEDEA Frauen-und Mädchengesundtheitszentrum e.V."
         },
         "556e1d2c84d2b": {
             "poid": "25d75b51-8e50-4028-94df-6f968e2badf8",
@@ -39,10 +91,6 @@
             "poid": "28f02693-52f6-4533-8c19-073f55799297",
             "name": "Prohlis ist bunt",
             "description": "Le résau \"Prohlis est multicolore\" regroupe des associations, des institutions, la municipalité, les organismes de quartier, les paroisses et partis politiques de Prohlis et vise à créer pour des demandeurs d'asile et réfugiés un climat accueillant. L'activité principale est le travail de réseau ainsi que la réalisation de projets. Le réseau existe depuis le printemps 2014."
-        },
-        "556e1d2d38fb9": {
-            "poid": "2a580241-f6d7-41d0-b50f-639bcf52301e",
-            "name": "Welcome Center TU Dresden "
         },
         "556e1d2ad2e1e": {
             "poid": "2be2d826-80ed-4f14-8da6-d81673021ee9",
@@ -64,6 +112,14 @@
             "name": "Kontaktgruppe Asyl e.V.",
             "description": "Nous, membres du Groupe de Contact Asile (ndt: \"Kontaktgruppe Asyl\", abrégé KoGA), soutenons les demandeurs d'asile et les réfugiés à Dresde à surmonter les nombreuses barrières bureaucratiques et offrons des opportunités de contact et de rencontre. Nous aidons, avec respect, à joindre les forces et le potentiel de ces personnes et nous mettons à disposition en tant qu'interlocuteurs neutres. Publiquement, nous nous engageons contre les structures répressives et les préjugés racistes, ainsi que pour une société solidaire et diverse."
         },
+        "556e1d552ba79": {
+            "poid": "38d1cfcb-35cd-4d83-a801-bfffd5706852",
+            "name": "International Café im Artderkultur e.V."
+        },
+        "556e1d5c3680a": {
+            "poid": "3b0c36fb-180c-462b-a96f-b371a82f072c",
+            "name": "Initiative für Flüchtlinge Bühlau-Rochwitz"
+        },
         "556e1d2a598c7": {
             "poid": "3d5b4652-b38c-48d5-a347-bc3faf6523a3",
             "name": "DAMF Deutschkurse für Asylsuchende",
@@ -73,10 +129,42 @@
             "poid": "42a94576-53bc-42c5-99f9-32ff9eda6f96",
             "name": "Regionalkoordination Flüchtlingssozialarbeit Altstadt\/Pauen"
         },
+        "556e1d3312d71": {
+            "poid": "4690828d-62cd-4748-b667-1dd79d5acdda",
+            "name": "Bündnis Buntes Radebeul"
+        },
+        "556e1d4118730": {
+            "poid": "46cf81b3-e407-4115-a84c-75ce48ce25db",
+            "name": "Pieschen für alle"
+        },
+        "556e1d54a8b19": {
+            "poid": "4dde56b9-0f19-4e1d-b277-296b3997b0b5",
+            "name": "Jugendmigrationsdienst"
+        },
+        "556e1d3e6ae89": {
+            "poid": "4e5ac87d-a96f-42e0-94d6-48f92d4144bc",
+            "name": "Johannstädter Kulturtreff e.V."
+        },
+        "556e1d38afaef": {
+            "poid": "52351cf5-1958-4171-b2c2-baffe33ca573",
+            "name": "arche noVa - Initiative für Menschen in Not e.V."
+        },
+        "556e1d3d87f99": {
+            "poid": "573b2132-6089-4f32-b250-4b9f6844c356",
+            "name": "Willkommen in Hochland"
+        },
+        "556e1d304954b": {
+            "poid": "5ad52dc8-a038-4451-a618-9a0d6d84d0ab",
+            "name": "Das interkulturelle Sofa"
+        },
         "556e1d2ccf2da": {
             "poid": "5b15af38-6491-4611-9644-1717c2e17efd",
             "name": "LAG politisch-kulturelle Bildung Sachsen e. V.",
-            "description": "Nous nous occupons depuis plusieurs années de thèmes comme le racisme, la migration, l'exil et l'asile et proposons des formations permanentes pour multiplicateurs titulaires et bénévoles. \nNous nous posons par ainsi la question du type d'action et d'engagement personnels face au racisme. Nous proposons également des séminaires de soutien et d’encouragement pour les personnes touchées par le racisme. Les dates, contenus et besoins concrets à établir au cas par cas."
+            "description": "Nous nous occupons depuis plusieurs années de thèmes comme le racisme, la migration, l'exil et l'asile et proposons des formations permanentes pour multiplicateurs titulaires et bénévoles. \r\nNous nous posons par ainsi la question du type d'action et d'engagement personnels face au racisme. Nous proposons également des séminaires de soutien et d’encouragement pour les personnes touchées par le racisme. Les dates, contenus et besoins concrets à établir au cas par cas."
+        },
+        "556e1d56602fb": {
+            "poid": "5b4754d1-fa52-4c2f-8b55-ffa94a08c28a",
+            "name": "HELLERAU - Europäisches Zentrum der Künste Dresden"
         },
         "556e1d2ad83b5": {
             "poid": "5ee2d8ad-21ec-4a5f-81ab-d7bb6aa63ddf",
@@ -87,9 +175,13 @@
             "poid": "5f8aaf6f-46bb-4633-9253-ece106ff7491",
             "name": "RAA Sachsen Opferberatung - Unterstützung für Betroffene rechtsmotivierter und rassistischer Gewalt"
         },
-        "556e1d2f2b679": {
-            "poid": "6538c490-e7a9-4e5c-ad8d-4515348869c6",
-            "name": "Runder Tisch Asyl, OA Neustadt"
+        "556e1d3ad5a31": {
+            "poid": "5fdb32a7-ec33-4c2e-8dd3-f919330dfdf1",
+            "name": "AWO Sonnenstein gGmbH, Asylberatung"
+        },
+        "556e1d57b1f7b": {
+            "poid": "625b5052-b24b-4e29-936c-af9a5433a1f9",
+            "name": "Regionalkoordination Blawitz\/Schönfld-Weißig\/Loschwitz"
         },
         "556e1d2bd5a6f": {
             "poid": "658b46c1-2485-41a6-813e-a2aabcf42c4b",
@@ -100,10 +192,18 @@
             "name": "MEDEA Frauen-und Mädchengesundtheitszentrum e.V.",
             "description": "Consultations médicales (psychologiques, alimentaires, contraception, grossesse ,naturopathe...), réunions ouvertes aux femmes : petit-déjeuner pour les femmes jeudi 10h-12h (hors vacances) ; réunion femmes\/enfants au KJH Gorbitz jeudi 16h-18h (à partir de mars : mercredi 16h-18h)"
         },
+        "556e1d5d84f2b": {
+            "poid": "68b3b8b1-d1ba-49a3-84f8-ceb5c88336e5",
+            "name": "German lessons für Refugees Dresden"
+        },
         "556e1d2c50c8b": {
             "poid": "691aafaa-d715-41cb-924f-1d9b179546be",
             "name": "Leuben ist bunt",
             "description": "Notre réseau \"Leuben ist bunt\" est constitué de représentant(e)s du quartier, des églises et de l'aide à la jeunesse."
+        },
+        "556e1d4903af6": {
+            "poid": "6c340c88-b050-4099-befb-65b6300c9940",
+            "name": "LAG politisch-kulturelle Bildung Sachsen e. V."
         },
         "556e1d2f2a5e3": {
             "poid": "72918b9b-2bde-4bcb-af39-4b62af838178",
@@ -114,6 +214,10 @@
             "poid": "7675861d-8a2c-44cd-ac22-bc43f50b5c91",
             "name": "Initiative für Flüchtlinge Bühlau-Rochwitz"
         },
+        "556e1d56d400d": {
+            "poid": "7675e8b9-8c79-401b-a0ee-fc8ae3e0cfce",
+            "name": "Regionalkoordination Neustadt\/Klotzsche\/Pieschen"
+        },
         "556e1d2adf6bc": {
             "poid": "7b21cafa-32b7-412e-b6e9-35ffa9a5a607",
             "name": "arche noVa - Initiative für Menschen in Not e.V.",
@@ -123,6 +227,10 @@
             "poid": "7c688631-b353-4323-a093-5652591262cc",
             "name": "Das interkulturelle Sofa"
         },
+        "556e1d37020c1": {
+            "poid": "81c464b7-de0e-4701-ad43-9d47cfe775da",
+            "name": "Initiative \"Brücken schaffen\""
+        },
         "556e1d2bd7497": {
             "poid": "83c68538-bf5c-46a7-8674-3c88c6b55c50",
             "name": "Pieschen für alle"
@@ -130,6 +238,18 @@
         "556e1d2ecb39c": {
             "poid": "83d75a03-9bbd-4fb8-83f1-70c0943d3246",
             "name": "Bürgercourage e.V."
+        },
+        "556e1d42cea11": {
+            "poid": "870a2ba9-82b1-4cc7-babc-0aad59b182f9",
+            "name": "Prohlis ist bunt"
+        },
+        "556e1d33f0698": {
+            "poid": "8ac09660-f6b5-4525-9787-e15a8602ac45",
+            "name": "Kontaktgruppe Asyl e.V."
+        },
+        "556e1d3777560": {
+            "poid": "8c3dade5-bc72-4f51-87c7-3c907a695b53",
+            "name": "Save me Dresden"
         },
         "556e1d2bcad46": {
             "poid": "8ee56575-a081-4d31-a53e-524bc308d5ee",
@@ -148,19 +268,55 @@
             "name": "Dresdner Verein für soziale Integration von Ausländern und Aussiedlern e.V.",
             "description": "voir site web"
         },
+        "556e1d43b6579": {
+            "poid": "9d9efd90-4d25-4a52-8800-8c09aa3db446",
+            "name": "Leuben ist bunt"
+        },
+        "556e1d4f0f02e": {
+            "poid": "9de7f197-7f30-4f15-803d-c1a6fc6529c0",
+            "name": "Ausländerbeirat"
+        },
+        "556e1d5b4b3b1": {
+            "poid": "9f1abde6-316f-4040-9d20-ac52f69d0095",
+            "name": "Bürgercourage e.V."
+        },
+        "556e1d354601f": {
+            "poid": "9f2747ea-16c7-4745-9c8d-a87f065a3012",
+            "name": "Laubegast ist Bunt"
+        },
         "556e1d2d657b7": {
             "poid": "9fdff957-d0e1-472f-bf9f-d3cbb8397401",
             "name": "KAMA Dresden e.V.",
             "description": "Notre association \"Dresde KAMA\" se définit comme une plate-forme d'échange via des offres culturelles et de formation. Nous proposons des cours PAR des demandeurs d'asile, réfugiés et migrants. L'organisation du contenu incombe aux formateurs, l'association offre des soutiens financiers et des organisateurs. Les cours sont divers : cours de cuisine, cours linguistiques, cours de métier, ateliers de débat, etc. La participation financière se fait sur le principe du don. Nous souhaitons créer un réseau vivant entre les membres de l'association, les formateurs et les participants."
+        },
+        "556e1d420242a": {
+            "poid": "a269f5c3-28d6-485a-ad86-85c93ad145ec",
+            "name": "Ausländerrat Dresden e.V."
         },
         "556e1d2f21f91": {
             "poid": "a3243de1-a1b1-442f-a143-bec7d0d21b4d",
             "name": "German lessons für Refugees Dresden",
             "description": "cours à la bibliothèque (à Neustadt et à la bibliothèque centrale)"
         },
+        "55efe9bb3d98f": {
+            "poid": "a919f335-cc01-4141-860f-ee543be065f7",
+            "description": "BONJOUR TOUT LE MONDE!\r\nNous sommes un groupe de musique de Dresde et recherchons des\r\npersonnes intéressées à faire un peu de musique avec nous.\r\nNous souhaitons démarrer un projet de plusieurs mois, nous retrouver\r\nchaque semaine, jouer des morceaux de vos différents pays et, à la fin,\r\ndonner un grand concert!\r\nCela t'intéresse? Tu joues d'un instrument? Ou bien tu sais chanter?\r\nAlors donne-nous ton nom et tes contacts et dis-nous quelles sont tes\r\ntalents musicaux à l'adresse suivante:\r\nblazmuzik@icloud.com facebook.com\/bandacomunale"
+        },
+        "556e1d53c320a": {
+            "poid": "abe72d79-70a5-4dd7-b6c4-334af1e1a942",
+            "name": "Dresdner Verein für soziale Integration von Ausländern und Aussiedlern e.V."
+        },
         "556e1d2e48238": {
             "poid": "b3a1083a-10f8-47d4-aed7-6c41135abe15",
             "name": "Regionalkoordination Neustadt\/Klotzsche\/Pieschen"
+        },
+        "556e1d50cfdd0": {
+            "poid": "b658e91c-09b8-4681-ac93-8fd7e0f885fa",
+            "name": "Regionalkoordination Flüchtlingssozialarbeit Cotta"
+        },
+        "556e1d5acf0b5": {
+            "poid": "ba745fed-ed05-4670-8d1b-5e1364c27edb",
+            "name": "Dresden - place to be e. V."
         },
         "556e1d2aa48d9": {
             "poid": "bb5ed268-039b-409d-877b-a108629e0140",
@@ -181,6 +337,18 @@
             "name": "SPIKE Dresden",
             "description": "Nous organisons de l’aide concrète pour les demandeurs d’asile à Leubnitz-Neuostra et alentours. Nous offrons un lieu convivial et ouvert aux rencontres, aux loisirs, à l'engagement social, à la coordination des offres, au soutien et adresse pour des partenaires du réseau. Nos locaux sont à la disposition pendant les heures d'ouverture et en dehors pour des actions (par exemple dans la matinée). Tous les dimanches et mercredis de 16-20 heures, les bénévoles et les intéressés peuvent se rencontrer chez nous, pour nouer des contacts, rencontrer des demandeurs d'asile et planifier des activités particulières et des offres communes."
         },
+        "556e1d481ddf4": {
+            "poid": "ce42063c-45c8-4bbd-8898-7ed378f0f33f",
+            "name": "Internationale Gärten Dresden e. V."
+        },
+        "556e1d3bbc71a": {
+            "poid": "cfa26aaa-cc69-408b-ad36-84def223364e",
+            "name": "ZMO-Jugend e.V."
+        },
+        "556e1d4bf254c": {
+            "poid": "d2d9bc38-00cc-49dc-a71f-c7705fddb746",
+            "name": "medinetz"
+        },
         "556e1d2e46bb4": {
             "poid": "d996aa8b-0dc4-4adc-a68c-729db436c88a",
             "name": "HELLERAU - Europäisches Zentrum der Künste Dresden"
@@ -189,6 +357,18 @@
             "poid": "db67f653-104c-4fa2-893c-33bc3cf6919e",
             "name": "Save me Dresden",
             "description": "Propositions de parrainages pour réfugiés (Resettlement und Adhoc), engagement politique pour une amélioration des \"Resettlement programmes\" (déplacement forcé) de la RFA et la coordination centrale de tous les parrainages de Dresde."
+        },
+        "556e1d313acbd": {
+            "poid": "dcf89de4-8e3e-417b-9e3b-a09fb1c42f68",
+            "name": "DAMF Deutschkurse für Asylsuchende"
+        },
+        "556e1d6094778": {
+            "poid": "dea49b01-ab20-48a3-a73f-6286c9711604",
+            "name": "Jugendwerk Dresden"
+        },
+        "556e1d3ca3475": {
+            "poid": "e01e1252-f5d9-4877-885c-6fa54238c639",
+            "name": "RAA Sachsen Opferberatung - Unterstützung für Betroffene rechtsmotivierter und rassistischer Gewalt"
         },
         "556e1d2a5bfb0": {
             "poid": "e1665302-1489-4dcb-b3bc-c3ab587e0317",
@@ -199,6 +379,10 @@
             "poid": "e1daf6e4-64fc-497e-acd6-78a9adc223ed",
             "name": "ZMO-Jugend e.V.",
             "description": "Notre offre \"Interkulturelle Begegnungsstätte für junge Menschen\" s'adresse aux enfants, aux jeunes ainsi qu'à leurs parents — avec ou sans origines étrangères. Nous sommes orientés vers les besoins et les intérêts de nos destinataires. Depuis l’augmentation du nombre des demandeurs d'asile, de plus en plus de personnes concernées se tournent vers nos offres. Nous sommes connectés en réseau et travaillons ensemble avec des services spécialisés et des acteurs du champ d'action de la migration."
+        },
+        "556e1d4e90550": {
+            "poid": "e5068563-c87e-4aff-83ca-6cd59f0e1a42",
+            "name": "KAMA Dresden e.V."
         },
         "556e1d2d47a01": {
             "poid": "e818c163-ec3b-4952-bfba-2ba1faf6926b",
@@ -221,11 +405,6 @@
         "556e1d2b592c6": {
             "poid": "f1360240-18b4-4087-b69f-0710c02143e9",
             "name": "AWO Sonnenstein gGmbH, Asylberatung"
-        },
-        "556e1d2e98280": {
-            "poid": "f3dfe758-e723-43a0-a47b-ac277cb70d96",
-            "name": "Altstädter Dialog",
-            "description": "Toute nouvelle initiative comprenant des institutions administratives, des associations et des citoyens"
         },
         "556e1d2db8b1b": {
             "poid": "f4d268cb-bfdb-44a6-a48a-1a1db1ac6a0e",

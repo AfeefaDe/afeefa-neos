@@ -7,7 +7,7 @@ use GuzzleHttp\Client;
 // SETUP //
 ///////////
 $step = isset($_GET['step']) ? $_GET['step'] : null;
-$dev = true;
+$dev = false;
 
 $configPhraseApp = array(
     
@@ -106,7 +106,7 @@ else if($step == 'importToPhraseApp'){
                     ],
                     [
                         'name'     => 'update_translations',
-                        'contents' => $locale == "de" ? 'true' : 'false';
+                        'contents' => $locale == "de" ? 'true' : 'false'
                     ],
                     [
                         'name'     => 'skip_unverification',

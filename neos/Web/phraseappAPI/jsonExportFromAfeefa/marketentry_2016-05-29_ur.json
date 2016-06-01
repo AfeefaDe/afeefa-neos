@@ -1,5 +1,9 @@
 {
-    "initiative": {
+    "entry": {
+        "556e1d313acbd": {
+            "poid": "008cc93f-b957-464f-8580-936c5789342c",
+            "name": "DAMF Deutschkurse für Asylsuchende"
+        },
         "556e1d2f2a5e3": {
             "poid": "01e3564b-491d-4075-8655-fa012468ae82",
             "name": "Women* refugee meeting",
@@ -8,6 +12,10 @@
         "556e1d2d4d338": {
             "poid": "039f29b1-830b-4a71-b624-bea6170a5cff",
             "name": "traumaberatung"
+        },
+        "556e1d420242a": {
+            "poid": "03e22235-6cee-4c38-b563-a41792da0853",
+            "name": "Ausländerrat Dresden e.V."
         },
         "556e1d2cd0160": {
             "poid": "079c9ee8-f3aa-4ff7-84b1-02f8958ba02e",
@@ -22,22 +30,66 @@
             "poid": "0b252073-2153-4a26-a92f-07b7252fc67d",
             "name": "AG Asylsuchende [GRH]"
         },
+        "556e1d37020c1": {
+            "poid": "0c4cb48e-ebee-424c-9a86-0714bbf7359f",
+            "name": "Initiative \"Brücken schaffen\""
+        },
+        "556e1d4585894": {
+            "poid": "0cf4f336-fa56-46d3-9405-a9002cd4ccb6",
+            "name": "MEDEA Frauen-und Mädchengesundtheitszentrum e.V."
+        },
         "556e1d2d40468": {
             "poid": "0e1d80c3-3852-49eb-979d-62d93e2b3342",
             "name": "medinetz"
         },
+        "556e1d33f0698": {
+            "poid": "120f7833-9cfc-4737-b60b-efd1ebd7146e",
+            "name": "Kontaktgruppe Asyl e.V."
+        },
+        "556e1d3ca3475": {
+            "poid": "14317706-3294-47b8-96b4-def199e16099",
+            "name": "RAA Sachsen Opferberatung - Unterstützung für Betroffene rechtsmotivierter und rassistischer Gewalt"
+        },
         "556e1d2bcad46": {
             "poid": "1bee3238-0a87-43a8-8f0c-8b30411a4dda",
             "name": "Verein Pro Pieschen e.V."
+        },
+        "556e1d6094778": {
+            "poid": "1de2560c-acb5-4770-8704-f3fbd81b2c70",
+            "name": "Jugendwerk Dresden"
+        },
+        "556e1d3312d71": {
+            "poid": "2508828d-e587-4b3e-95a7-7912dceb599a",
+            "name": "Bündnis Buntes Radebeul"
         },
         "556e1d2b97066": {
             "poid": "299b605a-d445-47f2-913f-0fc3f4b6f466",
             "name": "Willkommen in Hochland",
             "description": "' اس ادارے کی نیت کے پناہ گزینوں اور پناہ کے متلاشیوں ڈریسڈن اور سرحد کے ساتھ واقعہ علاقوں میں رہنے والے کے حالات کی بہتری ہے ۔ ہم امداد اور تعاون پیش ڈریسڈن میں آمد اور نیا رہائشیوں کے انضمام کے لئے ۔ ہم کوونکالاشن، دیکھ بھال\/مدد، روزگار کے مواقع، بین الثقافتی کی ترقی اور دیگر واقعات پیش کرتے ہیں.'"
         },
+        "556e1d3f4e27d": {
+            "poid": "2dc67f96-fd04-40e4-b103-0b5366f71c3b",
+            "name": "Verein Pro Pieschen e.V."
+        },
+        "556e1d4dafd4a": {
+            "poid": "3147a174-8c15-4376-ad6b-5eb3c69d090d",
+            "name": "traumaberatung"
+        },
+        "556e1d38afaef": {
+            "poid": "34334bf7-e28a-48a0-ab4a-0862973267e1",
+            "name": "arche noVa - Initiative für Menschen in Not e.V."
+        },
         "556e1d2f16fb3": {
             "poid": "35441478-b502-4703-8be7-6e90b9683490",
             "name": "Initiative für Flüchtlinge Bühlau-Rochwitz"
+        },
+        "556e1d5d84f2b": {
+            "poid": "38cb32de-beee-4731-a853-544a55cc231a",
+            "name": "German lessons für Refugees Dresden"
+        },
+        "556e1d5acf0b5": {
+            "poid": "38e77c25-0610-46b8-8e6c-326e25a6e666",
+            "name": "Dresden - place to be e. V."
         },
         "556e1d2b5b84a": {
             "poid": "38ff1ef4-fa0f-4781-a445-7d2367e89aa9",
@@ -49,10 +101,29 @@
             "name": "DAMF Deutschkurse für Asylsuchende",
             "description": "جرمن کورس الپحبیٹاسشن سے چھ مشکل سطحوں کے ذریعے A1 کے خاتمے کے لئے شروع کر رہا ہے، سیاسی پناہ کے لیے متلاشیوں جو اب بھی دائیں\/تک رسائی ایسف - یا انضمام کے کورس نہیں ہے ۔ 60 رضاکارانہ اساتذہ ca. 30 جرمن کورس سکھائے جائیں گے ۔ نئے کورس اور پلیسمیںٹ\/گریڈنگ ٹیسٹ کا آغاز سال میں چار مرتبہ کی جگہ لے"
         },
-        "556e1d2f49edc": {
-            "poid": "4ac53a9b-a8fd-456d-aa69-8546e156e05f",
-            "name": "TOLERADE",
-            "description": "ڈریسڈن، میں بیزاری رجحانات کے ساتھ موسیقی پریڈ Saxony کی مخالفت کیا جا سکتا ہے ۔ یہ تنوع ڈریسڈن کے ثقافتی منظر کے اندر بیک وقت مظاہرہ ہے"
+        "556e1d552ba79": {
+            "poid": "3b4c083d-4716-4cdf-9673-b58971a43ee6",
+            "name": "International Café im Artderkultur e.V."
+        },
+        "556e1d43b6579": {
+            "poid": "3e0ac87f-e6ec-4e7f-a6c6-940e07ca673c",
+            "name": "Leuben ist bunt"
+        },
+        "556e1d5c3680a": {
+            "poid": "409b0fab-1094-4c0e-ad85-94d052a756b1",
+            "name": "Initiative für Flüchtlinge Bühlau-Rochwitz"
+        },
+        "556e1d521c2fd": {
+            "poid": "41bca8b2-66ca-454c-a18e-1bb7221b8fa4",
+            "name": "Regionalkoordination Flüchtlingssozialarbeit Prohlis\/Leuben"
+        },
+        "556e1d56602fb": {
+            "poid": "46f5adbf-45fb-4f48-b2cb-fec8acbf222a",
+            "name": "HELLERAU - Europäisches Zentrum der Künste Dresden"
+        },
+        "556e1d53c320a": {
+            "poid": "4d933a95-9b0e-46d5-b261-c3a7f77e2f4b",
+            "name": "Dresdner Verein für soziale Integration von Ausländern und Aussiedlern e.V."
         },
         "556e1d2eaa693": {
             "poid": "4eaaaef1-215e-41cc-ac7b-63fc5be10303",
@@ -62,14 +133,42 @@
             "poid": "4f73160a-ba47-48ff-889b-eb13dfec2b8d",
             "name": "KAMA Dresden e.V."
         },
+        "556e1d4a3d749": {
+            "poid": "4f8fded4-04bf-4da0-ad53-2762ff18a5bc",
+            "name": "Netzwerk Asyl Migration Flucht (NAMF)"
+        },
         "556e1d2c436b4": {
             "poid": "53eff440-8f90-4b4d-9d1b-8ce64d996f32",
             "name": "Ausländerrat Dresden e.V."
+        },
+        "556e1d5df41ad": {
+            "poid": "549abbf0-d622-4ac3-b451-42697e639457",
+            "name": "Women* refugee meeting"
+        },
+        "556e1d466087c": {
+            "poid": "54fe9add-b808-4c73-bb43-fc227b82b115",
+            "name": "AG Asylsuchende [GRH]"
+        },
+        "556e1d5057f02": {
+            "poid": "563e9861-702d-4544-9fd4-cda0a61dfd7f",
+            "name": "gemeindedolmetscherdienst"
+        },
+        "556e1d4903af6": {
+            "poid": "5a1083c6-3dd9-4343-8d16-697eab382b63",
+            "name": "LAG politisch-kulturelle Bildung Sachsen e. V."
+        },
+        "556e1d3a0df7c": {
+            "poid": "5b2f2fe2-1fc5-4148-9f78-472f9fb4309c",
+            "name": "SPIKE Dresden"
         },
         "556e1d2c50c8b": {
             "poid": "5cbea085-fbf8-4a6e-b3a7-7daf50debea4",
             "name": "Leuben ist bunt",
             "description": "ہمارے نیٹ ورک 'لیوبان یکم bunt' ('لیوبان ہے رنگین') کے شہر ضلع بیورو، چرچ کے نمائندوں پر مشتمل ہے اور نوجوان امداد کے دفتر میں لیوبان ۔"
+        },
+        "556e1d481ddf4": {
+            "poid": "5cdb7b06-d09c-4369-bfc6-8d011cdb1369",
+            "name": "Internationale Gärten Dresden e. V."
         },
         "556e1d2ccf2da": {
             "poid": "5cdbb030-5b88-48c8-8e19-7f09ede50df2",
@@ -85,6 +184,14 @@
             "poid": "5eb80e2e-5355-4c1f-92c8-7be5faab43cf",
             "name": "Internationale Gärten Dresden e. V."
         },
+        "556e1d35b069f": {
+            "poid": "615d1e78-d286-4488-99b2-63811a3a5530",
+            "name": "Willkommen in Löbtau"
+        },
+        "556e1d3ad5a31": {
+            "poid": "62781231-5e77-4529-9bb0-621fc01cb1a5",
+            "name": "AWO Sonnenstein gGmbH, Asylberatung"
+        },
         "556e1d2aa1087": {
             "poid": "62c0044a-8c47-4fd8-be7e-b07db75708c7",
             "name": "Kontaktgruppe Asyl e.V.",
@@ -93,6 +200,10 @@
         "556e1d2ecb39c": {
             "poid": "651cc67c-34a4-4a33-9333-7b2d6e56de47",
             "name": "Bürgercourage e.V."
+        },
+        "55efe9bb3d98f": {
+            "poid": "683d6fff-cdfe-49c7-b763-c0a74275868d",
+            "description": "سب ہیلو!\"\r\nہم، ڈریسڈن سے ایک موسیقی کے گروپ،\r\nہم ہمارے ساتھ کچھ موسیقی کو کھیلنے کے لئے چاہتے ہیں جو ان دلچسپی کے لئے تلش کر رہے.\r\nہم ہر ہفتے کو پورا، اپنے ملک سے گانے، نغمے کھیلنے کے لئے کئی ماہ کے لئے ایک موسیقی\r\nمنصوبے شروع کرنا چاہتے ہیں اور ہم نے آخر میں ایک بڑا کنسرٹ کے ساتھ کام کریں گے!\r\nاگر آپ دلچسپی رکھتے ہیں؟\r\nآپ کو ایک ساز کھیل رہے ہیں؟ آپ کو ایک گلوکار ہیں؟\r\nیہاں مفید مہارت کے بارے میں آپ کا نام، رابطہ، محل وقوع اور معلومات کو چھوڑ کر یا ہم سے\r\nرابطہ کریں:\r\n"
         },
         "556e1d2db8b1b": {
             "poid": "733259a7-4e04-48bb-8ae3-92dba20c9efd",
@@ -112,6 +223,14 @@
             "poid": "7e325694-2b57-452e-ab63-e885a151d7c0",
             "name": "Sächsischer Flüchtlingsrat"
         },
+        "556e1d4f0f02e": {
+            "poid": "7f084648-c75f-4e73-92ee-f285e1ba990a",
+            "name": "Ausländerbeirat"
+        },
+        "556e1d50cfdd0": {
+            "poid": "826f576d-a926-42fd-b6ee-a8456a4073f5",
+            "name": "Regionalkoordination Flüchtlingssozialarbeit Cotta"
+        },
         "556e1d2ad2e1e": {
             "poid": "85dd2029-2d50-4ca0-bcc0-e8c98a8f305a",
             "name": "Willkommen in Löbtau",
@@ -130,10 +249,18 @@
             "poid": "89ca6a5c-765b-49ee-ae09-8eff5828eaac",
             "name": "International Café im Artderkultur e.V."
         },
+        "556e1d3777560": {
+            "poid": "8b0009d9-f127-4349-b207-7d794b6336dc",
+            "name": "Save me Dresden"
+        },
         "556e1d2e25d47": {
             "poid": "8cfd8a1c-5e5d-4fe6-b2e7-1e565f2bee1a",
             "name": "Dresdner Verein für soziale Integration von Ausländern und Aussiedlern e.V.",
             "description": "see webpage"
+        },
+        "556e1d528d696": {
+            "poid": "96cfec2c-bd96-4c75-a9fe-992f34e3aef2",
+            "name": "Regionalkoordination Flüchtlingssozialarbeit Altstadt\/Pauen"
         },
         "556e1d2dbd631": {
             "poid": "97b6046a-d926-45e4-8c7a-6aeba481ffb8",
@@ -145,10 +272,30 @@
             "name": "Save me Dresden",
             "description": "' مانٹرنگس کی ثالثی برائے مہاجرین (باز آبادکاری اور رہائش؟) ۔  جرمنی اور ڈریسڈن میں تمام مانٹرنگس کا سینٹرل کوآرڈینیشن کی باز آبادکاری کے پروگرام کی بہتری کے لئے سیاسی مشغولیت.'"
         },
+        "556e1d4bf254c": {
+            "poid": "9d1bafb3-0130-4e71-ad7b-d1a5ad1847c6",
+            "name": "medinetz"
+        },
+        "556e1d56d400d": {
+            "poid": "a2ab66a3-cbbc-4be7-9135-7f402e96e78a",
+            "name": "Regionalkoordination Neustadt\/Klotzsche\/Pieschen"
+        },
         "556e1d2adf6bc": {
             "poid": "a365837a-147c-4c69-b621-567a959b5056",
             "name": "arche noVa - Initiative für Menschen in Not e.V.",
             "description": "ہم نے امداد کے پناہ گزین اور دیگر گروپوں کی طرف سے\/کے ذریعے مالی امداد کی معاونت اور اسکولوں کے لئے فرار اور پناہ کے موضوع پر تعلیم مواد تیار ہیں ۔"
+        },
+        "556e1d3bbc71a": {
+            "poid": "a3c9a7c8-d516-4ac0-947d-b15a608674e1",
+            "name": "ZMO-Jugend e.V."
+        },
+        "556e1d4118730": {
+            "poid": "abf7f6e4-d0db-411e-92b2-332a2ecea32a",
+            "name": "Pieschen für alle"
+        },
+        "556e1d354601f": {
+            "poid": "acf5ebff-f1f9-4186-b9a0-068df089b3ea",
+            "name": "Laubegast ist Bunt"
         },
         "556e1d2b592c6": {
             "poid": "ad5daf17-14e1-4f94-a3c7-511bb664ccb2",
@@ -158,15 +305,30 @@
             "poid": "b57ef8fc-0c4f-4089-b6ef-e4a992505675",
             "name": "Pieschen für alle"
         },
+        "556e1d304954b": {
+            "poid": "b5a9ad76-560e-4b76-8b8f-140ccdd1e4fc",
+            "name": "Das interkulturelle Sofa"
+        },
+        "556e1d4e90550": {
+            "poid": "b655669f-cdd1-40a7-882a-994e1e905ceb",
+            "name": "KAMA Dresden e.V."
+        },
         "556e1d2cbbb72": {
             "poid": "b9455f3c-5c3e-4cfc-8473-3a4f2a62ed00",
             "name": "Netzwerk \"Gorbitz International\"",
             "description": "نیٹ ورک ' گورباٹز انٹرنیشنل کی خواتین اور مرد سے گورباٹز اور گردونواح سے مختلف سہولیات، کلیساؤن، جماعتوں اور تنظیموں کے نمائندوں پر مشتمل ایک اتحاد ہے ۔ مشترکہ مقصد کے پڑوس میں اچھے تعلقات کے لیے کھڑے ہو جاؤ اور مختلف ممالک کے لوگوں کے لئے ایک کھلی اور استقبال اٹموشپہیری برقرار رکھنے کے لئے ہے ۔ اس نیٹ ورک کے اندر سبگرایپس اور ایک کمیونٹی کیفے، ایک کام گروپ تنظیم اور تعلقات عامہ کام، کمیونٹی باغ، جیسے منصوبے موجود ہیں اور وغیرہ ۔"
         },
-        "556e1d2e98280": {
-            "poid": "bebc4fa1-7a87-4538-a3da-91a412866569",
-            "name": "Altstädter Dialog",
-            "description": "اس اقدام سے حکومت، تنظیموں اور سول سوسائٹی کو نو قائم"
+        "556e1d57b1f7b": {
+            "poid": "b9d0185c-4bdc-4551-84b6-2d1d1647f0c8",
+            "name": "Regionalkoordination Blawitz\/Schönfld-Weißig\/Loschwitz"
+        },
+        "556e1d3d87f99": {
+            "poid": "bb0571e4-d44c-4c27-a8c6-8326ec3529a6",
+            "name": "Willkommen in Hochland"
+        },
+        "556e1d54a8b19": {
+            "poid": "bc764f73-7457-48e8-8e44-55827cafb159",
+            "name": "Jugendmigrationsdienst"
         },
         "556e1d2bd5a6f": {
             "poid": "c04359b1-98eb-4345-8a4d-bf178dceba2e",
@@ -177,13 +339,17 @@
             "name": "Laubegast ist Bunt",
             "description": "مقامی نیٹ ورک 'لاوبیگسٹ یکم bunt' (لاوبیگسٹ ہے رنگین) جمہوریت کے فروغ، open-mindedness کے لیے 2010 کے بعد سے وورکاس \/ المشرب رویوں اور رواداری کے شہر کے اس حصے میں ہیں ۔ 2014 کے بعد مہاجرین کی امداد ہماری اہم موضوعات میں سے ایک بن چکا ہے ۔"
         },
-        "556e1d2f2b679": {
-            "poid": "c5562be0-9ecd-4b03-99fa-5748af9c85c8",
-            "name": "Runder Tisch Asyl, OA Neustadt"
+        "556e1d4c72a6e": {
+            "poid": "c3cd2544-7525-4bce-8d76-3992a06b387c",
+            "name": "Sächsischer Flüchtlingsrat"
         },
-        "556e1d2d38fb9": {
-            "poid": "c9b62da8-75a9-4d83-b89e-59c5cecbe946",
-            "name": "Welcome Center TU Dresden "
+        "556e1d42cea11": {
+            "poid": "c62edd97-773b-41db-878b-908a8a4d3246",
+            "name": "Prohlis ist bunt"
+        },
+        "556e1d5b4b3b1": {
+            "poid": "ccea6ce1-7a13-4d98-a58f-3ef704c74576",
+            "name": "Bürgercourage e.V."
         },
         "556e1d2c7c196": {
             "poid": "cee5ac87-6c6d-4929-8531-83f8783e1b25",
@@ -206,6 +372,10 @@
             "poid": "e0e708f8-9693-4438-9b91-596b1a45ad4f",
             "name": "Das interkulturelle Sofa"
         },
+        "556e1d403578d": {
+            "poid": "e2535b15-d749-4f08-ae29-09cd14e5ea66",
+            "name": "Bündnis Buntes Meißen"
+        },
         "556e1d2e48238": {
             "poid": "e53ec540-d7f2-46c7-aa87-6be89afe5aea",
             "name": "Regionalkoordination Neustadt\/Klotzsche\/Pieschen"
@@ -223,6 +393,10 @@
             "poid": "edf6e825-5428-47ef-aaef-b9d469958cad",
             "name": "Gruppe Cartonage",
             "description": "جرمنی میں پناہ گزینوں کے موجودہ ڈھانچے کو ان کے ساتھ نمٹنے کے لئے تنقید کے حقوق کی خاطر"
+        },
+        "556e1d3e6ae89": {
+            "poid": "ee4882e9-4454-44b1-a106-26c8c9261f1b",
+            "name": "Johannstädter Kulturtreff e.V."
         },
         "556e1d2c45abc": {
             "poid": "f9508e1b-2686-4454-8cf9-94ffd19af2e2",

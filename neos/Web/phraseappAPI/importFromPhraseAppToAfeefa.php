@@ -1,46 +1,80 @@
 <?php
 include('sql.php');
 
-$locale = isset($_GET['locale']) && in_array($_GET['locale'], ['de', 'en', 'ar', 'ur', 'fr', 'it', 'ti', 'sr', 'fa', 'ru']) ? $_GET['locale'] : false;
-$type = isset($_GET['type']) && in_array($_GET['type'], ['initiative', 'marketentry', 'location']) ? $_GET['type'] : false;
+require 'vendor/autoload.php';
+use GuzzleHttp\Client;
 
-if (!$locale) die("no or wrong locale, chose from 'de', 'en', 'ar', 'ur', 'fr', 'it', 'ti', 'sr', 'fa', 'ru'.");
-if (!$type) die("no or wrong type, chose from 'initiative', 'marketentry', 'location'.");
+///////////
+// SETUP //
+///////////
+$dev = true;
 
-header('Content-Type: application/json; charset=utf-8');
-header("Content-Disposition: attachment; filename=" . $type . "_" . date('Y_m_d', time()) . "_" . $locale . ".json");
+$configPhraseApp = array(
+	'projects' => [
+		'marketentry' => [
+			'project_id' => $dev ? '26a2226676a2c292ab0bcf8c8adc9e42' : 'e989a075962418d0e05398d2fc107265',
+			'accessToken' => 'a1bf71362733ee24d1b170b33f9f067ebbc8b15695dbd4e6c6710f96d9b8b80a'
+		]
+	]
+);
 
-if ($type == 'location') {
-    $result = sql("select entry_id as eid,
-        convert(cast(convert(name using utf8) as binary) using latin1) as n,
-        convert(cast(convert(description using utf8) as binary) using latin1) as des,
-        convert(cast(convert(openinghours using utf8) as binary) using latin1) as oh,
-        persistence_object_identifier as poid
-        from ddfa_main_domain_model_" . $type . "
-        where locale = '" . $locale . "'");
-} else {
-    $result = sql("select entry_id as eid,
-        convert(cast(convert(name using utf8) as binary) using latin1) as n,
-        convert(cast(convert(description using utf8) as binary) using latin1) as des,
-        persistence_object_identifier as poid
-        from ddfa_main_domain_model_" . $type . "
-        where locale = '" . $locale . "'");
+$clientPhraseApp = new Client([
+	// Base URI is used with relative requests
+	'base_uri' => 'https://api.phraseapp.com/api/v2/',
+	// You can set any number of default request options.
+	'timeout'  => 2.0,
+	"verify" => false
+]);
+
+
+$locales = ['ar', 'de', 'en', 'es', 'fa', 'fr', 'ku', 'ps', 'ru', 'sq', 'sr', 'ti', 'tr', 'ur'];
+$types = ['marketentry'];
+
+//////////////////////////////
+// FETCH FROM PHRASEAPP API //
+//////////////////////////////
+foreach ($types as $type){
+	foreach ($locales as $locale){
+		
+		echo '<h3>'.$locale.'</h3>';
+		for($page = 1; $page <= 1000; $page++) {
+			
+			$response2 = $clientPhraseApp->request('GET', 'projects/' .$configPhraseApp['projects'][$type]['project_id']. '/locales/' . $locale . '/translations', array(
+				'query' => [
+					'access_token' => $configPhraseApp['projects'][$type]['accessToken']
+				],
+				'multipart' => array(
+					[
+						'name'     => 'q',
+						'contents' => ''
+						// 'contents' => 'unverified:true'
+					],
+					[
+						'name'     => 'page',
+						'contents' => strval($page)
+					]
+				)
+			));
+
+			// echo $response2->getBody();
+
+			$json = json_decode( $response2->getBody());
+			// var_dump($json);
+			if( count($json) < 1 ) break;
+
+			foreach ($json as $key => $value){
+
+				$entryId = explode(".", $value->key->name)[1];
+				$attribute = explode(".", $value->key->name)[2];
+				$translation = mysql_real_escape_string($value->content);
+
+				$result = sql("update ddfa_main_domain_model_" . $type . "
+					set " . $attribute . "=convert('" . $translation . "'using utf8)
+					where locale='" . $locale . "' AND entry_id='" . $entryId . "'");
+				echo $entryId . ' > ' . $translation . ' ('.$result.')<br>';
+			}
+
+		}
+		
+	}
 }
-
-$objects = [];
-while ($object = mysql_fetch_object($result)) {
-    unset($arr);
-    $arr['poid'] = $object->poid;
-
-    if ($type == 'location' && isset($object->oh) && $object->oh != "")
-        $arr['openinghours'] = $object->oh;
-    if (isset($object->n) && $object->n != "")
-        $arr['name'] = $object->n;
-    if (isset($object->des) && $object->des != "")
-        $arr['description'] = $object->des;
-
-    if (sizeof($arr) > 1)
-        $objects[$object->eid] = $arr;
-}
-
-echo json_encode([$type => $objects], JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT | JSON_FORCE_OBJECT);

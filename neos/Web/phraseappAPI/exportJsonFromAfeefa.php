@@ -19,9 +19,15 @@ if ($type == 'location') {
         from ddfa_main_domain_model_" . $type . "
         where locale = '" . $locale . "'");
 } else {
+    // $result = sql("select entry_id as eid,
+    //     convert(cast(convert(name using utf8) as binary) using latin1) as n,
+    //     convert(cast(convert(description using utf8) as binary) using latin1) as des,
+    //     persistence_object_identifier as poid
+    //     from ddfa_main_domain_model_" . $type . "
+    //     where locale = '" . $locale . "'");
     $result = sql("select entry_id as eid,
-        convert(cast(convert(name using utf8) as binary) using latin1) as n,
-        convert(cast(convert(description using utf8) as binary) using latin1) as des,
+        cast(convert(name using utf8) as binary) as n,
+        cast(convert(description using utf8) as binary) as des,
         persistence_object_identifier as poid
         from ddfa_main_domain_model_" . $type . "
         where locale = '" . $locale . "'");

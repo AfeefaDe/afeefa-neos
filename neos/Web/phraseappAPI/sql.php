@@ -17,6 +17,11 @@ function sql($request, $variant = 1) {
     $pass = "";
     $db = "afeefa_neos_new";
 
+    // uberspace
+    // $server = "localhost";
+    // $user = "afeefa";
+    // $pass = "eeceiNg4achaiyeing";
+    // $db = "afeefa_dev";
 
     /////////////
     // Connect //
@@ -26,6 +31,7 @@ function sql($request, $variant = 1) {
     if (!$link) {
         die("<div class='error'>No connection to database! :(</div><br />");
     }
+    mysql_set_charset('utf8', $link);
 
     $db_selected = mysql_select_db($db, $link);
     if (!$db_selected) {

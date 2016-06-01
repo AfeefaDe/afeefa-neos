@@ -1,32 +1,55 @@
 {
-    "initiative": {
+    "entry": {
         "556e1d2bcad46": {
             "poid": "0a01afb3-b5cf-4363-8726-cb46d2ffbfe8",
             "name": "Verein Pro Pieschen e.V."
         },
+        "556e1d4a3d749": {
+            "poid": "0c488352-9b6b-4eb8-a847-65febfe04e15",
+            "name": "Netzwerk Asyl Migration Flucht (NAMF)"
+        },
         "556e1d2adc55d": {
             "poid": "12cff0de-3c05-4aa9-90c9-7e8efbe50627",
             "name": "Save me Dresden",
-            "description": "مدیتیشن توسط منتوها برای پناهندگان (اسکان مجدد و محل اقامت؟).\nتعامل سیاسی برای بهبود برنامه اسکان مجدد در\n  آلمانی و هماهنگی مرکزی از تمام مشاوران در درسدن."
+            "description": "مدیتیشن توسط منتوها برای پناهندگان (اسکان مجدد و محل اقامت؟).\r\nتعامل سیاسی برای بهبود برنامه اسکان مجدد در\r\n  آلمانی و هماهنگی مرکزی از تمام مشاوران در درسدن."
         },
         "556e1d2b5b84a": {
             "poid": "1aaabbf7-a79e-4396-8cec-639a2aa470fc",
             "name": "ZMO-Jugend e.V.",
             "description": "کار ما ایجاد یک \"محل ملاقات بین فرهنگی برای جوانان\" کودکان، نوجوانان و همچنین پدران و مادران با و بدون پس زمینه مهاجر میباشد. ما بر اساس نیازها و منافع از بازدید کنندگان و اعضای مان عمل میکنیم. از آنجا که  تعداد پناهندگان رو به افزایش است،کارهای ما توسط این گروه انجام میشود. ما شبکه ای با خدمات حرفه ای در زمینه مهاجرت هستیم."
         },
+        "556e1d33f0698": {
+            "poid": "1c2a4b68-8d9a-4f6b-93f6-e77ff127add4",
+            "name": "Kontaktgruppe Asyl e.V."
+        },
         "556e1d2aa1087": {
             "poid": "1cc3c828-d8b5-42fc-a878-fa503eca05a1",
             "name": "Kontaktgruppe Asyl e.V.",
             "description": "ما، اعضای گروه تماس پناهندگی (KoGA)، پناهجویان و پناهندگان حمایت در درسدن برای غلبه بر موانع اداری و ایجاد فرصت و جلسات دوستانه  با ما تماس بگیرید. با احترام، ما بر روی نقاط قوت و پتانسیل این افراد کار کرده و سخنگوی این افراد خواهیم شد. مبارزه آشکار در بر علیه سرکوبگری و تعصبات نژادی برای جامعه ای آزاد و رنگارنگ جزو فعالیت های ماست."
         },
-        "556e1d2f49edc": {
-            "poid": "26ac6f81-36d5-4ba8-89a3-ac8d3433af9e",
-            "name": "TOLERADE",
-            "description": "Musikparade, mit der fremdenfeindlichen Tendenzen in Dresden, Sachsen etwas entgegensetzt werden soll. Sie ist zugleich Demonstration der Vielfalt innerhalb der Dresdner Kulturlandschaft"
+        "556e1d4118730": {
+            "poid": "21ebff56-fe78-482a-ac75-9b7323322444",
+            "name": "Pieschen für alle"
+        },
+        "556e1d35b069f": {
+            "poid": "26beb7fd-c2fe-45bc-be47-3077b3627455",
+            "name": "Willkommen in Löbtau"
+        },
+        "556e1d354601f": {
+            "poid": "2f5abb2e-6fda-40ce-bbc1-aef04d89bf9c",
+            "name": "Laubegast ist Bunt"
         },
         "556e1d2a532e3": {
             "poid": "3115e3d3-d3bd-4820-86ba-9052802ad9ba",
             "name": "Das interkulturelle Sofa"
+        },
+        "556e1d37020c1": {
+            "poid": "349daf65-b181-4bad-90f8-a6cb2f725b8d",
+            "name": "Initiative \"Brücken schaffen\""
+        },
+        "556e1d56d400d": {
+            "poid": "34b86800-e948-415c-bc3e-90d12077baec",
+            "name": "Regionalkoordination Neustadt\/Klotzsche\/Pieschen"
         },
         "556e1d2ea645d": {
             "poid": "36a54cae-151f-4d4e-841f-014fc9134c96",
@@ -41,6 +64,10 @@
             "poid": "39707ef1-9c6f-482c-9df7-9e0b50a22bd5",
             "name": "KAMA Dresden e.V."
         },
+        "556e1d4f0f02e": {
+            "poid": "3aad7f9d-6cca-45da-89c2-07d107cfa951",
+            "name": "Ausländerbeirat"
+        },
         "556e1d2c45abc": {
             "poid": "3b6df4d1-5901-4eba-a23f-a24de5dcc9e9",
             "name": "Prohlis ist bunt",
@@ -53,21 +80,45 @@
         "556e1d2ad83b5": {
             "poid": "3dcbe352-3a95-481d-802e-f2997408c7ef",
             "name": "Initiative \"Brücken schaffen\"",
-            "description": "نهضت ساخت پل برای همکاری بین کلیسا و احزاب سیاسی و دفتر مرکزی \nاحزاب و دفتر مرکزی محلیOrtsamt Klotsche، Langebrück و Hellerau (مناطق شهر) به وجود آمده است. ما می خواهیم به ورود به زندگی جمعی آرام و مسالمت آمیز را برای پناهندگان و پناهجویان محقق کنیم "
+            "description": "نهضت ساخت پل برای همکاری بین کلیسا و احزاب سیاسی و دفتر مرکزی \r\nاحزاب و دفتر مرکزی محلیOrtsamt Klotsche، Langebrück و Hellerau (مناطق شهر) به وجود آمده است. ما می خواهیم به ورود به زندگی جمعی آرام و مسالمت آمیز را برای پناهندگان و پناهجویان محقق کنیم "
+        },
+        "556e1d43b6579": {
+            "poid": "40e674cb-228e-4e82-bdfc-983d33573693",
+            "name": "Leuben ist bunt"
         },
         "556e1d2db064f": {
             "poid": "46cf05ef-668b-4d4b-bfa2-a2258cb7341c",
             "name": "gemeindedolmetscherdienst"
+        },
+        "556e1d3e6ae89": {
+            "poid": "4a06b6b9-c533-4e48-bc87-abadd25ce1ff",
+            "name": "Johannstädter Kulturtreff e.V."
         },
         "556e1d2a598c7": {
             "poid": "4a37c593-156f-4a4a-ad4d-51540bb761bf",
             "name": "DAMF Deutschkurse für Asylsuchende",
             "description": "کلاسهای زبان آلمانی با شروع از الفبا تا پایان A1 با شش سطح دشواری، برای پناهجویان که هنوز سمت دسترسی به ESF یا دوره ادغام ندارد. 60 معلم داوطلب برای تدریس  30 دوره آلمانی. شروع دوره های جدید و آزمون تعیین سطح  چهار بار در سال"
         },
+        "556e1d3ad5a31": {
+            "poid": "4bcff49a-9f15-4491-b03e-f5b43c0eff9e",
+            "name": "AWO Sonnenstein gGmbH, Asylberatung"
+        },
+        "556e1d3d87f99": {
+            "poid": "4bf01d88-9e1e-4553-801a-d7bb7e5738c9",
+            "name": "Willkommen in Hochland"
+        },
         "556e1d2a5bfb0": {
             "poid": "4de343ea-f47e-433a-84cf-131c6c61dbc2",
             "name": "Bündnis Buntes Radebeul",
             "description": "کلاسهای زبان آلمانی برای سطوح مختلف داده شده توسط معلمان داوطلبانه، از جمله دوره مقدماتی، دستیابی به سطح A1 \/ A2 به عنوان پایه ای برای دوره زبان قانونی مورد نیاز، گروه ورزش مکمل. پشتیبانی \/ همراهی با مقامات، دکتر، کارفرمایان، و غیره. ورزش و فعالیت های فرهنگی و \"Tätigkeiten handwerklicher\". جلسات ماهانه در Unterkunft مرکزی در Radebeul برای Austausch"
+        },
+        "556e1d304954b": {
+            "poid": "4ef0759a-d8c9-4b3a-af1a-4b31b665961f",
+            "name": "Das interkulturelle Sofa"
+        },
+        "556e1d403578d": {
+            "poid": "4f0cdd7d-0a5d-44ed-b14e-73804dec734c",
+            "name": "Bündnis Buntes Meißen"
         },
         "556e1d2cbbb72": {
             "poid": "525ecf99-aa3e-4080-b457-15ffbfdbc758",
@@ -84,19 +135,71 @@
             "name": "German lessons für Refugees Dresden",
             "description": "Kurse in der Bibliothek Neutstadt und Zentralbibliothek"
         },
+        "556e1d5acf0b5": {
+            "poid": "59074a27-f52f-46ab-aebe-800b2638fa73",
+            "name": "Dresden - place to be e. V."
+        },
         "556e1d2d77653": {
             "poid": "593e5161-8d02-43d8-91e7-954d9552aa4c",
             "name": "Ausländerbeirat"
+        },
+        "556e1d5c3680a": {
+            "poid": "597a5d97-c42d-4278-afcf-d0810e7e7dc5",
+            "name": "Initiative für Flüchtlinge Bühlau-Rochwitz"
+        },
+        "556e1d3bbc71a": {
+            "poid": "5ab7f2a3-5d82-4fb8-acf2-3c1a62a2e374",
+            "name": "ZMO-Jugend e.V."
         },
         "556e1d2dbd631": {
             "poid": "5e5b73bb-fe79-4d3d-824a-fb8070aa7395",
             "name": "Regionalkoordination Flüchtlingssozialarbeit Prohlis\/Leuben",
             "description": "هماهنگی کارهای پناهجویان در Prohlis و Leuben، کار داوطلبانه"
         },
+        "556e1d53c320a": {
+            "poid": "60c3ba5d-05ec-48f1-9f57-ea0ead892f6d",
+            "name": "Dresdner Verein für soziale Integration von Ausländern und Aussiedlern e.V."
+        },
+        "556e1d3312d71": {
+            "poid": "624c79b2-ddf3-4b15-8a38-644dd5524f56",
+            "name": "Bündnis Buntes Radebeul"
+        },
         "556e1d2e25d47": {
             "poid": "65ad4de0-0b5c-49ca-87ea-c86494dd858a",
             "name": "Dresdner Verein für soziale Integration von Ausländern und Aussiedlern e.V.",
             "description": "به وبسایت مراجعه کنید"
+        },
+        "556e1d4903af6": {
+            "poid": "70161cbe-1e59-4647-885f-be6cf7409442",
+            "name": "LAG politisch-kulturelle Bildung Sachsen e. V."
+        },
+        "556e1d420242a": {
+            "poid": "73a141b1-d655-4fb8-a972-82a59978dd46",
+            "name": "Ausländerrat Dresden e.V."
+        },
+        "556e1d50cfdd0": {
+            "poid": "7457c627-caf6-4187-9ee0-96f0a43bff18",
+            "name": "Regionalkoordination Flüchtlingssozialarbeit Cotta"
+        },
+        "556e1d38afaef": {
+            "poid": "7868bcbe-fd94-4452-8f3e-d437884afcf1",
+            "name": "arche noVa - Initiative für Menschen in Not e.V."
+        },
+        "556e1d56602fb": {
+            "poid": "7a29e78a-3173-4297-bf38-2f031aa5fff6",
+            "name": "HELLERAU - Europäisches Zentrum der Künste Dresden"
+        },
+        "556e1d3777560": {
+            "poid": "7ab4f831-a886-4d17-a0a7-998576b2c33e",
+            "name": "Save me Dresden"
+        },
+        "556e1d313acbd": {
+            "poid": "7b02df2e-32c6-40ea-a060-d69e497dcf03",
+            "name": "DAMF Deutschkurse für Asylsuchende"
+        },
+        "556e1d4dafd4a": {
+            "poid": "7fcd2651-3caa-4176-a2d7-2f584edcc738",
+            "name": "traumaberatung"
         },
         "556e1d2bd7497": {
             "poid": "7ff58f68-3442-4b0c-80df-2ef0a9d07c30",
@@ -105,23 +208,47 @@
         "556e1d2ad2e1e": {
             "poid": "806143dd-9366-4f34-a572-6343a6de4e99",
             "name": "Willkommen in Löbtau",
-            "description": "شبکه \"خوش آمدید به Löbtau\" می خواهد برای حمایت از پناهندگان برای ورود به شهر و حل مسایل اولیه آنها اقدام کند. ما می خواهیم بین\n پناهندگان و ساکنان پیوند ایجاد کنیم . شبکه متشکل ازشهروندان متعهد،  کلیسا، انجمن \/ باشگاه ها و احزاب سیاسی است."
+            "description": "شبکه \"خوش آمدید به Löbtau\" می خواهد برای حمایت از پناهندگان برای ورود به شهر و حل مسایل اولیه آنها اقدام کند. ما می خواهیم بین\r\n پناهندگان و ساکنان پیوند ایجاد کنیم . شبکه متشکل ازشهروندان متعهد،  کلیسا، انجمن \/ باشگاه ها و احزاب سیاسی است."
         },
         "556e1d2bd5a6f": {
             "poid": "821f4366-4b03-4ef0-9e7a-2c98b53a6a12",
             "name": "Bündnis Buntes Meißen"
         },
-        "556e1d2d38fb9": {
-            "poid": "8a5476be-a9ea-4bb2-8331-cfbd4562373b",
-            "name": "Welcome Center TU Dresden "
+        "556e1d5057f02": {
+            "poid": "88f47ed2-3968-4200-ad23-8d20bfc028ee",
+            "name": "gemeindedolmetscherdienst"
+        },
+        "556e1d521c2fd": {
+            "poid": "8c4767f0-8e51-4d09-9d0c-dc897d3ec090",
+            "name": "Regionalkoordination Flüchtlingssozialarbeit Prohlis\/Leuben"
         },
         "556e1d2c436b4": {
             "poid": "8d278613-7077-415d-a292-e19f03d60a6b",
             "name": "Ausländerrat Dresden e.V."
         },
+        "556e1d4e90550": {
+            "poid": "90b0bf35-6913-423e-b998-2dcb14f24de1",
+            "name": "KAMA Dresden e.V."
+        },
+        "55efe9bb3d98f": {
+            "poid": "90b4e8d3-5ec3-416e-b951-c4869d22479a",
+            "description": "سلم به همگی!\r\nما گروه موسیقی در درسدن هستیم و در جستجوی کسانی که دوست دارند با ما موسیقی\r\nتولید کنند. این یک پروژه موسیقی است که در آن ما و شما همدیگر را به مدت چند ماه هر\r\nهفته ملقات می کنیم، آهنگ هایی از کشور شما تمرین می کنیم و در پایان با هم یک\r\nکنسرت بزرگ برگزار می کنیم.\r\nعلقمند هستید؟ سازی می نوازید؟ می توانید خوانندگی کنید؟\r\nلطفا نام، شماره تماس، کشور و اطلعاتی راجع به این که چه سازی می نوازید یا توانایی\r\nخوانندگی تان را به این آدرس ایمیل کنید:\r\n!با تشکر\r\nblazmuzik@icloud.com facebook.com\/bandacomunale"
+        },
+        "556e1d481ddf4": {
+            "poid": "91db16b6-5926-46f6-81e3-bfe00380f00f",
+            "name": "Internationale Gärten Dresden e. V."
+        },
+        "556e1d42cea11": {
+            "poid": "91e4a6fb-2daa-49af-844e-34af7deac051",
+            "name": "Prohlis ist bunt"
+        },
         "556e1d2f16fb3": {
             "poid": "95594f88-ee58-4623-ae36-99bb60401085",
             "name": "Initiative für Flüchtlinge Bühlau-Rochwitz"
+        },
+        "556e1d528d696": {
+            "poid": "97d49a45-c811-433a-a5c8-021d9cf492de",
+            "name": "Regionalkoordination Flüchtlingssozialarbeit Altstadt\/Pauen"
         },
         "556e1d2f46873": {
             "poid": "997cd07a-c574-4445-8b73-1bca6a569e59",
@@ -135,6 +262,14 @@
             "poid": "9d43cf5e-32fd-4d63-ae9e-6b5283fc6ccb",
             "name": "Netzwerk Asyl Migration Flucht (NAMF)",
             "description": "فعالیتهای سیاسی برای حقوق آوارگان و مهاجران و علیه نژادپرستی از جمله کارهای ما است. ما یک لیست ایمیل  داریم که با آن می توانید اطلاعات بیشتری کسب کنید. برای پیوستن به لیست با این ایمیل تماس بگیرید. namf@notraces.net"
+        },
+        "556e1d552ba79": {
+            "poid": "9da3bc1a-0d72-45dd-ad25-d78bf5a886f5",
+            "name": "International Café im Artderkultur e.V."
+        },
+        "556e1d5d84f2b": {
+            "poid": "9e0681e2-832e-40d4-a95a-10c0cf9c8e3f",
+            "name": "German lessons für Refugees Dresden"
         },
         "556e1d2b592c6": {
             "poid": "a2cc94b6-be14-482b-9eb2-887837393a04",
@@ -160,6 +295,14 @@
             "poid": "bfb6aa39-f8ca-40ba-a4be-e9f3bd786dd9",
             "name": "traumaberatung"
         },
+        "556e1d5df41ad": {
+            "poid": "c30daafb-6890-4710-9613-2e6150f2be32",
+            "name": "Women* refugee meeting"
+        },
+        "556e1d4c72a6e": {
+            "poid": "c417756c-4a06-48c2-a9ca-35de5965d6f4",
+            "name": "Sächsischer Flüchtlingsrat"
+        },
         "556e1d2bc8980": {
             "poid": "c6052990-8089-41c5-8dfc-10a512adce72",
             "name": "Johannstädter Kulturtreff e.V.",
@@ -170,6 +313,10 @@
             "name": "Leuben ist bunt",
             "description": "شبکه ما (\"Leuben رنگارنگ است\") شامل نمایندگان اداره شهرستان، کلیسا و دفتر کمک جوانان در Leuben."
         },
+        "556e1d6094778": {
+            "poid": "c70ae499-0c27-452b-8f39-36e8daa1f8ce",
+            "name": "Jugendwerk Dresden"
+        },
         "556e1d2e48238": {
             "poid": "c89abb67-f038-4383-bf75-2224f095e375",
             "name": "Regionalkoordination Neustadt\/Klotzsche\/Pieschen"
@@ -179,28 +326,36 @@
             "name": "arche noVa - Initiative für Menschen in Not e.V.",
             "description": "کمک به پناهندگان و دیگر گروه ها از طریق کمک های مالی حمایت و توسعه مواد آموزش و پرورش در مورد فرار و پناهندگی در مدارس."
         },
-        "556e1d2e98280": {
-            "poid": "ce66b362-fdee-4156-ad8f-12ef64888f22",
-            "name": "Altstädter Dialog",
-            "description": "neugegründete Initiative aus Verwaltung, Vereinen und Zivilgesellschaft"
-        },
-        "556e1d2f2b679": {
-            "poid": "d1cbb85b-2970-4429-bdee-38340196229c",
-            "name": "Runder Tisch Asyl, OA Neustadt"
-        },
         "556e1d2d47a01": {
             "poid": "d32bb78a-7013-44b1-8f1c-878d99e932f7",
             "name": "Sächsischer Flüchtlingsrat"
         },
+        "556e1d54a8b19": {
+            "poid": "d4785b8a-d942-4af2-9dc2-7bb6ffd9745e",
+            "name": "Jugendmigrationsdienst"
+        },
         "556e1d2d40468": {
             "poid": "d4d6296a-a858-4108-8e62-623bca69f7a5",
             "name": "medinetz",
-            "description": "Die Menschenrechtsinitiative Medinetz Dresden e.V. vermittelt anonym und kostenlos medizinische Hilfe für Geflüchtete und Menschen ohne Aufenthaltsstatus.\n Wir sind eine unabhängige Initiative von Studierenden und engagierten ÄrztInnen, die von vielen Dresdener ÄrztInnen, Pflegenden, PsychotherapeutInnen, Hebammen und DolmetscherInnen unterstützt wird. \nUnser primäres Ziel ist es, Menschen ohne Papiere in Dresden und Umland Zugang zu einer medizinischen Versorgung zu ermöglichen, weil diese von staatlicher Seite nicht gewährleistet wird.\nDer Anspruch auf eine angemessene medizinische Versorgung ist ein Menschenrecht, welches Menschen ohne Papiere im Moment faktisch vorenthalten wird. Auch Asylsuchenden wird nur eine eingeschränkte \nmedizinische Versorgung gewährt. Mit unserer Arbeit möchten wir den Betroffenen den Zugang ermöglichen."
+            "description": "Die Menschenrechtsinitiative Medinetz Dresden e.V. vermittelt anonym und kostenlos medizinische Hilfe für Geflüchtete und Menschen ohne Aufenthaltsstatus.\r\n Wir sind eine unabhängige Initiative von Studierenden und engagierten ÄrztInnen, die von vielen Dresdener ÄrztInnen, Pflegenden, PsychotherapeutInnen, Hebammen und DolmetscherInnen unterstützt wird. \r\nUnser primäres Ziel ist es, Menschen ohne Papiere in Dresden und Umland Zugang zu einer medizinischen Versorgung zu ermöglichen, weil diese von staatlicher Seite nicht gewährleistet wird.\r\nDer Anspruch auf eine angemessene medizinische Versorgung ist ein Menschenrecht, welches Menschen ohne Papiere im Moment faktisch vorenthalten wird. Auch Asylsuchenden wird nur eine eingeschränkte \r\nmedizinische Versorgung gewährt. Mit unserer Arbeit möchten wir den Betroffenen den Zugang ermöglichen."
+        },
+        "557714121fbd6": {
+            "poid": "d641018d-9fce-4786-8e7a-10543fa28814",
+            "name": "دوچرخه سواری در درسدن – دوچرخه برای پناهنده ها",
+            "description": "باشه، و حتی پناهنده هایی که تازه وارد شهر می شن، می تونن به راحتی ازش استفاده کنن.\r\nما از کسانیکه دوچرخه اضافه یا بدون استفاده دارن، خواهش می‌کنیم که اونا رو به ما بدن. اما بیشتر این دوچرخه ها قدیمی یا خراب هستن و ما برای تعمیر و قابل استفاده کردنشون نیاز به زمان و کمک داریم.\r\nبه همین دلیل، روز بیست یونی (یکشنبه) بین ساعت 12 ظهر تا 6 بعدازظهر، همدیگه رو توی لابورشوله (Laborschule) درسدن واقع در گوربیتس (Gorbitz) می بینیم.\r\n\r\nاین برنامه به صورت رایگان برگزار می شه و ما توش به کسانیکه دوست دارن، دوچرخه سواری یاد می دیم. از اومدن بچه‌ها هم خوشحال می شیم و براشون تو محوطه مدرسه وسیله بازی وجود داره.\r\nخوراکی برای پذیرایی از همه هست، اما خوشحال می شیم اگه کسی بخواد همراه خودش خوراکی دیگه ای هم بیاره.\r\n\r\nزمان: 20 یونی، 12 ظهر تا 6 بعدازظهر\r\nمکان: لابورشوله (Laborschule)، اسپن اشتراسه (Espenstraße) شماره 3 , 01169 درسدن (ترام 2 یا 7، ایستگاه کیرشن اشتراسه (Kirschenstraße) – حواستون به تابلوی “Laborschule“ باشه!)"
+        },
+        "556e1d3f4e27d": {
+            "poid": "d838f90e-12a9-4057-a0d9-ed7989bb53db",
+            "name": "Verein Pro Pieschen e.V."
         },
         "556e1d2c4edab": {
             "poid": "d878425a-5f7f-4f92-b59c-7e6e53c5d23c",
             "name": "Saxonia Systems AG",
             "description": "به عنوان یک شرکت تاسیس شده در اجتماع ما علاقه مند به ارایه خدمات و قبول مسوولیت هستیم. ما همکاری نزدیکی با مرکز مشاوره امور پناهندگی ساکسونا و آژانس فدرال کاریابی داریم. ما مرکزی برای فعالیت های آزاد نیستیم اما آماده ارایه پشتبیانی از طریق شبکه میباشیم."
+        },
+        "556e1d4585894": {
+            "poid": "d9757776-2e41-4b80-9697-a7d09492b266",
+            "name": "MEDEA Frauen-und Mädchengesundtheitszentrum e.V."
         },
         "556e1d2c84d2b": {
             "poid": "ded86865-53b6-4e9b-9675-e970f2dbf6b5",
@@ -209,12 +364,24 @@
         "556e1d2ccf2da": {
             "poid": "e0f93722-e856-421e-94c2-983ef2e1c570",
             "name": "LAG politisch-kulturelle Bildung Sachsen e. V.",
-            "description": "کار ما برای سال های طولانی برخورد با موضوعات نژادپرستی، مهاجرت، پرواز، پناهندگی و ارائه بیشتر آموزش و پرورش برای کارگران و داوطلبان بوده است.\nارایه سمینارهای قدرمندسازی مردمی که قربانی خشونت های نژادی شده اند از جمله کارهای ماست."
+            "description": "کار ما برای سال های طولانی برخورد با موضوعات نژادپرستی، مهاجرت، پرواز، پناهندگی و ارائه بیشتر آموزش و پرورش برای کارگران و داوطلبان بوده است.\r\nارایه سمینارهای قدرمندسازی مردمی که قربانی خشونت های نژادی شده اند از جمله کارهای ماست."
+        },
+        "556e1d3a0df7c": {
+            "poid": "e50f762a-acf8-4a95-8b60-cc8494cd55de",
+            "name": "SPIKE Dresden"
+        },
+        "556e1d3ca3475": {
+            "poid": "e55d71cf-c424-442a-82ed-5067f7b503f0",
+            "name": "RAA Sachsen Opferberatung - Unterstützung für Betroffene rechtsmotivierter und rassistischer Gewalt"
+        },
+        "556e1d466087c": {
+            "poid": "e5a29455-295c-492e-a37c-5e08fca9d75a",
+            "name": "AG Asylsuchende [GRH]"
         },
         "556e1d2c7c196": {
             "poid": "e6a82a77-c4b4-4d0e-a539-9699ecb1b23c",
             "name": "MEDEA Frauen-und Mädchengesundtheitszentrum e.V.",
-            "description": "مشاوره بهداشت و درمان (روان شناسی، تغذیه، پیشگیری، بارداری، طب جایگزین، ...) و همچنین برگزاری جلسات برای بانوان:\n پنج شنبه صبحانه 10 صبح - 12 (همه روزه غیر از تعطیلات رسمی)، یک جلسه برای بانوان و کودکان در KHJ Gorbitz، پنج شنبه ها 16:00-6:00، با شروع ماه مارس: چهارشنبه 04:00-6:00"
+            "description": "مشاوره بهداشت و درمان (روان شناسی، تغذیه، پیشگیری، بارداری، طب جایگزین، ...) و همچنین برگزاری جلسات برای بانوان:\r\n پنج شنبه صبحانه 10 صبح - 12 (همه روزه غیر از تعطیلات رسمی)، یک جلسه برای بانوان و کودکان در KHJ Gorbitz، پنج شنبه ها 16:00-6:00، با شروع ماه مارس: چهارشنبه 04:00-6:00"
         },
         "556e1d2f2a5e3": {
             "poid": "e7abc047-6bdb-41db-9241-7bed52ab9410",
@@ -229,6 +396,18 @@
             "poid": "eb2c886e-82b8-43d2-93a5-1e8a9b5c25ba",
             "name": "Laubegast ist Bunt",
             "description": "شبکه محلی Laubegast  از سال 2010 برای ترویج دموکراسی، روشن فکری \/ نگرش جهانی و تحمل در این بخش از شهر فعالیت میکند. از سال 2014  کمک به پناهندگان تبدیل به یکی از مباحث عمده ما شده است."
+        },
+        "556e1d4bf254c": {
+            "poid": "f034f8cc-4998-4914-a276-3e1eff5e05a6",
+            "name": "medinetz"
+        },
+        "556e1d57b1f7b": {
+            "poid": "f3b85ad7-c448-4c8a-847c-86a8086a13c7",
+            "name": "Regionalkoordination Blawitz\/Schönfld-Weißig\/Loschwitz"
+        },
+        "556e1d5b4b3b1": {
+            "poid": "f83ecbfb-b9eb-4749-baab-26b3aab2f583",
+            "name": "Bürgercourage e.V."
         },
         "556e1d2b97066": {
             "poid": "fabe3833-405e-4a4d-93cc-65960c031fa9",

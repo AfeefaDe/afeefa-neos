@@ -75,7 +75,7 @@ qx.Class.define("APPAFEEFA", {
 						name: 'community',
 						id: '6',
 						sub: [
-							{ name: 'welcome-alliance', id: '6-1' },
+							{ name: 'welcome-network', id: '6-1' },
 							{ name: 'meeting-place', id: '6-2' },
 							{ name: 'childcare', id: '6-3' },
 							{ name: 'workshop', id: '6-4' },

@@ -35,7 +35,7 @@ qx.Class.define("LanguageManager", {
         resolve: function( key, locale ){
             var that = this;
 
-            if( that.getBib()[ key ] === undefined ) return 'XXX';
+            if( that.getBib()[ key ] === undefined ) return '###';
             
             var wording;
             if(locale)
@@ -50,7 +50,7 @@ qx.Class.define("LanguageManager", {
 
             if(!wording) wording = that.getBib()[ key ][ APP.getConfig().languages[1] ];
             if(!wording) wording = that.getBib()[ key ][ APP.getConfig().languages[0] ];
-            if(!wording) wording = 'XXX';
+            if(!wording) wording = '###';
 
             return wording;
         },

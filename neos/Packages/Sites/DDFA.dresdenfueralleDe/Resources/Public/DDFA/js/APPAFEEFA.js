@@ -194,12 +194,10 @@ qx.Class.define("APPAFEEFA", {
 			var curtain = $("<div />")
 				.attr('id', 'curtain')
 				.on('click', function(e) {
-				 that.say('curtainclicked');
+					that.say('curtainclicked');
 				});
-      $('#main-container').append(curtain);
+      		$('#main-container').append(curtain);
 			that.setCurtain(curtain);
-
-
 		}
 	}
 

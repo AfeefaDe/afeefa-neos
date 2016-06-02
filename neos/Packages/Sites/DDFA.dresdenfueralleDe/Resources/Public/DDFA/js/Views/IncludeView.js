@@ -64,6 +64,7 @@ qx.Class.define("IncludeView", {
 			that.view.addClass('active');
 			that.view.addClass(includeKey);
 			that.setViewState(1);
+			that.minimize(false);
 
 			that.say('includeViewOpened');
 			

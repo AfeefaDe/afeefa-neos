@@ -314,9 +314,9 @@ qx.Class.define("LegendView", {
 
 		  });
 
-		  that.listen('curtainclicked', function(){
-        that.close();
-      });
+		that.listen('curtainclicked', function(){
+        	if( that.view.hasClass('active') ) that.close();
+  		});
 
       // show on hover
 			that.view.hover(

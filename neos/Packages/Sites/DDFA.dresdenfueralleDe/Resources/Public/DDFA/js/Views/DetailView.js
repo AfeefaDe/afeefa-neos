@@ -138,8 +138,19 @@ qx.Class.define("DetailView", {
 			that['propertyIcon'+prop].addClass('type-' + record.type);
 			that['propertyName'+prop].append( record.subCategory ? that.getWording('cat_' + record.subCategory) : that.getWording('cat_' + propName) );
 
-			var entityLabels = { 0: that.getWording('entity_orga'), 1: that.getWording('entity_market'), 2: that.getWording('entity_event') };
-			var value = entityLabels[record.type];
+			// var createEntityLabel = { 0: that.getWording('entity_orga'), 1: that.getWording('entity_market'), 2: that.getWording('entity_event') };
+			function createEntityLabel( record ){
+				switch( record.type ){
+					case 0:
+					return that.getWording('entity_orga');
+					case 1: 
+					return record.offer ? that.getWording('entity_market_offer') : that.getWording('entity_market_request');
+					case 2:
+					return that.getWording('entity_event');
+				}
+			}
+			// var value = entityLabels[record.type];
+			var value = createEntityLabel(record);
 			that['propertyValue'+prop].append(value);
 			// if(record.location.length) that['propertyValue'+prop].append('&nbsp;&nbsp;&nbsp;&nbsp;').append( $("<span />").addClass('glyphicon glyphicon-map-marker') );
 			that['propertyContainer'+prop].show();

@@ -50,11 +50,12 @@ qx.Class.define("APPAFEEFA", {
 						name: 'consultation',
 						id: '4',
 						sub: [
-							{ name: 'family-counselling', id: '4-1' },
+							{ name: 'asylum-counselling', id: '4-1' },
 							{ name: 'legal-advice', id: '4-2' },
-							{ name: 'volunteer-coordination', id: '4-3' },
-							{ name: 'asylum-counselling', id: '4-4' },
-							{ name: 'social-counselling', id: '4-5' }
+							{ name: 'social-counselling', id: '4-3' },
+							{ name: 'family-counselling', id: '4-4' },
+							{ name: 'women-counselling', id: '4-5' },
+							{ name: 'volunteer-coordination', id: '4-6' }
 						]
 					},
 					{
@@ -68,7 +69,9 @@ qx.Class.define("APPAFEEFA", {
 							{ name: 'stage', id: '5-5' },
 							{ name: 'craft-art', id: '5-6' },
 							{ name: 'gardening', id: '5-7' },
-							{ name: 'cooking', id: '5-8' }
+							{ name: 'cooking', id: '5-8' },
+							{ name: 'festival', id: '5-9' },
+							{ name: 'lecture', id: '5-10' }
 						]
 					},
 					{

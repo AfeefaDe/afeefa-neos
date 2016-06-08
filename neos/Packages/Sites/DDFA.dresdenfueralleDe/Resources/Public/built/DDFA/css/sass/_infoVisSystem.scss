@@ -99,14 +99,48 @@
 	/* Sub categories */
 
 	&.subcat-german-course { background-image: url("../img/icon_88.svg"); }
+	&.subcat-interpreter { background-image: url("../img/icon_164.svg"); }
+	&.subcat-learning-place { background-image: url("../img/icon_102.svg"); }
+	&.subcat-tandem { background-image: url("../img/icon_100.svg"); }
+	
+	&.subcat-medical-counselling { background-image: url("../img/icon_104.svg"); }
+	/*&.subcat-medical-care { background-image: url("../img/icon_88.svg"); }*/
+	&.subcat-psychological-counselling { background-image: url("../img/icon_106.svg"); }
+	
+	&.subcat-job-counselling { background-image: url("../img/icon_10.svg"); }
+	&.subcat-political-education { background-image: url("../img/icon_108.svg"); }
+	/*&.subcat-education-sponsorship { background-image: url("../img/icon_88.svg"); }*/
+	&.subcat-library { background-image: url("../img/icon_18.svg"); }
+
+	&.subcat-asylum-counselling { background-image: url("../img/icon_112.svg"); }
+	&.subcat-legal-advice { background-image: url("../img/icon_110.svg"); }
+	&.subcat-social-counselling { background-image: url("../img/icon_114.svg"); }
+	&.subcat-family-counselling { background-image: url("../img/icon_92.svg"); }
+	&.subcat-women-counselling { background-image: url("../img/icon_156.svg"); }
+	&.subcat-volunteer-coordination { background-image: url("../img/icon_56.svg"); }
+	
+	&.subcat-youth-club { background-image: url("../img/icon_166.svg"); }
+	&.subcat-sports { background-image: url("../img/icon_08.svg"); }
+	&.subcat-museum { background-image: url("../img/icon_116.svg"); }
+	&.subcat-music { background-image: url("../img/icon_120.svg"); }
+	&.subcat-stage { background-image: url("../img/icon_154.svg"); }
+	&.subcat-craft-art { background-image: url("../img/icon_122.svg"); }
+	&.subcat-gardening { background-image: url("../img/icon_118.svg"); }
+	&.subcat-cooking { background-image: url("../img/icon_126.svg"); }
+	&.subcat-festival { background-image: url("../img/icon_82.svg"); }
+	&.subcat-lecture { background-image: url("../img/icon_162.svg"); }
+
 	&.subcat-welcome-network { background-image: url("../img/icon_64.svg") !important; }
 	&.subcat-meeting-place { background-image: url("../img/icon_78.svg"); }
-	&.subcat-welcome-festival { background-image: url("../img/icon_82.svg"); }
-	&.subcat-craft-art { background-image: url("../img/icon_80.svg"); }
-	&.subcat-volunteer-coordination { background-image: url("../img/icon_56.svg"); }
-	&.subcat-family-counselling { background-image: url("../img/icon_92.svg"); }
-	&.subcat-sports { background-image: url("../img/icon_08.svg"); }
-	&.subcat-library { background-image: url("../img/icon_18.svg"); }
+	&.subcat-childcare { background-image: url("../img/icon_130.svg"); }
+	&.subcat-workshop { background-image: url("../img/icon_128.svg"); }
+	&.subcat-sponsorship { background-image: url("../img/icon_168.svg"); }
+	&.subcat-lgbt { background-image: url("../img/icon_132.svg"); }
+	&.subcat-housing-project { background-image: url("../img/icon_136.svg"); }
+	
+	&.subcat-food { background-image: url("../img/icon_142.svg"); }
+	&.subcat-clothes { background-image: url("../img/icon_140.svg"); }
+	&.subcat-furniture { background-image: url("../img/icon_144.svg"); }
 
 	
 	/* POIs */
@@ -120,7 +154,9 @@
 	&.cat-public { background-image: url("../img/icon_63.svg"); @include background-size(80%); }
 	&.cat-library { background-image: url("../img/icon_17.svg"); @include background-size(80%); }
 	&.cat-trafficStop { background-image: url("../img/icon_57.svg"); background-color: $yellow_dvb; }
-	&.cat-library { background-image: url("../img/icon_90.svg"); }
+	&.cat-library { background-image: url("../img/icon_89.svg"); }
+	&.cat-wifi { background-image: url("../img/icon_147.svg"); }
+	&.cat-police { background-image: url("../img/icon_145.svg"); }
 
 	&.cat-other { background-image: url("../img/icon_32.svg"); @include background-size(50%); }
 }

@@ -252,6 +252,18 @@
                         "ti":"",
                         "ur":""
                   },
+                  "cat_women-counselling":{
+                        "de":"Frauenberatung",
+                        "en":"women counselling",
+                        "ar":"",
+                        "fa":"",
+                        "fr":"",
+                        "it":"",
+                        "ru":"",
+                        "sr":"",
+                        "ti":"",
+                        "ur":""
+                  },
             "cat_leisure":{
                   "de":"Freizeit",
                   "en":"leisure time",
@@ -363,6 +375,30 @@
                   "cat_cooking":{
                         "de":"Kochen",
                         "en":"cooking",
+                        "ar":"",
+                        "fa":"",
+                        "fr":"",
+                        "it":"",
+                        "ru":"",
+                        "sr":"",
+                        "ti":"",
+                        "ur":""
+                  },
+                  "cat_festival":{
+                        "de":"Fest",
+                        "en":"festival",
+                        "ar":"",
+                        "fa":"",
+                        "fr":"",
+                        "it":"",
+                        "ru":"",
+                        "sr":"",
+                        "ti":"",
+                        "ur":""
+                  },
+                  "cat_lecture":{
+                        "de":"Vortrag",
+                        "en":"lecture",
                         "ar":"",
                         "fa":"",
                         "fr":"",
@@ -1140,6 +1176,32 @@
                   "sr":"мали оглас",
                   "ti":"",
                   "ur":"چھوٹا سا اشتہار"
+            },
+
+            "entity_market_offer":{
+                  "de":"Börseninserat (Angebot)",
+                  "en":"small ad (offer)",
+                  "ar":"",
+                  "fa":"",
+                  "fr":"",
+                  "it":"",
+                  "ru":"",
+                  "sr":"",
+                  "ti":"",
+                  "ur":""
+            },
+
+            "entity_market_request":{
+                  "de":"Börseninserat (Gesuch)",
+                  "en":"small ad (request)",
+                  "ar":"",
+                  "fa":"",
+                  "fr":"",
+                  "it":"",
+                  "ru":"",
+                  "sr":"",
+                  "ti":"",
+                  "ur":""
             },
             
             "entity_event":{

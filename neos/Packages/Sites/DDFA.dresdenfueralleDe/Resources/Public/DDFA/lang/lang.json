@@ -684,6 +684,18 @@
                         "ti":"ማሕበራዊ ቦታታት",
                         "ur":"اتھارٹی"
                   },
+                  "cat_wifi":{
+                        "de":"WLAN Hotspot",
+                        "en":"Free WIFI",
+                        "ar":"",
+                        "fa":"",
+                        "fr":"",
+                        "it":"",
+                        "ru":"",
+                        "sr":"",
+                        "ti":"",
+                        "ur":""
+                  },
                   "cat_housing":{
                         "de":"Gemeinschaftsunterkunft",
                         "en":"",

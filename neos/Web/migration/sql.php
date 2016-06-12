@@ -1,5 +1,5 @@
 <?php
-function sql($link, $query, $variant = 1)
+function sql($query, $variant = 1)
 {
 
     ///////////////
@@ -7,25 +7,37 @@ function sql($link, $query, $variant = 1)
     ///////////////
 
     // localhost joschka
-    $db = "neos";
+    // $server = "localhost";
+    // $user = "dude";
+    // $pass = "";
+    // $db = "neos";
 
     // localhost felix
-//    $server = "localhost";
-//    $user = "root";
-//    $pass = "";
-//    $db = "afeefa_neos";
+    $server = "localhost";
+    $user = "root";
+    $pass = "";
+    $db = "afeefa_neos_new";
+
+    // uberspace
+    // $server = "localhost";
+    // $user = "afeefa";
+    // $pass = "eeceiNg4achaiyeing";
+    // $db = "afeefa_dev";
 
 
     /////////////
     // Connect //
     /////////////
 
-
+    $link = mysqli_connect($server, $user, $pass);
     if (!$link) {
         die("<div class='error'>No connection to database! :(</div><br />");
     }
 
-    mysqli_query($link, "SET character_set_results = 'utf8', character_set_client = 'utf8', character_set_connection = 'utf8', character_set_database = 'utf8', character_set_server = 'utf8'");
+    mysqli_set_charset($link, 'utf8');
+
+    // mysqli_query($link, "SET character_set_results = 'utf8', character_set_client = 'utf8', character_set_connection = 'utf8', character_set_database = 'utf8', character_set_server = 'utf8'");
+
     $db_selected = mysqli_select_db($link, $db);
     if (!$db_selected) {
         die ("<div class='error'>Could not find data in the database... sorry :(</div><br />");
@@ -46,6 +58,6 @@ function sql($link, $query, $variant = 1)
         }
     }
 
-    //mysqli_close($link);
+    mysqli_close($link);
     return true;
 }

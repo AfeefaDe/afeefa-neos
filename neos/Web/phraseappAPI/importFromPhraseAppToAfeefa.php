@@ -7,7 +7,7 @@ use GuzzleHttp\Client;
 ///////////
 // SETUP //
 ///////////
-$dev = true;
+$dev = false;
 
 $configPhraseApp = array(
 	'projects' => [
@@ -59,7 +59,8 @@ foreach ($types as $type){
 			// echo $response2->getBody();
 
 			$json = json_decode( $response2->getBody());
-			// var_dump($json);
+			// die( var_dump($json) );
+
 			if( count($json) < 1 ) break;
 
 			foreach ($json as $key => $value){
@@ -71,10 +72,14 @@ foreach ($types as $type){
 				$result = sql("update ddfa_main_domain_model_" . $type . "
 					set " . $attribute . "=convert('" . $translation . "'using utf8)
 					where locale='" . $locale . "' AND entry_id='" . $entryId . "'");
-				echo $entryId . ' > ' . $translation . ' ('.$result.')<br>';
+				echo $entryId . '.' . $attribute . ' > ' . $translation . ' :: '.$result.'<br>';
 			}
 
 		}
 		
 	}
+
+	$result = sql("DELETE FROM `ddfa_main_domain_model_marketentry` WHERE `name` = '' AND `description` = '' AND `locale` != 'de'");
+	echo "<h4>empty translations deleted (where name and desc is empty string) :: " . $result . "</h4>";
+
 }

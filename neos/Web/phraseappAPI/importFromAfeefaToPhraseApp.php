@@ -78,13 +78,7 @@ else if($step == 'importToPhraseApp'){
     foreach ($types as $type){
         foreach ($locales as $locale){
             
-            // $response = $clientAfeefa->request('GET', '', array(
-            //     'query' => [
-            //         'type' => $type,
-            //         'locale' => $locale
-            //     ]
-            // ));
-            
+            // V1
             $response2 = $clientPhraseApp->request('POST', 'projects/' .$configPhraseApp['projects'][$type]['project_id']. '/uploads', array(
                 'query' => [
                     'access_token' => $configPhraseApp['projects'][$type]['accessToken']
@@ -114,8 +108,42 @@ else if($step == 'importToPhraseApp'){
                     ]
                 )
             ));
-
             echo $response2->getBody();
+
+            // V2 ASYNC
+            // $request = new \GuzzleHttp\Psr7\Request('POST', 'projects/' .$configPhraseApp['projects'][$type]['project_id']. '/uploads', array(
+            //     'query' => [
+            //         'access_token' => $configPhraseApp['projects'][$type]['accessToken']
+            //     ],
+            //     'multipart' => array(
+            //         [
+            //             'name'     => 'file',
+            //             // 'contents' => $response->getBody()
+            //             'contents' => fopen('./jsonExportFromAfeefa/' .$type. '_' . date("Y-m-d") . '_' .$locale. '.json', 'r')
+            //         ],
+            //         [
+            //             'name'     => 'file_format',
+            //             'contents' => 'nested_json'
+            //         ],
+            //         [
+            //             'name'     => 'locale_id',
+            //             // 'contents' => $configPhraseApp[ $locale.'_locale_id']
+            //             'contents' => $locale
+            //         ],
+            //         [
+            //             'name'     => 'update_translations',
+            //             'contents' => $locale == "de" ? 'true' : 'false'
+            //         ],
+            //         [
+            //             'name'     => 'skip_unverification',
+            //             'contents' => 'false'
+            //         ]
+            //     )
+            // ));
+            // $promise = $clientPhraseApp->sendAsync($request)->then(function ($async_response) {
+            //     $async_response->getBody();
+            // });
+            // $promise->wait();
             
         }
     }

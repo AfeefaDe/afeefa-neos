@@ -28,58 +28,104 @@ $clientPhraseApp = new Client([
 
 
 $locales = ['ar', 'de', 'en', 'es', 'fa', 'fr', 'ku', 'ps', 'ru', 'sq', 'sr', 'ti', 'tr', 'ur'];
-$types = ['marketentry'];
 
 //////////////////////////////
 // FETCH FROM PHRASEAPP API //
 //////////////////////////////
-foreach ($types as $type){
-	foreach ($locales as $locale){
+foreach ($locales as $locale){
+	
+	echo '<h3>'.$locale.'</h3>';
+	for($page = 1; $page <= 1000; $page++) {
 		
-		echo '<h3>'.$locale.'</h3>';
-		for($page = 1; $page <= 1000; $page++) {
-			
-			$response2 = $clientPhraseApp->request('GET', 'projects/' .$configPhraseApp['projects'][$type]['project_id']. '/locales/' . $locale . '/translations', array(
-				'query' => [
-					'access_token' => $configPhraseApp['projects'][$type]['accessToken']
+		$response2 = $clientPhraseApp->request('GET', 'projects/' .$configPhraseApp['projects']['marketentry']['project_id']. '/locales/' . $locale . '/translations', array(
+			'query' => [
+				'access_token' => $configPhraseApp['projects']['marketentry']['accessToken']
+			],
+			'multipart' => array(
+				[
+					'name'     => 'q',
+					'contents' => ''
+					// 'contents' => 'unverified:true'
 				],
-				'multipart' => array(
-					[
-						'name'     => 'q',
-						'contents' => ''
-						// 'contents' => 'unverified:true'
-					],
-					[
-						'name'     => 'page',
-						'contents' => strval($page)
-					]
-				)
-			));
+				[
+					'name'     => 'page',
+					'contents' => strval($page)
+				]
+			)
+		));
 
-			// echo $response2->getBody();
+		// echo $response2->getBody();
 
-			$json = json_decode( $response2->getBody());
-			// die( var_dump($json) );
+		$json = json_decode( $response2->getBody());
+		// die( var_dump($json) );
 
-			if( count($json) < 1 ) break;
+		if( count($json) < 1 ) break;
 
-			foreach ($json as $key => $value){
+		foreach ($json as $key => $value){
 
-				$entryId = explode(".", $value->key->name)[1];
-				$attribute = explode(".", $value->key->name)[2];
-				$translation = mysql_real_escape_string($value->content);
+			$entryId = explode(".", $value->key->name)[1];
+			$attribute = explode(".", $value->key->name)[2];
+			$translation = mysql_real_escape_string($value->content);
 
-				$result = sql("update ddfa_main_domain_model_" . $type . "
-					set " . $attribute . "=convert('" . $translation . "'using utf8)
-					where locale='" . $locale . "' AND entry_id='" . $entryId . "'");
-				echo $entryId . '.' . $attribute . ' > ' . $translation . ' :: '.$result.'<br>';
+			$result1 = sql("select * from ddfa_main_domain_model_marketentry 
+				where locale='" . $locale . "' AND entry_id='" . $entryId . "'");
+
+			// if entry does not exist: create new translation
+			if( intval($result1->num_rows) == 0 ) {
+				// DO not create new entries in german
+				if( $locale == 'de' ) continue;
+				if( $translation == '' ) continue;
+
+				$type_baseEntryDE = 666;
+
+				// fetch necessary attributes from DE base entry
+				$r_baseEntryDE = sql("select * from ddfa_main_domain_model_marketentry 
+				where locale='de' AND entry_id='" . $entryId . "'");
+				if( intval($r_baseEntryDE->num_rows) == 0 ) {
+					echo 'warning: DE base entry missing ';
+				}
+				while ($baseEntryDE = mysqli_fetch_object($r_baseEntryDE)) {
+					$type_baseEntryDE = intval($baseEntryDE->type);
+				}
+
+				// create new entry
+    		$newUuid = createGuid();
+				$result2 = sql("INSERT INTO ddfa_main_domain_model_marketentry SET
+                persistence_object_identifier = '" . $newUuid . "',
+                entry_id = '" . $entryId . "',
+                locale = '" . $locale . "',"
+                . $attribute . " = '" . $translation . "',
+                area = 'dresden',
+                created = now(),
+                updated = now(),
+                type = " . $type_baseEntryDE
+            );
+                
+				// $result2 = sql("INSERT INTO ddfa_main_domain_model_marketentry 
+				// 	(locale, entry_id, created, updated, " . $attribute . ") 
+				// 	VALUES ('" .$locale. "','" .$entryId. "',now(),now(),'" .$translation. "')");
+				echo $entryId . '.' . $attribute . ' > ' . $translation . ' :: '.$result2.'<br>';
 			}
-
+			// if entry exists, update:
+	    else if( intval($result1->num_rows) == 1 ) {
+				$result3 = sql("update ddfa_main_domain_model_marketentry 
+					set " . $attribute . "=convert('" . $translation . "'using utf8), updated=now() 
+					where locale='" . $locale . "' AND entry_id='" . $entryId . "'");
+				echo $entryId . '.' . $attribute . ' > ' . $translation . ' :: '.$result3.'<br>';
+			}
+			// anything else: catch whatever went wrong when this happens
+			else {
+				echo 'warning: at least 2 translations with the same entryId and locale';
+			}
+			
 		}
-		
+
 	}
-
-	$result = sql("DELETE FROM `ddfa_main_domain_model_marketentry` WHERE `name` = '' AND `description` = '' AND `locale` != 'de'");
-	echo "<h4>empty translations deleted (where name and desc is empty string) :: " . $result . "</h4>";
-
+	
 }
+
+$result4 = sql("DELETE FROM `ddfa_main_domain_model_marketentry` 
+	WHERE (`name` = '' OR `name` IS NULL) 
+	AND (`description` = ''  OR `description` IS NULL) 
+	AND `locale` != 'de'");
+echo "<h4>empty translations deleted (where name and desc is empty string, locale != de) :: " . $result4 . "</h4>";

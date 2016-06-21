@@ -30,11 +30,11 @@ if ($type == 'location') {
         cast(convert(description using utf8) as binary) as des,
         persistence_object_identifier as poid
         from ddfa_main_domain_model_" . $type . "
-        where locale = '" . $locale . "'");
+        where locale = '" . $locale . "' and area = 'dresden'");
 }
 
 $objects = [];
-while ($object = mysql_fetch_object($result)) {
+while ($object = mysqli_fetch_object($result)) {
     unset($arr);
     $arr['poid'] = $object->poid;
 

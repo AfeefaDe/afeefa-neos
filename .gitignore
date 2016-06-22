@@ -24,3 +24,4 @@ neos/Packages/Application/TYPO3.Twitter.Bootstrap/
 neos/Packages/Application/TYPO3.TypoScript/
 neos/Packages/Framework/
 neos/Packages/Libraries/
+!neos/Packages/Application/TYPO3.Neos/Configuration/Policy.yaml

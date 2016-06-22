@@ -37,6 +37,9 @@ abstract class AbstractTranslationRepository extends Repository
      */
     protected $languageRepository;
 
+    /**
+     * @return \TYPO3\Flow\Persistence\QueryResultInterface
+     */
     public function findAll()
     {
         return $this->createQuery()->setOrderings(array('name' => QueryInterface::ORDER_ASCENDING))->execute();
@@ -68,41 +71,58 @@ abstract class AbstractTranslationRepository extends Repository
         return $this->includeLocales($query->execute());
     }
 
-    public function findAllParents($locale = DDConst::LOCALE_STD, $onlyPublished = false)
+    /**
+     * @param null $area
+     * @return mixed
+     */
+    public function findAllParents($area = null)
     {
         $query = $this->createQuery()->setOrderings(array('created' => QueryInterface::ORDER_DESCENDING));
 
-        if ($onlyPublished) {
-            $query = $query->matching(
-                $query->logicalAnd(
-                    $query->equals('published', '1'), $query->equals('locale', $locale), $query->equals('parentEntry', null)
-                )
-            );
+        $locale = DDConst::LOCALE_STD;
 
+        if ($area != null) {
+            $query = $query->matching($query->logicalAnd(
+                $query->equals('locale', $locale),
+                $query->equals('parentEntry', null),
+                $query->equals('area', $area)
+            ));
         } else {
-            $query = $query->matching(
-                $query->logicalAnd(
-                    $query->equals('locale', $locale), $query->equals('parentEntry', null)
-                )
-            );
+            $query = $query->matching($query->logicalAnd(
+                $query->equals('locale', $locale),
+                $query->equals('parentEntry', null)
+            ));
         }
 
         return $this->includeLocales($query->execute());
     }
 
-    public function findAllParentsWithout(MarketEntry $me)
+    /**
+     * @param MarketEntry $me
+     * @return \TYPO3\Flow\Persistence\QueryResultInterface
+     */
+    public function findAllParentsWithout(MarketEntry $me, $area = null)
     {
         $query = $this->createQuery()->setOrderings(array('name' => QueryInterface::ORDER_ASCENDING));
 
+        $locale = DDConst::LOCALE_STD;
 
-        $query = $query->matching(
-            $query->logicalAnd(
-                $query->equals('locale', DDConst::LOCALE_STD),
+        if ($area != null) {
+            $query = $query->matching($query->logicalAnd(
+                $query->equals('locale', $locale),
+                $query->equals('parentEntry', null),
+                $query->equals('area', $area),
+                $query->equals('type', DDConst::OWNER_INI),
+                $query->logicalNot($query->equals('Persistence_Object_Identifier', $me->getPersistenceObjectIdentifier()))
+            ));
+        } else {
+            $query = $query->matching($query->logicalAnd(
+                $query->equals('locale', $locale),
                 $query->equals('parentEntry', null),
                 $query->equals('type', DDConst::OWNER_INI),
                 $query->logicalNot($query->equals('Persistence_Object_Identifier', $me->getPersistenceObjectIdentifier()))
-            )
-        );
+            ));
+        }
 
         return $query->execute();
     }
@@ -188,6 +208,7 @@ abstract class AbstractTranslationRepository extends Repository
      */
     public function hydrate(Actor $object, $locale, $type)
     {
+        $returnVal = null;
         $objectNXT = null;
         if ($object->getLocale() == DDConst::LOCALE_NXT)
             $objectNXT = $object;
@@ -355,6 +376,11 @@ abstract class AbstractTranslationRepository extends Repository
         return $baseObject;
     }
 
+    /**
+     * @param Actor $baseObject
+     * @param Actor $hydrateObject
+     * @return Actor
+     */
     protected function mergeME(Actor $baseObject, Actor $hydrateObject)
     {
         if ($baseObject->getLocale() == $hydrateObject->getLocale()) {

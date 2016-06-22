@@ -16,6 +16,7 @@ use DDFA\Main\Domain\Repository\MarketEntryRepository;
 use DDFA\Main\Utility\DDConst;
 use TYPO3\Flow\Annotations as Flow;
 use TYPO3\Flow\Error\Message;
+use TYPO3\Neos\Command\UserCommandController;
 
 /**
  * The TYPO3 User Settings module controller
@@ -49,12 +50,18 @@ class MarketEntriesModuleController extends AbstractTranslationController
     protected $locationRepository;
 
     /**
+     * @var \TYPO3\Flow\Security\Context
+     * @Flow\Inject
+     */
+    protected $securityContext;
+
+    /**
      * @return void
      */
     public function indexAction()
     {
-        $this->view->assign('entries', $this->objectRepository->findAllParents());
-        $this->view->assign('numLanguages', $this->languageRepository->findAll()->count() - 1);
+        $this->view->assign('entries', $this->objectRepository->findAllParents($this->getUserArea()));
+        $this->view->assign('area', $this->getUserArea());
     }
 
     /**
@@ -80,7 +87,7 @@ class MarketEntriesModuleController extends AbstractTranslationController
     public function addAction()
     {
         $this->view->assign('cats', $this->categoryRepository->findAll());
-        $this->view->assign('parents', $this->objectRepository->findAllParents());
+        $this->view->assign('parents', $this->objectRepository->findAllParents($this->getUserArea()));
     }
 
     /**
@@ -90,6 +97,8 @@ class MarketEntriesModuleController extends AbstractTranslationController
      */
     public function createAction(MarketEntry $newObject)
     {
+        $newObject->setArea($this->getUserArea());
+
         $this->objectRepository->add($newObject);
         $this->addFlashMessage('A new market entry has been created successfully.');
 
@@ -146,8 +155,10 @@ class MarketEntriesModuleController extends AbstractTranslationController
             $this->view->assign('editObject', $editObject);
             $this->view->assign('languages', $this->languageRepository->findAll());
             $this->view->assign('location', $editObject->getLocation()->first());
-            $this->view->assign('parents', $this->objectRepository->findAllParentsWithout($editObject));
+            $this->view->assign('parents', $this->objectRepository->findAllParentsWithout($editObject, $this->getUserArea()));
             $this->view->assign('cats', $this->categoryRepository->findAll());
+            $this->view->assign('area', $this->getUserArea());
+
 
 //            $collection = $editObject->getChildEntries();
 //            if ($editObject->getChildEntries() != null && $collection->count() != 0)
@@ -181,9 +192,13 @@ class MarketEntriesModuleController extends AbstractTranslationController
      */
     public function publishAction(MarketEntry $object)
     {
-        $object->setPublished(true);
-        $this->objectRepository->update($object);
-        $this->addFlashMessage('The market entry has been published.');
+        if ($this->getUserArea() == $object->getArea()) {
+            $object->setPublished(true);
+            $this->objectRepository->update($object);
+            $this->addFlashMessage('The market entry has been published.');
+        } else {
+            $this->addFlashMessage('area restriction error', '', Message::SEVERITY_ERROR);
+        }
         $this->redirect('index');
     }
 
@@ -194,25 +209,28 @@ class MarketEntriesModuleController extends AbstractTranslationController
      */
     public function deleteAction(MarketEntry $deleteObject)
     {
-        //update link of children
-        foreach ($deleteObject->getChildEntries() as $child) {
-            $child->setParentEntry($deleteObject->getParentEntry());
-            $this->objectRepository->update($child);
-            $this->addFlashMessage('Linked child entry has been moved.', 'Moved child', Message::SEVERITY_NOTICE);
+        if ($this->getUserArea() == $deleteObject->getArea()) {
+            //update link of children
+            foreach ($deleteObject->getChildEntries() as $child) {
+                $child->setParentEntry($deleteObject->getParentEntry());
+                $this->objectRepository->update($child);
+                $this->addFlashMessage('Linked child entry has been moved.', 'Moved child', Message::SEVERITY_NOTICE);
+            }
+
+            //if there are locations: delete them all!!!1 buhahahaaa
+            if ($deleteObject->getLocation() != null && $deleteObject->getLocation()->first() != null) {
+                foreach ($this->locationRepository->findAllLocalisations($deleteObject->getLocation()->first()) as $localisedObject)
+                    $this->locationRepository->remove($localisedObject);
+            }
+
+            //delete entry itself
+            foreach ($this->objectRepository->findAllLocalisations($deleteObject) as $localisedObject)
+                $this->objectRepository->remove($localisedObject);
+
+            $this->addFlashMessage('The market entry including all its translations and the location (and its translations) has been removed successfully.', 'Deleted', Message::SEVERITY_NOTICE);
+        } else {
+            $this->addFlashMessage('area restriction error', '', Message::SEVERITY_ERROR);
         }
-
-        //if there are locations: delete them all!!!1 buhahahaaa
-        if ($deleteObject->getLocation() != null && $deleteObject->getLocation()->first() != null) {
-            foreach ($this->locationRepository->findAllLocalisations($deleteObject->getLocation()->first()) as $localisedObject)
-                $this->locationRepository->remove($localisedObject);
-        }
-
-        //delete entry itself
-        foreach ($this->objectRepository->findAllLocalisations($deleteObject) as $localisedObject)
-            $this->objectRepository->remove($localisedObject);
-
-        $this->addFlashMessage('The market entry including all its translations and the location (and its translations) has been removed successfully.', 'Deleted', Message::SEVERITY_NOTICE);
-
         $this->redirect('index');
     }
 
@@ -363,6 +381,11 @@ class MarketEntriesModuleController extends AbstractTranslationController
     {
         $check = true;
 
+        if ($this->getUserArea() != $editObject->getArea()) {
+            $check = false;
+            $this->addFlashMessage('area restriction error', '', Message::SEVERITY_ERROR);
+        }
+
         //check if category suits for selected type
         if (!$this->isCategoryTypeValid($editObject))
             $check = false;
@@ -391,5 +414,14 @@ class MarketEntriesModuleController extends AbstractTranslationController
             }
         }
         return $check;
+    }
+
+    /**
+     * @return null
+     */
+    protected function getUserArea()
+    {
+        $key = $this->securityContext->getAccount()->getAccountIdentifier();
+        return array_key_exists($key, DDConst::AREA_RESTRICTION) ? DDConst::AREA_RESTRICTION[$key] : DDConst::AREA_DD;
     }
 }

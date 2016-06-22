@@ -7,10 +7,13 @@ resources:
     DDFA_Main_Api_ddfaCategoryAPI: 'method(DDFA\Main\Controller\Api\CategoryAPIController->(list|show)Action())'
     DDFA_Main_Api_ddfaFeedbackAPI: 'method(DDFA\Main\Controller\Api\FeedbackAPIController->(show|create)Action())'
 acls:
-  TYPO3.Neos:Administrator:
+  TYPO3.Neos:Editor:
     methods:
       DDFA_Main_Module_ddfaMarketEntriesModule: GRANT
-      DDFA_Main_Module_ddfaCategoriesModule: GRANT
+  TYPO3.Neos:Administrator:
+      methods:
+        DDFA_Main_Module_ddfaMarketEntriesModule: GRANT
+        DDFA_Main_Module_ddfaCategoriesModule: GRANT
   Everybody:
     methods:
       DDFA_Main_Api_ddfaLocationAPI: GRANT

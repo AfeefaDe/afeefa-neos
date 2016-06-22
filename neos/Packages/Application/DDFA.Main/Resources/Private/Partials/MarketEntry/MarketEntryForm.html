@@ -3,24 +3,15 @@
 
     <div class="neos-control-group">
         <label class="neos-control-label" for="parentEntry">Parent entry</label>
-          <a onclick="$('#parentEntry').val('')" style="cursor: pointer;">
+        <a onclick="$('#parentEntry').val('')" style="cursor: pointer;">
             <i class="icon-remove"></i>
-          </a>
+        </a>
 
         <div class="neos-controls">
             <f:form.select class="neos-span12" property="parentEntry" id="parentEntry" options="{parents}"
                            optionValueField="persistenceObjectIdentifier"
                            optionLabelField="name" sortByOptionLabel="true" prependOptionLabel="- none -"
                            prependOptionValue=""/>
-        </div>
-    </div>
-
-    <div class="neos-control-group">
-        <label class="neos-control-label" for="area">Admin area</label>
-
-        <div class="neos-controls">
-            <f:form.select class="neos-span12" property="area" id="area"
-                           options="{dresden: 'Dresden', pirna: 'Pirna', leipzig: 'Leipzig'}"/>
         </div>
     </div>
 
@@ -227,7 +218,9 @@
         <div class="neos-controls">
             <f:form.textfield class="neos-span12" property="spokenLanguages" id="spokenLanguages"
                               placeholder="Enter languages" autofocus="true"/>
-            <span class="afeefa-small"><a href="https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes" title="wikipedia: list of language codes we use" target="_blank">>> show list</a></span>
+            <span class="afeefa-small"><a href="https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes"
+                                          title="wikipedia: list of language codes we use"
+                                          target="_blank">>> show list</a></span>
         </div>
     </div>
 

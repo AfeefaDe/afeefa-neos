@@ -20,4 +20,12 @@ abstract class DDConst
 
     const L_HYDRATE_PROPS = ["street", "city", "placename", "openingHours", "arrival"];
 
+    // if a user {username} should only access area {area_name} add pair
+    // {username} => {area_name}
+    // all other users regard to "dresden" per default
+
+    const AREA_RESTRICTION = ["Leipzig" => "leipzig", "Pirna" => "pirna"];
+
+    const AREA_DD = "dresden";
+
 }

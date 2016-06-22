@@ -2,19 +2,22 @@ TYPO3:
   Neos:
     modules:
       DDFA:
-        label: 'Afeefa Management'
+        label: 'Afeefa'
         controller: '\TYPO3\Neos\Controller\Module\ManagementController'
         description: 'The Afeefa backend module'
         icon: 'icon-leaf'
         resource: 'TYPO3_Neos_Backend_Module_Management'
         submodules:
           marketEntries:
-            label: 'Entries'
+            label: 'Entry Module'
             controller: '\DDFA\Main\Controller\Module\DDFA\MarketEntriesModuleController'
-            description: "The Entries Submodule provides all the usefull management functions to administrate the user added entries of the Afeefa-Market. See the work of the crowd!"
+            description: "This mdule provides all the common usefull management functions to moderate the added entries by users or to add own new ones."
             icon: 'icon-heart'
             resource: 'DDFA_Main_Module_ddfaMarketEntriesModule'
             actions:
+              index:
+                label: 'View entries'
+                title: 'View all entriey in a list'
               add:
                 label: 'Add entry'
                 title: 'Add a new entry'

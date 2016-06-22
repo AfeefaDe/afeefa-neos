@@ -82,29 +82,31 @@ foreach ($locales as $locale){
 				$r_baseEntryDE = sql("select * from ddfa_main_domain_model_marketentry 
 				where locale='de' AND entry_id='" . $entryId . "'");
 				if( intval($r_baseEntryDE->num_rows) == 0 ) {
-					echo 'warning: DE base entry missing ';
+					echo 'warning: DE base entry missing';
 				}
-				while ($baseEntryDE = mysqli_fetch_object($r_baseEntryDE)) {
-					$type_baseEntryDE = intval($baseEntryDE->type);
-				}
+				else if( intval($r_baseEntryDE->num_rows) == 1 ) {
+					while ($baseEntryDE = mysqli_fetch_object($r_baseEntryDE)) {
+						$type_baseEntryDE = intval($baseEntryDE->type);
+					}
 
-				// create new entry
-    		$newUuid = createGuid();
-				$result2 = sql("INSERT INTO ddfa_main_domain_model_marketentry SET
-                persistence_object_identifier = '" . $newUuid . "',
-                entry_id = '" . $entryId . "',
-                locale = '" . $locale . "',"
-                . $attribute . " = '" . $translation . "',
-                area = 'dresden',
-                created = now(),
-                updated = now(),
-                type = " . $type_baseEntryDE
-            );
-                
-				// $result2 = sql("INSERT INTO ddfa_main_domain_model_marketentry 
-				// 	(locale, entry_id, created, updated, " . $attribute . ") 
-				// 	VALUES ('" .$locale. "','" .$entryId. "',now(),now(),'" .$translation. "')");
-				echo $entryId . '.' . $attribute . ' > ' . $translation . ' :: '.$result2.'<br>';
+					// create new entry
+	    		$newUuid = createGuid();
+					$result2 = sql("INSERT INTO ddfa_main_domain_model_marketentry SET
+	                persistence_object_identifier = '" . $newUuid . "',
+	                entry_id = '" . $entryId . "',
+	                locale = '" . $locale . "',"
+	                . $attribute . " = '" . $translation . "',
+	                area = 'dresden',
+	                created = now(),
+	                updated = now(),
+	                type = " . $type_baseEntryDE
+	            );
+	                
+					// $result2 = sql("INSERT INTO ddfa_main_domain_model_marketentry 
+					// 	(locale, entry_id, created, updated, " . $attribute . ") 
+					// 	VALUES ('" .$locale. "','" .$entryId. "',now(),now(),'" .$translation. "')");
+					echo $entryId . '.' . $attribute . ' > ' . $translation . ' :: '.$result2.'<br>';
+				}
 			}
 			// if entry exists, update:
 	    else if( intval($result1->num_rows) == 1 ) {

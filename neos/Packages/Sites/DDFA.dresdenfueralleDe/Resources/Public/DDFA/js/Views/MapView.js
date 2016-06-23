@@ -21,7 +21,8 @@ qx.Class.define("MapView", {
 		that.setMarkerLocationLookup([]);
 		that.setViewCoords({
 			dresden: { lat: 51.051, lon: 13.74, zoom: 14 },
-			pirna: { lat: 50.957456, lon: 13.937007, zoom: 14 }
+			pirna: { lat: 50.957456, lon: 13.937007, zoom: 14 },
+			leipzig: { lat: 51.336143, lon: 12.362952, zoom: 14 }
 		});
 	},
 
@@ -358,6 +359,10 @@ qx.Class.define("MapView", {
 			if( firstParam == 'pirna' ) {
 				// set view to pirna
 				that.map.setView([ that.getViewCoords().pirna.lat, that.getViewCoords().pirna.lon ], that.getViewCoords().pirna.zoom);
+			}
+			else if( firstParam == 'pirna' ) {
+				// set view to pirna
+				that.map.setView([ that.getViewCoords().leipzig.lat, that.getViewCoords().leipzig.lon ], that.getViewCoords().leipzig.zoom);
 			}
 			// param is an entryId
 			else {

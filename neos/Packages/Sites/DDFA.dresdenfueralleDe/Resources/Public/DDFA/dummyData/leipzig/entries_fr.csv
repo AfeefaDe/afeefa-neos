@@ -1,0 +1,231 @@
+"ID";"name";"category";"arrival";"openinghours";"description"
+1;"Bibliothèque de l'Antifascisme
+Bibliothek des Antifaschismus";"Bibliothèque";"tram 3, 14, bus 74 → Felsenkeller";"mar 9.30—11.30 h , jeu 15—17 h";
+2;"Drugscouts";"Bibliothèque";"tram  9, 10, 11, 16 → Wilhelm–Liebknecht–Platz";"lun, ven 11—15 h , mar, jeu 13—17 h";"Consultation sur place, mise à disposition d'informations sur les thèmes de la drogue, la toxicomanie et des conseils contre la toxicomanie."
+3;"Bibliothèque centrale municipale
+Zentrale Stadtbibliothek Leipzig";"Bibliothèque";"tram 2,8, 9 ,10, 11, 14 → Wilhelm–Leuschner–Platz";"lun—ven 10—19 h, mer 13—19 h, sam 10-16 h";"Journaux et livres français, anglais, russes, italiens et espagnols."
+4;"Bibliothèque universitaire
+Albertina Unibibliothek";"Bibliothèque";"Neues Rathaus → 2, 8, 9, 14";"lun – ven 08 — 24 h";"Journaux ( anglais, français, russe, ukrainien, serbe ) dans la salle de lecture West."
+5;"Fondation Rosa–Luxemburg–Stiftung";"Bibliothèque";"tram 10, 11 → Hohe Straße";"lun—jeu 9—17.30 h , ven 9—12 h";"Consultation sur place, littérature sur des thèmes socio-politiques ainsi qu'au sujet de la politique et de l'histoire."
+6;"MONAliesA";"Bibliothèque";"tram 9, 10, 11, Bus 70, 89, 107 → Connewitzer Kreuz";"mar—jeu 15—19 h";"Bibliothèque féministe et queer."
+7;"Umweltbibliothek";"Bibliothèque";"tram 9, 10, 11, Bus 70, 89, 107 → Connewitzer Kreuz";"lun, mer 9—18 h , mar, jeu 13—18 h";
+8;"Eine Welt Bibliothèque";"Bibliothèque";"tram 9, 10, 11, Bus 70, 89, 107 → Connewitzer Kreuz";"lun—ven 10—16 h";"Littérature autour de différents sujets concernant le monde, tel que la globalisation, les religions du monde, les relations mondiales etc."
+9;"Conne Island";"Bibliothèque";"tram 9 → Koburger Brücke";"mar—jeu 17—20 h";"Point d'information et bibliothèque où il est possible de se documenter sur des mouvements et collectifs sociaux, de gauche et d'opinion alternatif."
+10;"Bunte Büchothek";"Bibliothèque";"tram 3, 8 → Torgauer Platz";"mer, ven 5—18 h";"1400 livres pour enfants et la jeunesse en plus que 40 langues, échange interculturel, apprentissage de langues, lectures et bien plus."
+11;"Wagenplatz Karl Helga";"Cafés et bars";"tram 14 → Gießerstraße";"lun 20h";
+12;"Plaque";"Cafés et bars";"tram 14 → Gießerstraße";"jeu 20h";
+13;"sublab";"Cafés et bars";"tram 14 → Karl-Heine–Str. / Merseburgerstr.";"sam 20h";
+14;"Bäckerei";"Cafés et bars";"tram 8, 15 → Lützner-/ Merseburger Str.";"lun19h";
+15;"Hinz und Kunz";"Cafés et bars";"tram 7 → G.–Schwarz- / Merseburger Str.";"sam 10h";
+16;"Schwarz 10";"Cafés et bars";"tram 7 → G.–Schwarz- / Merseburger Str.";"jeu 20h , dim 10 h";
+17;"Libelle";"Cafés et bars";"tram 1, 2, 8, 14 → Westplatz";"sam 20h";
+18;"B12";"Cafés et bars";"tram 10, 11 → Südplatz";"mar 20h";
+19;"Similde";"Cafés et bars";"tram 9, 10, 11, bus 70, 89, 107 → Connewitzer Kreuz";"mar 20h , jeu 20 h";
+20;"Manfred";"Cafés et bars";"tram 9, 10, 11, bus 70, 89, 107 → Connewitzer Kreuz";"jeu 20h";
+21;"Liwi";"Cafés et bars";"tram 9, 10, 11, bus 70, 89, 107 → Connewitzer Kreuz";"dim 20h";
+22;"Zoro";"Cafés et bars";"tram 9, 10, 11, bus 70, 89, 107 → Connewitzer Kreuz";"mar 20h";
+23;"2ek";"Cafés et bars";"tram 4, bus 70, 72, 73 → Breite Str.";"dim 15.30h";
+24;"Atari";"Cafés et bars";"tram 4, bus 70, 72, 73 → Breite Str.";"lun 20h";
+25;"N.U.R.";"Cafés et bars";"tram 1, 3, 8, Bus 70 → H.–Liebmann– / Eisenbahnstr.";"jeu 20h";
+26;"109";"Cafés et bars";"tram 3, 8 → Torgauer Platz";"jeu 13h , ven 21 h";
+27;"Japanisches Haus";"Cafés et bars";"tram 3, 8 → Torgauer Platz";"sam 19h";
+28;"Jardin communautaire
+Anna Linde Gemeinschaftsgarten";"Jardins";"tram 3, 14, bus 74 → Felsenkeller";"ven 16—19 h , sam 14—19 h";
+29;"Jardins communautaires
+Nachbarschaftsgärten";"Jardins";"tram 3, 14, bus 74 → Felsenkeller";"ven 14 — 19 h ( Il est possible pour les jardiniers / jardinières et
+autres groupes de venir à d'autres horaires après une demande au préalable ).";
+30;"Jardin botanique de l'université
+Botanischer Garten der Universität
+Leipzig";"Jardins";"tram 12, 15, bus 60 → Ostplatz";"lun—ven 10—16 h";"Entrée libre. Prix d'entrée pour des événements spéciaux et expositions."
+31;"Querbeet";"Jardins";"tram 1, 3, 8 → Einertstraße";"mar 9.30—14 h, 16—19 h ,jeu 16—19 h, sam 10 h— le soir";
+32;"Casablanca / Bäckerei";"Lieux protégés";"tram 8, 15 → Lützner-/ Merseburger Str.";"Chaque premier lundi du mois il y a un repas en échange d'un don exclusivement pour femmes, lesbiens et personnes inter– et transsexuelles.";
+33;"Femmes pour Femmes
+Frauen für Frauen e.V. Leipzig";"Lieux protégés";"tram 10, 11 → Südplatz";" Chaque premier et troisième mercredi du mois 13—17 h";"Promotion des femmes et filles qui travaillent artistique. Lieu de la communication sociale et l'intégration, surtout pour les femmes."
+34;"Centre socioculturel de la femmes culture
+Soziokulturelles Zentrum Frauenkultur";"Lieux protégés";"tram 9, 10, 11, bus 70, 89, 107 → Connewitzer Kreuz";;"Parrainage d'activités artistiques des femmes et jeunes filles. Lieu de communication, d'échange et d'intégration, notamment pour femmes."
+35;"RosaLinde e.V.";"Lieux protégés";"tram 4, 7 → Gerichtsweg";"consultation: lun 14—18 h ,  mar 12—18 h , entrevue sur rendez-vous: mer 12—13 h,   mar—sam 19—22 h Café";"Service d'information et de consultation pour lesbiens, personnes homo-, bi-, trans-, inter- et a-sexuelles ( demande de rendez-vous au préalable souhaitée )"
+36;"Femmes Internationales
+Internationale Frauen Leipzig e.V.";"Lieux protégés";"tram 3, 8 → Torgauer Platz";"lun 13—15 h , mer, ven 9—18 h permanence";
+37;"womens*space (109)";"Lieux protégés";"tram 1, 3, 8, Bus 70 → H.–Liebmann– / Eisenbahnstr.";"dim 15.30 h";"Un lieux protege pour des femmes de rigoler, parler et passer de temps ensemble. Ein geschützter Raum in für Frauen zum lachen, reden und gemeinsam Zeit zu verbringen. Kinder sind auch willkommen."
+38;"Atelier d’auto–réparation de vélo
+Radsfatz Fahrradselbsthilfe";"Lieux protégés";"tram 3, 8 → Torgauer Platz";"Chaque premier, troisième et cinquième mercredi du mois 15 -19 h";"Atelier d’auto–réparation de vélo pour FLIT*"
+39;"G16";"Internet et téléphone";"tram 14 → Gießerstraße";"lun, jeu 15—20 h Infoladen";"Point d'info, Internet gratuit"
+40;"Die Villa – Soziokulturelles Zentrum";"Internet et téléphone";"tram 3, 4, 7, 15 → Leibnizstr. oder tram 1, 14 → Gottschedstr.";"lun—ven 14—19 h";"Utilisation de l'ordinateur gratuite"
+41;"Libelle";"Internet et téléphone";"tram 1, 2, 8, 14 → Westplatz";"jeu 15—18 h";"Utilisation de l'ordinateur"
+42;"B12";"Internet et téléphone";"tram 10, 11 → Südplatz";"tous les jours à partir de 10 h";"Utilisation de l'ordinateur gratuite"
+43;"Conne Island";"Internet et téléphone";"tram 9 → Koburger Brücke";"mar—jeu 17—20 h";"Computer und Infoladen"
+44;"LinXXnet";"Internet et téléphone";"tram 9, 10, 11, Bus 70, 89, 107 → Connewitzer Kreuz";"lun—ven 10—18.30 h ordinateur, internet";
+45;"109";"Internet et téléphone";"tram 3, 8 → Torgauer Platz";"jeu 11—15 h";"Internet, imprimante, scanneur, photocopieuse"
+46;"Wagenplatz RhizomiA";"Internet et téléphone";"tram 3, 8 → Torgauer Platz";"dim 14 h";"Büro– und Infowagen"
+47;"Magasin et service de meubles de la Caritas
+CaritasLADEN und Möbeldienst";"Vêtements et bazar";"tram 8, 15 → Grünauer Allee";"lun 12—17 h , mar—ven 10—17 h";"Vêtements, jouet, fourniture scolaires et meubles"
+48;"Maison de retraite Entraide
+Seniorenhaus Selbsthilfe Leipzig Plagwitz e. V.";"Vêtements et bazar";"tram 3, 14, bus 74 → Felsenkeller";"mer, ven 10—17 h";"Vêtements et produits ménagers, jeu de cartes"
+49;"Advent Wohlfahrtswerk e.V.";"Vêtements et bazar";"tram 14 → Nonnenstr.";"Tous les 1ers et 3e mercredis du mois : 13 —17 h";"Vêtements, gratuit: sous-vêtements, produits pour bébés et petits enfants"
+50;"Croix-Rouge
+DRK–akademischer Kreisverband";"Vêtements et bazar";"tram 3, 14, Bus 74 → Felsenkeller";"lun, mar, jeu 10—12 h , mer 13—17 h , ven 10—12 h";"Vêtements, meubles"
+51;"Diakonie Passgenau";"Vêtements et bazar";"tram 10, 11 → Dantestraße";"mar—ven 11—18 h";"Vêtements, produits ménagers, jouet"
+52;"Diaconat Diakonie Leipziger Oase";"Vêtements et bazar";"tram 4, 7, 12, 15, bus 690 → Johannisplatz";"mer, ven 10—14 h";"Vêtements, produits ménagers, jouet"
+53;"Deutsches Rotes Kreuz Kreisverband Leipzig Stadt e.V.";"Vêtements et bazar";"tram 10, 11 → K.–Liebknecht–Str. / K.–Eisnerstr.";"lun 8—12 h, 13—17 h ,  mar 14—18 h , mer 9—12 h, 14—17 h";"Vêtements, produits ménagers"
+54;"Con Han Hop";"Vêtements et bazar";"tram 1, 3, 8, Bus 70 → H.–Liebmann– / Eisenbahnstr.";"ven 15 h";
+55;"N.U.R.";"Vêtements et bazar";"tram 1, 3, 8, bus 70 → H.–Liebmann– / Eisenbahnstr.";"jeu 19 h";
+56;"Association citoyenne
+Bürgerverein Schönefeld";"Vêtements et bazar";"tram 1 → Stöckelstraße";"lun—jeu 9—12 h, 14—17 h, ven 9—12 h";"Vêtements, produits pour bébés, jouets pour enfants, fournitures scolaires, livres"
+57;"Alcooliques Anonymes";"Aide médicale et psychologique";;;"Des rencontres d'Alcooliques Anonymes sont organisées chaque jour sauf
+le dimanche dans différents quartiers de la ville. Sur le site web se trouve une liste avec les adresses et les heures de rencontre."
+58;"Croix-Rouge
+Deutsches Rotes Kreuz Kreisverband Leipzig–Stadt e.V.";"Aide médicale et psychologique";"tram 10, 11 → K.–Liebknecht–Str. / K.–Eisnerstr.";"lun, jeu 9—14 h";"Service de consultation pour femmes enceintes et familles"
+59;"Medinetz Leipzig";"Aide médicale et psychologique";"tram 2,8, 9 ,10, 11, 14 → Wilhelm–Leuschner–Platz";"mar 16—18 h consultation";"La consultation est non-gouvernementale, gratuite et anonyme. Pendant les
+heures de consultation, sont organisés des rendez-vous avec des médecins
+qui ont accepté d'effectuer une consultation à un prix avantageux. Ces consultations sont anonymes."
+60;"Haus Steinstraße e.V.";"Aide médicale et psychologique";"tram 10, 11 → K.–Liebknecht–Str. / K.–Eisnerstr.";;"Offre de consultation psychologique
+Sur rendez-vous"
+61;"Association d'aide contre le sida
+Aids Hilfe Leipzig e.V.";"Aide médicale et psychologique";"tram 1 → Ossietzky- / Gorkistraße";"mar, jeu 15—21 h ,  1ere  lun du mois 13—15 h,  4e mer du mois 16—18 h";"Consultation et aide pour personnes souffrant du VIH / SIDA ainsi que d'autres maladies sexuellement transmissibles."
+62;"Conne Island";"Musique";"tram 9 → Koburger Brücke";;"Concerts, spectacles, lectures etc. (don 50ct)"
+63;"Müzik–Stüdyo.74";"Musique";"tram 3 → Volksgarten";;"Ici tu peux rencontrer des gens et faire de la musique avec eux sans avoir
+besoin de connaissances musicales. Il y a des salles de répétitions, un studio, du matériel et des instruments de musique. Tu peux demander aux musicien-ne-s sur place de t'aider."
+64;"Salve";"Consultation et permanences sociales et juridiques";"tram 8, 15 → Lützner-/ Merseburger Str.";"lun—ven 9.30—17 h";"Service de contact et de consultation pour migrant-e-s dans l'ouest de Leipzig. Soutien pour le contact et la correspondance avec des instances officielles ainsi que des questions autour du logement et des offres d'enseignement culturel."
+65;"Maison Caritas
+Caritashaus Leipzig";"Consultation et permanences sociales et juridiques";"tram 1, 2, 8, 14 → Westplatz";"lun 14 — 17 h , ven 9 — 12 h";
+66;"RefugeeLawClinic";"Consultation et permanences sociales et juridiques";"tram 2, 8, 9, 10, 11, 14 → Wilhelm–Leuschner–Platz";;"consultation juridique pour migrant-e-s"
+67;"Croix-Rouge
+Deutsches Rotes Kreuz Kreisverband
+Leipzig–Stadt e.V.";"Consultation et permanences sociales et juridiques";"tram 10, 11 → K.–Liebknecht–Str. / K.–Eisnerstr.";"mar 12—14 h , jeu 9 — 11 h";"Consultation pour migrant-e-s"
+68;"Haus Steinstraße e.V.";"Consultation et permanences sociales et juridiques";"tram 9, 10, 11 → HTWK";"sur rendez-vous";"Consultation juridique sur rendez-vous"
+69;"LinXXnet";"Consultation et permanences sociales et juridiques";"tram 9, 10, 11, Bus 70, 89, 107 → Connewitzer Kreuz";"mer 10—16 h";"Consultation sociale"
+70;"2ek";"Consultation et permanences sociales et juridiques";"tram 4 → Breite Straße";" 2. u. 4. jeu du mois 16—18 h";"Consultation sociale"
+71;"Atari";"Consultation et permanences sociales et juridiques";"tram 4 → Breite Straße";"dim 15 h";
+72;"Rencontre citoyenne
+Bürgertreff Volkmarsdorf";"Consultation et permanences sociales et juridiques";"tram 3, 8 → Torgauer Platz";"lun 13—15 h, mer—ven 9—18 h consultation sociale ,  1ere lun du mois 13—15 h,  4e mer du mois 16—18 h";"Offre de consultation interculturelle en differentes langues ( allemand, russe, roumain, arabe, kurde, espagnol, turc, vietnamien )."
+73;"Infobus";"Consultation et permanences sociales et juridiques";"tram 3 → Arcus Park.";"mer 17 h";"Permanence juridique mobile"
+74;"Islamic Al–Sahra Center e.V.";"Lieux spirituels et religieux";"tram 3, 7, 8, 15, bus 74, 130, 131 → Angerbrücke";"Prière du vendredi: heure d'.t. 14 h I heure d'hiver 13 h";
+75;"Synagogue et centre de rencontre
+Synagoge und Begegnungszentrum
+Leipzig e.V.";"Lieux spirituels et religieux";"tram 4, 7, 12, 15, bus 690 → Johannisplatz";;
+76;"Paroisse évangélique luthérienne
+Evangelisch–Lutherische St.
+TrinitatisGemeinde Leipzig";"Lieux spirituels et religieux";"tram 2, 8, 9, 10, 11, 14 → Wilhelm–Leuschner–Platz";;
+77;"Leipzig English Church";"Lieux spirituels et religieux";"tram 10, 11, bus 60, 74 → K.–Liebknecht- / K.–Eisner–Str.";"dim 10.30 h et 18.30 h";"Gemeindehaus Andreaskirche"
+78;"Église russe
+Russische Gedächtniskirche";"Lieux spirituels et religieux";"tram 2, 16, bus 74 → Deutsche Nationalbibliothek";"dim 10 h";
+79;"Paroisse catholique romaine
+St. Laurentius
+Ukranian Greek Catholic Church";"Lieux spirituels et religieux";"tram 4, bus 70, S–Bahn 1, 3 → Ribeck– / Stötteritzerstr.";"dim 14 h";"(Römisch-katholische Pfarrei St. Laurentius)"
+80;"Paroisse évangélique coréenne
+Evangelische Koreanische Gemeinde
+in Leipzig e.V.";"Lieux spirituels et religieux";"tram 1, 3, 8 → Einertstraße";"dim 11 h";
+81;"Centre de culture et recherche islamique
+Leipziger Zentrum für islamische
+Kultur und Forschung e.V.";"Lieux spirituels et religieux";"tram 1, 3, 8 → Einertstraße";"Pri.re du vendredi en turc :
+heure d'.t. 14 h | heure d'hiver 13 h";"Mosquée Takva"
+82;"Communauté Ahmadiyya Muslim
+Ahmadiyya Muslim Gemeinde";"Lieux spirituels et religieux";"tram 1, 3, 8, Bus 70 → H.–Liebmann– / Eisenbahnstr.";"Pri.re du vendredi :
+heure d'.t. 14 h I heure d'hiver 13 h";"Prière du vendredi"
+83;"Paroisse bouddhiste-viêtnamienne
+Vietnamesisch–Buddhistische
+Gemeinde in Leipzig und Umgebung";"Lieux spirituels et religieux";"tram 3 → Bautznerstr.";"dim 10—16 h";
+84;"Gurdwara Gurmat Parchar e.V.";"Lieux spirituels et religieux";"tram 7, 8, bus 90 → Barbarastr.";"tous les jours 8 —
+20 h";
+85;"Salve";"Langues";"tram 8, 15 → Lützner-/ Merseburger Str.";;"l'agence des traducteurs"
+86;"Salve";"Langues";"tram 8, 15 → Lützner-/ Merseburger Str.";"lun, mer 10.30 — 12 h débutant-e-s
+mar, jeu 13.30 — 15 h avancé-e-s";"Les cours de langue suivants t'offrent la possibilité d'apprendre une
+langue gratuitement. ( Il peut il y avoir des frais pour les livres )"
+87;"Centre socioculturel
+Die VILLA–Soziokulturelles Zentrum";"Langues";"tram 3, 4, 7, 15 → Leibnizstr. ou tram 1, 14 → Gottschedstr.";"mar 20 h Soirée Polyglotte";"dans la cave de la villa est organisée une soirée polyglotte–ouverte pour
+tout le monde. Les participant-e-s se rencontrent dans une atmosphère
+détendue. Une langue différente est parlée à chaque table."
+88;"Maison de la Caritas
+Caritashaus Leipzig";"Langues";"tram 1, 2, 8, 14 → Westplatz";"mar 13.30 — 15 h avancé-e-s
+jeu 13.30 — 15 h conversation";
+89;"Tandem de langues de l'université
+Uni Leipzig Sprachtandem";"Langues";"tram 4, 7, 8, 10, 11, 12, 14, 15, 16 → Augustusplatz";"lun 14—16 h, jeu 9—11 h horaires de permanence";"Valable aussi pour les non étudiant-e-s! Rencontre de partenaires de langues
+pour un tandem linguistique ( inscription en ligne sur le site web :
+www.sprachtandem-leipzig.de )"
+90;"Comité des réfugié-e-s
+Flüchtlingsrat e.V.";"Langues";"tram 1, 2, 8, 14 → Westplatz";"lun 11 — 12.30 h débutant-e-s
+jeu 15 — 16.30 h débutant-e-s
+jeu 13 — 15 h avancé-e-s";"Si besoin aussi des cours individuels gratuits"
+91;"Société pour le rapprochement des peuples
+Gesellschaft für Völkerverständigung";"Langues";"tram 9, 10, 11, bus 70, 89, 107 → Connewitzer Kreuz";"mer 15—17 h";"Cours de langue pour débutant-e-s, pour mieux savoir se débrouiller dans
+le quotidien ( 8 Euros / mois pour les livres )"
+92;"Centre germano–russe
+Deutsch–Russisches Zentrum
+Sachsen e.V.";"Langues";"tram 9, 10, 11, bus 70, 89, 107 → Connewitzer Kreuz";"lun, mer 9 — 12 h débutant-e-s
+mar, jeu 12 — 15 h avancé-e-s";
+93;"2ek";"Langues";"tram 4 → Breite Straße";"dim 14—15.30 h";"Cours d'allemand"
+94;"École ABC–Schule";"Langues";"tram 1, 3, 8 → Einertstraße";;"Alphabetisation en allemand pour les analphabètes adultes souvent gratuit
+ou peu coûteux ( ex : 1 euro par heure )."
+95;"Infobus";"Langues";;;
+96;"Centre d'enfants, adolescent-e-s et familles
+Kinder–, Jugend– u. Familienzentrum
+Grünau ( Caritasverband Leipzig e.V. )";"Lieux de rencontre pour enfants et adolescent-e-s";"tram 1 → Krakauerstr.";"lun—ven 10—12 h";"Loisirs et aides aux enfants, adolescent-e-s et familles, rencontres ouvertes
+tous publics, café, atelier et centre culturel"
+97;"Service d'aide aux jeunes immigré-e-s
+Jugendmigrationsdienst Leipzig";"Lieux de rencontre pour enfants et adolescent-e-s";"tram 16 → Mosenthinstraße";;"Aides, projets et initiatives pour l’intégration d'enfants, adolescent-e-s et
+jeunes adultes immigré-e-s dans les domaines de l'éducation, du travail, de
+la musique, des sports et informatiques."
+98;"Centre socioculturel
+Die VILLA–Soziokulturelles Zentrum";"Lieux de rencontre pour enfants et adolescent-e-s";"tram 3, 4, 7, 15 → Leibnizstr. ou tram 1, 14 → Gottschedstr.";"lun 17 — 18 h Hatha Yoga
+mer 16.30 — 18.30 h cirque ( pour les enfant-e-s de 6 à 14 ans )
+mer 17 — 19 h danse d'Afrique de l'ouest ( à partir de 16 ans )
+mer à partir de 19 h Lets Play: babyfoot, fléchette, ping-pong
+( à partir de 16 ans )
+jeu 18 — 20 h B";
+99;"Lieu de rencontre
+Begegnungsstätte Mühlstraße e.V.";"Lieux de rencontre pour enfants et adolescent-e-s";"tram 12, 15 → Witzgallstr. oder tram 4, bus 60, 70 → Riebeck– / Oststraße";;"Événements créatifs et sociaux pour tout les ages, par ex : groupe de mères
+et enfants, après-midi familiaux, cuisine interculturelle, cours de Clown et de percussion."
+100;"2ek";"Lieux de rencontre pour enfants et adolescent-e-s";"tram 4, bus 70, 72, 73 → Breite Str.";"jeu 18.30 h—20.00 h Cours de peinture : Chaque semaine
+est enseign.e une nouvelle tech
+nique de peinture. Mat.riaux .
+disposition en .change d'un don
+( pour les adultes aussi ).";
+101;"OFT Rabet";"Lieux de rencontre pour enfants et adolescent-e-s";"tram 1, 3, 8, bus 70 → H.–Liebmann– / Eisenbahnstr.";;"( Rencontre ouverte tous publics et loisirs au Stadtteilpark Rabet au mur
+coloré ) kickboxing, breakdance, Kochen am Dienstag ( Cuisine le mardi ), Q–Club et bien plus."
+102;"Naomi e.V.";"Lieux de rencontre pour enfants et adolescent-e-s";"tram 1, 3, 8, bus 70 → H.–Liebmann– / Eisenbahnstr.";"mar, mer, jeu 13—17 h salle d'ordinateur";"Seminare, Kurse, Kreativstube"
+103;"Rencontre de filles
+MiO–Der Mädchentreff im Osten";"Lieux de rencontre pour enfants et adolescent-e-s";"tram 1, 3, 8, bus 70 → H.–Liebmann– / Eisenbahnstr.";"mer 15—18 h";"Amusement / interculturel / rencontre / créativité et aide aux devoirs."
+104;"Atelier d’auto–réparation de vélo
+G16 Fahrradselbsthilfewerkstatt";"Ateliers et Réparation";"tram 14 → Gießerstraße";"jeu 18 h";
+105;"sublab";"Ateliers et Réparation";"tram 14 → Karl-Heine–Str. / Merseburgerstr.";"jeu 18 h";
+106;"Atelier pour velo et menuiserie
+Fahrrad– und Holzwerkstatt";"Ateliers et Réparation";"tram 8, 15 → Lützner-/ Merseburger Str.";"mar 18—20 h";
+107;"Café Kaputt";"Ateliers et Réparation";"tram 7 → G.–Schwarz- / Merseburger Str.";"mer 15—19 h bricolage, meuble, jouet, instrumentes, outil et céramique, Haushaltsgegenstände , Do 16—18 h Elektronisches , mer 16—18 h vêtements, textiles, chaussures";"Bricolage, meubles, jouets, instruments de musique, outils, céramiques, produits ménagers et cuisines"
+108;"2ek";"Ateliers et Réparation";"tram 4 → Breite Straße";"mer 16—18 h";"coudre"
+109;"Wu";"Ateliers et Réparation";"tram 4, 7, bus 72, 73 → Reudnitz,Koehlerstr.";"lun 17 h 1ere mar du mois à partir de 15 h Atelier de textile ouvert";"Repaircafé"
+110;"109";"Ateliers et Réparation";"tram 3, 8 → Torgauer Platz";"lun 13 h";"faire de la poterie"
+111;"Radsfatz Fahrradselbsthilfe";"Ateliers et Réparation";"tram 3, 8 → Torgauer Platz";"mar 14—18 h , jeu 12—18 h , 2. u. 4e mer du mois 15—19 h";
+112;"Wagenplatz RhizomiA";"Ateliers et Réparation";"tram 3, 8 → Torgauer Platz";"3e mar du mois 15 h";"Offene Textilwerkstatt"
+113;"Volkspark / Küchenholz";"Nature";"tram 3 → Schwartzestraße oder bus 60 → Rödelstraße";;
+114;"Markkleeberger See";"Nature";"tram 11 → Schillerplatz";;
+115;"Cospudener See";"Nature";"tram 9 → Roßplatz ou bus 65 → Cospudener-See, Nordstrand";;
+116;"Nahleberg";"Nature";"tram 10,11, S-Bahn 1 → S-Bf. Möckern ou bus 67 → Leutzsch, Strbf";;
+117;"Auensee";"Nature";"bus 80 → Auensee";;
+118;"Rabet";"Nature";"tram 1, 3, 8, bus 70 → H.–Liebmann– / Eisenbahnstr.";;
+119;"Naturebad Nord-Ost (Thekla-See, Bagger)";"Nature";"tram 9, bus 70, 79, 80, 81, 82, 83 → Thekla";;
+120;"Kulkwitzer See";"Nature";"tram 1, 2 → Lausen";;
+121;"Johannapark";"Nature";"tram 1, 2, 8, 14 → Westplatz";;
+122;"Mariannenpark";"Nature";"tram 1 → Stannebeinplatz";;
+123;"Lene-Voigt-Park";"Nature";"tram 12, 15, bus 60 → Ostplatz";;
+124;"Friedenspark";"Nature";"tram 12, 15, bus 60 → Ostplatz ou tram 2, 16 → Deutsche Nationalbibliothek";;
+125;"Auewald";"Nature";"tram 9 → Mathildenstraße oder bus 70 → Connewitzer Kreuz";;
+126;"Wildpark";"Nature";"tram 9, bus 107 → Wildpark";;
+127;"Fockeberg";"Nature";"tram 9, 10, 1 ou bus 70, 89 → HTWK";;
+128;"Basketball et ping-pong";"Sport";"tram 4, bus 74, 79 → Kolmstr.";;
+129;"Basketball";"Sport";"tram 10, 16 → An der Märchenwiese";;
+130;"Terrain de football,, basketball et volley ball";"Sport";"tram 10, 16 → Moritz Hof";;
+131;"Basketball, football et volleyball";"Sport";"tram 1, 3, 8, bus 70 → H.–Liebmann– / Eisenbahnstr.";;
+132;"Mur d'escalade K4, terrain de football
+et terrain de volleyball";"Sport";"tram 1, 2, bus 65 → Stuttgarter Allee";;
+133;"Terrain de football";"Sport";"tram 15 → Saturnstr.";;
+134;"Terrain de football";"Sport";"tram 8, 15, bus 66 → Parkallee";;
+135;"Terrain de football avec des mini–buts
+et un petit panier de basket";"Sport";"tram 8, 15, bus 62, 65, S–Bahn 1 → Miltitzer Allee";;
+136;"Panier de basket, but de foot";"Sport";"tram 8, 15 → Grünauer Allee";;
+137;"Basketball et football";"Sport";"tram 4, bus 85, 90 ou S–Bahn 1 → Coppiplatz";;
+138;"Terrain de basketball et terrain de
+Volleyball";"Sport";"tram 12, 15 → Gutenbergplatz";;
+139;"Terrain de basketball";"Sport";"tram 2, 16, bus 74 → Deutsche Nationalbibliothek";;
+140;"Terrain de football, pelouse";"Sport";"tram 2, 16, bus 74 → Deutsche Nationalbibliothek";;
+141;"Terrain de football";"Sport";"tram 4, 7 → Gerichtsweg";;
+142;"Terrain de basketball";"Sport";"tram 10, 11, bus 60, 74 → K.–Liebknecht- / K.–Eisner–Str.";;

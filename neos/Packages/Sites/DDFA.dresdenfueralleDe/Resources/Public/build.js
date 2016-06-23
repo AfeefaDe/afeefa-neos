@@ -67,6 +67,7 @@
         hammer: '../../hammerjs/hammer.min',
         bootstrap: 'empty:',
         fontawesome: 'empty:',
+        d3: '../../d3/d3.min',
         mapbox: 'empty:',
         mc: 'empty:'
     },
@@ -122,6 +123,9 @@
             //Once loaded, use the global 'qx' as the
             //module value.
             exports: 'qx'
+        },
+        'd3': {
+          exports: 'd3'
         },
         "mc": ["mapbox"],
         "Daddy": ["qx"],

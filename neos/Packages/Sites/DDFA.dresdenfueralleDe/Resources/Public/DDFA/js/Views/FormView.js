@@ -908,7 +908,7 @@ qx.Class.define("FormView", {
 				data: {
 					mail_fromMail: 'bot@afeefa.de',
 					mail_fromName: dataMarketEntry.marketentry.speakerPublic ? dataMarketEntry.marketentry.speakerPublic : 'Unbekannt',
-					mail_to: 'team@afeefa.de',
+					mail_to: 'redaktion@afeefa.de',
 					mail_replyTo: dataMarketEntry.marketentry.mail,
 					mail_subject: function(){
 						var entryTypeString = entryTypes[dataMarketEntry.marketentry.type];

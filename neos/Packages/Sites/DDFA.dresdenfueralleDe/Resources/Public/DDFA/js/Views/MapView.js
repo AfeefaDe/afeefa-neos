@@ -360,8 +360,8 @@ qx.Class.define("MapView", {
 				// set view to pirna
 				that.map.setView([ that.getViewCoords().pirna.lat, that.getViewCoords().pirna.lon ], that.getViewCoords().pirna.zoom);
 			}
-			else if( firstParam == 'pirna' ) {
-				// set view to pirna
+			else if( firstParam == 'leipzig' ) {
+				// set view to leipzig
 				that.map.setView([ that.getViewCoords().leipzig.lat, that.getViewCoords().leipzig.lon ], that.getViewCoords().leipzig.zoom);
 			}
 			// param is an entryId

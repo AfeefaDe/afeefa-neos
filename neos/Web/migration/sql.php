@@ -7,16 +7,16 @@ function sql($query, $variant = 1)
     ///////////////
 
     // localhost joschka
-    // $server = "localhost";
-    // $user = "dude";
-    // $pass = "";
-    // $db = "neos";
+    $server = "localhost";
+    $user = "dude";
+    $pass = "";
+    $db = "neos";
 
     // localhost felix
-    $server = "localhost";
-    $user = "root";
-    $pass = "";
-    $db = "afeefa_neos_new";
+//    $server = "localhost";
+//    $user = "root";
+//    $pass = "";
+//    $db = "afeefa_neos_new";
 
     // uberspace
     // $server = "localhost";
@@ -51,6 +51,7 @@ function sql($query, $variant = 1)
                 break;
 
             case 2:
+                mysqli_query($link, "SET FOREIGN_KEY_CHECKS = 0");
                 mysqli_query($link, $query)
                 or die ("<div class='error'>We have a little bit of a situation here and some trouble to write your data to the database... sorry :(</div><br />" . mysql_error());
                 return mysqli_insert_id($link);

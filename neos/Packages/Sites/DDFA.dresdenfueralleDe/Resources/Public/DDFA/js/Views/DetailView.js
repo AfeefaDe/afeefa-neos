@@ -243,6 +243,9 @@ qx.Class.define("DetailView", {
 					else if( _.contains( ['description'], prop) ){
 						that['propertyValue'+prop].append(record[prop].replace(/(?:\r\n|\r|\n)/g, '<br />'));
 					}
+					else if( _.contains( ['openingHours'], prop) ){
+						that['propertyValue'+prop].append(record[prop].replace(/(?:\r\n|\r|\n)/g, '<br />'));
+					}
 					else if( _.contains( ['spokenLanguages'], prop) ){
 						_.each( record[prop].split(',') , function( langCode ){
 							const span = $('<span />')

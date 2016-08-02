@@ -57,6 +57,7 @@ qooxdoo/qx-oo-4.1.min.js
 jquery/jquery-2.2.2.min.js
 underscore/underscore-min.js
 hammerjs/hammer.min.js
+d3/d3.min.js
 chosen/chosen.jquery.min.js
 momentjs/moment.min.js
 combodate/combodate.js

@@ -290,11 +290,145 @@ qx.Class.define("DataManager", {
 			});
 		},
 
+		///////////////////////
+		// import data lists //
+		///////////////////////
+		importEntriesFromCsv: function(){
+			var that = this;
+
+			// SETUP ---
+			var languages = ['de', 'en', 'ar', 'fa', 'fr', 'ru', 'sq', 'ku', 'tr', 'es'];
+			var pathToCsv = '_Resources/Static/Packages/DDFA.dresdenfueralleDe/DDFA/dummyData/leipzig/';
+			var area = 'leipzig';
+			// ---
+
+			var baseLang = 'de';
+			var otherLanguages = _.without( languages, baseLang );
+			var inis = {};
+			
+			_.each( languages, function(lang, i){
+				readCsv(lang, function(){ instantiateEverything(); });
+			});
+
+			function readCsv(lang, cb){
+				
+				var dsv = d3.dsv(";", "text/plain");
+				dsv( pathToCsv + "entries_" + lang + ".csv", function(rows){
+				// d3.csv( pathToCsv + "entries_" + lang + ".csv", function(rows){
+					inis[lang] = rows;
+					if( _.size(inis) == languages.length ) cb();
+				});                
+
+				console.debug(lang, inis);
+			};
+
+			function instantiateEverything(){
+
+				_.each(inis[baseLang], function(row, i){
+
+					// create initiative in base language
+					createMarketEntryAndLocation(
+
+						{
+							"marketentry":{
+								"area": area,
+								"locale": baseLang,
+								"name": row.name? row.name : null,
+								"category": row.category? row.category : null,
+								"subCategory": row.subcategory? row.subcategory : null,
+								"type": row.type? row.type : null,
+								"description": row.description? row.description : null,
+								"forChildren": row.forchildren? row.forchildren : null,
+								"facebook": row.facebook? row.facebook : null,
+								"image": null,
+								"imageType": null,
+								"mail": row.mail? row.mail : null,
+								"phone": row.phone? row.phone : null,
+								"speakerPrivate": row.speakerPrivate? row.speakerPrivate : null,
+								"speakerPublic": row.speakerPublic? row.speakerPublic : null,
+								"spokenLanguages": row.spokenLanguages? row.spokenLanguages : null,
+								"supportWanted": false,
+								"web": row.web? row.web : null,
+								"published": 1
+							}
+						},
+						{
+							"location":{
+								"placename": row.placename? row.placename : null,
+								"street": row.street? row.street : null,
+								"zip": row.zip? row.zip : null,
+								"city": row.city? row.city : null,
+								"district": row.district? row.district : null,
+								"openingHours": row.openinghours? row.openinghours : null,
+								"arrival": row.arrival? row.arrival : null,
+								"lat": row.lat? row.lat : null,
+								"lon": row.lon? row.lon : null
+							}
+						}, i, function( marketentry, iniIndex ){
+
+							// var parentIni = response.initiative;
+
+							// create initiative translations (use entryId)
+							_.each( otherLanguages, function(lang){
+								
+								var row = inis[lang][iniIndex];
+
+								createMarketEntryAndLocation(
+									{
+										"marketentry":{
+											"entryId": marketentry.entryId,
+											"locale": lang,
+											"type": marketentry.type,
+											"name": row.name? row.name : null,
+											"description": row.description? row.description : null
+										}
+									}
+								);
+							});
+						}
+					);
+				});
+			};
+
+			// function createInitiative(data, i, cb){
+			// 	$.ajax({
+			// 		url: "api/initiatives",
+			// 		type: 'POST',
+			// 		data: data,
+			// 		cache: false,
+			// 		dataType: 'json',
+			// 		processData: true,
+			// 		contentType: false
+			// 	})
+			// 	.done(function( data ) {
+			// 		if(cb) cb(data, i);
+			// 	})
+			// 	.fail(function(a) {
+			// 		console.debug(a);
+			// 	});
+			// };
+
+			function createMarketEntryAndLocation( dataMarketEntry, dataLocation, index, cb ){
+
+				var data_joined = _.extend(dataMarketEntry, dataLocation);
+
+				that.addMarketEntry(data_joined, function( response ){
+					if(!response.marketentry){
+						console.warn('failed to create market entry', response);
+						// alert(that.getWording('form_fail'));
+						// return;
+					}
+					console.log('successfully created market entry', response);
+					if(cb) cb(response.marketentry, index);
+					// alert(that.getWording('form_success'));
+				});
+			};
+
+		},
 
 		///////////////////////
 		// import data lists //
 		///////////////////////
-
 		importInis: function(){
 			var that = this;
 

@@ -1861,6 +1861,30 @@
                   "ti":"",
                   "ur":""
             },
+            "lan_ar":{
+                  "de":"Arabisch",
+                  "en":"Arabic",
+                  "ar":"العربية",
+                  "fa":"عربی",
+                  "fr":"Arabe",
+                  "it":"Arabo",
+                  "ru":"арабский",
+                  "sr":"Арапски",
+                  "ti":"ቋንቋ ዓረብ",
+                  "ur":"عربی"
+            },
+            "lan_cs":{
+                  "de":"Tschechisch",
+                  "en":"Czech",
+                  "ar":"تشيكي",
+                  "fa":"کشور چک",
+                  "fr":"tchèque",
+                  "it":"ceco",
+                  "ru":"Чешский",
+                  "sr":"чешки",
+                  "ti":"",
+                  "ur":"چیک"
+            },
             "lan_de":{
                   "de":"Deutsch",
                   "en":"German",
@@ -1885,29 +1909,17 @@
                   "ti":"ቋንቋ እንግሊዝ",
                   "ur":"عربی"
             },
-            "lan_pt":{
-                  "de":"Portugiesisch",
-                  "en":"",
-                  "ar":"",
-                  "fa":"",
-                  "fr":"",
-                  "it":"",
-                  "ru":"",
-                  "sr":"",
+            "lan_es":{
+                  "de":"Spanisch",
+                  "en":"Spanish",
+                  "ar":"الأسبانية",
+                  "fa":"اسپانیایی",
+                  "fr":"Espanol",
+                  "it":"spagnolo",
+                  "ru":"испанский",
+                  "sr":"шпански",
                   "ti":"",
-                  "ur":""
-            },
-            "lan_ar":{
-                  "de":"Arabisch",
-                  "en":"Arabic",
-                  "ar":"العربية",
-                  "fa":"عربی",
-                  "fr":"Arabe",
-                  "it":"Arabo",
-                  "ru":"арабский",
-                  "sr":"Арапски",
-                  "ti":"ቋንቋ ዓረብ",
-                  "ur":"عربی"
+                  "ur":"ہسپانوی"
             },
             "lan_fa":{
                   "de":"Farsi/ Persisch",
@@ -1933,17 +1945,41 @@
                   "ti":"ቋንቋ  ፈረንሳ",
                   "ur":"فرانسیسی"
             },
-            "lan_it":{
-                  "de":"Italienisch",
-                  "en":"Italian",
-                  "ar":"الايطالية",
-                  "fa":"ایتالیایی",
-                  "fr":"Italien",
-                  "it":"italiano",
-                  "ru":"итальянский",
-                  "sr":"Италијански",
-                  "ti":"ቋንቋ ጥልያን",
-                  "ur":"اطالوی"
+            "lan_ku":{
+                  "de":"Kurdisch",
+                  "en":"Kurdish",
+                  "ar":"",
+                  "fa":"",
+                  "fr":"",
+                  "it":"",
+                  "ru":"",
+                  "sr":"",
+                  "ti":"",
+                  "ur":""
+            },
+            "lan_ps":{
+                  "de":"Pashto",
+                  "en":"Pashto",
+                  "ar":"",
+                  "fa":"",
+                  "fr":"",
+                  "it":"",
+                  "ru":"",
+                  "sr":"",
+                  "ti":"",
+                  "ur":""
+            },
+            "lan_pt":{
+                  "de":"Portugiesisch",
+                  "en":"",
+                  "ar":"",
+                  "fa":"",
+                  "fr":"",
+                  "it":"",
+                  "ru":"",
+                  "sr":"",
+                  "ti":"",
+                  "ur":""
             },
             "lan_ru":{
                   "de":"Russisch",
@@ -1956,6 +1992,18 @@
                   "sr":"Руски",
                   "ti":"ቋንቋ ሩስያ",
                   "ur":"روسی"
+            },
+            "lan_sq":{
+                  "de":"Albanisch",
+                  "en":"Albanian",
+                  "ar":"",
+                  "fa":"",
+                  "fr":"",
+                  "it":"",
+                  "ru":"",
+                  "sr":"",
+                  "ti":"",
+                  "ur":""
             },
             "lan_sr":{
                   "de":"Serbisch",
@@ -1981,6 +2029,18 @@
                   "ti":"ቋንቋ ትግርኛ",
                   "ur":"ٹگرینیا"
             },
+            "lan_tr":{
+                  "de":"Türkisch",
+                  "en":"Turkish",
+                  "ar":"",
+                  "fa":"",
+                  "fr":"",
+                  "it":"",
+                  "ru":"",
+                  "sr":"",
+                  "ti":"",
+                  "ur":""
+            },
             "lan_ur":{
                   "de":"Urdu",
                   "en":"Urdu",
@@ -1992,30 +2052,6 @@
                   "sr":"Урду",
                   "ti":"ቋንቋ ኡርዱ",
                   "ur":"اردو"
-            },
-            "lan_es":{
-                  "de":"Spanisch",
-                  "en":"Spanish",
-                  "ar":"الأسبانية",
-                  "fa":"اسپانیایی",
-                  "fr":"Espanol",
-                  "it":"spagnolo",
-                  "ru":"испанский",
-                  "sr":"шпански",
-                  "ti":"",
-                  "ur":"ہسپانوی"
-            },
-            "lan_cz":{
-                  "de":"Tschechisch",
-                  "en":"Czech",
-                  "ar":"تشيكي",
-                  "fa":"کشور چک",
-                  "fr":"tchèque",
-                  "it":"ceco",
-                  "ru":"Чешский",
-                  "sr":"чешки",
-                  "ti":"",
-                  "ur":"چیک"
             }
       }
 ]

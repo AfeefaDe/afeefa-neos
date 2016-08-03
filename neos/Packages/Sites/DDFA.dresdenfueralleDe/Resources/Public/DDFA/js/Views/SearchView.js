@@ -260,6 +260,8 @@ qx.Class.define("SearchView", {
           createEntryResult(entry);
         });
       }
+
+      that.say('searchResultsLoaded');
     },
 
     addEvents: function(){

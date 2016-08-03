@@ -31,11 +31,16 @@
 		width: 1.5em;
 		height: 1.5em;
 		cursor: pointer;
+		opacity: .2;
 		background-image: url("../img/icon_34.svg");
 		@include background-size(100%);
 		background-position: center center;
 		background-repeat: no-repeat;
 		@include transform(rotate(45deg));
+
+		&:hover {
+			opacity: 1;
+		}
 	}
 
 	/* IMAGE PROPERTY */

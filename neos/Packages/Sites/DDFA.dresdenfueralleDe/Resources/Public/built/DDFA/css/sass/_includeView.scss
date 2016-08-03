@@ -162,7 +162,7 @@
 				margin-top: 0;
 			}
 
-			span.locationLink {
+			span.locationLink, span.searchLink {
 				@extend a;
 
 				display: inline-block;

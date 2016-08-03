@@ -384,6 +384,10 @@ qx.Class.define("DetailView", {
 				// 	that.view.addClass('right');
 			});
 
+			that.listen('searchResultsLoaded', function(){
+				that.close();
+			});
+
 			that.listen('searchViewClosed', function(){
 				// that.view.removeClass('right');
 			});

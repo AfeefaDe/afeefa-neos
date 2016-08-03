@@ -131,7 +131,14 @@ qx.Class.define("IncludeView", {
 
 				// location links
 				$('span.locationLink').click(function(){
+					// console.debug('locationLink clicked');
 					APP.getMapView().selectMarkerFromLink( $(this).attr('name') );
+				});
+
+				// search links
+				$('span.searchLink').click(function(){
+					// console.debug('searchLink clicked');
+					APP.getSearchView().loadResults( $(this).attr('name') );
 				});
 
 				// scan buttons
@@ -203,6 +210,10 @@ qx.Class.define("IncludeView", {
 			});
 
 			that.listen('detailViewOpened', function(){
+				that.minimize(true);
+			});
+
+			that.listen('searchResultsLoaded', function(){
 				that.minimize(true);
 			});
 

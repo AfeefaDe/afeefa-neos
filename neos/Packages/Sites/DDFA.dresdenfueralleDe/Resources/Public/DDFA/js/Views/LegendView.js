@@ -314,7 +314,7 @@ qx.Class.define("LegendView", {
 
 		  });
 
-		that.listen('curtainclicked', function(){
+			that.listen('curtainclicked', function(){
         	if( that.view.hasClass('active') ) that.close();
   		});
 
@@ -327,6 +327,10 @@ qx.Class.define("LegendView", {
 			  	if( that.view.hasClass('active') ) that.close();
 			  }
 			);
+
+			that.listen('searchFieldFocused', function(){
+				that.resetFilter();
+  		});
 	  },
 
 	  close: function(){

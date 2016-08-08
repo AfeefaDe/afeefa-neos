@@ -303,7 +303,9 @@ qx.Class.define("MapView", {
 						return '<span class="title">' + locationName + '</span><span class="category">' +label+ '</span>';
 					}());
 
-			marker.on('mouseover', function (e) {
+					marker.bindPopup(popup);
+
+					marker.on('mouseover', function (e) {
 							that.map.openPopup(popup);
 					});
 					marker.on('mouseout', function (e) {
@@ -343,7 +345,7 @@ qx.Class.define("MapView", {
 			that.layerForMainMarkers.clearLayers();
 			that.layerForPOIMarkers.clearLayers();
 		
-		that.setMarkerLocationLookup([]);
+			that.setMarkerLocationLookup([]);
 
 		},
 

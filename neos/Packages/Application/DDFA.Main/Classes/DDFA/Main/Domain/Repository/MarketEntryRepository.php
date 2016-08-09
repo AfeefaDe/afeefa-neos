@@ -41,15 +41,36 @@ class MarketEntryRepository extends AbstractTranslationRepository
      * @param bool $onlyPublished
      * @return array
      */
-    public function findAllSupplemented($locale, $onlyPublished = false)
+    public function findAllSupplemented($locale, $onlyPublished = false, $hidePastEvents = false)
     {
         $all = $this->findByLocale(DDConst::LOCALE_STD);
         $result = array();
         foreach ($all as $o) {
+            // filter past events
+            if( $hidePastEvents && ($o->getType() == 1 || $o->getType() == 2) && $this->isPastEvent($o) )
+                continue;
+            
+            // filter by published
             if (!$onlyPublished || $o->getPublished())
                 array_push($result, $this->supplementFromParent($this->hydrate($o, $locale, DDConst::OWNER_MARKET)));
         }
         return $result;
+    }
+
+    public function isPastEvent( $marketEntry )
+    {
+        $dateFrom = $marketEntry->getDateFrom() ? strtotime($marketEntry->getDateFrom()) : null;
+        $dateTo = $marketEntry->getDateTo() ? strtotime($marketEntry->getDateTo()) : null;
+
+        if( $dateFrom || $dateTo ){
+            // add one day to the event to make it comparable with today (only the date matters, not the hour)
+            if($dateFrom) $dateFrom + (24 * 60 * 60);
+            if($dateTo) $dateTo + (24 * 60 * 60);
+
+            if( $dateTo && $dateTo < time() ) return true;
+            if( $dateFrom && $dateFrom < time() ) return true;
+        }
+        return false;
     }
 
     public function findOneSupplemented($marketentry, $locale, $onlyPublished = false) {

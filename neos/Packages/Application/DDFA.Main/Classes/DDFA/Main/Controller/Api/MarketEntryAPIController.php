@@ -45,7 +45,7 @@ class MarketEntryAPIController extends ActionController
      */
     public function listAction($locale = 'de')
     {
-        $this->view->assign('value', ['marketentries' => $this->marketEntryRepository->findAllSupplemented($locale, true)]);
+        $this->view->assign('value', ['marketentries' => $this->marketEntryRepository->findAllSupplemented($locale, true, true)]);
     }
 
     /**

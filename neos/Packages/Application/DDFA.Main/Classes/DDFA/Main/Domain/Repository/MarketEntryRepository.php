@@ -57,19 +57,17 @@ class MarketEntryRepository extends AbstractTranslationRepository
         return $result;
     }
 
+    // checks if date (not exact time) was before today
     public function isPastEvent( $marketEntry )
     {
         $dateFrom = $marketEntry->getDateFrom() ? strtotime($marketEntry->getDateFrom()) : null;
         $dateTo = $marketEntry->getDateTo() ? strtotime($marketEntry->getDateTo()) : null;
 
         if( $dateFrom || $dateTo ){
-            // add one day to the event to make it comparable with today (only the date matters, not the hour)
-            if($dateFrom) $dateFrom + (24 * 60 * 60);
-            if($dateTo) $dateTo + (24 * 60 * 60);
-
-            if( $dateTo && $dateTo < time() ) return true;
-            if( $dateFrom && $dateFrom < time() ) return true;
+            if( $dateTo && $dateTo < strtotime('today') ) return true;
+            if( $dateFrom && $dateFrom < strtotime('today') ) return true;
         }
+        
         return false;
     }
 

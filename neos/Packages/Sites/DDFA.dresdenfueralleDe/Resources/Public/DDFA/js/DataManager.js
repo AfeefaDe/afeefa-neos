@@ -119,11 +119,13 @@ qx.Class.define("DataManager", {
 
 		},
 
-		getAllEvents: function( cb ){
+		getAllEvents: function( options ){
 			var events = APP.getData().entries.filter(function(entry){
-				if (entry.type == 2) return true;
-				else return false;
+				if (entry.type != 2) return false;
+				if( options && options.mustHaveDate && !entry.dateFrom ) return false;
+				return true;
 			});
+
 			return _.sortBy(events, 'dateFrom');
 		},
 

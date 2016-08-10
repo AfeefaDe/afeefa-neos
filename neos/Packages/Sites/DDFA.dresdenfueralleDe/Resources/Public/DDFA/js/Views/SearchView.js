@@ -233,7 +233,7 @@ qx.Class.define("SearchView", {
           that.inputField.val('events').trigger( "input" );
         });
         
-        _.each(APP.getDataManager().getAllEvents().slice(0, 3), function(entry) {
+        _.each(APP.getDataManager().getAllEvents( {mustHaveDate: true} ).slice(0, 3), function(entry) {
           createEntryResult(entry);
         });
                 

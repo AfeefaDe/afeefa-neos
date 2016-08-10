@@ -70,6 +70,7 @@
 	padding: .5em .8em;
 	cursor: pointer;
 	display: inline-block;
+	border-bottom: none !important;
 
 	&:hover {
 		@include shadow($height: 2);
@@ -83,8 +84,9 @@
 		padding: .3em .5em;
 
 		&:hover {
+			background-color: $gray20 !important;
 			@include shadow($height: 2, $color: $gray50);
-			color: $black;
+			color: $black !important;
 		}
 	}
 

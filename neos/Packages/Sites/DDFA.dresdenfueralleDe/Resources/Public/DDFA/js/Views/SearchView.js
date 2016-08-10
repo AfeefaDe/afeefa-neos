@@ -85,7 +85,7 @@ qx.Class.define("SearchView", {
       // input field
       that.inputField = $("<input />")
         .attr('type', 'text')
-        .attr('placeholder', 'Search Afeefa');
+        .attr('placeholder', that.getWording('search_placeholder'));
       that.searchBar.append(that.inputField);
 
       // results area
@@ -117,7 +117,6 @@ qx.Class.define("SearchView", {
 
       that.results.empty();
 
-      // TODO use marketentries instead of locations
       const entries = APP.getData().entries;
 
       // generic function to create a single result
@@ -155,6 +154,20 @@ qx.Class.define("SearchView", {
         }
       }
 
+      // generic function to create a section header
+      function createSectionHeader( label, action ) {
+        const sectionHeader = $("<div />")
+          .addClass('section-header')
+          .append(label);
+        
+        if(action) sectionHeader
+          .addClass('with-action')
+          .click(function(){ action(); });
+        
+        that.results.append(sectionHeader);
+      }
+
+
       // generic function to create a single entry result
       function createEntryResult( entry ) {
         
@@ -168,6 +181,7 @@ qx.Class.define("SearchView", {
         // label
         var label = entry.name;
         var subLabel = entry.subCategory ? that.getWording('cat_' + entry.subCategory) : that.getWording('cat_' + categoryName);
+        if( entry.type == 2 && entry.dateFrom ) subLabel += ' | ' + APP.getUtility().buildTimeString(entry);
         
         // action
         var action = function(){
@@ -191,10 +205,10 @@ qx.Class.define("SearchView", {
         // createResult('supportWanted', 'Unterstützer gesucht', 'Projekte, die noch Verstärkung brauchen', action );
 
         // link to intro
-        var action = function(){
-          APP.getIncludeView().load( APP.getIncludeView().getIncludes().intro );
-        };
-        createResult('intro', that.getWording('search_label_intro'), that.getWording('search_sublabel_intro'), action );
+        // var action = function(){
+        //   APP.getIncludeView().load( APP.getIncludeView().getIncludes().intro );
+        // };
+        // createResult('intro', that.getWording('search_label_intro'), that.getWording('search_sublabel_intro'), action );
 
         // link to refugee guide
         var action = function(){
@@ -208,7 +222,24 @@ qx.Class.define("SearchView", {
         };
         createResult('supporter-guide', that.getWording('search_label_supporterGuide'), that.getWording('search_sublabel_supporterGuide'), action );
 
-        // for god's sake show ALL entries
+        // support wanted
+        var action = function(){
+          that.inputField.val('support wanted').trigger( "input" );
+        };
+        createResult('support-wanted', that.getWording('search_label_supportwanted'), that.getWording('search_sublabel_supportwanted'), action );
+
+        // upcoming events
+        createSectionHeader( that.getWording('search_label_upcomingevents'), function(){
+          that.inputField.val('events').trigger( "input" );
+        });
+        
+        _.each(APP.getDataManager().getAllEvents().slice(0, 3), function(entry) {
+          createEntryResult(entry);
+        });
+                
+        // all entries
+        createSectionHeader( that.getWording('search_label_allentries') );
+
         _.each(entries, function(entry) {
           createEntryResult(entry);
         });
@@ -218,7 +249,10 @@ qx.Class.define("SearchView", {
         var entriesFiltered;
 
         // predefined query: support wanted
-        if( query == 'supportwanted' ){
+        if( query == 'events' ){
+          entriesFiltered = APP.getDataManager().getAllEvents();
+        }
+        else if( query == 'support wanted' ){
           entriesFiltered = _.filter( entries, function(entry){
             return entry.supportWanted;
           });

@@ -11,6 +11,7 @@ qx.Class.define("APPAFEEFA", {
 		that.setDataManager(new DataManager());
 		that.setRouter(new Router());
 		that.setLM(new LanguageManager());
+		that.setUtility(new Utility());
 
 		that.setConfig(
 			{
@@ -109,6 +110,7 @@ qx.Class.define("APPAFEEFA", {
 	properties : {
 		title: {},
 		DataManager: {},
+		Utility: {},
 		Router: {},
 		LM: {},
 		data: { init: {} },

@@ -1242,6 +1242,19 @@
                   "ur":""
             },
 
+            "search_placeholder":{
+                  "de":"Afeefa durchsuchen...",
+                  "en":"Search Afeefa...",
+                  "ar":"",
+                  "fa":"",
+                  "fr":"",
+                  "it":"",
+                  "ru":"",
+                  "sr":"",
+                  "ti":"",
+                  "ur":""
+            },
+
             "search_label_intro":{
                   "de":"Willkommen auf Afeefa.de",
                   "en":"Welcome to Afeefa.de",
@@ -1310,6 +1323,57 @@
             "search_sublabel_supporterGuide":{
                   "de":"Wichtige Infos rundum ehrenamtliches Engagement",
                   "en":"Important information on voluntary engagement",
+                  "ar":"",
+                  "fa":"",
+                  "fr":"",
+                  "it":"",
+                  "ru":"",
+                  "sr":"",
+                  "ti":"",
+                  "ur":""
+            },
+
+            "search_label_supportwanted":{
+                  "de":"Unterstützer gesucht",
+                  "en":"Supporters wanted",
+                  "ar":"",
+                  "fa":"",
+                  "fr":"",
+                  "it":"",
+                  "ru":"",
+                  "sr":"",
+                  "ti":"",
+                  "ur":""
+            },
+            "search_sublabel_supportwanted":{
+                  "de":"Projekte, die dringend Unterstützer suchen",
+                  "en":"Projects which urgently need supporters",
+                  "ar":"",
+                  "fa":"",
+                  "fr":"",
+                  "it":"",
+                  "ru":"",
+                  "sr":"",
+                  "ti":"",
+                  "ur":""
+            },
+
+            "search_label_upcomingevents":{
+                  "de":"Kommende Events ►",
+                  "en":"upcoming events ►",
+                  "ar":"",
+                  "fa":"",
+                  "fr":"",
+                  "it":"",
+                  "ru":"",
+                  "sr":"",
+                  "ti":"",
+                  "ur":""
+            },
+
+            "search_label_allentries":{
+                  "de":"Alle Einträge",
+                  "en":"all entries",
                   "ar":"",
                   "fa":"",
                   "fr":"",

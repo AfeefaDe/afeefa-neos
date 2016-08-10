@@ -137,6 +137,7 @@
         'DataManager': ["qx"],
         'Router': ["qx"],
         'LanguageManager': ["qx"],
+        'Utility': ["qx"],
         'Views/View': ["qx"],
         'Views/MapView': ["qx"],
         'Views/SearchView': ["qx"],

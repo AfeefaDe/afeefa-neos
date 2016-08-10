@@ -101,6 +101,20 @@
 			}
 		}
 
+		.section-header {
+			text-transform: uppercase;
+			color: $gray50;
+			margin: 2em 1em 1em;
+
+			&.with-action {
+				cursor: pointer;
+
+				&:hover {
+					color: $gray20;
+				}
+			}
+		}
+
 		.icon {
 			@include entityShapes;
 			@include categoryColors;

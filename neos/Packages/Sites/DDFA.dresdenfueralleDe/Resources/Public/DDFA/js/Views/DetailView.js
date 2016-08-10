@@ -179,48 +179,8 @@ qx.Class.define("DetailView", {
 			that['propertyIcon'+prop].addClass('icon-' + prop);
 			that['propertyName'+prop].append( that.getWording( 'prop_' + prop ) );
 			
-			// var value = record.type !== 3 ? buildTimes(record.marketEntry) : buildTimes(record);
-			var value = buildTimes(record);
+			var value = APP.getUtility().buildTimeString(record);
 
-			function buildTimes(record){
-				var times = '';
-				
-				var dateFrom = record.dateFrom? convertTime(record.dateFrom) : record.dateFrom;
-				var dateTo = record.dateTo? convertTime(record.dateTo) : record.dateTo;
-				var timeFrom = record.timeFrom;
-				var timeTo = record.timeTo;
-
-				if( dateFrom && timeFrom && dateTo && timeTo){
-					times += 'vom ' + dateFrom + ' um ' + timeFrom + '<br>';
-					times += 'bis ' + dateTo + ' um ' + timeTo;
-				}
-				else if( dateFrom && timeFrom && timeTo){
-					times += dateFrom + ' von ' + timeFrom + ' bis ' + timeTo;
-				}
-				else if( dateFrom && timeFrom){
-					times += dateFrom + ' um ' + timeFrom;
-				}
-				else if( dateFrom && dateTo){
-					times += 'vom ' + dateFrom + ' bis ' + dateTo;
-				}
-				else if( dateFrom ){
-					times += dateFrom;
-				}
-				
-				function convertTime( timeValue ){
-					var dateObj = new Date(timeValue);
-					var formattedString = '';
-					if( APP.getLM().getCurrentLang() == 'de' ){
-						formattedString = (dateObj.getDate()) +'.'+ (dateObj.getMonth()+1) +'.'+ (dateObj.getFullYear())
-					} else {
-						formattedString = timeValue;
-					}
-
-					return formattedString;
-				}
-
-				return times;
-			}
 			if( value.length > 0 ) {
 				that['propertyValue'+prop].append(value);
 				that['propertyContainer'+prop].show();

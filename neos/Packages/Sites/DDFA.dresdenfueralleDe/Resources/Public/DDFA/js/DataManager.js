@@ -72,6 +72,22 @@ qx.Class.define("DataManager", {
 
 		},
 
+		getLanguageBib: function( cb ){
+
+			$.ajax({
+				url: '_Resources/Static/Packages/DDFA.dresdenfueralleDe/DDFA/lang/lang.json',
+				type: 'GET',
+				dataType: 'text'
+			})
+			.done(function( data ) {
+				cb( JSON.parse(data) );
+			})
+			.fail(function(a) {
+				console.debug(a);
+			});
+
+		},
+
 		getAllEntries: function( cb ){
 
 			$.ajax({
@@ -103,6 +119,14 @@ qx.Class.define("DataManager", {
 
 		},
 
+		getAllEvents: function( cb ){
+			var events = APP.getData().entries.filter(function(entry){
+				if (entry.type == 2) return true;
+				else return false;
+			});
+			return _.sortBy(events, 'dateFrom');
+		},
+
 		getAllLocations: function( cb ){
 
 			$.ajax({
@@ -112,22 +136,6 @@ qx.Class.define("DataManager", {
 			})
 			.done(function( data ) {
 				cb(data);
-			})
-			.fail(function(a) {
-				console.debug(a);
-			});
-
-		},
-
-		getLanguageBib: function( cb ){
-
-			$.ajax({
-				url: '_Resources/Static/Packages/DDFA.dresdenfueralleDe/DDFA/lang/lang.json',
-				type: 'GET',
-				dataType: 'text'
-			})
-			.done(function( data ) {
-				cb( JSON.parse(data) );
 			})
 			.fail(function(a) {
 				console.debug(a);

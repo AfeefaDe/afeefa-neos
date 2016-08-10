@@ -68,6 +68,7 @@ DDFA/js/APPAFEEFA.js
 DDFA/js/DataManager.js
 DDFA/js/Router.js
 DDFA/js/LanguageManager.js
+DDFA/js/Utility.js
 DDFA/js/Views/View.js
 DDFA/js/Views/MapView.js
 DDFA/js/Views/SearchView.js

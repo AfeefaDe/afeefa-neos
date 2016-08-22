@@ -9,69 +9,52 @@ require.config({
         perfectScrollbarJQuery: 'https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/0.6.7/js/min/perfect-scrollbar.jquery.min',
         chosen: '../../chosen/chosen.jquery.min',
         momentjs: '../../momentjs/moment.min',
-        combodate: '../../combodate/combodate',
         restive: '../../restive/restive.min',
         qx: '../../qooxdoo/qx-oo-4.1.min',
         underscore: '../../underscore/underscore-min',
         hammer: '../../hammerjs/hammer.min',
         bootstrap: 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min',
         fontawesome: 'https://use.fontawesome.com/43c3d746ca',
-        d3: '../../d3/d3.min',
-        // mapbox: 'https://api.tiles.mapbox.com/mapbox.js/v2.3.0/mapbox',
         mapbox: 'https://api.mapbox.com/mapbox.js/v2.4.0/mapbox',
-        // mc: 'https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/leaflet.markercluster'
         mc: '../../leafletPlugins/leaflet.markercluster'
     },
 
+    // define dependencies via shim because of use of old javascript libs, which do not define a module and therefore do not define their dependencies themselves (defined modules in javascript define other dependencies)
     shim: {
-        'mapbox': {
-            //These script dependencies should be loaded before loading
-            //mapbox.js
-            // deps: ['underscore', 'jquery'],
-            //Once loaded, use the global 'L' as the
-            //module value.
-            exports: 'L'
-        },
-        'modernizr': {
-            //These script dependencies should be loaded before loading
-            //modernizr.js
-            // deps: ['underscore', 'jquery'],
-            //Once loaded, use the global 'Modernizr' as the
-            //module value.
-            exports: 'Modernizr'
-        },
-        'qx': {
-            //These script dependencies should be loaded before loading
-            //qx.js
-            // deps: ['underscore', 'jquery'],
-            //Once loaded, use the global 'qx' as the
-            //module value.
-            exports: 'qx'
-        },
-        'd3': {
-            exports: 'd3'
-        },
+        // 'mapbox': {
+        // //     These script dependencies should be loaded before loading
+        // //     mapbox.js
+        //     deps: ['underscore', 'jquery'],
+        // //     Once loaded, use the global 'L' as the
+        // //     module value.
+        //     exports: 'L'
+        // },
+        
         "mc": ["mapbox"],
-        "Daddy": ["qx"],
-        "bootstrap": ["jquery"],
+
+        // depending on jquery
         "chosen": ["jquery"],
         "restive": ["jquery"],
-        "combodate": ["jquery"],
-        'APPAFEEFA': ["qx"],
-        'DataManager': ["qx"],
-        'Router': ["qx"],
-        'LanguageManager': ["qx"],
-        'Utility': ["qx"],
-        'Views/View': ["qx"],
-        'Views/MapView': ["qx"],
-        'Views/SearchView': ["qx"],
-        'Views/DetailView': ["qx"],
-        'Views/MenuView': ["qx"],
-        'Views/LegendView': ["qx"],
-        'Views/LanguageView': ["qx"],
-        'Views/PlusView': ["qx"],
-        'Views/FormView': ["qx"],
-        'Views/IncludeView': ["qx"]
+        'perfectScrollbarJQuery': ["jquery"],
+        "bootstrap": ["jquery"],
+
+        // app files
+        "Daddy": ['qx', 'jquery', 'underscore', 'restive', 'perfectScrollbarJQuery', 'mapbox', 'mc', 'hammer', 'modernizr'],
+        'APPAFEEFA': ['Daddy'],
+        'DataManager': ['APPAFEEFA'],
+        'Router': ['APPAFEEFA'],
+        'LanguageManager': ['APPAFEEFA'],
+        'Utility': ['APPAFEEFA'],
+        'Views/View': ['DataManager', 'Router', 'LanguageManager', 'Utility'],
+        'Views/MapView': ['Views/View'],
+        'Views/SearchView': ['Views/View'],
+        'Views/DetailView': ['Views/View'],
+        'Views/MenuView': ['Views/View'],
+        'Views/LegendView': ['Views/View'],
+        'Views/LanguageView': ['Views/View'],
+        'Views/PlusView': ['Views/View'],
+        'Views/FormView': ['Views/View'],
+        'Views/IncludeView': ['Views/View']
     },
 
     // enforceDefine: true,
@@ -79,135 +62,45 @@ require.config({
     waitSeconds: 0	// disable "Load timeout for modules" error
 });
 
-require([
-    'domReady',
-    'qx',
-    'jquery',
-    'underscore',
-    'hammer',
-    'd3',
-    'mapbox',
-    'mc',
-    'perfectScrollbarJQuery',
-    'chosen',
-    'momentjs',
-    'combodate',
-    'modernizr',
-    'bootstrap',
-    'fontawesome',
-    'Daddy',
-    'restive',
-    'APPAFEEFA',
-    'DataManager',
-    'Router',
-    'LanguageManager',
-    'Utility',
-    'Views/View',
-    'Views/MapView',
-    'Views/SearchView',
-    'Views/DetailView',
-    'Views/MenuView',
-    'Views/LegendView',
-    'Views/LanguageView',
-    'Views/PlusView',
-    'Views/FormView',
-    'Views/IncludeView'
-], function (domReady, qx, $, _, Hammer) {
+// define(function (require) {
+    // var domReady = require('domReady');
+    require([
+        // requiring here loads the mentioned file as well as its dependencies defined via shim (see above)
+        'domReady',
+        'APPAFEEFA',
+        'DataManager',
+        'Router',
+        'LanguageManager',
+        'Utility',
+        'Views/MapView',
+        'Views/SearchView',
+        'Views/DetailView',
+        'Views/MenuView',
+        'Views/LegendView',
+        'Views/LanguageView',
+        'Views/PlusView',
+        'Views/FormView',
+        'Views/IncludeView'
+    ], function(domReady){
 
-    domReady(function () {
+        // if dependencies don't become available everywhere within the app, then define them here again as global var
+        Hammer = require('hammer');
+        
+        domReady(function () {
+            APP = new APPAFEEFA();
 
-        // require( [ 'modernizr'], function(  ){
 
-        // require( [], function(){
-
-        // require( [], function(){
-
-        APP = new APPAFEEFA();
-
-        // initialize app (e.g. fetch data)
-        APP.init(function () {
-
-            // var views;
-
-            // if( APP.getUserDevice() === 'phone' ) {
-            // 	views = ['Views/MapView', 'Views/DetailView', 'Views/DetailViewMobile', 'Views/PlusView'];
-            // } else {
-            // 	views = ['Views/MapView', 'Views/DetailView', 'Views/PlusView'];
-            // }
-
-            // require( views, function(){
-            // 	APP.getRouter().navigate();
-            // });
-
-            // require( [], function(){
-
-            if (APP.getUserDevice() === 'mobile') {
-
-                require(['Views/DetailViewMobile', 'Views/LanguageViewMobile'], function () {
+            APP.init(function () {
+                if (APP.getUserDevice() === 'mobile') {
+                    require(['Views/DetailViewMobile', 'Views/LanguageViewMobile'], function () {
+                        APP.getRouter().initialNavigate();
+                    });
+                } else {
                     APP.getRouter().initialNavigate();
-                });
+                }
 
-            } else {
-                APP.getRouter().initialNavigate();
-            }
-
-            APP.say('appInitialized');
-
-            // });
-
-
+                APP.say('appInitialized');
+            });
         });
-
-
-        //////////////
-        // MENU //
-        //////////////
-
-        // console.debug(mapdata);
-
-        // show menu
-        // var $menu = $('#mobile-menu-off-canvas-left');
-        // $('#menu-btn').click(function(){
-        // 	$menu.addClass('active');
-        // });
-
-        // // hide menu (click the map)
-        // $('#map-container').click(function(){
-        // 	$menu.removeClass('active');
-        // });
-        // var myElement = document.getElementById('myElement');
-
-        // // hide menu (swipe back)
-        // var mc = new Hammer($menu[0]);
-        // mc.on("swipeleft", function(ev) {
-        // 	$menu.removeClass('active');
-        // });
-
-        // // show legend
-        // var $legend = $('#mobile-menu-off-canvas-right');
-        // $('#legend-btn').click(function(){
-        // 	$legend.addClass('active');
-        // });
-
-        // // hide legend (click the map)
-        // $('#map-container').click(function(){
-        // 	$legend.removeClass('active');
-        // });
-        // var myElement = document.getElementById('myElement');
-
-        // // hide legend (swipe back)
-        // var mc = new Hammer($legend[0]);
-        // mc.on("swiperight", function(ev) {
-        // 	$legend.removeClass('active');
-        // });
-
-        // });
-
-        // });
-
-        // });
     });
-
-});
-
-
+// });

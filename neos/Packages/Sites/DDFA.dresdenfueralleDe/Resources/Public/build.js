@@ -34,7 +34,7 @@
     //or require.config({}) call found in that file will be used.
     //As of 2.1.10, mainConfigFile can be an array of values, with the last
     //value's config take precedence over previous values in the array.
-    // mainConfigFile: 'DDFA/js/main.js',
+    mainConfigFile: 'DDFA/js/main.js',
 
     modules: [
         {
@@ -67,8 +67,8 @@
         hammer: '../../hammerjs/hammer.min',
         bootstrap: 'empty:',
         fontawesome: 'empty:',
-        d3: '../../d3/d3.min',
         mapbox: 'empty:',
+        // skip markercluster in building, because otherwise "L is not defined" in markercluster initialization (dont know why)
         mc: 'empty:'
     },
 
@@ -101,53 +101,34 @@
     //inlined in the build config.
     shim: {
         'mapbox': {
-            //These script dependencies should be loaded before loading
-            //mapbox.js
-            // deps: ['underscore', 'jquery'],
-            //Once loaded, use the global 'L' as the
-            //module value.
             exports: 'L'
         },
-        'modernizr': {
-            //These script dependencies should be loaded before loading
-            //modernizr.js
-            // deps: ['underscore', 'jquery'],
-            //Once loaded, use the global 'Modernizr' as the
-            //module value.
-            exports: 'Modernizr'
-        },
-        'qx': {
-            //These script dependencies should be loaded before loading
-            //qx.js
-            // deps: ['underscore', 'jquery'],
-            //Once loaded, use the global 'qx' as the
-            //module value.
-            exports: 'qx'
-        },
-        'd3': {
-          exports: 'd3'
-        },
+
         "mc": ["mapbox"],
-        "Daddy": ["qx"],
-        "bootstrap": ["jquery"],
+
+        // depending on jquery
         "chosen": ["jquery"],
         "restive": ["jquery"],
-        "combodate": ["jquery"],
-        'APPAFEEFA': ["qx"],
-        'DataManager': ["qx"],
-        'Router': ["qx"],
-        'LanguageManager': ["qx"],
-        'Utility': ["qx"],
-        'Views/View': ["qx"],
-        'Views/MapView': ["qx"],
-        'Views/SearchView': ["qx"],
-        'Views/DetailView': ["qx"],
-        'Views/MenuView': ["qx"],
-        'Views/LegendView': ["qx"],
-        'Views/LanguageView': ["qx"],
-        'Views/PlusView': ["qx"],
-        'Views/FormView': ["qx"],
-        'Views/IncludeView': ["qx"]
+        'perfectScrollbarJQuery': ["jquery"],
+        "bootstrap": ["jquery"],
+
+        // app files
+        "Daddy": ['qx', 'jquery', 'underscore', 'restive', 'perfectScrollbarJQuery', 'mapbox', 'mc', 'hammer', 'modernizr'],
+        'APPAFEEFA': ['Daddy'],
+        'DataManager': ['APPAFEEFA'],
+        'Router': ['APPAFEEFA'],
+        'LanguageManager': ['APPAFEEFA'],
+        'Utility': ['APPAFEEFA'],
+        'Views/View': ['DataManager', 'Router', 'LanguageManager', 'Utility'],
+        'Views/MapView': ['Views/View'],
+        'Views/SearchView': ['Views/View'],
+        'Views/DetailView': ['Views/View'],
+        'Views/MenuView': ['Views/View'],
+        'Views/LegendView': ['Views/View'],
+        'Views/LanguageView': ['Views/View'],
+        'Views/PlusView': ['Views/View'],
+        'Views/FormView': ['Views/View'],
+        'Views/IncludeView': ['Views/View']
     },
 
     //As of 2.1.11, shimmed dependencies can be wrapped in a define() wrapper

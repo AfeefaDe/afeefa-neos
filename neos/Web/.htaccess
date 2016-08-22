@@ -3,7 +3,7 @@
 #
 
 # You can specify a default context by activating this option:
-# SetEnv FLOW_CONTEXT Production
+SetEnv FLOW_CONTEXT Production
 
 # If the root path is not the parent of the Web directory,
 # TYPO3 Flow's root path must be specified manually:
@@ -21,8 +21,8 @@
 	SetEnv FLOW_REWRITEURLS 1
 
         # Switch to https
-        #RewriteCond %{HTTPS} !=on
-        #RewriteRule .* https://%{SERVER_NAME}%{REQUEST_URI} [R,L]
+        RewriteCond %{HTTPS} !=on
+        RewriteRule .* https://%{SERVER_NAME}%{REQUEST_URI} [R,L]
 
 	# You will have to change the path in the following option if you
 	# experience problems while your installation is located in a subdirectory

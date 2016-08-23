@@ -7,9 +7,9 @@ namespace DDFA\Main\Domain\Model;
  *                                                                        */
 
 use DDFA\Main\Utility\DDConst;
+use Doctrine\Common\Collections\Collection as Collection;
 use Doctrine\ORM\Mapping as ORM;
 use TYPO3\Flow\Annotations as Flow;
-use Doctrine\Common\Collections\Collection as Collection;
 
 /**
  * @Flow\Entity
@@ -181,6 +181,12 @@ class MarketEntry extends Actor
      * @ORM\Column(nullable=true,type="text")
      */
     protected $internalComment;
+
+    /**
+     * @var boolean
+     * @ORM\Column(nullable=false),
+     */
+    protected $certified = false;
 
     public function __construct()
     {
@@ -625,5 +631,21 @@ class MarketEntry extends Actor
     public function setParentEntry($parentEntry)
     {
         $this->parentEntry = $parentEntry;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function isCertified()
+    {
+        return $this->certified;
+    }
+
+    /**
+     * @param boolean $certified
+     */
+    public function setCertified($certified)
+    {
+        $this->certified = $certified;
     }
 }

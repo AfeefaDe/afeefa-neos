@@ -115,7 +115,6 @@ class MarketEntryAPIController extends ActionController
                         ]
 //                        ,'_exposeObjectIdentifier' => TRUE, '_exposedObjectIdentifierKey' => 'identifier'
                     ],
-
                     'location' => [
                         '_descend' => [
                             '_exclude' => [

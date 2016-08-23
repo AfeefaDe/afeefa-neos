@@ -60,7 +60,10 @@ class MarketEntriesModuleController extends AbstractTranslationController
      */
     public function indexAction()
     {
-        $this->view->assign('entries', $this->objectRepository->findAllParents($this->getUserArea()));
+        if($this->getUserArea() == DDConst::AREA_DD)
+            $this->view->assign('entries', $this->objectRepository->findAllParents());
+        else
+            $this->view->assign('entries', $this->objectRepository->findAllParents($this->getUserArea()));
         $this->view->assign('area', $this->getUserArea());
     }
 

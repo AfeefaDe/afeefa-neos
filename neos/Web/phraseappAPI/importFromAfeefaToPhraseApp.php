@@ -7,7 +7,7 @@ use GuzzleHttp\Client;
 // SETUP //
 ///////////
 $step = isset($_GET['step']) ? $_GET['step'] : null;
-$dev = true;
+$dev = false;
 
 $configPhraseApp = array(
     

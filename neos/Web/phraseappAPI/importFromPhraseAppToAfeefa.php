@@ -7,7 +7,7 @@ use GuzzleHttp\Client;
 ///////////
 // SETUP //
 ///////////
-$dev = true;
+$dev = false;
 
 $configPhraseApp = array(
 	'projects' => [

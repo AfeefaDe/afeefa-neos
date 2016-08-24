@@ -12,16 +12,16 @@ function sql($query, $variant = 1) {
     // $db = "neos";
 
     // localhost felix
-    $server = "localhost";
-    $user = "root";
-    $pass = "";
-    $db = "afeefa_neos_new";
+    // $server = "localhost";
+    // $user = "root";
+    // $pass = "";
+    // $db = "afeefa_neos_new";
 
     // uberspace
-    // $server = "localhost";
-    // $user = "afeefa";
-    // $pass = "eeceiNg4achaiyeing";
-    // $db = "afeefa_neos_live";
+    $server = "localhost";
+    $user = "afeefa";
+    $pass = "eeceiNg4achaiyeing";
+    $db = "afeefa_neos_live";
 
     /////////////
     // Connect //

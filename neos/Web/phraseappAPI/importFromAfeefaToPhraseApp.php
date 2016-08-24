@@ -7,7 +7,7 @@ use GuzzleHttp\Client;
 // SETUP //
 ///////////
 $step = isset($_GET['step']) ? $_GET['step'] : null;
-$dev = false;
+$dev = true;
 
 $configPhraseApp = array(
     
@@ -41,7 +41,9 @@ $clientPhraseApp = new Client([
 ]);
 
 
-$locales = ['ar', 'de', 'en', 'es', 'fa', 'fr', 'ku', 'ps', 'ru', 'sq', 'sr', 'ti', 'tr', 'ur'];
+// $locales = ['ar', 'de', 'en', 'es', 'fa', 'fr', 'ku', 'ps', 'ru', 'sq', 'sr', 'ti', 'tr', 'ur'];
+// ONLY DE!
+$locales = ['de'];
 $types = ['marketentry'];
 
 

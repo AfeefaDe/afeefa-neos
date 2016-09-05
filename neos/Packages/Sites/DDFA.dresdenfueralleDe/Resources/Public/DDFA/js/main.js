@@ -16,7 +16,8 @@ require.config({
         bootstrap: 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min',
         fontawesome: 'https://use.fontawesome.com/43c3d746ca',
         mapbox: 'https://api.mapbox.com/mapbox.js/v2.4.0/mapbox',
-        mc: '../../leafletPlugins/leaflet.markercluster'
+        mc: '../../leafletPlugins/leaflet.markercluster',
+        popper: '../../popperjs/popper.min'
     },
 
     // define dependencies via shim because of use of old javascript libs, which do not define a module and therefore do not define their dependencies themselves (defined modules in javascript define other dependencies)
@@ -39,7 +40,7 @@ require.config({
         "bootstrap": ["jquery"],
 
         // app files
-        "Daddy": ['qx', 'jquery', 'underscore', 'restive', 'perfectScrollbarJQuery', 'mapbox', 'mc', 'hammer', 'modernizr'],
+        "Daddy": ['qx', 'jquery', 'underscore', 'restive', 'perfectScrollbarJQuery', 'mapbox', 'mc', 'hammer', 'modernizr', 'popper'],
         'APPAFEEFA': ['Daddy'],
         'DataManager': ['APPAFEEFA'],
         'Router': ['APPAFEEFA'],
@@ -85,6 +86,7 @@ require.config({
 
         // if dependencies don't become available everywhere within the app, then define them here again as global var
         Hammer = require('hammer');
+        Popper = require('popper');
         
         domReady(function () {
             APP = new APPAFEEFA();

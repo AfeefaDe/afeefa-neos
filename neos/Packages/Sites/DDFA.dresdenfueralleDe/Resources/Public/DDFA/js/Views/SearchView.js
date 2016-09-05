@@ -29,30 +29,55 @@ qx.Class.define("SearchView", {
       that.view.append(that.searchBar);
 
       // menu button
+      var thePopper;
       that.menuBtn = $("<div />")
         .addClass('btn menu-btn')
-      // bootstrap tooltip
-        .attr({
-          'data-toggle': 'tooltip',
-          'data-placement': "bottom",
-          'title': that.getWording('menu_menu'),
-          'data-original-title': that.getWording('menu_menu')
-        });
+        // tooltip
+        .hover(
+          function(){
+            thePopper = new Popper(
+                that.menuBtn,
+                {
+                    content: that.getWording('menu_menu')
+                    // contentType: 'html'
+                },
+                {
+                  placement: 'bottom',
+                  removeOnDestroy: true
+                }
+            );
+          },
+          function(){
+            thePopper.destroy();
+          }
+        );
       that.searchBar.append(that.menuBtn);
 
       // refugee button
+      var thePopper;
       that.refugeeBtn = $("<div />")
         .addClass('btn refugee-btn')
-      // bootstrap tooltip
         .click(function(){
           APP.getIncludeView().load( APP.getIncludeView().getIncludes().refugeeGuide );
         })
-        .attr({
-          'data-toggle': 'tooltip',
-          'data-placement': "bottom",
-          'title': that.getWording('menu_refugee'),
-          'data-original-title': that.getWording('menu_refugee')
-        });
+        .hover(
+          function(){
+            thePopper = new Popper(
+                that.refugeeBtn,
+                {
+                    content: that.getWording('menu_refugee')
+                    // contentType: 'html'
+                },
+                {
+                  placement: 'bottom',
+                  removeOnDestroy: true
+                }
+            );
+          },
+          function(){
+            thePopper.destroy();
+          }
+        );
       that.searchBar.append(that.refugeeBtn);
 
       // filter button

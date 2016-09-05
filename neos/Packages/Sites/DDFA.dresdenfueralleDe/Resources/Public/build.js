@@ -69,7 +69,8 @@
         fontawesome: 'empty:',
         mapbox: 'empty:',
         // skip markercluster in building, because otherwise "L is not defined" in markercluster initialization (dont know why)
-        mc: 'empty:'
+        mc: 'empty:',
+        popper: '../../popperjs/popper.min'
     },
 
     //Sets up a map of module IDs to other module IDs. For more details, see
@@ -113,7 +114,7 @@
         "bootstrap": ["jquery"],
 
         // app files
-        "Daddy": ['qx', 'jquery', 'underscore', 'restive', 'perfectScrollbarJQuery', 'mapbox', 'mc', 'hammer', 'modernizr'],
+        "Daddy": ['qx', 'jquery', 'underscore', 'restive', 'perfectScrollbarJQuery', 'mapbox', 'mc', 'hammer', 'modernizr', 'popper'],
         'APPAFEEFA': ['Daddy'],
         'DataManager': ['APPAFEEFA'],
         'Router': ['APPAFEEFA'],

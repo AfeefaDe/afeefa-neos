@@ -42,6 +42,32 @@ qx.Class.define("DetailView", {
 			});
 		  that.view.append(that.closeBtn);
 
+			// certificate badge
+			var thePopper;
+			that.certificateBadge = $("<div />")
+				.addClass('badge badge-certificate')
+				.hover(
+					function(){
+					  thePopper = new Popper(
+						    that.certificateBadge,
+						    {
+						        content: that.getWording('tooltip_certificate'),
+						        contentType: 'html'
+						    },
+						    {
+					        placement: 'right',
+									removeOnDestroy: true
+						    }
+						);
+					},
+					function(){
+						thePopper.destroy();
+					}
+				);
+		  that.headingContainer.append(that.certificateBadge);
+
+					
+
 			// scrollable content container
 			that.scrollContainer = $("<div />").addClass('scroll-container');
 			that.view.append(that.scrollContainer);
@@ -103,6 +129,9 @@ qx.Class.define("DetailView", {
 			// heading
 			that.heading.append(record.name ? record.name : '');
 			if(record.category) that.headingContainer.addClass('cat-' + record.category.name);
+
+			// certificate badge
+			if(record.certified) that.certificateBadge.show();
 
 			////////////////////
 			// image property //
@@ -270,6 +299,9 @@ qx.Class.define("DetailView", {
 			that.headingContainer.removeClass (function (index, css) {
 				return (css.match (/(^|\s)cat-\S+/g) || []).join(' ');
 			});
+
+			// certificate badge
+			that.certificateBadge.hide();
 
 			// image property
 			that.imageContainer.empty();

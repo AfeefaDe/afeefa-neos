@@ -15,7 +15,7 @@ qx.Class.define("APPAFEEFA", {
 
 		that.setConfig(
 			{
-				languages: ['ar', 'de', 'en', 'es', 'fa', 'fr', 'ku', 'ps', 'ru', 'sq', 'sr', 'ti', 'tr', 'ur'],
+				languages: ['ar', 'de', 'en', 'es', 'fa', 'ps', 'fr', 'ku', 'ru', 'sq', 'sr', 'ti', 'tr', 'ur'],
 				categories: [
 					{
 						name: 'language',

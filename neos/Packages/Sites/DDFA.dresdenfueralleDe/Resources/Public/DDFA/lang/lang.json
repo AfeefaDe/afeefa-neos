@@ -1983,11 +1983,12 @@
                   "ru":"испанский",
                   "sr":"шпански",
                   "ti":"",
-                  "ur":"ہسپانوی"
+                  "ur":"ہسپانوی",
+                  "es":"español"
             },
             "lan_fa":{
-                  "de":"Farsi/ Persisch",
-                  "en":"Farsi/ Persian",
+                  "de":"Farsi",
+                  "en":"Farsi",
                   "ar":"فارسي",
                   "fa":"فارسی",
                   "fr":"Persan",
@@ -2019,7 +2020,8 @@
                   "ru":"",
                   "sr":"",
                   "ti":"",
-                  "ur":""
+                  "ur":"",
+                  "ku":"کوردی"
             },
             "lan_ps":{
                   "de":"Pashto",
@@ -2031,7 +2033,8 @@
                   "ru":"",
                   "sr":"",
                   "ti":"",
-                  "ur":""
+                  "ur":"",
+                  "ps":"پښتو"
             },
             "lan_pt":{
                   "de":"Portugiesisch",
@@ -2067,7 +2070,8 @@
                   "ru":"",
                   "sr":"",
                   "ti":"",
-                  "ur":""
+                  "ur":"",
+                  "sq":"Shqip"
             },
             "lan_sr":{
                   "de":"Serbisch",
@@ -2103,7 +2107,8 @@
                   "ru":"",
                   "sr":"",
                   "ti":"",
-                  "ur":""
+                  "ur":"",
+                  "tr":"Türkçe"
             },
             "lan_ur":{
                   "de":"Urdu",

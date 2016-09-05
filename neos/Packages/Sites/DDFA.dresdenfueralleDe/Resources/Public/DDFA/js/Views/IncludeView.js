@@ -138,7 +138,8 @@ qx.Class.define("IncludeView", {
 				// search links
 				$('span.searchLink').click(function(){
 					// console.debug('searchLink clicked');
-					APP.getSearchView().loadResults( $(this).attr('name') );
+          APP.getSearchView().inputField.val( $(this).attr('name') ).trigger( "input" );
+					// APP.getSearchView().loadResults( $(this).attr('name') );
 				});
 
 				// scan buttons

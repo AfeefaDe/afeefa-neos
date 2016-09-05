@@ -48,8 +48,8 @@ qx.Class.define("LanguageManager", {
                 
             // }
 
-            if(!wording) wording = that.getBib()[ key ][ APP.getConfig().languages[1] ];
-            if(!wording) wording = that.getBib()[ key ][ APP.getConfig().languages[0] ];
+            if(!wording) wording = that.getBib()[ key ][ 'en' ];
+            if(!wording) wording = that.getBib()[ key ][ 'de' ];
             if(!wording) wording = '###';
 
             return wording;

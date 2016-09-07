@@ -356,6 +356,26 @@ qx.Class.define("SearchView", {
       that.listen('includeViewOpened', function(){
         that.close();
       });
+
+      that.listen('filterSet', function(){
+        var filter = APP.getActiveFilter(),
+            category = null;
+        
+        if( !filter ){
+          // TODO
+          // that.close();
+        }
+        else if( filter.subCategory ) {
+          category = filter.subCategory;
+        }
+        else if( filter.category ) {
+          category = filter.category;
+        }
+
+        if(category) that.inputField.val( that.getWording('cat_' + category) ).trigger( "input" );
+
+      });
+
     },
 
     minimize: function(){

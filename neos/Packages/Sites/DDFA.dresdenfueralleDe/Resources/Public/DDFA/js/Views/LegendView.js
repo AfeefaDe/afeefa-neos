@@ -86,7 +86,7 @@ qx.Class.define("LegendView", {
 	  that.filterModuleEntity.append(rowContainer);
 
 	  //////////////////////
-	  // Categoriy filter //
+	  // Category filter //
 	  //////////////////////
 	  that.filterModuleCat  = $("<div />");
 	  that.filterModuleCat.attr('class', 'filter-module category-module');
@@ -131,8 +131,10 @@ qx.Class.define("LegendView", {
 		  var nippus = $("<div />");
 		  nippus.addClass('nippus');
 		  nippus.click(function() {
+				var wasExtended = container.hasClass('extended');
+				// reset all containers (this one and all others)
 				that.reset();
-				container.toggleClass('extended');
+				container.toggleClass('extended', !wasExtended);
 		  });
 		  catContainer.append(nippus);
 

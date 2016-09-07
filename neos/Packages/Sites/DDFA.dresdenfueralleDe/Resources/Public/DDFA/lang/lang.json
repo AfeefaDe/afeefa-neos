@@ -2121,6 +2121,19 @@
                   "sr":"Урду",
                   "ti":"ቋንቋ ኡርዱ",
                   "ur":"اردو"
+            },
+            "tooltip_certificate":{
+                  "de":"Dieses Projekt ist dem <strong>Sächsischen Flüchtlingsrat</strong> bekannt und wird von diesem als unterstützenswert angesehen.",
+                  "en":"This project is known by <strong>Sächsischer Flüchtlingsrat</strong> and is therefore considered as worth supporting.",
+                  "ar":"",
+                  "fa":"",
+                  "fr":"",
+                  "it":"",
+                  "ru":"",
+                  "sr":"",
+                  "ti":"",
+                  "ur":"",
+                  "tr":""    
             }
       }
 ]

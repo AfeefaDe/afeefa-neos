@@ -8,8 +8,9 @@
 
 /*! jQuery v2.2.2 | (c) jQuery Foundation | jquery.org/license */
 
+//     Underscore.js 1.8.2
+//     http://underscorejs.org
 //     (c) 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
-
 //     Underscore may be freely distributed under the MIT license.
 
 /*!

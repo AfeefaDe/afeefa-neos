@@ -41,7 +41,9 @@ $clientPhraseApp = new Client([
 ]);
 
 
-$locales = ['ar', 'de', 'en', 'es', 'fa', 'fr', 'ku', 'ps', 'ru', 'sq', 'sr', 'ti', 'tr', 'ur'];
+// $locales = ['ar', 'de', 'en', 'es', 'fa', 'fr', 'ku', 'ps', 'ru', 'sq', 'sr', 'ti', 'tr', 'ur'];
+// ONLY DE!
+$locales = ['de'];
 $types = ['marketentry'];
 
 

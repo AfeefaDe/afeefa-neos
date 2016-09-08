@@ -27,7 +27,9 @@ $clientPhraseApp = new Client([
 ]);
 
 
-$locales = ['ar', 'de', 'en', 'es', 'fa', 'fr', 'ku', 'ps', 'ru', 'sq', 'sr', 'ti', 'tr', 'ur'];
+// $locales = ['ar', 'de', 'en', 'es', 'fa', 'fr', 'ku', 'ps', 'ru', 'sq', 'sr', 'ti', 'tr', 'ur'];
+// WITHOUT DE!
+$locales = ['ar', 'en', 'es', 'fa', 'fr', 'ku', 'ps', 'ru', 'sq', 'sr', 'ti', 'tr', 'ur'];
 
 //////////////////////////////
 // FETCH FROM PHRASEAPP API //
@@ -111,7 +113,7 @@ foreach ($locales as $locale){
 			// if entry exists, update:
 	    else if( intval($result1->num_rows) == 1 ) {
 				$result3 = sql("update ddfa_main_domain_model_marketentry 
-					set " . $attribute . "=convert('" . $translation . "'using utf8), updated=now() 
+					set " . $attribute . "=convert('" . $translation . "'using utf8) 
 					where locale='" . $locale . "' AND entry_id='" . $entryId . "'");
 				echo $entryId . '.' . $attribute . ' > ' . $translation . ' :: '.$result3.'<br>';
 			}

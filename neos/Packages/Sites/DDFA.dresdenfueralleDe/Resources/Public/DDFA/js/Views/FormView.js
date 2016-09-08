@@ -763,8 +763,8 @@ qx.Class.define("FormView", {
                         that.forms[type].fields[property.name].append(option);
                     });
 
-                    if (APP.getUserDevice() == 'desktop')
-                        that.forms[type].fields[property.name].chosen();
+                    // if (APP.getUserDevice() == 'desktop')
+                    // that.forms[type].fields[property.name].chosen();
                 }
             });
 

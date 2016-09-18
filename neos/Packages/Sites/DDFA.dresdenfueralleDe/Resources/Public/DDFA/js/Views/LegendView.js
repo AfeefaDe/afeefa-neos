@@ -320,6 +320,14 @@ qx.Class.define("LegendView", {
         	if( that.view.hasClass('active') ) that.close();
   		});
 
+  		////////////////////
+      // swipe gestures //
+      ////////////////////
+      var hammer = new Hammer(that.view[0]);
+      hammer.on('swiperight', function(ev){
+          if( that.view.hasClass('active') ) that.close();
+      });
+
       // show on hover
 			that.view.hover(
 			  function() {

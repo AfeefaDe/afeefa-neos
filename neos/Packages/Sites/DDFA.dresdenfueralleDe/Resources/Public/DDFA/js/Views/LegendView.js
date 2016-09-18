@@ -330,7 +330,13 @@ qx.Class.define("LegendView", {
 			  }
 			);
 
-			that.listen('searchFieldFocused', function(){
+			// that.listen('searchFieldFocused', function(){
+			// 	var query = APP.getSearchView().inputField.val();
+	  //     if( query === undefined || query == '' )
+			// 		that.resetFilter();
+  	// 	});
+
+  		that.listen('searchViewClosed', function(){
 				that.resetFilter();
   		});
 	  },

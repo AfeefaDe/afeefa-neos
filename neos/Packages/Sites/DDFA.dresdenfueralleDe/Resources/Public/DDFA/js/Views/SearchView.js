@@ -113,6 +113,14 @@ qx.Class.define("SearchView", {
         .attr('placeholder', that.getWording('search_placeholder'));
       that.searchBar.append(that.inputField);
 
+      // search tags
+      that.searchTag = $("<span />")
+        .addClass("search-tag")
+        .click(function(){
+          that.inputField.trigger( "input" );
+        });
+      that.searchBar.append(that.searchTag);      
+
       // results area
       that.results = $("<div />")
         .attr('id', 'results');
@@ -127,6 +135,15 @@ qx.Class.define("SearchView", {
 
     load: function(){
         var that = this;
+
+        that.searchTag
+          .removeClass("active")
+          .removeClass (function (index, css) {
+            return (css.match (/(^|\s)cat-\S+/g) || []).join(' ');
+          })
+          .empty();
+
+        that.inputField.show();
 
         that.view.addClass('active');
     },
@@ -273,15 +290,50 @@ qx.Class.define("SearchView", {
         
         var entriesFiltered;
 
-        // predefined query: support wanted
-        if( query == 'events' ){
+        // predefined queries: 
+        if( query.indexOf(':') >= 0 ){
+          var operator = query.substring(0, query.indexOf(':'));
+          var operationQuery = query.substring(operator.length+1);
+          
+          if(operator == 'cat' ) {
+            
+            var mainCat;
+            entriesFiltered = _.filter( entries, function(entry){
+              
+              if( entry.category ) {
+                var cat = entry.category.name;
+                if( cat == operationQuery ) return true;
+              }
+              
+              // in subCategory?
+              if( entry.subCategory ) {
+                var subcat = entry.subCategory;
+                if( subcat == operationQuery ) return true;
+              }
+            });
+
+            that.searchTag
+              .addClass("active")
+              // TODO read main category from APPAFEEFA config, because operationQuery can be also a subcat and then no color info is present
+              .addClass("cat-"+operationQuery)
+              .append(that.getWording('cat_' + operationQuery));
+
+            that.inputField.hide();
+          }
+        }
+        
+        // events
+        else if( query == 'events' ){
           entriesFiltered = APP.getDataManager().getAllEvents();
         }
+        
+        // support wanted
         else if( query == 'support wanted' ){
           entriesFiltered = _.filter( entries, function(entry){
             return entry.supportWanted;
           });
         }
+        
         // free search
         else {
           entriesFiltered = _.filter( entries, function(entry){
@@ -361,18 +413,21 @@ qx.Class.define("SearchView", {
         var filter = APP.getActiveFilter(),
             category = null;
         
-        if( !filter ){
-          // TODO
-          // that.close();
-        }
-        else if( filter.subCategory ) {
-          category = filter.subCategory;
-        }
-        else if( filter.category ) {
-          category = filter.category;
-        }
+        if( APP.getUserDevice() == 'desktop'){
+          if( !filter ){
+            // TODO
+            // that.close();
+          }
+          else if( filter.subCategory ) {
+            category = filter.subCategory;
+          }
+          else if( filter.category ) {
+            category = filter.category;
+          }
 
-        if(category) that.inputField.val( that.getWording('cat_' + category) ).trigger( "input" );
+          // if(category) that.inputField.val( that.getWording('cat_' + category) ).trigger( "input" );
+          if(category) that.inputField.val( 'cat:' + category ).trigger( "input" );
+        }
 
       });
 
@@ -395,7 +450,17 @@ qx.Class.define("SearchView", {
 
         that.results.scrollTop(0);
 
-        that.inputField.val(null);
+        that.inputField
+          .val(null)
+          .show();
+
+        that.searchTag
+          .removeClass("active")
+          .removeClass (function (index, css) {
+            return (css.match (/(^|\s)cat-\S+/g) || []).join(' ');
+          })
+          .empty();
+
         that.results.empty();
         
         if( APP.getUserDevice() == 'desktop') that.results.perfectScrollbar('update');

@@ -294,32 +294,37 @@ qx.Class.define("SearchView", {
         if( query.indexOf(':') >= 0 ){
           var operator = query.substring(0, query.indexOf(':'));
           var operationQuery = query.substring(operator.length+1);
-          
+          var classNameCategory;
+
+          // category listing
           if(operator == 'cat' ) {
-            
-            var mainCat;
             entriesFiltered = _.filter( entries, function(entry){
               
-              if( entry.category ) {
-                var cat = entry.category.name;
-                if( cat == operationQuery ) return true;
+              if( entry.category && entry.category.name == operationQuery) {
+                classNameCategory = operationQuery;
+                return true;
               }
               
-              // in subCategory?
-              if( entry.subCategory ) {
-                var subcat = entry.subCategory;
-                if( subcat == operationQuery ) return true;
+            });
+          }
+
+          // sub category listing
+          else if(operator == 'subcat' ) {
+            entriesFiltered = _.filter( entries, function(entry){
+              
+              if( entry.subCategory && entry.subCategory == operationQuery ) {
+                classNameCategory = APP.getMainCategory(operationQuery).name;
+                return true;
               }
             });
-
-            that.searchTag
-              .addClass("active")
-              // TODO read main category from APPAFEEFA config, because operationQuery can be also a subcat and then no color info is present
-              .addClass("cat-"+operationQuery)
-              .append(that.getWording('cat_' + operationQuery));
-
-            that.inputField.hide();
           }
+
+          that.searchTag
+            .addClass("active")
+            .addClass("cat-" + classNameCategory )
+            .append(that.getWording('cat_' + operationQuery));
+
+          that.inputField.hide();
         }
         
         // events
@@ -410,23 +415,20 @@ qx.Class.define("SearchView", {
       });
 
       that.listen('filterSet', function(){
-        var filter = APP.getActiveFilter(),
-            category = null;
+        var filter = APP.getActiveFilter();
         
         if( APP.getUserDevice() == 'desktop'){
           if( !filter ){
-            // TODO
-            // that.close();
-          }
-          else if( filter.subCategory ) {
-            category = filter.subCategory;
+            // ...
           }
           else if( filter.category ) {
-            category = filter.category;
+            that.inputField.val( 'cat:' + filter.category ).trigger( "input" );
+          }
+          else if( filter.subCategory ) {
+            that.inputField.val( 'subcat:' + filter.subCategory ).trigger( "input" );
           }
 
           // if(category) that.inputField.val( that.getWording('cat_' + category) ).trigger( "input" );
-          if(category) that.inputField.val( 'cat:' + category ).trigger( "input" );
         }
 
       });

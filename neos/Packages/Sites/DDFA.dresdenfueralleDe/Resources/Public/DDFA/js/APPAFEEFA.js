@@ -203,6 +203,20 @@ qx.Class.define("APPAFEEFA", {
 				});
       		$('#main-container').append(curtain);
 			that.setCurtain(curtain);
+		},
+
+		getMainCategory: function(subCategory){
+			var that = this;
+			var category;
+
+			category = _.find(that.getConfig().categories, function(cat){
+				var found = _.find(cat.sub, function(subCat){
+					return subCat.name == subCategory;
+				});
+				if(found) return true;
+			});
+
+			return category;
 		}
 	}
 

@@ -18,6 +18,23 @@ qx.Class.define("APPAFEEFA", {
 				languages: ['ar', 'de', 'en', 'es', 'fa', 'ps', 'fr', 'ku', 'ru', 'sq', 'sr', 'ti', 'tr', 'ur'],
 				categories: [
 					{
+						name: 'general',
+						id: '0',
+						sub: [
+							{ name: 'wifi', id: '0-1' },
+							{ name: 'jewish', id: '0-2' },
+							{ name: 'christian', id: '0-3' },
+							{ name: 'islam', id: '0-4' },
+							{ name: 'religious-other', id: '0-5' },
+							{ name: 'shop', id: '0-6' },
+							{ name: 'nature', id: '0-7' },
+							{ name: 'authority', id: '0-8' },
+							{ name: 'hospital', id: '0-9' },
+							{ name: 'police', id: '0-10' },
+							{ name: 'public-transport', id: '0-11' }
+						]
+					},
+					{
 						name: 'language',
 						id: '1',
 						sub: [
@@ -41,9 +58,10 @@ qx.Class.define("APPAFEEFA", {
 						id: '3',
 						sub: [
 							{ name: 'job-counselling', id: '3-1' },
-							{ name: 'political-education', id: '3-2' },
-							{ name: 'education-sponsorship', id: '3-3' },
-							{ name: 'library', id: '3-4' }
+							{ name: 'education-counselling', id: '3-2' },
+							{ name: 'political-education', id: '3-3' },
+							{ name: 'education-sponsorship', id: '3-4' },
+							{ name: 'library', id: '3-5' }
 						]
 
 					},

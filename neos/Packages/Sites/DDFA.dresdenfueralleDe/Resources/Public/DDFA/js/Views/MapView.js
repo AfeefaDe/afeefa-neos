@@ -179,8 +179,8 @@ qx.Class.define("MapView", {
 				
 					entries = _.filter(entries, function(entry){
 						// don't filter these entry types:
-						if( _.contains([3], entry.type) )
-							return true;
+						// if( _.contains([3], entry.type) )
+						// 	return true;
 						
 						if( filter.category !== undefined )
 							if( !entry.category || !(entry.category.name === filter.category) ) return false;
@@ -235,8 +235,8 @@ qx.Class.define("MapView", {
 			}
 			// BasicLocation
 			else if( entry.type === 3 ) {
-				iconSize = [15,15];
-				iconAnchor = [8,8];
+				iconSize = [23,23];
+				iconAnchor = [12,12];
 			}
 			
 			// TODO: quickfix: skip locations without coodinates

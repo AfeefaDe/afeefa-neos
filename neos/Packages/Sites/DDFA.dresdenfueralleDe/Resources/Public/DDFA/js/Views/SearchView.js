@@ -427,9 +427,7 @@ qx.Class.define("SearchView", {
           else if( filter.subCategory ) {
             that.inputField.val( 'subcat:' + filter.subCategory ).trigger( "input" );
           }
-
-          // if(category) that.inputField.val( that.getWording('cat_' + category) ).trigger( "input" );
-        }
+         }
 
       });
 

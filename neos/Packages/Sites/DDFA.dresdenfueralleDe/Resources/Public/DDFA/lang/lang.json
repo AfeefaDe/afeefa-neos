@@ -685,8 +685,8 @@
                         "ur":""
                   },
                   "cat_shop":{
-                        "de":"kulterspezifischer Einkaufsladen",
-                        "en":"international shop",
+                        "de":"interkultureller Einkaufsladen",
+                        "en":"intercultural shop",
                         "ar":"امكانات الشراء الدولي",
                         "fa":"امکانات خرید سوغاتی ",
                         "fr":"découvrir des spécialités culturelles",
@@ -733,8 +733,8 @@
                         "ur":""
                   },
                   "cat_nature":{
-                        "de":"Ort der Natur",
-                        "en":"place of nature",
+                        "de":"Parks + Gärten",
+                        "en":"parks + gardens",
                         "ar":"",
                         "fa":"",
                         "fr":"",

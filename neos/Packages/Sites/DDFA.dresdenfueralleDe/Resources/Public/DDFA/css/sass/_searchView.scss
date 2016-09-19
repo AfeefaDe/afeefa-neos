@@ -32,6 +32,7 @@
 				opacity: 1;
 			}
 		}
+
 		.menu-btn {
 			top: 0;
 			left: 0;
@@ -73,6 +74,19 @@
 				color: $white;
 				outline-color: rgba(0,0,0,0) !important;
 			}
+		}
+
+		.search-tag {
+			height: 1.5em;
+			position: absolute;
+			left: 3em;
+			top: calc( (2.5em - 1.5em) / 2 );
+			padding: 0 .3em;
+			cursor: pointer;
+			display: none;
+			@include categoryColors($alpha_background: .4);
+			color: white;
+			&.active { display: inline-block; }
 		}
 	}
 

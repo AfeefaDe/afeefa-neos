@@ -59,9 +59,8 @@ qx.Class.define("LegendView", {
 	  that.view.append(that.filterModuleEntity);
 
 	  // module heading
-	  var moduleHeading = $("<h3 />");
-	  moduleHeading.append('Entry types');
-	  that.filterModuleEntity.append(moduleHeading);
+	  that.moduleHeadingEntity = $("<h3 />");
+	  that.filterModuleEntity.append(that.moduleHeadingEntity);
 
 	  // entities
 	  var rowContainer = $("<div />")
@@ -86,16 +85,15 @@ qx.Class.define("LegendView", {
 	  that.filterModuleEntity.append(rowContainer);
 
 	  //////////////////////
-	  // Categoriy filter //
+	  // Category filter //
 	  //////////////////////
 	  that.filterModuleCat  = $("<div />");
 	  that.filterModuleCat.attr('class', 'filter-module category-module');
 	  that.view.append(that.filterModuleCat);
 
 	  // module heading
-	  var moduleHeading = $("<h3 />");
-	  moduleHeading.append('Categories');
-	  that.filterModuleCat.append(moduleHeading);
+	  that.moduleHeadingCategory = $("<h3 />");
+	  that.filterModuleCat.append(that.moduleHeadingCategory);
 
 	  // categories
 	  _.each( that.getCategories(), function(cat){
@@ -131,8 +129,10 @@ qx.Class.define("LegendView", {
 		  var nippus = $("<div />");
 		  nippus.addClass('nippus');
 		  nippus.click(function() {
+				var wasExtended = container.hasClass('extended');
+				// reset all containers (this one and all others)
 				that.reset();
-				container.toggleClass('extended');
+				container.toggleClass('extended', !wasExtended);
 		  });
 		  catContainer.append(nippus);
 
@@ -183,9 +183,9 @@ qx.Class.define("LegendView", {
 	  that.view.append(that.filterModuleAttribute);
 
 	  // module heading
-	  var moduleHeading = $("<h3 />");
-	  moduleHeading.append('Details');
-	  that.filterModuleAttribute.append(moduleHeading);
+	  that.moduleHeadingAttribute = $("<h3 />");
+	  that.moduleHeadingAttribute.append('Details');
+	  that.filterModuleAttribute.append(that.moduleHeadingAttribute);
 
 	  // attributes
 	  _.each( {'forChildren': 'bool', 'supportWanted': 'bool'}, function(value, key){
@@ -247,6 +247,9 @@ qx.Class.define("LegendView", {
 		  });
 
 		  that['label-filter-reset'].append( that.getWording('misc_filterReset') );
+	  	that.moduleHeadingEntity.append(that.getWording('entry_type'));
+	  	that.moduleHeadingCategory.append(that.getWording('category'));
+	  	that.moduleHeadingAttribute.append(that.getWording('label_attribute_filter'));
 	  },
 
 	  // used for mobile instead of mouse hover
@@ -318,6 +321,14 @@ qx.Class.define("LegendView", {
         	if( that.view.hasClass('active') ) that.close();
   		});
 
+  		////////////////////
+      // swipe gestures //
+      ////////////////////
+      var hammer = new Hammer(that.view[0]);
+      hammer.on('swiperight', function(ev){
+          if( that.view.hasClass('active') ) that.close();
+      });
+
       // show on hover
 			that.view.hover(
 			  function() {
@@ -328,7 +339,13 @@ qx.Class.define("LegendView", {
 			  }
 			);
 
-			that.listen('searchFieldFocused', function(){
+			// that.listen('searchFieldFocused', function(){
+			// 	var query = APP.getSearchView().inputField.val();
+	  //     if( query === undefined || query == '' )
+			// 		that.resetFilter();
+  	// 	});
+
+  		that.listen('searchViewClosed', function(){
 				that.resetFilter();
   		});
 	  },
@@ -361,6 +378,10 @@ qx.Class.define("LegendView", {
 		  });
 
 		  that['label-filter-reset'].empty();
+
+		  that.moduleHeadingEntity.empty();
+	  	that.moduleHeadingCategory.empty();
+	  	that.moduleHeadingAttribute.empty();
 
 		  that.load();
 	  }

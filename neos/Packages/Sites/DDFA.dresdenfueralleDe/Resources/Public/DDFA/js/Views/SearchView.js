@@ -113,6 +113,14 @@ qx.Class.define("SearchView", {
         .attr('placeholder', that.getWording('search_placeholder'));
       that.searchBar.append(that.inputField);
 
+      // search tags
+      that.searchTag = $("<span />")
+        .addClass("search-tag")
+        .click(function(){
+          that.inputField.trigger( "input" );
+        });
+      that.searchBar.append(that.searchTag);      
+
       // results area
       that.results = $("<div />")
         .attr('id', 'results');
@@ -127,6 +135,15 @@ qx.Class.define("SearchView", {
 
     load: function(){
         var that = this;
+
+        that.searchTag
+          .removeClass("active")
+          .removeClass (function (index, css) {
+            return (css.match (/(^|\s)cat-\S+/g) || []).join(' ');
+          })
+          .empty();
+
+        that.inputField.show();
 
         that.view.addClass('active');
     },
@@ -273,15 +290,55 @@ qx.Class.define("SearchView", {
         
         var entriesFiltered;
 
-        // predefined query: support wanted
-        if( query == 'events' ){
+        // predefined queries: 
+        if( query.indexOf(':') >= 0 ){
+          var operator = query.substring(0, query.indexOf(':'));
+          var operationQuery = query.substring(operator.length+1);
+          var classNameCategory;
+
+          // category listing
+          if(operator == 'cat' ) {
+            entriesFiltered = _.filter( entries, function(entry){
+              
+              if( entry.category && entry.category.name == operationQuery) {
+                classNameCategory = operationQuery;
+                return true;
+              }
+              
+            });
+          }
+
+          // sub category listing
+          else if(operator == 'subcat' ) {
+            entriesFiltered = _.filter( entries, function(entry){
+              
+              if( entry.subCategory && entry.subCategory == operationQuery ) {
+                classNameCategory = APP.getMainCategory(operationQuery).name;
+                return true;
+              }
+            });
+          }
+
+          that.searchTag
+            .addClass("active")
+            .addClass("cat-" + classNameCategory )
+            .append(that.getWording('cat_' + operationQuery));
+
+          that.inputField.hide();
+        }
+        
+        // events
+        else if( query == 'events' ){
           entriesFiltered = APP.getDataManager().getAllEvents();
         }
+        
+        // support wanted
         else if( query == 'support wanted' ){
           entriesFiltered = _.filter( entries, function(entry){
             return entry.supportWanted;
           });
         }
+        
         // free search
         else {
           entriesFiltered = _.filter( entries, function(entry){
@@ -356,6 +413,24 @@ qx.Class.define("SearchView", {
       that.listen('includeViewOpened', function(){
         that.close();
       });
+
+      that.listen('filterSet', function(){
+        var filter = APP.getActiveFilter();
+        
+        if( APP.getUserDevice() == 'desktop'){
+          if( !filter ){
+            // ...
+          }
+          else if( filter.category ) {
+            that.inputField.val( 'cat:' + filter.category ).trigger( "input" );
+          }
+          else if( filter.subCategory ) {
+            that.inputField.val( 'subcat:' + filter.subCategory ).trigger( "input" );
+          }
+         }
+
+      });
+
     },
 
     minimize: function(){
@@ -375,7 +450,17 @@ qx.Class.define("SearchView", {
 
         that.results.scrollTop(0);
 
-        that.inputField.val(null);
+        that.inputField
+          .val(null)
+          .show();
+
+        that.searchTag
+          .removeClass("active")
+          .removeClass (function (index, css) {
+            return (css.match (/(^|\s)cat-\S+/g) || []).join(' ');
+          })
+          .empty();
+
         that.results.empty();
         
         if( APP.getUserDevice() == 'desktop') that.results.perfectScrollbar('update');

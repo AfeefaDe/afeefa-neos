@@ -12,6 +12,9 @@
 		position: relative;
 
 		@include categoryColors;
+		&.cat-general {
+			background-color: $gray50 !important;
+		}
 
 		h1 {
 			@include box-sizing(border-box);

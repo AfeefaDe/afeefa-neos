@@ -33,8 +33,8 @@
 	/* POI */
 	&.type-3 {
 		@include border-radius(20px);
-		@include box-shadow(0px 0px 2px #555);
-		background-color: $white !important;
+		/*@include box-shadow(0px 0px 2px #555);*/
+		background-color: $gray50 !important;
 	}
 }
 
@@ -44,6 +44,11 @@
 
 	/* Main categories */
 	
+	&.cat-general	{ 
+		background-color: rgba($white, $alpha_background);
+		border-color: rgba($white, $alpha_border);
+	}
+
 	&.cat-language	{ 
 		background-color: rgba($yellow, $alpha_background);
 		border-color: rgba($yellow, $alpha_border);
@@ -88,6 +93,7 @@
 
 	/* Main categories */
 
+	&.cat-general	{ background-image: url("../img/icon_174.svg"); }
 	&.cat-language	{ background-image: url("../img/icon_06.svg"); }
 	&.cat-medic { background-image: url("../img/icon_04.svg"); }
 	&.cat-jobs { background-image: url("../img/icon_76.svg"); }
@@ -97,6 +103,18 @@
 	&.cat-donation { background-image: url("../img/icon_12.svg"); }
 	
 	/* Sub categories */
+
+	&.subcat-wifi { background-image: url("../img/icon_148.svg"); }
+	&.subcat-jewish { background-image: url("../img/icon_22.svg"); }
+	&.subcat-christian { background-image: url("../img/icon_60.svg"); }
+	&.subcat-islam { background-image: url("../img/icon_62.svg"); }
+	&.subcat-religious-other { background-image: url("../img/icon_158.svg"); }
+	&.subcat-shop { background-image: url("../img/icon_66.svg"); @include background-size(50%); }
+	&.subcat-nature { background-image: url("../img/icon_96.svg"); @include background-size(65%); }
+	&.subcat-authority { background-image: url("../img/icon_70.svg"); @include background-size(60%); }
+	&.subcat-hospital { background-image: url("../img/icon_04.svg"); }
+	&.subcat-police { background-image: url("../img/icon_146.svg"); }
+	&.subcat-public-transport { background-image: url("../img/icon_58.svg"); }
 
 	&.subcat-german-course { background-image: url("../img/icon_88.svg"); }
 	&.subcat-interpreter { background-image: url("../img/icon_164.svg"); }
@@ -108,6 +126,7 @@
 	&.subcat-psychological-counselling { background-image: url("../img/icon_106.svg"); }
 	
 	&.subcat-job-counselling { background-image: url("../img/icon_10.svg"); }
+	&.subcat-education-counselling { background-image: url("../img/icon_172.svg"); }
 	&.subcat-political-education { background-image: url("../img/icon_108.svg"); }
 	/*&.subcat-education-sponsorship { background-image: url("../img/icon_88.svg"); }*/
 	&.subcat-library { background-image: url("../img/icon_18.svg"); }
@@ -146,17 +165,6 @@
 	/* POIs */
 
 	&.cat-housing { background-image: url("../img/icon_19.svg"); }
-	&.cat-christian { background-image: url("../img/icon_59.svg"); }
-	&.cat-hospital { background-image: url("../img/icon_03.svg"); }
-	&.cat-islam { background-image: url("../img/icon_61.svg"); }
-	&.cat-jewish { background-image: url("../img/icon_21.svg"); }
-	&.cat-shop { background-image: url("../img/icon_65.svg"); @include background-size(65%); }
-	&.cat-public { background-image: url("../img/icon_63.svg"); @include background-size(80%); }
-	&.cat-library { background-image: url("../img/icon_17.svg"); @include background-size(80%); }
-	&.cat-trafficStop { background-image: url("../img/icon_57.svg"); background-color: $yellow_dvb; }
-	&.cat-library { background-image: url("../img/icon_89.svg"); }
-	&.cat-wifi { background-image: url("../img/icon_147.svg"); }
-	&.cat-police { background-image: url("../img/icon_145.svg"); }
 
 	&.cat-other { background-image: url("../img/icon_32.svg"); @include background-size(50%); }
 }

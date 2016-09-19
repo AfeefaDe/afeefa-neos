@@ -1,5 +1,17 @@
 [
       {
+            "entry_type":{
+                  "de":"Eintragstyp",
+                  "en":"Entry type",
+                  "ar":"",
+                  "fa":"",
+                  "fr":"",
+                  "it":"",
+                  "ru":"",
+                  "sr":"",
+                  "ti":"",
+                  "ur":""
+            },
             "category":{
                   "de":"Kategorie",
                   "en":"category",
@@ -135,6 +147,18 @@
                   "cat_job-counselling":{
                         "de":"Berufsberatung",
                         "en":"job counselling",
+                        "ar":"",
+                        "fa":"",
+                        "fr":"",
+                        "it":"",
+                        "ru":"",
+                        "sr":"",
+                        "ti":"",
+                        "ur":""
+                  },
+                  "cat_education-counselling":{
+                        "de":"Bildungsberatung",
+                        "en":"education counselling",
                         "ar":"",
                         "fa":"",
                         "fr":"",
@@ -564,8 +588,8 @@
                         "ti":"",
                         "ur":""
                   },
-            "cat_poi":{
-                  "de":"Allgemein",
+            "cat_general":{
+                  "de":"Allgemeines",
                   "en":"general",
                   "ar":"",
                   "fa":"",
@@ -588,7 +612,7 @@
                         "ti":"",
                         "ur":""
                   },
-                  "cat_trafficStop":{
+                  "cat_public-transport":{
                         "de":"Haltestelle",
                         "en":"traffic stop",
                         "ar":"مرقف",
@@ -612,7 +636,7 @@
                         "ti":"ባቡር ከተማ/ትራም",
                         "ur":"ٹرام"
                   },
-                  "cat_religious":{
+                  "cat_religious-other":{
                         "de":"religiöse Einrichtung",
                         "en":"religious institution",
                         "ar":"مؤسسات دينية",
@@ -625,40 +649,40 @@
                         "ur":"مذہبی"
                   },
                   "cat_christian":{
-                        "de":"Kirche",
-                        "en":"church",
-                        "ar":"كنيسة",
-                        "fa":"کلیسا",
-                        "fr":"église",
+                        "de":"Christliche Gemeinschaft",
+                        "en":"christian community",
+                        "ar":"",
+                        "fa":"",
+                        "fr":"",
                         "it":"",
-                        "ru":"церковь",
-                        "sr":"Црква",
-                        "ti":"ቤተክርስትያን",
-                        "ur":"چرچ"
+                        "ru":"",
+                        "sr":"",
+                        "ti":"",
+                        "ur":""
                   },
                   "cat_islam":{
-                        "de":"Moschee",
-                        "en":"mosque",
-                        "ar":"مسجد",
-                        "fa":"مسجد",
-                        "fr":"mosquée",
+                        "de":"Islamische Gemeinschaft",
+                        "en":"islamic community",
+                        "ar":"",
+                        "fa":"",
+                        "fr":"",
                         "it":"",
-                        "ru":"мечеть",
-                        "sr":"Џамија",
-                        "ti":"መስጊድ",
-                        "ur":"مسجد"
+                        "ru":"",
+                        "sr":"",
+                        "ti":"",
+                        "ur":""
                   },
                   "cat_jewish":{
-                        "de":"Synagoge",
-                        "en":"synagogue",
-                        "ar":"معبد يهودي ",
-                        "fa":"کنیسه",
-                        "fr":"synagogue",
+                        "de":"Jüdische Gemeinschaft",
+                        "en":"jewish community",
+                        "ar":"",
+                        "fa":"",
+                        "fr":"",
                         "it":"",
-                        "ru":"синагога",
-                        "sr":"Синагога",
-                        "ti":"ሲናጎግ",
-                        "ur":"کنیسہ"
+                        "ru":"",
+                        "sr":"",
+                        "ti":"",
+                        "ur":""
                   },
                   "cat_shop":{
                         "de":"kulterspezifischer Einkaufsladen",
@@ -672,7 +696,7 @@
                         "ti":"ዝተፈላለዩ ባህልታት ዘአንግዱ ናይ ዕዳጋታት",
                         "ur":"بین الاقوامی دکان"
                   },
-                  "cat_public":{
+                  "cat_authority":{
                         "de":"Behörde",
                         "en":"authority",
                         "ar":"مراكز عمومية",
@@ -696,9 +720,21 @@
                         "ti":"",
                         "ur":""
                   },
-                  "cat_housing":{
-                        "de":"Gemeinschaftsunterkunft",
-                        "en":"",
+                  "cat_police":{
+                        "de":"Polizei",
+                        "en":"police",
+                        "ar":"",
+                        "fa":"",
+                        "fr":"",
+                        "it":"",
+                        "ru":"",
+                        "sr":"",
+                        "ti":"",
+                        "ur":""
+                  },
+                  "cat_nature":{
+                        "de":"Ort der Natur",
+                        "en":"place of nature",
                         "ar":"",
                         "fa":"",
                         "fr":"",

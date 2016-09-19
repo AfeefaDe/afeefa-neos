@@ -88,6 +88,32 @@ qx.Class.define("View", {
 
         changeLanguage: function(){
             
+        },
+
+        createTooltip: function(el, content){
+            var that = this;
+
+            if( APP.getUserDevice() == 'desktop'){
+                var thePopper;
+                el.hover(
+                    function(){
+                      thePopper = new Popper(
+                            el,
+                            {
+                                content: content
+                                // contentType: 'html'
+                            },
+                            {
+                                placement: 'top',
+                                removeOnDestroy: true
+                            }
+                        );
+                    },
+                    function(){
+                        thePopper.destroy();
+                    }
+                );
+            }
         }
     }
 

@@ -168,9 +168,8 @@ qx.Class.define("APPAFEEFA", {
 			});
 
 			// fetch other data (e.g. that takes a long time loading)
-			var currentAppData = that.getData();
-
 			that.getDataManager().getAllEntries(function(data){
+				var currentAppData = that.getData();
 
 				// store entries in APP
 				currentAppData.entries = data.marketentries;
@@ -178,7 +177,11 @@ qx.Class.define("APPAFEEFA", {
 				that.setData(currentAppData);
 				that.say('fetchedNewData');
 
+				that.getDataManager().getWifiNodes(function(data){
+					that.say('fetchedNewData');
+				});
 			});
+			
 		},
 
 		detectUserDevice: function(){

@@ -31,7 +31,7 @@ qx.Class.define("View", {
 
         // param (key, [locale])
         // @key bib key
-        // @locale get wording in a specific ignoring the current app language
+        // @locale get wording in a specific language ignoring the current app language
         getWording: function( key, locale ){
             var that = this;
 

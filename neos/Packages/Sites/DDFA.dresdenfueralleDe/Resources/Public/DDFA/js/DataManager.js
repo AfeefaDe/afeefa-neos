@@ -24,6 +24,10 @@ qx.Class.define("DataManager", {
                 APP.setData(currentAppData);
                 that.say('fetchedNewData');
 
+                that.getWifiNodes(function(data){
+                    that.say('fetchedNewData');
+                });
+
                 that.getLanguageBib(function (data) {  // language bib
                     // store in APP
                     APP.getLM().setBib(data[0]);
@@ -136,13 +140,88 @@ qx.Class.define("DataManager", {
                 type: 'GET',
                 dataType: 'json'
             })
-                .done(function (data) {
-                    cb(data);
-                })
-                .fail(function (a) {
-                    console.debug(a);
+            .done(function (data) {
+                cb(data);
+            })
+            .fail(function (a) {
+                console.debug(a);
+            });
+        },
+
+        getWifiNodes: function (cb) {
+            var that = this;
+
+            $.ajax({
+                url: "externalDataFiles/freifunk-nodes.json",
+                type: 'GET',
+                dataType: 'json'
+            })
+            .done(function (data) {
+                var wifiNodes = _.filter(data.nodes, function (node) {
+
+                    // filter out dead access points
+                    if (!node.status.online) return false;
+
+                    return true;
                 });
 
+                that.integrateExternalData(
+                    wifiNodes,
+                    {
+                        name:"Freifunk Wifi"
+                        // lat: {value:"position.lat", type:"var"}
+                    }
+                );
+                // cb(wifiNodes);
+                cb();
+            })
+            .fail(function (a) {
+                console.debug(a);
+            });
+        },
+
+        // transform data into needed structure and integrate with other app data
+        integrateExternalData: function(data, mapping){
+            var that = this;
+
+            var currentAppData = APP.getData();
+                    
+            var rows = [];
+            _.each(data, function(row){
+                var newEntry = {
+                    external:true,
+                    // "name": row.name,
+                    "name":mapping? mapping.name : 'mapping missing',
+                    "entry_id": 0,
+                    "type": 3,
+                    "subCategory": 'wifi',
+                    "category": {
+                        "name":"general",
+                    },
+                    "certified":false,
+                    "description":APP.getLM().resolve("external_wifi_description"),
+                    image:"https://freifunk.net/wp-content/uploads/2013/07/spenden.png",
+                    imageType:"image",
+                    web:"http://www.freifunk-dresden.de/topology/google-maps.html",
+                    facebook:"https://www.facebook.com/FreifunkDresden",
+                    location:[{
+                        "arrival":"",
+                        "city":"Dresden",
+                        "lat":row.position.lat,
+                        "lon":row.position.long,
+                        // "placename":"...",
+                        // "street":"...",
+                        // "zip":"..."
+                    }]
+                };
+                rows.push(newEntry);
+            });
+
+            // store data in APP
+            var newData = _.union(currentAppData.entries, rows)
+            currentAppData.entries = newData;
+            
+            APP.setData(currentAppData);
         },
 
         addMarketEntry: function (data, cb) {

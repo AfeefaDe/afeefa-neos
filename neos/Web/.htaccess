@@ -3,7 +3,7 @@
 #
 
 # You can specify a default context by activating this option:
-# SetEnv FLOW_CONTEXT Production
+SetEnv FLOW_CONTEXT Production
 
 # If the root path is not the parent of the Web directory,
 # TYPO3 Flow's root path must be specified manually:

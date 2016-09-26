@@ -64,10 +64,15 @@ class MarketEntryRepository extends AbstractTranslationRepository
         $dateTo = $marketEntry->getDateTo() ? strtotime($marketEntry->getDateTo()) : null;
 
         if( $dateFrom || $dateTo ){
-            if( $dateTo && $dateTo < strtotime('today') ) return true;
-            if( $dateFrom && $dateFrom < strtotime('today') ) return true;
+            if( $dateTo ) {
+                return ($dateTo < strtotime('today'))? true : false;
+            }
+            
+            if( $dateFrom ) {
+                return ($dateFrom < strtotime('today'))? true : false;
+            }
         }
-        
+
         return false;
     }
 

@@ -29,55 +29,24 @@ qx.Class.define("SearchView", {
       that.view.append(that.searchBar);
 
       // menu button
-      var thePopper;
       that.menuBtn = $("<div />")
-        .addClass('btn menu-btn')
-        // tooltip
-        .hover(
-          function(){
-            thePopper = new Popper(
-                that.menuBtn,
-                {
-                    content: that.getWording('menu_menu')
-                    // contentType: 'html'
-                },
-                {
-                  placement: 'bottom',
-                  removeOnDestroy: true
-                }
-            );
-          },
-          function(){
-            thePopper.destroy();
-          }
-        );
+        .addClass('btn menu-btn');
+      // tooltip
+      that.createTooltip(that.menuBtn, function(){
+        return that.getWording('menu_menu');
+      }());
       that.searchBar.append(that.menuBtn);
 
       // refugee button
-      var thePopper;
       that.refugeeBtn = $("<div />")
         .addClass('btn refugee-btn')
         .click(function(){
           APP.getIncludeView().load( APP.getIncludeView().getIncludes().refugeeGuide );
-        })
-        .hover(
-          function(){
-            thePopper = new Popper(
-                that.refugeeBtn,
-                {
-                    content: that.getWording('menu_refugee')
-                    // contentType: 'html'
-                },
-                {
-                  placement: 'bottom',
-                  removeOnDestroy: true
-                }
-            );
-          },
-          function(){
-            thePopper.destroy();
-          }
-        );
+        });
+      // tooltip
+      that.createTooltip(that.refugeeBtn, function(){
+        return that.getWording('menu_refugee');
+      }());
       that.searchBar.append(that.refugeeBtn);
 
       // filter button
@@ -477,12 +446,6 @@ qx.Class.define("SearchView", {
 
     changeLanguage: function(){
         var that = this;
-
-        // bootstrap tooltip
-        that.menuBtn.attr({
-          'title': that.getWording('menu_menu'),
-          'data-original-title': that.getWording('menu_menu')
-        });
 
         // that.reset();
         // that.load();

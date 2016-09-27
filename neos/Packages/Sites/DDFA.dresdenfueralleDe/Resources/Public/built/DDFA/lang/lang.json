@@ -685,8 +685,8 @@
                         "ur":""
                   },
                   "cat_shop":{
-                        "de":"kulterspezifischer Einkaufsladen",
-                        "en":"international shop",
+                        "de":"interkultureller Einkaufsladen",
+                        "en":"intercultural shop",
                         "ar":"امكانات الشراء الدولي",
                         "fa":"امکانات خرید سوغاتی ",
                         "fr":"découvrir des spécialités culturelles",
@@ -709,7 +709,7 @@
                         "ur":"اتھارٹی"
                   },
                   "cat_wifi":{
-                        "de":"WLAN Hotspot",
+                        "de":"kostenloses WLAN",
                         "en":"Free WIFI",
                         "ar":"",
                         "fa":"",
@@ -733,8 +733,8 @@
                         "ur":""
                   },
                   "cat_nature":{
-                        "de":"Ort der Natur",
-                        "en":"place of nature",
+                        "de":"Parks + Gärten",
+                        "en":"parks + gardens",
                         "ar":"",
                         "fa":"",
                         "fr":"",
@@ -2170,6 +2170,10 @@
                   "ti":"",
                   "ur":"",
                   "tr":""    
+            },
+            "external_wifi_description":{
+                  "de":"Kostenloses + sicheres WLAN: Freifunk steht für freie Kommunikation in digitalen Datennetzen. Wir verstehen frei als öffentlich zugänglich, nicht kommerziell, im Besitz der Gemeinschaft und unzensiert.",
+                  "en":"Free + secure Wi-Fi: Freifunk stands for free communication in digital data networks. Free means to us: publicly accessible, non-profit, in possession of the community and uncensored."
             }
       }
 ]

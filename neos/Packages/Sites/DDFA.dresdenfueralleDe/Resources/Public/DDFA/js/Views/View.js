@@ -31,7 +31,7 @@ qx.Class.define("View", {
 
         // param (key, [locale])
         // @key bib key
-        // @locale get wording in a specific ignoring the current app language
+        // @locale get wording in a specific language ignoring the current app language
         getWording: function( key, locale ){
             var that = this;
 
@@ -88,6 +88,32 @@ qx.Class.define("View", {
 
         changeLanguage: function(){
             
+        },
+
+        createTooltip: function(el, content){
+            var that = this;
+
+            if( APP.getUserDevice() == 'desktop'){
+                var thePopper;
+                el.hover(
+                    function(){
+                      thePopper = new Popper(
+                            el,
+                            {
+                                content: content
+                                // contentType: 'html'
+                            },
+                            {
+                                placement: 'top',
+                                removeOnDestroy: true
+                            }
+                        );
+                    },
+                    function(){
+                        thePopper.destroy();
+                    }
+                );
+            }
         }
     }
 

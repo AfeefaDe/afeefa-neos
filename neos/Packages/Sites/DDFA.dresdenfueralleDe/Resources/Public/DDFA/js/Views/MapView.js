@@ -83,12 +83,12 @@ qx.Class.define("MapView", {
 					// disableClusteringAtZoom: 17
 		});
 
-		// Layer for basic locations
-		that.layerForPOIMarkers = L.layerGroup();
+		// Layers for content-specific data (e.g. wifi networks) to handle them seperately (e.g. zoom-dependent visibility)
+		that.layerForWifiMarkers = L.layerGroup();
 
 		// add layer groups to map
 		that.map.addLayer(that.layerForMainMarkers);
-		that.map.addLayer(that.layerForPOIMarkers);
+		// that.map.addLayer(that.layerForWifiMarkers);
 
 
 		//////////////////////////
@@ -115,17 +115,22 @@ qx.Class.define("MapView", {
 				that.loadNewData();
 			});
 
-			// that.map.on('load', function(e){
-			// 	that.setZoomFilter();
-			// });
+			that.map.on('load', function(e){
+				that.applyInteractiveFilters();
+			});
 
 			that.map.on('viewreset', function(e){
-				// that.setZoomFilter();s
+				that.applyInteractiveFilters();
 			});
 
 			that.listen('filterSet', function(){
 				that.loadNewData();
 			});
+
+			that.listen('markersCreated', function(){
+				that.applyInteractiveFilters();
+			});
+
 				
 		// map click (not fired on drag or marker click or sth, pure map click!)
 		that.map.on('click', function(e) {
@@ -168,39 +173,43 @@ qx.Class.define("MapView", {
 			// reset things
 			that.removeMarkers();
 
-			// get ALL data with location data
-			var entries = _.filter(APP.getData().entries, function(entry){
-				return entry.location.length > 0;
-			});
-			
-			// filter active?
+			// aplly filters
 			var filter = APP.getActiveFilter();
-			if( filter ) {
+			
+			var entries = _.filter(APP.getData().entries, function(entry){
+				// only entries with location data
+				if( entry.location.length < 1) return false;
 				
-					entries = _.filter(entries, function(entry){
-						// don't filter these entry types:
-						// if( _.contains([3], entry.type) )
-						// 	return true;
-						
-						if( filter.category !== undefined )
-							if( !entry.category || !(entry.category.name === filter.category) ) return false;
+				// legend filter active?
+				if( filter ) {
+					if( filter.category !== undefined )
+						if( !entry.category || !(entry.category.name === filter.category) ) return false;
 
-						if( filter.subCategory !== undefined )
-							if( !(entry.subCategory === filter.subCategory) ) return false;
+					if( filter.subCategory !== undefined )
+						if( !(entry.subCategory === filter.subCategory) ) return false;
 
-						if( filter.type !== undefined )
-							if( !(entry.type === parseInt(filter.type)) ) return false;
+					if( filter.type !== undefined )
+						if( !(entry.type === parseInt(filter.type)) ) return false;
 
-						if( filter.forChildren !== undefined )
-							if( !(entry.forChildren === filter.forChildren) ) return false;
+					if( filter.forChildren !== undefined )
+						if( !(entry.forChildren === filter.forChildren) ) return false;
 
-						if( filter.supportWanted !== undefined )
-							if( !(entry.supportWanted === filter.supportWanted) ) return false;
+					if( filter.supportWanted !== undefined )
+						if( !(entry.supportWanted === filter.supportWanted) ) return false;
+				};
+				
+				// show markers depending on zoom level
+				// if( entry.subCategory == 'wifi' ){
+				// 	// that.map.getZoom() < 16 )
+				// 	if( filter && filter.subCategory && filter.subCategory == 'wifi' )
+				// 		return true;
+				// 	else
+				// 		return false;
+				// }
 
-						return true;
-					});
+				return true;
 
-			}
+			});
 
 			that.addMarkers(entries);
 			that.loadFromUrl({setView: true});
@@ -318,8 +327,8 @@ qx.Class.define("MapView", {
 				that.selectMarker(marker, entry);
 			});
 
-			if (entry.type === 3) {
-				that.layerForPOIMarkers.addLayer(marker);
+			if (entry.type === 3 && entry.subCategory && entry.subCategory == 'wifi') {
+				that.layerForWifiMarkers.addLayer(marker);
 			}
 			else {
 				that.layerForMainMarkers.addLayer(marker);
@@ -343,7 +352,7 @@ qx.Class.define("MapView", {
 			var that = this;
 
 			that.layerForMainMarkers.clearLayers();
-			that.layerForPOIMarkers.clearLayers();
+			that.layerForWifiMarkers.clearLayers();
 		
 			that.setMarkerLocationLookup([]);
 
@@ -367,7 +376,7 @@ qx.Class.define("MapView", {
 				that.map.setView([ that.getViewCoords().leipzig.lat, that.getViewCoords().leipzig.lon ], that.getViewCoords().leipzig.zoom);
 			}
 			// param is an entryId
-			else {
+			else if( firstParam && firstParam.length > 0) {
 				var lookup = that.lookupMarkerById(firstParam);
 				if(lookup){
 					if(options && options.setView)
@@ -470,19 +479,24 @@ qx.Class.define("MapView", {
 			return newLayer;
 		},
 
-		setZoomFilter: function(){
-			
+		applyInteractiveFilters: function(){
 			var that = this;
 
-			var currentLayers = that.stationMarkers.getLayers();
-			var newLayers = _.filter(currentLayers, function(){
-				return that.map.getZoom() >= 14;
-			});
-			that.poiMarkers.clearLayers();
-			
-			_.each(newLayers, function(layer) {
-				that.poiMarkers.addLayer(layer);
-			});
+			if( that.map.getZoom() >= 16){
+				// show wifi networks on high zoom levels only
+				if( !that.map.hasLayer(that.layerForWifiMarkers) )
+					that.map.addLayer(that.layerForWifiMarkers);
+			} else {
+				if( that.map.hasLayer(that.layerForWifiMarkers) )
+					that.map.removeLayer(that.layerForWifiMarkers);
+			}
+
+			var filter = APP.getActiveFilter();
+			if( filter && filter.subCategory && filter.subCategory == 'wifi' ){
+				if( !that.map.hasLayer(that.layerForWifiMarkers) )
+					that.map.addLayer(that.layerForWifiMarkers);
+			}
+
 		},
 
 		// sample code for geocoding (finding coords by location names)

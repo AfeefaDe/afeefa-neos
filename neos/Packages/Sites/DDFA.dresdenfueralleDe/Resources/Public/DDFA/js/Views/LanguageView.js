@@ -34,25 +34,9 @@ qx.Class.define("LanguageView", {
 				langBtn.addClass('btn ' + lang);
 
 				// tooltip
-				var thePopper;
-				langBtn.hover(
-					function(){
-					  thePopper = new Popper(
-							langBtn,
-							{
-								content: that.getWording('lan_' + lang, lang) + ' (' + that.getWording('lan_' + lang) + ')'
-								// contentType: 'html'
-							},
-							{
-								placement: 'top',
-								removeOnDestroy: true
-							}
-						);
-					},
-					function(){
-						thePopper.destroy();
-					}
-				);
+				that.createTooltip(langBtn, function(){
+					return that.getWording('lan_' + lang, lang) + ' (' + that.getWording('lan_' + lang) + ')';
+				}());
 
 				langBtn.click(function(){
 					that.say('languageChanged', lang);

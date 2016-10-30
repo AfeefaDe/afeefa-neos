@@ -3,6 +3,15 @@ li { margin-bottom: 1em; }
 a:link {text-decoration: none; }
 </style>
 <h1>PhraseApp Sync</h1>
+
+<h4>Current Config (TODO)</h4>
+<pre>
+	local db:			[read from sql.php]
+	dev mode for AF > PA:		[boolean | read from importFromAfeefaToPhraseApp.php]
+	dev mode for PA > AF:		[boolean | read from importFromPhraseAppToAfeefa.php]
+</pre>
+
+
 <h3>PhraseApp ⇒ Neos</h3>
 <ol>
 	<li>import all translations from PhraseApp into neos DB using this script:<br>

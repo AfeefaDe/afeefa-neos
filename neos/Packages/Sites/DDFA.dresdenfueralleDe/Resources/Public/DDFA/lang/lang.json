@@ -8,6 +8,14 @@
                   "fr":"",
                   "ru":""
             },
+            "intro_step_2":{
+                  "de":"<h2>Sprache</h2><p>Hier kannst du deine Sprache wählen. Nicht alles ist übersetzt, aber es wird stetig mehr.</p>",
+                  "en":"",
+                  "ar":"",
+                  "fa":"",
+                  "fr":"",
+                  "ru":""
+            },
             "intro_button_next":{
                   "de":"Nächster Tipp",
                   "en":"Next tip",

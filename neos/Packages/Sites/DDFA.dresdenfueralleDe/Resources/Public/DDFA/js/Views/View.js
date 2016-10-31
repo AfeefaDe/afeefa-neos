@@ -81,7 +81,7 @@ qx.Class.define("View", {
             
         },
 
-        createTooltip: function(el, content, event, placement, device, cssClasses){
+        createTooltip: function(el, content, event, placement, device, cssClasses, contentType){
             var that = this;
 
             // check device restrictions
@@ -90,7 +90,7 @@ qx.Class.define("View", {
             var popperConfig = {
                 content: {
                     content: content,
-                    contentType: 'html',
+                    contentType: contentType? contentType : 'html',
                     classNames: cssClasses? _.union(['popper'], cssClasses) : ['popper']
                 },
                 misc: {
@@ -125,6 +125,8 @@ qx.Class.define("View", {
                     popperConfig.misc
                 );
             }
+
+            return thePopper;
         }
     }
 

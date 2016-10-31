@@ -1,23 +1,47 @@
 [
       {
-            "intro_step_1":{
-                  "de":"<h2>Willkommen auf Afeefa.de</h2><p>Auf Afeefa.de findest du <b>aktuelle Veranstaltungen</b> und viele <b>interkulturelle Projekte</b> Dresdens.</p>",
+            "intro_step_search":{
+                  "de":"<h2>Willkommen auf Afeefa.de</h2><p>Hier werden Menschen vernetzt und Integration gefördert. Passend dazu findest du auf Afeefa.de <b>aktuelle Veranstaltungen</b> und viele <b>Projekte</b>, <b>Initiativen</b> und <b>Organisationen</b> in Dresden.",
                   "en":"",
                   "ar":"",
                   "fa":"",
                   "fr":"",
                   "ru":""
             },
-            "intro_step_2":{
-                  "de":"<h2>Sprache</h2><p>Hier kannst du deine Sprache wählen. Nicht alles ist übersetzt, aber es wird stetig mehr.</p>",
+            "intro_step_map":{
+                  "de":"<h2>Karte</h2><p>Alle Dinge mit einem Ort findest du auch auf unserer Karte. Hier kannst du auf Entdeckungsreise gehen!</p>",
                   "en":"",
                   "ar":"",
                   "fa":"",
                   "fr":"",
                   "ru":""
             },
-            "intro_step_3":{
-                  "de":"<h2>Legende & Filter</h2><p>In der Legende findest du eine Erklörung der Zeichen auf der Karte und eine Übersicht über alle Kategorien. Klicke auf diese, um zu filtern.</p>",
+            "intro_step_language":{
+                  "de":"<h2>Deine Sprache</h2><p>Hier kannst du deine <b>Sprache wählen</b>. Nicht alles ist übersetzt, aber es wird stetig mehr.</p>",
+                  "en":"",
+                  "ar":"",
+                  "fa":"",
+                  "fr":"",
+                  "ru":""
+            },
+            "intro_step_legend":{
+                  "de":"<h2>Legende & Filter</h2><p>In der Legende findest du eine Erklärung der Symbole auf der Karte und eine Übersicht über alle Kategorien. Du kannst die Kategorien auch gleich zum Filtern nutzen.</p>",
+                  "en":"",
+                  "ar":"",
+                  "fa":"",
+                  "fr":"",
+                  "ru":""
+            },
+            "intro_step_plus":{
+                  "de":"<h2>Dein Beitrag</h2><p>Über diesen Button kannst du selbst <b>Einträge hinzufügen</b>, z.B. Projekte, Initiativen, Organisationen und Veranstaltungen. Du hast etwas im Sinn? Dann gehört es hier hinein! Du kannst uns auch einfach eine <b>Nachricht oder Feedback</b> hinterlassen.</p>",
+                  "en":"",
+                  "ar":"",
+                  "fa":"",
+                  "fr":"",
+                  "ru":""
+            },
+            "intro_step_guide":{
+                  "de":"<h2>Leitfaden</h2><p>Hier findest du unseren <b>Leitfaden für Geflüchtete</b>. Er gibt dir wertvolle Hintergrundinformationen zu den Themen Asyl, Wohnen, Arbeit, Bildung, Gesundheit und vielen mehr...</p>",
                   "en":"",
                   "ar":"",
                   "fa":"",
@@ -1447,9 +1471,21 @@
                   "ur":""
             },
 
-            "search_label_allentries":{
-                  "de":"Alle Einträge",
-                  "en":"all entries",
+            "search_label_newentries":{
+                  "de":"Neue Projekte",
+                  "en":"new projects",
+                  "ar":"",
+                  "fa":"",
+                  "fr":"",
+                  "it":"",
+                  "ru":"",
+                  "sr":"",
+                  "ti":"",
+                  "ur":""
+            },
+            "search_label_lists":{
+                  "de":"Nützliche Listen",
+                  "en":"Useful lists",
                   "ar":"",
                   "fa":"",
                   "fr":"",

@@ -222,36 +222,6 @@ qx.Class.define("SearchView", {
 
       if( !query ) {  // show "just click" version
 
-        // supporters wanted
-        // var action = function(){
-        //   that.inputField.blur();
-        //   that.loadResults( 'supportWanted' );
-        // };
-        // createResult('supportWanted', 'Unterstützer gesucht', 'Projekte, die noch Verstärkung brauchen', action );
-
-        // link to intro
-        // var action = function(){
-        //   APP.getIncludeView().load( APP.getIncludeView().getIncludes().intro );
-        // };
-        // createResult('intro', that.getWording('search_label_intro'), that.getWording('search_sublabel_intro'), action );
-
-        // link to refugee guide
-        var action = function(){
-          APP.getIncludeView().load( APP.getIncludeView().getIncludes().refugeeGuide );
-        };
-        createResult('refugee-guide', that.getWording('search_label_refugeeGuide'), that.getWording('search_sublabel_refugeeGuide'), action );
-
-        // link to supporter guide
-        var action = function(){
-          APP.getIncludeView().load( APP.getIncludeView().getIncludes().supporterGuide );
-        };
-        createResult('supporter-guide', that.getWording('search_label_supporterGuide'), that.getWording('search_sublabel_supporterGuide'), action );
-
-        // support wanted
-        var action = function(){
-          that.inputField.val('support wanted').trigger( "input" );
-        };
-        createResult('support-wanted', that.getWording('search_label_supportwanted'), that.getWording('search_sublabel_supportwanted'), action );
 
         // upcoming events
         createSectionHeader( that.getWording('search_label_upcomingevents'), function(){
@@ -262,12 +232,32 @@ qx.Class.define("SearchView", {
           createEntryResult(entry);
         });
                 
-        // all entries
-        createSectionHeader( that.getWording('search_label_allentries') );
+        // newest entries
+        createSectionHeader( that.getWording('search_label_newentries') );
 
-        _.each(entries, function(entry) {
+        _.each(entries.slice(0, 3), function(entry) {
           createEntryResult(entry);
         });
+
+        createSectionHeader( that.getWording('search_label_lists') );
+
+        // link to refugee guide
+        // var action = function(){
+        //   APP.getIncludeView().load( APP.getIncludeView().getIncludes().refugeeGuide );
+        // };
+        // createResult('refugee-guide', that.getWording('search_label_refugeeGuide'), that.getWording('search_sublabel_refugeeGuide'), action );
+
+        // link to supporter guide
+        // var action = function(){
+        //   APP.getIncludeView().load( APP.getIncludeView().getIncludes().supporterGuide );
+        // };
+        // createResult('supporter-guide', that.getWording('search_label_supporterGuide'), that.getWording('search_sublabel_supporterGuide'), action );
+
+        // support wanted
+        var action = function(){
+          that.inputField.val('support wanted').trigger( "input" );
+        };
+        createResult('support-wanted', that.getWording('search_label_supportwanted'), that.getWording('search_sublabel_supportwanted'), action );
 
       } else {  // find by query
         

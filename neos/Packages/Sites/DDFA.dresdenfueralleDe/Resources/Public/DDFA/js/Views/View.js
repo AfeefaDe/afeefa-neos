@@ -73,45 +73,56 @@ qx.Class.define("View", {
             ////////////////////////////
             // AFTER VIEW IS RENDERED //
             ////////////////////////////
-            that.listen(that.classname + 'Rendered', function(){
-        
-                // initialize bootstrap tooltips
-                if( APP.getUserDevice == 'desktop'){
-                    $(function () {
-                        console.debug('init tooltips');
-                        that.view.find('[data-toggle="tooltip"]').tooltip();
-                    })
-                }
-
-            });
+            // that.listen(that.classname + 'Rendered', function(){
+            // });
         },
 
         changeLanguage: function(){
             
         },
 
-        createTooltip: function(el, content){
+        createTooltip: function(el, content, event, placement, device, cssClasses){
             var that = this;
 
-            if( APP.getUserDevice() == 'desktop'){
-                var thePopper;
-                el.hover(
-                    function(){
-                      thePopper = new Popper(
-                            el,
-                            {
-                                content: content
-                                // contentType: 'html'
-                            },
-                            {
-                                placement: 'top',
-                                removeOnDestroy: true
-                            }
-                        );
-                    },
-                    function(){
-                        thePopper.destroy();
-                    }
+            // check device restrictions
+            if( device && APP.getUserDevice() != device) return false;
+
+            var popperConfig = {
+                content: {
+                    content: content,
+                    contentType: 'html',
+                    classNames: cssClasses? _.union(['popper'], cssClasses) : ['popper']
+                },
+                misc: {
+                    placement: placement? placement : null,
+                    removeOnDestroy: true
+                }
+            };
+
+            var thePopper;
+            if (event){
+                // open on hover
+                if( event == 'hover' ){
+                    el.hover(
+                        function(){
+                          thePopper = new Popper(
+                                el,
+                                popperConfig.content,
+                                popperConfig.misc
+                            );
+                        },
+                        function(){
+                            thePopper.destroy();
+                        }
+                    );
+                }
+            }
+            // open immediately
+            else {
+                thePopper = new Popper(
+                    el,
+                    popperConfig.content,
+                    popperConfig.misc
                 );
             }
         }

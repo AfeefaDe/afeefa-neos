@@ -129,7 +129,8 @@
         'Views/LanguageView': ['Views/View'],
         'Views/PlusView': ['Views/View'],
         'Views/FormView': ['Views/View'],
-        'Views/IncludeView': ['Views/View']
+        'Views/IncludeView': ['Views/View'],
+        'Views/IntroView': ['Views/View']
     },
 
     //As of 2.1.11, shimmed dependencies can be wrapped in a define() wrapper

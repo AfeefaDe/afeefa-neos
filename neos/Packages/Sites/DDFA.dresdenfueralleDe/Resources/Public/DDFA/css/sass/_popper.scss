@@ -15,6 +15,13 @@
 		    margin: 5px;
 		}
 
+		&.intro { 
+			background-color: $tooltip_intro;
+			color: $black;
+	    padding: 1em;
+	    max-width: 20em;
+		}
+
 		&[x-placement^="top"] {
 		    margin-bottom: 5px;
 		}

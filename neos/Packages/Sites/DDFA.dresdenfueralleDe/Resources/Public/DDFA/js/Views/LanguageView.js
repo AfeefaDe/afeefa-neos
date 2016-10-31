@@ -34,9 +34,15 @@ qx.Class.define("LanguageView", {
 				langBtn.addClass('btn ' + lang);
 
 				// tooltip
-				that.createTooltip(langBtn, function(){
-					return that.getWording('lan_' + lang, lang) + ' (' + that.getWording('lan_' + lang) + ')';
-				}());
+				that.createTooltip(
+					langBtn, 
+					function(){
+						return that.getWording('lan_' + lang, lang) + ' (' + that.getWording('lan_' + lang) + ')';
+					}(),
+					'hover',
+					'top',
+					'desktop'					
+				);
 
 				langBtn.click(function(){
 					that.say('languageChanged', lang);
@@ -66,6 +72,11 @@ qx.Class.define("LanguageView", {
 
 		addEvents: function(){
 			var that = this;
+
+			that.listen('LanguageViewRendered', function(){
+				// alert('Willkommen auf Afeefa.de! Wähle deine Sprache:');
+				console.log('Willkommen auf Afeefa.de! Wähle deine Sprache:');
+			});
 
 			// call superclass
 			this.base(arguments);

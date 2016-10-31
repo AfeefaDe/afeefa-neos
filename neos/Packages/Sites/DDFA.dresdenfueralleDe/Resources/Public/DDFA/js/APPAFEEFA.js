@@ -142,6 +142,7 @@ qx.Class.define("APPAFEEFA", {
 		languageView: {},
 		formView: {},
 		includeView: {},
+		introView: {},
 		userDevice: {},
 		config: {},
 		activeFilter: {}
@@ -176,6 +177,7 @@ qx.Class.define("APPAFEEFA", {
 				
 				that.setData(currentAppData);
 				that.say('fetchedNewData');
+				that.say('fetchedAllBasicData');
 
 				that.getDataManager().getWifiNodes(function(data){
 					that.say('fetchedNewData');

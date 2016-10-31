@@ -55,7 +55,8 @@ require.config({
         'Views/LanguageView': ['Views/View'],
         'Views/PlusView': ['Views/View'],
         'Views/FormView': ['Views/View'],
-        'Views/IncludeView': ['Views/View']
+        'Views/IncludeView': ['Views/View'],
+        'Views/IntroView': ['Views/View']
     },
 
     // enforceDefine: true,
@@ -81,7 +82,8 @@ require.config({
         'Views/LanguageView',
         'Views/PlusView',
         'Views/FormView',
-        'Views/IncludeView'
+        'Views/IncludeView',
+        'Views/IntroView'
     ], function(domReady){
 
         // if dependencies don't become available everywhere within the app, then define them here again as global var

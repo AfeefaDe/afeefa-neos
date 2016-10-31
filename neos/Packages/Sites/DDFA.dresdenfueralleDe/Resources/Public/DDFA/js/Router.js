@@ -59,6 +59,7 @@ qx.Class.define("Router", {
 				APP.setLanguageView( new LanguageViewMobile() );
 				APP.setFormView( new FormView() );
 				APP.setIncludeView( new IncludeView() );
+				APP.setIntroView( new IntroView() );
 		
 			} else {
 
@@ -71,6 +72,7 @@ qx.Class.define("Router", {
 				APP.setLanguageView( new LanguageView() );
 				APP.setFormView( new FormView() );
 				APP.setIncludeView( new IncludeView() );
+				APP.setIntroView( new IntroView() );
 			}
 			
 			// TODO throw away
@@ -84,6 +86,7 @@ qx.Class.define("Router", {
 				APP.getLegendView().render();
 				APP.getFormView().render();
 				APP.getIncludeView().render();
+				APP.getIntroView().render();
 			}
 			else {
 				APP.getMapView().render();
@@ -95,6 +98,7 @@ qx.Class.define("Router", {
 				APP.getLegendView().render();
 				APP.getFormView().render();
 				APP.getIncludeView().render();
+				APP.getIntroView().render();
 			}
 		},
 
@@ -197,13 +201,18 @@ qx.Class.define("Router", {
 		addEvents: function(){
 			var that = this;
 
+			that.listen('fetchedAllBasicData', function(){
+				// start intro
+				APP.getIntroView().start();
+			});
+
 			that.listen('IncludeViewRendered', function(){
 				if( window.location.hash == '#presse' ){
-					APP.getIncludeView().load( APP.getIncludeView().getIncludes().press );
+						APP.getIncludeView().load( APP.getIncludeView().getIncludes().press );
 				}
-				else {
-					APP.getIncludeView().load( APP.getIncludeView().getIncludes().intro );
-				}
+				// else {
+				// 	APP.getIncludeView().load( APP.getIncludeView().getIncludes().intro );
+				// }
 			});
 
 			that.listen('FormViewRendered', function(){

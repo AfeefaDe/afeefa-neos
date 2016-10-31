@@ -32,9 +32,15 @@ qx.Class.define("SearchView", {
       that.menuBtn = $("<div />")
         .addClass('btn menu-btn');
       // tooltip
-      that.createTooltip(that.menuBtn, function(){
-        return that.getWording('menu_menu');
-      }());
+      that.createTooltip(
+        that.menuBtn,
+        function(){
+          return that.getWording('menu_menu');
+        }(),
+        'hover',
+        'top',
+        'desktop'
+      );
       that.searchBar.append(that.menuBtn);
 
       // refugee button
@@ -44,9 +50,15 @@ qx.Class.define("SearchView", {
           APP.getIncludeView().load( APP.getIncludeView().getIncludes().refugeeGuide );
         });
       // tooltip
-      that.createTooltip(that.refugeeBtn, function(){
-        return that.getWording('menu_refugee');
-      }());
+      that.createTooltip(
+        that.refugeeBtn,
+        function(){
+          return that.getWording('menu_refugee');
+        }(),
+        'hover',
+        'top',
+        'desktop'
+      );
       that.searchBar.append(that.refugeeBtn);
 
       // filter button
@@ -115,6 +127,8 @@ qx.Class.define("SearchView", {
         that.inputField.show();
 
         that.view.addClass('active');
+
+        return that;
     },
 
     loadResults: function( query ) {

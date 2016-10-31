@@ -994,17 +994,10 @@ strong {
   margin: 5px;
 }
 /* line 18, sass/_popper.scss */
-.popper.intro {
-  background-color: #ffc107;
-  color: #333333;
-  padding: 1em;
-  max-width: 20em;
-}
-/* line 25, sass/_popper.scss */
 .popper[x-placement^="top"] {
   margin-bottom: 5px;
 }
-/* line 28, sass/_popper.scss */
+/* line 21, sass/_popper.scss */
 .popper[x-placement^="top"] .popper__arrow {
   border-width: 5px 5px 0 5px;
   border-color: rgba(0, 0, 0, 0.8) transparent transparent transparent;
@@ -1013,11 +1006,11 @@ strong {
   margin-top: 0;
   margin-bottom: 0;
 }
-/* line 36, sass/_popper.scss */
+/* line 29, sass/_popper.scss */
 .popper[x-placement^="bottom"] {
   margin-top: 5px;
 }
-/* line 39, sass/_popper.scss */
+/* line 32, sass/_popper.scss */
 .popper[x-placement^="bottom"] .popper__arrow {
   border-width: 0 5px 5px 5px;
   border-color: transparent transparent rgba(0, 0, 0, 0.8) transparent;
@@ -1026,11 +1019,11 @@ strong {
   margin-top: 0;
   margin-bottom: 0;
 }
-/* line 47, sass/_popper.scss */
+/* line 40, sass/_popper.scss */
 .popper[x-placement^="right"] {
   margin-left: 5px;
 }
-/* line 50, sass/_popper.scss */
+/* line 43, sass/_popper.scss */
 .popper[x-placement^="right"] .popper__arrow {
   border-width: 5px 5px 5px 0;
   border-color: transparent rgba(0, 0, 0, 0.8) transparent transparent;
@@ -1039,11 +1032,11 @@ strong {
   margin-left: 0;
   margin-right: 0;
 }
-/* line 58, sass/_popper.scss */
+/* line 51, sass/_popper.scss */
 .popper[x-placement^="left"] {
   margin-right: 5px;
 }
-/* line 61, sass/_popper.scss */
+/* line 54, sass/_popper.scss */
 .popper[x-placement^="left"] .popper__arrow {
   border-width: 10px 0 10px 10px;
   border-color: transparent transparent transparent rgba(0, 0, 0, 0.8);
@@ -1051,6 +1044,29 @@ strong {
   top: calc(50% - 5px);
   margin-left: 0;
   margin-right: 0;
+}
+/* line 63, sass/_popper.scss */
+.popper.intro {
+  background-color: #ffc107;
+  color: #333333;
+  padding: 1em;
+  max-width: 20em;
+}
+/* line 69, sass/_popper.scss */
+.popper[x-placement^="top"].intro .popper__arrow {
+  border-color: #ffc107 transparent transparent transparent;
+}
+/* line 72, sass/_popper.scss */
+.popper[x-placement^="bottom"].intro .popper__arrow {
+  border-color: transparent transparent #ffc107 transparent;
+}
+/* line 75, sass/_popper.scss */
+.popper[x-placement^="right"].intro .popper__arrow {
+  border-color: transparent #ffc107 transparent transparent;
+}
+/* line 78, sass/_popper.scss */
+.popper[x-placement^="left"].intro .popper__arrow {
+  border-color: transparent transparent transparent #ffc107;
 }
 
 /* line 1, sass/_mapView.scss */

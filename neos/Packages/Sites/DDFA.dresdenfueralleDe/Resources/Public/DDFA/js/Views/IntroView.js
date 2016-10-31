@@ -20,9 +20,10 @@ qx.Class.define("IntroView", {
 
 			$('#main-container').append(that.view);
 
+			that.defineSteps();
+
 			this.base(arguments);
 
-			that.defineSteps();
 			// that.load();
 		},
 
@@ -31,14 +32,44 @@ qx.Class.define("IntroView", {
 
 			that.steps = {
 				step1: {
+					stepName: 'step1',
 					el: APP.getSearchView().view,
 					preAction: function(){
 						APP.getSearchView().loadResults();
-					}(),
+					},
 					content: function(){
-						var html = searchView.getWording('intro_step_1');
-						html += "<button>" +searchView.getWording('intro_button_next')+ "</button>";
-						return html;
+						var contentContainer = $("<div />")
+						var text = $("<div />")
+							.append(that.getWording('intro_step_1'));
+						var button = $("<button />")
+							.append(that.getWording('intro_button_next'))
+							.click(function(){
+								that.next();
+							});
+
+						contentContainer.append(text);
+						contentContainer.append(button);
+						return contentContainer;
+					}()
+				},
+				step2: {
+					stepName: 'step2',
+					el: APP.getLanguageView().view,
+					preAction: function(){
+					},
+					content: function(){
+						var contentContainer = $("<div />")
+						var text = $("<div />")
+							.append(that.getWording('intro_step_2'));
+						var button = $("<button />")
+							.append(that.getWording('intro_button_next'))
+							.click(function(){
+								that.next();
+							});
+
+						contentContainer.append(text);
+						contentContainer.append(button);
+						return contentContainer;
 					}()
 				}
 			};
@@ -48,22 +79,42 @@ qx.Class.define("IntroView", {
 			var that = this;
 
 			that.showCurtain(true);
+						
+			that.next();
+		},
 
-			var searchView = APP.getSearchView();
-				searchView.loadResults();
-				searchView.createTooltip(
-					searchView.view,
-					function(){
-						var html = searchView.getWording('intro_step_1');
-						html += "<button>" +searchView.getWording('intro_button_next')+ "</button>";
-						return html;
-					}(),
-					null,
-					'right',
-					'desktop',
-					['intro']
-				);
+		next: function(){
+			var that = this;
 
+			var nextStep;
+			if( !that.currentStep ) {
+        nextStep = that.steps.step1;
+      } else {
+				switch(that.currentStep.stepName) {
+				    case 'step1':
+				        nextStep = that.steps.step2;
+				        break;
+				    default:
+				        nextStep = that.steps.step1;
+				}
+      }
+
+			// destroy any existing tooltip
+			if( that.currentTooltip ) that.currentTooltip.destroy();
+
+			// create next tooltip
+			nextStep.preAction();
+			var tooltip = that.createTooltip(
+				nextStep.el,
+				nextStep.content,
+				null,
+				'right',
+				'desktop',
+				['intro'],
+				'node'
+			);
+			that.currentTooltip = tooltip;
+			that.currentStep = nextStep;
 		},
 
 		addEvents: function(){

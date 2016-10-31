@@ -15,13 +15,6 @@
 		    margin: 5px;
 		}
 
-		&.intro { 
-			background-color: $tooltip_intro;
-			color: $black;
-	    padding: 1em;
-	    max-width: 20em;
-		}
-
 		&[x-placement^="top"] {
 		    margin-bottom: 5px;
 		}
@@ -66,4 +59,23 @@
 		    margin-left: 0;
 		    margin-right: 0;
 		}
+
+		&.intro { 
+			background-color: $tooltip_intro;
+			color: $black;
+	    padding: 1em;
+	    max-width: 20em;
+		}
+		&[x-placement^="top"].intro .popper__arrow {
+	    border-color: $tooltip_intro transparent transparent transparent;
+	  }
+	  &[x-placement^="bottom"].intro .popper__arrow {
+	    border-color: transparent transparent $tooltip_intro transparent;
+	  }
+	  &[x-placement^="right"].intro .popper__arrow {
+	    border-color: transparent $tooltip_intro transparent transparent;
+	  }
+	  &[x-placement^="left"].intro .popper__arrow {
+	    border-color: transparent transparent transparent $tooltip_intro;
+	  }
 }

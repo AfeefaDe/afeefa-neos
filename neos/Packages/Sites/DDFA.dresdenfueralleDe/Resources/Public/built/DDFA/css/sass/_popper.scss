@@ -6,57 +6,87 @@
     max-width: 10em;
     text-align: center;
     @include border-radius(2px);
+		@include shadow($height: 4);
 
     .popper__arrow {
 		    width: 0;
 		    height: 0;
 		    border-style: solid;
 		    position: absolute;
-		    margin: 5px;
+		    margin: 10px;
+		}
+
+		button {
+			margin-top: 1em;
 		}
 
 		&[x-placement^="top"] {
-		    margin-bottom: 5px;
+		    margin-bottom: 10px;
 		}
 		&[x-placement^="top"] .popper__arrow {
-		    border-width: 5px 5px 0 5px;
+		    border-width: 10px 10px 0 10px;
 		    border-color: $black_alpha transparent transparent transparent;
-		    bottom: -5px;
-		    left: calc(50% - 5px);
+		    bottom: -10px;
+		    left: calc(50% - 10px);
 		    margin-top: 0;
 		    margin-bottom: 0;
 		}
 		&[x-placement^="bottom"] {
-		    margin-top: 5px;
+		    margin-top: 10px;
 		}
 		&[x-placement^="bottom"] .popper__arrow {
-		    border-width: 0 5px 5px 5px;
+		    border-width: 0 10px 10px 10px;
 		    border-color: transparent transparent $black_alpha transparent;
-		    top: -5px;
-		    left: calc(50% - 5px);
+		    top: -10px;
+		    left: calc(50% - 10px);
 		    margin-top: 0;
 		    margin-bottom: 0;
 		}
 		&[x-placement^="right"] {
-		    margin-left: 5px;
+		    margin-left: 10px;
 		}
 		&[x-placement^="right"] .popper__arrow {
-		    border-width: 5px 5px 5px 0;
+		    border-width: 10px 10px 10px 0;
 		    border-color: transparent $black_alpha transparent transparent;
-		    left: -5px;
-		    top: calc(50% - 5px);
+		    left: -10px;
+		    top: calc(50% - 10px);
 		    margin-left: 0;
 		    margin-right: 0;
 		}
 		&[x-placement^="left"] {
-		    margin-right: 5px;
+		    margin-right: 10px;
 		}
 		&[x-placement^="left"] .popper__arrow {
 		    border-width: 10px 0 10px 10px;
 		    border-color: transparent transparent transparent $black_alpha;
 		    right: -10px;
-		    top: calc(50% - 5px);
+		    top: calc(50% - 10px);
 		    margin-left: 0;
 		    margin-right: 0;
 		}
+
+		&.intro { 
+			background-color: $tooltip_intro;
+			color: $black;
+	    padding: 1em;
+	    max-width: 20em;
+		}
+		&[x-placement^="top"].intro .popper__arrow {
+	    border-color: $tooltip_intro transparent transparent transparent;
+	  }
+	  &[x-placement^="bottom"].intro .popper__arrow {
+	    border-color: transparent transparent $tooltip_intro transparent;
+	  }
+	  &[x-placement^="right"].intro .popper__arrow {
+	    border-color: transparent $tooltip_intro transparent transparent;
+	  }
+	  &[x-placement^="left"].intro .popper__arrow {
+	    border-color: transparent transparent transparent $tooltip_intro;
+	  }
+}
+
+.mobile {
+	popper {
+		max-width: 5em;
+	}
 }

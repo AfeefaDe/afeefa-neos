@@ -37,6 +37,9 @@ qx.Class.define("IntroView", {
 					preAction: function(){
 						APP.getSearchView().loadResults();
 					},
+					afterAction: function(){
+
+					},
 					content: function(){
 						var contentContainer = $("<div />")
 						var text = $("<div />")
@@ -47,8 +50,17 @@ qx.Class.define("IntroView", {
 								that.next();
 							});
 
+						var buttonCancel = $("<button />")
+							// .addClass('btn-secondary')
+							.append(that.getWording('intro_button_cancel'))
+							.click(function(){
+								that.stop();
+								that.saveIntroDecision();
+							});
+
 						contentContainer.append(text);
 						contentContainer.append(button);
+						contentContainer.append(buttonCancel);
 						return contentContainer;
 					}()
 				},
@@ -56,6 +68,9 @@ qx.Class.define("IntroView", {
 					stepName: 'step2',
 					el: APP.getLanguageView().view,
 					preAction: function(){
+					},
+					afterAction: function(){
+
 					},
 					content: function(){
 						var contentContainer = $("<div />")
@@ -76,7 +91,10 @@ qx.Class.define("IntroView", {
 					stepName: 'step3',
 					el: APP.getLegendView().view,
 					preAction: function(){
-						APP.getLegendView().show;
+						APP.getLegendView().show();
+					},
+					afterAction: function(){
+						APP.getLegendView().close();
 					},
 					content: function(){
 						var contentContainer = $("<div />")
@@ -98,10 +116,25 @@ qx.Class.define("IntroView", {
 
 		start: function(){
 			var that = this;
-
-			that.showCurtain(true);
-						
+			
+			if( localStorage.getItem("introIsKnown") ) return;
+			
 			that.next();
+		},
+
+		stop: function(){
+			var that = this;
+			
+			if( that.currentTooltip ) that.currentTooltip.destroy();
+			that.currentTooltip = null;
+			that.currentStep = null;
+			that.showCurtain(false);
+		},
+
+		saveIntroDecision: function(){
+			var that = this;
+			
+			localStorage.setItem("introIsKnown", 1);
 		},
 
 		next: function(){
@@ -127,6 +160,7 @@ qx.Class.define("IntroView", {
 			if( that.currentTooltip ) that.currentTooltip.destroy();
 
 			// create next tooltip
+			that.showCurtain(true);
 			nextStep.preAction();
 			var tooltip = that.createTooltip(
 				nextStep.el,

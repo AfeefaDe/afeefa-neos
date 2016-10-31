@@ -273,7 +273,7 @@
 }
 
 .desktop {
-	#legendView:hover {
+	#legendView.active {
 		@include activeState;
 	}
 }

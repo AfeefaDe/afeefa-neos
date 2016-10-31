@@ -984,87 +984,98 @@ strong {
   -moz-border-radius: 2px;
   -webkit-border-radius: 2px;
   border-radius: 2px;
+  -moz-transition: box-shadow 150ms;
+  -o-transition: box-shadow 150ms;
+  -webkit-transition: box-shadow 150ms;
+  transition: box-shadow 150ms;
+  -moz-box-shadow: 0px 0px 8px #000;
+  -webkit-box-shadow: 0px 0px 8px #000;
+  box-shadow: 0px 0px 8px #000;
 }
-/* line 10, sass/_popper.scss */
+/* line 11, sass/_popper.scss */
 .popper .popper__arrow {
   width: 0;
   height: 0;
   border-style: solid;
   position: absolute;
-  margin: 5px;
+  margin: 10px;
 }
-/* line 18, sass/_popper.scss */
+/* line 19, sass/_popper.scss */
+.popper button {
+  margin-top: 1em;
+}
+/* line 23, sass/_popper.scss */
 .popper[x-placement^="top"] {
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 }
-/* line 21, sass/_popper.scss */
+/* line 26, sass/_popper.scss */
 .popper[x-placement^="top"] .popper__arrow {
-  border-width: 5px 5px 0 5px;
+  border-width: 10px 10px 0 10px;
   border-color: rgba(0, 0, 0, 0.8) transparent transparent transparent;
-  bottom: -5px;
-  left: calc(50% - 5px);
+  bottom: -10px;
+  left: calc(50% - 10px);
   margin-top: 0;
   margin-bottom: 0;
 }
-/* line 29, sass/_popper.scss */
+/* line 34, sass/_popper.scss */
 .popper[x-placement^="bottom"] {
-  margin-top: 5px;
+  margin-top: 10px;
 }
-/* line 32, sass/_popper.scss */
+/* line 37, sass/_popper.scss */
 .popper[x-placement^="bottom"] .popper__arrow {
-  border-width: 0 5px 5px 5px;
+  border-width: 0 10px 10px 10px;
   border-color: transparent transparent rgba(0, 0, 0, 0.8) transparent;
-  top: -5px;
-  left: calc(50% - 5px);
+  top: -10px;
+  left: calc(50% - 10px);
   margin-top: 0;
   margin-bottom: 0;
 }
-/* line 40, sass/_popper.scss */
+/* line 45, sass/_popper.scss */
 .popper[x-placement^="right"] {
-  margin-left: 5px;
+  margin-left: 10px;
 }
-/* line 43, sass/_popper.scss */
+/* line 48, sass/_popper.scss */
 .popper[x-placement^="right"] .popper__arrow {
-  border-width: 5px 5px 5px 0;
+  border-width: 10px 10px 10px 0;
   border-color: transparent rgba(0, 0, 0, 0.8) transparent transparent;
-  left: -5px;
-  top: calc(50% - 5px);
+  left: -10px;
+  top: calc(50% - 10px);
   margin-left: 0;
   margin-right: 0;
 }
-/* line 51, sass/_popper.scss */
+/* line 56, sass/_popper.scss */
 .popper[x-placement^="left"] {
-  margin-right: 5px;
+  margin-right: 10px;
 }
-/* line 54, sass/_popper.scss */
+/* line 59, sass/_popper.scss */
 .popper[x-placement^="left"] .popper__arrow {
   border-width: 10px 0 10px 10px;
   border-color: transparent transparent transparent rgba(0, 0, 0, 0.8);
   right: -10px;
-  top: calc(50% - 5px);
+  top: calc(50% - 10px);
   margin-left: 0;
   margin-right: 0;
 }
-/* line 63, sass/_popper.scss */
+/* line 68, sass/_popper.scss */
 .popper.intro {
   background-color: #ffc107;
   color: #333333;
   padding: 1em;
   max-width: 20em;
 }
-/* line 69, sass/_popper.scss */
+/* line 74, sass/_popper.scss */
 .popper[x-placement^="top"].intro .popper__arrow {
   border-color: #ffc107 transparent transparent transparent;
 }
-/* line 72, sass/_popper.scss */
+/* line 77, sass/_popper.scss */
 .popper[x-placement^="bottom"].intro .popper__arrow {
   border-color: transparent transparent #ffc107 transparent;
 }
-/* line 75, sass/_popper.scss */
+/* line 80, sass/_popper.scss */
 .popper[x-placement^="right"].intro .popper__arrow {
   border-color: transparent #ffc107 transparent transparent;
 }
-/* line 78, sass/_popper.scss */
+/* line 83, sass/_popper.scss */
 .popper[x-placement^="left"].intro .popper__arrow {
   border-color: transparent transparent transparent #ffc107;
 }
@@ -4917,23 +4928,23 @@ body.phone #menuView .menu-btn {
 }
 
 /* line 276, sass/_legendView.scss */
-.desktop #legendView:hover {
+.desktop #legendView.active {
   right: 0 !important;
 }
 /* line 267, sass/_legendView.scss */
-.desktop #legendView:hover .filter-module h3 {
+.desktop #legendView.active .filter-module h3 {
   visibility: visible;
 }
 /* line 269, sass/_legendView.scss */
-.desktop #legendView:hover .entity-module {
+.desktop #legendView.active .entity-module {
   visibility: visible;
 }
 /* line 270, sass/_legendView.scss */
-.desktop #legendView:hover .attribute-module {
+.desktop #legendView.active .attribute-module {
   visibility: visible;
 }
 /* line 272, sass/_legendView.scss */
-.desktop #legendView:hover .cat-container .icon {
+.desktop #legendView.active .cat-container .icon {
   margin-left: .5em;
 }
 

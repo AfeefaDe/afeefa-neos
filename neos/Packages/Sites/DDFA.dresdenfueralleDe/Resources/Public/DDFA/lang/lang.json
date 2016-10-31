@@ -1,5 +1,21 @@
 [
       {
+            "intro_step_1":{
+                  "de":"<h2>Willkommen auf Afeefa.de</h2><p>Auf Afeefa.de findest du <b>aktuelle Veranstaltungen</b> und viele <b>interkulturelle Projekte</b> Dresdens.</p>",
+                  "en":"",
+                  "ar":"",
+                  "fa":"",
+                  "fr":"",
+                  "ru":""
+            },
+            "intro_button_next":{
+                  "de":"Nächster Tipp",
+                  "en":"Next tip",
+                  "ar":"",
+                  "fa":"",
+                  "fr":"",
+                  "ru":""
+            },
             "entry_type":{
                   "de":"Eintragstyp",
                   "en":"Entry type",

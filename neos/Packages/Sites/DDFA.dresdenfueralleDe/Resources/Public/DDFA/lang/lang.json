@@ -16,6 +16,14 @@
                   "fr":"",
                   "ru":""
             },
+            "intro_step_3":{
+                  "de":"<h2>Legende & Filter</h2><p>In der Legende findest du eine Erklörung der Zeichen auf der Karte und eine Übersicht über alle Kategorien. Klicke auf diese, um zu filtern.</p>",
+                  "en":"",
+                  "ar":"",
+                  "fa":"",
+                  "fr":"",
+                  "ru":""
+            },
             "intro_button_next":{
                   "de":"Nächster Tipp",
                   "en":"Next tip",

@@ -71,6 +71,27 @@ qx.Class.define("IntroView", {
 						contentContainer.append(button);
 						return contentContainer;
 					}()
+				},
+				step3: {
+					stepName: 'step3',
+					el: APP.getLegendView().view,
+					preAction: function(){
+						APP.getLegendView().show;
+					},
+					content: function(){
+						var contentContainer = $("<div />")
+						var text = $("<div />")
+							.append(that.getWording('intro_step_3'));
+						var button = $("<button />")
+							.append(that.getWording('intro_button_next'))
+							.click(function(){
+								that.next();
+							});
+
+						contentContainer.append(text);
+						contentContainer.append(button);
+						return contentContainer;
+					}()
 				}
 			};
 		},
@@ -93,6 +114,9 @@ qx.Class.define("IntroView", {
 				switch(that.currentStep.stepName) {
 				    case 'step1':
 				        nextStep = that.steps.step2;
+				        break;
+	        	case 'step2':
+				        nextStep = that.steps.step3;
 				        break;
 				    default:
 				        nextStep = that.steps.step1;

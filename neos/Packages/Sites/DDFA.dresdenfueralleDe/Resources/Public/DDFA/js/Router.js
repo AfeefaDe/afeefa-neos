@@ -203,7 +203,13 @@ qx.Class.define("Router", {
 
 			that.listen('fetchedAllBasicData', function(){
 				// start intro
-				APP.getIntroView().start();
+				if( !localStorage.getItem("introIsKnown") ){
+					APP.getIntroView().start();
+				} else {
+					// open search view
+					APP.getSearchView().loadResults();
+				}
+				
 			});
 
 			that.listen('IncludeViewRendered', function(){

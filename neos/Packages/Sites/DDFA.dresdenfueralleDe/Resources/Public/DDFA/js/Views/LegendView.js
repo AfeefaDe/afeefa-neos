@@ -253,10 +253,10 @@ qx.Class.define("LegendView", {
 	  },
 
 	  // used for mobile instead of mouse hover
-	  show: function(){
+	  show: function(silent){
 	  	var that = this;
 
-		  that.showCurtain(true);
+		  if(!silent) that.showCurtain(true);
 		  that.view.addClass('active');
 	  },
 

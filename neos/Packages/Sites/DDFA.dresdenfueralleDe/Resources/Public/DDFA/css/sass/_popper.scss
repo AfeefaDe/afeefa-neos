@@ -84,3 +84,9 @@
 	    border-color: transparent transparent transparent $tooltip_intro;
 	  }
 }
+
+.mobile {
+	popper {
+		max-width: 5em;
+	}
+}

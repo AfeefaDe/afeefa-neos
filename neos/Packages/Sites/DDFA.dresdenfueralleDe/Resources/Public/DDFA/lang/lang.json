@@ -32,6 +32,14 @@
                   "fr":"",
                   "ru":""
             },
+            "intro_button_cancel":{
+                  "de":"Ich kenne mich aus.",
+                  "en":"I can manage myself.",
+                  "ar":"",
+                  "fa":"",
+                  "fr":"",
+                  "ru":""
+            },
             "entry_type":{
                   "de":"Eintragstyp",
                   "en":"Entry type",

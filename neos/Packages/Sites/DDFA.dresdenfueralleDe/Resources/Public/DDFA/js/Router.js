@@ -203,11 +203,16 @@ qx.Class.define("Router", {
 
 			that.listen('fetchedAllBasicData', function(){
 				// start intro
-				if( !localStorage.getItem("introIsKnown") ){
-					APP.getIntroView().start();
+				if(APP.getUserDevice() == 'mobile') {
+					APP.getIncludeView().load( APP.getIncludeView().getIncludes().intro );
+					// APP.getSearchView().loadResults();
 				} else {
-					// open search view
-					APP.getSearchView().loadResults();
+					if( !localStorage.getItem("introIsKnown") ){
+						APP.getIntroView().start();
+					} else {
+						// open search view
+						APP.getSearchView().loadResults();
+					}
 				}
 				
 			});

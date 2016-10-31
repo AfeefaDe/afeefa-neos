@@ -9,7 +9,7 @@
                   "ru":""
             },
             "intro_step_map":{
-                  "de":"<h2>Karte</h2><p>Alle Dinge mit einem Ort findest du auch auf unserer Karte. Hier kannst du auf Entdeckungsreise gehen!</p>",
+                  "de":"<h2>Karte</h2><p>Alle Dinge mit einem Ort findest du auch auf unserer Karte. Hier kannst du auf interkulturelle <b>Entdeckungsreise durch Dresden</b> gehen!</p>",
                   "en":"",
                   "ar":"",
                   "fa":"",
@@ -25,7 +25,7 @@
                   "ru":""
             },
             "intro_step_legend":{
-                  "de":"<h2>Legende & Filter</h2><p>In der Legende findest du eine Erklärung der Symbole auf der Karte und eine Übersicht über alle Kategorien. Du kannst die Kategorien auch gleich zum Filtern nutzen.</p>",
+                  "de":"<h2>Legende & Filter</h2><p>In der Legende findest du eine <b>Erklärung der Symbole</b> auf der Karte und eine Übersicht über <b>alle Kategorien</b>. Du kannst die Kategorien auch gleich zum <b>Filtern</b> nutzen.</p>",
                   "en":"",
                   "ar":"",
                   "fa":"",

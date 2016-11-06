@@ -1445,9 +1445,21 @@
                   "ti":"",
                   "ur":""
             },
-            "search_sublabel_supportwanted":{
-                  "de":"Projekte, die dringend Unterstützer suchen",
-                  "en":"Projects which urgently need supporters",
+                  "search_sublabel_supportwanted":{
+                        "de":"Projekte, die dringend Unterstützer suchen",
+                        "en":"Projects which urgently need supporters",
+                        "ar":"",
+                        "fa":"",
+                        "fr":"",
+                        "it":"",
+                        "ru":"",
+                        "sr":"",
+                        "ti":"",
+                        "ur":""
+                  },
+            "search_label_intro":{
+                  "de":"Tutorial",
+                  "en":"Tutorial",
                   "ar":"",
                   "fa":"",
                   "fr":"",
@@ -1457,7 +1469,18 @@
                   "ti":"",
                   "ur":""
             },
-
+                  "search_sublabel_intro":{
+                        "de":"Einführung in die Funkionen dieser Website",
+                        "en":"Introduction to the functionalities of this website",
+                        "ar":"",
+                        "fa":"",
+                        "fr":"",
+                        "it":"",
+                        "ru":"",
+                        "sr":"",
+                        "ti":"",
+                        "ur":""
+                  },
             "search_label_upcomingevents":{
                   "de":"Kommende Events ►",
                   "en":"upcoming events ►",
@@ -1486,6 +1509,18 @@
             "search_label_lists":{
                   "de":"Nützliche Listen",
                   "en":"Useful lists",
+                  "ar":"",
+                  "fa":"",
+                  "fr":"",
+                  "it":"",
+                  "ru":"",
+                  "sr":"",
+                  "ti":"",
+                  "ur":""
+            },
+            "search_label_help":{
+                  "de":"Hilfe",
+                  "en":"Help",
                   "ar":"",
                   "fa":"",
                   "fr":"",

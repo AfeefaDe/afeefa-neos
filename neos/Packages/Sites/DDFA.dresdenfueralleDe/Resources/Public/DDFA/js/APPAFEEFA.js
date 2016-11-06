@@ -181,6 +181,7 @@ qx.Class.define("APPAFEEFA", {
 
 				that.getDataManager().getWifiNodes(function(data){
 					that.say('fetchedNewData');
+					that.say('fetchedAllData');
 				});
 			});
 			

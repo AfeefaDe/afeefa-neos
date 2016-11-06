@@ -212,7 +212,7 @@ qx.Class.define("MapView", {
 			});
 
 			that.addMarkers(entries);
-			that.loadFromUrl({setView: true});
+			// that.loadFromUrl({setView: true});
 			that.loading(false);
 		},
 
@@ -358,34 +358,31 @@ qx.Class.define("MapView", {
 
 		},
 
-	// TODO: outsource in Router
-		loadFromUrl: function( options ){
+		setViewToArea: function(areaName){
 			var that = this;
 
-			var url = window.location.hash.split('#');
-			url = _.without(url, '');
-			
-			var firstParam = url[0] ? url[0].toLowerCase() : null;
-			
-			if( firstParam == 'pirna' ) {
+			if( areaName == 'pirna' ) {
 				// set view to pirna
-				that.map.setView([ that.getViewCoords().pirna.lat, that.getViewCoords().pirna.lon ], that.getViewCoords().pirna.zoom);
+				mapView.map.setView([ that.getViewCoords().pirna.lat, that.getViewCoords().pirna.lon ], mapView.getViewCoords().pirna.zoom);
 			}
-			else if( firstParam == 'leipzig' ) {
+			else if( areaName == 'leipzig' ) {
 				// set view to leipzig
 				that.map.setView([ that.getViewCoords().leipzig.lat, that.getViewCoords().leipzig.lon ], that.getViewCoords().leipzig.zoom);
 			}
-			// param is an entryId
-			else if( firstParam && firstParam.length > 0) {
-				var lookup = that.lookupMarkerById(firstParam);
+			else {
+				console.log('city mentioned in URl not defined');
+			}
+		},
+
+		loadEntryById: function(id, options){
+			var that = this;
+
+			var lookup = that.lookupMarkerById(id);
 				if(lookup){
 					if(options && options.setView)
 						that.map.setView( [lookup.entry.location[0].lat, lookup.entry.location[0].lon], 16);
-				that.selectMarker(lookup.marker, lookup.entry);
 				}
-			}
-
-			// if(firstParam) that.selectMarkerById(firstParam);
+				that.selectMarker(lookup.marker, lookup.entry);
 		},
 
 		lookupMarkerById: function( id ){
@@ -422,6 +419,7 @@ qx.Class.define("MapView", {
 			if(setView) that.map.setView( [entry.location[0].lat, entry.location[0].lon], 16);
 			$(marker._icon).addClass('active');
 			
+			marker.openPopup();
 			APP.getDetailView().load(entry);
 		},
 

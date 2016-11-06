@@ -11,9 +11,8 @@ qx.Class.define("Router", {
 	construct: function(){
 		var that = this;
 
-		that.registerHashChange();
-
-		// that.navigateBeta();
+		// that.registerHashChange();
+		that.detectUrl();
 	},
 
 	members : {
@@ -22,7 +21,7 @@ qx.Class.define("Router", {
 			var that = this;
 
 			window.onhashchange = function(){
-				// that.detectUrl();
+				that.detectUrl();
 			};
 		},
 
@@ -38,7 +37,7 @@ qx.Class.define("Router", {
 				that.currentPath.push(pieceOfPath);
 			});
 
-			that.navigate();
+			// that.navigate();
 		},
 
 		initialNavigate: function(){
@@ -201,19 +200,27 @@ qx.Class.define("Router", {
 		addEvents: function(){
 			var that = this;
 
-			that.listen('fetchedAllBasicData', function(){
-				// start intro
-				if(APP.getUserDevice() == 'mobile') {
-					APP.getIncludeView().load( APP.getIncludeView().getIncludes().intro );
-					// APP.getSearchView().loadResults();
-				} else {
-					if( !localStorage.getItem("introIsKnown") ){
-						APP.getIntroView().start();
-					} else {
+			that.listen('fetchedAllData', function(){
+				
+				if(that.currentPath && that.currentPath.length > 0){
+					that.loadFromUrl();
+				}
+				else {
+					if(APP.getUserDevice() == 'mobile') {
+						APP.getIncludeView().load( APP.getIncludeView().getIncludes().intro );
+					}
+					else {
+						// start intro?
+						if( !localStorage.getItem("introIsKnown") ){
+							APP.getIntroView().start();
+						}
 						// open search view
-						APP.getSearchView().loadResults();
+						else {
+							APP.getSearchView().loadResults();
+						}
 					}
 				}
+
 				
 			});
 
@@ -230,10 +237,22 @@ qx.Class.define("Router", {
 				// APP.getFormView().load('initiative');
 				// APP.getFormView().load('marketentry');
 			});
+		},
+
+		loadFromUrl: function(){
+			var that = this;
+
+			// var firstParam = url[0] ? url[0].toLowerCase() : null;
+			var firstParam = that.currentPath[0];
+			
+			switch(firstParam) {
+		    case 'pirna':
+		    case 'leipzig':
+					APP.getMapView().setViewToArea(firstParam);
+	        break;
+		    default:
+					APP.getMapView().loadEntryById(firstParam, {setView: true});
+			}
 		}
-
 	}
-
-	
-
 });

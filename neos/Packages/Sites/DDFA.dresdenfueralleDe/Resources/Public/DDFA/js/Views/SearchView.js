@@ -259,6 +259,14 @@ qx.Class.define("SearchView", {
         };
         createResult('support-wanted', that.getWording('search_label_supportwanted'), that.getWording('search_sublabel_supportwanted'), action );
 
+        createSectionHeader( that.getWording('search_label_help') );
+        
+        // intro
+        var action = function(){
+          APP.getIntroView().start();
+        };
+        createResult('start-intro', that.getWording('search_label_intro'), that.getWording('search_sublabel_intro'), action );
+
       } else {  // find by query
         
         var entriesFiltered;

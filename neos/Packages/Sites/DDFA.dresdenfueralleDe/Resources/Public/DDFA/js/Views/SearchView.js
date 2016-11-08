@@ -398,7 +398,7 @@ qx.Class.define("SearchView", {
       that.listen('filterSet', function(){
         var filter = APP.getActiveFilter();
         
-        if( APP.getUserDevice() == 'desktop'){
+        if( APP.getUserDevice() != 'mobile'){
           if( !filter ){
             // ...
           }

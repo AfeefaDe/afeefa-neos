@@ -350,14 +350,6 @@ qx.Class.define("DetailView", {
 
 			that.loading(true);
 
-			// if( that.record !== null) {
-
-			//     var record = that.record;
-			//     that.reset();
-			//     that.load(record);
-				
-			// }
-
 			// request that.record's entryId in current locale
 			// var recordRelocalized;
 			// recordRelocalized = 
@@ -384,6 +376,16 @@ qx.Class.define("DetailView", {
 
 			that.listen('searchViewClosed', function(){
 				// that.view.removeClass('right');
+			});
+
+			that.listen('fetchedNewData', function(){
+				if( that.record !== null) {
+					// reload record
+			    var newRecord = APP.getDataManager().getEntryByEntryId(that.record.entryId);
+			    that.reset();
+			    that.load(newRecord);
+				}
+				that.loading(false);
 			});
 
 			that.listen('includeViewOpened', function(){

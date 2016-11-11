@@ -123,6 +123,16 @@ qx.Class.define("DataManager", {
 
         },
 
+        getEntryByEntryId: function(entryId){
+            var that = this;
+
+            var entry = _.find(APP.getData().entries, function(entry){
+                return entryId == entry.entryId;
+            })
+
+            return entry;
+        },
+
         getAllEvents: function (options) {
             var events = APP.getData().entries.filter(function (entry) {
                 if (entry.type != 2) return false;

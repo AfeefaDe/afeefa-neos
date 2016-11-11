@@ -19,18 +19,25 @@ qx.Class.define("Utility", {
 			var timeFrom = record.timeFrom;
 			var timeTo = record.timeTo;
 
+			var vocabDateFrom = APP.getLM().resolve('prop_dateFrom');
+			var vocabDateTo = APP.getLM().resolve('prop_dateTo');
+			var vocabTimeFrom = APP.getLM().resolve('prop_timeFrom');
+			var vocabTimeTo = APP.getLM().resolve('prop_timeTo');
+			var vocabTimeAt = APP.getLM().resolve('prop_timeAt');
+
+
 			if( dateFrom && timeFrom && dateTo && timeTo){
-				times += 'vom ' + dateFrom + ' um ' + timeFrom + '<br>';
-				times += 'bis ' + dateTo + ' um ' + timeTo;
+				times += vocabDateFrom + ' ' + dateFrom + ' ' +vocabTimeAt+ ' ' + timeFrom + '<br>';
+				times += vocabDateTo + ' ' + dateTo + ' ' + vocabTimeAt + ' ' + timeTo;
 			}
 			else if( dateFrom && timeFrom && timeTo){
-				times += dateFrom + ' von ' + timeFrom + ' bis ' + timeTo;
+				times += dateFrom + ' ' + vocabTimeFrom + ' ' + timeFrom + ' ' +vocabTimeTo+ ' ' + timeTo;
 			}
 			else if( dateFrom && timeFrom){
-				times += dateFrom + ' um ' + timeFrom;
+				times += dateFrom + ' ' +vocabTimeAt+ ' ' + timeFrom;
 			}
 			else if( dateFrom && dateTo){
-				times += 'vom ' + dateFrom + ' bis ' + dateTo;
+				times += vocabDateFrom + ' ' + dateFrom + ' ' +vocabDateTo+ ' ' + dateTo;
 			}
 			else if( dateFrom ){
 				times += dateFrom;

@@ -220,8 +220,35 @@ qx.Class.define("Router", {
 						}
 					}
 				}
+			});
 
-				
+			that.listen('fetchedAllData', function(){
+				// start survey after X seconds
+				// setTimeout(function(){
+				// 	var tooltip = APP.getMapView().createTooltip(
+				// 		APP.getMapView().view,
+				// 		function(){
+				// 			var contentContainer = $("<div />")
+				// 			var text = $("<div />")
+				// 				// .append(that.getWording('intro_step_guide'));
+				// 				.append('Umfrage teilnehmen ja?');
+				// 			var button = $("<button />")
+				// 				// .append(that.getWording('intro_button_next'))
+				// 				.append('OK, klar')
+				// 				.click(function(){
+				// 					tooltip.destroy();
+				// 				});
+				// 			contentContainer.append(text);
+				// 			contentContainer.append(button);
+				// 			return contentContainer;
+				// 		}(),
+				// 		null,
+				// 		'top',
+				// 		null,
+				// 		['survey'],
+				// 		'node'
+				// 	);
+				// }, 10000);
 			});
 
 			that.listen('IncludeViewRendered', function(){

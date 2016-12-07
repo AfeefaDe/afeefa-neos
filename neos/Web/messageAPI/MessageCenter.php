@@ -544,7 +544,7 @@ final class MessageCenter
 
 		// TODO use API token instead
 		$username = 'AfeefaBot';
-		$password = 'Secret48592615Pass';
+		$password = 'MapCat_050615';
 
 		$client = new GitHubClient();
 		$client->setCredentials($username, $password);

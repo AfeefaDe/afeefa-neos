@@ -241,6 +241,7 @@ qx.Class.define("FormView", {
             else if (property.type == 'textarea') {
                 inputEl = $("<textarea />")
                     .attr('name', property.name)
+                    .attr('maxlength', 350)
                     .attr('rows', 5);
             }
             // switch

@@ -142,7 +142,9 @@ qx.Class.define("SearchView", {
 
       that.results.empty();
 
-      const entries = APP.getData().entries;
+      const entries = _.filter(APP.getData().entries, function(entry){
+        return !entry.external;
+      });
 
       // generic function to create a single result
       function createResult( iconClass, label, subLabel, action, locationSymbol ) {

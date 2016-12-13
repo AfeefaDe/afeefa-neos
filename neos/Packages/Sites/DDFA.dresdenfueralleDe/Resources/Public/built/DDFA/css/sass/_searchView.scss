@@ -84,6 +84,7 @@
 			padding: 0 .3em;
 			cursor: pointer;
 			display: none;
+			background-color: $gray80;
 			@include categoryColors($alpha_background: .4);
 			color: white;
 			&.active { display: inline-block; }
@@ -140,8 +141,17 @@
 			height: 2em;
 			margin: .5em 1em;
 
-			&.supportWanted {
-		    background-image: url("../img/icon_16.svg");
+			&.add-entry {
+		    background-image: url("../img/icon_34.svg");
+			}
+			&.support-wanted {
+		    background-image: url("../img/icon_56.svg");
+			}
+			&.certified {
+		    background-image: url("../img/icon_169.svg");
+			}
+			&.start-intro {
+		    background-image: url("../img/icon_32.svg");
 			}
 		}
 

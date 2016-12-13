@@ -400,17 +400,19 @@ qx.Class.define("SearchView", {
       that.listen('filterSet', function(){
         var filter = APP.getActiveFilter();
         
-        if( APP.getUserDevice() != 'mobile'){
+        // if( APP.getUserDevice() != 'mobile'){
           if( !filter ){
             that.close();
           }
           else if( filter.category ) {
             that.inputField.val( 'cat:' + filter.category ).trigger( "input" );
+            if( APP.getUserDevice() == 'mobile') that.minimize();
           }
           else if( filter.subCategory ) {
             that.inputField.val( 'subcat:' + filter.subCategory ).trigger( "input" );
+            if( APP.getUserDevice() == 'mobile') that.minimize();
           }
-         }
+        // }
 
       });
 

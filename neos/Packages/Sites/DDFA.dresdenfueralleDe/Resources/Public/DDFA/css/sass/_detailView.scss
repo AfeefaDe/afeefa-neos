@@ -52,7 +52,7 @@
 		position: absolute;
 		height: 2.5em;
 		width: 2.5em;
-    bottom: -3.5em;
+    top: 1em;
 		right: 1em;
     z-index: 10;
 		
@@ -251,6 +251,7 @@
 		height: calc(100% - 4em);
 		overflow-y: auto;
 		padding-bottom: 1em;
+		position: relative;
 	}
 
 	@include detailViewBasic;

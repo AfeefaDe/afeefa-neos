@@ -42,6 +42,11 @@ qx.Class.define("DetailView", {
 			});
 		  that.view.append(that.closeBtn);
 
+			// scrollable content container
+			that.scrollContainer = $("<div />").addClass('scroll-container');
+			that.view.append(that.scrollContainer);
+			if( APP.getUserDevice() == 'desktop') that.scrollContainer.perfectScrollbar();
+
 			// certificate badge
 			var thePopper;
 			that.certificateBadge = $("<div />")
@@ -64,14 +69,7 @@ qx.Class.define("DetailView", {
 						thePopper.destroy();
 					}
 				);
-		  that.headingContainer.append(that.certificateBadge);
-
-					
-
-			// scrollable content container
-			that.scrollContainer = $("<div />").addClass('scroll-container');
-			that.view.append(that.scrollContainer);
-			if( APP.getUserDevice() == 'desktop') that.scrollContainer.perfectScrollbar();
+		  that.scrollContainer.append(that.certificateBadge);
 
 			////////////////////
 			// image property //

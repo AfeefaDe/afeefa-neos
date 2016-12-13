@@ -292,34 +292,51 @@ qx.Class.define("MapView", {
 			// 	else if( location.type === 2 ) locationName = location.event.name;
 			// }
 			
-			var popup = L.popup({
-				className: 'afeefa-popup',
-				closeButton: false,
-				offset: [0, 0]
-			})
-					.setLatLng([entry.location[0].lat, entry.location[0].lon])
-					.setContent(function(){
-						var label = '';
-						
-						if(entry.subCategory){
-							label += that.getWording('cat_' + entry.subCategory);
-							label += ' (' + (entry.category ? that.getWording('cat_' + entry.category.name) : '[category missing]') + ')';
+			var popup = L.popup(
+				{
+					className: 'afeefa-popup',
+					closeButton: false,
+					offset: [0, 0]
+				})
+				.setLatLng([entry.location[0].lat, entry.location[0].lon])
+				.setContent(function(){
+					var container = $("<div />"),
+							titleLabel = $("<span />").addClass('title'),
+							categoryLabel = $("<span />").addClass('category');
+					
+					container.append(titleLabel);
+					container.append(categoryLabel);
+
+					titleLabel.append(locationName);
+
+					if(entry.subCategory){
+						categoryLabel.append( that.getWording('cat_' + entry.subCategory) );
+						categoryLabel.append( ' (' + (entry.category ? that.getWording('cat_' + entry.category.name) : '[category missing]') + ')' );
+					}
+					else {
+						categoryLabel.append( entry.category ? that.getWording('cat_' + entry.category.name) : '[category missing]' );
+					}
+
+					container.on('click', function(e){
+						APP.getDetailView().load(entry);
+						if( APP.getUserDevice() == 'mobile' ){
+							APP.getDetailView().resize(2);
+							APP.getDetailView().say('detailViewMobileMaximized');
 						}
-						else {
-							label = entry.category ? that.getWording('cat_' + entry.category.name) : '[category missing]';
-						}
-
-						return '<span class="title">' + locationName + '</span><span class="category">' +label+ '</span>';
-					}());
-
-					marker.bindPopup(popup);
-
-					marker.on('mouseover', function (e) {
-							that.map.openPopup(popup);
 					});
-					marker.on('mouseout', function (e) {
-							that.map.closePopup();
-					});
+
+					return container[0];
+				}());
+
+				marker.bindPopup(popup);
+				
+
+				marker.on('mouseover', function (e) {
+						that.map.openPopup(popup);
+				});
+				marker.on('mouseout', function (e) {
+						that.map.closePopup();
+				});
 			
 
 			// TODO load detail view
@@ -428,9 +445,9 @@ qx.Class.define("MapView", {
 
 			var lookup = that.lookupMarkerById( entryId );
 				
-				if(lookup){
-						APP.getMapView().selectMarker(lookup.marker, lookup.entry, true);
-				}
+			if(lookup){
+					APP.getMapView().selectMarker(lookup.marker, lookup.entry, true);
+			}
 
 		},
 
@@ -441,10 +458,9 @@ qx.Class.define("MapView", {
 				$( that.getSelectedMarker()._icon ).removeClass('active');
 			}
 
-		window.location.hash = '';
-		that.say('mapMarkerDeselected');
-		that.setSelectedMarker(null);
-
+			window.location.hash = '';
+			that.say('mapMarkerDeselected');
+			that.setSelectedMarker(null);
 		},
 
 		addPOIs: function(markers, color) {

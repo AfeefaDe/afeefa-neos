@@ -274,8 +274,11 @@ qx.Class.define("LegendView", {
 	  resetFilter: function(){
 		  var that = this;
 
-		  APP.setActiveFilter(null);
-		  that.say('filterSet');
+	  	// only fire reset if filter really changed
+		  if(APP.getActiveFilter() != null){
+			  APP.setActiveFilter(null);
+			  that.say('filterSet');
+		  }
 	  },
 
 	  reset: function(){
@@ -338,12 +341,6 @@ qx.Class.define("LegendView", {
 			  	if( that.view.hasClass('active') ) that.close();
 			  }
 			);
-
-			// that.listen('searchFieldFocused', function(){
-			// 	var query = APP.getSearchView().inputField.val();
-	  //     if( query === undefined || query == '' )
-			// 		that.resetFilter();
-  	// 	});
 
   		that.listen('searchViewClosed', function(){
 				that.resetFilter();

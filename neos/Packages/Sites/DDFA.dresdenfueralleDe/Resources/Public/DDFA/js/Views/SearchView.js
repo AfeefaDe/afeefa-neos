@@ -402,7 +402,7 @@ qx.Class.define("SearchView", {
         
         if( APP.getUserDevice() != 'mobile'){
           if( !filter ){
-            // ...
+            that.close();
           }
           else if( filter.category ) {
             that.inputField.val( 'cat:' + filter.category ).trigger( "input" );

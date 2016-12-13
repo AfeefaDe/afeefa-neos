@@ -141,8 +141,17 @@
 			height: 2em;
 			margin: .5em 1em;
 
-			&.supportWanted {
-		    background-image: url("../img/icon_16.svg");
+			&.add-entry {
+		    background-image: url("../img/icon_34.svg");
+			}
+			&.support-wanted {
+		    background-image: url("../img/icon_56.svg");
+			}
+			&.certified {
+		    background-image: url("../img/icon_169.svg");
+			}
+			&.start-intro {
+		    background-image: url("../img/icon_32.svg");
 			}
 		}
 

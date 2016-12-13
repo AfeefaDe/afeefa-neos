@@ -224,6 +224,11 @@ qx.Class.define("SearchView", {
 
       if( !query ) {  // show "just click" version
 
+        // add new entry
+        var action = function(){
+          APP.getIncludeView().load( APP.getIncludeView().getIncludes().entryFormGuide );
+        };
+        createResult('add-entry', that.getWording('search_label_addentry'), that.getWording('search_sublabel_addentry'), action );
 
         // upcoming events
         createSectionHeader( that.getWording('search_label_upcomingevents'), function(){

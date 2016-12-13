@@ -1348,6 +1348,16 @@
                   "ur":""
             },
 
+             "search_label_addentry":{
+                  "de":"Eintrag hinzufügen",
+                  "en":"Add your entry"
+            },
+
+                  "search_sublabel_addentry":{
+                        "de":"Hier kannst du einen eigenen Beitrag hinzufügen",
+                        "en":"Contribute to Afeefa and add your own content"
+                  },
+
             "search_label_refugeeGuide":{
                   "de":"Leitfaden für Geflüchtete",
                   "en":"Guide for asylum seekers",

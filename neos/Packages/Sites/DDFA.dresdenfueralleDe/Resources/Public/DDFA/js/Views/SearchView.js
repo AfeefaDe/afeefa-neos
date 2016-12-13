@@ -261,6 +261,12 @@ qx.Class.define("SearchView", {
         };
         createResult('support-wanted', that.getWording('search_label_supportwanted'), that.getWording('search_sublabel_supportwanted'), action );
 
+        // certified by SFR
+        var action = function(){
+          that.inputField.val('certified').trigger( "input" );
+        };
+        createResult('certified', that.getWording('search_label_certified'), that.getWording('search_sublabel_certified'), action );
+
         createSectionHeader( that.getWording('search_label_help') );
         
         // intro
@@ -320,6 +326,23 @@ qx.Class.define("SearchView", {
           entriesFiltered = _.filter( entries, function(entry){
             return entry.supportWanted;
           });
+
+          that.searchTag
+            .addClass("active")
+            .append(that.getWording('search_tag_supportwanted'));
+          that.inputField.hide();
+        }
+
+        // certified
+        else if( query == 'certified' ){
+          entriesFiltered = _.filter( entries, function(entry){
+            return entry.certified;
+          });
+
+          that.searchTag
+            .addClass("active")
+            .append(that.getWording('search_tag_' + query));
+          that.inputField.hide();
         }
         
         // free search

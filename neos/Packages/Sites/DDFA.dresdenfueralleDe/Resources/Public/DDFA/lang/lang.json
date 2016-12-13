@@ -1348,119 +1348,50 @@
                   "ur":""
             },
 
-            "search_label_intro":{
-                  "de":"Willkommen auf Afeefa.de",
-                  "en":"Welcome to Afeefa.de",
-                  "ar":"",
-                  "fa":"",
-                  "fr":"",
-                  "it":"",
-                  "ru":"",
-                  "sr":"",
-                  "ti":"",
-                  "ur":""
-            },
-
-            "search_sublabel_intro":{
-                  "de":"Was ist Afeefa.de? Informationen zu dieser Plattform",
-                  "en":"What is Afeefa.de? Find information here",
-                  "ar":"",
-                  "fa":"",
-                  "fr":"",
-                  "it":"",
-                  "ru":"",
-                  "sr":"",
-                  "ti":"",
-                  "ur":""
-            },
-
             "search_label_refugeeGuide":{
                   "de":"Leitfaden für Geflüchtete",
                   "en":"Guide for asylum seekers",
                   "ar":"دليل طالبي اللجوء كنيسة",
                   "fa":"راهنمای پناهجویان",
-                  "fr":"",
-                  "it":"",
-                  "ru":"",
-                  "sr":"",
                   "ti":"ጠቐምቲ ሓበሬታታት ንሓተቲ ዕቑባ",
                   "ur":"پناہ کے متلاشیوں کے لئے گائیڈ"
             },
 
-            "search_sublabel_refugeeGuide":{
-                  "de":"Nützliche Hinweise für Ankommende in Dresden",
-                  "en":"Useful facts for newcomers in Dresden",
-                  "ar":"",
-                  "fa":"",
-                  "fr":"",
-                  "it":"",
-                  "ru":"",
-                  "sr":"",
-                  "ti":"",
-                  "ur":""
-            },
+                  "search_sublabel_refugeeGuide":{
+                        "de":"Nützliche Hinweise für Ankommende in Dresden",
+                        "en":"Useful facts for newcomers in Dresden"
+                  },
 
             "search_label_supporterGuide":{
                   "de":"Leitfaden für Engagierte",
-                  "en":"Guide for supporters",
-                  "ar":"",
-                  "fa":"",
-                  "fr":"",
-                  "it":"",
-                  "ru":"",
-                  "sr":"",
-                  "ti":"",
-                  "ur":""
+                  "en":"Guide for supporters"
             },
 
-            "search_sublabel_supporterGuide":{
-                  "de":"Wichtige Infos rundum ehrenamtliches Engagement",
-                  "en":"Important information on voluntary engagement",
-                  "ar":"",
-                  "fa":"",
-                  "fr":"",
-                  "it":"",
-                  "ru":"",
-                  "sr":"",
-                  "ti":"",
-                  "ur":""
-            },
+                  "search_sublabel_supporterGuide":{
+                        "de":"Wichtige Infos rundum ehrenamtliches Engagement",
+                        "en":"Important information on voluntary engagement"
+                  },
 
             "search_label_supportwanted":{
                   "de":"Unterstützer gesucht",
-                  "en":"Supporters wanted",
-                  "ar":"",
-                  "fa":"",
-                  "fr":"",
-                  "it":"",
-                  "ru":"",
-                  "sr":"",
-                  "ti":"",
-                  "ur":""
+                  "en":"Supporters wanted"
             },
                   "search_sublabel_supportwanted":{
                         "de":"Projekte, die dringend Unterstützer suchen",
-                        "en":"Projects which urgently need supporters",
-                        "ar":"",
-                        "fa":"",
-                        "fr":"",
-                        "it":"",
-                        "ru":"",
-                        "sr":"",
-                        "ti":"",
-                        "ur":""
+                        "en":"Projects which urgently need supporters"
                   },
+            "search_label_certified":{
+                  "de":"Empfohlen vom Sächsischen Flüchtlingsrat",
+                  "en":"Recommended by the Sächsische Flüchtlingsrat"
+            },
+                  "search_sublabel_certified":{
+                        "de":"Diese Projekte werden vom Flüchtlingsrat als unterstützenswert angesehen",
+                        "en":"These projects are known by the Flüchtlingsrat and are worth supporting"
+                  },
+
             "search_label_intro":{
                   "de":"Tutorial",
-                  "en":"Tutorial",
-                  "ar":"",
-                  "fa":"",
-                  "fr":"",
-                  "it":"",
-                  "ru":"",
-                  "sr":"",
-                  "ti":"",
-                  "ur":""
+                  "en":"Tutorial"
             },
                   "search_sublabel_intro":{
                         "de":"Einführung in die Funkionen dieser Website",
@@ -1476,52 +1407,29 @@
                   },
             "search_label_upcomingevents":{
                   "de":"Kommende Events ►",
-                  "en":"upcoming events ►",
-                  "ar":"",
-                  "fa":"",
-                  "fr":"",
-                  "it":"",
-                  "ru":"",
-                  "sr":"",
-                  "ti":"",
-                  "ur":""
+                  "en":"upcoming events ►"
             },
 
             "search_label_newentries":{
                   "de":"Neue Projekte",
-                  "en":"new projects",
-                  "ar":"",
-                  "fa":"",
-                  "fr":"",
-                  "it":"",
-                  "ru":"",
-                  "sr":"",
-                  "ti":"",
-                  "ur":""
+                  "en":"new projects"
             },
             "search_label_lists":{
                   "de":"Nützliche Listen",
-                  "en":"Useful lists",
-                  "ar":"",
-                  "fa":"",
-                  "fr":"",
-                  "it":"",
-                  "ru":"",
-                  "sr":"",
-                  "ti":"",
-                  "ur":""
+                  "en":"Useful lists"
             },
             "search_label_help":{
                   "de":"Hilfe",
-                  "en":"Help",
-                  "ar":"",
-                  "fa":"",
-                  "fr":"",
-                  "it":"",
-                  "ru":"",
-                  "sr":"",
-                  "ti":"",
-                  "ur":""
+                  "en":"Help"
+            },
+
+            "search_tag_supportwanted":{
+                  "de":"Unterstützer gesucht",
+                  "en":"Supporters wanted"
+            },
+            "search_tag_certified":{
+                  "de":"Empfohlen vom SFR",
+                  "en":"Recommended by the SFR"
             },
 
             "plus_entry":{

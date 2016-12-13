@@ -84,6 +84,7 @@
 			padding: 0 .3em;
 			cursor: pointer;
 			display: none;
+			background-color: $gray80;
 			@include categoryColors($alpha_background: .4);
 			color: white;
 			&.active { display: inline-block; }

@@ -2038,6 +2038,7 @@ body.phone #mapView #locate-btn {
   padding: 0 .3em;
   cursor: pointer;
   display: none;
+  background-color: #666666;
   /* TODO find a solution to avoid setting the border on elements that dont need that and dont provide a parameter for it */
   /* Main categories */
   color: white;
@@ -2082,11 +2083,11 @@ body.phone #mapView #locate-btn {
   background-color: rgba(202, 115, 17, 0.4);
   border-color: #ca7311;
 }
-/* line 89, sass/_searchView.scss */
+/* line 90, sass/_searchView.scss */
 #searchView #search-bar .search-tag.active {
   display: inline-block;
 }
-/* line 93, sass/_searchView.scss */
+/* line 94, sass/_searchView.scss */
 #searchView #results {
   position: relative;
   width: 100%;
@@ -2105,7 +2106,7 @@ body.phone #mapView #locate-btn {
   transition: height 2000ms;
   display: none;
 }
-/* line 105, sass/_searchView.scss */
+/* line 106, sass/_searchView.scss */
 #searchView #results .result {
   margin-bottom: 1em;
   color: #f2f2f2;
@@ -2117,29 +2118,29 @@ body.phone #mapView #locate-btn {
   display: -webkit-flex;
   display: flex;
 }
-/* line 113, sass/_searchView.scss */
+/* line 114, sass/_searchView.scss */
 #searchView #results .result:hover {
   background-color: rgba(0, 0, 0, 0.8);
 }
-/* line 118, sass/_searchView.scss */
+/* line 119, sass/_searchView.scss */
 #searchView #results .section-header {
   text-transform: uppercase;
   color: #999999;
   margin: 2em 1em 1em;
 }
-/* line 123, sass/_searchView.scss */
+/* line 124, sass/_searchView.scss */
 #searchView #results .section-header.with-action {
   cursor: pointer;
 }
-/* line 126, sass/_searchView.scss */
+/* line 127, sass/_searchView.scss */
 #searchView #results .section-header.with-action:hover {
   color: #DDDDDD;
 }
-/* line 131, sass/_searchView.scss */
+/* line 132, sass/_searchView.scss */
 #searchView #results .section-header:first-child {
   margin: 0 1em 1em;
 }
-/* line 135, sass/_searchView.scss */
+/* line 136, sass/_searchView.scss */
 #searchView #results .icon {
   /* orga */
   /* market entry */
@@ -2493,11 +2494,11 @@ body.phone #mapView #locate-btn {
   -webkit-background-size: 50%;
   background-size: 50%;
 }
-/* line 143, sass/_searchView.scss */
+/* line 144, sass/_searchView.scss */
 #searchView #results .icon.supportWanted {
   background-image: url("../img/icon_16.svg");
 }
-/* line 148, sass/_searchView.scss */
+/* line 149, sass/_searchView.scss */
 #searchView #results .labels {
   -webkit-flex: 1;
   flex: 1;
@@ -2506,72 +2507,72 @@ body.phone #mapView #locate-btn {
   -webkit-flex-direction: column;
   flex-direction: column;
 }
-/* line 154, sass/_searchView.scss */
+/* line 155, sass/_searchView.scss */
 #searchView #results .labels label {
   line-height: 1.5em;
   cursor: pointer;
 }
-/* line 159, sass/_searchView.scss */
+/* line 160, sass/_searchView.scss */
 #searchView #results .labels .sub-label {
   color: #999999;
   font-size: .8em;
 }
-/* line 165, sass/_searchView.scss */
+/* line 166, sass/_searchView.scss */
 #searchView #results.minimized {
   height: 0;
   padding-top: 0;
 }
-/* line 172, sass/_searchView.scss */
+/* line 173, sass/_searchView.scss */
 #searchView.active #search-bar input {
   width: calc(100% - 3em - 3em);
 }
-/* line 176, sass/_searchView.scss */
+/* line 177, sass/_searchView.scss */
 #searchView.active .cancel-btn {
   display: block !important;
 }
-/* line 180, sass/_searchView.scss */
+/* line 181, sass/_searchView.scss */
 #searchView.active .refugee-btn {
   display: none;
 }
-/* line 184, sass/_searchView.scss */
+/* line 185, sass/_searchView.scss */
 #searchView.active .filter-btn {
   display: none !important;
 }
-/* line 188, sass/_searchView.scss */
+/* line 189, sass/_searchView.scss */
 #searchView.active #results {
   display: block;
 }
 
-/* line 198, sass/_searchView.scss */
+/* line 199, sass/_searchView.scss */
 .tablet #searchView.active #results {
   overflow: scroll;
 }
 
-/* line 210, sass/_searchView.scss */
+/* line 211, sass/_searchView.scss */
 .mobile #searchView {
   position: absolute;
   top: 0.5em;
   left: 0.5em;
   width: calc(100% - 1em);
 }
-/* line 216, sass/_searchView.scss */
+/* line 217, sass/_searchView.scss */
 .mobile #searchView #search-bar {
   height: 3em !important;
 }
-/* line 220, sass/_searchView.scss */
+/* line 221, sass/_searchView.scss */
 .mobile #searchView input {
   height: 3em !important;
   line-height: 3em !important;
 }
-/* line 225, sass/_searchView.scss */
+/* line 226, sass/_searchView.scss */
 .mobile #searchView .btn {
   height: 3em !important;
 }
-/* line 229, sass/_searchView.scss */
+/* line 230, sass/_searchView.scss */
 .mobile #searchView .refugee-btn {
   right: 3em !important;
 }
-/* line 233, sass/_searchView.scss */
+/* line 234, sass/_searchView.scss */
 .mobile #searchView .filter-btn {
   display: block !important;
   top: 0;
@@ -2582,12 +2583,12 @@ body.phone #mapView #locate-btn {
   -webkit-background-size: 70%;
   background-size: 70%;
 }
-/* line 242, sass/_searchView.scss */
+/* line 243, sass/_searchView.scss */
 .mobile #searchView.active #results {
   max-height: calc(100vh - 3.5em);
   overflow: scroll;
 }
-/* line 247, sass/_searchView.scss */
+/* line 248, sass/_searchView.scss */
 .mobile #searchView.active .filter-btn {
   display: none !important;
 }

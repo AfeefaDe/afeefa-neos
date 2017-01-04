@@ -22,7 +22,7 @@ $clientPhraseApp = new Client([
 	// Base URI is used with relative requests
 	'base_uri' => 'https://api.phraseapp.com/api/v2/',
 	// You can set any number of default request options.
-	'timeout'  => 2.0,
+	'timeout'  => 10.0,
 	"verify" => false
 ]);
 

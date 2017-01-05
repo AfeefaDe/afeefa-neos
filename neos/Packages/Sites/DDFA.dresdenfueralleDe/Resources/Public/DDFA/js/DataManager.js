@@ -379,9 +379,12 @@ qx.Class.define("DataManager", {
             var that = this;
 
             // SETUP ---
-            var languages = ['de', 'en', 'ar', 'fa', 'fr', 'ru', 'sq', 'ku', 'tr', 'es'];
-            var pathToCsv = '_Resources/Static/Packages/DDFA.dresdenfueralleDe/DDFA/dummyData/leipzig/';
-            var area = 'leipzig';
+            // var languages = ['de', 'en', 'ar', 'fa', 'fr', 'ru', 'sq', 'ku', 'tr', 'es'];
+            var languages = ['de'];
+            var pathToCsv = 'importData/integrationskurse/';
+            
+            // fill necessary data gaps
+            var area = 'dresden';
             // ---
 
             var baseLang = 'de';
@@ -396,9 +399,7 @@ qx.Class.define("DataManager", {
 
             function readCsv(lang, cb) {
 
-                var dsv = d3.dsv(";", "text/plain");
-                dsv(pathToCsv + "entries_" + lang + ".csv", function (rows) {
-                    // d3.csv( pathToCsv + "entries_" + lang + ".csv", function(rows){
+                d3.csv(pathToCsv + "entries_" + lang + ".csv", function (rows) {
                     inis[lang] = rows;
                     if (_.size(inis) == languages.length) cb();
                 });
@@ -416,30 +417,36 @@ qx.Class.define("DataManager", {
                             "marketentry": {
                                 "area": area,
                                 "locale": baseLang,
-                                "name": row.name ? row.name : null,
-                                "category": row.category ? row.category : null,
-                                "subCategory": row.subcategory ? row.subcategory : null,
-                                "type": row.type ? row.type : null,
-                                "description": row.description ? row.description : null,
+                                // "name": row.name ? row.name : null,
+                                "name": "Integrationskurs" + " (" + row.traeger + ")",
+                                // "category": row.category ? row.category : null,
+                                "category": "5dddf63d-ccf6-44e2-8daf-81bb44507fdd",
+                                // "subCategory": row.subcategory ? row.subcategory : null,
+                                "subCategory": "german-course-state",
+                                // "type": row.type ? row.type : null,
+                                "type": 0,
+                                // "description": row.description ? row.description : null,
+                                "description": "Träger: " + row.traeger + "\n\n" + "Spezialisierung: " + row.zulassungen + "\n\n" + "NIVEAU #A1 #A2 #B1\nKOSTEN #förderung\nKURSART #integrationskurs\nABSCHLUSS #zertifikat_integrationskurs #zertifikat_ger",
                                 "forChildren": row.forchildren ? row.forchildren : null,
                                 "facebook": row.facebook ? row.facebook : null,
-                                "image": null,
-                                "imageType": null,
+                                "image": "http://www.bamf.de/SharedDocs/Bilder/DE/Sonstige/integrationskurs.jpg?__blob=normal&v=3",
+                                "imageType": 'image',
                                 "mail": row.mail ? row.mail : null,
-                                "phone": row.phone ? row.phone : null,
+                                "phone": (row.phone && row.phone != ' ') ? row.phone : null,
                                 "speakerPrivate": row.speakerPrivate ? row.speakerPrivate : null,
                                 "speakerPublic": row.speakerPublic ? row.speakerPublic : null,
                                 "spokenLanguages": row.spokenLanguages ? row.spokenLanguages : null,
                                 "supportWanted": false,
-                                "web": row.web ? row.web : null,
+                                "web": "http://www.bamf.de/DE/DasBAMF/Aufgaben/Integrationskurs/integrationskurs-node.html",
                                 "published": 1
                             }
                         },
                         {
                             "location": {
-                                "placename": row.placename ? row.placename : null,
+                                // "placename": row.placename ? row.placename : null,
+                                "placename": row.traeger,
                                 "street": row.street ? row.street : null,
-                                "zip": row.zip ? row.zip : null,
+                                "zip": "0" + row.zip,
                                 "city": row.city ? row.city : null,
                                 "district": row.district ? row.district : null,
                                 "openingHours": row.openinghours ? row.openinghours : null,

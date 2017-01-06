@@ -147,6 +147,9 @@
 			&.support-wanted {
 		    background-image: url("../img/icon_56.svg");
 			}
+			&.for-children {
+		    background-image: url("../img/icon_124.svg");
+			}
 			&.certified {
 		    background-image: url("../img/icon_169.svg");
 			}
@@ -157,9 +160,9 @@
 
 		.labels {
 			@include flex(1);
-
 			@include display-flex;
 			@include flex-direction(column);
+			padding-right: 1em;
 
 			label {
 				line-height: 1.5em;

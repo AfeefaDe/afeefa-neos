@@ -240,11 +240,11 @@ qx.Class.define("SearchView", {
         });
                 
         // newest entries
-        createSectionHeader( that.getWording('search_label_newentries') );
+        // createSectionHeader( that.getWording('search_label_newentries') );
 
-        _.each(entries.slice(0, 3), function(entry) {
-          createEntryResult(entry);
-        });
+        // _.each(entries.slice(0, 3), function(entry) {
+        //   createEntryResult(entry);
+        // });
 
         createSectionHeader( that.getWording('search_label_lists') );
 
@@ -265,6 +265,12 @@ qx.Class.define("SearchView", {
           that.inputField.val('support wanted').trigger( "input" );
         };
         createResult('support-wanted', that.getWording('search_label_supportwanted'), that.getWording('search_sublabel_supportwanted'), action );
+
+        // for children
+        var action = function(){
+          that.inputField.val(that.getWording('prop_forChildren')).trigger( "input" );
+        };
+        createResult('for-children', that.getWording('search_label_forchildren'), that.getWording('search_sublabel_forchildren'), action );
 
         // certified by SFR
         var action = function(){
@@ -338,6 +344,18 @@ qx.Class.define("SearchView", {
           that.inputField.hide();
         }
 
+        // children
+        else if( query == that.getWording('prop_forChildren').toLowerCase() ){
+          entriesFiltered = _.filter( entries, function(entry){
+            return entry.forChildren;
+          });
+
+          that.searchTag
+            .addClass("active")
+            .append(that.getWording('prop_forChildren'));
+          that.inputField.hide();
+        }
+
         // certified
         else if( query == 'certified' ){
           entriesFiltered = _.filter( entries, function(entry){
@@ -367,6 +385,7 @@ qx.Class.define("SearchView", {
             }
             // children?
             if( entry.forChildren ) {
+              // the query string occurs in the "for children" property´wording of the selected language
               var children = that.getWording('prop_forChildren');
               if( children.toLowerCase().indexOf(query) >= 0 ) return true;
             }

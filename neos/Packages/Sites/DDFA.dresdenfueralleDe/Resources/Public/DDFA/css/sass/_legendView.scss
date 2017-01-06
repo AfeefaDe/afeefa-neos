@@ -47,14 +47,15 @@
 
 	.row-container {
 		@include display-flex;
+		padding: 0 1em;
 
 		.entity-container {
 			@include flex-grow(1);
 			@include flex-basis(100%);
 			
 			@include display-flex;
-		    @include flex-direction(column);
-		    @include align-items(center);
+	    @include flex-direction(column);
+	    @include align-items(center);
 			
 			cursor: pointer;
 

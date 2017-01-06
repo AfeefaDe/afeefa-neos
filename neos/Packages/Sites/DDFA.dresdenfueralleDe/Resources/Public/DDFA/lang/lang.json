@@ -1343,6 +1343,14 @@
                         "de":"Projekte, die dringend Unterstützer suchen",
                         "en":"Projects which urgently need supporters"
                   },
+            "search_label_forchildren":{
+                  "de":"Angebote für Kinder und Jugendliche",
+                  "en":"Offers for children and young adults"
+            },
+                  "search_sublabel_forchildren":{
+                        "de":"Projekte und Aktivitäten von und mit Kindern und Jugendlichen",
+                        "en":"Projects and activities by and with children and young adults"
+                  },
             "search_label_certified":{
                   "de":"Empfohlen vom Sächsischen Flüchtlingsrat",
                   "en":"Recommended by the Sächsische Flüchtlingsrat"

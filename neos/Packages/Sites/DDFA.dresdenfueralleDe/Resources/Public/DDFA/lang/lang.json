@@ -100,26 +100,28 @@
                   "ur":"زبان"
             },
                   "cat_german-course":{
-                        "de":"Deutschkurs",
-                        "en":"German course (Deutschkurs)",
+                        "de":"freier Deutschkurs",
+                        "en":"Free German course (Deutschkurs)",
                         "ar":"دورة اللغة الألمانية (Deutschkurs)",
                         "fa":"زبان آلمانی (Deutschkurs)",
                         "fr":"cours d'allemand (Deutschkurs)",
                         "ru":"Курсы немецкого языка (Deutschkurs)",
                         "sr":"курс немачког језика (Deutschkurs)",
-                        "ti":"",
                         "ur":"جرمن کورس (Deutschkurs)"
                   },
-                  "cat_interpreter":{
-                        "de":"Übersetzer/ Dolmetscher",
-                        "en":"translation + interpreters",
-                        "ar":"ترجمة",
-                        "fa":"ترجمه",
-                        "fr":"traduction",
-                        "ru":"перевод",
-                        "sr":"Превод",
-                        "ti":"ምቱርጋም",
-                        "ur":"ترجمہ"
+                  "cat_german-course-state":{
+                        "de":"staatlicher Deutschkurs",
+                        "en":"Official German course (Deutschkurs)",
+                        "ar":"دورة اللغة الألمانية (Deutschkurs)",
+                        "fa":"زبان آلمانی (Deutschkurs)",
+                        "fr":"cours d'allemand (Deutschkurs)",
+                        "ru":"Курсы немецкого языка (Deutschkurs)",
+                        "sr":"курс немачког језика (Deutschkurs)",
+                        "ur":"جرمن کورس (Deutschkurs)"
+                  },
+                  "cat_meet-and-speak":{
+                        "de":"Sprachtreff",
+                        "en":"Meet & Speak"
                   },
                   "cat_learning-place":{
                         "de":"Lernort",
@@ -132,16 +134,20 @@
                         "ti":"",
                         "ur":""
                   },
-                  "cat_tandem":{
-                        "de":"Tandem",
-                        "en":"tandem",
-                        "ar":"",
-                        "fa":"",
-                        "fr":"tandem",
-                        "ru":"Языковой тандем",
-                        "sr":"",
-                        "ti":"",
-                        "ur":""
+                  "cat_interpreter":{
+                        "de":"Übersetzer/ Dolmetscher",
+                        "en":"translation + interpreters",
+                        "ar":"ترجمة",
+                        "fa":"ترجمه",
+                        "fr":"traduction",
+                        "ru":"перевод",
+                        "sr":"Превод",
+                        "ti":"ምቱርጋም",
+                        "ur":"ترجمہ"
+                  },
+                  "cat_learn-arabic":{
+                        "de":"Arabisch lernen",
+                        "en":"Learn Arabic"
                   },
             "cat_medic":{
                   "de":"Gesundheit",
@@ -227,17 +233,6 @@
                         "fa":"",
                         "fr":"éducation politique",
                         "ru":"Политическое образование",
-                        "sr":"",
-                        "ti":"",
-                        "ur":""
-                  },
-                  "cat_education-sponsorship":{
-                        "de":"Bildungspatenschaft",
-                        "en":"education sponsorship",
-                        "ar":"",
-                        "fa":"",
-                        "fr":"",
-                        "ru":"",
                         "sr":"",
                         "ti":"",
                         "ur":""
@@ -418,18 +413,6 @@
                         "ti":"",
                         "ur":""
                   },
-                  "cat_workshop-room":{
-                        "de":"Werkstattraum",
-                        "en":"workshop room",
-                        "ar":"",
-                        "fa":"",
-                        "fr":"",
-                        "it":"",
-                        "ru":"",
-                        "sr":"",
-                        "ti":"",
-                        "ur":""
-                  },
                   "cat_cooking":{
                         "de":"Kochen",
                         "en":"cooking",
@@ -511,35 +494,17 @@
                         "de":"Workshop",
                         "en":"workshop",
                         "ar":"المشغل الورشه",
-                        "fa":"",
                         "fr":"atelier",
-                        "ru":"Практический семинар",
-                        "sr":"",
-                        "ti":"",
-                        "ur":""
+                        "ru":"Практический семинар"
                   },
                   "cat_sponsorship":{
                         "de":"Patenschaften",
-                        "en":"sponsorship",
-                        "ar":"",
-                        "fa":"",
-                        "fr":"",
-                        "it":"",
-                        "ru":"",
-                        "sr":"",
-                        "ti":"",
-                        "ur":""
+                        "en":"sponsorship"
                   },
                   "cat_lgbt":{
                         "de":"LGBT",
-                        "en":"",
-                        "ar":"",
-                        "fa":"",
                         "fr":"LGBT",
-                        "ru":"ЛГБТ",
-                        "sr":"",
-                        "ti":"",
-                        "ur":""
+                        "ru":"ЛГБТ"
                   },
                   "cat_housing-project":{
                         "de":"Wohnprojekte",
@@ -548,18 +513,6 @@
                         "fa":"",
                         "fr":"projets d’habitation",
                         "ru":"Жилой проект",
-                        "sr":"",
-                        "ti":"",
-                        "ur":""
-                  },
-                  "cat_network":{
-                        "de":"Netzwerk",
-                        "en":"network",
-                        "ar":"",
-                        "fa":"",
-                        "fr":"",
-                        "it":"",
-                        "ru":"",
                         "sr":"",
                         "ti":"",
                         "ur":""

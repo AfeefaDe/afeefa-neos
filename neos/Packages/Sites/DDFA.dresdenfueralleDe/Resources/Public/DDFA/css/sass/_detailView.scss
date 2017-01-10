@@ -146,6 +146,14 @@
 			}
 		}
 
+		&.location .property-value {
+			background-image: url("../img/icon_173.svg");
+			background-position: right .5em;
+			background-repeat: no-repeat;
+			background-size: 1em;
+			cursor: pointer;
+		}
+
 		.multiselect-value {
 			display: inline-block;
 			margin: 0 .5em .5em 0;

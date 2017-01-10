@@ -5,7 +5,7 @@ qx.Class.define("MapView", {
 	
 	properties : {
 		userLocation: {},
-		markerLocationLookup: {},
+		entryMarkerLookup: {},
 		selectedMarker: {},
 		viewCoords: {}
 	},
@@ -18,7 +18,7 @@ qx.Class.define("MapView", {
 		that.setLoadable(true);
 		that.setUserLocation(null);
 		that.setSelectedMarker(null);
-		that.setMarkerLocationLookup([]);
+		that.setEntryMarkerLookup([]);
 		that.setViewCoords({
 			dresden: { lat: 51.051, lon: 13.74, zoom: 14 },
 			pirna: { lat: 50.957456, lon: 13.937007, zoom: 14 },
@@ -350,9 +350,9 @@ qx.Class.define("MapView", {
 				that.layerForMainMarkers.addLayer(marker);
 			}
 
-			var currentLookup = that.getMarkerLocationLookup();
+			var currentLookup = that.getEntryMarkerLookup();
 			currentLookup.push( {entry: entry, marker: marker} );
-			that.setMarkerLocationLookup( currentLookup );
+			that.setEntryMarkerLookup( currentLookup );
 
 			// newLayer.addLayer(marker);
 			
@@ -370,7 +370,7 @@ qx.Class.define("MapView", {
 			that.layerForMainMarkers.clearLayers();
 			that.layerForWifiMarkers.clearLayers();
 		
-			that.setMarkerLocationLookup([]);
+			that.setEntryMarkerLookup([]);
 
 		},
 
@@ -393,19 +393,29 @@ qx.Class.define("MapView", {
 		loadEntryById: function(id, options){
 			var that = this;
 
-			var lookup = that.lookupMarkerById(id);
-				if(lookup){
-					if(options && options.setView)
-						that.map.setView( [lookup.entry.location[0].lat, lookup.entry.location[0].lon], 16);
-				}
-				that.selectMarker(lookup.marker, lookup.entry);
+			var lookup = that.lookupEntryById(id);
+				// if(lookup){
+					// if(options && options.setView)
+					// 	that.map.setView( [lookup.entry.location[0].lat, lookup.entry.location[0].lon], 16);
+					// that.selectMarker(lookup.marker, lookup.entry, options);
+				// }
+				if(lookup.marker) that.selectMarker(lookup.marker, lookup.entry, options);
+				else that.selectMarker(null, lookup, options);
 		},
 
-		lookupMarkerById: function( id ){
+		lookupEntryById: function( id ){
 			var that = this;
 
-			var hit = _.find( that.getMarkerLocationLookup(), function(pair){
+			var hit;
+			
+			// does the entry have a marker on the map?
+			hit = _.find( that.getEntryMarkerLookup(), function(pair){
 				return pair.entry.entryId == id;
+			});
+
+			// if no marker, only find the entry
+			if(!hit) hit = _.find(APP.getData().entries, function(entry){
+				return entry.entryId == id;
 			});
 
 			return hit;
@@ -426,26 +436,28 @@ qx.Class.define("MapView", {
 
 	 //  },
 
-		selectMarker: function( marker, entry, setView ){
+		selectMarker: function( marker, entry, options ){
 			var that = this;
 
 			that.deselectMarker();
 			that.setSelectedMarker(marker);
 
-			if(setView) that.map.setView( [entry.location[0].lat, entry.location[0].lon], 16);
-			$(marker._icon).addClass('active');
-			
-			marker.openPopup();
+			if(marker){
+				if(options && options.setView) that.map.setView( [entry.location[0].lat, entry.location[0].lon], 16);
+				$(marker._icon).addClass('active');
+				marker.openPopup();
+			}
+
 			APP.getDetailView().load(entry);
 		},
 
 		selectMarkerFromLink: function( entryId ) {
 			var that = this;
 
-			var lookup = that.lookupMarkerById( entryId );
+			var lookup = that.lookupEntryById( entryId );
 				
 			if(lookup){
-					APP.getMapView().selectMarker(lookup.marker, lookup.entry, true);
+					APP.getMapView().selectMarker(lookup.marker, lookup.entry, {setView: true});
 			}
 
 		},

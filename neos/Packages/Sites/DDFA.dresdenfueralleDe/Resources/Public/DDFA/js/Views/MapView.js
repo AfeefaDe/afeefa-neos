@@ -43,10 +43,10 @@ qx.Class.define("MapView", {
 				that.view.append(that.locateBtn);
 			
 			that.locateBtn.click(function(){
-				that.locate();
+				that.locate(true);
 			});
 			that.locateBtn.on('touchend', function(){
-				that.locate();
+				that.locate(true);
 			});
 
 
@@ -101,8 +101,7 @@ qx.Class.define("MapView", {
 				that.loading(true);
 
 				// initial actions
-		if (APP.getUserDevice() == 'mobile') that.locate();
-
+				that.locate( APP.getUserDevice() == 'mobile' );
 		},
 
 		addEvents: function() {
@@ -534,7 +533,7 @@ qx.Class.define("MapView", {
 		},
 
 		// locate the user on startup and set view to his position
-		locate: function() {
+		locate: function(setView) {
 
 			var that = this;
 
@@ -548,7 +547,7 @@ qx.Class.define("MapView", {
 			// update view if location found
 		that.map.on('locationfound', function(e) {
 				// alert(e.latlng);
-				that.map.setView( e.latlng , 15);
+				if(setView) that.map.setView( e.latlng , 15);
 				that.setUserLocation = e.latlng;
 
 				var myIcon = L.icon({

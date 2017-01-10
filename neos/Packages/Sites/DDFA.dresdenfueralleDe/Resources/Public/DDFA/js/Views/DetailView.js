@@ -98,6 +98,25 @@ qx.Class.define("DetailView", {
 				catText.append(that['propertyValue'+prop]);
 				that['propertyContainer'+prop].append(catText);
 				
+				// navigation hook
+				if(prop == 'location'){
+					var $link = $("<a />").css('display', 'none').attr('target', '_blank');
+					that.scrollContainer.append($link);
+					that['propertyContainer'+prop].click(function(){
+						if( that.record.location[0] ){
+							var userLocation = APP.getMapView().getUserLocation();
+							if ( userLocation )
+							   // $link.attr('href', 'http://maps.google.com/?saddr=' + userLocation.lat + ',' + userLocation.lon + '&daddr=' + that.record.location[0].lat + ',' + that.record.location[0].lon);
+							   $link.attr('href', 'https://www.google.com/maps/dir/'+userLocation.lat+','+userLocation.lon+'/'+that.record.location[0].lat+','+that.record.location[0].lon+'/data=!4m2!4m1!3e3');
+							else
+							   // $link.attr('href', 'http://maps.google.com/?daddr=' + that.record.location[0].lat + ',' + that.record.location[0].lon);
+							   $link.attr('href', 'https://www.google.com/maps/dir//'+that.record.location[0].lat+','+that.record.location[0].lon+'/data=!4m2!4m1!3e3');
+
+							$link[0].click();
+						}
+					});
+				}
+
 				that.scrollContainer.append(that['propertyContainer'+prop]);
 
 			});
@@ -264,15 +283,6 @@ qx.Class.define("DetailView", {
 				}
 
 			});
-
-			// navigate + streetview
-			// $content.append('<p><a href="http://maps.google.com/?saddr=34.052222,-118.243611&daddr=37.322778,-122.031944" target="_blank"><button class="btn btn-default"><span class="fa fa-location-arrow" aria-hidden="true"></span> Navigate</button></a></p>');
-			//  var userLocation = that.getUserLocation();
-			//  if ( userLocation )
-			//      $content.append('<p><a href="http://maps.google.com/?saddr=' + userLocation.lat + ',' + userLocation.lng + '&daddr=' + marker.geo[0] + ',' + marker.geo[1] + '" target="_blank"><button class="btn btn-default"><span class="fa fa-location-arrow" aria-hidden="true"></span> Navigate</button></a></p>');
-			//  else
-			//      $content.append('<p><a href="http://maps.google.com/?daddr=' + marker.geo[0] + ',' + marker.geo[1] + '" target="_blank"><button class="btn btn-default"><span class="fa fa-location-arrow" aria-hidden="true"></span> Navigate</button></a></p>');
-			//  $content.append('<p><button class="btn btn-default"><span class="fa fa-street-view" aria-hidden="true"></span> Show in Google Street View</button></p>');
 
 			that.loading(false);
 

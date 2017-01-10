@@ -43,7 +43,7 @@ qx.Class.define("APPAFEEFA", {
 							{ name: 'meet-and-speak', id: '1-3' },
 							{ name: 'learning-place', id: '1-4' },
 							{ name: 'interpreter', id: '1-5' },
-							{ name: 'learn-arabic', id: '1-6' }
+							{ name: 'foreign-language', id: '1-6' }
 						]
 					},
 					{

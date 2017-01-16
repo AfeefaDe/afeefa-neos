@@ -379,7 +379,7 @@ qx.Class.define("MapView", {
 
 			if( areaName == 'pirna' ) {
 				// set view to pirna
-				mapView.map.setView([ that.getViewCoords().pirna.lat, that.getViewCoords().pirna.lon ], mapView.getViewCoords().pirna.zoom);
+				that.map.setView([ that.getViewCoords().pirna.lat, that.getViewCoords().pirna.lon ], that.getViewCoords().pirna.zoom);
 			}
 			else if( areaName == 'leipzig' ) {
 				// set view to leipzig

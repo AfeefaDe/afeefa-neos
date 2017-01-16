@@ -130,37 +130,41 @@ qx.Class.define("MapView", {
 				that.applyInteractiveFilters();
 			});
 
-				
-		// map click (not fired on drag or marker click or sth, pure map click!)
-		that.map.on('click', function(e) {
-			that.say('mapclicked');
-		});
-
-		if( APP.getUserDevice() == 'phone' ){
-			$('#main-container').on("transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd", function(e){
-				if( e.target != e.currentTarget ) return;
-				if( !$(this).hasClass('shifted') && !$(this).hasClass('shifted-small') ){
-					that.say('shiftMenuClosed');
-				}
+			// map click (not fired on drag or marker click or sth, pure map click!)
+			that.map.on('click', function(e) {
+				that.say('mapclicked');
 			});
-		}
 
-		that.listen('mapclicked', function(){
-				that.deselectMarker();
-		});
+			if( APP.getUserDevice() == 'phone' ){
+				$('#main-container').on("transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd", function(e){
+					if( e.target != e.currentTarget ) return;
+					if( !$(this).hasClass('shifted') && !$(this).hasClass('shifted-small') ){
+						that.say('shiftMenuClosed');
+					}
+				});
+			}
 
-		that.listen('DetailViewClosed', function(){
-				that.deselectMarker();
-		});
+			that.listen('mapclicked', function(){
+					that.deselectMarker();
+			});
 
-		that.listen('DetailViewMobileRendered', function(){
-			// that.loadFromUrl( {setView: true} );
-		});
+			that.listen('DetailViewClosed', function(){
+					that.deselectMarker();
+			});
 
-		that.listen('DetailViewRendered', function(){
-			// that.loadFromUrl( {setView: true} );
-		});
+			that.listen('DetailViewMobileRendered', function(){
+				// that.loadFromUrl( {setView: true} );
+			});
 
+			that.listen('DetailViewRendered', function(){
+				// that.loadFromUrl( {setView: true} );
+			});
+
+			// that.map.on('zoomend', function(){
+			// 	if(that.getSelectedMarker()){
+			// 		try{ that.layerForMainMarkers.getVisibleParent(that.getSelectedMarker()).spiderfy(); } catch(e){}
+			// 	}
+			// });
 		},
 		removeEvents: function() {
 
@@ -444,6 +448,7 @@ qx.Class.define("MapView", {
 
 			if(marker){
 				if(options && options.setView) that.map.setView( [entry.location[0].lat, entry.location[0].lon], 16);
+				try{ that.layerForMainMarkers.getVisibleParent(marker).spiderfy(); } catch(e){}
 				$(marker._icon).addClass('active');
 				marker.openPopup();
 			}
@@ -467,6 +472,7 @@ qx.Class.define("MapView", {
 
 			if( that.getSelectedMarker() ) {
 				$( that.getSelectedMarker()._icon ).removeClass('active');
+				// that.layerForMainMarkers.getVisibleParent(that.getSelectedMarker()).unspiderfy();
 			}
 
 			window.location.hash = '';

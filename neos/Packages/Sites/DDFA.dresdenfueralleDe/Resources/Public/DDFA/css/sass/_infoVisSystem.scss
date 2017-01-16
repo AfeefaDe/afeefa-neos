@@ -152,7 +152,7 @@
 	&.subcat-welcome-network { background-image: url("../img/icon_64.svg") !important; }
 	&.subcat-meeting-place { background-image: url("../img/icon_78.svg"); }
 	&.subcat-childcare { background-image: url("../img/icon_130.svg"); }
-	&.subcat-workshop { background-image: url("../img/icon_98.svg"); }
+	&.subcat-workshop { background-image: url("../img/icon_98.svg"); @include background-size(75%); }
 	&.subcat-sponsorship { background-image: url("../img/icon_168.svg"); }
 	&.subcat-lgbt { background-image: url("../img/icon_132.svg"); }
 	&.subcat-housing-project { background-image: url("../img/icon_136.svg"); }

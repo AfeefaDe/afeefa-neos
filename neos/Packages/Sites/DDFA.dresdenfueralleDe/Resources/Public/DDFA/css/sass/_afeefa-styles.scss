@@ -76,6 +76,7 @@
 	cursor: pointer;
 	display: inline-block;
 	border-bottom: none !important;
+  text-decoration: none !important;
 
 	&:hover {
 		@include shadow($height: 2);
@@ -85,8 +86,7 @@
 	&.btn-secondary {
 		background-color: $gray20;
 		@include shadow($color: $gray50);
-		color: $gray50 !important;
-		padding: .3em .5em;
+		color: $gray80 !important;
 
 		&:hover {
 			background-color: $gray20 !important;
@@ -112,6 +112,14 @@
 	&.margin-left {
 		margin-left: 1em;
 	}
+
+	&.margin-top {
+		margin-top: 1em;
+	}
+
+	&.block {
+		display: block;
+	}
 }
 
 button {
@@ -124,6 +132,25 @@ button {
 
 	p {
 		margin: 0;
+	}
+}
+
+.close-btn {
+	position: absolute;
+	top: 1em;
+	right: 1em;
+	width: 1.5em;
+	height: 1.5em;
+	cursor: pointer;
+	opacity: .2;
+	background-image: url("../img/icon_34.svg");
+	@include background-size(100%);
+	background-position: center center;
+	background-repeat: no-repeat;
+	@include transform(rotate(45deg));
+
+	&:hover {
+		opacity: 1;
 	}
 }
 

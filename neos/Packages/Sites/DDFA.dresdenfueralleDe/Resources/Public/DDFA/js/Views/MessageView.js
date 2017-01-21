@@ -18,8 +18,8 @@ qx.Class.define("MessageView", {
 			that.view = $("<div />");
 			that.view.attr('id', that.getViewId());
 
-			that.title = $('<div />');
-			that.content = $("<div />");
+			that.title = $('<h2 />');
+			that.content = $("<p />");
 			that.actions = $("<div />");
 
 			that.view.append(that.title);
@@ -37,23 +37,42 @@ qx.Class.define("MessageView", {
 			var that = this;
 
 			that.templates = {
-				'survey':
-					{
-						title: 'Wie nutzt du Afeefa.de?',
-						contentNode: 'Mit einem kurzen Feedback...',
-						cssClass: 'survey',
-						actions: 
-							[
-								{
-									label: 'Zur 5-Minuten-Umfrage',
-									action: function(){
-										
-									},
-									cssClass: ''
-								}
-
-							]
-					}
+				'survey': {
+					title: 'Wie nutzt du Afeefa.de?',
+					contentNode: 'Mit einem kurzen Feedback unterstützt du das Afeefa Projekt und dessen Weiterentwicklung!',
+					cssClass: '',
+					actions: 
+						[
+							{
+								label: 'Zur 3-Minuten-Umfrage 🙂',
+								externalLink: 'https://afeefade.typeform.com/to/csN7YQ',
+								cssClass: 'block'
+							},
+							{
+								label: 'Nicht jetzt',
+								close: true,
+								cssClass: 'btn-secondary margin-top'
+							}
+						]
+				},
+				'about': {
+					title: 'Du möchtest mehr über Afeefa erfahren?',
+					contentNode: 'Auf unseren Infoseiten erfährst du mehr über unser Konzept, das Team, Kooperationspartner und vieles mehr.',
+					cssClass: '',
+					actions: 
+						[
+							{
+								label: 'Erzähl mir mehr!',
+								externalLink: 'https://about.afeefa.de',
+								cssClass: 'block'
+							},
+							{
+								label: 'Nicht jetzt',
+								close: true,
+								cssClass: 'btn-secondary block margin-top'
+							}
+						]
+				}
 			}
 		},
 		
@@ -61,9 +80,18 @@ qx.Class.define("MessageView", {
 		load: function(options){
 			var that = this;
 			
+			if(options.key) that.registerOpening(options.key);
+
+			// was opened before?
+			if(options.key) {
+				var counter = sessionStorage.getItem("messageOpened_" + options.key);
+				if( counter > 1 && counter < 10 ) return;
+				if( counter > 10 ) return;
+			}
+
 			that.reset();
 
-			// the message data
+			// the message data (may come from template)
 			var message = options.key? that.templates[options.key] : options;
 			
 			// build
@@ -71,27 +99,54 @@ qx.Class.define("MessageView", {
 			that.content.append(message.contentNode);
 			
 			_.each(message.actions, function(action){
-				var btn = $('<button />')
-					.append(action.label)
-					.click(action.action);
+				var btn;
+				
+				if(action.externalLink){
+					btn = $('<a />')
+						.addClass('button')
+						.attr('target', '_blank')
+						.attr('href', action.externalLink)
+						.append(action.label)
+						.click(function(){
+							that.close();
+						});
+				}
+				else if(action.close){
+					btn = $('<button />')
+						.append(action.label)
+						.click(function(){
+							that.close();
+						});
+				}
+				else {
+					btn = $('<button />')
+						.append(action.label)
+						.click(action.action);
+				}
+
+				if(action.cssClass) btn.addClass(action.cssClass);
 				
 				that.actions.append(btn);
 			});
 
 			that.view.addClass(message.cssClass);
+			that.showCurtain(true);
 			that.view.addClass('active');
 		},
 
-		// saveIntroDecision: function(){
-		// 	var that = this;
+		registerOpening: function(key){
+			var that = this;
 			
-		// 	localStorage.setItem("introIsKnown", 1);
-		// },
+			var counter = sessionStorage.getItem("messageOpened_" + key) ? sessionStorage.getItem("messageOpened_" + key) : 0;
+			counter++;
+			sessionStorage.setItem("messageOpened_" + key, counter);
+		},
 
 		close: function(){
 			var that = this;
 
 			that.view.removeClass('active');
+			that.showCurtain(false);
 			that.reset();
 		},
 
@@ -100,6 +155,16 @@ qx.Class.define("MessageView", {
 
 			// call superclass
 			this.base(arguments);
+
+			setTimeout(function(){
+				that.load({key: 'survey'});
+			}, 20000);
+
+			that.listen('detailViewOpened', function(){
+				setTimeout(function(){
+					that.load({key: 'survey'});
+				}, 5000);
+      });
 		},
 
 		reset: function(){

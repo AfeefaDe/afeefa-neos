@@ -190,9 +190,6 @@ qx.Class.define("Router", {
 
 			that.listen('fetchedAllData', function(){
 				
-				// show message for survey
-				var timer = setTimeout(APP.getMessageView().load({key: 'survey'}), 3000);
-
 				if(that.currentPath && that.currentPath.length > 0){
 					that.loadFromUrl();
 				}

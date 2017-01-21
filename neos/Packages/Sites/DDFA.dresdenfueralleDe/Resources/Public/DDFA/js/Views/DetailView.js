@@ -35,11 +35,10 @@ qx.Class.define("DetailView", {
 
 			// close button
 		  that.closeBtn = $("<div />")
-			.addClass('btn close-btn')
-		  // bootstrap tooltip
-			.click(function(){
-			  that.close();
-			});
+				.addClass('close-btn')
+				.click(function(){
+				  that.close();
+				});
 		  that.view.append(that.closeBtn);
 
 			// scrollable content container

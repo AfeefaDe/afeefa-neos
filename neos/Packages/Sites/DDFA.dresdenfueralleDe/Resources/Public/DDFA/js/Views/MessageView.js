@@ -80,13 +80,21 @@ qx.Class.define("MessageView", {
 		load: function(options){
 			var that = this;
 			
-			if(options.key) that.registerOpening(options.key);
-
-			// was opened before?
 			if(options.key) {
-				var counter = sessionStorage.getItem("messageOpened_" + options.key);
-				if( counter > 1 && counter < 10 ) return;
-				if( counter > 10 ) return;
+
+				that.registerOpening({key: options.key});
+
+				// message was opened before?
+				if( !options.force ){
+					var counter = sessionStorage.getItem("messageOpened_" + options.key);
+					// if( counter < 2 ) return;
+					// if( counter > 2 && counter < 10 ) return;
+					if( counter > 1 && counter < 10 ) return;
+					if( counter > 10 ) return;
+				}
+				
+				// message followed before?
+				if(localStorage.getItem("messageFollowed_" + options.key) == 1) return;
 			}
 
 			that.reset();
@@ -109,6 +117,7 @@ qx.Class.define("MessageView", {
 						.append(action.label)
 						.click(function(){
 							that.close();
+							that.registerOpening({key: options.key, messageFollowed: true});
 						});
 				}
 				else if(action.close){
@@ -134,12 +143,26 @@ qx.Class.define("MessageView", {
 			that.view.addClass('active');
 		},
 
-		registerOpening: function(key){
+		registerOpening: function(options){
 			var that = this;
 			
-			var counter = sessionStorage.getItem("messageOpened_" + key) ? sessionStorage.getItem("messageOpened_" + key) : 0;
+			// count opening attempts in current session
+			var counter = sessionStorage.getItem("messageOpened_" + options.key) ? sessionStorage.getItem("messageOpened_" + options.key) : 0;
 			counter++;
-			sessionStorage.setItem("messageOpened_" + key, counter);
+			sessionStorage.setItem("messageOpened_" + options.key, counter);
+
+			// save to localstorage if user executed the message's primary action (e.g. followed the external link)
+			if(options.messageFollowed) {
+				localStorage.setItem("messageFollowed_" + options.key, 1);
+				localStorage.setItem("messageFollowed_" + options.key + '_month', new Date().getMonth()+1);
+			}
+
+			// reset localstorage a month later
+			var savedMonth = localStorage.getItem("messageFollowed_" + options.key + '_month');
+			if( savedMonth < new Date().getMonth()+1 || savedMonth == 12 ){
+				localStorage.removeItem("messageFollowed_" + options.key);
+				localStorage.removeItem("messageFollowed_" + options.key + '_month');
+			}
 		},
 
 		close: function(){
@@ -157,8 +180,8 @@ qx.Class.define("MessageView", {
 			this.base(arguments);
 
 			setTimeout(function(){
-				that.load({key: 'survey'});
-			}, 20000);
+				that.load({key: 'survey', force: true});
+			}, 40000);
 
 			that.listen('detailViewOpened', function(){
 				setTimeout(function(){

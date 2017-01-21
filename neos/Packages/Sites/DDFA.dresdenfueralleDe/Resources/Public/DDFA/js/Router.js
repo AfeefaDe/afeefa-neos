@@ -48,57 +48,45 @@ qx.Class.define("Router", {
 			var userDevice = APP.getUserDevice();
 
 			if( userDevice === 'mobile' ) {
-
-				APP.setMapView( new MapView() );
-				APP.setSearchView( new SearchView() );
+				// APP.setMapView( new MapView() );
+				// APP.setSearchView( new SearchView() );
 				APP.setDetailView( new DetailViewMobile() );
-				APP.setMenuView( new MenuView() );
-				APP.setLegendView( new LegendView() );
-				APP.setPlusView( new PlusView() );
+				// APP.setMenuView( new MenuView() );
+				// APP.setLegendView( new LegendView() );
+				// APP.setPlusView( new PlusView() );
 				APP.setLanguageView( new LanguageViewMobile() );
-				APP.setFormView( new FormView() );
-				APP.setIncludeView( new IncludeView() );
-				APP.setIntroView( new IntroView() );
+				// APP.setFormView( new FormView() );
+				// APP.setIncludeView( new IncludeView() );
+				// APP.setMessageView( new MessageView() );
+				// APP.setIntroView( new IntroView() );
 		
 			} else {
-
-				APP.setMapView( new MapView() );
-				APP.setSearchView( new SearchView() );
 				APP.setDetailView( new DetailView() );
-				APP.setMenuView( new MenuView() );
-				APP.setLegendView( new LegendView() );
-				APP.setPlusView( new PlusView() );
 				APP.setLanguageView( new LanguageView() );
-				APP.setFormView( new FormView() );
-				APP.setIncludeView( new IncludeView() );
-				APP.setIntroView( new IntroView() );
 			}
 			
-			// TODO throw away
-			if( userDevice === 'mobile' ) {
-				APP.getMapView().render();
-				APP.getSearchView().render();
-				APP.getDetailView().render();
-				APP.getPlusView().render();
-				APP.getLanguageView().render();
-				APP.getMenuView().render();
-				APP.getLegendView().render();
-				APP.getFormView().render();
-				APP.getIncludeView().render();
-				APP.getIntroView().render();
-			}
-			else {
-				APP.getMapView().render();
-				APP.getSearchView().render();
-				APP.getDetailView().render();
-				APP.getPlusView().render();
-				APP.getLanguageView().render();
-				APP.getMenuView().render();
-				APP.getLegendView().render();
-				APP.getFormView().render();
-				APP.getIncludeView().render();
-				APP.getIntroView().render();
-			}
+			APP.setMapView( new MapView() );
+			APP.setSearchView( new SearchView() );
+			APP.setMenuView( new MenuView() );
+			APP.setLegendView( new LegendView() );
+			APP.setPlusView( new PlusView() );
+			APP.setFormView( new FormView() );
+			APP.setIncludeView( new IncludeView() );
+			APP.setMessageView( new MessageView() );
+			APP.setIntroView( new IntroView() );
+			
+			// render the views
+			APP.getMapView().render();
+			APP.getSearchView().render();
+			APP.getDetailView().render();
+			APP.getPlusView().render();
+			APP.getLanguageView().render();
+			APP.getMenuView().render();
+			APP.getLegendView().render();
+			APP.getFormView().render();
+			APP.getIncludeView().render();
+			APP.getMessageView().render();
+			APP.getIntroView().render();
 		},
 
 		navigate: function( path ){
@@ -186,7 +174,7 @@ qx.Class.define("Router", {
 
 			var firstLevel = that.currentPath[0];
 			
-			$('a')
+			// $('a')
 
 			d3.selectAll('nav a').each(function(){
 				var aSel = d3.select(this);
@@ -202,6 +190,9 @@ qx.Class.define("Router", {
 
 			that.listen('fetchedAllData', function(){
 				
+				// show message for survey
+				var timer = setTimeout(APP.getMessageView().load({key: 'survey'}), 3000);
+
 				if(that.currentPath && that.currentPath.length > 0){
 					that.loadFromUrl();
 				}
@@ -220,35 +211,6 @@ qx.Class.define("Router", {
 						}
 					}
 				}
-			});
-
-			that.listen('fetchedAllData', function(){
-				// start survey after X seconds
-				// setTimeout(function(){
-				// 	var tooltip = APP.getMapView().createTooltip(
-				// 		APP.getMapView().view,
-				// 		function(){
-				// 			var contentContainer = $("<div />")
-				// 			var text = $("<div />")
-				// 				// .append(that.getWording('intro_step_guide'));
-				// 				.append('Umfrage teilnehmen ja?');
-				// 			var button = $("<button />")
-				// 				// .append(that.getWording('intro_button_next'))
-				// 				.append('OK, klar')
-				// 				.click(function(){
-				// 					tooltip.destroy();
-				// 				});
-				// 			contentContainer.append(text);
-				// 			contentContainer.append(button);
-				// 			return contentContainer;
-				// 		}(),
-				// 		null,
-				// 		'top',
-				// 		null,
-				// 		['survey'],
-				// 		'node'
-				// 	);
-				// }, 10000);
 			});
 
 			that.listen('IncludeViewRendered', function(){

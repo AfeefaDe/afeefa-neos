@@ -130,6 +130,7 @@
         'Views/PlusView': ['Views/View'],
         'Views/FormView': ['Views/View'],
         'Views/IncludeView': ['Views/View'],
+        'Views/MessageView': ['Views/View'],
         'Views/IntroView': ['Views/View']
     },
 

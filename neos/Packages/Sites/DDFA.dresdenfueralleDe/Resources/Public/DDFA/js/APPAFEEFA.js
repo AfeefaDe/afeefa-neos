@@ -142,6 +142,7 @@ qx.Class.define("APPAFEEFA", {
 		languageView: {},
 		formView: {},
 		includeView: {},
+		messageView: {},
 		introView: {},
 		userDevice: {},
 		config: {},
@@ -154,6 +155,9 @@ qx.Class.define("APPAFEEFA", {
 		init: function( cb ){
 			var that = this;
 			
+			// load city config
+			
+
 			// analyse user device
 			that.detectUserDevice();
 

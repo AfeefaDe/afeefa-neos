@@ -448,7 +448,7 @@ qx.Class.define("MapView", {
 
 			if(marker){
 				if(options && options.setView) that.map.setView( [entry.location[0].lat, entry.location[0].lon], 16);
-				try{ that.layerForMainMarkers.getVisibleParent(marker).spiderfy(); } catch(e){}
+				// try{ that.layerForMainMarkers.getVisibleParent(marker).spiderfy(); } catch(e){}
 				$(marker._icon).addClass('active');
 				marker.openPopup();
 			}

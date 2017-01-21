@@ -15,7 +15,7 @@ require.config({
         hammer: '../../hammerjs/hammer.min',
         bootstrap: 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min',
         fontawesome: 'https://use.fontawesome.com/43c3d746ca',
-        mapbox: 'https://api.mapbox.com/mapbox.js/v2.4.0/mapbox',
+        mapbox: 'https://api.mapbox.com/mapbox.js/v3.0.1/mapbox',
         mc: '../../leafletPlugins/leaflet.markercluster',
         popper: '../../popperjs/popper.min',
         d3: 'https://cdnjs.cloudflare.com/ajax/libs/d3/4.4.0/d3'
@@ -57,6 +57,7 @@ require.config({
         'Views/PlusView': ['Views/View'],
         'Views/FormView': ['Views/View'],
         'Views/IncludeView': ['Views/View'],
+        'Views/MessageView': ['Views/View'],
         'Views/IntroView': ['Views/View']
     },
 
@@ -84,6 +85,7 @@ require.config({
         'Views/PlusView',
         'Views/FormView',
         'Views/IncludeView',
+        'Views/MessageView',
         'Views/IntroView'
     ], function(domReady){
 

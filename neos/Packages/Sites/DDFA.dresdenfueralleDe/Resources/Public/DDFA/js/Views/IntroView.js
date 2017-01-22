@@ -66,6 +66,7 @@ qx.Class.define("IntroView", {
 						var buttonCancel = $("<button />")
 							// .addClass('btn-secondary')
 							.append(that.getWording('intro_button_cancel'))
+							.addClass('btn-secondary')
 							.click(function(){
 								that.stop();
 								that.saveIntroDecision();

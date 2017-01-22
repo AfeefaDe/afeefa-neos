@@ -80,6 +80,9 @@ qx.Class.define("MessageView", {
 		load: function(options){
 			var that = this;
 			
+			// don't show while intro
+			if( APP.getIntroView().isActive() ) return;
+
 			if(options.key) {
 
 				that.registerOpening({key: options.key});

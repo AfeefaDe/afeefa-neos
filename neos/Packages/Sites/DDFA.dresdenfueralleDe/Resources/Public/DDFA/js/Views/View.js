@@ -29,6 +29,14 @@ qx.Class.define("View", {
             that.say(that.classname + 'Rendered');
         },
 
+        // set and read the active status of a view
+        isActive: function(bool){
+            var that = this;
+
+            if(bool === undefined) return that.active;
+                that.active = bool;
+        },
+
         // param (key, [locale])
         // @key bib key
         // @locale get wording in a specific language ignoring the current app language

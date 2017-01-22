@@ -77,5 +77,6 @@ DDFA/js/Views/LanguageView.js
 DDFA/js/Views/PlusView.js
 DDFA/js/Views/FormView.js
 DDFA/js/Views/IncludeView.js
+DDFA/js/Views/MessageView.js
 DDFA/js/Views/IntroView.js
 DDFA/js/main.js

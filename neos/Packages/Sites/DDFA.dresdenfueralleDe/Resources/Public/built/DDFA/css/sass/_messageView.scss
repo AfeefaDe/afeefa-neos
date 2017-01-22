@@ -1,0 +1,22 @@
+#messageView {
+	display: none;
+	position: absolute;
+	background-color: $message;
+  z-index: 99999;
+  padding: 1em;
+  width: 20em;
+  top: 1em;
+  left: 50%;
+  margin-left: -10em;
+  @include roundedCorners;
+  @include shadow;
+  text-align: center;
+
+  h2 {
+  	margin-top: 0;
+  }
+
+	&.active {
+		display: block;
+	}
+}

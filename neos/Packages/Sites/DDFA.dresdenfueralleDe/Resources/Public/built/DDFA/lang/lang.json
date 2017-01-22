@@ -42,27 +42,19 @@
             },
             "intro_step_guide":{
                   "de":"<h2>Leitfaden</h2><p>Hier findest du unseren <b>Leitfaden für Geflüchtete</b>. Er gibt dir wertvolle Hintergrundinformationen zu den Themen Asyl, Wohnen, Arbeit, Bildung, Gesundheit und vielen mehr...</p>",
-                  "en":"",
-                  "ar":"",
-                  "fa":"",
-                  "fr":"",
-                  "ru":""
+                  "en":""
             },
             "intro_button_next":{
                   "de":"Nächster Tipp",
-                  "en":"Next tip",
-                  "ar":"",
-                  "fa":"",
-                  "fr":"",
-                  "ru":""
+                  "en":"Next tip"
             },
             "intro_button_cancel":{
-                  "de":"Ich kenne mich aus.",
-                  "en":"I can manage myself.",
-                  "ar":"",
-                  "fa":"",
-                  "fr":"",
-                  "ru":""
+                  "de":"Abbrechen",
+                  "en":"Stop"
+            },
+            "intro_button_cancel_forever":{
+                  "de":"Ich kenne mich aus",
+                  "en":"I can manage myself"
             },
             "entry_type":{
                   "de":"Eintragstyp",

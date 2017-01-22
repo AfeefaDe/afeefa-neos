@@ -18,15 +18,6 @@ qx.Class.define("IntroView", {
 			that.view = $("<div />");
 			that.view.attr('id', that.getViewId());
 
-			// curtain
-			// that.introCurtain = $("<div />")
-			// 	.attr('id', 'introCurtain');
-				// .on('click', function(e) {
-				// 	that.say('curtainclicked');
-				// });
-  		// $('#main-container').append(curtain);
-  		// that.view(introCurtain);
-
 			$('#main-container').append(that.view);
 
 			that.defineSteps();
@@ -55,22 +46,24 @@ qx.Class.define("IntroView", {
 					},
 					content: function(){
 						var contentContainer = $("<div />")
+						
 						var text = $("<div />")
 							.append(that.getWording('intro_step_search'));
+						
 						var button = $("<button />")
+							.addClass('block')
 							.append(that.getWording('intro_button_next'))
 							.click(function(){
 								that.next();
 							});
 
 						var buttonCancel = $("<button />")
-							// .addClass('btn-secondary')
-							.append(that.getWording('intro_button_cancel'))
-							.addClass('btn-secondary')
+							.addClass('btn-secondary block')
+							.append(that.getWording('intro_button_cancel_forever'))
 							.click(function(){
 								that.stop();
 								that.saveIntroDecision();
-							});
+						});
 
 						contentContainer.append(text);
 						contentContainer.append(button);
@@ -90,16 +83,27 @@ qx.Class.define("IntroView", {
 					},
 					content: function(){
 						var contentContainer = $("<div />")
+						
 						var text = $("<div />")
 							.append(that.getWording('intro_step_map'));
+						
 						var button = $("<button />")
+							.addClass('block')
 							.append(that.getWording('intro_button_next'))
 							.click(function(){
 								that.next();
-							});
+						});
+
+						var buttonCancel = $("<button />")
+							.addClass('btn-secondary block')
+							.append(that.getWording('intro_button_cancel'))
+							.click(function(){
+								that.stop();
+						});
 
 						contentContainer.append(text);
 						contentContainer.append(button);
+						contentContainer.append(buttonCancel);
 						return contentContainer;
 					}()
 				},
@@ -115,16 +119,27 @@ qx.Class.define("IntroView", {
 					},
 					content: function(){
 						var contentContainer = $("<div />")
+						
 						var text = $("<div />")
 							.append(that.getWording('intro_step_language'));
+						
 						var button = $("<button />")
+							.addClass('block')
 							.append(that.getWording('intro_button_next'))
 							.click(function(){
 								that.next();
 							});
 
+						var buttonCancel = $("<button />")
+							.addClass('btn-secondary block')
+							.append(that.getWording('intro_button_cancel'))
+							.click(function(){
+								that.stop();
+						});
+
 						contentContainer.append(text);
 						contentContainer.append(button);
+						contentContainer.append(buttonCancel);
 						return contentContainer;
 					}()
 				},
@@ -142,16 +157,27 @@ qx.Class.define("IntroView", {
 					},
 					content: function(){
 						var contentContainer = $("<div />")
+						
 						var text = $("<div />")
 							.append(that.getWording('intro_step_legend'));
+						
 						var button = $("<button />")
+							.addClass('block')
 							.append(that.getWording('intro_button_next'))
 							.click(function(){
 								that.next();
 							});
 
+						var buttonCancel = $("<button />")
+							.addClass('btn-secondary block')
+							.append(that.getWording('intro_button_cancel'))
+							.click(function(){
+								that.stop();
+						});
+
 						contentContainer.append(text);
 						contentContainer.append(button);
+						contentContainer.append(buttonCancel);
 						return contentContainer;
 					}()
 				},
@@ -167,16 +193,27 @@ qx.Class.define("IntroView", {
 					},
 					content: function(){
 						var contentContainer = $("<div />")
+						
 						var text = $("<div />")
 							.append(that.getWording('intro_step_plus'));
+						
 						var button = $("<button />")
+							.addClass('block')
 							.append(that.getWording('intro_button_next'))
 							.click(function(){
 								that.next();
 							});
 
+						var buttonCancel = $("<button />")
+							.addClass('btn-secondary block')
+							.append(that.getWording('intro_button_cancel'))
+							.click(function(){
+								that.stop();
+						});
+
 						contentContainer.append(text);
 						contentContainer.append(button);
+						contentContainer.append(buttonCancel);
 						return contentContainer;
 					}()
 				},
@@ -193,16 +230,27 @@ qx.Class.define("IntroView", {
 					},
 					content: function(){
 						var contentContainer = $("<div />")
+						
 						var text = $("<div />")
 							.append(that.getWording('intro_step_guide'));
+						
 						var button = $("<button />")
+							.addClass('block')
 							.append(that.getWording('intro_button_next'))
 							.click(function(){
 								that.next();
 							});
 
+						var buttonCancel = $("<button />")
+							.addClass('btn-secondary block')
+							.append(that.getWording('intro_button_cancel'))
+							.click(function(){
+								that.stop();
+						});
+
 						contentContainer.append(text);
 						contentContainer.append(button);
+						contentContainer.append(buttonCancel);
 						return contentContainer;
 					}()
 				}
@@ -213,6 +261,7 @@ qx.Class.define("IntroView", {
 			var that = this;
 			
 			that.view.addClass('active');
+			that.isActive(true);
 			that.next();
 		},
 
@@ -225,6 +274,7 @@ qx.Class.define("IntroView", {
 			that.currentStep = null;
 			
 			that.view.removeClass('active');
+			that.isActive(false);
 		},
 
 		saveIntroDecision: function(){

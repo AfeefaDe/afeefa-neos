@@ -41,7 +41,7 @@ require.config({
         "bootstrap": ["jquery"],
 
         // app files
-        "Daddy": ['qx', 'jquery', 'underscore', 'restive', 'perfectScrollbarJQuery', 'chosen', 'mapbox', 'mc', 'hammer', 'modernizr', 'popper'],
+        "Daddy": ['qx', 'jquery', 'underscore', 'restive', 'perfectScrollbarJQuery', 'chosen', 'mapbox', 'mc', 'hammer', 'modernizr', 'popper', 'd3'],
         'APPAFEEFA': ['Daddy'],
         'DataManager': ['APPAFEEFA'],
         'Router': ['APPAFEEFA'],
@@ -92,7 +92,7 @@ require.config({
         // if dependencies don't become available everywhere within the app, then define them here again as global var
         Hammer = require('hammer');
         Popper = require('popper');
-        // d3 = require('d3');
+        d3 = require('d3');
         
         domReady(function () {
             APP = new APPAFEEFA();

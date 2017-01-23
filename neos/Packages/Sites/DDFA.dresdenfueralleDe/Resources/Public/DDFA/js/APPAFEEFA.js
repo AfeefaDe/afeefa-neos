@@ -127,6 +127,7 @@ qx.Class.define("APPAFEEFA", {
 
 	properties : {
 		title: {},
+		area: {},
 		DataManager: {},
 		Utility: {},
 		Router: {},
@@ -156,7 +157,7 @@ qx.Class.define("APPAFEEFA", {
 			var that = this;
 			
 			// load city config
-			
+			that.detectAfeefaArea();
 
 			// analyse user device
 			that.detectUserDevice();
@@ -189,6 +190,20 @@ qx.Class.define("APPAFEEFA", {
 				});
 			});
 			
+		},
+
+		detectAfeefaArea: function(){
+			var that = this;
+
+			var hostname = window.location.hostname;
+
+			if( hostname.indexOf('bautzen') >= 0 ){
+				that.setArea('bautzen');
+				return;
+			}
+			else {
+				that.setArea('dresden');
+			}
 		},
 
 		detectUserDevice: function(){

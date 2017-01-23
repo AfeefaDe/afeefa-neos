@@ -22,7 +22,8 @@ qx.Class.define("MapView", {
 		that.setViewCoords({
 			dresden: { lat: 51.051, lon: 13.74, zoom: 14 },
 			pirna: { lat: 50.957456, lon: 13.937007, zoom: 14 },
-			leipzig: { lat: 51.336143, lon: 12.362952, zoom: 14 }
+			leipzig: { lat: 51.336143, lon: 12.362952, zoom: 14 },
+			bautzen: { lat: 51.1803977, lon: 14.4242263, zoom: 14 }
 		});
 	},
 
@@ -30,13 +31,13 @@ qx.Class.define("MapView", {
 		
 		render : function() {
 				
-				var that = this;
+			var that = this;
 
-				// view container
-				that.view = $("<div />");
-				that.view.attr('id', that.getViewId());
+			// view container
+			that.view = $("<div />");
+			that.view.attr('id', that.getViewId());
 
-				$('#main-container').append(that.view);
+			$('#main-container').append(that.view);
 
 				// locate btn
 			that.locateBtn = $("<div />").attr('id', 'locate-btn');
@@ -64,7 +65,7 @@ qx.Class.define("MapView", {
 			tileLayer: {format: 'jpg70'},  // valid values are png, jpg, png32, png64, png128, png256, jpg70, jpg80, jpg90
 			tapTolerance: 30,
 			maxZoom: 20
-			}).setView([ that.getViewCoords().dresden.lat, that.getViewCoords().dresden.lon ], that.getViewCoords().dresden.zoom);
+			}).setView([ that.getViewCoords()[APP.getArea()].lat, that.getViewCoords()[APP.getArea()].lon ], that.getViewCoords()[APP.getArea()].zoom);
 		
 		// Layer group for main markers (with clustering)
 		that.layerForMainMarkers = new L.MarkerClusterGroup({
@@ -382,12 +383,7 @@ qx.Class.define("MapView", {
 			var that = this;
 
 			if( areaName == 'pirna' ) {
-				// set view to pirna
 				that.map.setView([ that.getViewCoords().pirna.lat, that.getViewCoords().pirna.lon ], that.getViewCoords().pirna.zoom);
-			}
-			else if( areaName == 'leipzig' ) {
-				// set view to leipzig
-				that.map.setView([ that.getViewCoords().leipzig.lat, that.getViewCoords().leipzig.lon ], that.getViewCoords().leipzig.zoom);
 			}
 			else {
 				console.log('city mentioned in URl not defined');

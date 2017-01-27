@@ -179,6 +179,8 @@ qx.Class.define("APPAFEEFA", {
 
 				// store entries in APP
 				currentAppData.entries = data.marketentries;
+
+				currentAppData.entries = _.sortBy(currentAppData.entries, 'name');
 				
 				that.setData(currentAppData);
 				that.say('fetchedNewData');

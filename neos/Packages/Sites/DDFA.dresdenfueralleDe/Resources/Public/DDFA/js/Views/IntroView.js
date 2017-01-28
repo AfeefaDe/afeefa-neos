@@ -47,24 +47,28 @@ qx.Class.define("IntroView", {
 					content: function(){
 						var contentContainer = $("<div />")
 						
-						var text = $("<div />")
-							.append(that.getWording('intro_step_search'));
+						var heading = $("<h2 />")
+							.append(that.getWording('intro.step.search.title'));
+
+						var text = $("<p />")
+							.append(that.getWording('intro.step.search.text'));
 						
 						var button = $("<button />")
 							.addClass('block')
-							.append(that.getWording('intro_button_next'))
+							.append(that.getWording('intro.button.next'))
 							.click(function(){
 								that.next();
 							});
 
 						var buttonCancel = $("<button />")
 							.addClass('btn-secondary block')
-							.append(that.getWording('intro_button_cancel_forever'))
+							.append(that.getWording('intro.button.cancel.forever'))
 							.click(function(){
 								that.stop();
 								that.saveIntroDecision();
 						});
 
+						contentContainer.append(heading);
 						contentContainer.append(text);
 						contentContainer.append(button);
 						contentContainer.append(buttonCancel);
@@ -85,18 +89,18 @@ qx.Class.define("IntroView", {
 						var contentContainer = $("<div />")
 						
 						var text = $("<div />")
-							.append(that.getWording('intro_step_map'));
+							.append(that.getWording('intro.step.map.text'));
 						
 						var button = $("<button />")
 							.addClass('block')
-							.append(that.getWording('intro_button_next'))
+							.append(that.getWording('intro.button.next'))
 							.click(function(){
 								that.next();
 						});
 
 						var buttonCancel = $("<button />")
 							.addClass('btn-secondary block')
-							.append(that.getWording('intro_button_cancel'))
+							.append(that.getWording('intro.button.cancel'))
 							.click(function(){
 								that.stop();
 						});
@@ -121,18 +125,18 @@ qx.Class.define("IntroView", {
 						var contentContainer = $("<div />")
 						
 						var text = $("<div />")
-							.append(that.getWording('intro_step_language'));
+							.append(that.getWording('intro.step.language.text'));
 						
 						var button = $("<button />")
 							.addClass('block')
-							.append(that.getWording('intro_button_next'))
+							.append(that.getWording('intro.button.next'))
 							.click(function(){
 								that.next();
 							});
 
 						var buttonCancel = $("<button />")
 							.addClass('btn-secondary block')
-							.append(that.getWording('intro_button_cancel'))
+							.append(that.getWording('intro.button.cancel'))
 							.click(function(){
 								that.stop();
 						});
@@ -159,18 +163,18 @@ qx.Class.define("IntroView", {
 						var contentContainer = $("<div />")
 						
 						var text = $("<div />")
-							.append(that.getWording('intro_step_legend'));
+							.append(that.getWording('intro.step.legend.text'));
 						
 						var button = $("<button />")
 							.addClass('block')
-							.append(that.getWording('intro_button_next'))
+							.append(that.getWording('intro.button.next'))
 							.click(function(){
 								that.next();
 							});
 
 						var buttonCancel = $("<button />")
 							.addClass('btn-secondary block')
-							.append(that.getWording('intro_button_cancel'))
+							.append(that.getWording('intro.button.cancel'))
 							.click(function(){
 								that.stop();
 						});
@@ -195,18 +199,18 @@ qx.Class.define("IntroView", {
 						var contentContainer = $("<div />")
 						
 						var text = $("<div />")
-							.append(that.getWording('intro_step_plus'));
+							.append(that.getWording('intro.step.plus.text'));
 						
 						var button = $("<button />")
 							.addClass('block')
-							.append(that.getWording('intro_button_next'))
+							.append(that.getWording('intro.button.next'))
 							.click(function(){
 								that.next();
 							});
 
 						var buttonCancel = $("<button />")
 							.addClass('btn-secondary block')
-							.append(that.getWording('intro_button_cancel'))
+							.append(that.getWording('intro.button.cancel'))
 							.click(function(){
 								that.stop();
 						});
@@ -232,18 +236,18 @@ qx.Class.define("IntroView", {
 						var contentContainer = $("<div />")
 						
 						var text = $("<div />")
-							.append(that.getWording('intro_step_guide'));
+							.append(that.getWording('intro.step.guide.text'));
 						
 						var button = $("<button />")
 							.addClass('block')
-							.append(that.getWording('intro_button_next'))
+							.append(that.getWording('intro.button.next'))
 							.click(function(){
 								that.next();
 							});
 
 						var buttonCancel = $("<button />")
 							.addClass('btn-secondary block')
-							.append(that.getWording('intro_button_cancel'))
+							.append(that.getWording('intro.button.cancel'))
 							.click(function(){
 								that.stop();
 						});

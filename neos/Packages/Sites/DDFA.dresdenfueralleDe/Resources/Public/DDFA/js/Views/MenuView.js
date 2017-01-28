@@ -165,12 +165,12 @@ qx.Class.define("MenuView", {
 
             $('#main-container').addClass('shifted');
 
-            that.refugeeLBtnLabel.append( that.getWording('menu_refugee') );
-            that.supporterBtnLabel.append( that.getWording('menu_supporter') );
-            that.aboutBtnLabel.append( that.getWording('menu_about') );
-            that.pressBtnLabel.append( that.getWording('menu_press') );
-            that.imprintBtnLabel.append( that.getWording('menu_imprint') );
-            that.facebookBtnLabel.append( that.getWording('menu_facebook') );
+            that.refugeeLBtnLabel.append( that.getWording('menu.refugee') );
+            that.supporterBtnLabel.append( that.getWording('menu.supporter') );
+            that.aboutBtnLabel.append( that.getWording('menu.about') );
+            that.pressBtnLabel.append( that.getWording('menu.press') );
+            that.imprintBtnLabel.append( that.getWording('menu.imprint') );
+            that.facebookBtnLabel.append( that.getWording('menu.facebook') );
 
         },
 

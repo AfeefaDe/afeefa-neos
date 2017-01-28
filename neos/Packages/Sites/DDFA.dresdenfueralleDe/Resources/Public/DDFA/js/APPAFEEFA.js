@@ -16,6 +16,26 @@ qx.Class.define("APPAFEEFA", {
 		that.setConfig(
 			{
 				languages: ['ar', 'de', 'en', 'es', 'fa', 'ps', 'fr', 'ku', 'ru', 'sq', 'sr', 'ti', 'tr', 'ur'],
+				phraseapp: {
+					localeId: {
+						'ar': 'arabic',
+						'de': 'german',
+						'en': 'english',
+						'es': 'spanish',
+						'fa': 'persian',
+						'ps': 'pushto',
+						'fr': 'french',
+						'ku': 'kurdish',
+						'ru': 'russian',
+						'sq': 'albanian',
+						'sr': 'serbian',
+						'ti': 'tigrinya',
+						'tr': 'turkish',
+						'ur': 'urdu',
+						'ja': 'japanese',
+						'pa': 'punjabi'
+					}
+				},
 				categories: [
 					{
 						name: 'general',

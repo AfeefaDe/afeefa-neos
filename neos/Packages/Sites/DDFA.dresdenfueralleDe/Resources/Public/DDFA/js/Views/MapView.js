@@ -314,11 +314,11 @@ qx.Class.define("MapView", {
 					titleLabel.append(locationName);
 
 					if(entry.subCategory){
-						categoryLabel.append( that.getWording('cat_' + entry.subCategory) );
-						categoryLabel.append( ' (' + (entry.category ? that.getWording('cat_' + entry.category.name) : '[category missing]') + ')' );
+						categoryLabel.append( that.getWording('cat.' + entry.subCategory) );
+						categoryLabel.append( ' (' + (entry.category ? that.getWording('cat.' + entry.category.name) : '[category missing]') + ')' );
 					}
 					else {
-						categoryLabel.append( entry.category ? that.getWording('cat_' + entry.category.name) : '[category missing]' );
+						categoryLabel.append( entry.category ? that.getWording('cat.' + entry.category.name) : '[category missing]' );
 					}
 
 					container.on('click', function(e){

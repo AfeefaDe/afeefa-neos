@@ -32,7 +32,35 @@ qx.Class.define("LanguageManager", {
         // param (key, [locale])
         // @key bib key
         // @locale get wording in a specific ignoring the current app language
-        resolve: function( key, locale ){
+        resolve: function( key ){
+            var that = this;
+
+            var wording = that.getBib()[ key ];
+            if( wording === undefined ) return '###';
+            return wording.message;
+            
+            // var wording;
+            // if(locale)
+                // wording = that.getBib()[ key ];
+            // else
+            //     wording = that.getBib()[ key ][ that.getCurrentLang() ];
+
+            // if( wording && _.contains(['ar', 'fa', 'ur'], that.getCurrentLang() ) ){
+            //     // reverse string
+                
+            // }
+
+            // if(!wording) wording = that.getBib()[ key ][ 'en' ];
+            // if(!wording) wording = that.getBib()[ key ][ 'de' ];
+            // if(!wording) wording = '###';
+
+            // return wording;
+        },
+
+        // param (key, [locale])
+        // @key bib key
+        // @locale get wording in a specific ignoring the current app language
+        resolve_deprecated: function( key, locale ){
             var that = this;
 
             if( that.getBib()[ key ] === undefined ) return '###';

@@ -55,7 +55,7 @@ qx.Class.define("DetailView", {
 					  thePopper = new Popper(
 						    that.certificateBadge,
 						    {
-						        content: that.getWording('tooltip_certificate'),
+						        content: that.getWording('tooltip.certificate'),
 						        contentType: 'html'
 						    },
 						    {
@@ -182,17 +182,17 @@ qx.Class.define("DetailView", {
 			// TODO dirty code for subcategory, but hey ;)
 			that['propertyIcon'+prop].addClass('subcat-' + record.subCategory);
 			that['propertyIcon'+prop].addClass('type-' + record.type);
-			that['propertyName'+prop].append( record.subCategory ? that.getWording('cat_' + record.subCategory) : that.getWording('cat_' + propName) );
+			that['propertyName'+prop].append( record.subCategory ? that.getWording('cat.' + record.subCategory) : that.getWording('cat.' + propName) );
 
 			// var createEntityLabel = { 0: that.getWording('entity_orga'), 1: that.getWording('entity_market'), 2: that.getWording('entity_event') };
 			function createEntityLabel( record ){
 				switch( record.type ){
 					case 0:
-					return that.getWording('entity_orga');
+					return that.getWording('entity.orga');
 					case 1: 
-					return record.offer ? that.getWording('entity_market_offer') : that.getWording('entity_market_request');
+					return record.offer ? that.getWording('entity.market.offer') : that.getWording('entity.market.request');
 					case 2:
-					return that.getWording('entity_event');
+					return that.getWording('entity.event');
 				}
 			}
 			// var value = entityLabels[record.type];
@@ -204,9 +204,9 @@ qx.Class.define("DetailView", {
 			// location
 			var prop = 'location';
 			that['propertyIcon'+prop].addClass('icon-' + prop);
-			that['propertyName'+prop].append( that.getWording( 'prop_' + prop ) );
+			that['propertyName'+prop].append( that.getWording( 'prop.' + prop ) );
 			
-			var value = (record.location.length > 0) ? buildLocation(record) : that.getWording( 'prop_location_none' );
+			var value = (record.location.length > 0) ? buildLocation(record) : that.getWording( 'prop.location.none' );
 			function buildLocation(record){
 				var location = '';
 				if( record.location[0].placename ) location += record.location[0].placename + '<br>';
@@ -223,7 +223,7 @@ qx.Class.define("DetailView", {
 			// time information
 			var prop = 'times';
 			that['propertyIcon'+prop].addClass('icon-' + prop);
-			that['propertyName'+prop].append( that.getWording( 'prop_' + prop ) );
+			that['propertyName'+prop].append( that.getWording( 'prop.' + prop ) );
 			
 			var value = APP.getUtility().buildTimeString(record);
 
@@ -240,7 +240,7 @@ qx.Class.define("DetailView", {
 				if( record[prop] ) {
 					
 					that['propertyIcon'+prop].addClass('icon-' + prop);
-					that['propertyName'+prop].append( that.getWording( 'prop_' + prop ) );
+					that['propertyName'+prop].append( that.getWording( 'prop.' + prop ) );
 					
 					// may create link
 					if( _.contains( ['web', 'facebook'], prop) ){
@@ -253,7 +253,7 @@ qx.Class.define("DetailView", {
 						_.each( record[prop].split(',') , function( langCode ){
 							const span = $('<span />')
 								.addClass('multiselect-value')
-								.append( that.getWording('lan_' + langCode) );
+								.append( that.getWording('lan.' + langCode) );
 							that['propertyValue'+prop].append( span );
 						});
 					}
@@ -266,7 +266,7 @@ qx.Class.define("DetailView", {
 				else if( record.location[0] && record.location[0][prop] ) {
 					
 					that['propertyIcon'+prop].addClass('icon-' + prop);
-					that['propertyName'+prop].append( that.getWording( 'prop_' + prop ) );
+					that['propertyName'+prop].append( that.getWording( 'prop.' + prop ) );
 
 					if( _.contains( ['arrival'], prop) ){
 						that['propertyValue'+prop].append(record.location[0][prop].replace(/(?:\r\n|\r|\n)/g, '<br />'));

@@ -37,7 +37,7 @@ qx.Class.define("LanguageView", {
 				that.createTooltip(
 					langBtn, 
 					function(){
-						return that.getWording('lan_' + lang, lang) + ' (' + that.getWording('lan_' + lang) + ')';
+						return that.getWording('lan.' + lang, lang) + ' (' + that.getWording('lan.' + lang) + ')';
 					}(),
 					'hover',
 					'top',
@@ -45,7 +45,10 @@ qx.Class.define("LanguageView", {
 				);
 
 				langBtn.click(function(){
-					that.say('languageChanged', lang);
+					APP.getDataManager().getUITranslations(lang, function(data){
+            APP.getLM().setBib(data);
+						that.say('languageChanged', lang);
+					});
 				});
 
 				that.buttons.push( {el: langBtn, lang: lang} );

@@ -35,7 +35,7 @@ qx.Class.define("SearchView", {
       that.createTooltip(
         that.menuBtn,
         function(){
-          return that.getWording('menu_menu');
+          return that.getWording('menu.menu');
         }(),
         'hover',
         'top',
@@ -53,7 +53,7 @@ qx.Class.define("SearchView", {
       that.createTooltip(
         that.refugeeBtn,
         function(){
-          return that.getWording('menu_refugee');
+          return that.getWording('menu.refugee');
         }(),
         'hover',
         'top',
@@ -83,15 +83,15 @@ qx.Class.define("SearchView", {
         .attr({
           'data-toggle': 'tooltip',
           'data-placement': "bottom",
-          'title': that.getWording('menu_cancel'),
-          'data-original-title': that.getWording('menu_cancel') 
+          'title': that.getWording('menu.cancel'),
+          'data-original-title': that.getWording('menu.cancel') 
         });
       that.searchBar.append(that.cancelBtn);
 
       // input field
       that.inputField = $("<input />")
         .attr('type', 'text')
-        .attr('placeholder', that.getWording('search_placeholder'));
+        .attr('placeholder', that.getWording('search.placeholder'));
       that.searchBar.append(that.inputField);
 
       // search tags
@@ -207,7 +207,7 @@ qx.Class.define("SearchView", {
         
         // label
         var label = entry.name;
-        var subLabel = entry.subCategory ? that.getWording('cat_' + entry.subCategory) : that.getWording('cat_' + categoryName);
+        var subLabel = entry.subCategory ? that.getWording('cat.' + entry.subCategory) : that.getWording('cat.' + categoryName);
         if( entry.type == 2 && entry.dateFrom ) subLabel += ' | ' + APP.getUtility().buildTimeString(entry);
         
         // action
@@ -228,10 +228,10 @@ qx.Class.define("SearchView", {
         var action = function(){
           APP.getIncludeView().load( APP.getIncludeView().getIncludes().entryFormGuide );
         };
-        createResult('add-entry', that.getWording('search_label_addentry'), that.getWording('search_sublabel_addentry'), action );
+        createResult('add-entry', that.getWording('search.label.addentry'), that.getWording('search.sublabel.addentry'), action );
 
         // upcoming events
-        createSectionHeader( that.getWording('search_label_upcomingevents'), function(){
+        createSectionHeader( that.getWording('search.label.upcomingevents'), function(){
           that.inputField.val('events').trigger( "input" );
         });
         
@@ -246,7 +246,7 @@ qx.Class.define("SearchView", {
         //   createEntryResult(entry);
         // });
 
-        createSectionHeader( that.getWording('search_label_lists') );
+        createSectionHeader( that.getWording('search.label.lists') );
 
         // link to refugee guide
         // var action = function(){
@@ -264,27 +264,27 @@ qx.Class.define("SearchView", {
         var action = function(){
           that.inputField.val('support wanted').trigger( "input" );
         };
-        createResult('support-wanted', that.getWording('search_label_supportwanted'), that.getWording('search_sublabel_supportwanted'), action );
+        createResult('support-wanted', that.getWording('search.label.supportwanted'), that.getWording('search.sublabel.supportwanted'), action );
 
         // for children
         var action = function(){
-          that.inputField.val(that.getWording('prop_forChildren')).trigger( "input" );
+          that.inputField.val(that.getWording('prop.forChildren')).trigger( "input" );
         };
-        createResult('for-children', that.getWording('search_label_forchildren'), that.getWording('search_sublabel_forchildren'), action );
+        createResult('for-children', that.getWording('search.label.forchildren'), that.getWording('search.sublabel.forchildren'), action );
 
         // certified by SFR
         var action = function(){
           that.inputField.val('certified').trigger( "input" );
         };
-        createResult('certified', that.getWording('search_label_certified'), that.getWording('search_sublabel_certified'), action );
+        createResult('certified', that.getWording('search.label.certified'), that.getWording('search.sublabel.certified'), action );
 
-        createSectionHeader( that.getWording('search_label_help') );
+        createSectionHeader( that.getWording('search.label.help') );
         
         // intro
         var action = function(){
           APP.getIntroView().start();
         };
-        createResult('start-intro', that.getWording('search_label_intro'), that.getWording('search_sublabel_intro'), action );
+        createResult('start-intro', that.getWording('search.label.intro'), that.getWording('search.sublabel.intro'), action );
 
       } else {  // find by query
         
@@ -322,7 +322,7 @@ qx.Class.define("SearchView", {
           that.searchTag
             .addClass("active")
             .addClass("cat-" + classNameCategory )
-            .append(that.getWording('cat_' + operationQuery));
+            .append(that.getWording('cat.' + operationQuery));
 
           that.inputField.hide();
         }
@@ -340,19 +340,19 @@ qx.Class.define("SearchView", {
 
           that.searchTag
             .addClass("active")
-            .append(that.getWording('search_tag_supportwanted'));
+            .append(that.getWording('search.tag.supportwanted'));
           that.inputField.hide();
         }
 
         // children
-        else if( query == that.getWording('prop_forChildren').toLowerCase() ){
+        else if( query == that.getWording('prop.forChildren').toLowerCase() ){
           entriesFiltered = _.filter( entries, function(entry){
             return entry.forChildren;
           });
 
           that.searchTag
             .addClass("active")
-            .append(that.getWording('prop_forChildren'));
+            .append(that.getWording('prop.forChildren'));
           that.inputField.hide();
         }
 
@@ -364,7 +364,7 @@ qx.Class.define("SearchView", {
 
           that.searchTag
             .addClass("active")
-            .append(that.getWording('search_tag_' + query));
+            .append(that.getWording('search.tag.' + query));
           that.inputField.hide();
         }
         
@@ -375,18 +375,18 @@ qx.Class.define("SearchView", {
             if( entry.name.toLowerCase().indexOf(query) >= 0 ) return true;
             // in category?
             if( entry.category ) {
-              var cat = that.getWording('cat_' + entry.category.name);
+              var cat = that.getWording('cat.' + entry.category.name);
               if( cat.toLowerCase().indexOf(query) >= 0 ) return true;
             }
             // in subCategory?
             if( entry.subCategory ) {
-              var subcat = that.getWording('cat_' + entry.subCategory);
+              var subcat = that.getWording('cat.' + entry.subCategory);
               if( subcat.toLowerCase().indexOf(query) >= 0 ) return true;
             }
             // children?
             if( entry.forChildren ) {
               // the query string occurs in the "for children" property´wording of the selected language
-              var children = that.getWording('prop_forChildren');
+              var children = that.getWording('prop.forChildren');
               if( children.toLowerCase().indexOf(query) >= 0 ) return true;
             }
             // in description?

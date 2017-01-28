@@ -165,12 +165,12 @@ qx.Class.define("FormView", {
 
             that.sendBtn = $("<button />")
                 .addClass('sendBtn')
-                .append(that.getWording('form_sendBtn'));
+                .append(that.getWording('form.sendBtn'));
             that.buttonContainer.find('p').append(that.sendBtn);
 
             that.cancelBtn = $("<button />")
                 .addClass('cancelBtn btn-secondary margin-left')
-                .append(that.getWording('form_cancelBtn'));
+                .append(that.getWording('form.cancelBtn'));
             that.buttonContainer.find('p').append(that.cancelBtn);
 
             this.base(arguments);
@@ -247,8 +247,8 @@ qx.Class.define("FormView", {
             // switch
             else if (property.type == 'switch') {
                 var container = $("<div />").addClass('form-switch');
-                var option1 = $("<span />").append(that.getWording('prop_' + property.name + '_' + property.values[0][1]));
-                var option2 = $("<span />").append(that.getWording('prop_' + property.name + '_' + property.values[1][1]));
+                var option1 = $("<span />").append(that.getWording('prop.' + property.name + '_' + property.values[0][1]));
+                var option2 = $("<span />").append(that.getWording('prop.' + property.name + '_' + property.values[1][1]));
                 container.append(option1);
                 container.append(option2);
 
@@ -300,7 +300,7 @@ qx.Class.define("FormView", {
             var that = this;
 
             var btn = $('<button />')
-                .append(that.getWording('form_locationBtn_add'))
+                .append(that.getWording('form.locationBtn.add'))
                 .click(function (e) {
                     e.preventDefault();
 
@@ -309,10 +309,10 @@ qx.Class.define("FormView", {
 
                     // change button
                     if (locationContainer.hasClass('active')) {
-                        $(this).empty().append(that.getWording('form_locationBtn_remove'));
+                        $(this).empty().append(that.getWording('form.locationBtn.remove'));
                     }
                     else {
-                        $(this).empty().append(that.getWording('form_locationBtn_add'));
+                        $(this).empty().append(that.getWording('form.locationBtn.add'));
                         // empty additional input fields
                         locationContainer.find('input').val('');
                     }
@@ -387,7 +387,7 @@ qx.Class.define("FormView", {
             var sectionHeader = $('<h3 />').append('Kontaktdaten');
             form.append(sectionHeader);
 
-            var notice = $('<p />').append(that.getWording('form_text_contactinfo'));
+            var notice = $('<p />').append(that.getWording('form.text.contactinfo'));
             form.append(notice);
 
             var speakerEl = that.createInput(properties.speakerPublic, type);
@@ -487,7 +487,7 @@ qx.Class.define("FormView", {
             var sectionHeader = $('<h3 />').append('Kontaktdaten');
             form.append(sectionHeader);
 
-            var notice = $('<p />').append(that.getWording('form_text_contactinfo'));
+            var notice = $('<p />').append(that.getWording('form.text.contactinfo'));
             form.append(notice);
 
             var speakerEl = that.createInput(properties.speakerPublic, type);
@@ -584,7 +584,7 @@ qx.Class.define("FormView", {
             var sectionHeader = $('<h3 />').append('Kontaktdaten');
             form.append(sectionHeader);
 
-            var notice = $('<p />').append(that.getWording('form_text_contactinfo'));
+            var notice = $('<p />').append(that.getWording('form.text.contactinfo'));
             form.append(notice);
 
             var speakerEl = that.createInput(properties.speakerPublic, type);
@@ -677,19 +677,19 @@ qx.Class.define("FormView", {
             that.showCurtain(true);
 
             // set heading value
-            that.heading.empty().append(that.getWording('form_' + type));
+            that.heading.empty().append(that.getWording('form.' + type));
 
             // set placeholders/ labels
             _.each(that.getProperties()[type], function (property) {
                 // set placeholder value
                 that.forms[type].fields[property.name]
-                    .attr('placeholder', that.getWording('form_placeholder_' + property.name));
+                    .attr('placeholder', that.getWording('form.placeholder.' + property.name));
 
                 // set label value if a lable exists
                 if (that.forms[type].fields[property.name + '_label'])
                     that.forms[type].fields[property.name + '_label']
                         .empty()
-                        .append(that.getWording('form_placeholder_' + property.name));
+                        .append(that.getWording('form.placeholder.' + property.name));
 
                 if (_.contains(['date', 'time'], property.type)) {
                     if (APP.getUserDevice() == 'desktop' && !Modernizr.inputtypes.date) {
@@ -710,7 +710,7 @@ qx.Class.define("FormView", {
                     var emptyOption = $('<option />')
                     // .attr('selected', true)
                         .attr('value', '')
-                        .append(that.getWording('form_emptyOption_' + property.name));
+                        .append(that.getWording('form.emptyOption.' + property.name));
                     that.forms[type].fields[property.name].append(emptyOption);
 
                     _.each(property.values, function (value, key) {
@@ -720,17 +720,17 @@ qx.Class.define("FormView", {
                         if (property.name == 'category') {
                             option
                                 .attr('value', value.identifier)
-                                .append(that.getWording('cat_' + value.name));
+                                .append(that.getWording('cat.' + value.name));
                         }
                         else if (property.name == 'subCategory') {
                             option
                                 .attr('value', value.name)
-                                .append(that.getWording('cat_' + value.name));
+                                .append(that.getWording('cat.' + value.name));
                         }
                         else {
                             option
                                 .attr('value', value[0])
-                                .append(that.getWording('prop_' + property.name + '_' + value[1]));
+                                .append(that.getWording('prop.' + property.name + '_' + value[1]));
                         }
 
                         that.forms[type].fields[property.name].append(option);
@@ -743,7 +743,7 @@ qx.Class.define("FormView", {
 
                     // placeholder for desktop (using "chosen" jQ plugin)
                     that.forms[type].fields[property.name]
-                        .attr('data-placeholder', that.getWording('form_placeholder_' + property.name));
+                        .attr('data-placeholder', that.getWording('form.placeholder.' + property.name));
 
                     // TODO not working, because mobile browsers show "N selected" instead of placeholder or first option
                     // placeholder for mobiles (using empty option, because placeholder is not natively supported for multi select)
@@ -759,7 +759,7 @@ qx.Class.define("FormView", {
                         var option = $("<option />");
 
                         option.attr('value', value);
-                        option.append(that.getWording('lan_' + value));
+                        option.append(that.getWording('lan.' + value));
 
                         that.forms[type].fields[property.name].append(option);
                     });
@@ -871,13 +871,13 @@ qx.Class.define("FormView", {
             APP.getDataManager().addMarketEntry(data_joined, function (response) {
                 if (!response.marketentry) {
                     // that.thatResponseMessage().append( that.getWording('form_fail') );
-                    alert(that.getWording('form_fail'));
+                    alert(that.getWording('form.fail'));
                     that.loading(false);
                     return;
                 }
 
                 // that.responseMessage.append( that.getWording('form_success') );
-                alert(that.getWording('form_success'));
+                alert(that.getWording('form.success'));
                 that.close();
 
                 // dataLocation.location['marketEntry'] = response.marketentry.persistenceObjectIdentifier;
@@ -967,11 +967,11 @@ qx.Class.define("FormView", {
             APP.getDataManager().addFeedback(data, function (response) {
 
                 if (response.feedback) {
-                    alert(that.getWording('form_feedbackSent'));
+                    alert(that.getWording('form.feedbackSent'));
                     that.close();
                 }
                 else {
-                    alert(that.getWording('form_fail'));
+                    alert(that.getWording('form.fail'));
                     that.loading(false);
                 }
 

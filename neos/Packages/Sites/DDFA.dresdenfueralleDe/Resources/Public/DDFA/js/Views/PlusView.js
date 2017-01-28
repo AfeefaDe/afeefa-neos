@@ -57,8 +57,8 @@ qx.Class.define("PlusView", {
 		load: function(){
 			var that = this;
 
-			that.entryLabel.empty().append( that.getWording( 'plus_entry' ) );
-			that.feedbackLabel.empty().append( that.getWording( 'plus_feedback' ) );
+			that.entryLabel.empty().append( that.getWording( 'plus.entry' ) );
+			that.feedbackLabel.empty().append( that.getWording( 'plus.feedback' ) );
 		},
 
 		show: function(){

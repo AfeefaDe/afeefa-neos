@@ -212,7 +212,7 @@ qx.Class.define("LegendView", {
 			attributeContainer.append(attrFormElement);
 
 			var attrLabel = $("<label />")
-				.append(that.getWording('prop_' + key))
+				.append(that.getWording('prop.' + key))
 				.click(function(){
 					attrFormElement.prop("checked", !(attrFormElement.prop("checked")) );
 					setAttrFilter( attrFormElement.prop("checked") );
@@ -234,22 +234,22 @@ qx.Class.define("LegendView", {
 
 		  _.each( that.getCategories(), function(cat){
 			  
-			  that['label-' + cat.id].append( that.getWording('cat_' + cat.name) );
+			  that['label-' + cat.id].append( that.getWording('cat.' + cat.name) );
 
 			  _.each( cat.sub, function(subcat){
-				  that['label-' + subcat.id].append( that.getWording('cat_' + subcat.name) );
+				  that['label-' + subcat.id].append( that.getWording('cat.' + subcat.name) );
 			  });
 
 		  });
 
 		  _.each( {0: 'orga', 1: 'market', 2: 'event'}, function(value, key){
-		  	that['label-entity-' + value].append(that.getWording('entity_' + value));
+		  	that['label-entity-' + value].append(that.getWording('entity.' + value));
 		  });
 
-		  that['label-filter-reset'].append( that.getWording('misc_filterReset') );
-	  	that.moduleHeadingEntity.append(that.getWording('entry_type'));
+		  that['label-filter-reset'].append( that.getWording('misc.filterReset') );
+	  	that.moduleHeadingEntity.append(that.getWording('entry.type'));
 	  	that.moduleHeadingCategory.append(that.getWording('category'));
-	  	that.moduleHeadingAttribute.append(that.getWording('label_attribute_filter'));
+	  	that.moduleHeadingAttribute.append(that.getWording('label.attribute.filter'));
 	  },
 
 	  // used for mobile instead of mouse hover

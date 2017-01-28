@@ -28,14 +28,8 @@ qx.Class.define("DataManager", {
                     that.say('fetchedNewData');
                 });
 
-                that.getLanguageBib(function (data) {  // language bib
-                    // store in APP
-                    APP.getLM().setBib(data[0]);
-
-                    console.debug('fetchedAllData in ' + APP.getLM().getCurrentLang(), data);
-                    cb();  // finished, so callback
-                });
-
+                console.debug('fetchedAllData in ' + APP.getLM().getCurrentLang(), data);
+                cb();  // finished, so callback
             });
         },
 
@@ -43,9 +37,12 @@ qx.Class.define("DataManager", {
             var that = this;
 
             // snychronous data calls (wait for all data calls to finish)
-            that.getLanguageBib(function (data) {  // language bib
-                // store in APP
-                APP.getLM().setBib(data[0]);
+            // that.getLanguageBib(function (data) {  // language bib
+            //     // store in APP
+            //     APP.getLM().setBib(data[0]);
+            that.getUITranslations(APP.getLM().getCurrentLang(), function (data) {  // language bib
+
+                APP.getLM().setBib(data);
 
                 that.getAllCategories(function (data) {  // categories
                     // store in APP
@@ -69,6 +66,26 @@ qx.Class.define("DataManager", {
             })
                 .done(function (data) {
                     cb(data);
+                })
+                .fail(function (a) {
+                    console.debug(a);
+                });
+
+        },
+
+        getUITranslations: function (lang, cb) {
+
+            $.ajax({
+                url: 'https://api.phraseapp.com/api/v2/projects/15466a179c265396774350db18745f34/locales/' +APP.getConfig().phraseapp.localeId[lang]+ '/download?file_format=json&fallback_locale_id=german&include_empty_translations=true',
+                type: 'GET',
+                dataType: 'text',
+                headers: { 
+                    'Authorization': 'token a9d97a31787c37d64ce0200e8cfdf2c95c01bddf9960999ea601a487e0a386a4'
+                    // 'User-Agent': 'Afeefa.de Frontend (team@afeefa.de)'
+                }
+            })
+                .done(function (data) {
+                    cb(JSON.parse(data));
                 })
                 .fail(function (a) {
                     console.debug(a);

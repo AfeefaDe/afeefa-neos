@@ -269,6 +269,7 @@ qx.Class.define("LegendView", {
 		  
 		  APP.setActiveFilter(filterOptions);
 		  that.say('filterSet', APP.getActiveFilter());
+      if( APP.getUserDevice() == 'mobile') that.close();
 	  },
 
 	  resetFilter: function(){

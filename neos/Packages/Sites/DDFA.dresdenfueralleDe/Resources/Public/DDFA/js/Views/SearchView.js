@@ -453,11 +453,11 @@ qx.Class.define("SearchView", {
           }
           else if( filter.category ) {
             that.inputField.val( 'cat:' + filter.category ).trigger( "input" );
-            if( APP.getUserDevice() == 'mobile') that.minimize();
+            // if( APP.getUserDevice() == 'mobile') that.minimize();
           }
           else if( filter.subCategory ) {
             that.inputField.val( 'subcat:' + filter.subCategory ).trigger( "input" );
-            if( APP.getUserDevice() == 'mobile') that.minimize();
+            // if( APP.getUserDevice() == 'mobile') that.minimize();
           }
         // }
 

@@ -272,6 +272,12 @@ qx.Class.define("SearchView", {
         };
         createResult('for-children', that.getWording('search.label.forchildren'), that.getWording('search.sublabel.forchildren'), action );
 
+        // for women
+        var action = function(){
+          that.inputField.val(that.getWording('search.phrase.forwomen')).trigger( "input" );
+        };
+        createResult('for-women', that.getWording('search.label.forwomen'), that.getWording('search.sublabel.forwomen'), action );
+
         // certified by SFR
         var action = function(){
           that.inputField.val('certified').trigger( "input" );

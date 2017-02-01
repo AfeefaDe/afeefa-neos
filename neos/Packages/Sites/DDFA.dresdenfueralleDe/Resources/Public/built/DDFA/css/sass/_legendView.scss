@@ -184,7 +184,7 @@
 			.icon {
 				
 				@include categorySymbols;
-				@include background-size(50%);
+				@include background-size(50% !important);
 				
 				float: left;			
 				width: 2.5em;

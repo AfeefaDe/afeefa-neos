@@ -38,8 +38,8 @@ qx.Class.define("MessageView", {
 
 			that.templates = {
 				'survey': {
-					title: 'Wie nutzt du Afeefa.de?',
-					contentNode: 'Mit einem kurzen Feedback unterstützt du das Afeefa Projekt und dessen Weiterentwicklung!',
+					title: that.getWording('message.survey.title'),
+					contentNode: that.getWording('message.survey.text'),
 					cssClass: '',
 					actions: 
 						[

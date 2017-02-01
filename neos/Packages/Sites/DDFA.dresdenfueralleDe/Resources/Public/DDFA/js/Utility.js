@@ -19,11 +19,11 @@ qx.Class.define("Utility", {
 			var timeFrom = record.timeFrom;
 			var timeTo = record.timeTo;
 
-			var vocabDateFrom = APP.getLM().resolve('prop_dateFrom');
-			var vocabDateTo = APP.getLM().resolve('prop_dateTo');
-			var vocabTimeFrom = APP.getLM().resolve('prop_timeFrom');
-			var vocabTimeTo = APP.getLM().resolve('prop_timeTo');
-			var vocabTimeAt = APP.getLM().resolve('prop_timeAt');
+			var vocabDateFrom = APP.getLM().resolve('prop.dateFrom');
+			var vocabDateTo = APP.getLM().resolve('prop.dateTo');
+			var vocabTimeFrom = APP.getLM().resolve('prop.timeFrom');
+			var vocabTimeTo = APP.getLM().resolve('prop.timeTo');
+			var vocabTimeAt = APP.getLM().resolve('prop.timeAt');
 
 
 			if( dateFrom && timeFrom && dateTo && timeTo){

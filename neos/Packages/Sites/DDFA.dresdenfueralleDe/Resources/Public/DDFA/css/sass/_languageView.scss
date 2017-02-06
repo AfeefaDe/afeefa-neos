@@ -7,7 +7,6 @@
 
 		@include circleBtn;
 		@include background-size(cover);
-
 		@include languageFlags;
 
 		/*display: none;*/
@@ -20,9 +19,29 @@
 		position: absolute;
 		width: 70%;
 		height: 70%;
-		background-color: white;
 		top: 15%;
 		left: 15%;
+		overflow-y: scroll;
+		background-color: $white;
+	}
+
+	.lang-item {
+		height: 5em;
+		padding: 1em;
+		@include display-flex;
+		border: 1px solid $gray20;
+
+		.lang-item-flag {
+			width: 3em;
+			@include circleBtn;
+			@include background-size(cover);
+			@include languageFlags;
+		}
+
+		.lang-item-label {
+	    padding-left: 1em;
+    	font-size: 2em;
+		}
 	}
 
 	&.active {

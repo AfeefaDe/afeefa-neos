@@ -32,20 +32,14 @@ qx.Class.define("LanguageView", {
 
 			// list container
 			that.listContainer = $("<div />")
-				.attr('id', 'list-container')
-				.append( $("<ul />") );
+				.attr('id', 'list-container');
 			
-			// list
-			that.list = $("<ul />");
-
-			that.listContainer.append(that.list);
 			that.view.append(that.listContainer);
 
 			// all the languages as list items
 			_.each( APP.getConfig().languages, function(lang){
-				var langItem = $("<li />")
-					.addClass(lang)
-					.append(that.getWording('lan.'+lang))
+				var langItem = $("<div />")
+					.addClass('lang-item ' + lang)
 					.click(function(){
 						that.close();
 
@@ -54,10 +48,20 @@ qx.Class.define("LanguageView", {
 							that.say('languageChanged', lang);
 						});
 					});
+				
+				var flag = $("<div />")
+					.addClass('lang-item-flag ' + lang);
+					
+				var label = $("<div />")
+					.addClass('lang-item-label')
+					.append(that.getWording('lan.'+lang));
+
+				langItem.append(flag);
+				langItem.append(label);
 
 				// that.buttons.push( {el: langItem, lang: lang} );
 
-				that.list.append(langItem);
+				that.listContainer.append(langItem);
 			});
 			
 			$('#main-container').append(that.view);

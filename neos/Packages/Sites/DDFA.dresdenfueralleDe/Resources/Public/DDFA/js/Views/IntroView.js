@@ -23,8 +23,6 @@ qx.Class.define("IntroView", {
 			that.defineSteps();
 
 			this.base(arguments);
-
-			// that.load();
 		},
 
 		defineSteps: function(){
@@ -33,6 +31,7 @@ qx.Class.define("IntroView", {
 			var userDevice = APP.getUserDevice();
 
 			that.steps = {
+
 				step1: {
 					stepName: 'search',
 					el: (userDevice == 'mobile')? that.view : APP.getSearchView().view,
@@ -50,6 +49,7 @@ qx.Class.define("IntroView", {
 					},
 					buttons: ['next', 'cancelForever']
 				},
+				
 				step2: {
 					stepName: 'map',
 					el: APP.getMapView().view,
@@ -66,6 +66,7 @@ qx.Class.define("IntroView", {
 					},
 					buttons: ['next', 'cancel']
 				},
+				
 				step3: {
 					stepName: 'language',
 					el: APP.getLanguageView().view,
@@ -82,16 +83,23 @@ qx.Class.define("IntroView", {
 					},
 					buttons: ['finish']
 				},
+				
 				step4: {
 					stepName: 'legend',
-					el: APP.getLegendView().view,
-					placement: 'left',
+					el: (userDevice == 'mobile')? APP.getSearchView().filterBtn : APP.getLegendView().view,
+					placement: (userDevice == 'mobile')? 'bottom' : 'left',
 					preAction: function(){
-						APP.getLegendView().showCurtain(true);
+						if(userDevice == 'mobile'){
+							APP.getSearchView().close();
+							APP.getSearchView().showCurtain(true);
+						} else {
+							APP.getLegendView().showCurtain(true);
+						}
 						// APP.getLegendView().show();
 					},
 					afterAction: function(){
 						APP.getLegendView().showCurtain(false);
+						APP.getSearchView().showCurtain(false);
 						// APP.getLegendView().close();
 					},
 					phraseAppKeys: {
@@ -100,6 +108,7 @@ qx.Class.define("IntroView", {
 					},
 					buttons: ['next', 'cancel']
 				},
+				
 				step5: {
 					stepName: 'plus',
 					el: APP.getPlusView().plusBtn,
@@ -116,6 +125,7 @@ qx.Class.define("IntroView", {
 					},
 					buttons: ['next', 'cancel']
 				},
+				
 				step6: {
 					stepName: 'guide',
 					el: APP.getSearchView().refugeeBtn,
@@ -296,10 +306,6 @@ qx.Class.define("IntroView", {
 
 		close: function(){
 			var that = this;
-
-			// TODO: only do in mobile version
-			// that.addRequestBtn.css('display', 'none');
-			// that.addOfferBtn.css('display', 'none');
 		}
 	}
 

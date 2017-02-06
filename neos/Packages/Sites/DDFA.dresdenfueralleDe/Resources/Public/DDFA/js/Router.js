@@ -174,8 +174,6 @@ qx.Class.define("Router", {
 
 			var firstLevel = that.currentPath[0];
 			
-			// $('a')
-
 			d3.selectAll('nav a').each(function(){
 				var aSel = d3.select(this);
 				if(aSel.attr('href') == '#'+firstLevel)
@@ -194,10 +192,10 @@ qx.Class.define("Router", {
 					that.loadFromUrl();
 				}
 				else {
-					if(APP.getUserDevice() == 'mobile') {
-						APP.getIncludeView().load( APP.getIncludeView().getIncludes().intro );
-					}
-					else {
+					// if(APP.getUserDevice() == 'mobile') {
+					// 	APP.getIncludeView().load( APP.getIncludeView().getIncludes().intro );
+					// }
+					// else {
 						// start intro?
 						if( !localStorage.getItem("introIsKnown") ){
 							APP.getIntroView().start();
@@ -206,7 +204,7 @@ qx.Class.define("Router", {
 						else {
 							APP.getSearchView().loadResults();
 						}
-					}
+					// }
 				}
 			});
 

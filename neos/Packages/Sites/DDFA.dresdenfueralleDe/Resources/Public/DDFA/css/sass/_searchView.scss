@@ -52,7 +52,7 @@
 
 		.cancel-btn {
 			top: 0;
-			right: 0;
+			right: 3em;
 	    background-image: url("../img/icon_34.svg");
 			@include transform(rotate(45deg));
 			opacity: 1;
@@ -186,7 +186,7 @@
 
 	&.active {
 		#search-bar input {
-	    width: calc(100% - 3em - 3em);
+	    width: calc(100% - 3em - 3em - 3em);
 		}
 
 		.cancel-btn {
@@ -195,10 +195,6 @@
 
 		.refugee-btn {
 			display: none;
-		}
-
-		.filter-btn {
-			display: none !important;
 		}
 
 		#results {
@@ -258,10 +254,6 @@
 			#results {
 				max-height: calc(100vh - 3.5em);
 		    overflow: scroll;
-			}
-
-			.filter-btn {
-				display: none !important;
 			}
 		}
   }	

@@ -44,36 +44,11 @@ qx.Class.define("IntroView", {
 					afterAction: function(){
 						APP.getSearchView().showCurtain(false);
 					},
-					content: function(){
-						var contentContainer = $("<div />")
-						
-						var heading = $("<h2 />")
-							.append(that.getWording('intro.step.search.title'));
-
-						var text = $("<p />")
-							.append(that.getWording('intro.step.search.text'));
-						
-						var button = $("<button />")
-							.addClass('block')
-							.append(that.getWording('intro.button.next'))
-							.click(function(){
-								that.next();
-							});
-
-						var buttonCancel = $("<button />")
-							.addClass('btn-secondary block')
-							.append(that.getWording('intro.button.cancel.forever'))
-							.click(function(){
-								that.stop();
-								that.saveIntroDecision();
-						});
-
-						contentContainer.append(heading);
-						contentContainer.append(text);
-						contentContainer.append(button);
-						contentContainer.append(buttonCancel);
-						return contentContainer;
-					}()
+					phraseAppKeys: {
+						heading: 'intro.step.search.title',
+						text: 'intro.step.search.text'
+					},
+					buttons: ['next', 'cancelForever']
 				},
 				step2: {
 					stepName: 'map',
@@ -85,31 +60,11 @@ qx.Class.define("IntroView", {
 					afterAction: function(){
 						APP.getMapView().showCurtain(false);
 					},
-					content: function(){
-						var contentContainer = $("<div />")
-						
-						var text = $("<div />")
-							.append(that.getWording('intro.step.map.text'));
-						
-						var button = $("<button />")
-							.addClass('block')
-							.append(that.getWording('intro.button.next'))
-							.click(function(){
-								that.next();
-						});
-
-						var buttonCancel = $("<button />")
-							.addClass('btn-secondary block')
-							.append(that.getWording('intro.button.cancel'))
-							.click(function(){
-								that.stop();
-						});
-
-						contentContainer.append(text);
-						contentContainer.append(button);
-						contentContainer.append(buttonCancel);
-						return contentContainer;
-					}()
+					phraseAppKeys: {
+						heading: 'intro.step.map.title',
+						text: 'intro.step.map.text'
+					},
+					buttons: ['next', 'cancel']
 				},
 				step3: {
 					stepName: 'language',
@@ -121,31 +76,11 @@ qx.Class.define("IntroView", {
 					afterAction: function(){
 						APP.getLanguageView().showCurtain(false);
 					},
-					content: function(){
-						var contentContainer = $("<div />")
-						
-						var text = $("<div />")
-							.append(that.getWording('intro.step.language.text'));
-						
-						var button = $("<button />")
-							.addClass('block')
-							.append(that.getWording('intro.button.next'))
-							.click(function(){
-								that.next();
-							});
-
-						var buttonCancel = $("<button />")
-							.addClass('btn-secondary block')
-							.append(that.getWording('intro.button.cancel'))
-							.click(function(){
-								that.stop();
-						});
-
-						contentContainer.append(text);
-						contentContainer.append(button);
-						contentContainer.append(buttonCancel);
-						return contentContainer;
-					}()
+					phraseAppKeys: {
+						heading: 'intro.step.language.title',
+						text: 'intro.step.language.text'
+					},
+					buttons: ['finish']
 				},
 				step4: {
 					stepName: 'legend',
@@ -159,31 +94,11 @@ qx.Class.define("IntroView", {
 						APP.getLegendView().showCurtain(false);
 						// APP.getLegendView().close();
 					},
-					content: function(){
-						var contentContainer = $("<div />")
-						
-						var text = $("<div />")
-							.append(that.getWording('intro.step.legend.text'));
-						
-						var button = $("<button />")
-							.addClass('block')
-							.append(that.getWording('intro.button.next'))
-							.click(function(){
-								that.next();
-							});
-
-						var buttonCancel = $("<button />")
-							.addClass('btn-secondary block')
-							.append(that.getWording('intro.button.cancel'))
-							.click(function(){
-								that.stop();
-						});
-
-						contentContainer.append(text);
-						contentContainer.append(button);
-						contentContainer.append(buttonCancel);
-						return contentContainer;
-					}()
+					phraseAppKeys: {
+						heading: 'intro.step.legend.title',
+						text: 'intro.step.legend.text'
+					},
+					buttons: ['next', 'cancel']
 				},
 				step5: {
 					stepName: 'plus',
@@ -195,31 +110,11 @@ qx.Class.define("IntroView", {
 					afterAction: function(){
 						APP.getPlusView().close();
 					},
-					content: function(){
-						var contentContainer = $("<div />")
-						
-						var text = $("<div />")
-							.append(that.getWording('intro.step.plus.text'));
-						
-						var button = $("<button />")
-							.addClass('block')
-							.append(that.getWording('intro.button.next'))
-							.click(function(){
-								that.next();
-							});
-
-						var buttonCancel = $("<button />")
-							.addClass('btn-secondary block')
-							.append(that.getWording('intro.button.cancel'))
-							.click(function(){
-								that.stop();
-						});
-
-						contentContainer.append(text);
-						contentContainer.append(button);
-						contentContainer.append(buttonCancel);
-						return contentContainer;
-					}()
+					phraseAppKeys: {
+						heading: 'intro.step.plus.title',
+						text: 'intro.step.plus.text'
+					},
+					buttons: ['next', 'cancel']
 				},
 				step6: {
 					stepName: 'guide',
@@ -232,31 +127,11 @@ qx.Class.define("IntroView", {
 					afterAction: function(){
 						APP.getSearchView().showCurtain(false);
 					},
-					content: function(){
-						var contentContainer = $("<div />")
-						
-						var text = $("<div />")
-							.append(that.getWording('intro.step.guide.text'));
-						
-						var button = $("<button />")
-							.addClass('block')
-							.append(that.getWording('intro.button.next'))
-							.click(function(){
-								that.next();
-							});
-
-						var buttonCancel = $("<button />")
-							.addClass('btn-secondary block')
-							.append(that.getWording('intro.button.cancel'))
-							.click(function(){
-								that.stop();
-						});
-
-						contentContainer.append(text);
-						contentContainer.append(button);
-						contentContainer.append(buttonCancel);
-						return contentContainer;
-					}()
+					phraseAppKeys: {
+						heading: 'intro.step.guide.title',
+						text: 'intro.step.guide.text'
+					},
+					buttons: ['next', 'cancel']
 				}
 			};
 		},
@@ -314,7 +189,7 @@ qx.Class.define("IntroView", {
 			        nextStep = that.steps.step3;
 			        break;
 				    default:
-				        nextStep = that.steps.step1;
+				      nextStep = that.steps.step1;
 				}
       }
 
@@ -328,7 +203,7 @@ qx.Class.define("IntroView", {
 			nextStep.preAction();
 			var tooltip = that.createTooltip(
 				nextStep.el,
-				nextStep.content,
+				that.renderContent(nextStep),
 				null,
 				nextStep.placement,
 				// 'desktop',
@@ -338,6 +213,67 @@ qx.Class.define("IntroView", {
 			);
 			that.currentTooltip = tooltip;
 			that.currentStep = nextStep;
+		},
+
+		renderContent: function(step){
+			var that = this;
+
+			var contentContainer = $("<div />")
+						
+			var heading = $("<h2 />")
+				.append(that.getWording(step.phraseAppKeys.heading));
+
+			var text = $("<p />")
+				.append(that.getWording(step.phraseAppKeys.text));
+			
+			contentContainer.append(heading);
+			contentContainer.append(text);
+
+			_.each(step.buttons, function(value, i){
+				var labelKey, action;
+				
+				// define button types
+				switch(value){
+					case 'next':
+						labelKey = 'intro.button.next';
+						action = function(){that.next()};
+						break;
+
+					case 'cancel':
+						labelKey = 'intro.button.cancel';
+						action = function(){that.stop()};
+						break;
+
+					case 'cancelForever':
+						labelKey = 'intro.button.cancel.forever';
+						action = function(){
+							that.stop()
+							that.saveIntroDecision();
+						};
+						break;
+
+					case 'finish':
+						labelKey = 'intro.button.finish';
+						action = function(){
+							that.stop()
+							that.saveIntroDecision();
+						};
+						break;
+				}
+
+				// generate the button
+				var button = $("<button />")
+					.addClass('block')
+					.append(that.getWording(labelKey))
+					.click(action);
+
+				// make secondary buttons
+				if(i>0) button.addClass('btn-secondary');
+				
+				contentContainer.append(button);
+			});
+
+			return contentContainer;
 		},
 
 		addEvents: function(){

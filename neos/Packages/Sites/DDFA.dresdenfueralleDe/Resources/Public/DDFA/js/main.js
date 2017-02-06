@@ -100,7 +100,7 @@ require.config({
 
             APP.init(function () {
                 if (APP.getUserDevice() === 'mobile') {
-                    require(['Views/DetailViewMobile', 'Views/LanguageViewMobile'], function () {
+                    require(['Views/DetailViewMobile'], function () {
                         APP.getRouter().initialNavigate();
                     });
                 } else {

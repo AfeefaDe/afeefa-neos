@@ -37,9 +37,6 @@ qx.Class.define("DataManager", {
             var that = this;
 
             // snychronous data calls (wait for all data calls to finish)
-            // that.getLanguageBib(function (data) {  // language bib
-            //     // store in APP
-            //     APP.getLM().setBib(data[0]);
             that.getUITranslations(APP.getLM().getCurrentLang(), function (data) {  // language bib
 
                 APP.getLM().setBib(data);
@@ -83,22 +80,6 @@ qx.Class.define("DataManager", {
                     'Authorization': 'token a9d97a31787c37d64ce0200e8cfdf2c95c01bddf9960999ea601a487e0a386a4'
                     // 'User-Agent': 'Afeefa.de Frontend (team@afeefa.de)'
                 }
-            })
-                .done(function (data) {
-                    cb(JSON.parse(data));
-                })
-                .fail(function (a) {
-                    console.debug(a);
-                });
-
-        },
-
-        getLanguageBib: function (cb) {
-
-            $.ajax({
-                url: '_Resources/Static/Packages/DDFA.dresdenfueralleDe/DDFA/lang/lang.json',
-                type: 'GET',
-                dataType: 'text'
             })
                 .done(function (data) {
                     cb(JSON.parse(data));

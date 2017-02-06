@@ -48,23 +48,13 @@ qx.Class.define("Router", {
 			var userDevice = APP.getUserDevice();
 
 			if( userDevice === 'mobile' ) {
-				// APP.setMapView( new MapView() );
-				// APP.setSearchView( new SearchView() );
 				APP.setDetailView( new DetailViewMobile() );
-				// APP.setMenuView( new MenuView() );
-				// APP.setLegendView( new LegendView() );
-				// APP.setPlusView( new PlusView() );
-				APP.setLanguageView( new LanguageViewMobile() );
-				// APP.setFormView( new FormView() );
-				// APP.setIncludeView( new IncludeView() );
-				// APP.setMessageView( new MessageView() );
-				// APP.setIntroView( new IntroView() );
-		
-			} else {
+			}
+			else {
 				APP.setDetailView( new DetailView() );
-				APP.setLanguageView( new LanguageView() );
 			}
 			
+			APP.setLanguageView( new LanguageView() );
 			APP.setMapView( new MapView() );
 			APP.setSearchView( new SearchView() );
 			APP.setMenuView( new MenuView() );

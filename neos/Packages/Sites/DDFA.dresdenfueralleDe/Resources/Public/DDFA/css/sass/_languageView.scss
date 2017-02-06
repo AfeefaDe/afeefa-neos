@@ -1,107 +1,50 @@
-@mixin languageViewBasic {
-
-	position: absolute;
-	bottom: 2em;
-	direction: ltr;
-
-	.btn {
+#languageView {
+	
+	#lang-btn {
+		position: absolute;
+		bottom: 2em;
+		left: 2em;
 
 		@include circleBtn;
 		@include background-size(cover);
 
 		@include languageFlags;
 
-		margin-bottom: 0.5em;
+		/*display: none;*/
+		cursor: pointer;
+		/*@include filter(grayscale(0.5));*/
 	}
 
-}
-
-#languageView {
-	
-	@include languageViewBasic;
-
-	left: 3em;
-	/*z-index: 99999;*/
-	
-	.btn {
+	#list-container {
 		display: none;
-		cursor: pointer;
-		/*margin: 0 auto;*/
-		margin-left: 1em;
-		@include filter(grayscale(0.5));
+		position: absolute;
+		width: 70%;
+		height: 70%;
+		background-color: white;
+		top: 15%;
+		left: 15%;
+	}
 
-		&.active {
+	&.active {
+
+		position: absolute;
+		bottom: 0;
+		left: 0;
+
+		width: 100%;
+		height: 100%;
+
+		#list-container {
 			display: block;
 		}
 	}
-
-	&:hover {
-		
-		.btn {
-		
-			display: inline-block;
-			
-			&:hover {
-				@include box-shadow(0px 0px 5px #111);
-				@include filter(grayscale(0.2));
-			}
-		}
-
-	}
-	
 }
 
-#languageViewMobile {
+.mobile {
+	#languageView {
 
-	@include languageViewBasic;
+		/*position: absolute;*/
 
-	display: none;
-	/*position: absolute;*/
-	left: -4em;
-	top: 0;
-
-	@include box-sizing(border-box);
-	width: 4em;
-	height: 100%;
-	padding: 2em 0.5em;
-
-	.root-btn {
-		
-		@include circleBtn;
-		@include background-size(cover);
-		
-		@include languageFlags;
-		position: absolute;
-		right: -9em;
-		top: 2em;
-		/*background-color: $blue_dark;*/
-		/*background-image: url("../img/menu.svg");*/
+		/*@include box-sizing(border-box);*/
 	}
-
-	/*.lang-menu {
-		@include transition(all 200ms);
-		position: fixed;
-		left: -4em;
-		top: 0;
-		background-color: rgba(30,30,30,0.6);
-		width: 3em;
-		padding: 0 0.5em;
-		height: 100%;
-	}*/
-
-	&.open {
-
-		height: 100%;
-		z-index: 9999;
-			
-		.shiftMenu {
-			left: 0;
-		}
-
-		.btn {
-			display: block !important;
-			margin-bottom: 1em;
-		}
-	}
-
 }

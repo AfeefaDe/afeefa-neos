@@ -102,7 +102,7 @@ qx.Class.define("MapView", {
 				that.loading(true);
 
 				// initial actions
-				that.locate( APP.getUserDevice() == 'mobile' );
+				// that.locate( APP.getUserDevice() == 'mobile' );
 		},
 
 		addEvents: function() {

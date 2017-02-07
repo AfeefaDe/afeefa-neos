@@ -82,6 +82,7 @@ qx.Class.define("MessageView", {
 			
 			// don't show while intro
 			if( APP.getIntroView().isActive() ) return;
+			if( APP.getLanguageView().isActive() ) return;
 
 			if(options.key) {
 

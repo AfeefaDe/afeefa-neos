@@ -121,6 +121,7 @@ qx.Class.define("LanguageView", {
 			// set optional callback to call after language was selected from the list
 			if(cb) that.cb = cb;
 
+			that.isActive(true);
 			that.load();
 
 			that.view.addClass('active');
@@ -171,6 +172,8 @@ qx.Class.define("LanguageView", {
 			// callback may have been defined when view was opened
 			if(that.cb) that.cb();
 			that.cb = null;
+		
+			that.isActive(false);
 		}
 	}
 

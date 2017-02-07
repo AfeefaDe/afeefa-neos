@@ -59,6 +59,7 @@ qx.Class.define("LanguageView", {
 			that.listContainer = $("<div />")
 				.attr('id', 'list-container');
 			
+	  	if( APP.getUserDevice() == 'desktop') that.listContainer.perfectScrollbar();
 			that.view.append(that.listContainer);
 
 			// all the languages as list items
@@ -126,6 +127,8 @@ qx.Class.define("LanguageView", {
 
 			that.view.addClass('active');
 			that.showCurtain(true);
+
+      if( APP.getUserDevice() == 'desktop') that.listContainer.perfectScrollbar('update');
 		},
 
 		addEvents: function(){

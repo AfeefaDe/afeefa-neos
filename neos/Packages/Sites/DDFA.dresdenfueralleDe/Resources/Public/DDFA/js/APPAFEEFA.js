@@ -15,7 +15,22 @@ qx.Class.define("APPAFEEFA", {
 
 		that.setConfig(
 			{
-				languages: ['ar', 'de', 'en', 'es', 'fa', 'ps', 'fr', 'ku', 'ru', 'sq', 'sr', 'ti', 'tr', 'ur'],
+				languages: [
+					'de',
+					'en',
+					'ar',
+					'fa',
+					'fr',
+					'ru',
+					'ps',
+					'ku',
+					'es',
+					'sq',
+					'sr',
+					'ti',
+					'tr',
+					'ur'
+				],
 				phraseapp: {
 					localeId: {
 						'ar': 'arabic',

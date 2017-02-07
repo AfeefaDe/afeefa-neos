@@ -251,3 +251,9 @@
 		white-space: nowrap;
 	}
 }
+
+.rtl {
+	#detailView .property.location .property-value {
+  	background-position: left .5em;
+	}
+}

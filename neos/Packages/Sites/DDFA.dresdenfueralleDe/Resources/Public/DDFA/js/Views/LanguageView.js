@@ -21,15 +21,15 @@ qx.Class.define("LanguageView", {
 			// that.buttons = [];
 
 			// circle button to open
-			var langBtn = $("<div />")
-				.addClass(APP.getLM().getCurrentLang())
+			that.langBtn = $("<div />")
 				.attr('id', 'lang-btn')
+				.addClass(APP.getLM().getCurrentLang())
 				.click(function(){
 					that.open();
 				});
 
 				that.createTooltip(
-	        langBtn,
+	        that.langBtn,
 	        function(){
 	          return that.getWording('languageselection.button.main');
 	        }(),
@@ -38,7 +38,7 @@ qx.Class.define("LanguageView", {
 	        'desktop'
 	      );
 
-				that.view.append(langBtn);
+				that.view.append(that.langBtn);
 
 			// list container
 			that.listContainer = $("<div />")
@@ -139,8 +139,9 @@ qx.Class.define("LanguageView", {
 		changeLanguage: function(){
 			var that = this;
 
-			// that.reset();
-			// that.load();
+			that.langBtn
+				.attr('class', null)
+				.addClass(APP.getLM().getCurrentLang());
 		},
 
 		close: function(){

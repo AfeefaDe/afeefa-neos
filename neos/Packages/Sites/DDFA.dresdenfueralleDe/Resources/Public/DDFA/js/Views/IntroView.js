@@ -69,7 +69,7 @@ qx.Class.define("IntroView", {
 				
 				step3: {
 					stepName: 'language',
-					el: APP.getLanguageView().view,
+					el: APP.getLanguageView().langBtn,
 					placement: 'right',
 					preAction: function(){
 						APP.getLanguageView().showCurtain(true);

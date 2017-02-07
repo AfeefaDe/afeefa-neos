@@ -136,6 +136,7 @@ qx.Class.define("SearchView", {
     loadResults: function( query ) {
       var that = this;
 
+      that.isActive(true);
       that.load();
       that.maximize();
 
@@ -511,6 +512,7 @@ qx.Class.define("SearchView", {
 
         that.reset();
         that.view.removeClass('active');
+        that.isActive(false);
 
         that.say('searchViewClosed');
     },
@@ -518,7 +520,7 @@ qx.Class.define("SearchView", {
     changeLanguage: function(){
         var that = this;
 
-        that.loadResults( that.inputField.val() );
+        if(that.isActive()) that.loadResults( that.inputField.val() );
     }
   }
 

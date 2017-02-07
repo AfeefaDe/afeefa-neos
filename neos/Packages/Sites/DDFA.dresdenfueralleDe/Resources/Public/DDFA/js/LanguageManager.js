@@ -20,67 +20,40 @@ qx.Class.define("LanguageManager", {
 
             var browserLang = navigator.language.split('-')[0];
             if( _.contains( APP.getConfig().languages, browserLang) )
-                that.setCurrentLang( browserLang );
+                that.setLanguage( browserLang );
             else
-                that.setCurrentLang( APP.getConfig().languages[0] );
+                that.setLanguage( APP.getConfig().languages[0] );
 
-            $('body').addClass(that.getCurrentLang());
-            
             that.addEvents();
         },
 
-        // param (key, [locale])
-        // @key bib key
-        // @locale get wording in a specific ignoring the current app language
+        // param (key)
+        // @key phraseapp key
         resolve: function( key ){
             var that = this;
 
             var wording = that.getBib()[ key ];
             if( wording === undefined ) return '###';
             return wording.message;
-            
-            // var wording;
-            // if(locale)
-                // wording = that.getBib()[ key ];
-            // else
-            //     wording = that.getBib()[ key ][ that.getCurrentLang() ];
-
-            // if( wording && _.contains(['ar', 'fa', 'ur'], that.getCurrentLang() ) ){
-            //     // reverse string
-                
-            // }
-
-            // if(!wording) wording = that.getBib()[ key ][ 'en' ];
-            // if(!wording) wording = that.getBib()[ key ][ 'de' ];
-            // if(!wording) wording = '###';
-
-            // return wording;
         },
 
-        // param (key, [locale])
-        // @key bib key
-        // @locale get wording in a specific ignoring the current app language
-        resolve_deprecated: function( key, locale ){
+        setLanguage: function( locale ){
             var that = this;
 
-            if( that.getBib()[ key ] === undefined ) return '###';
+            that.setCurrentLang( locale );
             
-            var wording;
-            if(locale)
-                wording = that.getBib()[ key ][ locale ];
-            else
-                wording = that.getBib()[ key ][ that.getCurrentLang() ];
+            _.each(APP.getConfig().languages, function(lang){
+                $('body').removeClass(lang);
+            });
 
-            // if( wording && _.contains(['ar', 'fa', 'ur'], that.getCurrentLang() ) ){
-            //     // reverse string
-                
-            // }
+            $('body')
+                .addClass(locale)
+                .attr('lang', locale);
 
-            if(!wording) wording = that.getBib()[ key ][ 'en' ];
-            if(!wording) wording = that.getBib()[ key ][ 'de' ];
-            if(!wording) wording = '###';
+            $('body').removeClass('rtl');
+            if( _.contains( ['ar', 'fa', 'ur'], locale) )
+                $('body').addClass('rtl');
 
-            return wording;
         },
 
         addEvents: function(){
@@ -88,23 +61,12 @@ qx.Class.define("LanguageManager", {
 
             that.listen('languageChanged', function(e){
                 
-                that.setCurrentLang( e.customData );
+                that.setLanguage( e.customData );
                 
                 APP.getDataManager().fetchAllData(function( data ){
                   that.say('fetchedNewData');
                 });
-
-                _.each(APP.getConfig().languages, function(lang){
-                    $('body').removeClass(lang);
-                });
-                
-                $('body').addClass(that.getCurrentLang());
-                
-                $('body').attr('lang', that.getCurrentLang());
-
             });
         }
-
     }
-
 });

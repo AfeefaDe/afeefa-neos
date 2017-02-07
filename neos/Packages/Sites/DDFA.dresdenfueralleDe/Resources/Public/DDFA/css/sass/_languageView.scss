@@ -1,9 +1,10 @@
 #languageView {
 	
 	#lang-btn {
+		/*display: none;*/
 		position: absolute;
-		bottom: 2em;
-		left: 2em;
+		top: 2em;
+		right: 6em;
 
 		@include circleBtn;
 		@include background-size(cover);
@@ -17,10 +18,10 @@
 	#list-container {
 		display: none;
 		position: absolute;
-		width: 70%;
-		height: 70%;
-		top: 15%;
-		left: 15%;
+		width: 30%;
+		max-height: 50%;
+		top: 25%;
+		left: 35%;
 		overflow-y: scroll;
 		background-color: $white;
 	}
@@ -30,6 +31,16 @@
 		padding: 1em;
 		@include display-flex;
 		border: 1px solid $gray20;
+		cursor: pointer;
+
+		&:hover {
+			background-color: $gray20;
+		}
+
+		&.active {
+			background-color: $gray80;
+			color: $white;
+		}
 
 		.lang-item-flag {
 			width: 3em;
@@ -62,8 +73,18 @@
 .mobile {
 	#languageView {
 
-		/*position: absolute;*/
+		#lang-btn {
+			top: initial;
+			right: initial;
+			bottom: 2em;
+			left: 2em;
+		}
 
-		/*@include box-sizing(border-box);*/
+		#list-container {
+			width: 70%;
+			max-height: 70%;
+			top: 15%;
+			left: 15%;
+		}
 	}
 }

@@ -53,7 +53,7 @@
 
 		.cancel-btn {
 			top: 0;
-			right: 3em;
+			right: 0;
 	    background-image: url("../img/icon_34.svg");
 			@include transform(rotate(45deg));
 			opacity: 1;
@@ -249,6 +249,10 @@
 			right: 0;
 	    background-image: url("../img/icon_94.svg");
 			@include background-size(70%);
+		}
+
+    .cancel-btn {
+			right: 3em !important;
 		}
 		
 		&.active {

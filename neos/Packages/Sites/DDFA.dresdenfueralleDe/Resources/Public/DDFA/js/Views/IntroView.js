@@ -300,8 +300,10 @@ qx.Class.define("IntroView", {
 		changeLanguage: function(){
 			var that = this;
 
-			// that.reset();
-			// that.load();
+			if(that.isActive()){
+				that.stop();
+				that.start();
+			}
 		},
 
 		close: function(){

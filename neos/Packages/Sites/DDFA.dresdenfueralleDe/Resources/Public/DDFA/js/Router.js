@@ -188,11 +188,25 @@ qx.Class.define("Router", {
 					// else {
 						// start intro?
 						if( !localStorage.getItem("introIsKnown") ){
-							APP.getIntroView().start();
+							if( !localStorage.getItem("languageFrozen") ){
+								APP.getLanguageView().open(function(){
+									APP.getIntroView().start();
+								});
+							}
+							else {
+								APP.getIntroView().start();
+							}
 						}
 						// open search view
 						else {
-							APP.getSearchView().loadResults();
+							if( !localStorage.getItem("languageFrozen") ){
+								APP.getLanguageView().open(function(){
+									APP.getSearchView().loadResults();
+								});
+							}
+							else {
+								APP.getSearchView().loadResults();
+							}
 						}
 					// }
 				}

@@ -90,8 +90,7 @@ qx.Class.define("SearchView", {
 
       // input field
       that.inputField = $("<input />")
-        .attr('type', 'text')
-        .attr('placeholder', that.getWording('search.placeholder'));
+        .attr('type', 'text');
       that.searchBar.append(that.inputField);
 
       // search tags
@@ -117,14 +116,17 @@ qx.Class.define("SearchView", {
     load: function(){
         var that = this;
 
+
         that.searchTag
           .removeClass("active")
           .removeClass (function (index, css) {
             return (css.match (/(^|\s)cat-\S+/g) || []).join(' ');
           })
           .empty();
-
-        that.inputField.show();
+        
+        that.inputField
+          .attr('placeholder', that.getWording('search.placeholder'))
+          .show();
 
         that.view.addClass('active');
 
@@ -516,8 +518,7 @@ qx.Class.define("SearchView", {
     changeLanguage: function(){
         var that = this;
 
-        // that.reset();
-        // that.load();
+        that.loadResults( that.inputField.val() );
     }
   }
 

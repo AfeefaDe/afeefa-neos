@@ -28,7 +28,17 @@ qx.Class.define("LanguageView", {
 					that.open();
 				});
 
-			that.view.append(langBtn);
+				that.createTooltip(
+	        langBtn,
+	        function(){
+	          return that.getWording('languageselection.button.main');
+	        }(),
+	        'hover',
+	        'top',
+	        'desktop'
+	      );
+
+				that.view.append(langBtn);
 
 			// list container
 			that.listContainer = $("<div />")
@@ -37,6 +47,8 @@ qx.Class.define("LanguageView", {
 			that.view.append(that.listContainer);
 
 			// all the languages as list items
+			that.listItems = [];
+
 			_.each( APP.getConfig().languages, function(lang){
 				var langItem = $("<div />")
 					.addClass('lang-item ' + lang)
@@ -45,7 +57,10 @@ qx.Class.define("LanguageView", {
 
 						APP.getDataManager().getUITranslations(lang, function(data){
 	            APP.getLM().setBib(data);
-							that.say('languageChanged', lang);
+							
+							// change language if different from currently selected one
+							if( lang != APP.getLM().getCurrentLang() )
+								that.say('languageChanged', lang);
 						});
 					});
 				
@@ -59,7 +74,7 @@ qx.Class.define("LanguageView", {
 				langItem.append(flag);
 				langItem.append(label);
 
-				// that.buttons.push( {el: langItem, lang: lang} );
+				that.listItems.push(langItem);
 
 				that.listContainer.append(langItem);
 			});
@@ -69,18 +84,29 @@ qx.Class.define("LanguageView", {
 			this.base(arguments);
 		},
 
-		open: function(){
+		load: function(){
 			var that = this;
+
+			_.each( that.listItems, function(item){
+				// highlight current language
+				item.removeClass('active');
+				if( item.hasClass( APP.getLM().getCurrentLang() ) )
+					item.addClass('active');
+				
+				// make labels
+			});
+		},
+
+		open: function( cb ){
+			var that = this;
+
+			// set optional callback to call after language was selected from the list
+			if(cb) that.cb = cb;
+
+			that.load();
 
 			that.view.addClass('active');
 			that.showCurtain(true);
-			
-			// highlight current language
-			_.each( that.listItems, function(item){
-				if( item.el.hasClass( APP.getLM().getCurrentLang() ) )
-					item.el.addClass('active');
-			});
-
 		},
 
 		addEvents: function(){
@@ -91,8 +117,9 @@ qx.Class.define("LanguageView", {
   	// 	});
 
 			that.listen('LanguageViewRendered', function(){
-				// alert('Willkommen auf Afeefa.de! Wähle deine Sprache:');
-				console.log('Willkommen auf Afeefa.de! Wähle deine Sprache:');
+				if( !localStorage.getItem("languageFrozen") ){
+					// that.open();
+				}
 			});
 
 			// call superclass
@@ -121,6 +148,10 @@ qx.Class.define("LanguageView", {
 			
 			that.view.removeClass('active');
 			that.showCurtain(false);
+
+			// callback may have been defined when view was opened
+			if(that.cb) that.cb();
+			that.cb = null;
 		}
 	}
 

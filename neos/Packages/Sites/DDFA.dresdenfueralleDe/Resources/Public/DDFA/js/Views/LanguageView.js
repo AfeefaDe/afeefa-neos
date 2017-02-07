@@ -18,7 +18,22 @@ qx.Class.define("LanguageView", {
 			that.view = $("<div />");
 			that.view.attr('id', that.getViewId());
 
-			// that.buttons = [];
+			that.languageTranslations = {
+				de: 'Deutsch',
+				'en': 'English',
+				ar: 'العربية',
+				'fa': 'فارسی',
+				'fr': 'Français',
+				'ru': 'русский',
+				'ps': 'پښتو',
+				'ku': 'کوردی',
+				'es': 'español',
+				'sq': 'Shqip',
+				'sr': 'Српски',
+				'ti': 'ቋንቋ ትግርኛ',
+				'tr': 'Türkçe',
+				'ur': 'اردو'
+			}
 
 			// circle button to open
 			that.langBtn = $("<div />")
@@ -68,13 +83,12 @@ qx.Class.define("LanguageView", {
 					.addClass('lang-item-flag ' + lang);
 					
 				var label = $("<div />")
-					.addClass('lang-item-label')
-					.append(that.getWording('lan.'+lang));
+					.addClass('lang-item-label');
 
 				langItem.append(flag);
 				langItem.append(label);
 
-				that.listItems.push(langItem);
+				that.listItems.push( {el: langItem, label: label, lang: lang} );
 
 				that.listContainer.append(langItem);
 			});
@@ -89,11 +103,15 @@ qx.Class.define("LanguageView", {
 
 			_.each( that.listItems, function(item){
 				// highlight current language
-				item.removeClass('active');
-				if( item.hasClass( APP.getLM().getCurrentLang() ) )
-					item.addClass('active');
+				item.el.removeClass('active');
+				if( item.el.hasClass( APP.getLM().getCurrentLang() ) )
+					item.el.addClass('active');
 				
 				// make labels
+				item.label
+					.empty()
+					.append( that.languageTranslations[item.lang] )
+					.append( $("<span />").append(that.getWording('lan.'+item.lang)) );
 			});
 		},
 

@@ -27,7 +27,7 @@
 	}
 
 	.lang-item {
-		height: 5em;
+		height: 6em;
 		padding: 1em;
 		@include display-flex;
 		border: 1px solid $gray20;
@@ -43,7 +43,7 @@
 		}
 
 		.lang-item-flag {
-			width: 3em;
+			flex: 0 0 3em;
 			@include circleBtn;
 			@include background-size(cover);
 			@include languageFlags;
@@ -52,6 +52,12 @@
 		.lang-item-label {
 	    padding-left: 1em;
     	font-size: 2em;
+
+    	span {
+    		height: 1em;
+    		display: block;
+    		font-size: 0.6em;
+    	}
 		}
 	}
 
@@ -85,6 +91,16 @@
 			max-height: 70%;
 			top: 15%;
 			left: 15%;
+		}
+	}
+}
+
+.rtl {
+	#languageView {
+		
+		.lang-item-label {
+			padding-left: 0 !important;
+			padding-right: 1em !important;
 		}
 	}
 }

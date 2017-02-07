@@ -5,6 +5,7 @@
 	position: absolute;
 	top: 2em;
 	left: 3em;
+	z-index: 100;
 	
 	width: $viewWidth;
 	
@@ -186,7 +187,7 @@
 
 	&.active {
 		#search-bar input {
-	    width: calc(100% - 3em - 3em);
+	    width: calc(100% - 3em - 3em - 3em);
 		}
 
 		.cancel-btn {
@@ -195,10 +196,6 @@
 
 		.refugee-btn {
 			display: none;
-		}
-
-		.filter-btn {
-			display: none !important;
 		}
 
 		#results {
@@ -253,17 +250,24 @@
 	    background-image: url("../img/icon_94.svg");
 			@include background-size(70%);
 		}
+
+    .cancel-btn {
+			right: 3em !important;
+		}
 		
 		&.active {
 			#results {
-				max-height: calc(100vh - 3.5em);
+				max-height: calc(100vh - 4em);
 		    overflow: scroll;
-			}
-
-			.filter-btn {
-				display: none !important;
 			}
 		}
   }	
 	
+}
+
+.rtl {
+	#searchView .labels {
+		padding-right: 0 !important;
+		padding-left: 1em !important;
+	}
 }

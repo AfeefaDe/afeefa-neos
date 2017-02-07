@@ -277,7 +277,7 @@ qx.Class.define("SearchView", {
 
         // for women
         var action = function(){
-          that.inputField.val(that.getWording('search.phrase.forwomen')).trigger( "input" );
+          that.inputField.val('#frauen').trigger( "input" );
         };
         createResult('for-women', that.getWording('search.label.forwomen'), that.getWording('search.sublabel.forwomen'), action );
 

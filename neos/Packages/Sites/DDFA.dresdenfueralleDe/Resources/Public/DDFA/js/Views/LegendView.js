@@ -236,8 +236,28 @@ qx.Class.define("LegendView", {
 			  
 			  that['label-' + cat.id].append( that.getWording('cat.' + cat.name) );
 
+			  that.createTooltip(
+	        that['label-' + cat.id],
+	        function(){
+	          return that.getWording('cat.' + cat.name + '.description');
+	        }(),
+	        'hover',
+	        'top',
+	        'desktop'
+	      );
+
 			  _.each( cat.sub, function(subcat){
 				  that['label-' + subcat.id].append( that.getWording('cat.' + subcat.name) );
+
+				  that.createTooltip(
+		        that['label-' + subcat.id],
+		        function(){
+		          return that.getWording('cat.' + subcat.name + '.description');
+		        }(),
+		        'hover',
+		        'top',
+		        'desktop'
+		      );
 			  });
 
 		  });

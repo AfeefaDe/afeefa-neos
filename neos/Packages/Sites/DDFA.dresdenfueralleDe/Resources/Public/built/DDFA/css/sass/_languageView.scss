@@ -92,13 +92,14 @@
 			max-height: 70%;
 			top: 15%;
 			left: 15%;
+			overflow-y: scroll;
 		}
 	}
 }
 
 .rtl {
 	#languageView {
-		
+
 		.lang-item-label {
 			padding-left: 0 !important;
 			padding-right: 1em !important;

@@ -48,6 +48,8 @@ $ads_count = $result->num_rows;
 
 <h2>Translations</h2>
 
+<p><small>Statistik derzeit noch leicht verfälscht, da auch unveröffentlichte Übersetzungen gezählt werden. Die oben angegebene Gesamtanzahl aller Einträge (Orgas, Events, Ads) ist korrekt, hier werden nur veröffentlichte gezählt. Die Übersetzungen sind aber als separater Eintrag in der Datenbank immer unveröffentlicht und werden einfach ihrem deutschen Root Entry zugeordnet, der wiederum dann den published Status regelt. Man müsste korrekterweise also nur solche Translations zählen, deren zugehöriger deutscher Eintrag published ist. Man sieht den Fehler in der Übersetzungsabdeckung >100%</small></p>
+
 <p><strong>Orgas</strong></p>
 <?php
 for($i=0;$i<count($languages);$i++){
@@ -71,5 +73,3 @@ for($i=0;$i<count($languages);$i++){
 
 	echo $languages[$i] . ": " . $result->num_rows . " (" . round($result->num_rows/$ads_count*100) . "%)<br>";
 } ?>
-
-<p><small>Statistik leicht verfälscht, da auch unveröffentlichte Einträge gezählt werden. Die Gesamtanzahl aller Einträge, Orgas etc. ist korrekt, hier werden nur veröffentlichte gezählt. Die Übersetzungen sind aber als Eintrag immer unveröffentlicht und werden einfach ihrem deutschen Root Entry zugeordnet, der wiederum dann den published Status regelt. Man müsste korrekterweise also nur solche Translations zählen, deren parent published ist. Man sieht den Fehler in der Übersetzungsabdeckung >100%</small></p>

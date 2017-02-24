@@ -613,7 +613,7 @@ final class MessageCenter
 			
 			$body .= "bis: `" . ($data['entryData']['dateTo'] ? $data['entryData']['dateTo'] : " ") . ($data['entryData']['timeTo'] ? "` `" . $data['entryData']['timeTo'] . "`\n" : "`\n");
 			
-			$labels = array("RDK", "user-entry");
+			$labels = array("RDK", "user-entry", "dringend");
 		}
 		// normal feedback
 		else if ($data['type'] == 'feedback') {
@@ -629,7 +629,7 @@ final class MessageCenter
 
 			$body .= "_" . $data['metaData'] . "_";
 
-			$labels = array("RDK", "feedback");
+			$labels = array("RDK", "feedback", "dringend");
 		}
 
 		$client->issues->createAnIssue($owner, $repo, $title, $body, $assignee, $milestone, $labels);

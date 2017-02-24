@@ -55,19 +55,16 @@ $ads_count = $result->num_rows;
 	// 2016 Januar bis November
 	for($i=2;$i<=12;$i++){
 		$result = sql("SELECT * FROM `ddfa_main_domain_model_marketentry` WHERE published=1 AND locale='de' AND type=0 AND created<'2016-0" .$i. "-01'");
-		$orgas_count = $result->num_rows;
 		echo "2016-" . ($i-1) . ": " . $result->num_rows . "<br>";
 	}
 
 	// 2016 Dezember
 	$result = sql("SELECT * FROM `ddfa_main_domain_model_marketentry` WHERE published=1 AND locale='de' AND type=0 AND created<'2017-01-01'");
-		$orgas_count = $result->num_rows;
 		echo "2016-12: " . $result->num_rows . "<br>";
 
 	// 2017 Januar bis November
 	for($i=2;$i<=12;$i++){
 		$result = sql("SELECT * FROM `ddfa_main_domain_model_marketentry` WHERE published=1 AND locale='de' AND type=0 AND created<'2017-0" .$i. "-01'");
-		$orgas_count = $result->num_rows;
 		echo "2017-" . ($i-1) . ": " . $result->num_rows . "<br>";
 	}
 	?>
@@ -78,19 +75,16 @@ $ads_count = $result->num_rows;
 	// 2016 Januar bis November
 	for($i=2;$i<=12;$i++){
 		$result = sql("SELECT * FROM `ddfa_main_domain_model_marketentry` WHERE published=1 AND locale='de' AND type=2 AND created<'2016-0" .$i. "-01'");
-		$orgas_count = $result->num_rows;
 		echo "2016-" . ($i-1) . ": " . $result->num_rows . "<br>";
 	}
 
 	// 2016 Dezember
 	$result = sql("SELECT * FROM `ddfa_main_domain_model_marketentry` WHERE published=1 AND locale='de' AND type=2 AND created<'2017-01-01'");
-		$orgas_count = $result->num_rows;
 		echo "2016-12: " . $result->num_rows . "<br>";
 
 	// 2017 Januar bis November
 	for($i=2;$i<=12;$i++){
 		$result = sql("SELECT * FROM `ddfa_main_domain_model_marketentry` WHERE published=1 AND locale='de' AND type=2 AND created<'2017-0" .$i. "-01'");
-		$orgas_count = $result->num_rows;
 		echo "2017-" . ($i-1) . ": " . $result->num_rows . "<br>";
 	}
 	?>
@@ -101,19 +95,16 @@ $ads_count = $result->num_rows;
 	// 2016 Januar bis November
 	for($i=2;$i<=12;$i++){
 		$result = sql("SELECT * FROM `ddfa_main_domain_model_marketentry` WHERE published=1 AND locale='de' AND type=1 AND created<'2016-0" .$i. "-01'");
-		$orgas_count = $result->num_rows;
 		echo "2016-" . ($i-1) . ": " . $result->num_rows . "<br>";
 	}
 
 	// 2016 Dezember
 	$result = sql("SELECT * FROM `ddfa_main_domain_model_marketentry` WHERE published=1 AND locale='de' AND type=1 AND created<'2017-01-01'");
-		$orgas_count = $result->num_rows;
 		echo "2016-12: " . $result->num_rows . "<br>";
 
 	// 2017 Januar bis November
 	for($i=2;$i<=12;$i++){
 		$result = sql("SELECT * FROM `ddfa_main_domain_model_marketentry` WHERE published=1 AND locale='de' AND type=1 AND created<'2017-0" .$i. "-01'");
-		$orgas_count = $result->num_rows;
 		echo "2017-" . ($i-1) . ": " . $result->num_rows . "<br>";
 	}
 	?>

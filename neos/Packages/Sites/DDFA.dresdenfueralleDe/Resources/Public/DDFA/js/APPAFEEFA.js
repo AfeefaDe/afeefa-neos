@@ -85,8 +85,7 @@ qx.Class.define("APPAFEEFA", {
 						name: 'medic',
 						id: '2',
 						sub: [
-							{ name: 'medical-counselling', id: '2-1' },
-							{ name: 'medical-care', id: '2-2' },
+							{ name: 'medical-counselling', id: '2-2' },
 							{ name: 'psychological-counselling', id: '2-3' }
 						]
 					},

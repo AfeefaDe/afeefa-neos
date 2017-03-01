@@ -115,16 +115,18 @@ qx.Class.define("APPAFEEFA", {
 						name: 'leisure',
 						id: '5',
 						sub: [
-							{ name: 'youth-club', id: '5-1' },
 							{ name: 'sports', id: '5-2' },
 							{ name: 'museum', id: '5-3' },
 							{ name: 'music', id: '5-4' },
 							{ name: 'stage', id: '5-5' },
 							{ name: 'craft-art', id: '5-6' },
-							{ name: 'gardening', id: '5-7' },
-							{ name: 'cooking', id: '5-8' },
-							{ name: 'festival', id: '5-9' },
-							{ name: 'lecture', id: '5-10' }
+							{ name: 'workspace', id: '5-7' },
+							{ name: 'gardening', id: '5-8' },
+							{ name: 'cooking', id: '5-9' },
+							{ name: 'festival', id: '5-10' },
+							{ name: 'lecture', id: '5-11' },
+							{ name: 'film', id: '5-12' },
+							{ name: 'congress', id: '5-13' }
 						]
 					},
 					{
@@ -133,11 +135,12 @@ qx.Class.define("APPAFEEFA", {
 						sub: [
 							{ name: 'welcome-network', id: '6-1' },
 							{ name: 'meeting-place', id: '6-2' },
-							{ name: 'childcare', id: '6-3' },
-							{ name: 'workshop', id: '6-4' },
-							{ name: 'sponsorship', id: '6-5' },
-							{ name: 'lgbt', id: '6-6' },
-							{ name: 'housing-project', id: '6-7' }
+							{ name: 'youth-club', id: '6-3' },
+							{ name: 'childcare', id: '6-4' },
+							{ name: 'workshop', id: '6-5' },
+							{ name: 'sponsorship', id: '6-6' },
+							{ name: 'lgbt', id: '6-7' },
+							{ name: 'housing-project', id: '6-8' }
 						]
 					},
 					{

@@ -111,18 +111,17 @@ qx.Class.define("View", {
             if (event){
                 // open on hover
                 if( event == 'hover' ){
-                    el.hover(
-                        function(){
-                          thePopper = new Popper(
+                    el.off(".popper");
+                    el.on("mouseenter.popper", function(){
+                            thePopper = new Popper(
                                 el,
                                 popperConfig.content,
                                 popperConfig.misc
                             );
-                        },
-                        function(){
+                        })
+                        .on("mouseleave.popper", function(){
                             thePopper.destroy();
-                        }
-                    );
+                        });
                 }
             }
             // open immediately

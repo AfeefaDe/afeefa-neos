@@ -105,6 +105,11 @@
 		@include categoryColors($alpha_background: .4);
 		border-left: .5rem solid;
 
+		&.cat-general {
+			background-color: rgba($white, .4);
+			border-color: rgba($white, 1);
+		}
+
 		.icon {
 			
 			@include categorySymbols;
@@ -173,11 +178,22 @@
 		@include transition(max-height 250ms);
 		@include categoryColors($alpha_background: .1);
 		
+		&.cat-general {
+			background-color: rgba($white, .1);
+			border-color: rgba($white, 1);
+		}
+
 		max-height: 0;
 		overflow: hidden;
 
 		.subcat-container {
 			@include categoryColors();
+
+			&.cat-general {
+				background-color: rgba($white, 1);
+				border-color: rgba($white, 1);
+			}
+
 			background: none !important;
 			border-left: .5rem solid;
 			

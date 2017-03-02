@@ -142,19 +142,19 @@
 	&.subcat-museum { background-image: url("../img/icon_116.svg"); }
 	&.subcat-music { background-image: url("../img/icon_120.svg"); }
 	&.subcat-stage { background-image: url("../img/icon_154.svg"); }
-	&.subcat-craft-art { background-image: url("../img/icon_122.svg"); }
-	&.subcat-workspace { background-image: url(""); }
+	&.subcat-craft-art { background-image: url("../img/icon_98.svg"); @include background-size(75%); }
+	&.subcat-workspace { background-image: url("../img/icon_188.svg"); }
 	&.subcat-gardening { background-image: url("../img/icon_118.svg"); }
 	&.subcat-cooking { background-image: url("../img/icon_126.svg"); }
 	&.subcat-festival { background-image: url("../img/icon_82.svg"); }
 	&.subcat-lecture { background-image: url("../img/icon_162.svg"); }
-	&.subcat-film { background-image: url(""); }
-	&.subcat-congress { background-image: url(""); }
+	&.subcat-film { background-image: url("../img/icon_182.svg"); }
+	&.subcat-congress { background-image: url("../img/icon_186.svg"); }
 
 	&.subcat-welcome-network { background-image: url("../img/icon_64.svg") !important; }
 	&.subcat-meeting-place { background-image: url("../img/icon_78.svg"); }
 	&.subcat-childcare { background-image: url("../img/icon_130.svg"); }
-	&.subcat-workshop { background-image: url("../img/icon_98.svg"); @include background-size(75%); }
+	&.subcat-workshop { background-image: url("../img/icon_190.svg"); }
 	&.subcat-sponsorship { background-image: url("../img/icon_168.svg"); }
 	&.subcat-lgbt { background-image: url("../img/icon_132.svg"); }
 	&.subcat-housing-project { background-image: url("../img/icon_136.svg"); }

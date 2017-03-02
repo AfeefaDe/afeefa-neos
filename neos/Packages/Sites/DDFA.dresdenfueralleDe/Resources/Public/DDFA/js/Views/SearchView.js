@@ -477,6 +477,7 @@ qx.Class.define("SearchView", {
     minimize: function(){
       var that = this;
 
+      that.isActive(false);
       that.results.addClass('minimized');
     },
 

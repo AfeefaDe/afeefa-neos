@@ -83,6 +83,11 @@
 		background-color: rgba($orange,$alpha_background);
 		border-color: rgba($orange, $alpha_border);
 	}
+
+	&.cat-eventseries {
+		background-color: rgba($turquoise,$alpha_background);
+		border-color: rgba($turquoise, $alpha_border);
+	}
 }
 
 @mixin categorySymbols {
@@ -101,6 +106,7 @@
 	&.cat-leisure { background-image: url("../img/icon_86.svg"); }
 	&.cat-community { background-image: url("../img/icon_02.svg"); @include background-size(85%); }
 	&.cat-donation { background-image: url("../img/icon_12.svg"); }
+	&.cat-eventseries { background-image: url("../img/icon_192.svg"); }
 	
 	/* Sub categories */
 

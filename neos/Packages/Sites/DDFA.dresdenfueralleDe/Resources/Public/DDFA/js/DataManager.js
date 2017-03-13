@@ -385,13 +385,46 @@ qx.Class.define("DataManager", {
                 'bamf': {
                     languages: ['de'],
                     pathToCsv: 'importData/integrationskurse/',
-                    area: 'dresden'
+                    area: 'dresden',
+                    mapping: {
+                        "name": function(row){
+                            return "Integrationskurs" + " (" + row.traeger + ")";
+                        },
+                        "description": function(row){
+                            return "Träger: " + row.traeger + "\n\n" + "Spezialisierung: " + row.zulassungen + "\n\n" + "NIVEAU #A1 #A2 #B1\nKOSTEN #förderung\nKURSART #integrationskurs\nABSCHLUSS #zertifikat_integrationskurs #zertifikat_ger";
+                        }
+                    }
                 },
                 'leipzig': {
                     languages: ['de', 'en', 'ar', 'fa', 'fr', 'ru', 'sq', 'ku', 'tr', 'es'],
                     pathToCsv: 'importData/leipzig/',
                     area: 'dresden'
                 },
+                'iwgr': {
+                    languages: ['de'],
+                    pathToCsv: 'importData/iwgr/',
+                    mapping: {
+                        area: function(row){
+                            return 'dresden';
+                        },
+                        category: function(row){
+                            return "e11bdacd-07e9-11e7-80e3-60b7772f8716";
+                        },
+                        subCategory: function(row){
+                            return 'iwgr';
+                        },
+                        dateFrom: function(row){
+                            return row.dateFrom ? dateConverter(row.dateFrom, '2017') : null;
+                        },
+                        dateTo: function(row){
+                            return row.dateTo ? dateConverter(row.dateTo, '2017') : null;
+                        }
+                    }
+                },
+            };
+
+            function dateConverter(dateString, fixedYear){
+                return fixedYear + '-' + (new Date(dateString).getMonth() +1) + '-' + new Date(dateString).getDate();
             };
 
             // SETUP ---
@@ -416,15 +449,6 @@ qx.Class.define("DataManager", {
                     if (_.size(inis) == languages.length) cb();
                 });
 
-                // d3.text(config[importKey].pathToCsv + "entries_" + lang + ".csv", function(error, text) {
-                //     if (error) throw error;
-                //     var ssv = d3.dsvFormat(";");
-                //     ssv.parse(text, function (rows) {
-                //         inis[lang] = rows;
-                //         if (_.size(inis) == languages.length) cb();
-                //     });
-                // });
-
                 console.debug(lang, inis);
             };
 
@@ -432,41 +456,56 @@ qx.Class.define("DataManager", {
 
                 _.each(inis[baseLang], function (row, i) {
 
-                    // create initiative in base language
+                    // create entry in base language
+                    var marketEntry = {};
+                    marketEntry.locale = baseLang;
+
+                    var entryAttributes = [
+                        'area',
+                        'name',
+                        "category",
+                        "subCategory",
+                        "type",
+                        "description",
+                        "descriptionShort",
+                        "forChildren",
+                        "facebook",
+                        "image",
+                        "imageType",
+                        "mail",
+                        "phone",
+                        "speakerPrivate",
+                        "speakerPublic",
+                        "spokenLanguages",
+                        "supportWanted",
+                        "web",
+                        "published",
+                        "dateFrom",
+                        "dateTo",
+                        "timeFrom",
+                        "timeTo",
+                        "tags"
+                    ];
+                    
+                    _.each(entryAttributes, function(attr){
+                        // take custom mapping function if available
+                        if(config[importKey].mapping[attr]){
+                            marketEntry[attr] = config[importKey].mapping[attr](row);
+                        }
+
+                        // take value directly from import source
+                        else {
+                            marketEntry[attr] = (row[attr] && row[attr] != '') ? row[attr] : null;
+                        }
+                    });
+
                     createMarketEntryAndLocation(
                         {
-                            "marketentry": {
-                                "area": config[importKey].area,
-                                "locale": baseLang,
-                                "name": row.name ? row.name : null,
-                                // "name": "Integrationskurs" + " (" + row.traeger + ")",
-                                "category": row.category ? row.category : null,
-                                // "category": "5dddf63d-ccf6-44e2-8daf-81bb44507fdd",
-                                "subCategory": row.subCategory ? row.subCategory : null,
-                                // "subCategory": "german-course-state",
-                                // "type": row.type ? row.type : null,
-                                "type": 0,
-                                "description": row.description ? row.description : null,
-                                // "description": "Träger: " + row.traeger + "\n\n" + "Spezialisierung: " + row.zulassungen + "\n\n" + "NIVEAU #A1 #A2 #B1\nKOSTEN #förderung\nKURSART #integrationskurs\nABSCHLUSS #zertifikat_integrationskurs #zertifikat_ger",
-                                "forChildren": row.forchildren ? row.forchildren : null,
-                                "facebook": row.facebook ? row.facebook : null,
-                                // "image": "http://www.bamf.de/SharedDocs/Bilder/DE/Sonstige/integrationskurs.jpg?__blob=normal&v=3",
-                                // "imageType": 'image',
-                                "mail": row.mail ? row.mail : null,
-                                "phone": (row.phone && row.phone != ' ') ? row.phone : null,
-                                "speakerPrivate": row.speakerPrivate ? row.speakerPrivate : null,
-                                "speakerPublic": row.speakerPublic ? row.speakerPublic : null,
-                                "spokenLanguages": row.spokenLanguages ? row.spokenLanguages : null,
-                                "supportWanted": false,
-                                "web": row.web ? row.web : null,
-                                // "web": "http://www.bamf.de/DE/DasBAMF/Aufgaben/Integrationskurs/integrationskurs-node.html",
-                                "published": 1
-                            }
+                            "marketentry": marketEntry
                         },
                         {
                             "location": {
                                 "placename": row.placename ? row.placename : null,
-                                // "placename": row.traeger,
                                 "street": row.street ? row.street : null,
                                 "zip": "0" + row.zip,
                                 "city": row.city ? row.city : null,
@@ -501,24 +540,6 @@ qx.Class.define("DataManager", {
                     );
                 });
             };
-
-            // function createInitiative(data, i, cb){
-            // 	$.ajax({
-            // 		url: "api/initiatives",
-            // 		type: 'POST',
-            // 		data: data,
-            // 		cache: false,
-            // 		dataType: 'json',
-            // 		processData: true,
-            // 		contentType: false
-            // 	})
-            // 	.done(function( data ) {
-            // 		if(cb) cb(data, i);
-            // 	})
-            // 	.fail(function(a) {
-            // 		console.debug(a);
-            // 	});
-            // };
 
             function createMarketEntryAndLocation(dataMarketEntry, dataLocation, index, cb) {
 

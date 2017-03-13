@@ -85,6 +85,12 @@ class MarketEntry extends Actor
 
     /**
      * @var string
+     * @ORM\Column(nullable=true,type="text")
+     */
+    protected $descriptionShort;
+
+    /**
+     * @var string
      * @ORM\Column(nullable=true)
      */
     protected $mail;
@@ -120,6 +126,12 @@ class MarketEntry extends Actor
      * @ORM\Column(nullable=true)
      */
     protected $subCategory;
+
+    /**
+     * @var string
+     * @ORM\Column(nullable=true)
+     */
+    protected $tags;
 
     /**
      * @var int
@@ -360,6 +372,23 @@ class MarketEntry extends Actor
     /**
      * @return string
      */
+    public function getDescriptionShort()
+    {
+        return $this->descriptionShort;
+    }
+
+    /**
+     * @param string $descriptionShort
+     * @return void
+     */
+    public function setDescriptionShort($descriptionShort)
+    {
+        $this->descriptionShort = $descriptionShort;
+    }
+
+    /**
+     * @return string
+     */
     public function getMail()
     {
         return $this->mail;
@@ -423,6 +452,23 @@ class MarketEntry extends Actor
     public function setCategory($category)
     {
         $this->category = $category;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTags()
+    {
+        return $this->tags;
+    }
+
+    /**
+     * @param string $tags
+     * @return void
+     */
+    public function setTags($tags)
+    {
+        $this->tags = $tags;
     }
 
     /**

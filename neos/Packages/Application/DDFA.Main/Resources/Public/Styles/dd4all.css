@@ -66,6 +66,7 @@ table.afeefa-table-entry td:nth-child(4) {
 .afeefa-small {
     font-size: smaller;
     font-style: italic;
+    color: #aaa;
 }
 
 #tabs {

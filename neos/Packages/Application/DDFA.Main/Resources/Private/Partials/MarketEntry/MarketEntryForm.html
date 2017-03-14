@@ -140,26 +140,21 @@
 
     <div class="neos-control-group">
         <label class="neos-control-label" for="category">Category</label>
+        
+        <span class="afeefa-small">0 Allgemein > general | 1 Sprache > language | 2 Gesundheit > medic | 3 Arbeit + Bildung > jobs | 4 Beratung > consultation | 5 Freizeit > leisure | 6 Gemeinschaft > community | 7 Spenden > donation</span>
 
         <div class="neos-controls">
             <f:form.select class="neos-span12" property="category" id="category" options="{cats}"
                            optionValueField="persistenceObjectIdentifier"
                            optionLabelField="name" sortByOptionLabel="true" prependOptionValue=""
                            prependOptionLabel="- none -"/>
-          <span class="afeefa-small">0 Allgemein > general | 1 Sprache > language | 2 Gesundheit > medic | 3 Arbeit + Bildung > jobs | 4 Beratung > consultation | 5 Freizeit > leisure | 6 Gemeinschaft > community | 7 Spenden > donation</span>
         </div>
     </div>
 
     <div class="neos-control-group">
-        <label class="neos-control-label" for="tags">Tags</label>
-
-        <div class="neos-controls">
-            <f:form.select class="neos-span12" property="tags" id="tags" options="{forwomen: '0 for women', free: '1 free', iwgr: '2 iwgr - was auch immer das ist'}" prependOptionLabel="" prependOptionValue="" sortByOptionLabel="1" multiple="multiple" />
-    </div>
-
-
-    <div class="neos-control-group">
         <label class="neos-control-label" for="subCategory">Subcategory</label>
+        
+        <span class="afeefa-small">Bitte feste Zuordnung von Haupt- und Unterkategorie beachten. Nicht kreuzen!</span>
 
         <div class="neos-controls">
             <f:form.select class="neos-span12" property="subCategory" id="subCategory" options="{wifi: '0 Allgemein: free wifi',
@@ -214,21 +209,31 @@
              clothes: '7 Spenden: Kleidung',
              furniture: '7 Spenden: Möbel'}" prependOptionLabel="" prependOptionValue=""
                            sortByOptionLabel="1"/>
-          <span class="afeefa-small">Bitte feste Zuordnung von Haupt- und Unterkategorie beachten. Nicht kreuzen!</span>
         </div>
     </div>
 
-    <div class="neos-control-group">
-        <label class="neos-control-label" for="description">Description</label>
+    <!-- <div class="neos-control-group">
+        <label class="neos-control-label" for="tags">Tags</label>
+
+        <span class="afeefa-small">
+          - kommagetrennte Liste, z.B. "forwomen,iwgr,free"<br>
+          "forwomen" = für Frauen geeignet | "free" = kostenlos | "iwgr" = Int. Wochen gg. Rass | ...
+        </span>
 
         <div class="neos-controls">
-            <f:form.textarea class="neos-span12" rows="8" property="description" id="description"
-                             placeholder="Enter a description text..."/>
+            <f:form.select style="height: 100px" class="neos-span12" property="tags" id="tags" options="{forwomen: '0 für Frauen', free: '1 kostenlos', iwgr: '2 iwgr - Internationale Wochen gegen Rassismus'}" prependOptionLabel="" prependOptionValue="" sortByOptionLabel="1" multiple="multiple" />
         </div>
-    </div>
+    </div> -->
 
     <div class="neos-control-group">
         <label class="neos-control-label" for="descriptionShort">Short description</label>
+        
+        <span class="afeefa-small">
+          - eigene Zusammenfassung (Autor muss nicht zustimmen)
+          - WER macht WAS für WEN und WIE, evtl WAS MUSS ICH TUN<br>
+          - max. 350 Zeichen (inkl Sonder- und Leerzeichen)!<br>
+          - wird bevorzugt übersetzt, falls vorhanden
+        </span>
 
         <div class="neos-controls">
             <f:form.textarea class="neos-span12" rows="8" property="descriptionShort" id="descriptionShort"
@@ -236,6 +241,18 @@
         </div>
     </div>
 
+    <div class="neos-control-group">
+        <label class="neos-control-label" for="description">Description</label>
+
+        <span class="afeefa-small">
+          Hier die Originaltexte des Anbieters verwenden und diese nicht verändern.
+        </span>
+        
+        <div class="neos-controls">
+            <f:form.textarea class="neos-span12" rows="8" property="description" id="description"
+                             placeholder="Enter a description text..."/>
+        </div>
+    </div>
 
     <div class="neos-control-group">
         <label class="neos-control-label" for="spokenLanguages">Spoken languages</label>

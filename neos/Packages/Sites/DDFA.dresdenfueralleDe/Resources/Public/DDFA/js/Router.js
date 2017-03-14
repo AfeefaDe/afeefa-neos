@@ -232,12 +232,19 @@ qx.Class.define("Router", {
 
 			// var firstParam = url[0] ? url[0].toLowerCase() : null;
 			var firstParam = that.currentPath[0];
+			var secondParam = that.currentPath[1];
 			
 			switch(firstParam) {
 		    case 'pirna':
 		    case 'leipzig':
 					APP.getMapView().setViewToArea(firstParam);
 	        break;
+				case 'tag':
+          APP.getLegendView().setFilter( {tags: secondParam} );
+					break;
+				case 'iwgr':
+          APP.getLegendView().setFilter( {tags: 'iwgr'} );
+					break;
 		    default:
 					APP.getMapView().loadEntryById(firstParam, {setView: true});
 			}

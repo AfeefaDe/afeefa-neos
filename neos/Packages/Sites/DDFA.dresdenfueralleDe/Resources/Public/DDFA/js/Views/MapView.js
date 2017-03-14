@@ -192,6 +192,9 @@ qx.Class.define("MapView", {
 					if( filter.subCategory !== undefined )
 						if( !(entry.subCategory === filter.subCategory) ) return false;
 
+					if( filter.tags !== undefined )
+						if( !entry.tags || entry.tags.indexOf(filter.tags) < 0 ) return false;
+
 					if( filter.type !== undefined )
 						if( !(entry.type === parseInt(filter.type)) ) return false;
 
@@ -307,9 +310,11 @@ qx.Class.define("MapView", {
 					var container = $("<div />"),
 							titleLabel = $("<span />").addClass('title'),
 							categoryLabel = $("<span />").addClass('category');
+							dateLabel = $("<span />").addClass('date');
 					
 					container.append(titleLabel);
 					container.append(categoryLabel);
+					container.append(dateLabel);
 
 					titleLabel.append(locationName);
 
@@ -319,6 +324,10 @@ qx.Class.define("MapView", {
 					}
 					else {
 						categoryLabel.append( entry.category ? that.getWording('cat.' + entry.category.name) : '[category missing]' );
+					}
+
+					if(entry.type == 2) {
+						dateLabel.append(APP.getUtility().buildTimeString(entry));
 					}
 
 					container.on('click', function(e){

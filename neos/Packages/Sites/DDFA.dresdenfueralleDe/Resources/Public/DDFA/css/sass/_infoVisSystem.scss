@@ -168,6 +168,8 @@
 	&.subcat-food { background-image: url("../img/icon_142.svg"); }
 	&.subcat-clothes { background-image: url("../img/icon_140.svg"); }
 	&.subcat-furniture { background-image: url("../img/icon_144.svg"); }
+	
+	&.subcat-iwgr { background-image: url("../img/icon_194.svg"); @include background-size(85%); }
 
 	
 	/* POIs */

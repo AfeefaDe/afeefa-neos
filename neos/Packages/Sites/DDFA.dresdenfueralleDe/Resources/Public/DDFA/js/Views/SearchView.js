@@ -133,6 +133,17 @@ qx.Class.define("SearchView", {
         return that;
     },
 
+    setSearchTag: function(cssClass, wording){
+      var that = this;
+
+      that.searchTag
+        .addClass("active")
+        .addClass(cssClass)
+        .append(wording);
+
+      that.inputField.hide();
+    },
+
     loadResults: function( query ) {
       var that = this;
 
@@ -233,6 +244,17 @@ qx.Class.define("SearchView", {
         };
         createResult('add-entry', that.getWording('search.label.addentry'), that.getWording('search.sublabel.addentry'), action );
 
+        // highlights
+        createSectionHeader( that.getWording('search.label.highlights') );
+
+        // iwgr
+        var action = function(){
+          APP.getLegendView().setFilter( {tags: 'iwgr'} );
+          window.location.hash = 'tag#iwgr';
+        };
+        createResult('iwgr', that.getWording('search.label.iwgr'), that.getWording('search.sublabel.iwgr'), action );
+
+
         // upcoming events
         createSectionHeader( that.getWording('search.label.upcomingevents'), function(){
           that.inputField.val('events').trigger( "input" );
@@ -303,18 +325,14 @@ qx.Class.define("SearchView", {
         if( query.indexOf(':') >= 0 ){
           var operator = query.substring(0, query.indexOf(':'));
           var operationQuery = query.substring(operator.length+1);
-          var classNameCategory;
 
           // category listing
           if(operator == 'cat' ) {
             entriesFiltered = _.filter( entries, function(entry){
-              
-              if( entry.category && entry.category.name == operationQuery) {
-                classNameCategory = operationQuery;
-                return true;
-              }
-              
+                return (entry.category && entry.category.name == operationQuery);
             });
+
+            that.setSearchTag("cat-" + operationQuery, that.getWording('cat.' + operationQuery));
           }
 
           // sub category listing
@@ -322,23 +340,31 @@ qx.Class.define("SearchView", {
             entriesFiltered = _.filter( entries, function(entry){
               
               if( entry.subCategory && entry.subCategory == operationQuery ) {
-                classNameCategory = APP.getMainCategory(operationQuery).name;
                 return true;
               }
             });
+            
+            var searchTagCssClass = APP.getMainCategory(operationQuery).name;
+            that.setSearchTag("cat-" + searchTagCssClass, that.getWording('cat.' + operationQuery));
           }
 
-          that.searchTag
-            .addClass("active")
-            .addClass("cat-" + classNameCategory )
-            .append(that.getWording('cat.' + operationQuery));
-
-          that.inputField.hide();
+          // tag listing
+          else if(operator == 'tag' ) {
+            // entriesFiltered = _.filter( entries, function(entry){
+            entriesFiltered = _.filter( APP.getDataManager().getAllEvents(), function(entry){
+                return ( entry.tags && (entry.tags.indexOf(operationQuery) > -1) );
+            });
+            
+            var tagLabel = that.getWording('tag.' + operationQuery) ? that.getWording('tag.' + operationQuery) : operationQuery;
+            that.setSearchTag("tag-" + operationQuery, tagLabel);
+          }
         }
         
         // events
         else if( query == 'events' ){
           entriesFiltered = APP.getDataManager().getAllEvents();
+          
+          that.setSearchTag(null, that.getWording('search.label.upcomingevents'));
         }
         
         // support wanted
@@ -466,6 +492,10 @@ qx.Class.define("SearchView", {
           }
           else if( filter.subCategory ) {
             that.inputField.val( 'subcat:' + filter.subCategory ).trigger( "input" );
+            // if( APP.getUserDevice() == 'mobile') that.minimize();
+          }
+          else if( filter.tags ) {
+            that.inputField.val( 'tag:' + filter.tags ).trigger( "input" );
             // if( APP.getUserDevice() == 'mobile') that.minimize();
           }
         // }

@@ -33,7 +33,7 @@ qx.Class.define("LanguageManager", {
             var that = this;
 
             var wording = that.getBib()[ key ];
-            if( wording === undefined ) return '###';
+            if( wording === undefined ) return undefined;
             return wording.message;
         },
 

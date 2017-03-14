@@ -85,10 +85,18 @@
 			padding: 0 .3em;
 			cursor: pointer;
 			display: none;
-			background-color: $gray80;
+			background-color: $white;
+			color: $black;
 			@include categoryColors($alpha_background: .4);
-			color: white;
 			&.active { display: inline-block; }
+			max-width: 17em;
+    	overflow: hidden;
+    	text-overflow: ellipsis;
+			@include border-radius(.1em);
+
+			&[class*="cat"] {
+				color: $white;
+			}
 		}
 	}
 
@@ -159,6 +167,10 @@
 			}
 			&.start-intro {
 		    background-image: url("../img/icon_32.svg");
+			}
+			&.iwgr {
+				background-image: url("../img/icon_194.svg");
+				@include background-size(100%);
 			}
 		}
 

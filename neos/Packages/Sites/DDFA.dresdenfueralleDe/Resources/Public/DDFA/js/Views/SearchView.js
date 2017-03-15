@@ -250,7 +250,7 @@ qx.Class.define("SearchView", {
         // iwgr
         var action = function(){
           APP.getLegendView().setFilter( {tags: 'iwgr'} );
-          window.location.hash = 'tag#iwgr';
+          window.location.hash = 'iwgr';
         };
         createResult('iwgr', that.getWording('search.label.iwgr'), that.getWording('search.sublabel.iwgr'), action );
 

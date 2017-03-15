@@ -91,7 +91,9 @@ qx.Class.define("MessageView", {
 				// message was opened before?
 				if( !options.force ){
 					var counter = sessionStorage.getItem("messageOpened_" + options.key);
-					if( counter < 10 ) return;
+					if( counter < 50 ) return;
+					if( counter > 50 ) return;
+					// if( counter < 10 ) return;
 					// if( counter > 2 && counter < 10 ) return;
 					// if( counter > 1 && counter < 10 ) return;
 					// if( counter > 10 ) return;
@@ -185,13 +187,13 @@ qx.Class.define("MessageView", {
 
 			setTimeout(function(){
 				that.load({key: 'survey', force: true});
-			}, 40000);
+			}, 60000);
 
-			that.listen('detailViewOpened', function(){
-				setTimeout(function(){
-					that.load({key: 'survey'});
-				}, 5000);
-      });
+			// that.listen('detailViewOpened', function(){
+			// 	setTimeout(function(){
+			// 		that.load({key: 'survey'});
+			// 	}, 5000);
+   //    });
 		},
 
 		reset: function(){

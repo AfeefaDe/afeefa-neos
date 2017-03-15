@@ -81,8 +81,7 @@ qx.Class.define("DetailView", {
 			//////////////////////
 			
 			// generic
-			// var properties = _.union( ['category'], APP.getConfig().simpleProperties,  ['location'] );, 
-			var properties = ['category', 'times', 'description', 'speakerPublic', 'spokenLanguages', 'location', 'arrival', 'openingHours', 'phone', 'mail', 'web', 'facebook'];
+			var properties = ['category', 'times', 'descriptionShort', 'description', 'speakerPublic', 'spokenLanguages', 'location', 'arrival', 'openingHours', 'phone', 'mail', 'web', 'facebook'];
 			_.each(properties, function(prop){
 
 				that['propertyContainer'+prop] = $("<div />").addClass('property ' + prop);
@@ -115,6 +114,11 @@ qx.Class.define("DetailView", {
 						}
 					});
 				}
+				else if(prop == 'descriptionShort'){
+					that['propertyContainer'+prop].click(function(){
+						that.toggleLongDescription();
+					});
+				}
 
 				that.scrollContainer.append(that['propertyContainer'+prop]);
 
@@ -123,6 +127,23 @@ qx.Class.define("DetailView", {
 			$('#main-container').append(that.view);
 
 			this.base(arguments);
+		},
+
+		toggleLongDescription: function(){
+			var that = this;
+
+			var short = that['propertyContainer'+'descriptionShort'];
+			var long = that['propertyContainer'+'description'];
+			if( long.hasClass('hidden') ) {
+				long.removeClass('hidden');
+				short.removeClass('read-more');
+			}
+			else {
+				long.addClass('hidden');
+				short.addClass('read-more');
+			}
+
+			
 		},
 
 		load: function( record ){
@@ -246,8 +267,10 @@ qx.Class.define("DetailView", {
 					if( _.contains( ['web', 'facebook'], prop) ){
 						that['propertyValue'+prop].append('<a target="_blank" href="' + record[prop] + '">' + record[prop] + '</a>');
 					}
-					else if( _.contains( ['description'], prop) ){
+					else if( _.contains( ['description', 'descriptionShort'], prop) ){
 						that['propertyValue'+prop].append(record[prop].replace(/(?:\r\n|\r|\n)/g, '<br />'));
+
+						if(record.descriptionShort) that['propertyContainer'+'description'].addClass('hidden');
 					}
 					else if( _.contains( ['spokenLanguages'], prop) ){
 						_.each( record[prop].split(',') , function( langCode ){
@@ -324,6 +347,10 @@ qx.Class.define("DetailView", {
 				return (css.match (/(^|\s)subcat-\S+/g) || []).join(' ');
 			});
 			
+			// description toggling
+			that['propertyContainer'+'descriptionShort'].addClass('read-more');
+			that['propertyContainer'+'description'].removeClass('hidden');
+
 			// generic
 			var properties = _.union( ['category', 'location', 'times'], APP.getConfig().simpleProperties );
 			

@@ -77,6 +77,37 @@
 			}
 		}
 
+		&.descriptionShort {
+			font-weight: bold;
+			text-align: center;
+			background-color: white;
+			padding: 4%;
+			cursor: pointer;
+			
+			&.read-more {
+				background-image: url("../img/icon_175.svg");
+				background-position: center bottom;
+				background-size: 8%;
+				background-repeat: no-repeat;
+				padding: 4% 4% 8%;
+			}
+
+			.property-icon {display: none;}
+			.property-text { margin-left: 0; }
+			.property-name {display: none;}
+		}
+
+		&.description {
+			.property-name {display: none;}
+
+			&.hidden {
+				display: none !important;
+			}
+		}
+
+		&.descriptionShort, &.description {
+		}
+
 		.property-icon {
 			width: $iconSize;
 			height: $iconSize;

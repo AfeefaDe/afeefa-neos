@@ -176,7 +176,7 @@ qx.Class.define("DataManager", {
                 that.integrateExternalData(
                     wifiNodes,
                     {
-                        name:"Freifunk Wifi"
+                        name:"Wifi Hotspot (Freifunk)"
                         // lat: {value:"position.lat", type:"var"}
                     }
                 );
@@ -207,7 +207,7 @@ qx.Class.define("DataManager", {
                         "name":"general",
                     },
                     "certified":false,
-                    "description":APP.getLM().resolve("external_wifi_description"),
+                    "descriptionShort":APP.getLM().resolve("freifunk.descriptionShort"),
                     image:"https://freifunk.net/wp-content/uploads/2013/07/spenden.png",
                     imageType:"image",
                     web:"http://www.freifunk-dresden.de/topology/google-maps.html",

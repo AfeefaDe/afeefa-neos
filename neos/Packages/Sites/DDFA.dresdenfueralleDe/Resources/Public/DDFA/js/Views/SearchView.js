@@ -425,6 +425,10 @@ qx.Class.define("SearchView", {
               if( children.toLowerCase().indexOf(query) >= 0 ) return true;
             }
             // in description?
+            if( entry.descriptionShort ) {
+              if( entry.descriptionShort.toLowerCase().indexOf(query) >= 0 ) return true;
+            }
+            // in description?
             if( entry.description ) {
               if( entry.description.toLowerCase().indexOf(query) >= 0 ) return true;
             }

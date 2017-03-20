@@ -131,5 +131,6 @@ foreach ($locales as $locale){
 $result4 = sql("DELETE FROM `ddfa_main_domain_model_marketentry` 
 	WHERE (`name` = '' OR `name` IS NULL) 
 	AND (`description` = ''  OR `description` IS NULL) 
+	AND (`descriptionshort` = ''  OR `descriptionshort` IS NULL) 
 	AND `locale` != 'de'");
 echo "<h4>empty translations deleted (where name and desc is empty string, locale != de) :: " . $result4 . "</h4>";

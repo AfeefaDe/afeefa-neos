@@ -161,7 +161,7 @@ qx.Class.define("DataManager", {
 
             $.ajax({
                 url: "externalDataFiles/freifunk-nodes.json",
-                // url: "http://api.freifunk-dresden.de/freifunk-nodes.json",
+                // url: "http://api.freifunk-dresden.de/afeefa.json",
                 type: 'GET',
                 dataType: 'json'
             })

@@ -164,6 +164,10 @@ qx.Class.define("DetailView", {
 			that.view.addClass('type-' + record.type);
 			if(record.category) that.view.addClass('cat-' + record.category.name);
 
+			// scroll
+			that.scrollContainer.scrollTop(0);
+			that.scrollContainer.perfectScrollbar('update');
+
 			// heading
 			that.heading.append(record.name ? record.name : '');
 			if(record.category) that.headingContainer.addClass('cat-' + record.category.name);

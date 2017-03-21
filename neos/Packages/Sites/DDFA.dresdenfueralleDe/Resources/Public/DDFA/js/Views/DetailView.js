@@ -116,7 +116,7 @@ qx.Class.define("DetailView", {
 				}
 				else if(prop == 'descriptionShort'){
 					that['propertyContainer'+prop].click(function(){
-						that.toggleLongDescription();
+						if( that.record.description ) that.toggleLongDescription();
 					});
 				}
 
@@ -191,6 +191,9 @@ qx.Class.define("DetailView", {
 
 				that.imageContainer.addClass('active');
 			}
+
+			// dont show read more link if there is no long description
+			if( !record.description ) that['propertyContainer'+'descriptionShort'].removeClass('read-more');
 
 			//////////////////////
 			// other properties //

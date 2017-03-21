@@ -4,66 +4,32 @@
 	right: 6em;
 	bottom: 3em;
 
-	@include display-flex;
-	@include flex-direction(column);
-	@include align-items(flex-end);
-
-	.btn-container {
-		
-		display: none;
-		@include align-items(center);
-		margin-bottom: 1em;
-
-		label {
-			background-color: $black_alpha;
-			color: $white;
-			@include transform(translate(-1em,0));
-			@include roundedCorners;
-			padding: .2em;
-			text-align: right;
-		}
-
-		&.btn-container-feedback {
-			@include order(1);
-		}
-
-		&.btn-container-entry {
-			@include order(2);
-		}
-	}
-
 	.btn {
 		@include circleBtn;
 		
 		background-color: $black_alpha;
 
-		&.plusBtn {
-			@include order(3);
+		&.feedbackBtn {
 			width: 3.5em;
 			height: 3.5em;
-			margin-right: -0.25em;
 			@include border-radius(2em);
 
-			background-image: url("../img/icon_34.svg");
-			@include background-size(30%);
-		}
-
-		&.entryBtn {
-			background-image: url("../img/cluster_mix.svg");
-			@include background-size(80%);
-
-		}
-		&.feedbackBtn {
 			background-image: url("../img/icon_50.svg");
+			@include background-size(53%);
+		}
+
+		&.locateBtn {
+			position: relative;
+			width: 2.5em;
+			height: 2.5em;
+			left: .5em;
+			bottom: .7em;
+			background-color: $white_alpha;
+			background-image: url('../img/btn-locate.svg');
+			@include background-size(70%);
+			@include shadow(2);
 		}
 	}
-
-	&.active {
-		.btn-container {
-			@include display-flex;
-		}
-	};
-
 }
 
 .phone {

@@ -4288,9 +4288,6 @@ body.phone #menuView .menu-btn {
   display: flex;
   -webkit-flex-direction: column;
   flex-direction: column;
-  /*@include flex-grow(1);*/
-  /*@include flex-basis(100%);*/
-  /*@include flex-direction(column);*/
 }
 /* line 20, sass/_legendView.scss */
 #legendView .filter-module {
@@ -4309,27 +4306,27 @@ body.phone #menuView .menu-btn {
 }
 /* line 36, sass/_legendView.scss */
 #legendView .reset-module {
-  -webkit-order: 0;
-  order: 0;
+  -webkit-order: 2;
+  order: 2;
 }
 /* line 39, sass/_legendView.scss */
 #legendView .category-module {
+  -webkit-order: 0;
+  order: 0;
+}
+/* line 42, sass/_legendView.scss */
+#legendView .entity-module {
   -webkit-order: 1;
   order: 1;
-}
-/* line 43, sass/_legendView.scss */
-#legendView .entity-module {
-  -webkit-order: 2;
-  order: 2;
   visibility: hidden;
 }
-/* line 48, sass/_legendView.scss */
+/* line 47, sass/_legendView.scss */
 #legendView .row-container {
   display: -webkit-flex;
   display: flex;
   padding: 0 1em;
 }
-/* line 52, sass/_legendView.scss */
+/* line 51, sass/_legendView.scss */
 #legendView .row-container .entity-container {
   -webkit-flex-grow: 1;
   flex-grow: 1;
@@ -4337,13 +4334,14 @@ body.phone #menuView .menu-btn {
   flex-basis: 100%;
   display: -webkit-flex;
   display: flex;
-  -webkit-flex-direction: column;
-  flex-direction: column;
+  -webkit-flex-direction: row;
+  flex-direction: row;
   -webkit-align-items: center;
   align-items: center;
+  margin-bottom: 1em;
   cursor: pointer;
 }
-/* line 62, sass/_legendView.scss */
+/* line 63, sass/_legendView.scss */
 #legendView .row-container .entity-container .entity {
   /* orga */
   /* market entry */
@@ -4396,11 +4394,10 @@ body.phone #menuView .menu-btn {
   /*@include box-shadow(0px 0px 2px #555);*/
   background-color: #999999 !important;
 }
-/* line 69, sass/_legendView.scss */
+/* line 70, sass/_legendView.scss */
 #legendView .row-container .entity-container .label {
   color: #999999;
-  font-size: .9em;
-  padding-top: 0.5em;
+  padding-left: 1em;
 }
 /* line 76, sass/_legendView.scss */
 #legendView .row-container .entity-container:hover .label {
@@ -5287,14 +5284,19 @@ body.phone #menuView .menu-btn {
 #legendView .sub-container .subcat-container:hover p {
   text-shadow: 0px 0px 2px white;
 }
-/* line 241, sass/_legendView.scss */
+/* line 237, sass/_legendView.scss */
+#legendView .entity-module .row-container {
+  -webkit-flex-direction: column;
+  flex-direction: column;
+}
+/* line 242, sass/_legendView.scss */
 #legendView .attribute-module {
   display: none;
   -webkit-order: 3;
   order: 3;
   visibility: hidden;
 }
-/* line 247, sass/_legendView.scss */
+/* line 248, sass/_legendView.scss */
 #legendView .attribute-module .attribute-container {
   padding-left: 2em;
   margin-bottom: 1em;
@@ -5303,94 +5305,94 @@ body.phone #menuView .menu-btn {
   -webkit-align-items: center;
   align-items: center;
 }
-/* line 254, sass/_legendView.scss */
+/* line 255, sass/_legendView.scss */
 #legendView .attribute-module .attribute-container input {
   width: 1.5em;
   height: 1.5em;
   cursor: pointer;
 }
-/* line 260, sass/_legendView.scss */
+/* line 261, sass/_legendView.scss */
 #legendView .attribute-module .attribute-container label {
   text-indent: 1em;
   cursor: pointer;
 }
-/* line 266, sass/_legendView.scss */
+/* line 267, sass/_legendView.scss */
 #legendView .attribute-module .attribute-container:hover label {
   color: #f2f2f2;
 }
-/* line 275, sass/_legendView.scss */
+/* line 276, sass/_legendView.scss */
 #legendView.filter-active .cat-container.filter-reset {
   display: block;
 }
 
-/* line 293, sass/_legendView.scss */
+/* line 294, sass/_legendView.scss */
 .desktop #legendView.active {
   right: 0 !important;
 }
-/* line 284, sass/_legendView.scss */
+/* line 285, sass/_legendView.scss */
 .desktop #legendView.active .filter-module h3 {
   visibility: visible;
 }
-/* line 286, sass/_legendView.scss */
+/* line 287, sass/_legendView.scss */
 .desktop #legendView.active .entity-module {
   visibility: visible;
 }
-/* line 287, sass/_legendView.scss */
+/* line 288, sass/_legendView.scss */
 .desktop #legendView.active .attribute-module {
   visibility: visible;
 }
-/* line 289, sass/_legendView.scss */
+/* line 290, sass/_legendView.scss */
 .desktop #legendView.active .cat-container .icon {
   margin-left: .5em;
 }
 
-/* line 299, sass/_legendView.scss */
+/* line 300, sass/_legendView.scss */
 .tablet #legendView {
   overflow: scroll;
 }
-/* line 302, sass/_legendView.scss */
+/* line 303, sass/_legendView.scss */
 .tablet #legendView.active {
   right: 0 !important;
 }
-/* line 284, sass/_legendView.scss */
+/* line 285, sass/_legendView.scss */
 .tablet #legendView.active .filter-module h3 {
   visibility: visible;
 }
-/* line 286, sass/_legendView.scss */
+/* line 287, sass/_legendView.scss */
 .tablet #legendView.active .entity-module {
   visibility: visible;
 }
-/* line 287, sass/_legendView.scss */
+/* line 288, sass/_legendView.scss */
 .tablet #legendView.active .attribute-module {
   visibility: visible;
 }
-/* line 289, sass/_legendView.scss */
+/* line 290, sass/_legendView.scss */
 .tablet #legendView.active .cat-container .icon {
   margin-left: .5em;
 }
 
-/* line 309, sass/_legendView.scss */
+/* line 310, sass/_legendView.scss */
 .mobile #legendView {
   right: -20em;
   overflow: scroll;
 }
-/* line 313, sass/_legendView.scss */
+/* line 314, sass/_legendView.scss */
 .mobile #legendView.active {
   right: 0 !important;
 }
-/* line 284, sass/_legendView.scss */
+/* line 285, sass/_legendView.scss */
 .mobile #legendView.active .filter-module h3 {
   visibility: visible;
 }
-/* line 286, sass/_legendView.scss */
+/* line 287, sass/_legendView.scss */
 .mobile #legendView.active .entity-module {
   visibility: visible;
 }
-/* line 287, sass/_legendView.scss */
+/* line 288, sass/_legendView.scss */
 .mobile #legendView.active .attribute-module {
   visibility: visible;
 }
-/* line 289, sass/_legendView.scss */
+/* line 290, sass/_legendView.scss */
 .mobile #legendView.active .cat-container .icon {
   margin-left: .5em;
 }

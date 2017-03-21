@@ -66,7 +66,7 @@ qx.Class.define("LegendView", {
 	  var rowContainer = $("<div />")
 		.addClass('row-container');
 	  
-	  _.each( {0: 'orga', 1: 'market', 2: 'event'}, function(value, key){
+	  _.each( {0: 'orga', 2: 'event', 1: 'market'}, function(value, key){
 			var entityContainer = $("<div />")
 			  .addClass('entity-container')
 			  .click(function() {
@@ -299,6 +299,8 @@ qx.Class.define("LegendView", {
 		  if(APP.getActiveFilter() != null){
 			  APP.setActiveFilter(null);
 			  that.say('filterSet');
+				that.view.scrollTop(0);
+				that.view.perfectScrollbar('update');
 		  }
 	  },
 

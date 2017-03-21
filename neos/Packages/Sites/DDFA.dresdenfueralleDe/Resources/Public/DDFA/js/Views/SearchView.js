@@ -326,6 +326,20 @@ qx.Class.define("SearchView", {
           var operator = query.substring(0, query.indexOf(':'));
           var operationQuery = query.substring(operator.length+1);
 
+          // type listing
+          if(operator == 'type' ) {
+            if(operationQuery == 2) {
+              entriesFiltered = APP.getDataManager().getAllEvents();
+            }
+            else {
+              entriesFiltered = _.filter( entries, function(entry){
+                  return (entry.type == operationQuery);
+              });
+            }
+
+            that.setSearchTag("type-" + operationQuery, that.getWording('search.label.type.' + operationQuery));
+          }
+
           // category listing
           if(operator == 'cat' ) {
             entriesFiltered = _.filter( entries, function(entry){
@@ -486,24 +500,21 @@ qx.Class.define("SearchView", {
       that.listen('filterSet', function(){
         var filter = APP.getActiveFilter();
         
-        // if( APP.getUserDevice() != 'mobile'){
-          if( !filter ){
-            that.close();
-          }
-          else if( filter.category ) {
-            that.inputField.val( 'cat:' + filter.category ).trigger( "input" );
-            // if( APP.getUserDevice() == 'mobile') that.minimize();
-          }
-          else if( filter.subCategory ) {
-            that.inputField.val( 'subcat:' + filter.subCategory ).trigger( "input" );
-            // if( APP.getUserDevice() == 'mobile') that.minimize();
-          }
-          else if( filter.tags ) {
-            that.inputField.val( 'tag:' + filter.tags ).trigger( "input" );
-            // if( APP.getUserDevice() == 'mobile') that.minimize();
-          }
-        // }
-
+        if( !filter ){
+          that.close();
+        }
+        else if( filter.type ) {
+          that.inputField.val( 'type:' + filter.type ).trigger( "input" );
+        }
+        else if( filter.category ) {
+          that.inputField.val( 'cat:' + filter.category ).trigger( "input" );
+        }
+        else if( filter.subCategory ) {
+          that.inputField.val( 'subcat:' + filter.subCategory ).trigger( "input" );
+        }
+        else if( filter.tags ) {
+          that.inputField.val( 'tag:' + filter.tags ).trigger( "input" );
+        }
       });
 
     },

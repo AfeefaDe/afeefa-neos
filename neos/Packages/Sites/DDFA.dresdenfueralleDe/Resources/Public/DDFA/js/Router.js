@@ -188,7 +188,7 @@ qx.Class.define("Router", {
 					// else {
 						// start intro?
 						if( !localStorage.getItem("introIsKnown") ){
-							if( !localStorage.getItem("languageFrozen") ){
+							if( !sessionStorage.getItem("languageFrozen") ){
 								APP.getLanguageView().open(function(){
 									APP.getIntroView().start();
 								});
@@ -199,7 +199,7 @@ qx.Class.define("Router", {
 						}
 						// open search view
 						else {
-							if( !localStorage.getItem("languageFrozen") ){
+							if( !sessionStorage.getItem("languageFrozen") ){
 								APP.getLanguageView().open(function(){
 									APP.getSearchView().loadResults();
 								});

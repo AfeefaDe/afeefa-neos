@@ -22,14 +22,14 @@ qx.Class.define("APPAFEEFA", {
 					'fa',
 					'fr',
 					'ru',
-					'ps',
+					// 'ps',
 					'ku',
-					'es',
-					'sq',
-					'sr',
-					'ti',
-					'tr',
-					'ur'
+					// 'es',
+					// 'sq',
+					// 'sr',
+					'ti'
+					// 'tr',
+					// 'ur'
 				],
 				phraseapp: {
 					localeId: {

@@ -22,50 +22,35 @@ qx.Class.define("PlusView", {
 			that.view.attr('id', that.getViewId());
 			
 			// plus button
-			that.plusBtn = $("<div />")
-				.addClass('btn plusBtn');
-			that.view.append(that.plusBtn);
-
-			// entry button
-			that.entryLabel = $("<label />");
-			that.entryBtn = $("<div />")
-			 	.addClass('btn entryBtn');
-			var container = $("<div />")
-				.addClass('btn-container btn-container-entry')
-				.append(that.entryLabel)
-				.append(that.entryBtn);
-			that.view.append(container);
-
-			// feedback button
-			that.feedbackLabel = $("<label />");
 			that.feedbackBtn = $("<div />")
-			 .addClass('btn feedbackBtn')
-			 .append(that.feedbackLabel);
-			var container = $("<div />")
-				.addClass('btn-container btn-container-feedback')
-				.append(that.feedbackLabel)
-				.append(that.feedbackBtn);
-			that.view.append(container);
-			
+				.addClass('btn feedbackBtn');
+			that.view.append(that.feedbackBtn);
+
+			that.createTooltip(
+        that.feedbackBtn,
+        function(){
+          return that.getWording('button.feedback');
+        }(),
+        'hover',
+        'left',
+        'desktop'
+      );
+
 			$('#main-container').append(that.view);
 
 			this.base(arguments);
 
-			that.load();
+			// that.load();
 		},
 
 		load: function(){
 			var that = this;
-
-			that.entryLabel.empty().append( that.getWording( 'plus.entry' ) );
-			that.feedbackLabel.empty().append( that.getWording( 'plus.feedback' ) );
 		},
 
 		show: function(){
 			var that = this;
 
 		  that.showCurtain(true);
-	    that.view.addClass( "active" );
 		},
 
 		addEvents: function(){
@@ -74,32 +59,16 @@ qx.Class.define("PlusView", {
 			// call superclass
 			this.base(arguments);
 			
-			that.entryBtn.click(function(){
-				that.close();
-				APP.getIncludeView().load( APP.getIncludeView().getIncludes().entryFormGuide );
-			});
-			
 			that.feedbackBtn.click(function(){
 				that.close();
 		   	APP.getFormView().load( 'feedback' );
 			});
-
-			// show on hover
-			that.view.hover(
-			  function() {
-			  	that.show();
-			  }, function() {
-			  	// only fire mouseleave if plusView is really active
-			  	if( that.view.hasClass('active') ) that.close();
-			  }
-			);
 		},
 
 		close: function(){
 			var that = this;
 
 			that.showCurtain(false);  
-	    that.view.removeClass( "active" );
 		},
 
 		changeLanguage: function(){

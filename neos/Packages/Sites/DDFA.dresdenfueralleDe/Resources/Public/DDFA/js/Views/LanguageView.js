@@ -49,7 +49,7 @@ qx.Class.define("LanguageView", {
 	          return that.getWording('languageselection.button.main');
 	        }(),
 	        'hover',
-	        'top',
+	        'left',
 	        'desktop'
 	      );
 

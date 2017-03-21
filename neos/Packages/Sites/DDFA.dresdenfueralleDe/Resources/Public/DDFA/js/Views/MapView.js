@@ -39,18 +39,6 @@ qx.Class.define("MapView", {
 
 			$('#main-container').append(that.view);
 
-				// locate btn
-			that.locateBtn = $("<div />").attr('id', 'locate-btn');
-				that.view.append(that.locateBtn);
-			
-			that.locateBtn.click(function(){
-				that.locate(true);
-			});
-			that.locateBtn.on('touchend', function(){
-				that.locate(true);
-			});
-
-
 			/////////////////
 			// MAPBOX INIT //
 			/////////////////

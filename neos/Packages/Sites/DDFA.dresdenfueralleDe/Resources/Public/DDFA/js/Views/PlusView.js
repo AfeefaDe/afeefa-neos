@@ -21,7 +21,29 @@ qx.Class.define("PlusView", {
 			that.view = $("<div />");
 			that.view.attr('id', that.getViewId());
 			
-			// plus button
+			// locate btn
+			that.locateBtn = $("<div />")
+				.addClass('btn locateBtn')
+				// .attr('id', 'locate-btn')
+				.click(function(){
+					APP.getMapView().locate(true);
+				})
+				.on('touchend', function(){
+					APP.getMapView().locate(true);
+				});
+			that.view.append(that.locateBtn);
+
+			that.createTooltip(
+        that.locateBtn,
+        function(){
+          return that.getWording('button.locate');
+        }(),
+        'hover',
+        'left',
+        'desktop'
+      );
+
+			// feedback button
 			that.feedbackBtn = $("<div />")
 				.addClass('btn feedbackBtn');
 			that.view.append(that.feedbackBtn);

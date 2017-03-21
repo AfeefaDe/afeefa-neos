@@ -2023,39 +2023,14 @@ strong {
 #mapView .afeefa-popup .category, #mapView .afeefa-popup .date {
   font-size: .8em;
 }
-/* line 119, sass/_mapView.scss */
-#mapView #locate-btn {
-  position: fixed;
-  width: 3em;
-  height: 3em;
-  right: 8em;
-  bottom: 9em;
-  background-color: #EEE;
-  background-image: url("../img/btn-locate.svg");
-  -moz-background-size: 70%;
-  -o-background-size: 70%;
-  -webkit-background-size: 70%;
-  background-size: 70%;
-  background-position: center;
-  background-repeat: no-repeat;
-  -moz-box-shadow: 0px 0px 5px #888888;
-  -webkit-box-shadow: 0px 0px 5px #888888;
-  box-shadow: 0px 0px 5px #888888;
-  -moz-border-radius: 2em;
-  -webkit-border-radius: 2em;
-  border-radius: 2em;
-  cursor: pointer;
-  z-index: 999;
-}
 
-/* line 141, sass/_mapView.scss */
-body.phone #mapView #locate-btn {
-  width: 4em;
-  height: 4em;
-  right: 2.25em;
-  bottom: 7.5em;
-}
+/*body.phone {
 
+	#mapView{
+		...
+	}
+
+}*/
 /* line 1, sass/_searchView.scss */
 #searchView {
   position: absolute;
@@ -5462,7 +5437,6 @@ body.phone #menuView .menu-btn {
 #plusView .btn.feedbackBtn {
   width: 3.5em;
   height: 3.5em;
-  margin-right: -0.25em;
   -moz-border-radius: 2em;
   -webkit-border-radius: 2em;
   border-radius: 2em;
@@ -5472,8 +5446,29 @@ body.phone #menuView .menu-btn {
   -webkit-background-size: 53%;
   background-size: 53%;
 }
+/* line 21, sass/_plusView.scss */
+#plusView .btn.locateBtn {
+  position: relative;
+  width: 2.5em;
+  height: 2.5em;
+  left: .5em;
+  bottom: .7em;
+  background-color: rgba(255, 255, 255, 0.8);
+  background-image: url("../img/btn-locate.svg");
+  -moz-background-size: 70%;
+  -o-background-size: 70%;
+  -webkit-background-size: 70%;
+  background-size: 70%;
+  -moz-transition: box-shadow 150ms;
+  -o-transition: box-shadow 150ms;
+  -webkit-transition: box-shadow 150ms;
+  transition: box-shadow 150ms;
+  -moz-box-shadow: 0px 0px 4px #000;
+  -webkit-box-shadow: 0px 0px 4px #000;
+  box-shadow: 0px 0px 4px #000;
+}
 
-/* line 25, sass/_plusView.scss */
+/* line 36, sass/_plusView.scss */
 .phone #plusView {
   right: 2em !important;
   bottom: 1.5em !important;

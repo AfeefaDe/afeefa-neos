@@ -37,6 +37,7 @@ qx.Class.define("IntroView", {
 					el: (userDevice == 'mobile')? that.view : APP.getSearchView().view,
 					placement: (userDevice == 'mobile')? 'top' : 'right',
 					preAction: function(){
+						APP.getSearchView().results.scrollTop(0);
 						APP.getSearchView().loadResults();
 						APP.getSearchView().showCurtain(true);
 					},
@@ -111,7 +112,7 @@ qx.Class.define("IntroView", {
 				
 				step5: {
 					stepName: 'plus',
-					el: APP.getPlusView().plusBtn,
+					el: APP.getPlusView().feedbackBtn,
 					placement: 'left',
 					preAction: function(){
 						APP.getPlusView().show();

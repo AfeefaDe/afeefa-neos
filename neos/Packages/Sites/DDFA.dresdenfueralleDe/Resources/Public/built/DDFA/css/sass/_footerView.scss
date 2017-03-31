@@ -1,0 +1,60 @@
+.desktop #footer {
+	
+	background-color: black;
+	position: absolute;
+	bottom: 0;
+  width: 100%;
+  height: 2em;
+  color: $gray50;
+  padding: 0 1em;
+  @include display-flex;
+  @include flex-direction(row);
+  /*@inlcude justify-content(space-between);*/
+
+	p {
+  	/*width: 49%;*/
+  	padding: 0;
+  	margin: 0;
+    box-sizing: border-box;
+    flex-grow: 1;
+    padding-top: .3em;
+	}
+
+  a {
+  	color: $white;
+  	text-decoration: none;
+  }
+
+  .donate {
+    font-size: .9em;
+    text-align: center;
+  }
+
+  .facebook {
+    
+    text-align: right;
+    display: none;
+
+    a {
+      display: inline-block;
+      width: 1.3em;
+      height: 1.3em;
+      background-image: url("../img/icon_196.svg");
+      background-repeat: no-repeat;
+      @include background-size(contain);
+      opacity: .6;
+
+      &:hover {
+        opacity: 1
+      }
+    }
+  }
+
+}
+
+.phone, .tablet {
+
+	#footer{
+		display: none;
+	}
+}

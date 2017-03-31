@@ -5,12 +5,6 @@ function sql($query, $variant = 1) {
     // DB Config //
     ///////////////
 
-    // localhost joschka
-    // $server = "localhost";
-    // $user = "dude";
-    // $pass = "";
-    // $db = "neos";
-
     // localhost felix
     // $server = "localhost";
     // $user = "root";

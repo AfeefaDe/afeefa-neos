@@ -1,6 +1,7 @@
 <!-- CSS -->
 <style>
 body {
+	padding: 2em;
 	font-family: sans-serif;
 }
 .dataPrint {display: none;}
@@ -197,7 +198,7 @@ var myLineChart = new Chart(ctx, {
     ]
     },
     options: {
-    	responsive: false
+    	responsive: true
     }
 });	
 </script>
@@ -212,6 +213,24 @@ for($i=0;$i<count($languages);$i++){
 	array_push($data_orga_translations,$result->num_rows);
 
 	// echo $languages[$i] . ": " . $result->num_rows . " (" . round($result->num_rows/$orgas_count*100) . "%)<br>";
+}
+
+$data_orga_translations_title = [];
+for($i=0;$i<count($languages);$i++){
+	$result = sql("SELECT translation.name, translation.locale, root.name, root.locale FROM `ddfa_main_domain_model_marketentry` AS translation INNER JOIN `ddfa_main_domain_model_marketentry` AS root ON translation.entry_id=root.entry_id WHERE root.locale='de' AND root.published=1 AND translation.type=0 AND translation.name IS NOT NULL AND translation.locale='" .$languages[$i]. "'");
+	array_push($data_orga_translations_title,$result->num_rows);
+}
+
+$data_orga_translations_description = [];
+for($i=0;$i<count($languages);$i++){
+	$result = sql("SELECT translation.name, translation.locale, root.name, root.locale FROM `ddfa_main_domain_model_marketentry` AS translation INNER JOIN `ddfa_main_domain_model_marketentry` AS root ON translation.entry_id=root.entry_id WHERE root.locale='de' AND root.published=1 AND translation.type=0 AND translation.description IS NOT NULL AND translation.locale='" .$languages[$i]. "'");
+	array_push($data_orga_translations_description,$result->num_rows);
+}
+
+$data_orga_translations_shortdescription = [];
+for($i=0;$i<count($languages);$i++){
+	$result = sql("SELECT translation.name, translation.locale, root.name, root.locale FROM `ddfa_main_domain_model_marketentry` AS translation INNER JOIN `ddfa_main_domain_model_marketentry` AS root ON translation.entry_id=root.entry_id WHERE root.locale='de' AND root.published=1 AND translation.type=0 AND translation.descriptionshort IS NOT NULL AND translation.locale='" .$languages[$i]. "'");
+	array_push($data_orga_translations_shortdescription,$result->num_rows);
 }
 
 // event translations
@@ -233,13 +252,23 @@ for($i=0;$i<count($languages);$i++){
 	<?php 
 		// echo implode(",",$languages)
 		for($i=0;$i<count($languages);$i++){
-			echo $languages[$i] . " " . round($data_orga_translations[$i]/$orgas_count*100) . "%,";
+			// echo $languages[$i] . " " . round($data_orga_translations[$i]/$orgas_count*100) . "%,";
+			echo $languages[$i] . ",";
 		}
 
 	?>
 </span>
 <span class="dataPrint" id="data_translations_orga">
 	<?php echo implode(",",$data_orga_translations) ?>
+</span>
+<span class="dataPrint" id="data_translations_orga_title">
+	<?php echo implode(",",$data_orga_translations_title) ?>
+</span>
+<span class="dataPrint" id="data_translations_orga_description">
+	<?php echo implode(",",$data_orga_translations_description) ?>
+</span>
+<span class="dataPrint" id="data_translations_orga_shortdescription">
+	<?php echo implode(",",$data_orga_translations_shortdescription) ?>
 </span>
 <span class="dataPrint" id="data_translations_event">
 	<?php echo implode(",",$data_event_translations) ?>
@@ -248,7 +277,7 @@ for($i=0;$i<count($languages);$i++){
 	<?php echo implode(",",$data_ad_translations) ?>
 </span>
 
-<canvas id="translationCoverage" width="600" height="600"></canvas>
+<canvas id="translationCoverage" width="600" height="800"></canvas>
 
 <script>
 var ctx = $("#translationCoverage");
@@ -258,56 +287,48 @@ var myBarChart = new Chart(ctx, {
     	labels: $('#data_translations_labels').text().split(","),
 	    datasets: [
 	        {
-	            label: "Orgas",
-	            backgroundColor: 'rgba(63, 127, 191, 0.2)',
-	            borderColor: [
-	                'rgba(63, 127, 191,1)',
-	                'rgba(63, 127, 191,1)',
-	                'rgba(63, 127, 191,1)',
-	                'rgba(63, 127, 191,1)',
-	                'rgba(63, 127, 191,1)',
-	                'rgba(63, 127, 191,1)'
-	            ],
-	            borderWidth: [10,1,1,1,1],
+	            label: "Orgas with translated title OR desc OR short desc",
+	            backgroundColor: 'rgba(63, 127, 191, 0.4)',
+	            // borderColor: [
+	            //     'rgba(63, 127, 191,1)',
+	            //     'rgba(63, 127, 191,1)',
+	            //     'rgba(63, 127, 191,1)',
+	            //     'rgba(63, 127, 191,1)',
+	            //     'rgba(63, 127, 191,1)',
+	            //     'rgba(63, 127, 191,1)'
+	            // ],
+	            // borderWidth: [10,1,1,1,1],
 	            data: $('#data_translations_orga').text().split(",")
 	        },
 	        {
+	            label: "Orgas with translated title",
+	            backgroundColor: 'rgba(63, 127, 191, 0.4)',
+	            data: $('#data_translations_orga_title').text().split(",")
+	        },
+	        {
+	            label: "Orgas with translated desc",
+	            backgroundColor: 'rgba(63, 127, 191, 0.7)',
+	            data: $('#data_translations_orga_description').text().split(",")
+	        },
+	        {
+	            label: "Orgas with translated short desc",
+	            backgroundColor: 'rgba(63, 127, 191, 1)',
+	            data: $('#data_translations_orga_shortdescription').text().split(",")
+	        },
+	        {
 	            label: "Events",
-	            backgroundColor: 'rgba(178, 76, 76, 0.2)',
-	            borderColor: [
-	                'rgba(178, 76, 76,1)',
-	                'rgba(178, 76, 76,1)',
-	                'rgba(178, 76, 76,1)',
-	                'rgba(178, 76, 76,1)',
-	                'rgba(178, 76, 76,1)',
-	                'rgba(178, 76, 76,1)'
-	            ],
-	            borderWidth: [10,1,1,1,1],
+	            backgroundColor: 'rgba(178, 76, 76, 0.3)',
 	            data: $('#data_translations_event').text().split(",")
 	        },
 	        {
 	            label: "Ads",
-	            backgroundColor: 'rgba(223, 223, 62, 0.2)',
-	            borderColor: [
-	                'rgba(223, 223, 62, 1)',
-	                'rgba(223, 223, 62, 1)',
-	                'rgba(223, 223, 62, 1)',
-	                'rgba(223, 223, 62, 1)',
-	                'rgba(223, 223, 62, 1)',
-	                'rgba(223, 223, 62, 1)'
-	            ],
-	            borderWidth: [10,1,1,1,1],
+	            backgroundColor: 'rgba(223, 223, 62, 0.3)',
 	            data: $('#data_translations_ad').text().split(",")
 	        }
 	    ]
     },
     options: {
-    	responsive: false
+    	responsive: true
     }
 });
 </script>
-<p>
-	<small>filled bars: German entries</small><br>
-	<small>outlined bars: important languages</small><br>
-	<small>the percentage is meant for Orgas</small><br>
-</p>

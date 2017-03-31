@@ -26,7 +26,7 @@ qx.Class.define("MenuView", {
 
             // logo
             var a = $('<a />')
-                .attr('href', 'http://afeefa.de')
+                .attr('href', 'https://afeefa.de')
                 .attr('id', 'logo');
             that.logo  = $('<img />').attr({
                 'src': APP.getConfig().imgPath + 'afeefa_light.svg',
@@ -37,21 +37,23 @@ qx.Class.define("MenuView", {
             that.menu.append(a);
             
             // btn refugee guide
-            that.refugeeBtn = $('<div />').addClass('item refugee-guide');
-            that.refugeeLBtnLabel = $('<span />');
-            that.refugeeBtn.append(that.refugeeLBtnLabel);
-            that.menu.append(that.refugeeBtn);
+            // that.refugeeBtn = $('<div />').addClass('item refugee-guide');
+            // that.refugeeLBtnLabel = $('<span />');
+            // that.refugeeBtn.append(that.refugeeLBtnLabel);
+            // that.menu.append(that.refugeeBtn);
 
             // btn supporter guide
-            that.supporterBtn = $('<div />').addClass('item supporter-guide');
-            that.supporterBtnLabel = $('<span />');
-            that.supporterBtn.append(that.supporterBtnLabel);
-            that.menu.append(that.supporterBtn);
+            // that.supporterBtn = $('<div />').addClass('item supporter-guide');
+            // that.supporterBtnLabel = $('<span />');
+            // that.supporterBtn.append(that.supporterBtnLabel);
+            // that.menu.append(that.supporterBtn);
             
             
             // btn about
             that.aboutBtn = $('<div />').addClass('item about');
-            that.aboutBtnLabel = $('<span />');
+            that.aboutBtnLabel = $('<a />')
+                .attr('href', 'https://about.afeefa.de')
+                .attr('target', '_blank');
             that.aboutBtn.append(that.aboutBtnLabel);
             that.menu.append(that.aboutBtn);
 
@@ -101,20 +103,20 @@ qx.Class.define("MenuView", {
             // call superclass
             this.base(arguments);
             
-            that.refugeeBtn.click(function(){
-                that.close();
-                APP.getIncludeView().load( APP.getIncludeView().getIncludes().refugeeGuide );
-            });
+            // that.refugeeBtn.click(function(){
+            //     that.close();
+            //     APP.getIncludeView().load( APP.getIncludeView().getIncludes().refugeeGuide );
+            // });
 
-            that.supporterBtn.click(function(){
-                that.close();
-                APP.getIncludeView().load( APP.getIncludeView().getIncludes().supporterGuide );
-            });
+            // that.supporterBtn.click(function(){
+            //     that.close();
+            //     APP.getIncludeView().load( APP.getIncludeView().getIncludes().supporterGuide );
+            // });
 
-            that.aboutBtn.click(function(){
-                that.close();
-                APP.getIncludeView().load( APP.getIncludeView().getIncludes().about );
-            });
+            // that.aboutBtn.click(function(){
+            //     that.close();
+            //     APP.getIncludeView().load( APP.getIncludeView().getIncludes().about );
+            // });
 
             that.pressBtn.click(function(){
                 that.close();
@@ -165,8 +167,6 @@ qx.Class.define("MenuView", {
 
             $('#main-container').addClass('shifted');
 
-            that.refugeeLBtnLabel.append( that.getWording('menu.refugee') );
-            that.supporterBtnLabel.append( that.getWording('menu.supporter') );
             that.aboutBtnLabel.append( that.getWording('menu.about') );
             that.pressBtnLabel.append( that.getWording('menu.press') );
             that.imprintBtnLabel.append( that.getWording('menu.imprint') );
@@ -177,8 +177,6 @@ qx.Class.define("MenuView", {
         reset: function(){
             var that = this;
 
-            that.refugeeLBtnLabel.empty();
-            that.supporterBtnLabel.empty();
             that.aboutBtnLabel.empty();
             that.pressBtnLabel.empty();
             that.imprintBtnLabel.empty();

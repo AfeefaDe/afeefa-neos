@@ -89,6 +89,18 @@ qx.Class.define("View", {
             
         },
 
+        show: function(){
+          var that = this;
+
+          that.view.removeClass('hidden');
+        },
+
+        hide: function(){
+          var that = this;
+
+          that.view.addClass('hidden');
+        },
+
         createTooltip: function(el, content, event, placement, device, cssClasses, contentType){
             var that = this;
 

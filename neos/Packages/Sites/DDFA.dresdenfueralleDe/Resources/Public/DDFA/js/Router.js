@@ -200,12 +200,13 @@ qx.Class.define("Router", {
 						// open search view
 						else {
 							if( !sessionStorage.getItem("languageFrozen") ){
+								APP.getSearchView().hide();
 								APP.getLanguageView().open(function(){
-									APP.getSearchView().loadResults();
+									APP.getSearchView().show();
 								});
 							}
 							else {
-								APP.getSearchView().loadResults();
+								// APP.getSearchView().load();
 							}
 						}
 					// }

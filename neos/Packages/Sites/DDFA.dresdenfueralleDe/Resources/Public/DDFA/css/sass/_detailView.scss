@@ -4,7 +4,7 @@
 	/* HEADING */
 	.heading {
 		
-		min-height: 3em;
+		min-height: 4em;
 		@include flex-shrink(0);
 		color: $white;
 		background-color: $black;
@@ -19,7 +19,7 @@
 		h1 {
 			@include box-sizing(border-box);
 			margin: 0;
-			padding: 1em 3em 0.3em 3em;
+			padding: 1.5em 3em 0.3em 4em;
 
 			font-weight: 300;
 			font-size: 1.1em;
@@ -60,7 +60,7 @@
 	.property {
 		display: none;
 		padding: 0 5%;
-		margin-top: 1em;
+		margin-top: 2em;
 		min-height: 2em;
 
 		$iconSize: 2.5em;
@@ -190,22 +190,18 @@
 
 #detailView {
 	
-	$viewWidth: 23em;
-
 	visibility: hidden;
 	opacity: 0;
 	@include transition(left 400ms, right 400ms);
 	
 	position: absolute;
-	left: 3em;
-	top: 7em;
+	z-index: 20;
 
 	@include display-flex;
 	@include flex-direction(column);
 
-	width: $viewWidth;
-	min-height: 20%;
-	max-height: 70%;
+	width: 30em;
+	height: 100%;
 
 	background-color: $white;
 	@include box-shadow(0px 0px 2px #333);
@@ -215,12 +211,6 @@
 		opacity: 1;
 	}
 
-	&.right {
-		left: auto;
-		/*right: 6em;*/
-		left: calc(100% - #{$viewWidth} - 4em);
-	}
-	
 	.scroll-container {
 		@include flex-grow(1);
 		overflow-y: auto;

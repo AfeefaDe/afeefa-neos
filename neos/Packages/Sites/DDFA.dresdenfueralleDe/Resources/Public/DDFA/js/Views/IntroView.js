@@ -32,13 +32,13 @@ qx.Class.define("IntroView", {
 
 			that.steps = {
 
-				step1: {
+				stepSearch: {
 					stepName: 'search',
 					el: (userDevice == 'mobile')? that.view : APP.getSearchView().view,
 					placement: (userDevice == 'mobile')? 'top' : 'right',
 					preAction: function(){
 						APP.getSearchView().results.scrollTop(0);
-						APP.getSearchView().loadResults();
+						APP.getSearchView().load();
 						APP.getSearchView().showCurtain(true);
 					},
 					afterAction: function(){
@@ -51,7 +51,7 @@ qx.Class.define("IntroView", {
 					buttons: ['next', 'cancelForever']
 				},
 				
-				step2: {
+				stepMap: {
 					stepName: 'map',
 					el: APP.getMapView().view,
 					placement: 'top',
@@ -68,7 +68,7 @@ qx.Class.define("IntroView", {
 					buttons: ['next', 'cancel']
 				},
 				
-				step3: {
+				stepLanguage: {
 					stepName: 'language',
 					el: APP.getLanguageView().langBtn,
 					placement: 'right',
@@ -82,10 +82,10 @@ qx.Class.define("IntroView", {
 						heading: 'intro.step.language.title',
 						text: 'intro.step.language.text'
 					},
-					buttons: ['finish']
+					buttons: ['next', 'cancel']
 				},
 				
-				step4: {
+				stepLegend: {
 					stepName: 'legend',
 					el: (userDevice == 'mobile')? APP.getSearchView().filterBtn : APP.getLegendView().view,
 					placement: (userDevice == 'mobile')? 'bottom' : 'left',
@@ -110,7 +110,7 @@ qx.Class.define("IntroView", {
 					buttons: ['next', 'cancel']
 				},
 				
-				step5: {
+				stepContact: {
 					stepName: 'plus',
 					el: APP.getPlusView().feedbackBtn,
 					placement: 'left',
@@ -124,10 +124,10 @@ qx.Class.define("IntroView", {
 						heading: 'intro.step.plus.title',
 						text: 'intro.step.plus.text'
 					},
-					buttons: ['next', 'cancel']
+					buttons: ['finish']
 				},
 				
-				step6: {
+				stepGuide: {
 					stepName: 'guide',
 					el: APP.getSearchView().refugeeBtn,
 					placement: 'bottom',
@@ -178,29 +178,29 @@ qx.Class.define("IntroView", {
 
 			var nextStep;
 			if( !that.currentStep ) {
-        nextStep = that.steps.step1;
+        nextStep = that.steps.stepSearch;
       } else {
 				switch(that.currentStep.stepName) {
 				    case 'search':
-				        nextStep = that.steps.step2;
+				        nextStep = that.steps.stepGuide;
 				        break;
+			      case 'guide':
+			        nextStep = that.steps.stepMap;
+			        break;
 	        	case 'map':
-				        nextStep = that.steps.step4;
+				        nextStep = that.steps.stepLanguage;
 				        break;
 		        case 'language':
-			        nextStep = that.steps.step1;
+			        nextStep = that.steps.stepLegend;
 			        break;
 		       	case 'legend':
-			        nextStep = that.steps.step5;
+			        nextStep = that.steps.stepContact;
 			        break;
 			      case 'plus':
-			        nextStep = that.steps.step6;
-			        break;
-			      case 'guide':
-			        nextStep = that.steps.step3;
+			        nextStep = that.steps.stepSearch;
 			        break;
 				    default:
-				      nextStep = that.steps.step1;
+				      nextStep = that.steps.stepSearch;
 				}
       }
 

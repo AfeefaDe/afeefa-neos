@@ -237,12 +237,12 @@ qx.Class.define("LegendView", {
 			  that['label-' + cat.id].append( that.getWording('cat.' + cat.name) );
 
 			  that.createTooltip(
-	        that['label-' + cat.id],
+	        that['label-' + cat.id].parent(),
 	        function(){
 	          return that.getWording('cat.' + cat.name + '.description');
 	        }(),
 	        'hover',
-	        'top',
+	        'left',
 	        'desktop'
 	      );
 
@@ -250,12 +250,12 @@ qx.Class.define("LegendView", {
 				  that['label-' + subcat.id].append( that.getWording('cat.' + subcat.name) );
 
 				  that.createTooltip(
-		        that['label-' + subcat.id],
+		        that['label-' + subcat.id].parent(),
 		        function(){
 		          return that.getWording('cat.' + subcat.name + '.description');
 		        }(),
 		        'hover',
-		        'top',
+		        'left',
 		        'desktop'
 		      );
 			  });

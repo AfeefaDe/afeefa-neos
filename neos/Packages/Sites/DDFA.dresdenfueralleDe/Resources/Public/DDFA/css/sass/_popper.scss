@@ -1,12 +1,16 @@
 /* styles for popper.js */
 .popper {
-    background-color: $black_alpha;
+    background-color: $black;
     color: $white;
     padding: .3em;
     max-width: 10em;
     text-align: center;
     @include border-radius(2px);
 		@include shadow($height: 4);
+
+		&.search-result-tooltip{
+	    max-width: 20em;
+		}
 
     .popper__arrow {
 		    width: 0;
@@ -25,7 +29,7 @@
 		}
 		&[x-placement^="top"] .popper__arrow {
 		    border-width: 10px 10px 0 10px;
-		    border-color: $black_alpha transparent transparent transparent;
+		    border-color: $black transparent transparent transparent;
 		    bottom: -10px;
 		    left: calc(50% - 10px);
 		    margin-top: 0;
@@ -36,7 +40,7 @@
 		}
 		&[x-placement^="bottom"] .popper__arrow {
 		    border-width: 0 10px 10px 10px;
-		    border-color: transparent transparent $black_alpha transparent;
+		    border-color: transparent transparent $black transparent;
 		    top: -10px;
 		    left: calc(50% - 10px);
 		    margin-top: 0;
@@ -47,7 +51,7 @@
 		}
 		&[x-placement^="right"] .popper__arrow {
 		    border-width: 10px 10px 10px 0;
-		    border-color: transparent $black_alpha transparent transparent;
+		    border-color: transparent $black transparent transparent;
 		    left: -10px;
 		    top: calc(50% - 10px);
 		    margin-left: 0;
@@ -58,7 +62,7 @@
 		}
 		&[x-placement^="left"] .popper__arrow {
 		    border-width: 10px 0 10px 10px;
-		    border-color: transparent transparent transparent $black_alpha;
+		    border-color: transparent transparent transparent $black;
 		    right: -10px;
 		    top: calc(50% - 10px);
 		    margin-left: 0;

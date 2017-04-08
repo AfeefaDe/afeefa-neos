@@ -33,13 +33,13 @@ qx.Class.define("DetailView", {
 			that.headingContainer.append(that.heading);
 			that.view.append(that.headingContainer);
 
-			// close button
-		  that.closeBtn = $("<div />")
-				.addClass('close-btn')
+			// back button
+		  that.backBtn = $("<div />")
+				.addClass('back-btn')
 				.click(function(){
 				  that.close();
 				});
-		  that.view.append(that.closeBtn);
+		  that.view.append(that.backBtn);
 
 			// scrollable content container
 			that.scrollContainer = $("<div />").addClass('scroll-container');
@@ -383,7 +383,7 @@ qx.Class.define("DetailView", {
 			that.view.removeClass('active');
 			that.reset();
 			that.setViewState(0);
-			that.say('DetailViewClosed');
+			that.say('detailViewClosed');
 		},
 
 		changeLanguage: function(){

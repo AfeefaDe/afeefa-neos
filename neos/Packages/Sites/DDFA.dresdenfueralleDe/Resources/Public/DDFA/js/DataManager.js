@@ -277,29 +277,6 @@ qx.Class.define("DataManager", {
 
         },
 
-        addFeedback: function (data, cb) {
-
-            // console.debug('POST api/feedback', data);
-
-            $.ajax({
-                url: "api/feedback",
-                type: 'POST',
-                data: data,
-                cache: false,
-                dataType: 'json',
-                processData: true,
-                contentType: false
-            })
-                .done(function (data) {
-                    cb(data);
-                })
-                .fail(function (a) {
-                    cb(a);
-                });
-
-        },
-
-
         ///////////////////////
         // Outgoing messages //
         ///////////////////////

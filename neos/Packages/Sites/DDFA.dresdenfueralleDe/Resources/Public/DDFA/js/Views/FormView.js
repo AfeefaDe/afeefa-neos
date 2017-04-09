@@ -4,11 +4,13 @@ qx.Class.define("FormView", {
     type: "singleton",
 
     properties: {
-        currentFormType: {init: null},
-        entryTypeEnum: {},
-        properties: {},
-        html5InputTypes: {},
-        baseUrl: {}
+        baseUrl: {},
+        formTypes: {},
+        currentForm: {},
+        // currentFormType: {init: null},
+        // entryTypeEnum: {},
+        // properties: {},
+        // html5InputTypes: {}
     },
 
     construct: function () {
@@ -20,112 +22,120 @@ qx.Class.define("FormView", {
 
         that.setBaseUrl('_Resources/Static/Packages/DDFA.dresdenfueralleDe/DDFA/inc/');
 
-        that.setEntryTypeEnum(
-            {
-                initiative: 0,
-                marketentry: 1,
-                event: 2
-            }
-        );
+        // that.setEntryTypeEnum(
+        //     {
+        //         initiative: 0,
+        //         marketentry: 1,
+        //         event: 2
+        //     }
+        // );
 
-        var mainCategories = _.filter(APP.getData().categories, function (value, key) {
-            return value.type == 1;
+        that.setFormTypes({
+            feedback: {
+                name: 'feedback',
+                templateFile: 'form_feedback.html',
+                sendMethod: that.createFeedback
+            },
+            contact: {
+                name: 'contact',
+                templateFile: 'form_contact.html',
+                sendMethod: that.createContact
+            }
         });
 
-        that.setProperties(
-            {
-                initiative: {
-                    name: {name: 'name', type: 'text', intoOwner: true},
-                    category: {name: 'category', type: 'select', values: mainCategories, intoOwner: true},
-                    // subCategory: {name: 'subCategory', type: 'select', values: APP.getConfig().categories[0].sub, intoOwner: true },
-                    speakerPublic: {name: 'speakerPublic', type: 'text', intoOwner: true},
-                    mail: {name: 'mail', type: 'email', required: true, intoOwner: true},
-                    web: {name: 'web', type: 'url', intoOwner: true},
-                    facebook: {name: 'facebook', type: 'url', intoOwner: true},
-                    description: {name: 'description', type: 'textarea', required: true, intoOwner: true},
-                    forChildren: {name: 'forChildren', type: 'checkbox', intoOwner: true},
-                    supportWanted: {name: 'supportWanted', type: 'checkbox', intoOwner: true},
-                    phone: {name: 'phone', type: 'tel', intoOwner: true},
-                    spokenLanguages: {
-                        name: 'spokenLanguages',
-                        type: 'multiselect',
-                        values: APP.getConfig().languages,
-                        intoOwner: true
-                    },
-                    placename: {name: 'placename', type: 'text', intoLocation: true},
-                    street: {name: 'street', type: 'text', intoLocation: true},
-                    zip: {name: 'zip', type: 'text', intoLocation: true},
-                    city: {name: 'city', type: 'text', intoLocation: true}
-                },
-                marketentry: {
-                    offer: {
-                        name: 'offer',
-                        type: 'switch',
-                        intoOwner: true,
-                        values: [[true, 'offer'], [false, 'request']]
-                    },
-                    name: {name: 'name', type: 'text', intoOwner: true},
-                    category: {name: 'category', type: 'select', values: mainCategories, intoOwner: true},
-                    // subCategory: {name: 'subCategory', type: 'select', values: APP.getConfig().categories[0].sub, intoOwner: true },
-                    speakerPublic: {name: 'speakerPublic', type: 'text', intoOwner: true},
-                    mail: {name: 'mail', type: 'email', required: true, intoOwner: true},
-                    web: {name: 'web', type: 'url', intoOwner: true},
-                    facebook: {name: 'facebook', type: 'url', intoOwner: true},
-                    description: {name: 'description', type: 'textarea', required: true, intoOwner: true},
-                    forChildren: {name: 'forChildren', type: 'checkbox', intoOwner: true},
-                    supportWanted: {name: 'supportWanted', type: 'checkbox', intoOwner: true},
-                    phone: {name: 'phone', type: 'tel', intoOwner: true},
-                    spokenLanguages: {
-                        name: 'spokenLanguages',
-                        type: 'multiselect',
-                        values: APP.getConfig().languages,
-                        intoOwner: true
-                    },
-                    placename: {name: 'placename', type: 'text', intoLocation: true},
-                    street: {name: 'street', type: 'text', intoLocation: true},
-                    zip: {name: 'zip', type: 'text', intoLocation: true},
-                    city: {name: 'city', type: 'text', intoLocation: true},
-                    dateFrom: {name: 'dateFrom', type: 'date', intoOwner: true},
-                    dateTo: {name: 'dateTo', type: 'date', intoOwner: true},
-                    timeFrom: {name: 'timeFrom', type: 'time', intoOwner: true},
-                    timeTo: {name: 'timeTo', type: 'time', intoOwner: true}
-                },
-                event: {
-                    name: {name: 'name', type: 'text', intoOwner: true},
-                    category: {name: 'category', type: 'select', values: mainCategories, intoOwner: true},
-                    // subCategory: {name: 'subCategory', type: 'select', values: APP.getConfig().categories[0].sub, intoOwner: true },
-                    speakerPublic: {name: 'speakerPublic', type: 'text', intoOwner: true},
-                    mail: {name: 'mail', type: 'email', required: true, intoOwner: true},
-                    web: {name: 'web', type: 'url', intoOwner: true},
-                    facebook: {name: 'facebook', type: 'url', intoOwner: true},
-                    description: {name: 'description', type: 'textarea', required: true, intoOwner: true},
-                    forChildren: {name: 'forChildren', type: 'checkbox', intoOwner: true},
-                    supportWanted: {name: 'supportWanted', type: 'checkbox', intoOwner: true},
-                    phone: {name: 'phone', type: 'tel', intoOwner: true},
-                    spokenLanguages: {
-                        name: 'spokenLanguages',
-                        type: 'multiselect',
-                        values: APP.getConfig().languages,
-                        intoOwner: true
-                    },
-                    placename: {name: 'placename', type: 'text', intoLocation: true},
-                    street: {name: 'street', type: 'text', intoLocation: true},
-                    zip: {name: 'zip', type: 'text', intoLocation: true},
-                    city: {name: 'city', type: 'text', intoLocation: true},
-                    dateFrom: {name: 'dateFrom', type: 'date', intoOwner: true},
-                    dateTo: {name: 'dateTo', type: 'date', intoOwner: true},
-                    timeFrom: {name: 'timeFrom', type: 'time', intoOwner: true},
-                    timeTo: {name: 'timeTo', type: 'time', intoOwner: true}
-                },
-                feedback: {
-                    author: {name: 'author', type: 'text', required: true},
-                    mail: {name: 'mail', type: 'email', required: true},
-                    message: {name: 'message', type: 'textarea', required: true}
-                }
-            }
-        );
+        // var mainCategories = _.filter(APP.getData().categories, function (value, key) {
+        //     return value.type == 1;
+        // });
 
-        that.setHtml5InputTypes(['text', 'number', 'range', 'url', 'email', 'tel', 'date', 'month', 'week', 'time', 'datetime', 'datetime-local']);
+        // that.setProperties(
+        //     {
+        //         initiative: {
+        //             name: {name: 'name', type: 'text', intoOwner: true},
+        //             category: {name: 'category', type: 'select', values: mainCategories, intoOwner: true},
+        //             // subCategory: {name: 'subCategory', type: 'select', values: APP.getConfig().categories[0].sub, intoOwner: true },
+        //             speakerPublic: {name: 'speakerPublic', type: 'text', intoOwner: true},
+        //             mail: {name: 'mail', type: 'email', required: true, intoOwner: true},
+        //             web: {name: 'web', type: 'url', intoOwner: true},
+        //             facebook: {name: 'facebook', type: 'url', intoOwner: true},
+        //             description: {name: 'description', type: 'textarea', required: true, intoOwner: true},
+        //             forChildren: {name: 'forChildren', type: 'checkbox', intoOwner: true},
+        //             supportWanted: {name: 'supportWanted', type: 'checkbox', intoOwner: true},
+        //             phone: {name: 'phone', type: 'tel', intoOwner: true},
+        //             spokenLanguages: {
+        //                 name: 'spokenLanguages',
+        //                 type: 'multiselect',
+        //                 values: APP.getConfig().languages,
+        //                 intoOwner: true
+        //             },
+        //             placename: {name: 'placename', type: 'text', intoLocation: true},
+        //             street: {name: 'street', type: 'text', intoLocation: true},
+        //             zip: {name: 'zip', type: 'text', intoLocation: true},
+        //             city: {name: 'city', type: 'text', intoLocation: true}
+        //         },
+        //         marketentry: {
+        //             offer: {
+        //                 name: 'offer',
+        //                 type: 'switch',
+        //                 intoOwner: true,
+        //                 values: [[true, 'offer'], [false, 'request']]
+        //             },
+        //             name: {name: 'name', type: 'text', intoOwner: true},
+        //             category: {name: 'category', type: 'select', values: mainCategories, intoOwner: true},
+        //             // subCategory: {name: 'subCategory', type: 'select', values: APP.getConfig().categories[0].sub, intoOwner: true },
+        //             speakerPublic: {name: 'speakerPublic', type: 'text', intoOwner: true},
+        //             mail: {name: 'mail', type: 'email', required: true, intoOwner: true},
+        //             web: {name: 'web', type: 'url', intoOwner: true},
+        //             facebook: {name: 'facebook', type: 'url', intoOwner: true},
+        //             description: {name: 'description', type: 'textarea', required: true, intoOwner: true},
+        //             forChildren: {name: 'forChildren', type: 'checkbox', intoOwner: true},
+        //             supportWanted: {name: 'supportWanted', type: 'checkbox', intoOwner: true},
+        //             phone: {name: 'phone', type: 'tel', intoOwner: true},
+        //             spokenLanguages: {
+        //                 name: 'spokenLanguages',
+        //                 type: 'multiselect',
+        //                 values: APP.getConfig().languages,
+        //                 intoOwner: true
+        //             },
+        //             placename: {name: 'placename', type: 'text', intoLocation: true},
+        //             street: {name: 'street', type: 'text', intoLocation: true},
+        //             zip: {name: 'zip', type: 'text', intoLocation: true},
+        //             city: {name: 'city', type: 'text', intoLocation: true},
+        //             dateFrom: {name: 'dateFrom', type: 'date', intoOwner: true},
+        //             dateTo: {name: 'dateTo', type: 'date', intoOwner: true},
+        //             timeFrom: {name: 'timeFrom', type: 'time', intoOwner: true},
+        //             timeTo: {name: 'timeTo', type: 'time', intoOwner: true}
+        //         },
+        //         event: {
+        //             name: {name: 'name', type: 'text', intoOwner: true},
+        //             category: {name: 'category', type: 'select', values: mainCategories, intoOwner: true},
+        //             // subCategory: {name: 'subCategory', type: 'select', values: APP.getConfig().categories[0].sub, intoOwner: true },
+        //             speakerPublic: {name: 'speakerPublic', type: 'text', intoOwner: true},
+        //             mail: {name: 'mail', type: 'email', required: true, intoOwner: true},
+        //             web: {name: 'web', type: 'url', intoOwner: true},
+        //             facebook: {name: 'facebook', type: 'url', intoOwner: true},
+        //             description: {name: 'description', type: 'textarea', required: true, intoOwner: true},
+        //             forChildren: {name: 'forChildren', type: 'checkbox', intoOwner: true},
+        //             supportWanted: {name: 'supportWanted', type: 'checkbox', intoOwner: true},
+        //             phone: {name: 'phone', type: 'tel', intoOwner: true},
+        //             spokenLanguages: {
+        //                 name: 'spokenLanguages',
+        //                 type: 'multiselect',
+        //                 values: APP.getConfig().languages,
+        //                 intoOwner: true
+        //             },
+        //             placename: {name: 'placename', type: 'text', intoLocation: true},
+        //             street: {name: 'street', type: 'text', intoLocation: true},
+        //             zip: {name: 'zip', type: 'text', intoLocation: true},
+        //             city: {name: 'city', type: 'text', intoLocation: true},
+        //             dateFrom: {name: 'dateFrom', type: 'date', intoOwner: true},
+        //             dateTo: {name: 'dateTo', type: 'date', intoOwner: true},
+        //             timeFrom: {name: 'timeFrom', type: 'time', intoOwner: true},
+        //             timeTo: {name: 'timeTo', type: 'time', intoOwner: true}
+        //         }
+        //     }
+        // );
+
+        // that.setHtml5InputTypes(['text', 'number', 'range', 'url', 'email', 'tel', 'date', 'month', 'week', 'time', 'datetime', 'datetime-local']);
     },
 
     members: {
@@ -140,544 +150,51 @@ qx.Class.define("FormView", {
             $('#main-container').append(that.view);
 
             // heading
-            var headingContainer = $("<div />").addClass('header');
+            var headingContainer = $("<div />").addClass('heading');
             that.heading = $("<h1 />");
             headingContainer.append(that.heading);
             that.view.append(headingContainer);
 
-            // form container
-            that.formContainer = $("<div />")
-                .addClass('form-container');
-            if (APP.getUserDevice() == 'desktop') that.formContainer.perfectScrollbar();
-            that.view.append(that.formContainer);
+            // back button
+            that.createBackBtn(function(){that.close();});
 
             // form container
-            that.buttonContainer = $("<div />")
-                .addClass('button-container')
-                .append($("<p />"));
-            that.view.append(that.buttonContainer);
-
-            that.forms = {};
-            that.renderInitiativeForm();
-            that.renderMarketEntryForm();
-            that.renderEventForm();
-            that.renderFeedbackForm();
-
-            that.sendBtn = $("<button />")
-                .addClass('sendBtn')
-                .append(that.getWording('form.sendBtn'));
-            that.buttonContainer.find('p').append(that.sendBtn);
-
-            that.cancelBtn = $("<button />")
-                .addClass('cancelBtn btn-secondary margin-left')
-                .append(that.getWording('form.cancelBtn'));
-            that.buttonContainer.find('p').append(that.cancelBtn);
+            that.scrollContainer = $("<div />")
+                .addClass('scroll-container');
+            if (APP.getUserDevice() == 'desktop') that.scrollContainer.perfectScrollbar();
+            that.view.append(that.scrollContainer);
 
             this.base(arguments);
         },
 
-        createInput: function (property, type) {
+        load: function (type, options) {
             var that = this;
 
-            var inputEl;					// will be returned
-            var returnEl = null;  // optional alternative for return
-            var labelEl = null;			// optional
-
-            // if( property.type == 'datetime' || property.type == 'datetime-local' ){
-            // 	inputEl = $("<input />")
-            // 		.attr('type', 'text')
-            // 		.attr('name', property.name)
-            // 		.pickadate();
-            // }
-            if (_.contains(['date', 'time'], property.type)) {
-
-                if (APP.getUserDevice() == 'desktop' && !Modernizr.inputtypes.date) {
-                    inputEl = $("<input />")
-                    // .attr('type', property.type)
-                        .attr('data-format', 'YYYY-MM-DD')
-                        .attr('data-template', 'D MMM YYYY')
-                        .attr('name', property.name);
-                } else {
-                    inputEl = $("<input />")
-                        .attr('type', 'text')
-                        .attr('name', property.name)
-                        .click(function () {
-                            if ($(this).attr('type') == 'text')
-                                $(this).attr('type', property.type);
-                        });
-                }
-            }
-            else if (_.contains(that.getHtml5InputTypes(), property.type)) {
-                inputEl = $("<input />")
-                    .attr('type', property.type)
-                    .attr('name', property.name);
-            }
-            else if (property.type == 'checkbox') {
-                var container = $("<div />")
-                    .addClass('form-checkbox');
-
-                inputEl = $("<input />")
-                    .attr('type', property.type)
-                    .attr('name', property.name);
-                container.append(inputEl);
-
-                labelEl = $("<label />");
-                container.append(labelEl);
-
-                returnEl = container;
-            }
-            // select
-            else if (property.type == 'select') {
-                inputEl = $("<select />")
-                    .attr('name', property.name);
-            }
-            // multiselect
-            else if (property.type == 'multiselect') {
-                inputEl = $("<select />")
-                    .attr('name', property.name)
-                    .attr('multiple', true);
-            }
-            // textarea
-            else if (property.type == 'textarea') {
-                inputEl = $("<textarea />")
-                    .attr('name', property.name)
-                    .attr('maxlength', 350)
-                    .attr('rows', 5);
-            }
-            // switch
-            else if (property.type == 'switch') {
-                var container = $("<div />").addClass('form-switch');
-                var option1 = $("<span />").append(that.getWording('prop.' + property.name + '_' + property.values[0][1]));
-                var option2 = $("<span />").append(that.getWording('prop.' + property.name + '_' + property.values[1][1]));
-                container.append(option1);
-                container.append(option2);
-
-                inputEl = $("<input />")
-                    .attr('type', 'checkbox')
-                    .attr('name', property.name);
-                container.append(inputEl);
-
-                option1.click(function () {
-                    $(this).addClass('active');
-                    option2.removeClass('active');
-                    inputEl.prop("checked", property.values[0][0]);
+            // load form from html and insert
+            that.scrollContainer.load(that.getBaseUrl() + that.getFormTypes()[type].templateFile, function( response, status, xhr ){
+                if(status == "error" ){}
+                that.view.find('select').each(function(i, el){
+                    $(el).material_select();
+                    $(el).addClass('hidden');
                 });
 
-                option2.click(function () {
-                    $(this).addClass('active');
-                    option1.removeClass('active');
-                    inputEl.prop("checked", property.values[1][0]);
-                });
-
-                // initial value
-                option1.addClass('active');
-                inputEl.prop("checked", property.values[0][0]);
-
-                // set alternative return element
-                returnEl = container;
-            }
-            else {
-                inputEl = $("<input />")
-                    .attr('type', 'text')
-                    .attr('name', property.name);
-            }
-
-            // required?
-            if (property.required) inputEl.attr('required', true);
-            // custom input element class
-            inputEl.addClass(property.name);
-
-            that.forms[type].fields[property.name] = inputEl;
-            that.forms[type].fields[property.name + '_label'] = labelEl;
-
-            if (returnEl !== null)
-                return returnEl;
-            else
-                return inputEl;
-        },
-
-        createLocationButton: function (locationContainer) {
-            var that = this;
-
-            var btn = $('<button />')
-                .append(that.getWording('form.locationBtn.add'))
-                .click(function (e) {
-                    e.preventDefault();
-
-                    // show addition input fields
-                    locationContainer.toggleClass('active');
-
-                    // change button
-                    if (locationContainer.hasClass('active')) {
-                        $(this).empty().append(that.getWording('form.locationBtn.remove'));
-                    }
-                    else {
-                        $(this).empty().append(that.getWording('form.locationBtn.add'));
-                        // empty additional input fields
-                        locationContainer.find('input').val('');
-                    }
-                });
-
-            return btn;
-        },
-
-        renderInitiativeForm: function () {
-            var that = this;
-
-            var type = 'initiative';
-
-            /////////////
-            // general //
-            /////////////
-            var properties = that.getProperties()[type];
-            that.forms[type] = {form: null, fields: {}};
-
-            // create form element
-            var form = that.createForm(type);
-            that.formContainer.append(form);
-
-            ///////////////////
-            // custom layout //
-            ///////////////////
-
-            var nameEl = that.createInput(properties.name, type);
-            form.append(nameEl);
-
-            var catEl = that.createInput(properties.category, type);
-            form.append(catEl);
-
-            // var subCatEl = that.createInput(properties.subCategory, type);
-            // form.append(subCatEl);
-
-            var descEl = that.createInput(properties.description, type);
-            form.append(descEl);
-
-            var forChildrenEl = that.createInput(properties.forChildren, type);
-            form.append(forChildrenEl);
-
-            var supportWantedEl = that.createInput(properties.supportWanted, type);
-            form.append(supportWantedEl);
-
-            var sectionHeader = $('<h3 />').append('Ortsangaben');
-            form.append(sectionHeader);
-
-            var notice = $('<p />').append('Falls dein Eintrag an einen bestimmten Ort geknüpft ist, kannst du diesen hier angeben. Die Angabe eines Ortes ist aber keine Pflicht.');
-            form.append(notice);
-
-            var locationContainer = $('<div />').addClass('location-container');
-            form.append(locationContainer);
-
-            var buttonContainer = $('<p />');
-            var addLocationBtn = that.createLocationButton(locationContainer);
-            buttonContainer.append(addLocationBtn);
-            locationContainer.append(buttonContainer);
-
-            var placenameEl = that.createInput(properties.placename, type);
-            locationContainer.append(placenameEl);
-
-            var streetEl = that.createInput(properties.street, type);
-            locationContainer.append(streetEl);
-
-            var zipEl = that.createInput(properties.zip, type);
-            locationContainer.append(zipEl);
-
-            var cityEl = that.createInput(properties.city, type);
-            locationContainer.append(cityEl);
-
-            var sectionHeader = $('<h3 />').append('Kontaktdaten');
-            form.append(sectionHeader);
-
-            var notice = $('<p />').append(that.getWording('form.text.contactinfo'));
-            form.append(notice);
-
-            var speakerEl = that.createInput(properties.speakerPublic, type);
-            form.append(speakerEl);
-
-            var spokenLanguagesEl = that.createInput(properties.spokenLanguages, type);
-            form.append(spokenLanguagesEl);
-
-            var mailEl = that.createInput(properties.mail, type);
-            form.append(mailEl);
-
-            var phoneEl = that.createInput(properties.phone, type);
-            form.append(phoneEl);
-
-            var webEl = that.createInput(properties.web, type);
-            form.append(webEl);
-
-            var facebookEl = that.createInput(properties.facebook, type);
-            form.append(facebookEl);
-        },
-
-        renderMarketEntryForm: function () {
-            var that = this;
-
-            var type = 'marketentry';
-
-            /////////////
-            // general //
-            /////////////
-            var properties = that.getProperties()[type];
-            that.forms[type] = {form: null, fields: {}};
-
-            // create form element
-            var form = that.createForm(type);
-            that.formContainer.append(form);
-
-            ///////////////////
-            // custom layout //
-            ///////////////////
-
-            var switchEl = that.createInput(properties.offer, type);
-            form.append(switchEl);
-
-            var nameEl = that.createInput(properties.name, type);
-            form.append(nameEl);
-
-            var catEl = that.createInput(properties.category, type);
-            form.append(catEl);
-
-            // var subCatEl = that.createInput(properties.subCategory, type);
-            // form.append(subCatEl);
-
-            var dateFromEl = that.createInput(properties.dateFrom, type);
-            form.append(dateFromEl);
-
-            var timeFromEl = that.createInput(properties.timeFrom, type);
-            form.append(timeFromEl);
-
-            var dateToEl = that.createInput(properties.dateTo, type);
-            form.append(dateToEl);
-
-            var timeToEl = that.createInput(properties.timeTo, type);
-            form.append(timeToEl);
-
-            var descEl = that.createInput(properties.description, type);
-            form.append(descEl);
-
-            var forChildrenEl = that.createInput(properties.forChildren, type);
-            form.append(forChildrenEl);
-
-            var supportWantedEl = that.createInput(properties.supportWanted, type);
-            form.append(supportWantedEl);
-
-            var sectionHeader = $('<h3 />').append('Ortsangaben');
-            form.append(sectionHeader);
-
-            var locationContainer = $('<div />').addClass('location-container');
-            form.append(locationContainer);
-
-            var buttonContainer = $('<p />');
-            var addLocationBtn = that.createLocationButton(locationContainer);
-            buttonContainer.append(addLocationBtn);
-            locationContainer.append(buttonContainer);
-
-            var placenameEl = that.createInput(properties.placename, type);
-            locationContainer.append(placenameEl);
-
-            var streetEl = that.createInput(properties.street, type);
-            locationContainer.append(streetEl);
-
-            var zipEl = that.createInput(properties.zip, type);
-            locationContainer.append(zipEl);
-
-            var cityEl = that.createInput(properties.city, type);
-            locationContainer.append(cityEl);
-
-            var sectionHeader = $('<h3 />').append('Kontaktdaten');
-            form.append(sectionHeader);
-
-            var notice = $('<p />').append(that.getWording('form.text.contactinfo'));
-            form.append(notice);
-
-            var speakerEl = that.createInput(properties.speakerPublic, type);
-            form.append(speakerEl);
-
-            var spokenLanguagesEl = that.createInput(properties.spokenLanguages, type);
-            form.append(spokenLanguagesEl);
-
-            var mailEl = that.createInput(properties.mail, type);
-            form.append(mailEl);
-
-            var phoneEl = that.createInput(properties.phone, type);
-            form.append(phoneEl);
-
-            var webEl = that.createInput(properties.web, type);
-            form.append(webEl);
-
-            var facebookEl = that.createInput(properties.facebook, type);
-            form.append(facebookEl);
-        },
-
-        renderEventForm: function () {
-            var that = this;
-
-            var type = 'event';
-
-            /////////////
-            // general //
-            /////////////
-            var properties = that.getProperties()[type];
-            that.forms[type] = {form: null, fields: {}};
-
-            // create form element
-            var form = that.createForm(type);
-            that.formContainer.append(form);
-
-            ///////////////////
-            // custom layout //
-            ///////////////////
-
-            var nameEl = that.createInput(properties.name, type);
-            form.append(nameEl);
-
-            var catEl = that.createInput(properties.category, type);
-            form.append(catEl);
-
-            // var subCatEl = that.createInput(properties.subCategory, type);
-            // form.append(subCatEl);
-
-            var dateFromEl = that.createInput(properties.dateFrom, type);
-            form.append(dateFromEl);
-
-            var timeFromEl = that.createInput(properties.timeFrom, type);
-            form.append(timeFromEl);
-
-            var dateToEl = that.createInput(properties.dateTo, type);
-            form.append(dateToEl);
-
-            var timeToEl = that.createInput(properties.timeTo, type);
-            form.append(timeToEl);
-
-            var descEl = that.createInput(properties.description, type);
-            form.append(descEl);
-
-            var forChildrenEl = that.createInput(properties.forChildren, type);
-            form.append(forChildrenEl);
-
-            var supportWantedEl = that.createInput(properties.supportWanted, type);
-            form.append(supportWantedEl);
-
-            var sectionHeader = $('<h3 />').append('Ortsangaben');
-            form.append(sectionHeader);
-
-            var locationContainer = $('<div />').addClass('location-container');
-            form.append(locationContainer);
-
-            var buttonContainer = $('<p />');
-            var addLocationBtn = that.createLocationButton(locationContainer);
-            buttonContainer.append(addLocationBtn);
-            locationContainer.append(buttonContainer);
-
-            var placenameEl = that.createInput(properties.placename, type);
-            locationContainer.append(placenameEl);
-
-            var streetEl = that.createInput(properties.street, type);
-            locationContainer.append(streetEl);
-
-            var zipEl = that.createInput(properties.zip, type);
-            locationContainer.append(zipEl);
-
-            var cityEl = that.createInput(properties.city, type);
-            locationContainer.append(cityEl);
-
-            var sectionHeader = $('<h3 />').append('Kontaktdaten');
-            form.append(sectionHeader);
-
-            var notice = $('<p />').append(that.getWording('form.text.contactinfo'));
-            form.append(notice);
-
-            var speakerEl = that.createInput(properties.speakerPublic, type);
-            form.append(speakerEl);
-
-            var spokenLanguagesEl = that.createInput(properties.spokenLanguages, type);
-            form.append(spokenLanguagesEl);
-
-            var mailEl = that.createInput(properties.mail, type);
-            form.append(mailEl);
-
-            var phoneEl = that.createInput(properties.phone, type);
-            form.append(phoneEl);
-
-            var webEl = that.createInput(properties.web, type);
-            form.append(webEl);
-
-            var facebookEl = that.createInput(properties.facebook, type);
-            form.append(facebookEl);
-        },
-
-        renderFeedbackForm: function () {
-            var that = this;
-
-            var type = 'feedback';
-
-            /////////////
-            // general //
-            /////////////
-            var properties = that.getProperties()[type];
-            that.forms[type] = {form: null, fields: {}};
-
-            // create form element
-            var form = that.createForm(type);
-            that.formContainer.append(form);
-
-            ///////////////////
-            // custom layout //
-            ///////////////////
-
-            var authorEl = that.createInput(properties.author, type);
-            form.append(authorEl);
-
-            var mailEl = that.createInput(properties.mail, type);
-            form.append(mailEl);
-
-            var messageEl = that.createInput(properties.message, type);
-            form.append(messageEl);
-        },
-
-        createForm: function (type) {
-            var that = this;
-
-            var form = $("<form />")
-                .attr('id', type + '-form')
-                .submit(function (e) {
-                    e.preventDefault();
-                    that.sendForm();
-                });
-
-            that.forms[type].form = form;
-
-            return form;
-        },
-
-        addEvents: function () {
-            var that = this;
-
-            // call superclass
-            this.base(arguments);
-
-            that.sendBtn.click(function (e) {
-                that.sendForm();
+                that.parseForm(type, options);
+                
+                // set heading value
+                that.loadUIVocab(type);
             });
 
-            that.cancelBtn.click(function (e) {
-                e.preventDefault();
-                that.close();
-            });
-        },
 
-        load: function (type) {
-            var that = this;
+            that.view.addClass('active');
+// --------------------------------------------------------------------------------------
+            return;
+// --------------------------------------------------------------------------------------
 
             that.reset();
 
             // activate loaded form type
             that.setCurrentFormType(type);
             that.forms[type].form.addClass('active');
-            that.showCurtain(true);
-
-            // set heading value
-            that.heading.empty().append(that.getWording('form.' + type));
 
             // set placeholders/ labels
             _.each(that.getProperties()[type], function (property) {
@@ -695,7 +212,7 @@ qx.Class.define("FormView", {
                     if (APP.getUserDevice() == 'desktop' && !Modernizr.inputtypes.date) {
                         that.forms[type].fields[property.name].hide();
                         // that.forms[type].fields[property.name].combodate({
-                        // 	minYear: 2016,
+                        //  minYear: 2016,
                         //    maxYear: 2017,
                         //    minuteStep: 10
                         // });
@@ -748,10 +265,10 @@ qx.Class.define("FormView", {
                     // TODO not working, because mobile browsers show "N selected" instead of placeholder or first option
                     // placeholder for mobiles (using empty option, because placeholder is not natively supported for multi select)
                     // if( APP.getUserDevice() != 'desktop' ){
-                    // 	var emptyOption = $('<option />')
-                    // 		.attr('value', '')
-                    // 		.append(that.getWording('form_placeholder_' + property.name));
-                    // 	that.forms[type].fields[property.name].append(emptyOption);
+                    //  var emptyOption = $('<option />')
+                    //      .attr('value', '')
+                    //      .append(that.getWording('form_placeholder_' + property.name));
+                    //  that.forms[type].fields[property.name].append(emptyOption);
                     // }
 
                     _.each(property.values, function (value) {
@@ -772,17 +289,239 @@ qx.Class.define("FormView", {
             that.view.addClass('active');
         },
 
+        loadUIVocab: function(type){
+            var that = this;
+
+            that.heading.empty().append(that.getWording('form.heading.' + type));
+
+            that.view.find('label').each(function(i, el){
+                var key = $(el).html().split(':')[1];
+                console.debug(key);
+                $(el).html(that.getWording(key));
+            });       
+        },
+
+        parseForm: function(type, options){
+            var that = this;
+
+            var form = {
+                formType: null,
+                formEl: null,
+                submitEl: null,
+                fields: {}
+            };
+
+            // form type
+            form.formType = that.getFormTypes()[type];
+
+            // the form
+            form.formEl = that.view.find('form').first();
+
+            // the fields
+            that.view.find('input[type=text], textarea').each(function(i, el){
+                var $el = $(el);
+                form.fields[$el.attr('id')] = {
+                    modelAttr: $el.attr('id'),
+                    el: $el,
+                    value: $el.val()
+                }
+            });
+
+            // the submit button
+            form.submitEl = that.view.find('button[type=submit]').first();
+            form.submitEl.click(function (e) {
+                e.preventDefault();
+                that.send(options);
+            })
+
+            // the cancel button
+            that.view.find('a#cancel').first().click(function(){
+                that.close();
+            });
+            
+            that.setCurrentForm(form);
+        },
+
+        readForm: function(){
+            var that = this;
+
+            var formData = {};
+            
+            // extract all attribute names
+            var attributes = [];
+            _.each(that.getCurrentForm().fields, function(value, key){
+                attributes.push(value.modelAttr.split('.')[0]);
+            });
+            
+            _.each(_.unique(attributes), function(element){
+                formData[element] = {};    
+            });
+
+            // extract attribute values and combine
+            _.each(that.getCurrentForm().fields, function(value, key){
+                formData[value.modelAttr.split('.')[0]][value.modelAttr.split('.')[1]] = value.el.val();
+            });
+
+            return formData;
+        },
+
+        send: function (options) {
+            var that = this;
+
+            // that.loading(true);
+
+            var data = that.readForm();
+            console.debug(data);
+
+            that.getCurrentForm().formType.sendMethod(data, options);
+
+            // var type = that.getCurrentFormType();
+
+            // create marketentry record + location record
+            // if (type == 'initiative' || type == 'marketentry' || type == 'event') {
+            //     var dataMarketEntry = {"marketentry": {}};
+            //     var dataLocation = {"location": {}};
+
+            //     // cycle through form fields and extract data
+            //     _.each(that.getProperties()[type], function (property) {
+            //         // read value from form element
+            //         var value = that.forms[type].fields[property.name].val();
+
+            //         // set to null where meant to be null
+            //         if (value === '') value = null;
+
+            //         // may handle special types
+            //         // if( value && (property.type == 'datetime' || property.type == 'datetime-local') ){
+            //         //  // convert to sql datetime
+            //         //  var d = new Date( value );
+            //         //  // value = d.toISOString().slice(0, 19).replace('T', ' ');
+            //         //  value = d.toISOString().slice(0, 19) + '+0200';
+            //         // }
+            //         if (property.type == 'checkbox' || property.type == 'switch') {
+            //             value = that.forms[type].fields[property.name].prop('checked');
+            //         }
+            //         else if (property.type == 'multiselect' && value) {
+            //             value = value.join(",");
+            //         }
+
+            //         if (property.intoOwner) dataMarketEntry.marketentry[property.name] = value;
+            //         if (property.intoLocation) dataLocation.location[property.name] = value;
+            //     });
+
+            //     dataMarketEntry.marketentry.type = that.getEntryTypeEnum()[type];
+            //     dataMarketEntry.marketentry.published = false;
+
+            //     // dataLocation.location.type = that.getEntryTypeEnum()[type];
+            //     // dataLocation.location.published = false;
+
+            //     that.createMarketEntryAndLocation(dataMarketEntry, dataLocation);
+            // }
+        },
+
+        createFeedback: function (data) {
+            var that = this;
+
+            // to github
+            // TODO read response to get created issue ID and post this ID as waffle link to slack
+            APP.getDataManager().createGithubIssue({
+                data: {
+                    type: 'feedback',
+                    feedbackData: data.feedback,
+                    metaData: JSON.stringify(L.Browser)
+                }
+            });
+
+            // to slack
+            APP.getDataManager().createSlackMessage({
+                heading: 'Feedback von _' + data.feedback.author + '_ (' + data.feedback.mail + ')',
+                message: '```\n' + data.feedback.message + '\n```'
+            });
+
+            // send mail to team inbox
+            APP.getDataManager().sendMail({
+                data: {
+                    mail_fromMail: 'bot@afeefa.de',
+                    mail_fromName: data.feedback.author,
+                    mail_to: 'team@afeefa.de',
+                    mail_replyTo: data.feedback.mail,
+                    mail_subject: '[Feedback] ' + data.feedback.author,
+                    mail_bodyPlain: data.feedback.message,
+                    mail_bodyHtml: function () {
+                        return '<p><i>' + data.feedback.message + '</i></p>';
+                    }
+                }
+            });
+
+        },
+
+        createContact: function (data, options) {
+            var that = this;
+
+            console.debug(options);
+
+            // to slack
+            APP.getDataManager().createSlackMessage({
+                heading: 'Kontaktanfrage von _' + data.contact.author + ' (' + data.contact.mail + ')_ an _' + options.entry.name + ' (' + options.entry.mail + ')_',
+                message: '```\n' + data.contact.message + '\n```'
+            });
+
+            // send mail to entry's email
+            APP.getDataManager().sendMail({
+                data: {
+                    mail_fromMail: 'bot@afeefa.de',
+                    mail_fromName: data.contact.author + ' über Afeefa.de',
+                    mail_to: options.entry.mail,
+                    mail_replyTo: data.contact.mail,
+                    mail_subject: 'Anfrage von ' + data.contact.author,
+                    mail_bodyPlain: data.contact.message,
+                    mail_bodyHtml: function () {
+                        return '<p><i>' + data.contact.message + '</i></p>'
+                            + '<p>' + data.contact.author + ' | ' + data.contact.mail + ' | ' + data.contact.phone + '</p>'
+                            + '<hr><small>Nachricht gesendet über <a href="https://afeefa.de">Afeefa.de</a></small>';
+                    }
+                }
+            });
+
+        },
+
+        // createLocationButton: function (locationContainer) {
+        //     var that = this;
+
+        //     var btn = $('<button />')
+        //         .append(that.getWording('form.locationBtn.add'))
+        //         .click(function (e) {
+        //             e.preventDefault();
+
+        //             // show addition input fields
+        //             locationContainer.toggleClass('active');
+
+        //             // change button
+        //             if (locationContainer.hasClass('active')) {
+        //                 $(this).empty().append(that.getWording('form.locationBtn.remove'));
+        //             }
+        //             else {
+        //                 $(this).empty().append(that.getWording('form.locationBtn.add'));
+        //                 // empty additional input fields
+        //                 locationContainer.find('input').val('');
+        //             }
+        //         });
+
+        //     return btn;
+        // },
+
+        addEvents: function () {
+            var that = this;
+
+            // call superclass
+            this.base(arguments);
+        },
+
         reset: function () {
             var that = this;
 
-            that.setCurrentFormType(null);
+            // that.setCurrentFormType(null);
 
-            _.each(that.getProperties(), function (value, key) {
-                that.view.removeClass(key);
-                that.forms[key].form.removeClass('active');
-            });
-
-            that.heading.empty();
+            that.scrollContainer.empty();
 
             that.loading(false);
         },
@@ -792,73 +531,12 @@ qx.Class.define("FormView", {
 
             that.reset();
             that.view.removeClass('active');
-            that.showCurtain(false);
         },
 
         changeLanguage: function () {
             var that = this;
 
-            if (that.getCurrentFormType()) that.load(that.getCurrentFormType());
-        },
-
-        sendForm: function () {
-            var that = this;
-
-            that.loading(true);
-
-            var type = that.getCurrentFormType();
-
-            // create marketentry record + location record
-            if (type == 'initiative' || type == 'marketentry' || type == 'event') {
-                var dataMarketEntry = {"marketentry": {}};
-                var dataLocation = {"location": {}};
-
-                // cycle through form fields and extract data
-                _.each(that.getProperties()[type], function (property) {
-                    // read value from form element
-                    var value = that.forms[type].fields[property.name].val();
-
-                    // set to null where meant to be null
-                    if (value === '') value = null;
-
-                    // may handle special types
-                    // if( value && (property.type == 'datetime' || property.type == 'datetime-local') ){
-                    // 	// convert to sql datetime
-                    // 	var d = new Date( value );
-                    // 	// value = d.toISOString().slice(0, 19).replace('T', ' ');
-                    // 	value = d.toISOString().slice(0, 19) + '+0200';
-                    // }
-                    if (property.type == 'checkbox' || property.type == 'switch') {
-                        value = that.forms[type].fields[property.name].prop('checked');
-                    }
-                    else if (property.type == 'multiselect' && value) {
-                        value = value.join(",");
-                    }
-
-                    if (property.intoOwner) dataMarketEntry.marketentry[property.name] = value;
-                    if (property.intoLocation) dataLocation.location[property.name] = value;
-                });
-
-                dataMarketEntry.marketentry.type = that.getEntryTypeEnum()[type];
-                dataMarketEntry.marketentry.published = false;
-
-                // dataLocation.location.type = that.getEntryTypeEnum()[type];
-                // dataLocation.location.published = false;
-
-                that.createMarketEntryAndLocation(dataMarketEntry, dataLocation);
-            }
-            // create feedback record
-            else if (type == 'feedback') {
-                var data = {"feedback": {}};
-
-                _.each(that.getProperties()[type], function (property) {
-                    data.feedback[property.name] = that.forms[type].fields[property.name].val();
-                });
-
-                data.feedback.metaData = L.Browser;
-
-                that.createFeedback(data);
-            }
+            if (that.getCurrentForm()) that.load( that.getCurrentForm().formType.name );
         },
 
         createMarketEntryAndLocation: function (dataMarketEntry, dataLocation) {
@@ -955,58 +633,6 @@ qx.Class.define("FormView", {
                             + '<tr><td style="color: gray">bis:</td><td>' + dataMarketEntry.marketentry.dateTo + ' (' + dataMarketEntry.marketentry.timeTo + ')' + '</td></tr>'
                             + '</table>';
                         return styles + message;
-                    }
-                }
-            });
-
-        },
-
-        createFeedback: function (data) {
-            var that = this;
-
-            APP.getDataManager().addFeedback(data, function (response) {
-
-                if (response.feedback) {
-                    alert(that.getWording('form.feedbackSent'));
-                    that.close();
-                }
-                else {
-                    alert(that.getWording('form.fail'));
-                    that.loading(false);
-                }
-
-            });
-
-            // to github
-            // TODO read response to get created issue ID and post this ID as waffle link to slack
-            APP.getDataManager().createGithubIssue({
-                data: {
-                    type: 'feedback',
-                    feedbackData: data.feedback,
-                    metaData: JSON.stringify(data.feedback.metaData)
-                }
-            });
-
-            // to slack
-            APP.getDataManager().createSlackMessage({
-                heading: 'Feedback von _' + data.feedback.author + '_ (' + data.feedback.mail + ')',
-                message: '```\n' + data.feedback.message + '\n```\n\n'
-                + '_' + JSON.stringify(data.feedback.metaData) + '_'
-            });
-
-            // send mail to team inbox
-            APP.getDataManager().sendMail({
-                data: {
-                    mail_fromMail: 'bot@afeefa.de',
-                    mail_fromName: data.feedback.author,
-                    mail_to: 'team@afeefa.de',
-                    mail_replyTo: data.feedback.mail,
-                    mail_subject: '[Feedback] ' + data.feedback.author,
-                    mail_bodyPlain: data.feedback.message,
-                    mail_bodyHtml: function () {
-                        // var date = new Date();
-                        // var dateString = date.getDate() + '.' + (date.getMonth()+1) + '.' + date.getFullYear() + ' um ' + date.getHours() + ':' + date.getMinutes();
-                        return '<p><i>' + data.feedback.message + '</i></p>';
                     }
                 }
             });

@@ -107,14 +107,14 @@
 
 	#results {
 		position: absolute;
-    top: 5em;
-    left: 2em;
-		width: calc(100% - 4em);
-		height: calc(100% - 7em);
-		padding-top: 2em;
+    top: 5rem;
+    left: 2rem;
+		width: calc(100% - 4rem);
+		height: calc(100% - 7rem);
+		padding-top: 2rem;
 
 		.result {
-			margin-bottom: 1em;
+			margin-bottom: 1rem;
 			color: $white;
 			cursor: pointer;
 			@include transition(background-color 150ms);
@@ -230,34 +230,54 @@
 	$height_sb: 3em;
 
 	#searchView {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
+
+		width: 100%;
 
 		#search-bar {
+			width: 100%;
+			top: 0;
+			left: 0;
+
 			height: $height_sb !important;
+
+			input {
+				left: 4rem;
+				width: calc(100% - 5rem - 6rem);
+			}
+
+			.btn {
+				height: $height_sb;
+			}
+
+			.menu-btn {
+				top: 0;
+				left: 1rem;
+				background-image: url("../img/icon_38.svg");
+			}
+
+	    .refugee-btn {
+				right: 4rem;
+			}
+
+	    .filter-btn {
+				display: block;
+				top: 0;
+				right: 1rem;
+		    background-image: url("../img/icon_94.svg");
+			}
+		}
+
+		#results {
+			top: 3rem;
+			left: 0;
+			padding: 2rem 1rem;
+			width: 100%;
+			height: calc(100% - 3rem);
 		}
 
 		input {
 			height: $height_sb !important;
 			line-height: $height_sb !important;
-		}
-
-		.btn {
-			height: $height_sb !important;
-		}
-
-    .refugee-btn {
-			right: 3em !important;
-		}
-
-    .filter-btn {
-			display: block !important;
-			top: 0;
-			right: 0;
-	    background-image: url("../img/icon_94.svg");
-			@include background-size(70%);
 		}
 
     .cancel-btn {

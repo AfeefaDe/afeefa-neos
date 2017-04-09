@@ -1,25 +1,17 @@
 #formView {
 	
-	@include shadow($height: 2);
-	@include transition(opacity 200ms);
+	/* materialize */
+	@import 'materialize';
 
-	position: absolute;
-	left: 25%;
-	top: 12%;
-
-	visibility: hidden;
-	opacity: 0;
+	@include goBackLayout;
 
 	@include box-sizing(border-box);
-	width: 50%;
-	max-height: 80%;
-
-	background-color: $white;
-	color: $black;
 
 	@include display-flex;
 	@include flex-direction(column);
 
+	z-index: 30;
+	
 	/* HEADING */
 	.header {
 		background-color: $black;
@@ -35,10 +27,8 @@
 		}
 	}
 	
-	.form-container {
-		position: relative;
-		@include flex-grow(1);
-		padding: 1em 3rem;
+	.scroll-container {
+		padding: 2rem;
 	}
 
 	.button-container {
@@ -54,7 +44,7 @@
 
 	form {
 
-		display: none;
+		/*display: none;*/
 
 		input, textarea, select, .chosen-container {
 			display: block;

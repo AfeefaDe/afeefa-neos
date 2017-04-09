@@ -69,7 +69,7 @@ qx.Class.define("MapView", {
 					spiderfyOnMaxZoom: true,
 					spiderfyDistanceMultiplier: 2,
 					spiderLegPolylineOptions: { weight: 1.5, color: '#000' }
-					// disableClusteringAtZoom: 17
+					// disableClusteringAtZoom: 16
 		});
 
 		// Layers for content-specific data (e.g. wifi networks) to handle them seperately (e.g. zoom-dependent visibility)
@@ -441,7 +441,7 @@ qx.Class.define("MapView", {
 
 			if(marker){
 				if(options && options.setView) that.map.setView( [entry.location[0].lat, entry.location[0].lon], 16);
-				// try{ that.layerForMainMarkers.getVisibleParent(marker).spiderfy(); } catch(e){}
+				try{ that.layerForMainMarkers.getVisibleParent(marker).spiderfy(); } catch(e){}
 				$(marker._icon).addClass('active');
 				marker.openPopup();
 			}
@@ -454,7 +454,7 @@ qx.Class.define("MapView", {
 
 			var lookup = that.lookupEntryById( entryId );
 				
-			if(lookup){
+			if(lookup && lookup.marker){
 					APP.getMapView().selectMarker(lookup.marker, lookup.entry, {setView: true});
 			}
 

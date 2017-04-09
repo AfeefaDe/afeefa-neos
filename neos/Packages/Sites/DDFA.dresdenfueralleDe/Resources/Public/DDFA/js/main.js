@@ -12,13 +12,14 @@ require.config({
         restive: '../../restive/restive.min',
         qx: '../../qooxdoo/qx-oo-4.1.min',
         underscore: '../../underscore/underscore-min',
-        hammer: '../../hammerjs/hammer.min',
+        hammerjs: '../../hammerjs/hammer.min',
         bootstrap: 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min',
         fontawesome: 'https://use.fontawesome.com/43c3d746ca',
         mapbox: 'https://api.mapbox.com/mapbox.js/v3.0.1/mapbox',
         mc: '../../leafletPlugins/leaflet.markercluster',
         popper: '../../popperjs/popper.min',
-        d3: 'https://cdnjs.cloudflare.com/ajax/libs/d3/4.4.0/d3'
+        d3: 'https://cdnjs.cloudflare.com/ajax/libs/d3/4.4.0/d3',
+        materialize: '../../materialize/js/materialize'
     },
 
     // define dependencies via shim because of use of old javascript libs, which do not define a module and therefore do not define their dependencies themselves (defined modules in javascript define other dependencies)
@@ -39,9 +40,10 @@ require.config({
         "restive": ["jquery"],
         'perfectScrollbarJQuery': ["jquery"],
         "bootstrap": ["jquery"],
+        "materialize": ["hammerjs"],
 
         // app files
-        "Daddy": ['qx', 'jquery', 'underscore', 'restive', 'perfectScrollbarJQuery', 'chosen', 'mapbox', 'mc', 'hammer', 'modernizr', 'popper'],
+        "Daddy": ['qx', 'jquery', 'underscore', 'restive', 'perfectScrollbarJQuery', 'chosen', 'mapbox', 'mc', 'hammerjs', 'modernizr', 'popper', 'materialize'],
         'APPAFEEFA': ['Daddy'],
         'DataManager': ['APPAFEEFA'],
         'Router': ['APPAFEEFA'],
@@ -90,7 +92,7 @@ require.config({
     ], function(domReady){
 
         // if dependencies don't become available everywhere within the app, then define them here again as global var
-        Hammer = require('hammer');
+        Hammer = require('hammerjs');
         Popper = require('popper');
         // d3 = require('d3');
         

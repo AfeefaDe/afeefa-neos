@@ -275,10 +275,7 @@ qx.Class.define("SearchView", {
           return entry.supportWanted;
         });
 
-        that.searchTag
-          .addClass("active")
-          .append(that.getWording('search.tag.supportwanted'));
-        that.inputField.hide();
+        that.setSearchTag(null, that.getWording('search.tag.supportwanted'));
       }
 
       // children
@@ -287,10 +284,7 @@ qx.Class.define("SearchView", {
           return entry.forChildren;
         });
 
-        that.searchTag
-          .addClass("active")
-          .append(that.getWording('prop.forChildren'));
-        that.inputField.hide();
+        that.setSearchTag(null, that.getWording('prop.forChildren'));
       }
 
       // certified
@@ -299,10 +293,7 @@ qx.Class.define("SearchView", {
           return entry.certified;
         });
 
-        that.searchTag
-          .addClass("active")
-          .append(that.getWording('search.tag.' + query));
-        that.inputField.hide();
+        that.setSearchTag(null, that.getWording('search.tag.' + query));
       }
       
       // free search
@@ -453,6 +444,7 @@ qx.Class.define("SearchView", {
       var that = this;
 
       that.searchTag
+        .empty()
         .addClass("active")
         .addClass(cssClass)
         .append(wording);
@@ -498,6 +490,7 @@ qx.Class.define("SearchView", {
 
       that.listen('fetchedAllData', function(){
         that.load();
+        if( APP.getDetailView().isActive() ) that.hide();
       });
 
       that.listen('filterSet', function(){

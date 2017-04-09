@@ -8,6 +8,9 @@
 @import '../../leafletPlugins/MarkerCluster.css';
 @import '../../leafletPlugins/MarkerCluster.Default.css';
 
+/* materialize */
+/*@import '../../materialize/css/materialize.css';*/
+
 @import 'colors';
 @import 'fonts';
 @import 'normalize';
@@ -15,6 +18,7 @@
 @import 'afeefa-styles';
 @import 'popper';
 @import 'infoVisSystem';
+@import 'goBackLayout';
 @import 'mapView';
 @import 'searchView';
 @import 'detailView';

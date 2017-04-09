@@ -34,12 +34,7 @@ qx.Class.define("DetailView", {
 			that.view.append(that.headingContainer);
 
 			// back button
-		  that.backBtn = $("<div />")
-				.addClass('back-btn')
-				.click(function(){
-				  that.close();
-				});
-		  that.view.append(that.backBtn);
+			that.createBackBtn(function(){that.close();});
 
 			// scrollable content container
 			that.scrollContainer = $("<div />").addClass('scroll-container');
@@ -69,6 +64,14 @@ qx.Class.define("DetailView", {
 					}
 				);
 		  that.scrollContainer.append(that.certificateBadge);
+
+		  // message button
+			that.messageBtn = $("<div />")
+				.addClass('message-btn')
+				.click(function(){
+		   		APP.getFormView().load( 'contact', { entry: that.record } );
+				});
+		  that.scrollContainer.append(that.messageBtn);
 
 			////////////////////
 			// image property //
@@ -317,6 +320,7 @@ qx.Class.define("DetailView", {
 
 			// show DetailView
 			that.view.addClass('active');
+      that.isActive(true);
 
 			if( APP.getUserDevice() == 'desktop') that.scrollContainer.perfectScrollbar('update');
 
@@ -383,6 +387,7 @@ qx.Class.define("DetailView", {
 			that.view.removeClass('active');
 			that.reset();
 			that.setViewState(0);
+      that.isActive(false);
 			that.say('detailViewClosed');
 		},
 

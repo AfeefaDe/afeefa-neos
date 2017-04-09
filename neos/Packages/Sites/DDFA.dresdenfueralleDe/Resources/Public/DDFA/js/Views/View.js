@@ -101,6 +101,17 @@ qx.Class.define("View", {
           that.view.addClass('hidden');
         },
 
+        createBackBtn: function(action){
+          var that = this;
+
+          that.backBtn = $("<div />")
+                .addClass('back-btn')
+                .click(function(){
+                  action();
+                });
+          that.view.append(that.backBtn);
+        },
+
         createTooltip: function(el, content, event, placement, device, cssClasses, contentType){
             var that = this;
 

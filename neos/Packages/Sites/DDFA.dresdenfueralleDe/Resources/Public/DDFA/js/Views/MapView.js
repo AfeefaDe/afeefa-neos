@@ -396,7 +396,7 @@ qx.Class.define("MapView", {
 					// 	that.map.setView( [lookup.entry.location[0].lat, lookup.entry.location[0].lon], 16);
 					// that.selectMarker(lookup.marker, lookup.entry, options);
 				// }
-				if(lookup.marker) that.selectMarker(lookup.marker, lookup.entry, options);
+				if(lookup && lookup.marker) that.selectMarker(lookup.marker, lookup.entry, options);
 				else that.selectMarker(null, lookup, options);
 		},
 

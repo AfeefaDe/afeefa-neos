@@ -173,14 +173,13 @@ qx.Class.define("FormView", {
             // load form from html and insert
             that.scrollContainer.load(that.getBaseUrl() + that.getFormTypes()[type].templateFile, function( response, status, xhr ){
                 if(status == "error" ){}
+                if(options && options.mustaches) that.fillMustaches(options.mustaches);
                 that.view.find('select').each(function(i, el){
                     $(el).material_select();
                     $(el).addClass('hidden');
                 });
 
                 that.parseForm(type, options);
-                
-                // set heading value
                 that.loadUIVocab(type);
             });
 
@@ -301,6 +300,18 @@ qx.Class.define("FormView", {
             });       
         },
 
+        fillMustaches: function(values){
+            var that = this;
+
+            var html = that.scrollContainer.html();
+
+            _.each(values, function(value,key){
+                html = html.replace('{{'+key+'}}', value);
+            });
+
+            that.scrollContainer.html(html);
+        },
+
         parseForm: function(type, options){
             var that = this;
 
@@ -317,6 +328,11 @@ qx.Class.define("FormView", {
             // the form
             form.formEl = that.view.find('form').first();
 
+            form.formEl.submit(function (e) {
+                e.preventDefault();
+                that.send(options);
+            });
+
             // the fields
             that.view.find('input[type=text], textarea').each(function(i, el){
                 var $el = $(el);
@@ -326,13 +342,6 @@ qx.Class.define("FormView", {
                     value: $el.val()
                 }
             });
-
-            // the submit button
-            form.submitEl = that.view.find('button[type=submit]').first();
-            form.submitEl.click(function (e) {
-                e.preventDefault();
-                that.send(options);
-            })
 
             // the cancel button
             that.view.find('a#cancel').first().click(function(){
@@ -373,7 +382,17 @@ qx.Class.define("FormView", {
             var data = that.readForm();
             console.debug(data);
 
-            that.getCurrentForm().formType.sendMethod(data, options);
+            that.getCurrentForm().formType.sendMethod(data, options, function(){
+                that.createModal({
+                    content: $('<h5>Nachricht wurde erfolgreich verschickt.</5>'),
+                    dismissible: true,
+                    buttonLabel: "Schön",
+                    actions: {
+                        ready: function(){},
+                        close: function(){ that.close(); }
+                    }
+                });
+            });
 
             // var type = that.getCurrentFormType();
 
@@ -418,7 +437,7 @@ qx.Class.define("FormView", {
             // }
         },
 
-        createFeedback: function (data) {
+        createFeedback: function (data, options, cb) {
             var that = this;
 
             // to github
@@ -452,9 +471,10 @@ qx.Class.define("FormView", {
                 }
             });
 
+            cb();
         },
 
-        createContact: function (data, options) {
+        createContact: function (data, options, cb) {
             var that = this;
 
             console.debug(options);
@@ -482,6 +502,7 @@ qx.Class.define("FormView", {
                 }
             });
 
+            cb();
         },
 
         // createLocationButton: function (locationContainer) {

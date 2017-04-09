@@ -2788,7 +2788,7 @@ body.phone #mapView {
   padding-left: 1em !important;
 }
 
-/* line 182, sass/_detailView.scss */
+/* line 185, sass/_detailView.scss */
 #detailView {
   position: absolute;
   z-index: 20;
@@ -2908,7 +2908,7 @@ body.phone #mapView {
   height: 1.5em;
   cursor: pointer;
   opacity: .8;
-  background-image: url("../img/arrow.svg");
+  background-image: url("../img/icon_201.svg");
   -moz-background-size: 100%;
   -o-background-size: 100%;
   -webkit-background-size: 100%;
@@ -2968,12 +2968,14 @@ body.phone #mapView {
   background-position: center center;
   background-repeat: no-repeat;
   cursor: pointer;
+  display: none;
   width: 4rem;
   height: 4rem;
   position: absolute;
   right: 2rem;
-  top: 2rem;
+  bottom: 2rem;
   background-color: rgba(0, 0, 0, 0.8);
+  background-image: url("../img/icon_202.svg");
 }
 /* line 63, sass/_afeefa-styles.scss */
 #detailView .message-btn:hover {
@@ -2981,24 +2983,24 @@ body.phone #mapView {
   -webkit-box-shadow: 0px 0px 5px #111;
   box-shadow: 0px 0px 5px #111;
 }
-/* line 40, sass/_detailView.scss */
+/* line 43, sass/_detailView.scss */
 #detailView .image-container {
   max-height: 10em;
   text-align: center;
   overflow: hidden;
 }
-/* line 45, sass/_detailView.scss */
+/* line 48, sass/_detailView.scss */
 #detailView .image-container img {
   width: 100%;
 }
-/* line 51, sass/_detailView.scss */
+/* line 54, sass/_detailView.scss */
 #detailView .property {
   display: none;
   padding: 0 5%;
   margin-top: 2em;
   min-height: 2em;
 }
-/* line 60, sass/_detailView.scss */
+/* line 63, sass/_detailView.scss */
 #detailView .property.category .property-icon {
   /* orga */
   /* market entry */
@@ -3384,12 +3386,12 @@ body.phone #mapView {
   -webkit-background-size: 50%;
   background-size: 50%;
 }
-/* line 65, sass/_detailView.scss */
+/* line 68, sass/_detailView.scss */
 #detailView .property.category .property-value {
   font-style: italic;
   color: #999999;
 }
-/* line 71, sass/_detailView.scss */
+/* line 74, sass/_detailView.scss */
 #detailView .property.descriptionShort {
   font-weight: bold;
   text-align: center;
@@ -3397,7 +3399,7 @@ body.phone #mapView {
   padding: 4%;
   cursor: pointer;
 }
-/* line 78, sass/_detailView.scss */
+/* line 81, sass/_detailView.scss */
 #detailView .property.descriptionShort.read-more {
   background-image: url("../img/icon_175.svg");
   background-position: center bottom;
@@ -3405,27 +3407,27 @@ body.phone #mapView {
   background-repeat: no-repeat;
   padding: 4% 4% 8%;
 }
-/* line 86, sass/_detailView.scss */
+/* line 89, sass/_detailView.scss */
 #detailView .property.descriptionShort .property-icon {
   display: none;
 }
-/* line 87, sass/_detailView.scss */
+/* line 90, sass/_detailView.scss */
 #detailView .property.descriptionShort .property-text {
   margin-left: 0;
 }
-/* line 88, sass/_detailView.scss */
+/* line 91, sass/_detailView.scss */
 #detailView .property.descriptionShort .property-name {
   display: none;
 }
-/* line 92, sass/_detailView.scss */
+/* line 95, sass/_detailView.scss */
 #detailView .property.description .property-name {
   display: none;
 }
-/* line 94, sass/_detailView.scss */
+/* line 97, sass/_detailView.scss */
 #detailView .property.description.hidden {
   display: none !important;
 }
-/* line 102, sass/_detailView.scss */
+/* line 105, sass/_detailView.scss */
 #detailView .property .property-icon {
   width: 2.5em;
   height: 2.5em;
@@ -3434,72 +3436,72 @@ body.phone #mapView {
   background-position: center 0.2em;
   /* property icons */
 }
-/* line 111, sass/_detailView.scss */
+/* line 114, sass/_detailView.scss */
 #detailView .property .property-icon.icon-times {
   background-image: url("../img/icon_29.svg");
 }
-/* line 112, sass/_detailView.scss */
+/* line 115, sass/_detailView.scss */
 #detailView .property .property-icon.icon-location {
   background-image: url("../img/icon_35.svg");
 }
-/* line 113, sass/_detailView.scss */
+/* line 116, sass/_detailView.scss */
 #detailView .property .property-icon.icon-phone {
   background-image: url("../img/icon_23.svg");
 }
-/* line 114, sass/_detailView.scss */
+/* line 117, sass/_detailView.scss */
 #detailView .property .property-icon.icon-mail {
   background-image: url("../img/icon_25.svg");
 }
-/* line 115, sass/_detailView.scss */
+/* line 118, sass/_detailView.scss */
 #detailView .property .property-icon.icon-web {
   background-image: url("../img/icon_27.svg");
 }
-/* line 116, sass/_detailView.scss */
+/* line 119, sass/_detailView.scss */
 #detailView .property .property-icon.icon-arrival {
   background-image: url("../img/icon_57.svg");
 }
-/* line 117, sass/_detailView.scss */
+/* line 120, sass/_detailView.scss */
 #detailView .property .property-icon.icon-openingHours {
   background-image: url("../img/icon_29.svg");
 }
-/* line 118, sass/_detailView.scss */
+/* line 121, sass/_detailView.scss */
 #detailView .property .property-icon.icon-description {
   background-image: url("../img/icon_175.svg");
   background-size: 70%;
 }
-/* line 119, sass/_detailView.scss */
+/* line 122, sass/_detailView.scss */
 #detailView .property .property-icon.icon-facebook {
   background-image: url("../img/icon_45.svg");
 }
-/* line 120, sass/_detailView.scss */
+/* line 123, sass/_detailView.scss */
 #detailView .property .property-icon.icon-spokenLanguages {
   background-image: url("../img/icon_43.svg");
 }
-/* line 121, sass/_detailView.scss */
+/* line 124, sass/_detailView.scss */
 #detailView .property .property-icon.icon-speakerPublic {
   background-image: url("../img/icon_41.svg");
 }
-/* line 124, sass/_detailView.scss */
+/* line 127, sass/_detailView.scss */
 #detailView .property .property-text {
   margin-left: calc(5% + 2.5em);
 }
-/* line 127, sass/_detailView.scss */
+/* line 130, sass/_detailView.scss */
 #detailView .property .property-text.ar, #detailView .property .property-text.ur, #detailView .property .property-text.fa {
   margin-right: calc(5% + 2.5em);
 }
-/* line 131, sass/_detailView.scss */
+/* line 134, sass/_detailView.scss */
 #detailView .property .property-text p {
   margin: 0;
   line-height: 1.3em;
 }
-/* line 135, sass/_detailView.scss */
+/* line 138, sass/_detailView.scss */
 #detailView .property .property-text p.property-name {
   color: #999999;
   font-size: 0.9em;
   padding-bottom: 0.3em;
   text-transform: uppercase;
 }
-/* line 143, sass/_detailView.scss */
+/* line 146, sass/_detailView.scss */
 #detailView .property .property-text a, #detailView .property .property-text #includeView .content-container .content span.locationLink, #includeView .content-container .content #detailView .property .property-text span.locationLink, #detailView .property .property-text #includeView .content-container .content span.searchLink, #includeView .content-container .content #detailView .property .property-text span.searchLink {
   width: 100%;
   display: inline-block;
@@ -3507,40 +3509,40 @@ body.phone #mapView {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-/* line 152, sass/_detailView.scss */
+/* line 155, sass/_detailView.scss */
 #detailView .property.location .property-value {
   background-position: right .5em;
   background-repeat: no-repeat;
   background-size: 1em;
   cursor: pointer;
 }
-/* line 159, sass/_detailView.scss */
+/* line 162, sass/_detailView.scss */
 #detailView .property .multiselect-value {
   display: inline-block;
   margin: 0 .5em .5em 0;
 }
-/* line 164, sass/_detailView.scss */
+/* line 167, sass/_detailView.scss */
 #detailView .property.category .property-name {
   font-size: 1em !important;
   padding: 0 !important;
   color: #333333 !important;
   text-transform: none !important;
 }
-/* line 176, sass/_detailView.scss */
+/* line 179, sass/_detailView.scss */
 #detailView.type-3 .property.category .property-name {
   line-height: 2.6em !important;
 }
-/* line 177, sass/_detailView.scss */
+/* line 180, sass/_detailView.scss */
 #detailView.type-3 .property.category .property-value {
   display: none;
 }
 
-/* line 191, sass/_detailView.scss */
+/* line 194, sass/_detailView.scss */
 .tablet #detailViewMobile {
   width: 30%;
 }
 
-/* line 196, sass/_detailView.scss */
+/* line 199, sass/_detailView.scss */
 #detailViewMobile {
   position: absolute;
   z-index: 20;
@@ -3668,7 +3670,7 @@ body.phone #mapView {
   height: 1.5em;
   cursor: pointer;
   opacity: .8;
-  background-image: url("../img/arrow.svg");
+  background-image: url("../img/icon_201.svg");
   -moz-background-size: 100%;
   -o-background-size: 100%;
   -webkit-background-size: 100%;
@@ -3728,12 +3730,14 @@ body.phone #mapView {
   background-position: center center;
   background-repeat: no-repeat;
   cursor: pointer;
+  display: none;
   width: 4rem;
   height: 4rem;
   position: absolute;
   right: 2rem;
-  top: 2rem;
+  bottom: 2rem;
   background-color: rgba(0, 0, 0, 0.8);
+  background-image: url("../img/icon_202.svg");
 }
 /* line 63, sass/_afeefa-styles.scss */
 #detailViewMobile .message-btn:hover {
@@ -3741,24 +3745,24 @@ body.phone #mapView {
   -webkit-box-shadow: 0px 0px 5px #111;
   box-shadow: 0px 0px 5px #111;
 }
-/* line 40, sass/_detailView.scss */
+/* line 43, sass/_detailView.scss */
 #detailViewMobile .image-container {
   max-height: 10em;
   text-align: center;
   overflow: hidden;
 }
-/* line 45, sass/_detailView.scss */
+/* line 48, sass/_detailView.scss */
 #detailViewMobile .image-container img {
   width: 100%;
 }
-/* line 51, sass/_detailView.scss */
+/* line 54, sass/_detailView.scss */
 #detailViewMobile .property {
   display: none;
   padding: 0 5%;
   margin-top: 2em;
   min-height: 2em;
 }
-/* line 60, sass/_detailView.scss */
+/* line 63, sass/_detailView.scss */
 #detailViewMobile .property.category .property-icon {
   /* orga */
   /* market entry */
@@ -4144,12 +4148,12 @@ body.phone #mapView {
   -webkit-background-size: 50%;
   background-size: 50%;
 }
-/* line 65, sass/_detailView.scss */
+/* line 68, sass/_detailView.scss */
 #detailViewMobile .property.category .property-value {
   font-style: italic;
   color: #999999;
 }
-/* line 71, sass/_detailView.scss */
+/* line 74, sass/_detailView.scss */
 #detailViewMobile .property.descriptionShort {
   font-weight: bold;
   text-align: center;
@@ -4157,7 +4161,7 @@ body.phone #mapView {
   padding: 4%;
   cursor: pointer;
 }
-/* line 78, sass/_detailView.scss */
+/* line 81, sass/_detailView.scss */
 #detailViewMobile .property.descriptionShort.read-more {
   background-image: url("../img/icon_175.svg");
   background-position: center bottom;
@@ -4165,27 +4169,27 @@ body.phone #mapView {
   background-repeat: no-repeat;
   padding: 4% 4% 8%;
 }
-/* line 86, sass/_detailView.scss */
+/* line 89, sass/_detailView.scss */
 #detailViewMobile .property.descriptionShort .property-icon {
   display: none;
 }
-/* line 87, sass/_detailView.scss */
+/* line 90, sass/_detailView.scss */
 #detailViewMobile .property.descriptionShort .property-text {
   margin-left: 0;
 }
-/* line 88, sass/_detailView.scss */
+/* line 91, sass/_detailView.scss */
 #detailViewMobile .property.descriptionShort .property-name {
   display: none;
 }
-/* line 92, sass/_detailView.scss */
+/* line 95, sass/_detailView.scss */
 #detailViewMobile .property.description .property-name {
   display: none;
 }
-/* line 94, sass/_detailView.scss */
+/* line 97, sass/_detailView.scss */
 #detailViewMobile .property.description.hidden {
   display: none !important;
 }
-/* line 102, sass/_detailView.scss */
+/* line 105, sass/_detailView.scss */
 #detailViewMobile .property .property-icon {
   width: 2.5em;
   height: 2.5em;
@@ -4194,72 +4198,72 @@ body.phone #mapView {
   background-position: center 0.2em;
   /* property icons */
 }
-/* line 111, sass/_detailView.scss */
+/* line 114, sass/_detailView.scss */
 #detailViewMobile .property .property-icon.icon-times {
   background-image: url("../img/icon_29.svg");
 }
-/* line 112, sass/_detailView.scss */
+/* line 115, sass/_detailView.scss */
 #detailViewMobile .property .property-icon.icon-location {
   background-image: url("../img/icon_35.svg");
 }
-/* line 113, sass/_detailView.scss */
+/* line 116, sass/_detailView.scss */
 #detailViewMobile .property .property-icon.icon-phone {
   background-image: url("../img/icon_23.svg");
 }
-/* line 114, sass/_detailView.scss */
+/* line 117, sass/_detailView.scss */
 #detailViewMobile .property .property-icon.icon-mail {
   background-image: url("../img/icon_25.svg");
 }
-/* line 115, sass/_detailView.scss */
+/* line 118, sass/_detailView.scss */
 #detailViewMobile .property .property-icon.icon-web {
   background-image: url("../img/icon_27.svg");
 }
-/* line 116, sass/_detailView.scss */
+/* line 119, sass/_detailView.scss */
 #detailViewMobile .property .property-icon.icon-arrival {
   background-image: url("../img/icon_57.svg");
 }
-/* line 117, sass/_detailView.scss */
+/* line 120, sass/_detailView.scss */
 #detailViewMobile .property .property-icon.icon-openingHours {
   background-image: url("../img/icon_29.svg");
 }
-/* line 118, sass/_detailView.scss */
+/* line 121, sass/_detailView.scss */
 #detailViewMobile .property .property-icon.icon-description {
   background-image: url("../img/icon_175.svg");
   background-size: 70%;
 }
-/* line 119, sass/_detailView.scss */
+/* line 122, sass/_detailView.scss */
 #detailViewMobile .property .property-icon.icon-facebook {
   background-image: url("../img/icon_45.svg");
 }
-/* line 120, sass/_detailView.scss */
+/* line 123, sass/_detailView.scss */
 #detailViewMobile .property .property-icon.icon-spokenLanguages {
   background-image: url("../img/icon_43.svg");
 }
-/* line 121, sass/_detailView.scss */
+/* line 124, sass/_detailView.scss */
 #detailViewMobile .property .property-icon.icon-speakerPublic {
   background-image: url("../img/icon_41.svg");
 }
-/* line 124, sass/_detailView.scss */
+/* line 127, sass/_detailView.scss */
 #detailViewMobile .property .property-text {
   margin-left: calc(5% + 2.5em);
 }
-/* line 127, sass/_detailView.scss */
+/* line 130, sass/_detailView.scss */
 #detailViewMobile .property .property-text.ar, #detailViewMobile .property .property-text.ur, #detailViewMobile .property .property-text.fa {
   margin-right: calc(5% + 2.5em);
 }
-/* line 131, sass/_detailView.scss */
+/* line 134, sass/_detailView.scss */
 #detailViewMobile .property .property-text p {
   margin: 0;
   line-height: 1.3em;
 }
-/* line 135, sass/_detailView.scss */
+/* line 138, sass/_detailView.scss */
 #detailViewMobile .property .property-text p.property-name {
   color: #999999;
   font-size: 0.9em;
   padding-bottom: 0.3em;
   text-transform: uppercase;
 }
-/* line 143, sass/_detailView.scss */
+/* line 146, sass/_detailView.scss */
 #detailViewMobile .property .property-text a, #detailViewMobile .property .property-text #includeView .content-container .content span.locationLink, #includeView .content-container .content #detailViewMobile .property .property-text span.locationLink, #detailViewMobile .property .property-text #includeView .content-container .content span.searchLink, #includeView .content-container .content #detailViewMobile .property .property-text span.searchLink {
   width: 100%;
   display: inline-block;
@@ -4267,74 +4271,78 @@ body.phone #mapView {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-/* line 152, sass/_detailView.scss */
+/* line 155, sass/_detailView.scss */
 #detailViewMobile .property.location .property-value {
   background-position: right .5em;
   background-repeat: no-repeat;
   background-size: 1em;
   cursor: pointer;
 }
-/* line 159, sass/_detailView.scss */
+/* line 162, sass/_detailView.scss */
 #detailViewMobile .property .multiselect-value {
   display: inline-block;
   margin: 0 .5em .5em 0;
 }
-/* line 164, sass/_detailView.scss */
+/* line 167, sass/_detailView.scss */
 #detailViewMobile .property.category .property-name {
   font-size: 1em !important;
   padding: 0 !important;
   color: #333333 !important;
   text-transform: none !important;
 }
-/* line 176, sass/_detailView.scss */
+/* line 179, sass/_detailView.scss */
 #detailViewMobile.type-3 .property.category .property-name {
   line-height: 2.6em !important;
 }
-/* line 177, sass/_detailView.scss */
+/* line 180, sass/_detailView.scss */
 #detailViewMobile.type-3 .property.category .property-value {
   display: none;
 }
-/* line 209, sass/_detailView.scss */
+/* line 212, sass/_detailView.scss */
 #detailViewMobile .message-btn {
   position: fixed;
   bottom: 2rem;
 }
-/* line 214, sass/_detailView.scss */
+/* line 217, sass/_detailView.scss */
 #detailViewMobile.active {
   bottom: 0;
 }
-/* line 217, sass/_detailView.scss */
-#detailViewMobile.active .message-btn {
+/* line 220, sass/_detailView.scss */
+#detailViewMobile.active badge-certificate {
   display: none;
 }
-/* line 222, sass/_detailView.scss */
+/* line 224, sass/_detailView.scss */
+#detailViewMobile.active .message-btn {
+  display: none !important;
+}
+/* line 229, sass/_detailView.scss */
 #detailViewMobile.active-large {
   bottom: 0;
   height: 100%;
   visibility: visible;
   opacity: 1;
 }
-/* line 229, sass/_detailView.scss */
+/* line 236, sass/_detailView.scss */
 #detailViewMobile.active-large .heading h1 {
   overflow: inherit;
   text-overflow: inherit;
   white-space: inherit;
 }
-/* line 236, sass/_detailView.scss */
+/* line 243, sass/_detailView.scss */
 #detailViewMobile .scroll-container {
   height: calc(100% - 4em);
   overflow-y: auto;
   padding-bottom: 1em;
   position: relative;
 }
-/* line 243, sass/_detailView.scss */
+/* line 250, sass/_detailView.scss */
 #detailViewMobile .heading h1 {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
-/* line 251, sass/_detailView.scss */
+/* line 258, sass/_detailView.scss */
 .rtl #detailView .property.location .property-value {
   background-position: left .5em;
 }
@@ -15087,7 +15095,7 @@ body.phone #menuView .menu-btn {
   height: 1.5em;
   cursor: pointer;
   opacity: .8;
-  background-image: url("../img/arrow.svg");
+  background-image: url("../img/icon_201.svg");
   -moz-background-size: 100%;
   -o-background-size: 100%;
   -webkit-background-size: 100%;
@@ -15119,7 +15127,15 @@ body.phone #menuView .menu-btn {
 #formView .scroll-container {
   padding: 2rem;
 }
-/* line 34, sass/_formView.scss */
+/* line 33, sass/_formView.scss */
+#formView .scroll-container .input-field.col {
+  padding: 0;
+}
+/* line 36, sass/_formView.scss */
+#formView .scroll-container .input-field.col label {
+  left: 0;
+}
+/* line 42, sass/_formView.scss */
 #formView .button-container {
   padding: 0 3rem;
   background-color: #DDDDDD;
@@ -15127,16 +15143,16 @@ body.phone #menuView .menu-btn {
   -webkit-box-shadow: #DDDDDD 0 0 15px;
   box-shadow: #DDDDDD 0 0 15px;
 }
-/* line 40, sass/_formView.scss */
+/* line 48, sass/_formView.scss */
 #formView.active {
   visibility: visible;
   opacity: 1;
 }
-/* line 45, sass/_formView.scss */
+/* line 53, sass/_formView.scss */
 #formView form {
   /*display: none;*/
 }
-/* line 49, sass/_formView.scss */
+/* line 57, sass/_formView.scss */
 #formView form input, #formView form textarea, #formView form select, #formView form .chosen-container {
   display: block;
   -moz-box-sizing: border-box;
@@ -15148,29 +15164,29 @@ body.phone #menuView .menu-btn {
   background-color: #DDDDDD;
   margin-bottom: 1em;
 }
-/* line 58, sass/_formView.scss */
+/* line 66, sass/_formView.scss */
 #formView form input:focus, #formView form textarea:focus, #formView form select:focus, #formView form .chosen-container:focus {
   background-color: #f2f2f2;
 }
-/* line 63, sass/_formView.scss */
+/* line 71, sass/_formView.scss */
 #formView form .chosen-choices {
   border: none !important;
   box-shadow: none !important;
   background: none !important;
 }
-/* line 68, sass/_formView.scss */
+/* line 76, sass/_formView.scss */
 #formView form .chosen-choices li.search-field input[type=text] {
   font-family: inherit !important;
 }
-/* line 73, sass/_formView.scss */
+/* line 81, sass/_formView.scss */
 #formView form .search-field input {
   margin: 0;
 }
-/* line 77, sass/_formView.scss */
+/* line 85, sass/_formView.scss */
 #formView form.active {
   display: block;
 }
-/* line 82, sass/_formView.scss */
+/* line 90, sass/_formView.scss */
 #formView .form-checkbox {
   display: -webkit-flex;
   display: flex;
@@ -15178,7 +15194,7 @@ body.phone #menuView .menu-btn {
   align-items: middle;
   margin-bottom: 1em;
 }
-/* line 87, sass/_formView.scss */
+/* line 95, sass/_formView.scss */
 #formView .form-checkbox input {
   width: auto;
   width: 1.5em;
@@ -15186,19 +15202,19 @@ body.phone #menuView .menu-btn {
   cursor: pointer;
   margin: 0 .5em 0 0;
 }
-/* line 95, sass/_formView.scss */
+/* line 103, sass/_formView.scss */
 #formView .form-checkbox label {
   line-height: 1.5em;
 }
-/* line 100, sass/_formView.scss */
+/* line 108, sass/_formView.scss */
 #formView .form-switch {
   margin-bottom: 1em;
 }
-/* line 103, sass/_formView.scss */
+/* line 111, sass/_formView.scss */
 #formView .form-switch input {
   display: none;
 }
-/* line 107, sass/_formView.scss */
+/* line 115, sass/_formView.scss */
 #formView .form-switch span {
   display: inline-block;
   padding: .5em 1em;
@@ -15210,52 +15226,52 @@ body.phone #menuView .menu-btn {
   cursor: pointer;
   color: #999999;
 }
-/* line 116, sass/_formView.scss */
+/* line 124, sass/_formView.scss */
 #formView .form-switch span:hover {
   background-color: #999999;
   color: #DDDDDD;
 }
-/* line 121, sass/_formView.scss */
+/* line 129, sass/_formView.scss */
 #formView .form-switch span.active {
   background-color: rgba(0, 0, 0, 0.8);
   color: #f2f2f2;
   border-color: rgba(0, 0, 0, 0.8);
 }
-/* line 130, sass/_formView.scss */
+/* line 138, sass/_formView.scss */
 #formView .location-container input {
   display: none;
 }
-/* line 135, sass/_formView.scss */
+/* line 143, sass/_formView.scss */
 #formView .location-container.active input {
   display: block;
 }
-/* line 143, sass/_formView.scss */
+/* line 151, sass/_formView.scss */
 #formView.marketOffer .heading, #formView.marketRequest .heading {
   background-color: #CA7311;
 }
-/* line 144, sass/_formView.scss */
+/* line 152, sass/_formView.scss */
 #formView.marketOffer .sendBtn, #formView.marketRequest .sendBtn {
   background-color: #CA7311;
 }
-/* line 148, sass/_formView.scss */
+/* line 156, sass/_formView.scss */
 #formView.marketOffer .heading {
   background-image: url("../img/icon_48.svg");
 }
-/* line 152, sass/_formView.scss */
+/* line 160, sass/_formView.scss */
 #formView.marketRequest .heading {
   background-image: url("../img/icon_52.svg");
 }
-/* line 156, sass/_formView.scss */
+/* line 164, sass/_formView.scss */
 #formView.feedback .heading {
   background-color: #333333;
   background-image: url("../img/icon_50.svg");
 }
-/* line 157, sass/_formView.scss */
+/* line 165, sass/_formView.scss */
 #formView.feedback .sendBtn {
   background-color: #333333;
 }
 
-/* line 164, sass/_formView.scss */
+/* line 172, sass/_formView.scss */
 .mobile #formView {
   /*z-index: 100;*/
   width: 100%;
@@ -15264,12 +15280,12 @@ body.phone #menuView .menu-btn {
   top: 0;
   left: 0;
 }
-/* line 173, sass/_formView.scss */
+/* line 181, sass/_formView.scss */
 .mobile #formView .form-container {
   overflow-y: scroll !important;
 }
 
-/* line 180, sass/_formView.scss */
+/* line 188, sass/_formView.scss */
 .tablet .form-container {
   overflow-y: scroll !important;
 }

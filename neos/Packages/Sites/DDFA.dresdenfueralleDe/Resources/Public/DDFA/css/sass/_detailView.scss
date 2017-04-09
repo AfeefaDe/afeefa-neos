@@ -26,14 +26,17 @@
 	.message-btn {
 		@include circleBtn;
 		
+		display: none;
+
 		width: 4rem;
     height: 4rem;
 
 		position: absolute;
     right: 2rem;
-    top: 2rem;
+    bottom: 2rem;
 
 		background-color: $black_alpha;
+		background-image: url("../img/icon_202.svg");
 	}
 
 	/* IMAGE PROPERTY */
@@ -214,8 +217,12 @@
 	&.active {
 		bottom: 0;
 		
-		.message-btn {
+		badge-certificate {
 			display: none;
+		}
+
+		.message-btn {
+			display: none !important;
 		}
 	}
 

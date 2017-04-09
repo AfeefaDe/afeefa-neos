@@ -112,6 +112,59 @@ qx.Class.define("View", {
           that.view.append(that.backBtn);
         },
 
+        createModal: function(options){
+            var that = this;
+
+            var curtain = $("<div />")
+                .css({
+                    width: '100%',
+                    height: '100%',
+                    position: 'absolute',
+                    'background-color': 'rgba(0,0,0,.6)'
+                });
+            that.view.append(curtain);
+
+            var modal = $("<div />")
+                .attr('id', 'modal')
+                .addClass('modal');
+
+            var modalContent = $("<div />")
+                .addClass('modal-content')
+                .append(options.content);
+            modal.append(modalContent);
+
+            var modalFooter = $("<div />")
+                .addClass('modal-footer');
+            modal.append(modalFooter);
+            
+            var actionOne = $("<a />")
+                .addClass('btn modal-action modal-close btn-flat')
+                // .append( $("<i />").addClass('material-icons').append('favorite') )
+                .append(options.buttonLabel);
+            modalFooter.append(actionOne);
+            
+            that.view.append(modal);
+
+            $('.modal').modal({
+                dismissible: options.dismissible ? options.dismissible : false, // Modal can be dismissed by clicking outside of the modal
+                opacity: 1, // Opacity of modal background
+                inDuration: 200, // Transition in duration
+                outDuration: 100, // Transition out duration
+                startingTop: '4%', // Starting top style attribute
+                endingTop: '10%', // Ending top style attribute
+                ready: function(modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
+                    options.actions.ready();
+                },
+                complete: function() { 
+                    options.actions.close();
+                    $('#modal').remove();
+                    curtain.remove();
+                } // Callback for Modal close
+            });
+
+            $('#modal').modal('open');
+        },
+
         createTooltip: function(el, content, event, placement, device, cssClasses, contentType){
             var that = this;
 

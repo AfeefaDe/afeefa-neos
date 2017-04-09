@@ -484,6 +484,11 @@ qx.Class.define("SearchView", {
         that.show();
       });
 
+      that.listen('mapclicked', function(){
+        // that.maximize();
+        that.hide();
+      });
+
       that.listen('includeViewOpened', function(){
         that.close();
       });

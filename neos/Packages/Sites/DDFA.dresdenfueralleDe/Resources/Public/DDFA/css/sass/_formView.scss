@@ -11,7 +11,7 @@
 	@include flex-direction(column);
 
 	z-index: 30;
-	
+
 	/* HEADING */
 	.header {
 		background-color: $black;
@@ -29,6 +29,14 @@
 	
 	.scroll-container {
 		padding: 2rem;
+
+		.input-field.col {
+			padding: 0;
+
+			label {
+				left: 0;
+			}
+		}
 	}
 
 	.button-container {

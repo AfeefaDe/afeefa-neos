@@ -1,8 +1,13 @@
-<form id="contact-form">
+<form>
 
 	<div class="row">
+	    <label>key:form.label.recipient</label>
+	    <p style="font-size: 1.1rem; font-weight: bold">{{recipient}}</p>
+  </div>
+	
+	<div class="row">
 		<div class="input-field col s12">
-	    <textarea id="contact.message" class="materialize-textarea" maxlength="350"></textarea>
+	    <textarea id="contact.message" class="materialize-textarea" maxlength="350" required validate></textarea>
 	    <label for="contact.message">key:form.field.message</label>
 	  </div>
   </div>
@@ -17,19 +22,19 @@
 	<div class="row">
 		<div class="input-field col s12">
 			<label for="contact.mail">key:form.field.mail</label>
-			<input id="contact.mail" type="text" class="mail" required>
+			<input id="contact.mail" type="text" class="mail">
 		</div>
 	</div>
 
 	<div class="row">
 		<div class="input-field col s12">
 			<label for="contact.phone">key:form.field.phone</label>
-			<input id="contact.phone" type="text" class="phone" required>
+			<input id="contact.phone" type="text" class="phone">
 		</div>
 	</div>
 
   <!-- key:form.button.contact.submit -->
-  <button class="btn waves-effect waves-light" type="submit" name="action">Senden
+  <button class="btn" type="submit" name="action">Senden
     <i class="material-icons right">send</i>
   </button>
   

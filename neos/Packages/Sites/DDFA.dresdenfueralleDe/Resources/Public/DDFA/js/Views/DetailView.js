@@ -69,9 +69,9 @@ qx.Class.define("DetailView", {
 			that.messageBtn = $("<div />")
 				.addClass('message-btn')
 				.click(function(){
-		   		APP.getFormView().load( 'contact', { entry: that.record } );
+		   		APP.getFormView().load( 'contact', { entry: that.record, mustaches: { recipient: that.record.name } } );
 				});
-		  that.scrollContainer.append(that.messageBtn);
+		  that.view.append(that.messageBtn);
 
 			////////////////////
 			// image property //
@@ -177,6 +177,9 @@ qx.Class.define("DetailView", {
 
 			// certificate badge
 			if(record.certified) that.certificateBadge.show();
+
+			// message button
+			if(record.mail) that.messageBtn.show();
 
 			////////////////////
 			// image property //
@@ -342,8 +345,8 @@ qx.Class.define("DetailView", {
 				return (css.match (/(^|\s)cat-\S+/g) || []).join(' ');
 			});
 
-			// certificate badge
 			that.certificateBadge.hide();
+			that.messageBtn.hide();
 
 			// image property
 			that.imageContainer.empty();

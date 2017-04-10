@@ -101,6 +101,33 @@ qx.Class.define("View", {
           that.view.addClass('hidden');
         },
 
+        fillMustaches: function(html, values){
+            var that = this;
+
+            // _.each(values, function(value,key){
+            //     html = html.replace('{{'+key+'}}', value);
+            // });
+
+            html = html.replace(/\{\{(.+?)\}\}/g, function(outer, inner){
+                // console.debug(inner);
+                
+                // look inside given values
+                if( values && values[inner] ) {
+                    return values[inner];
+                }
+                
+                // look for translation
+                if( inner.indexOf('key:') > -1 ) {
+                    var key = inner.split(':')[1];
+                    return that.getWording(key);
+                }
+
+                return 'undefined';
+            });
+
+            return html;
+        },
+
         createBackBtn: function(action){
           var that = this;
 
@@ -119,7 +146,7 @@ qx.Class.define("View", {
                 .css({
                     width: '100%',
                     height: '100%',
-                    position: 'absolute',
+                    position: 'fixed',
                     'background-color': 'rgba(0,0,0,.6)'
                 });
             that.view.append(curtain);

@@ -40,6 +40,11 @@ qx.Class.define("FormView", {
                 name: 'contact',
                 templateFile: 'form_contact.html',
                 sendMethod: that.createContact
+            },
+            newEntry: {
+                name: 'newEntry',
+                templateFile: 'form_newEntry.html',
+                sendMethod: that.createEntry
             }
         });
 
@@ -173,10 +178,20 @@ qx.Class.define("FormView", {
             // load form from html and insert
             that.scrollContainer.load(that.getBaseUrl() + that.getFormTypes()[type].templateFile, function( response, status, xhr ){
                 if(status == "error" ){}
-                if(options && options.mustaches) that.fillMustaches(options.mustaches);
+
+                // fill mustaches with values
+                var filledHtml = that.fillMustaches(that.scrollContainer.html(), (options && options.mustaches)? options.mustaches : null);
+                that.scrollContainer.html(filledHtml);
+
+                // init character counters
+                that.view.find('input, textarea').each(function(i, el){
+                    $(el).characterCounter();
+                });
+
+                // init select dropdowns
                 that.view.find('select').each(function(i, el){
-                    $(el).material_select();
-                    $(el).addClass('hidden');
+                    // $(el).material_select();
+                    // $(el).addClass('hidden');
                 });
 
                 that.parseForm(type, options);
@@ -189,103 +204,103 @@ qx.Class.define("FormView", {
             return;
 // --------------------------------------------------------------------------------------
 
-            that.reset();
+            // that.reset();
 
-            // activate loaded form type
-            that.setCurrentFormType(type);
-            that.forms[type].form.addClass('active');
+            // // activate loaded form type
+            // that.setCurrentFormType(type);
+            // that.forms[type].form.addClass('active');
 
-            // set placeholders/ labels
-            _.each(that.getProperties()[type], function (property) {
-                // set placeholder value
-                that.forms[type].fields[property.name]
-                    .attr('placeholder', that.getWording('form.placeholder.' + property.name));
+            // // set placeholders/ labels
+            // _.each(that.getProperties()[type], function (property) {
+            //     // set placeholder value
+            //     that.forms[type].fields[property.name]
+            //         .attr('placeholder', that.getWording('form.placeholder.' + property.name));
 
-                // set label value if a lable exists
-                if (that.forms[type].fields[property.name + '_label'])
-                    that.forms[type].fields[property.name + '_label']
-                        .empty()
-                        .append(that.getWording('form.placeholder.' + property.name));
+            //     // set label value if a lable exists
+            //     if (that.forms[type].fields[property.name + '_label'])
+            //         that.forms[type].fields[property.name + '_label']
+            //             .empty()
+            //             .append(that.getWording('form.placeholder.' + property.name));
 
-                if (_.contains(['date', 'time'], property.type)) {
-                    if (APP.getUserDevice() == 'desktop' && !Modernizr.inputtypes.date) {
-                        that.forms[type].fields[property.name].hide();
-                        // that.forms[type].fields[property.name].combodate({
-                        //  minYear: 2016,
-                        //    maxYear: 2017,
-                        //    minuteStep: 10
-                        // });
-                    }
-                }
-                // options in select + multiselect inputs
-                else if (property.type == 'select') {
-                    // remove all options
-                    that.forms[type].fields[property.name].empty();
+            //     if (_.contains(['date', 'time'], property.type)) {
+            //         if (APP.getUserDevice() == 'desktop' && !Modernizr.inputtypes.date) {
+            //             that.forms[type].fields[property.name].hide();
+            //             // that.forms[type].fields[property.name].combodate({
+            //             //  minYear: 2016,
+            //             //    maxYear: 2017,
+            //             //    minuteStep: 10
+            //             // });
+            //         }
+            //     }
+            //     // options in select + multiselect inputs
+            //     else if (property.type == 'select') {
+            //         // remove all options
+            //         that.forms[type].fields[property.name].empty();
 
-                    // add empty option
-                    var emptyOption = $('<option />')
-                    // .attr('selected', true)
-                        .attr('value', '')
-                        .append(that.getWording('form.emptyOption.' + property.name));
-                    that.forms[type].fields[property.name].append(emptyOption);
+            //         // add empty option
+            //         var emptyOption = $('<option />')
+            //         // .attr('selected', true)
+            //             .attr('value', '')
+            //             .append(that.getWording('form.emptyOption.' + property.name));
+            //         that.forms[type].fields[property.name].append(emptyOption);
 
-                    _.each(property.values, function (value, key) {
+            //         _.each(property.values, function (value, key) {
 
-                        var option = $("<option />");
+            //             var option = $("<option />");
 
-                        if (property.name == 'category') {
-                            option
-                                .attr('value', value.identifier)
-                                .append(that.getWording('cat.' + value.name));
-                        }
-                        else if (property.name == 'subCategory') {
-                            option
-                                .attr('value', value.name)
-                                .append(that.getWording('cat.' + value.name));
-                        }
-                        else {
-                            option
-                                .attr('value', value[0])
-                                .append(that.getWording('prop.' + property.name + '_' + value[1]));
-                        }
+            //             if (property.name == 'category') {
+            //                 option
+            //                     .attr('value', value.identifier)
+            //                     .append(that.getWording('cat.' + value.name));
+            //             }
+            //             else if (property.name == 'subCategory') {
+            //                 option
+            //                     .attr('value', value.name)
+            //                     .append(that.getWording('cat.' + value.name));
+            //             }
+            //             else {
+            //                 option
+            //                     .attr('value', value[0])
+            //                     .append(that.getWording('prop.' + property.name + '_' + value[1]));
+            //             }
 
-                        that.forms[type].fields[property.name].append(option);
-                    });
-                }
-                else if (property.type == 'multiselect') {
+            //             that.forms[type].fields[property.name].append(option);
+            //         });
+            //     }
+            //     else if (property.type == 'multiselect') {
 
-                    // remove all options
-                    that.forms[type].fields[property.name].empty();
+            //         // remove all options
+            //         that.forms[type].fields[property.name].empty();
 
-                    // placeholder for desktop (using "chosen" jQ plugin)
-                    that.forms[type].fields[property.name]
-                        .attr('data-placeholder', that.getWording('form.placeholder.' + property.name));
+            //         // placeholder for desktop (using "chosen" jQ plugin)
+            //         that.forms[type].fields[property.name]
+            //             .attr('data-placeholder', that.getWording('form.placeholder.' + property.name));
 
-                    // TODO not working, because mobile browsers show "N selected" instead of placeholder or first option
-                    // placeholder for mobiles (using empty option, because placeholder is not natively supported for multi select)
-                    // if( APP.getUserDevice() != 'desktop' ){
-                    //  var emptyOption = $('<option />')
-                    //      .attr('value', '')
-                    //      .append(that.getWording('form_placeholder_' + property.name));
-                    //  that.forms[type].fields[property.name].append(emptyOption);
-                    // }
+            //         // TODO not working, because mobile browsers show "N selected" instead of placeholder or first option
+            //         // placeholder for mobiles (using empty option, because placeholder is not natively supported for multi select)
+            //         // if( APP.getUserDevice() != 'desktop' ){
+            //         //  var emptyOption = $('<option />')
+            //         //      .attr('value', '')
+            //         //      .append(that.getWording('form_placeholder_' + property.name));
+            //         //  that.forms[type].fields[property.name].append(emptyOption);
+            //         // }
 
-                    _.each(property.values, function (value) {
+            //         _.each(property.values, function (value) {
 
-                        var option = $("<option />");
+            //             var option = $("<option />");
 
-                        option.attr('value', value);
-                        option.append(that.getWording('lan.' + value));
+            //             option.attr('value', value);
+            //             option.append(that.getWording('lan.' + value));
 
-                        that.forms[type].fields[property.name].append(option);
-                    });
+            //             that.forms[type].fields[property.name].append(option);
+            //         });
 
-                    if (APP.getUserDevice() == 'desktop')
-                        that.forms[type].fields[property.name].chosen();
-                }
-            });
+            //         if (APP.getUserDevice() == 'desktop')
+            //             that.forms[type].fields[property.name].chosen();
+            //     }
+            // });
 
-            that.view.addClass('active');
+            // that.view.addClass('active');
         },
 
         loadUIVocab: function(type){
@@ -293,23 +308,11 @@ qx.Class.define("FormView", {
 
             that.heading.empty().append(that.getWording('form.heading.' + type));
 
-            that.view.find('label').each(function(i, el){
-                var key = $(el).html().split(':')[1];
-                console.debug(key);
-                $(el).html(that.getWording(key));
-            });       
-        },
-
-        fillMustaches: function(values){
-            var that = this;
-
-            var html = that.scrollContainer.html();
-
-            _.each(values, function(value,key){
-                html = html.replace('{{'+key+'}}', value);
-            });
-
-            that.scrollContainer.html(html);
+            // that.view.find('label, option').each(function(i, el){
+            //     var key = $(el).html().split(':')[1];
+            //     console.debug(key);
+            //     $(el).html(that.getWording(key));
+            // });
         },
 
         parseForm: function(type, options){
@@ -334,12 +337,11 @@ qx.Class.define("FormView", {
             });
 
             // the fields
-            that.view.find('input[type=text], textarea').each(function(i, el){
+            that.view.find('input, textarea, select').each(function(i, el){
                 var $el = $(el);
                 form.fields[$el.attr('id')] = {
                     modelAttr: $el.attr('id'),
-                    el: $el,
-                    value: $el.val()
+                    el: $el
                 }
             });
 
@@ -356,7 +358,7 @@ qx.Class.define("FormView", {
 
             var formData = {};
             
-            // extract all attribute names
+            // extract all model names
             var attributes = [];
             _.each(that.getCurrentForm().fields, function(value, key){
                 attributes.push(value.modelAttr.split('.')[0]);
@@ -368,7 +370,15 @@ qx.Class.define("FormView", {
 
             // extract attribute values and combine
             _.each(that.getCurrentForm().fields, function(value, key){
-                formData[value.modelAttr.split('.')[0]][value.modelAttr.split('.')[1]] = value.el.val();
+                var realValue;
+
+                if( value.el.attr('type') == 'checkbox' ){
+                    realValue = value.el[0].checked;
+                }
+                else {
+                    realValue = value.el.val();
+                }
+                formData[value.modelAttr.split('.')[0]][value.modelAttr.split('.')[1]] = realValue;
             });
 
             return formData;
@@ -435,6 +445,73 @@ qx.Class.define("FormView", {
 
             //     that.createMarketEntryAndLocation(dataMarketEntry, dataLocation);
             // }
+        },
+
+        createEntry: function (data, options, cb) {
+            var that = this;
+
+            // to backend
+            data.entry.area = "dresden";
+
+            var data_converted = {
+                marketentry: data.entry,
+                location: data.location
+            };
+
+            APP.getDataManager().addMarketEntry(data_converted, function (response) {
+                if (!response.marketentry) {
+                    // that.thatResponseMessage().append( that.getWording('form_fail') );
+                    alert(that.getWording('form.fail'));
+                    that.loading(false);
+                    return;
+                }
+
+                // that.responseMessage.append( that.getWording('form_success') );
+                alert(that.getWording('form.success'));
+                that.close();
+
+                // dataLocation.location['marketEntry'] = response.marketentry.persistenceObjectIdentifier;
+                // APP.getDataManager().addLocation(dataLocation, function(){
+                //  // alert('marketLocation sent, thanks');
+                // });
+            });
+
+            // to github
+            APP.getDataManager().createGithubIssue({
+                data: {
+                    type: 'entry',
+                    entryType: data.entry.type,
+                    entryData: data.entry,
+                    locationData: data.location
+                }
+            });
+            
+            // send outgoing message
+            var entryTypes = {0: 'Orga', 1: 'Börse', 2: 'Event'};
+
+            // to slack
+            APP.getDataManager().createSlackMessage({
+                heading: function () {
+                    var entryTypeString = entryTypes[data.entry.type];
+                    var marketTypeString = (data.entry.offer) ? 'Angebot' : 'Gesuch';
+                    if (data.entry.type == 1) entryTypeString += ' (' + marketTypeString + ')'
+                    return 'Neuer Eintrag: ' + entryTypeString + ' "' + data.entry.name + '"'
+                }(),
+                message: '```\n' + data.entry.description + '\n```\n'
+                + 'für Kinder: `' + (data.entry.forChildren ? 'ja' : 'nicht explizit') + '`\n'
+                + 'Unterstützer gesucht: `' + (data.entry.supportWanted ? 'ja' : 'nein') + '`\n'
+                + 'Kontaktperson: `' + data.entry.speakerPublic + '`\n'
+                + 'Sprachen: `' + data.entry.spokenLanguages + '`\n'
+                + 'mail: `' + data.entry.mail + '` '
+                + 'web: `' + data.entry.web + '` '
+                + 'facebook: `' + data.entry.facebook + '` '
+                + 'phone: `' + data.entry.phone + '`\n'
+                + 'Ort: `' + data.location.placename + ', ' + data.location.street + ', ' + data.location.zip + ' ' + data.location.city + '`\n'
+                + 'von: `' + data.entry.dateFrom + ' (' + data.entry.timeFrom + ')' + '`\n'
+                + 'bis: `' + data.entry.dateTo + ' (' + data.entry.timeTo + ')' + '`\n\n'
+            });
+
+            cb();
         },
 
         createFeedback: function (data, options, cb) {
@@ -583,16 +660,6 @@ qx.Class.define("FormView", {
                 // APP.getDataManager().addLocation(dataLocation, function(){
                 // 	// alert('marketLocation sent, thanks');
                 // });
-            });
-
-            // create github issue
-            APP.getDataManager().createGithubIssue({
-                data: {
-                    type: 'entry',
-                    entryType: dataMarketEntry.marketentry.type,
-                    entryData: dataMarketEntry.marketentry,
-                    locationData: dataLocation.location
-                }
             });
 
             // send outgoing message

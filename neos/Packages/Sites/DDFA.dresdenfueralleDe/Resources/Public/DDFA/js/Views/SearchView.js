@@ -137,7 +137,7 @@ qx.Class.define("SearchView", {
 
       // add new entry
       var action = function(){
-        APP.getIncludeView().load( APP.getIncludeView().getIncludes().entryFormGuide );
+        APP.getFormView().load( 'newEntry' );
       };
       that.createResult('add-entry', that.getWording('search.label.addentry'), that.getWording('search.sublabel.addentry'), action );
 

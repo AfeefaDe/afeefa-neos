@@ -1,4 +1,4 @@
-<p><small>Auch gibt es niemanden, der den Schmerz an sich liebt, sucht oder wünscht, nur, weil er Schmerz ist, es sei denn, es kommt zu zufälligen Umständen, in denen Mühen und Schmerz ihm große Freude bereiten können.</small></p>
+<p><small>{{key:form.preamble.newEntry}}</small></p>
 
 <form>
 
@@ -16,13 +16,12 @@
   
   <div class="row">
 		<div class="input-field col s12">
-			<label for="entry.name">{{key:form.field.title}}</label>
+			<label for="entry.name">{{key:form.field.title}}*</label>
 			<input id="entry.name" type="text" class="title" data-length="100" required>
 		</div>
 	</div>
 
   <div class="input-field col s12">
-		<label>{{key:form.field.category}}</label>
     <select id="entry.category">
       <option value="5dddf63d-ccf6-44e2-8daf-81bb44507fdd">{{key:cat.language}}</option>
       <option value="07f88130-7d98-4a20-bbb8-d0d98f55c553">{{key:cat.community}}</option>
@@ -32,12 +31,13 @@
       <option value="df402493-f467-4472-8b98-9038d2ac967e">{{key:cat.consultation}}</option>
       <option value="fa815876-ad1d-433e-87ff-8de20639e2b1">{{key:cat.medic}}</option>
     </select>
+		<label>{{key:form.field.category}}</label>
   </div>
 
 	<div class="row">
 		<div class="input-field col s12">
 	    <textarea id="entry.descriptionShort" class="materialize-textarea" data-length="350" required></textarea>
-	    <label for="entry.descriptionShort">{{key:form.field.descriptionShort}}</label>
+	    <label for="entry.descriptionShort">{{key:form.field.descriptionShort}}*</label>
 	  </div>
   </div>
 
@@ -112,8 +112,8 @@
 	</div>
 
 	<div class="input-field col s12">
-		<label>{{key:prop.spokenLanguages}}</label>
     <select id="entry.spokenLanguages" multiple>
+      <option value="" disabled selected>{{key:form.placeholder.spokenLanguages}}</option>
       <option value="de">Deutsch</option>
       <option value="en">Englisch</option>
       <option value="ar">Arabisch</option>
@@ -121,6 +121,7 @@
       <option value="ru">Russisch</option>
       <option value="fr">Französisch</option>
     </select>
+		<label>{{key:prop.spokenLanguages}}</label>
   </div>
 
   <div class="row">
@@ -139,14 +140,14 @@
 
 	<div class="row">
 		<div class="input-field col s12">
-	    <textarea id="additional.comment" class="materialize-textarea" data-length="350"></textarea>
+	    <textarea id="additional.comment" class="materialize-textarea" data-length="100"></textarea>
 	    <label for="additional.comment">{{key:form.field.newEntry.comment}}</label>
 	  </div>
   </div>
 
 	<p>
 		<input type="checkbox" class="filled-in" id="additional.disclaimer" required>
-    <label for="additional.disclaimer">{{key:form.disclaimer.newEntry}}</label>
+    <label for="additional.disclaimer">{{key:form.disclaimer.newEntry}}*</label>
 	</p>
 
 	<div class="row">
@@ -162,3 +163,4 @@
 	</div>
 
 </form>
+<p><small>* Pflichtfelder</small></p>

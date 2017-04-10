@@ -1,14 +1,17 @@
 <form>
 
 	<div class="row">
-	    <label>{{key:form.label.recipient}}</label>
-	    <p style="font-size: 1.1rem; font-weight: bold">{{recipient}}</p>
+	    <p>
+	    {{key:form.label.recipient}}:<br>
+	    <span style="font-size: 1.1rem; font-weight: bold">{{recipient}}</span>
+    	</p>
   </div>
 	
+	<h3>{{key:form.field.message}}</h3>
 	<div class="row">
 		<div class="input-field col s12">
 	    <textarea id="contact.message" class="materialize-textarea" maxlength="350" required validate></textarea>
-	    <label for="contact.message">{{key:form.field.message}}</label>
+	    <label for="contact.message">{{key:prop.message}}</label>
 	  </div>
   </div>
 	

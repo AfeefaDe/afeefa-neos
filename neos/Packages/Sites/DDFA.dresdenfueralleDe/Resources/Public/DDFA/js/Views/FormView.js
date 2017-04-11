@@ -361,6 +361,7 @@ qx.Class.define("FormView", {
             var that = this;
 
             that.reset();
+            that.setCurrentForm(null);
             that.view.removeClass('active');
         },
 

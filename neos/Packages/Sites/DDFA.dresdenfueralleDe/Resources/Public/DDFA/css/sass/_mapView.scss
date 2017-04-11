@@ -124,6 +124,10 @@ body.phone {
 	#mapView{
 		width: 100%;
 		left: 0;
+
+		&.shy {
+			opacity: .3;
+		}
 	}
 
 }

@@ -12,7 +12,7 @@
 	width: $viewWidth;
 	height: 100%;
 	
-	$height_sb: 2.5em;
+	$height_sb: 2.5rem;
 
 	#search-bar {
 		position: relative;
@@ -69,7 +69,7 @@
 			position: absolute;
 			top: 0;
 			left: 3em;
-			width: calc(100% - 3em - 5em);
+			width: calc(100% - 6em);
 			height: $height_sb;
 			line-height: $height_sb;
 			color: $gray50;
@@ -84,17 +84,18 @@
 
 		.search-tag {
 			height: 1.5em;
+			width: calc(100% - 6em);
 			position: absolute;
-			left: 3em;
+			left: 3rem;
 			top: calc( (2.5em - 1.5em) / 2 );
 			padding: 0 .3em;
 			cursor: pointer;
 			display: none;
-			background-color: $white;
-			color: $black;
-			@include categoryColors($alpha_background: .4);
+			background-color: $gray5;
+			text-align: center;
+			color: $white;
+			@include categoryColors();
 			&.active { display: inline-block; }
-			max-width: 17em;
     	overflow: hidden;
     	text-overflow: ellipsis;
 			@include border-radius(.1em);
@@ -191,16 +192,11 @@
 				font-size: .8em;
 			}
 		}
-
-		&.minimized {
-			height: 0;
-			padding-top: 0;
-		}
 	}
 
 	&.active-search {
 		#search-bar input {
-	    width: calc(100% - 3em - 3em - 3em);
+	    width: calc(100% - 6em);
 		}
 
 		.cancel-btn {
@@ -227,22 +223,31 @@
 
 .mobile {
 
-	$height_sb: 3em;
+	$height_sb: 3rem;
 
 	#searchView {
 
 		width: 100%;
+		background: none;
+		height: 3rem;
 
 		#search-bar {
 			width: 100%;
 			top: 0;
 			left: 0;
+			@include border-radius(0);
 
 			height: $height_sb !important;
 
 			input {
 				left: 4rem;
-				width: calc(100% - 5rem - 6rem);
+				width: calc(100% - 10rem);
+			}
+
+			.search-tag {
+				left: 4em;
+				top: calc( (3em - 1.5em) / 2 );
+				width: calc(100% - 10rem);
 			}
 
 			.btn {
@@ -285,10 +290,32 @@
 		}
 		
 		&.active {
-			#results {
-				max-height: calc(100vh - 4em);
-		    overflow: scroll;
+			height: 100%;
+			
+			#search-bar {
+				background-color: $gray95;
 			}
+
+			#results {
+				background-color: $gray95;
+				height: calc(100vh - 6rem);
+		    overflow: scroll;
+				@include box-shadow(0px 0px 2px #000);
+			}
+
+			#map-area {
+				height: 3rem;
+		    position: absolute;
+		    bottom: 0;
+		    width: 100%;
+				background-color: rgba(0,0,0,0.4);
+			}
+		}
+
+		&.minimized {
+			height: 3em;
+			#results { display: none; }
+			#map-area { display: none; }
 		}
   }	
 	

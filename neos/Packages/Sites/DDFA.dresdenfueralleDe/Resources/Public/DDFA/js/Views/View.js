@@ -27,6 +27,7 @@ qx.Class.define("View", {
 
             that.addEvents();
             that.say(that.classname + 'Rendered');
+            that.isRendered(true);
         },
 
         // set and read the active status of a view
@@ -35,6 +36,13 @@ qx.Class.define("View", {
 
             if(bool === undefined) return that.active;
                 that.active = bool;
+        },
+
+        isRendered: function(bool){
+            var that = this;
+
+            if(bool === undefined) return that.rendered;
+                that.rendered = bool;
         },
 
         // param (key, [locale])

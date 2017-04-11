@@ -141,12 +141,8 @@ qx.Class.define("MapView", {
 					that.deselectMarker();
 			});
 
-			that.listen('DetailViewMobileRendered', function(){
-				// that.loadFromUrl( {setView: true} );
-			});
-
-			that.listen('DetailViewRendered', function(){
-				// that.loadFromUrl( {setView: true} );
+			that.listen('searchResultsLoaded', function(){
+					// that.beShy(true);
 			});
 
 			// that.map.on('zoomend', function(){
@@ -592,29 +588,14 @@ qx.Class.define("MapView", {
 		});
 		},
 
-		addCartoDBLayer: function(){
-			// L.mapbox.tileLayer('felixkamille.4128d9e7', {
-		//     accessToken: 'pk.eyJ1IjoiZmVsaXhrYW1pbGxlIiwiYSI6Ilo1SHFOX0EifQ.pfAzun90Lj1UlVapKI3LiA',
-		//     attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>'
-		// }).addTo(that.map);
+		beShy: function(bool){
+			var that = this;
 
-		// function addCartoDBLayer(){
-		// 	cartodb.createLayer(that.map, 'http://felixkamille.cartodb.com/api/v2/viz/ecd0d3aa-7423-11e4-9658-0e018d66dc29/viz.json')
-//        .addTo(that.map)
-//    	  .on('done', function(layer) {
-					// layer.setInteraction(true);
-					 //  layer.on('featureOver', function(e, latlng, pos, data) {
-					 //    cartodb.log.log(e, latlng, pos, data);
-					 //  });
-					// layer.on('error', function(err) {
-					//   cartodb.log.log('error: ' + err);
-					// });
-				// })
-	//       .on('error', function() {
-	//         cartodb.log.log("some error occurred");
-	//       });
-		// };
-		// addCartoDBLayer();
+			console.warn('map is being shy');
+			// that.showCurtain(true);
+
+			if(bool) that.view.addClass('shy');
+			else that.view.removeClass('shy');
 		}
 
 	}

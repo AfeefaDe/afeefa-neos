@@ -34,7 +34,15 @@ qx.Class.define("DetailView", {
 			that.view.append(that.headingContainer);
 
 			// back button
-			that.createBackBtn(function(){that.close();});
+			that.createBackBtn(function(){
+				if( that.view.hasClass('active-large') ) {
+					that.resize(1);
+          that.say('detailViewMobileMinimized');
+				}
+				else {
+					that.close();
+				}
+			});
 
 			// scrollable content container
 			that.scrollContainer = $("<div />").addClass('scroll-container');

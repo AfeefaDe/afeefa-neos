@@ -71,18 +71,29 @@ qx.Class.define("SearchView", {
       that.searchTag = $("<span />")
         .addClass("search-tag")
         .click(function(){
-          that.inputField.trigger( "input" );
+          if( APP.getUserDevice() == 'mobile') that.maximize();
+          // that.inputField.trigger( "input" );
         });
       that.searchBar.append(that.searchTag);      
 
       // results area
       that.results = $("<div />")
         .attr('id', 'results');
-      
+
       if( APP.getUserDevice() == 'desktop') that.results.perfectScrollbar();
 
       that.view.append(that.results);
 
+      // map area on mobile
+      if( APP.getUserDevice() == 'mobile'){
+        that.mapArea = $("<div />")
+          .attr('id', 'map-area')
+          .click(function(){
+            that.minimize();
+          });
+        that.view.append(that.mapArea);
+      }
+      
       this.base(arguments);
     },
 
@@ -127,7 +138,9 @@ qx.Class.define("SearchView", {
         );
 
         that.isActive(true);
+        that.maximize();
         that.view.addClass('active');
+        that.say('searchResultsLoaded');
 
         return that;
     },
@@ -136,10 +149,13 @@ qx.Class.define("SearchView", {
       var that = this;
 
       // add new entry
-      var action = function(){
-        APP.getFormView().load( 'newEntry' );
-      };
-      that.createResult('add-entry', that.getWording('search.label.addentry'), that.getWording('search.sublabel.addentry'), action );
+      var showNewEntryResult = function(){
+        var action = function(){
+          APP.getFormView().load( 'newEntry' );
+        };
+        that.createResult('add-entry', that.getWording('search.label.addentry'), that.getWording('search.sublabel.addentry'), action );
+      }
+      if( APP.getUserDevice() == 'desktop') showNewEntryResult();
 
       // highlights
       that.createSectionHeader( that.getWording('search.label.highlights') );
@@ -187,6 +203,10 @@ qx.Class.define("SearchView", {
       };
       that.createResult('certified', that.getWording('search.label.certified'), that.getWording('search.sublabel.certified'), action );
 
+      that.createSectionHeader( that.getWording('search.label.activity') );
+      
+      if( APP.getUserDevice() == 'mobile') showNewEntryResult();
+
       that.createSectionHeader( that.getWording('search.label.help') );
       
       // intro
@@ -200,8 +220,6 @@ qx.Class.define("SearchView", {
       var that = this;
 
       that.view.addClass('active-search');
-
-      // that.maximize();
 
       const entries = _.filter(APP.getData().entries, function(entry){
         return !entry.external;
@@ -343,8 +361,6 @@ qx.Class.define("SearchView", {
         that.close();
       };
       if(!entriesFiltered.length) that.createResult(null, that.getWording('search.label.nothingfound'), that.getWording('search.sublabel.nothingfound'), action );
-
-      that.say('searchResultsLoaded');
     },
 
     // generic function to create a single result
@@ -472,30 +488,34 @@ qx.Class.define("SearchView", {
       });
 
       that.listen('detailViewOpened', function(){
-        // if( !that.inputField.val() )
-        //   that.close();
-        // else
-          // that.minimize();
-          that.hide();
+        that.hide();
       });
 
       that.listen('detailViewClosed', function(){
-        // that.maximize();
         that.show();
+        if( !that.isActive() ) that.load();
       });
 
-      that.listen('mapclicked', function(){
-        // that.maximize();
-        that.hide();
+      // that.listen('mapclicked', function(){
+      //   that.close();
+      // });
+
+      that.listen('searchResultsLoaded', function(){
+        // if( APP.getUserDevice() == 'mobile') that.beShy(true);
       });
+
+      // that.listen('curtainclicked', function(){
+      //   that.showCurtain(false);
+      //   that.close();
+      // });
 
       that.listen('includeViewOpened', function(){
         that.close();
       });
 
       that.listen('fetchedAllData', function(){
-        that.load();
         if( APP.getDetailView().isActive() ) that.hide();
+        else that.load();
       });
 
       that.listen('filterSet', function(){
@@ -523,22 +543,23 @@ qx.Class.define("SearchView", {
     minimize: function(){
       var that = this;
 
-      that.show();
-      that.isActive(false);
-      that.results.addClass('minimized');
+      // that.show();
+      // that.isActive(false);
+      that.view.addClass('minimized');
     },
 
     maximize: function(){
       var that = this;
 
       that.show();
-      that.results.removeClass('minimized');
+      that.view.removeClass('minimized');
     },
 
     reset: function(){
         var that = this;
 
         that.show();
+        that.maximize();
 
         that.results.scrollTop(0);
 
@@ -567,7 +588,7 @@ qx.Class.define("SearchView", {
         that.view.removeClass('active');
         that.isActive(false);
 
-        that.load();
+        if( APP.getUserDevice() == 'desktop') that.load();
 
         that.say('searchViewClosed');
     },

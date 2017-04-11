@@ -1,6 +1,8 @@
 @mixin goBackLayout {
 	
 	position: absolute;
+	top: 0;
+	left: 0;
 	z-index: 20;
 	width: 30em;
 	height: 100%;

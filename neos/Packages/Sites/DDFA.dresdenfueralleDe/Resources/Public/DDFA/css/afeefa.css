@@ -2046,6 +2046,10 @@ body.phone #mapView {
   width: 100%;
   left: 0;
 }
+/* line 128, sass/_mapView.scss */
+body.phone #mapView.shy {
+  opacity: .3;
+}
 
 /* line 1, sass/_searchView.scss */
 #searchView {
@@ -2066,7 +2070,7 @@ body.phone #mapView {
   width: calc(100% - 4em);
   left: 2em;
   top: 2em;
-  height: 2.5em;
+  height: 2.5rem;
   background-color: #222222;
   -moz-border-radius: 0.2em;
   -webkit-border-radius: 0.2em;
@@ -2079,7 +2083,7 @@ body.phone #mapView {
 #searchView #search-bar .btn {
   position: absolute;
   width: 3em;
-  height: 2.5em;
+  height: 2.5rem;
   -moz-background-size: 40%;
   -o-background-size: 40%;
   -webkit-background-size: 40%;
@@ -2130,9 +2134,9 @@ body.phone #mapView {
   position: absolute;
   top: 0;
   left: 3em;
-  width: calc(100% - 3em - 5em);
-  height: 2.5em;
-  line-height: 2.5em;
+  width: calc(100% - 6em);
+  height: 2.5rem;
+  line-height: 2.5rem;
   color: #999999;
   background: none;
   border: none;
@@ -2145,17 +2149,18 @@ body.phone #mapView {
 /* line 85, sass/_searchView.scss */
 #searchView #search-bar .search-tag {
   height: 1.5em;
+  width: calc(100% - 6em);
   position: absolute;
-  left: 3em;
+  left: 3rem;
   top: calc( (2.5em - 1.5em) / 2 );
   padding: 0 .3em;
   cursor: pointer;
   display: none;
-  background-color: #f2f2f2;
-  color: #333333;
+  background-color: #555555;
+  text-align: center;
+  color: #f2f2f2;
   /* TODO find a solution to avoid setting the border on elements that dont need that and dont provide a parameter for it */
   /* Main categories */
-  max-width: 17em;
   overflow: hidden;
   text-overflow: ellipsis;
   -moz-border-radius: 0.1em;
@@ -2164,58 +2169,58 @@ body.phone #mapView {
 }
 /* line 47, sass/_infoVisSystem.scss */
 #searchView #search-bar .search-tag.cat-general {
-  background-color: rgba(153, 153, 153, 0.4);
+  background-color: #999999;
   border-color: #999999;
 }
 /* line 52, sass/_infoVisSystem.scss */
 #searchView #search-bar .search-tag.cat-language {
-  background-color: rgba(228, 177, 0, 0.4);
+  background-color: #e4b100;
   border-color: #e4b100;
 }
 /* line 57, sass/_infoVisSystem.scss */
 #searchView #search-bar .search-tag.cat-medic {
-  background-color: rgba(162, 28, 21, 0.4);
+  background-color: #a21c15;
   border-color: #a21c15;
 }
 /* line 62, sass/_infoVisSystem.scss */
 #searchView #search-bar .search-tag.cat-jobs {
-  background-color: rgba(8, 82, 114, 0.4);
+  background-color: #085272;
   border-color: #085272;
 }
 /* line 67, sass/_infoVisSystem.scss */
 #searchView #search-bar .search-tag.cat-consultation {
-  background-color: rgba(94, 104, 35, 0.4);
+  background-color: #5e6823;
   border-color: #5e6823;
 }
 /* line 72, sass/_infoVisSystem.scss */
 #searchView #search-bar .search-tag.cat-leisure {
-  background-color: rgba(49, 139, 134, 0.4);
+  background-color: #318b86;
   border-color: #318b86;
 }
 /* line 77, sass/_infoVisSystem.scss */
 #searchView #search-bar .search-tag.cat-community {
-  background-color: rgba(105, 62, 117, 0.4);
+  background-color: #693e75;
   border-color: #693e75;
 }
 /* line 82, sass/_infoVisSystem.scss */
 #searchView #search-bar .search-tag.cat-donation {
-  background-color: rgba(202, 115, 17, 0.4);
+  background-color: #ca7311;
   border-color: #ca7311;
 }
 /* line 87, sass/_infoVisSystem.scss */
 #searchView #search-bar .search-tag.cat-eventseries {
-  background-color: rgba(49, 139, 134, 0.4);
+  background-color: #318b86;
   border-color: #318b86;
 }
-/* line 96, sass/_searchView.scss */
+/* line 98, sass/_searchView.scss */
 #searchView #search-bar .search-tag.active {
   display: inline-block;
 }
-/* line 102, sass/_searchView.scss */
+/* line 103, sass/_searchView.scss */
 #searchView #search-bar .search-tag[class*="cat"] {
   color: #f2f2f2;
 }
-/* line 108, sass/_searchView.scss */
+/* line 109, sass/_searchView.scss */
 #searchView #results {
   position: absolute;
   top: 5rem;
@@ -2224,7 +2229,7 @@ body.phone #mapView {
   height: calc(100% - 7rem);
   padding-top: 2rem;
 }
-/* line 116, sass/_searchView.scss */
+/* line 117, sass/_searchView.scss */
 #searchView #results .result {
   margin-bottom: 1rem;
   color: #f2f2f2;
@@ -2236,29 +2241,29 @@ body.phone #mapView {
   display: -webkit-flex;
   display: flex;
 }
-/* line 124, sass/_searchView.scss */
+/* line 125, sass/_searchView.scss */
 #searchView #results .result:hover {
   background-color: #333333;
 }
-/* line 129, sass/_searchView.scss */
+/* line 130, sass/_searchView.scss */
 #searchView #results .section-header {
   text-transform: uppercase;
   color: #999999;
   margin: 2em 0.8em 1em;
 }
-/* line 134, sass/_searchView.scss */
+/* line 135, sass/_searchView.scss */
 #searchView #results .section-header.with-action {
   cursor: pointer;
 }
-/* line 137, sass/_searchView.scss */
+/* line 138, sass/_searchView.scss */
 #searchView #results .section-header.with-action:hover {
   color: #DDDDDD;
 }
-/* line 142, sass/_searchView.scss */
+/* line 143, sass/_searchView.scss */
 #searchView #results .section-header:first-child {
   margin: 0 1em 1em;
 }
-/* line 146, sass/_searchView.scss */
+/* line 147, sass/_searchView.scss */
 #searchView #results .icon {
   /* orga */
   /* market entry */
@@ -2647,31 +2652,31 @@ body.phone #mapView {
   -webkit-background-size: 50%;
   background-size: 50%;
 }
-/* line 154, sass/_searchView.scss */
+/* line 155, sass/_searchView.scss */
 #searchView #results .icon.add-entry {
   background-image: url("../img/icon_34.svg");
 }
-/* line 157, sass/_searchView.scss */
+/* line 158, sass/_searchView.scss */
 #searchView #results .icon.support-wanted {
   background-image: url("../img/icon_56.svg");
 }
-/* line 160, sass/_searchView.scss */
+/* line 161, sass/_searchView.scss */
 #searchView #results .icon.for-children {
   background-image: url("../img/icon_124.svg");
 }
-/* line 163, sass/_searchView.scss */
+/* line 164, sass/_searchView.scss */
 #searchView #results .icon.for-women {
   background-image: url("../img/icon_156.svg");
 }
-/* line 166, sass/_searchView.scss */
+/* line 167, sass/_searchView.scss */
 #searchView #results .icon.certified {
   background-image: url("../img/icon_169.svg");
 }
-/* line 169, sass/_searchView.scss */
+/* line 170, sass/_searchView.scss */
 #searchView #results .icon.start-intro {
   background-image: url("../img/icon_32.svg");
 }
-/* line 172, sass/_searchView.scss */
+/* line 173, sass/_searchView.scss */
 #searchView #results .icon.iwgr {
   background-image: url("../img/icon_194.svg");
   -moz-background-size: 100%;
@@ -2679,7 +2684,7 @@ body.phone #mapView {
   -webkit-background-size: 100%;
   background-size: 100%;
 }
-/* line 178, sass/_searchView.scss */
+/* line 179, sass/_searchView.scss */
 #searchView #results .labels {
   -webkit-flex: 1;
   flex: 1;
@@ -2689,77 +2694,83 @@ body.phone #mapView {
   flex-direction: column;
   padding-right: 1em;
 }
-/* line 184, sass/_searchView.scss */
+/* line 185, sass/_searchView.scss */
 #searchView #results .labels label {
   line-height: 1.5em;
   cursor: pointer;
 }
-/* line 189, sass/_searchView.scss */
+/* line 190, sass/_searchView.scss */
 #searchView #results .labels .sub-label {
   color: #999999;
   font-size: .8em;
 }
-/* line 195, sass/_searchView.scss */
-#searchView #results.minimized {
-  height: 0;
-  padding-top: 0;
+/* line 198, sass/_searchView.scss */
+#searchView.active-search #search-bar input {
+  width: calc(100% - 6em);
 }
 /* line 202, sass/_searchView.scss */
-#searchView.active-search #search-bar input {
-  width: calc(100% - 3em - 3em - 3em);
-}
-/* line 206, sass/_searchView.scss */
 #searchView.active-search .cancel-btn {
   display: block !important;
 }
-/* line 210, sass/_searchView.scss */
+/* line 206, sass/_searchView.scss */
 #searchView.active-search .refugee-btn {
   display: none;
 }
 
-/* line 220, sass/_searchView.scss */
+/* line 216, sass/_searchView.scss */
 .tablet #searchView.active #results {
   overflow: scroll;
 }
 
-/* line 232, sass/_searchView.scss */
+/* line 228, sass/_searchView.scss */
 .mobile #searchView {
   width: 100%;
+  background: none;
+  height: 3rem;
 }
-/* line 236, sass/_searchView.scss */
+/* line 234, sass/_searchView.scss */
 .mobile #searchView #search-bar {
   width: 100%;
   top: 0;
   left: 0;
-  height: 3em !important;
+  -moz-border-radius: 0;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+  height: 3rem !important;
 }
-/* line 243, sass/_searchView.scss */
+/* line 242, sass/_searchView.scss */
 .mobile #searchView #search-bar input {
   left: 4rem;
-  width: calc(100% - 5rem - 6rem);
+  width: calc(100% - 10rem);
 }
-/* line 248, sass/_searchView.scss */
+/* line 247, sass/_searchView.scss */
+.mobile #searchView #search-bar .search-tag {
+  left: 4em;
+  top: calc( (3em - 1.5em) / 2 );
+  width: calc(100% - 10rem);
+}
+/* line 253, sass/_searchView.scss */
 .mobile #searchView #search-bar .btn {
-  height: 3em;
+  height: 3rem;
 }
-/* line 252, sass/_searchView.scss */
+/* line 257, sass/_searchView.scss */
 .mobile #searchView #search-bar .menu-btn {
   top: 0;
   left: 1rem;
   background-image: url("../img/icon_38.svg");
 }
-/* line 258, sass/_searchView.scss */
+/* line 263, sass/_searchView.scss */
 .mobile #searchView #search-bar .refugee-btn {
   right: 4rem;
 }
-/* line 262, sass/_searchView.scss */
+/* line 267, sass/_searchView.scss */
 .mobile #searchView #search-bar .filter-btn {
   display: block;
   top: 0;
   right: 1rem;
   background-image: url("../img/icon_94.svg");
 }
-/* line 270, sass/_searchView.scss */
+/* line 275, sass/_searchView.scss */
 .mobile #searchView #results {
   top: 3rem;
   left: 0;
@@ -2767,22 +2778,54 @@ body.phone #mapView {
   width: 100%;
   height: calc(100% - 3rem);
 }
-/* line 278, sass/_searchView.scss */
-.mobile #searchView input {
-  height: 3em !important;
-  line-height: 3em !important;
-}
 /* line 283, sass/_searchView.scss */
+.mobile #searchView input {
+  height: 3rem !important;
+  line-height: 3rem !important;
+}
+/* line 288, sass/_searchView.scss */
 .mobile #searchView .cancel-btn {
   right: 3em !important;
 }
-/* line 288, sass/_searchView.scss */
+/* line 292, sass/_searchView.scss */
+.mobile #searchView.active {
+  height: 100%;
+}
+/* line 295, sass/_searchView.scss */
+.mobile #searchView.active #search-bar {
+  background-color: #222222;
+}
+/* line 299, sass/_searchView.scss */
 .mobile #searchView.active #results {
-  max-height: calc(100vh - 4em);
+  background-color: #222222;
+  height: calc(100vh - 6rem);
   overflow: scroll;
+  -moz-box-shadow: 0px 0px 2px #000;
+  -webkit-box-shadow: 0px 0px 2px #000;
+  box-shadow: 0px 0px 2px #000;
+}
+/* line 306, sass/_searchView.scss */
+.mobile #searchView.active #map-area {
+  height: 3rem;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+/* line 315, sass/_searchView.scss */
+.mobile #searchView.minimized {
+  height: 3em;
+}
+/* line 317, sass/_searchView.scss */
+.mobile #searchView.minimized #results {
+  display: none;
+}
+/* line 318, sass/_searchView.scss */
+.mobile #searchView.minimized #map-area {
+  display: none;
 }
 
-/* line 298, sass/_searchView.scss */
+/* line 325, sass/_searchView.scss */
 .rtl #searchView .labels {
   padding-right: 0 !important;
   padding-left: 1em !important;
@@ -2791,6 +2834,8 @@ body.phone #mapView {
 /* line 185, sass/_detailView.scss */
 #detailView {
   position: absolute;
+  top: 0;
+  left: 0;
   z-index: 20;
   width: 30em;
   height: 100%;
@@ -2814,12 +2859,12 @@ body.phone #mapView {
   -webkit-flex-direction: column;
   flex-direction: column;
 }
-/* line 15, sass/_goBackLayout.scss */
+/* line 17, sass/_goBackLayout.scss */
 #detailView.active {
   visibility: visible;
   opacity: 1;
 }
-/* line 20, sass/_goBackLayout.scss */
+/* line 22, sass/_goBackLayout.scss */
 #detailView .scroll-container {
   -webkit-flex-grow: 1;
   flex-grow: 1;
@@ -2828,7 +2873,7 @@ body.phone #mapView {
   overflow-x: hidden;
   position: relative;
 }
-/* line 29, sass/_goBackLayout.scss */
+/* line 31, sass/_goBackLayout.scss */
 #detailView .heading {
   min-height: 4em;
   -webkit-flex-shrink: 0;
@@ -2884,11 +2929,11 @@ body.phone #mapView {
   background-color: #318b86;
   border-color: #318b86;
 }
-/* line 38, sass/_goBackLayout.scss */
+/* line 40, sass/_goBackLayout.scss */
 #detailView .heading.cat-general {
   background-color: #999999 !important;
 }
-/* line 42, sass/_goBackLayout.scss */
+/* line 44, sass/_goBackLayout.scss */
 #detailView .heading h1 {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -2899,7 +2944,7 @@ body.phone #mapView {
   font-size: 1.1rem;
   line-height: 1.1rem;
 }
-/* line 53, sass/_goBackLayout.scss */
+/* line 55, sass/_goBackLayout.scss */
 #detailView .back-btn {
   position: absolute;
   top: 1.5em;
@@ -2916,7 +2961,7 @@ body.phone #mapView {
   background-position: center center;
   background-repeat: no-repeat;
 }
-/* line 66, sass/_goBackLayout.scss */
+/* line 68, sass/_goBackLayout.scss */
 #detailView .back-btn:hover {
   opacity: 1;
 }
@@ -3545,6 +3590,8 @@ body.phone #mapView {
 /* line 199, sass/_detailView.scss */
 #detailViewMobile {
   position: absolute;
+  top: 0;
+  left: 0;
   z-index: 20;
   width: 30em;
   height: 100%;
@@ -3571,17 +3618,18 @@ body.phone #mapView {
   height: 4em;
   position: absolute;
   bottom: -4em;
+  overflow: hidden;
   background-color: #f2f2f2;
   -moz-box-shadow: 0px 0px 2px #333;
   -webkit-box-shadow: 0px 0px 2px #333;
   box-shadow: 0px 0px 2px #333;
 }
-/* line 15, sass/_goBackLayout.scss */
+/* line 17, sass/_goBackLayout.scss */
 #detailViewMobile.active {
   visibility: visible;
   opacity: 1;
 }
-/* line 20, sass/_goBackLayout.scss */
+/* line 22, sass/_goBackLayout.scss */
 #detailViewMobile .scroll-container {
   -webkit-flex-grow: 1;
   flex-grow: 1;
@@ -3590,7 +3638,7 @@ body.phone #mapView {
   overflow-x: hidden;
   position: relative;
 }
-/* line 29, sass/_goBackLayout.scss */
+/* line 31, sass/_goBackLayout.scss */
 #detailViewMobile .heading {
   min-height: 4em;
   -webkit-flex-shrink: 0;
@@ -3646,11 +3694,11 @@ body.phone #mapView {
   background-color: #318b86;
   border-color: #318b86;
 }
-/* line 38, sass/_goBackLayout.scss */
+/* line 40, sass/_goBackLayout.scss */
 #detailViewMobile .heading.cat-general {
   background-color: #999999 !important;
 }
-/* line 42, sass/_goBackLayout.scss */
+/* line 44, sass/_goBackLayout.scss */
 #detailViewMobile .heading h1 {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -3661,7 +3709,7 @@ body.phone #mapView {
   font-size: 1.1rem;
   line-height: 1.1rem;
 }
-/* line 53, sass/_goBackLayout.scss */
+/* line 55, sass/_goBackLayout.scss */
 #detailViewMobile .back-btn {
   position: absolute;
   top: 1.5em;
@@ -3678,7 +3726,7 @@ body.phone #mapView {
   background-position: center center;
   background-repeat: no-repeat;
 }
-/* line 66, sass/_goBackLayout.scss */
+/* line 68, sass/_goBackLayout.scss */
 #detailViewMobile .back-btn:hover {
   opacity: 1;
 }
@@ -4298,51 +4346,51 @@ body.phone #mapView {
 #detailViewMobile.type-3 .property.category .property-value {
   display: none;
 }
-/* line 212, sass/_detailView.scss */
+/* line 213, sass/_detailView.scss */
 #detailViewMobile .message-btn {
   position: fixed;
   bottom: 2rem;
 }
-/* line 217, sass/_detailView.scss */
+/* line 218, sass/_detailView.scss */
 #detailViewMobile.active {
   bottom: 0;
 }
-/* line 220, sass/_detailView.scss */
+/* line 221, sass/_detailView.scss */
 #detailViewMobile.active badge-certificate {
   display: none;
 }
-/* line 224, sass/_detailView.scss */
+/* line 225, sass/_detailView.scss */
 #detailViewMobile.active .message-btn {
   display: none !important;
 }
-/* line 229, sass/_detailView.scss */
+/* line 230, sass/_detailView.scss */
 #detailViewMobile.active-large {
   bottom: 0;
   height: 100%;
   visibility: visible;
   opacity: 1;
 }
-/* line 236, sass/_detailView.scss */
+/* line 237, sass/_detailView.scss */
 #detailViewMobile.active-large .heading h1 {
   overflow: inherit;
   text-overflow: inherit;
   white-space: inherit;
 }
-/* line 243, sass/_detailView.scss */
+/* line 244, sass/_detailView.scss */
 #detailViewMobile .scroll-container {
   height: calc(100% - 4em);
   overflow-y: auto;
   padding-bottom: 1em;
   position: relative;
 }
-/* line 250, sass/_detailView.scss */
+/* line 251, sass/_detailView.scss */
 #detailViewMobile .heading h1 {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
-/* line 258, sass/_detailView.scss */
+/* line 259, sass/_detailView.scss */
 .rtl #detailView .property.location .property-value {
   background-position: left .5em;
 }
@@ -6274,6 +6322,8 @@ body.phone #menuView .menu-btn {
    * The picker box.
    */
   position: absolute;
+  top: 0;
+  left: 0;
   z-index: 20;
   width: 30em;
   height: 100%;
@@ -15001,12 +15051,12 @@ body.phone #menuView .menu-btn {
     margin-bottom: 5em;
   }
 }
-/* line 15, sass/_goBackLayout.scss */
+/* line 17, sass/_goBackLayout.scss */
 #formView.active {
   visibility: visible;
   opacity: 1;
 }
-/* line 20, sass/_goBackLayout.scss */
+/* line 22, sass/_goBackLayout.scss */
 #formView .scroll-container {
   -webkit-flex-grow: 1;
   flex-grow: 1;
@@ -15015,7 +15065,7 @@ body.phone #menuView .menu-btn {
   overflow-x: hidden;
   position: relative;
 }
-/* line 29, sass/_goBackLayout.scss */
+/* line 31, sass/_goBackLayout.scss */
 #formView .heading {
   min-height: 4em;
   -webkit-flex-shrink: 0;
@@ -15071,11 +15121,11 @@ body.phone #menuView .menu-btn {
   background-color: #318b86;
   border-color: #318b86;
 }
-/* line 38, sass/_goBackLayout.scss */
+/* line 40, sass/_goBackLayout.scss */
 #formView .heading.cat-general {
   background-color: #999999 !important;
 }
-/* line 42, sass/_goBackLayout.scss */
+/* line 44, sass/_goBackLayout.scss */
 #formView .heading h1 {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -15086,7 +15136,7 @@ body.phone #menuView .menu-btn {
   font-size: 1.1rem;
   line-height: 1.1rem;
 }
-/* line 53, sass/_goBackLayout.scss */
+/* line 55, sass/_goBackLayout.scss */
 #formView .back-btn {
   position: absolute;
   top: 1.5em;
@@ -15103,7 +15153,7 @@ body.phone #menuView .menu-btn {
   background-position: center center;
   background-repeat: no-repeat;
 }
-/* line 66, sass/_goBackLayout.scss */
+/* line 68, sass/_goBackLayout.scss */
 #formView .back-btn:hover {
   opacity: 1;
 }
@@ -16091,7 +16141,7 @@ body.mobile #includeView .content {
 #messageView {
   display: none;
   position: absolute;
-  background-color: #ffc107;
+  background-color: #f2f2f2;
   z-index: 99999;
   padding: 1em;
   width: 20em;

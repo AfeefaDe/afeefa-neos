@@ -5,6 +5,7 @@ $white_alpha: rgba(255,255,255,0.8);
 $black: #333333;
 $black_alpha: rgba(0,0,0,0.8);
 
+$gray5: #555555;
 $gray20: #DDDDDD;
 $gray50: #999999;
 $gray80: #666666;
@@ -21,4 +22,4 @@ $orange: #CA7311;
 $turquoise: #318B86;
 
 $tooltip_intro: rgba(255,193,7,1);
-$message: rgba(255,193,7,1);
+$message: $white;

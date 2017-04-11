@@ -64,13 +64,15 @@
         restive: '../../restive/restive.min',
         qx: '../../qooxdoo/qx-oo-4.1.min',
         underscore: '../../underscore/underscore-min',
-        hammer: '../../hammerjs/hammer.min',
+        hammerjs: '../../hammerjs/hammer.min',
         bootstrap: 'empty:',
         fontawesome: 'empty:',
         mapbox: 'empty:',
         // skip markercluster in building, because otherwise "L is not defined" in markercluster initialization (dont know why)
         mc: 'empty:',
-        popper: '../../popperjs/popper.min'
+        popper: '../../popperjs/popper.min',
+        d3: 'empty:',
+        materialize: 'empty:'
     },
 
     //Sets up a map of module IDs to other module IDs. For more details, see
@@ -112,9 +114,10 @@
         "restive": ["jquery"],
         'perfectScrollbarJQuery': ["jquery"],
         "bootstrap": ["jquery"],
+        "materialize": ["hammerjs"],
 
         // app files
-        "Daddy": ['qx', 'jquery', 'underscore', 'restive', 'perfectScrollbarJQuery', 'chosen', 'mapbox', 'mc', 'hammer', 'modernizr', 'popper'],
+        "Daddy": ['qx', 'jquery', 'underscore', 'restive', 'perfectScrollbarJQuery', 'chosen', 'mapbox', 'mc', 'hammerjs', 'modernizr', 'popper', 'materialize'],
         'APPAFEEFA': ['Daddy'],
         'DataManager': ['APPAFEEFA'],
         'Router': ['APPAFEEFA'],

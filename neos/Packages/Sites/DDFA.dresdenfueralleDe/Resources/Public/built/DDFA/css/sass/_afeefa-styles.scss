@@ -155,13 +155,17 @@ button {
 	}
 }
 
+html {
+	font-size: $font-size !important;
+}
+
 body {
 	margin: 0;
 	padding: 0;
 	height: 100%;
 
 	font-family: 'Roboto light', sans-serif !important;
-	font-size: 11pt !important;
+	font-size: $font-size !important;
 	direction: ltr;
 	color: $black !important;
 

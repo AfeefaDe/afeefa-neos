@@ -2,10 +2,12 @@
 
 	position: absolute;
 	top: 0;
-	left: 0;
+	left: 30em;
 	z-index: 0;
-	width: 100%;
+	width: calc(100% - 30em - 3em);;
 	height: 100%;
+
+	font-size: $font-size !important;
 
 	/*background-color: $black;*/
 	background: none !important;
@@ -117,10 +119,15 @@
 	}
 }
 
-/*body.phone {
+body.phone {
 
 	#mapView{
-		...
+		width: 100%;
+		left: 0;
+
+		&.shy {
+			opacity: .3;
+		}
 	}
 
-}*/
+}

@@ -1,31 +1,9 @@
 @mixin detailViewBasic {
-	
 
-	/* HEADING */
+	@include goBackLayout;
+
 	.heading {
-		
-		min-height: 3em;
-		@include flex-shrink(0);
-		color: $white;
-		background-color: $black;
 		cursor: pointer;
-		position: relative;
-
-		@include categoryColors;
-		&.cat-general {
-			background-color: $gray50 !important;
-		}
-
-		h1 {
-			@include box-sizing(border-box);
-			margin: 0;
-			padding: 1em 3em 0.3em 3em;
-
-			font-weight: 300;
-			font-size: 1.1em;
-			line-height: 1.1em;
-			text-align: center;
-		}
 	}
 
 	.badge {
@@ -45,6 +23,22 @@
 		}
 	}
 
+	.message-btn {
+		@include circleBtn;
+		
+		display: none;
+
+		width: 4rem;
+    height: 4rem;
+
+		position: absolute;
+    right: 2rem;
+    bottom: 2rem;
+
+		background-color: $black_alpha;
+		background-image: url("../img/icon_202.svg");
+	}
+
 	/* IMAGE PROPERTY */
 	.image-container {
 		max-height: 10em;
@@ -60,7 +54,7 @@
 	.property {
 		display: none;
 		padding: 0 5%;
-		margin-top: 1em;
+		margin-top: 2em;
 		min-height: 2em;
 
 		$iconSize: 2.5em;
@@ -190,47 +184,10 @@
 
 #detailView {
 	
-	$viewWidth: 23em;
-
-	visibility: hidden;
-	opacity: 0;
-	@include transition(left 400ms, right 400ms);
-	
-	position: absolute;
-	left: 3em;
-	top: 7em;
+	@include detailViewBasic;
 
 	@include display-flex;
 	@include flex-direction(column);
-
-	width: $viewWidth;
-	min-height: 20%;
-	max-height: 70%;
-
-	background-color: $white;
-	@include box-shadow(0px 0px 2px #333);
-
-	&.active {
-		visibility: visible;
-		opacity: 1;
-	}
-
-	&.right {
-		left: auto;
-		/*right: 6em;*/
-		left: calc(100% - #{$viewWidth} - 4em);
-	}
-	
-	.scroll-container {
-		@include flex-grow(1);
-		overflow-y: auto;
-		padding-bottom: 1em;
-		overflow-x: hidden;
-		position: relative;
-	}
-
-	@include detailViewBasic;
-
 }
 
 .tablet {
@@ -241,23 +198,41 @@
 
 #detailViewMobile {
 	
+	@include detailViewBasic;
+
 	@include transition(all 200ms);
-	z-index: 100;
 	width: 100%;
-	height: 3em;
+	height: 4em;
 	position: absolute;
-	bottom: -3em;
+	bottom: -4em;
+	overflow: hidden;
 	
 	background-color: $white;
 	@include box-shadow(0px 0px 2px #333);
 
+	.message-btn {
+		position: fixed;
+    bottom: 2rem;
+	}
+
 	&.active {
 		bottom: 0;
+		
+		badge-certificate {
+			display: none;
+		}
+
+		.message-btn {
+			display: none !important;
+		}
 	}
 
 	&.active-large {
 		bottom: 0;
 		height: 100%;
+
+		visibility: visible;
+		opacity: 1;
 
 		.heading h1 {
 			overflow: inherit;
@@ -272,8 +247,6 @@
 		padding-bottom: 1em;
 		position: relative;
 	}
-
-	@include detailViewBasic;
 
 	.heading h1 {
 		overflow: hidden;

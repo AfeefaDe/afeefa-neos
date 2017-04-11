@@ -1,23 +1,28 @@
 #searchView {
 	
-	$viewWidth: 23em;
+	$viewWidth: 30em;
 
 	position: absolute;
-	top: 2em;
-	left: 3em;
-	z-index: 100;
+	top: 0em;
+	left: 0em;
+	z-index: 10;
+	background-color: $gray95;
+	@include box-shadow(0px 0px 2px #000);
 	
 	width: $viewWidth;
+	height: 100%;
 	
-	$height_sb: 2.5em;
+	$height_sb: 2.5rem;
 
 	#search-bar {
 		position: relative;
-		width: 100%;
+		width: calc(100% - 4em);
+		left: 2em;
+		top: 2em;
 		height: $height_sb;
-		background-color: $black_alpha;
+		background-color: $gray95;
 		@include border-radius(.2em);
-		@include box-shadow(0px 0px 2px #000);
+		@include box-shadow(0px 3px 6px #000);
 
 		.btn {
 			position: absolute;
@@ -27,7 +32,7 @@
 			background-repeat: no-repeat;
 			background-position: center center;
 			cursor: pointer;
-			opacity: .5;
+			opacity: .8;
 
 			&:hover {
 				opacity: 1;
@@ -64,7 +69,7 @@
 			position: absolute;
 			top: 0;
 			left: 3em;
-			width: calc(100% - 3em - 5em);
+			width: calc(100% - 6em);
 			height: $height_sb;
 			line-height: $height_sb;
 			color: $gray50;
@@ -79,17 +84,18 @@
 
 		.search-tag {
 			height: 1.5em;
+			width: calc(100% - 6em);
 			position: absolute;
-			left: 3em;
+			left: 3rem;
 			top: calc( (2.5em - 1.5em) / 2 );
 			padding: 0 .3em;
 			cursor: pointer;
 			display: none;
-			background-color: $white;
-			color: $black;
-			@include categoryColors($alpha_background: .4);
+			background-color: $gray5;
+			text-align: center;
+			color: $white;
+			@include categoryColors();
 			&.active { display: inline-block; }
-			max-width: 17em;
     	overflow: hidden;
     	text-overflow: ellipsis;
 			@include border-radius(.1em);
@@ -101,19 +107,15 @@
 	}
 
 	#results {
-		position: relative;
-		width: 100%;
-		max-height: calc(100vh - 10em);
-		padding-top: 1em;
-		background-color: $black_alpha;
-		@include border-radius(.2em);
-		@include box-shadow(0px 0px 2px #000);
-		@include transition(height 2000ms);
-
-		display: none;
+		position: absolute;
+    top: 5rem;
+    left: 2rem;
+		width: calc(100% - 4rem);
+		height: calc(100% - 7rem);
+		padding-top: 2rem;
 
 		.result {
-			margin-bottom: 1em;
+			margin-bottom: 1rem;
 			color: $white;
 			cursor: pointer;
 			@include transition(background-color 150ms);
@@ -121,14 +123,14 @@
 			@include display-flex;
 
 			&:hover {
-				background-color: $black_alpha;
+				background-color: $black;
 			}
 		}
 
 		.section-header {
 			text-transform: uppercase;
 			color: $gray50;
-			margin: 2em 1em 1em;
+			margin: 2em 0.8em 1em;
 
 			&.with-action {
 				cursor: pointer;
@@ -148,7 +150,7 @@
 			@include categorySymbols;
 			width: 2em;
 			height: 2em;
-			margin: .5em 1em;
+			margin: .5em 1em .5em 0.5em;
 
 			&.add-entry {
 		    background-image: url("../img/icon_34.svg");
@@ -190,16 +192,11 @@
 				font-size: .8em;
 			}
 		}
-
-		&.minimized {
-			height: 0;
-			padding-top: 0;
-		}
 	}
 
-	&.active {
+	&.active-search {
 		#search-bar input {
-	    width: calc(100% - 3em - 3em - 3em);
+	    width: calc(100% - 6em);
 		}
 
 		.cancel-btn {
@@ -208,10 +205,6 @@
 
 		.refugee-btn {
 			display: none;
-		}
-
-		#results {
-			display: block;
 		}
 	}
 }
@@ -230,16 +223,61 @@
 
 .mobile {
 
-	$height_sb: 3em;
+	$height_sb: 3rem;
 
 	#searchView {
-    position: absolute;
-    top: 0.5em;
-    left: 0.5em;
-    width: calc(100% - 1em);
+
+		width: 100%;
+		background: none;
+		height: 3rem;
 
 		#search-bar {
+			width: 100%;
+			top: 0;
+			left: 0;
+			@include border-radius(0);
+
 			height: $height_sb !important;
+
+			input {
+				left: 4rem;
+				width: calc(100% - 10rem);
+			}
+
+			.search-tag {
+				left: 4em;
+				top: calc( (3em - 1.5em) / 2 );
+				width: calc(100% - 10rem);
+			}
+
+			.btn {
+				height: $height_sb;
+			}
+
+			.menu-btn {
+				top: 0;
+				left: 1rem;
+				background-image: url("../img/icon_38.svg");
+			}
+
+	    .refugee-btn {
+				right: 4rem;
+			}
+
+	    .filter-btn {
+				display: block;
+				top: 0;
+				right: 1rem;
+		    background-image: url("../img/icon_94.svg");
+			}
+		}
+
+		#results {
+			top: 3rem;
+			left: 0;
+			padding: 2rem 1rem;
+			width: 100%;
+			height: calc(100% - 3rem);
 		}
 
 		input {
@@ -247,31 +285,37 @@
 			line-height: $height_sb !important;
 		}
 
-		.btn {
-			height: $height_sb !important;
-		}
-
-    .refugee-btn {
-			right: 3em !important;
-		}
-
-    .filter-btn {
-			display: block !important;
-			top: 0;
-			right: 0;
-	    background-image: url("../img/icon_94.svg");
-			@include background-size(70%);
-		}
-
     .cancel-btn {
 			right: 3em !important;
 		}
 		
 		&.active {
-			#results {
-				max-height: calc(100vh - 4em);
-		    overflow: scroll;
+			height: 100%;
+			
+			#search-bar {
+				background-color: $gray95;
 			}
+
+			#results {
+				background-color: $gray95;
+				height: calc(100vh - 6rem);
+		    overflow: scroll;
+				@include box-shadow(0px 0px 2px #000);
+			}
+
+			#map-area {
+				height: 3rem;
+		    position: absolute;
+		    bottom: 0;
+		    width: 100%;
+				background-color: rgba(0,0,0,0.4);
+			}
+		}
+
+		&.minimized {
+			height: 3em;
+			#results { display: none; }
+			#map-area { display: none; }
 		}
   }	
 	

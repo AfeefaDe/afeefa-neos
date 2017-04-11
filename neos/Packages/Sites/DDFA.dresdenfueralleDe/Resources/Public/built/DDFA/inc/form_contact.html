@@ -1,0 +1,52 @@
+<form>
+
+	<div class="row">
+	    <p>
+	    {{key:form.label.recipient}}:<br>
+	    <span style="font-size: 1.1rem; font-weight: bold">{{recipient}}</span>
+    	</p>
+  </div>
+	
+	<h3>{{key:form.field.message}}</h3>
+	<div class="row">
+		<div class="input-field col s12">
+	    <textarea id="contact.message" class="materialize-textarea" maxlength="350" required validate></textarea>
+	    <label for="contact.message">{{key:prop.message}}</label>
+	  </div>
+  </div>
+	
+	<h3>{{key:form.section.newEntry.contact}}</h3>
+	<div class="row">
+		<div class="input-field col s12">
+			<label for="contact.author">{{key:prop.author}}</label>
+			<input id="contact.author" type="text" class="author" required>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="input-field col s12">
+			<label for="contact.mail">{{key:form.field.mail}}</label>
+			<input id="contact.mail" type="email" class="mail">
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="input-field col s12">
+			<label for="contact.phone">{{key:form.field.phone}}</label>
+			<input id="contact.phone" type="tel" class="phone">
+		</div>
+	</div>
+
+  <div class="row">
+	  <div class="input-field col s6">
+		  <button class="btn" type="submit" name="action">{{key:form.button.submit}}
+		    <i class="material-icons right">send</i>
+		  </button>
+	  </div>
+  
+	  <div class="input-field col s6">
+		  <a id="cancel" class="waves-effect waves-light btn-flat">{{key:form.button.cancel}}</a>
+	  </div>
+	</div>
+
+</form>

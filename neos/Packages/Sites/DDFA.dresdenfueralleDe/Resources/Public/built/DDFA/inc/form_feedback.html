@@ -1,0 +1,40 @@
+<form id="feedback-form">
+
+	<h3>{{key:form.field.message}}</h3>
+	
+	<div class="row">
+		<div class="input-field col s12">
+	    <textarea id="feedback.message" class="materialize-textarea" maxlength="350"></textarea>
+	    <label for="feedback.message">{{key:prop.message}}</label>
+	  </div>
+  </div>
+	
+	<h3>{{key:form.section.newEntry.contact}}</h3>
+	
+	<div class="row">
+		<div class="input-field col s12">
+			<label for="feedback.author">{{key:prop.author}}</label>
+			<input id="feedback.author" type="text" class="author" required>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="input-field col s12">
+			<label for="feedback.mail">{{key:form.field.mail}}</label>
+			<input id="feedback.mail" type="email" class="mail" required>
+		</div>
+	</div>
+
+  <div class="row">
+	  <div class="input-field col s6">
+		  <button class="btn" type="submit" name="action">{{key:form.button.submit}}
+		    <i class="material-icons right">send</i>
+		  </button>
+	  </div>
+  
+	  <div class="input-field col s6">
+		  <a id="cancel" class="waves-effect waves-light btn-flat">{{key:form.button.cancel}}</a>
+	  </div>
+	</div>
+
+</form>

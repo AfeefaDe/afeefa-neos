@@ -5,13 +5,15 @@
 	position: absolute;
 	right: -16.9em;
 	top: 0;
+	z-index: 10;
 	
 	@include box-sizing(border-box);
 	width: 20em;
 	height: 100%;
 	padding: 2em 0;
 
-	background-color: $black_alpha;
+	background-color: $gray95;
+	@include box-shadow(0px 0px 2px #000);
 	color: $gray50;
 
 	@include display-flex;

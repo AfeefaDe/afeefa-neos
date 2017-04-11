@@ -50,6 +50,14 @@ leafletPlugins/MarkerCluster.Default.css
 ----------------
 leafletPlugins/MarkerCluster.Default.css
 
+materialize/css/materialize.css
+----------------
+materialize/css/materialize.css
+
+materialize/css/materialize.min.css
+----------------
+materialize/css/materialize.min.css
+
 DDFA/js/main.js
 ----------------
 requirejs/domReady.js

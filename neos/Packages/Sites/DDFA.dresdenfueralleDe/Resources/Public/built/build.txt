@@ -65,7 +65,6 @@ qooxdoo/qx-oo-4.1.min.js
 jquery/jquery-2.2.2.min.js
 underscore/underscore-min.js
 restive/restive.min.js
-chosen/chosen.jquery.min.js
 hammerjs/hammer.min.js
 H5BP/js/vendor/modernizr-2.8.3.min.js
 popperjs/popper.min.js

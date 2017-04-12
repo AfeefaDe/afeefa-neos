@@ -4,12 +4,14 @@
 
 	<h3>{{key:form.field.entryType}}</h3>	
 	
-	<div class="input-field col s12">
-    <select id="entry.type">
-      <option value="0">{{key:entity.orga}}</option>
-      <option value="2">{{key:entity.event}}</option>
-      <option value="1">{{key:entity.market}}</option>
-    </select>
+  <div class="row">
+		<div class="input-field col s12">
+	    <select id="entry.type">
+	      <option value="0">{{key:entity.orga}}</option>
+	      <option value="2">{{key:entity.event}}</option>
+	      <option value="1">{{key:entity.market}}</option>
+	    </select>
+	  </div>
   </div>
 
 	<h3>{{key:prop.description}}</h3>
@@ -21,42 +23,47 @@
 		</div>
 	</div>
 
-  <div class="input-field col s12">
-    <select id="entry.category">
-      <option value="5dddf63d-ccf6-44e2-8daf-81bb44507fdd">{{key:cat.language}}</option>
-      <option value="07f88130-7d98-4a20-bbb8-d0d98f55c553">{{key:cat.community}}</option>
-      <option value="744f41e9-799c-432b-a9a3-e78d471ec51a">{{key:cat.donation}}</option>
-      <option value="adfb2457-819c-4574-ace1-56f5b38d8f96">{{key:cat.leisure}}</option>
-      <option value="d29bbe86-ecd6-42df-8054-70a90ec7b535">{{key:cat.jobs}}</option>
-      <option value="df402493-f467-4472-8b98-9038d2ac967e">{{key:cat.consultation}}</option>
-      <option value="fa815876-ad1d-433e-87ff-8de20639e2b1">{{key:cat.medic}}</option>
-    </select>
-		<label>{{key:form.field.category}}</label>
+  <div class="row">
+	  <div class="input-field col s12">
+	    <select id="entry.category">
+	      <option value="5dddf63d-ccf6-44e2-8daf-81bb44507fdd">{{key:cat.language}}</option>
+	      <option value="07f88130-7d98-4a20-bbb8-d0d98f55c553">{{key:cat.community}}</option>
+	      <option value="744f41e9-799c-432b-a9a3-e78d471ec51a">{{key:cat.donation}}</option>
+	      <option value="adfb2457-819c-4574-ace1-56f5b38d8f96">{{key:cat.leisure}}</option>
+	      <option value="d29bbe86-ecd6-42df-8054-70a90ec7b535">{{key:cat.jobs}}</option>
+	      <option value="df402493-f467-4472-8b98-9038d2ac967e">{{key:cat.consultation}}</option>
+	      <option value="fa815876-ad1d-433e-87ff-8de20639e2b1">{{key:cat.medic}}</option>
+	    </select>
+			<label>{{key:form.field.category}}</label>
+	  </div>
   </div>
 
 	<div class="row">
 		<div class="input-field col s12">
-	    <textarea id="entry.descriptionShort" class="materialize-textarea" data-length="350" required></textarea>
 	    <label for="entry.descriptionShort">{{key:form.field.descriptionShort}}*</label>
+	    <textarea id="entry.descriptionShort" class="materialize-textarea" data-length="350" required></textarea>
+	    <small styles="color: #666">WER macht WAS für WEN und WIE, evtl WAS MUSS ICH TUN</small>
 	  </div>
   </div>
 
-  <p>
-		<input type="checkbox" class="filled-in" id="entry.forChildren">
-    <label for="entry.forChildren">{{key:form.placeholder.forChildren}}</label>
-	</p>
+	<div class="row">
+		<p>
+			<input type="checkbox" class="filled-in" id="entry.forChildren">
+	    <label for="entry.forChildren">{{key:form.placeholder.forChildren}}</label>
+	  </p>
+	</div>
 
 	<div class="row">
 		<p>
 			<input type="checkbox" class="filled-in" id="entry.supportWanted">
 	    <label for="entry.supportWanted">{{key:form.placeholder.supportWanted}}</label>
-		</p>
+    </p>
   </div>
 
 	<div class="row">
 		<div class="input-field col s12">
-	    <textarea id="additional.supportWantedDescription" class="materialize-textarea" data-length="350"></textarea>
-	    <label for="additional.supportWantedDescription">{{key:form.field.supportWantedDescription}}</label>
+	    <label for="additional.internalComment">{{key:form.field.supportWantedDescription}}</label>
+	    <textarea id="additional.internalComment" class="materialize-textarea" data-length="350"></textarea>
 	  </div>
   </div>
 	
@@ -111,17 +118,19 @@
 		</div>
 	</div>
 
-	<div class="input-field col s12">
-    <select id="entry.spokenLanguages" multiple>
-      <option value="" disabled selected>{{key:form.placeholder.spokenLanguages}}</option>
-      <option value="de">Deutsch</option>
-      <option value="en">Englisch</option>
-      <option value="ar">Arabisch</option>
-      <option value="fa">Persisch</option>
-      <option value="ru">Russisch</option>
-      <option value="fr">Französisch</option>
-    </select>
-		<label>{{key:prop.spokenLanguages}}</label>
+  <div class="row">
+		<div class="input-field col s12">
+	    <select id="entry.spokenLanguages" multiple>
+	      <option value="" disabled selected>{{key:form.placeholder.spokenLanguages}}</option>
+	      <option value="de">Deutsch</option>
+	      <option value="en">Englisch</option>
+	      <option value="ar">Arabisch</option>
+	      <option value="fa">Persisch</option>
+	      <option value="ru">Russisch</option>
+	      <option value="fr">Französisch</option>
+	    </select>
+			<label>{{key:prop.spokenLanguages}}</label>
+	  </div>
   </div>
 
   <div class="row">
@@ -145,10 +154,12 @@
 	  </div>
   </div>
 
-	<p>
-		<input type="checkbox" class="filled-in" id="additional.disclaimer" required>
-    <label for="additional.disclaimer">{{key:form.disclaimer.newEntry}}*</label>
-	</p>
+	<div class="row">
+		<p>
+			<input type="checkbox" class="filled-in" id="additional.disclaimer" required>
+	    <label for="additional.disclaimer">{{key:form.disclaimer.newEntry}}*</label>
+		</p>
+	</div>
 
 	<div class="row">
 	  <div class="input-field col s6">
@@ -158,7 +169,7 @@
 	  </div>
   
 	  <div class="input-field col s6">
-		  <a id="cancel" class="waves-effect waves-light btn-flat">{{key:form.button.cancel}}</a>
+		  <button id="cancel" type="button" class="btn-flat">{{key:form.button.cancel}}</button>
 	  </div>
 	</div>
 

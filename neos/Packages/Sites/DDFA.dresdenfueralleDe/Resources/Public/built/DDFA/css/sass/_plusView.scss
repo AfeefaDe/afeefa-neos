@@ -4,7 +4,7 @@
 	right: 6em;
 	bottom: 3em;
 
-	.btn {
+	.button {
 		@include circleBtn;
 		
 		background-color: $black_alpha;

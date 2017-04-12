@@ -156,7 +156,7 @@ qx.Class.define("FormView", {
             });
 
             // the cancel button
-            that.view.find('a#cancel').first().click(function(){
+            that.view.find('button#cancel').first().click(function(){
                 that.close();
             });
             
@@ -210,7 +210,9 @@ qx.Class.define("FormView", {
                     buttonLabel: "Schön",
                     actions: {
                         ready: function(){},
-                        close: function(){ that.close(); }
+                        close: function(){ 
+                            that.close();
+                        }
                     }
                 });
             });
@@ -235,7 +237,6 @@ qx.Class.define("FormView", {
                 }
 
                 cb();
-                that.loading(false);
             });
 
             // to github
@@ -259,8 +260,8 @@ qx.Class.define("FormView", {
                     if (data.entry.type == 1) entryTypeString += ' (' + marketTypeString + ')'
                     return 'Neuer Eintrag: ' + entryTypeString + ' "' + data.entry.name + '"'
                 }(),
-                message: '```\n' + data.entry.description + '\n```\n'
-                + 'für Kinder: `' + (data.entry.forChildren ? 'ja' : 'nicht explizit') + '`\n'
+                message: '```\n' + data.entry.descriptionShort + '\n```\n'
+                + 'für Kinder: `' + (data.entry.forChildren ? 'ja' : '-') + '`\n'
                 + 'Unterstützer gesucht: `' + (data.entry.supportWanted ? 'ja' : 'nein') + '`\n'
                 + 'Kontaktperson: `' + data.entry.speakerPublic + '`\n'
                 + 'Sprachen: `' + data.entry.spokenLanguages + '`\n'
@@ -270,7 +271,46 @@ qx.Class.define("FormView", {
                 + 'phone: `' + data.entry.phone + '`\n'
                 + 'Ort: `' + data.location.placename + ', ' + data.location.street + ', ' + data.location.zip + ' ' + data.location.city + '`\n'
                 + 'von: `' + data.entry.dateFrom + ' (' + data.entry.timeFrom + ')' + '`\n'
-                + 'bis: `' + data.entry.dateTo + ' (' + data.entry.timeTo + ')' + '`\n\n'
+                + 'bis: `' + data.entry.dateTo + ' (' + data.entry.timeTo + ')' + '`\n'
+                + 'Anmerkung: `' + data.additional.internalComment + '`\n'
+            });
+
+            // send mail to team inbox
+            APP.getDataManager().sendMail({
+                data: {
+                    mail_fromMail: 'bot@afeefa.de',
+                    mail_fromName: data.entry.speakerPublic ? data.entry.speakerPublic : 'Unbekannt',
+                    mail_to: 'redaktion@afeefa.de',
+                    mail_replyTo: data.entry.mail,
+                    mail_subject: function () {
+                        var entryTypeString = entryTypes[data.entry.type];
+                        var marketTypeString = (data.entry.offer) ? 'Angebot' : 'Gesuch';
+                        if (data.entry.type == 1) entryTypeString += ' (' + marketTypeString + ')'
+                        return '[Neuer Eintrag] ' + entryTypeString + ' "' + data.entry.name + '"';
+                    },
+                    mail_bodyPlain: data.entry.description,
+                    mail_bodyHtml: function () {
+                        // var date = new Date();
+                        // var dateString = date.getDate() + '.' + (date.getMonth()+1) + '.' + date.getFullYear() + ' um ' + date.getHours() + ':' + date.getMinutes();
+                        var styles = '<style>table td {vertical-align:top; font-size: 0.8em;}</style>';
+                        var message = '<table border="0">'
+                            + '<tr><td style="color: gray">Beschreibung:</td><td>' + data.entry.description + '</td></tr>'
+                            + '<tr><td style="color: gray">für Kinder geeignet:</td><td>' + (data.entry.forChildren ? 'ja' : 'nicht explizit') + '</td></tr>'
+                            + '<tr><td style="color: gray">Unterstützer gesucht:</td><td>' + (data.entry.supportWanted ? 'ja' : 'nein') + '</td></tr>'
+                            + '<tr><td style="color: gray">Kontaktperson:</td><td>' + data.entry.speakerPublic + '</td></tr>'
+                            + '<tr><td style="color: gray">Sprachen:</td><td>' + data.entry.spokenLanguages + '</td></tr>'
+                            + '<tr><td style="color: gray">Mail:</td><td>' + data.entry.mail + '</td></tr>'
+                            + '<tr><td style="color: gray">Website:</td><td>' + data.entry.web + '</td></tr>'
+                            + '<tr><td style="color: gray">facebook:</td><td>' + data.entry.facebook + '</td></tr>'
+                            + '<tr><td style="color: gray">Telefon:</td><td>' + data.entry.phone + '</td></tr>'
+                            + '<tr><td style="color: gray">Ort:</td><td>' + data.location.placename + ', ' + data.location.street + ', ' + data.location.zip + ' ' + data.location.city + '</td></tr>'
+                            + '<tr><td style="color: gray">von:</td><td>' + data.entry.dateFrom + ' (' + data.entry.timeFrom + ')' + '</td></tr>'
+                            + '<tr><td style="color: gray">bis:</td><td>' + data.entry.dateTo + ' (' + data.entry.timeTo + ')' + '</td></tr>'
+                            + '<tr><td style="color: gray">Anmerkung:</td><td>' + data.entry.internalComment + '</td></tr>'
+                            + '</table>';
+                        return styles + message;
+                    }
+                }
             });
         },
 
@@ -369,96 +409,6 @@ qx.Class.define("FormView", {
             var that = this;
 
             if (that.getCurrentForm()) that.load( that.getCurrentForm().formType.name );
-        },
-
-        createMarketEntryAndLocation: function (dataMarketEntry, dataLocation) {
-            var that = this;
-
-            //todo: adapt, if more areas are added
-            dataMarketEntry.marketentry.area = "dresden";
-            var data_joined = _.extend(dataMarketEntry, dataLocation);
-
-            APP.getDataManager().addMarketEntry(data_joined, function (response) {
-                if (!response.marketentry) {
-                    // that.thatResponseMessage().append( that.getWording('form_fail') );
-                    alert(that.getWording('form.fail'));
-                    that.loading(false);
-                    return;
-                }
-
-                // that.responseMessage.append( that.getWording('form_success') );
-                alert(that.getWording('form.success'));
-                that.close();
-
-                // dataLocation.location['marketEntry'] = response.marketentry.persistenceObjectIdentifier;
-                // APP.getDataManager().addLocation(dataLocation, function(){
-                // 	// alert('marketLocation sent, thanks');
-                // });
-            });
-
-            // send outgoing message
-            var entryTypes = {0: 'Orga', 1: 'Börse', 2: 'Event'};
-
-            // send slack message
-            APP.getDataManager().createSlackMessage({
-                // heading: type + ' von _' + dataMarketEntry.marketentry.speakerPublic + '_ (' + dataMarketEntry.marketentry.mail + ')',
-                heading: function () {
-                    var entryTypeString = entryTypes[dataMarketEntry.marketentry.type];
-                    var marketTypeString = (dataMarketEntry.marketentry.offer) ? 'Angebot' : 'Gesuch';
-                    if (dataMarketEntry.marketentry.type == 1) entryTypeString += ' (' + marketTypeString + ')'
-                    return 'Neuer Eintrag: ' + entryTypeString + ' "' + dataMarketEntry.marketentry.name + '"'
-                }(),
-                message: '```\n' + dataMarketEntry.marketentry.description + '\n```\n'
-                + 'für Kinder: `' + (dataMarketEntry.marketentry.forChildren ? 'ja' : 'nicht explizit') + '`\n'
-                + 'Unterstützer gesucht: `' + (dataMarketEntry.marketentry.supportWanted ? 'ja' : 'nein') + '`\n'
-                + 'Kontaktperson: `' + dataMarketEntry.marketentry.speakerPublic + '`\n'
-                + 'Sprachen: `' + dataMarketEntry.marketentry.spokenLanguages + '`\n'
-                + 'mail: `' + dataMarketEntry.marketentry.mail + '` '
-                + 'web: `' + dataMarketEntry.marketentry.web + '` '
-                + 'facebook: `' + dataMarketEntry.marketentry.facebook + '` '
-                + 'phone: `' + dataMarketEntry.marketentry.phone + '`\n'
-                + 'Ort: `' + dataLocation.location.placename + ', ' + dataLocation.location.street + ', ' + dataLocation.location.zip + ' ' + dataLocation.location.city + '`\n'
-                + 'von: `' + dataMarketEntry.marketentry.dateFrom + ' (' + dataMarketEntry.marketentry.timeFrom + ')' + '`\n'
-                + 'bis: `' + dataMarketEntry.marketentry.dateTo + ' (' + dataMarketEntry.marketentry.timeTo + ')' + '`\n\n'
-            });
-
-            // send mail to team inbox
-            APP.getDataManager().sendMail({
-                data: {
-                    mail_fromMail: 'bot@afeefa.de',
-                    mail_fromName: dataMarketEntry.marketentry.speakerPublic ? dataMarketEntry.marketentry.speakerPublic : 'Unbekannt',
-                    mail_to: 'redaktion@afeefa.de',
-                    mail_replyTo: dataMarketEntry.marketentry.mail,
-                    mail_subject: function () {
-                        var entryTypeString = entryTypes[dataMarketEntry.marketentry.type];
-                        var marketTypeString = (dataMarketEntry.marketentry.offer) ? 'Angebot' : 'Gesuch';
-                        if (dataMarketEntry.marketentry.type == 1) entryTypeString += ' (' + marketTypeString + ')'
-                        return '[Neuer Eintrag] ' + entryTypeString + ' "' + dataMarketEntry.marketentry.name + '"';
-                    },
-                    mail_bodyPlain: dataMarketEntry.marketentry.description,
-                    mail_bodyHtml: function () {
-                        // var date = new Date();
-                        // var dateString = date.getDate() + '.' + (date.getMonth()+1) + '.' + date.getFullYear() + ' um ' + date.getHours() + ':' + date.getMinutes();
-                        var styles = '<style>table td {vertical-align:top; font-size: 0.8em;}</style>';
-                        var message = '<table border="0">'
-                            + '<tr><td style="color: gray">Beschreibung:</td><td>' + dataMarketEntry.marketentry.description + '</td></tr>'
-                            + '<tr><td style="color: gray">für Kinder geeignet:</td><td>' + (dataMarketEntry.marketentry.forChildren ? 'ja' : 'nicht explizit') + '</td></tr>'
-                            + '<tr><td style="color: gray">Unterstützer gesucht:</td><td>' + (dataMarketEntry.marketentry.supportWanted ? 'ja' : 'nein') + '</td></tr>'
-                            + '<tr><td style="color: gray">Kontaktperson:</td><td>' + dataMarketEntry.marketentry.speakerPublic + '</td></tr>'
-                            + '<tr><td style="color: gray">Sprachen:</td><td>' + dataMarketEntry.marketentry.spokenLanguages + '</td></tr>'
-                            + '<tr><td style="color: gray">Mail:</td><td>' + dataMarketEntry.marketentry.mail + '</td></tr>'
-                            + '<tr><td style="color: gray">Website:</td><td>' + dataMarketEntry.marketentry.web + '</td></tr>'
-                            + '<tr><td style="color: gray">facebook:</td><td>' + dataMarketEntry.marketentry.facebook + '</td></tr>'
-                            + '<tr><td style="color: gray">Telefon:</td><td>' + dataMarketEntry.marketentry.phone + '</td></tr>'
-                            + '<tr><td style="color: gray">Ort:</td><td>' + dataLocation.location.placename + ', ' + dataLocation.location.street + ', ' + dataLocation.location.zip + ' ' + dataLocation.location.city + '</td></tr>'
-                            + '<tr><td style="color: gray">von:</td><td>' + dataMarketEntry.marketentry.dateFrom + ' (' + dataMarketEntry.marketentry.timeFrom + ')' + '</td></tr>'
-                            + '<tr><td style="color: gray">bis:</td><td>' + dataMarketEntry.marketentry.dateTo + ' (' + dataMarketEntry.marketentry.timeTo + ')' + '</td></tr>'
-                            + '</table>';
-                        return styles + message;
-                    }
-                }
-            });
-
         }
     }
 });

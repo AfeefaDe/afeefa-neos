@@ -30,13 +30,13 @@ qx.Class.define("SearchView", {
 
       // menu button
       that.menuBtn = $("<div />")
-        .addClass('btn menu-btn');
+        .addClass('button menu-btn');
       
       that.searchBar.append(that.menuBtn);
 
       // refugee button
       that.refugeeBtn = $("<div />")
-        .addClass('btn refugee-btn')
+        .addClass('button refugee-btn')
         .click(function(){
           APP.getIncludeView().load( APP.getIncludeView().getIncludes().refugeeGuide );
         });
@@ -45,7 +45,7 @@ qx.Class.define("SearchView", {
 
       // filter button
       that.filterBtn = $("<div />")
-        .addClass('btn filter-btn')
+        .addClass('button filter-btn')
         .click(function(){
           if( APP.getLegendView().view.hasClass('active') )
             APP.getLegendView().close();
@@ -56,7 +56,7 @@ qx.Class.define("SearchView", {
 
       // cancel button
       that.cancelBtn = $("<div />")
-        .addClass('btn cancel-btn')
+        .addClass('button cancel-btn')
         .click(function(){
           that.close();
         });
@@ -397,12 +397,12 @@ qx.Class.define("SearchView", {
         .addClass('labels');
       resultEl.append(labelsEl)
       
-      const mainLabelEl = $("<label />")
+      const mainLabelEl = $("<span />")
         .append(label);
       labelsEl.append(mainLabelEl);
       
       if( subLabel ) {
-        const subLabelEl = $("<label />")
+        const subLabelEl = $("<span />")
           .addClass('sub-label')
           .append(subLabel);
         // show location symbol?

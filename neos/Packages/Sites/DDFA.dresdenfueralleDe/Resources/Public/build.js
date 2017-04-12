@@ -58,15 +58,12 @@
         domReady: '../../requirejs/domReady',
         jquery: '../../jquery/jquery-2.2.2.min',
         perfectScrollbarJQuery: 'empty:',
-        chosen: '../../chosen/chosen.jquery.min',
         momentjs: '../../momentjs/moment.min',
         combodate: '../../combodate/combodate',
         restive: '../../restive/restive.min',
         qx: '../../qooxdoo/qx-oo-4.1.min',
         underscore: '../../underscore/underscore-min',
         hammerjs: '../../hammerjs/hammer.min',
-        bootstrap: 'empty:',
-        fontawesome: 'empty:',
         mapbox: 'empty:',
         // skip markercluster in building, because otherwise "L is not defined" in markercluster initialization (dont know why)
         mc: 'empty:',
@@ -110,14 +107,12 @@
         "mc": ["mapbox"],
 
         // depending on jquery
-        "chosen": ["jquery"],
         "restive": ["jquery"],
         'perfectScrollbarJQuery': ["jquery"],
-        "bootstrap": ["jquery"],
         "materialize": ["hammerjs"],
 
         // app files
-        "Daddy": ['qx', 'jquery', 'underscore', 'restive', 'perfectScrollbarJQuery', 'chosen', 'mapbox', 'mc', 'hammerjs', 'modernizr', 'popper', 'materialize'],
+        "Daddy": ['qx', 'jquery', 'underscore', 'restive', 'perfectScrollbarJQuery', 'mapbox', 'mc', 'hammerjs', 'modernizr', 'popper', 'materialize'],
         'APPAFEEFA': ['Daddy'],
         'DataManager': ['APPAFEEFA'],
         'Router': ['APPAFEEFA'],

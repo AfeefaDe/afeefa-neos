@@ -23,7 +23,7 @@ qx.Class.define("PlusView", {
 			
 			// locate btn
 			that.locateBtn = $("<div />")
-				.addClass('btn locateBtn')
+				.addClass('button locateBtn')
 				// .attr('id', 'locate-btn')
 				.click(function(){
 					APP.getMapView().locate(true);
@@ -45,7 +45,7 @@ qx.Class.define("PlusView", {
 
 			// feedback button
 			that.feedbackBtn = $("<div />")
-				.addClass('btn feedbackBtn');
+				.addClass('button feedbackBtn');
 			that.view.append(that.feedbackBtn);
 
 			that.createTooltip(

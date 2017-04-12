@@ -544,7 +544,7 @@ final class MessageCenter
 
 		// TODO use API token instead
 		$username = 'AfeefaBot';
-		$password = 'bippel@51.13';
+		$password = 'Q78V6HVhvN8mU51nP0Ut';
 
 		$client = new GitHubClient();
 		$client->setCredentials($username, $password);
@@ -580,7 +580,7 @@ final class MessageCenter
 
 			$body .= "#### " . ($data['entryData']['name'] ? $data['entryData']['name'] : "-") . "\n";
 
-			$body .= "```\n" . ($data['entryData']['description'] ? $data['entryData']['description'] : " ") . "\n```\n";
+			$body .= "```\n" . ($data['entryData']['descriptionShort'] ? $data['entryData']['descriptionShort'] : " ") . "\n```\n";
 
 			// TODO category
 			// $body .= "Kategorie: `" . ($data['entryData']['speakerPublic'] ? $data['entryData']['speakerPublic'] : " ") . "`\n";
@@ -612,6 +612,8 @@ final class MessageCenter
 			$body .= "von: `" . ($data['entryData']['dateFrom'] ? $data['entryData']['dateFrom'] : " ") . ($data['entryData']['timeFrom'] ? "` `" . $data['entryData']['timeFrom'] . "`\n" : "`\n");
 			
 			$body .= "bis: `" . ($data['entryData']['dateTo'] ? $data['entryData']['dateTo'] : " ") . ($data['entryData']['timeTo'] ? "` `" . $data['entryData']['timeTo'] . "`\n" : "`\n");
+
+			$body .= "Anmerkung: `" . ($data['entryData']['internalComment'] ? $data['entryData']['internalComment'] : " ") . "`\n";
 			
 			$labels = array("RDK", "user-entry", "dringend");
 		}

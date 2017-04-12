@@ -7,14 +7,11 @@ require.config({
         domReady: '../../requirejs/domReady',
         jquery: '../../jquery/jquery-2.2.2.min',
         perfectScrollbarJQuery: 'https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/0.6.7/js/min/perfect-scrollbar.jquery.min',
-        chosen: '../../chosen/chosen.jquery.min',
         momentjs: '../../momentjs/moment.min',
         restive: '../../restive/restive.min',
         qx: '../../qooxdoo/qx-oo-4.1.min',
         underscore: '../../underscore/underscore-min',
         hammerjs: '../../hammerjs/hammer.min',
-        bootstrap: 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min',
-        fontawesome: 'https://use.fontawesome.com/43c3d746ca',
         mapbox: 'https://api.mapbox.com/mapbox.js/v3.0.1/mapbox',
         mc: '../../leafletPlugins/leaflet.markercluster',
         popper: '../../popperjs/popper.min',
@@ -36,14 +33,12 @@ require.config({
         "mc": ["mapbox"],
 
         // depending on jquery
-        "chosen": ["jquery"],
         "restive": ["jquery"],
         'perfectScrollbarJQuery': ["jquery"],
-        "bootstrap": ["jquery"],
         "materialize": ["hammerjs"],
 
         // app files
-        "Daddy": ['qx', 'jquery', 'underscore', 'restive', 'perfectScrollbarJQuery', 'chosen', 'mapbox', 'mc', 'hammerjs', 'modernizr', 'popper', 'materialize'],
+        "Daddy": ['qx', 'jquery', 'underscore', 'restive', 'perfectScrollbarJQuery', 'mapbox', 'mc', 'hammerjs', 'modernizr', 'popper', 'materialize'],
         'APPAFEEFA': ['Daddy'],
         'DataManager': ['APPAFEEFA'],
         'Router': ['APPAFEEFA'],

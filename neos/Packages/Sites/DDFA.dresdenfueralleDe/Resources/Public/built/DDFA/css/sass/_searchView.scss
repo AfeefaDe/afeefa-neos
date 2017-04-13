@@ -322,8 +322,15 @@
 }
 
 .rtl {
-	#searchView .labels {
-		padding-right: 0 !important;
-		padding-left: 1em !important;
+	#searchView {
+		.labels {
+			padding-right: 0 !important;
+			padding-left: 1em !important;
+		}
+
+		#search-bar {
+			left: 0;
+			right: 2rem;
+		}
 	}
 }

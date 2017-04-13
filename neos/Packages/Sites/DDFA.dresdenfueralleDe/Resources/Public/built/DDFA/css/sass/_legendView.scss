@@ -37,6 +37,7 @@
 
 	.reset-module {
 		@include order(2);
+		visibility: hidden;
 	}
 	.category-module {
 		@include order(0);
@@ -51,6 +52,8 @@
 		padding: 0 1em;
 
 		.entity-container {
+			height: 2.5rem;
+
 			@include flex-grow(1);
 			@include flex-basis(100%);
 			
@@ -155,12 +158,6 @@
 			&:hover {
 				opacity: 1;
 			}
-		}
-
-		&.filter-reset {
-			display: none;
-			opacity: 1 !important;
-			.icon {visibility: hidden;}
 		}
 
 		&:hover {
@@ -272,11 +269,6 @@
 			}
 		}
 	}
-
-	&.filter-active {
-
-		.cat-container.filter-reset { display: block; }
-	}
 }
 
 @mixin activeState {
@@ -288,6 +280,7 @@
 	}
 	.entity-module { visibility: visible; }
 	.attribute-module { visibility: visible; }
+	.reset-module { visibility: visible; }
 
 	.cat-container .icon { margin-left: .5em; }
 }

@@ -51,6 +51,8 @@
 		padding: 0 1em;
 
 		.entity-container {
+			height: 2.5rem;
+			
 			@include flex-grow(1);
 			@include flex-basis(100%);
 			

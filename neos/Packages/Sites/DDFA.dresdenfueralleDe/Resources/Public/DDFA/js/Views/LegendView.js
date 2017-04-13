@@ -236,6 +236,10 @@ qx.Class.define("LegendView", {
 			  
 			  that['label-' + cat.id].append( that.getWording('cat.' + cat.name) );
 
+			  var condition = function(){
+        	return (that.view.css('right') == '0px');
+        };
+        
 			  that.createTooltip(
 	        that['label-' + cat.id].parent(),
 	        function(){
@@ -243,7 +247,10 @@ qx.Class.define("LegendView", {
 	        }(),
 	        'hover',
 	        'left',
-	        'desktop'
+	        'desktop',
+	        null,
+	        null,
+	        condition
 	      );
 
 			  _.each( cat.sub, function(subcat){
@@ -256,7 +263,10 @@ qx.Class.define("LegendView", {
 		        }(),
 		        'hover',
 		        'left',
-		        'desktop'
+		        'desktop',
+		        null,
+		        null,
+		        condition
 		      );
 			  });
 
@@ -359,9 +369,11 @@ qx.Class.define("LegendView", {
 			that.view.hover(
 			  function() {
 			  	that.show();
-			  }, function() {
-			  	// only fire mouseleave if view is really active
-			  	if( that.view.hasClass('active') ) that.close();
+			  }, function(e) {
+			  	// only react if view is really active
+          // firefox fires mouseleave while transition (bug), so additionally check current css state
+		  		console.log($(this).css('right'));
+		  		if( that.view.hasClass('active') && ($(this).css('right') == '0px') ) that.close();
 			  }
 			);
 

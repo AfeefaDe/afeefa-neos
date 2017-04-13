@@ -220,9 +220,6 @@ qx.Class.define("APPAFEEFA", {
 				currentAppData.entries = _.sortBy(currentAppData.entries, 'name');
 				
 				that.setData(currentAppData);
-				while( !APP.getMapView().isRendered() ){
-					console.debug('waiting');
-				}
 				that.say('fetchedNewData');
 				that.say('fetchedAllBasicData');
 

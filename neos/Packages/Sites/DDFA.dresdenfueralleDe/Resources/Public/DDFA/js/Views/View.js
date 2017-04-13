@@ -189,7 +189,7 @@ qx.Class.define("View", {
             $('#modal').modal('open');
         },
 
-        createTooltip: function(el, content, event, placement, device, cssClasses, contentType){
+        createTooltip: function(el, content, event, placement, device, cssClasses, contentType, conditionFn){
             var that = this;
 
             // check device restrictions
@@ -213,14 +213,18 @@ qx.Class.define("View", {
                 if( event == 'hover' ){
                     el.off(".popper");
                     el.on("mouseenter.popper", function(){
-                            thePopper = new Popper(
-                                el,
-                                popperConfig.content,
-                                popperConfig.misc
-                            );
+                            var condition = conditionFn? conditionFn() : true;
+                            if( condition ){
+                                thePopper = new Popper(
+                                    el,
+                                    popperConfig.content,
+                                    popperConfig.misc
+                                );
+                            }
                         })
                         .on("mouseleave.popper", function(){
-                            thePopper.destroy();
+                            if( thePopper ) thePopper.destroy();
+                            thePopper = undefined;
                         });
                 }
             }

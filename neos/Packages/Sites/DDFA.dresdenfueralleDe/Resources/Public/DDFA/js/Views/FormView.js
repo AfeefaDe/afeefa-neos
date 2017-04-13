@@ -6,7 +6,7 @@ qx.Class.define("FormView", {
     properties: {
         baseUrl: {},
         formTypes: {},
-        currentForm: {},
+        currentForm: {}
         // currentFormType: {init: null},
         // entryTypeEnum: {},
         // properties: {},
@@ -17,18 +17,8 @@ qx.Class.define("FormView", {
         var that = this;
 
         that.setViewId('formView');
-
         that.setLoadable(true);
-
         that.setBaseUrl('_Resources/Static/Packages/DDFA.dresdenfueralleDe/DDFA/inc/');
-
-        // that.setEntryTypeEnum(
-        //     {
-        //         initiative: 0,
-        //         marketentry: 1,
-        //         event: 2
-        //     }
-        // );
 
         that.setFormTypes({
             feedback: {
@@ -47,6 +37,8 @@ qx.Class.define("FormView", {
                 sendMethod: that.createEntry
             }
         });
+
+        that.setCurrentForm(null);
     },
 
     members: {

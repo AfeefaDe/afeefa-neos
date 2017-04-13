@@ -215,10 +215,10 @@ for($i=0;$i<count($languages);$i++){
 	// echo $languages[$i] . ": " . $result->num_rows . " (" . round($result->num_rows/$orgas_count*100) . "%)<br>";
 }
 
-$data_orga_translations_title = [];
+$data_orga_translations_description_shortdescription = [];
 for($i=0;$i<count($languages);$i++){
-	$result = sql("SELECT translation.name, translation.locale, root.name, root.locale FROM `ddfa_main_domain_model_marketentry` AS translation INNER JOIN `ddfa_main_domain_model_marketentry` AS root ON translation.entry_id=root.entry_id WHERE root.locale='de' AND root.published=1 AND translation.type=0 AND translation.name IS NOT NULL AND translation.locale='" .$languages[$i]. "'");
-	array_push($data_orga_translations_title,$result->num_rows);
+	$result = sql("SELECT translation.name, translation.locale, root.name, root.locale FROM `ddfa_main_domain_model_marketentry` AS translation INNER JOIN `ddfa_main_domain_model_marketentry` AS root ON translation.entry_id=root.entry_id WHERE root.locale='de' AND root.published=1 AND translation.type=0 AND (translation.description IS NOT NULL OR translation.descriptionShort IS NOT NULL) AND translation.locale='" .$languages[$i]. "'");
+	array_push($data_orga_translations_description_shortdescription,$result->num_rows);
 }
 
 $data_orga_translations_description = [];
@@ -261,8 +261,8 @@ for($i=0;$i<count($languages);$i++){
 <span class="dataPrint" id="data_translations_orga">
 	<?php echo implode(",",$data_orga_translations) ?>
 </span>
-<span class="dataPrint" id="data_translations_orga_title">
-	<?php echo implode(",",$data_orga_translations_title) ?>
+<span class="dataPrint" id="data_translations_orga_description_shortdescription">
+	<?php echo implode(",",$data_orga_translations_description_shortdescription) ?>
 </span>
 <span class="dataPrint" id="data_translations_orga_description">
 	<?php echo implode(",",$data_orga_translations_description) ?>
@@ -301,18 +301,18 @@ var myBarChart = new Chart(ctx, {
 	            data: $('#data_translations_orga').text().split(",")
 	        },
 	        {
-	            label: "Orgas with translated title",
-	            backgroundColor: 'rgba(63, 127, 191, 0.4)',
-	            data: $('#data_translations_orga_title').text().split(",")
+	            label: "Orgas with translated desc or short desc",
+	            backgroundColor: 'rgba(63, 127, 191, 1)',
+	            data: $('#data_translations_orga_description_shortdescription').text().split(",")
 	        },
 	        {
 	            label: "Orgas with translated desc",
-	            backgroundColor: 'rgba(63, 127, 191, 0.7)',
+	            backgroundColor: 'rgba(63, 127, 191, 0.4)',
 	            data: $('#data_translations_orga_description').text().split(",")
 	        },
 	        {
 	            label: "Orgas with translated short desc",
-	            backgroundColor: 'rgba(63, 127, 191, 1)',
+	            backgroundColor: 'rgba(63, 127, 191, 0.7)',
 	            data: $('#data_translations_orga_shortdescription').text().split(",")
 	        },
 	        {

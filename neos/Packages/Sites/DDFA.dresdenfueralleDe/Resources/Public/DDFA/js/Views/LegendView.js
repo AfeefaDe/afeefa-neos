@@ -41,15 +41,12 @@ qx.Class.define("LegendView", {
 	  that.view.append(that.filterModuleReset);
 		
 		// button
-		var resetBtn = $("<div />")
-			.addClass('button btn-reset')
+		that.resetBtn = $("<div />")
+			.addClass('btn')
 			.click(function() {
 				that.resetFilter();
 			});
-		// label
-		that['label-filter-reset'] = $("<p />");
-		resetBtn.append(that['label-filter-reset']);
-		that.filterModuleReset.append(resetBtn);
+		that.filterModuleReset.append(that.resetBtn);
 
 	  ///////////////////
 	  // Entity filter //
@@ -239,7 +236,7 @@ qx.Class.define("LegendView", {
 			  var condition = function(){
         	return (that.view.css('right') == '0px');
         };
-        
+
 			  that.createTooltip(
 	        that['label-' + cat.id].parent(),
 	        function(){
@@ -276,7 +273,7 @@ qx.Class.define("LegendView", {
 		  	that['label-entity-' + value].append(that.getWording('entity.' + value));
 		  });
 
-		  that['label-filter-reset'].append( that.getWording('misc.filterReset') );
+		  that.resetBtn.append( that.getWording('misc.filterReset') );
 	  	that.moduleHeadingEntity.append(that.getWording('entry.type'));
 	  	that.moduleHeadingCategory.append(that.getWording('category'));
 	  	that.moduleHeadingAttribute.append(that.getWording('label.attribute.filter'));
@@ -409,7 +406,7 @@ qx.Class.define("LegendView", {
 		  	that['label-entity-' + value].empty();
 		  });
 
-		  that['label-filter-reset'].empty();
+		  that.resetBtn.empty();
 
 		  that.moduleHeadingEntity.empty();
 	  	that.moduleHeadingCategory.empty();

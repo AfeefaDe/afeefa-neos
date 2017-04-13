@@ -231,7 +231,7 @@ qx.Class.define("IntroView", {
 
 			var contentContainer = $("<div />")
 						
-			var heading = $("<h2 />")
+			var heading = $("<h3 />")
 				.append(that.getWording(step.phraseAppKeys.heading));
 
 			var text = $("<p />")
@@ -274,12 +274,12 @@ qx.Class.define("IntroView", {
 
 				// generate the button
 				var button = $("<button />")
-					.addClass('block')
+					.addClass('btn block')
 					.append(that.getWording(labelKey))
 					.click(action);
 
 				// make secondary buttons
-				if(i>0) button.addClass('btn-secondary');
+				if(i>0) button.addClass('btn-flat');
 				
 				contentContainer.append(button);
 			});

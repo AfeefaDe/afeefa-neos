@@ -10692,26 +10692,26 @@ strong {
 }
 /* line 72, sass/_popper.scss */
 .popper.intro {
-  background-color: #ffc107;
+  background-color: #f2f2f2;
   color: #333333;
   padding: 1em;
   max-width: 20em;
 }
 /* line 78, sass/_popper.scss */
 .popper[x-placement^="top"].intro .popper__arrow {
-  border-color: #ffc107 transparent transparent transparent;
+  border-color: #f2f2f2 transparent transparent transparent;
 }
 /* line 81, sass/_popper.scss */
 .popper[x-placement^="bottom"].intro .popper__arrow {
-  border-color: transparent transparent #ffc107 transparent;
+  border-color: transparent transparent #f2f2f2 transparent;
 }
 /* line 84, sass/_popper.scss */
 .popper[x-placement^="right"].intro .popper__arrow {
-  border-color: transparent #ffc107 transparent transparent;
+  border-color: transparent #f2f2f2 transparent transparent;
 }
 /* line 87, sass/_popper.scss */
 .popper[x-placement^="left"].intro .popper__arrow {
-  border-color: transparent transparent transparent #ffc107;
+  border-color: transparent transparent transparent #f2f2f2;
 }
 
 /* line 93, sass/_popper.scss */
@@ -12399,10 +12399,15 @@ body.phone #mapView.shy {
   display: none;
 }
 
-/* line 325, sass/_searchView.scss */
+/* line 326, sass/_searchView.scss */
 .rtl #searchView .labels {
   padding-right: 0 !important;
   padding-left: 1em !important;
+}
+/* line 331, sass/_searchView.scss */
+.rtl #searchView #search-bar {
+  left: 0;
+  right: 2rem;
 }
 
 /* line 185, sass/_detailView.scss */
@@ -13964,9 +13969,14 @@ body.phone #mapView.shy {
   white-space: nowrap;
 }
 
-/* line 259, sass/_detailView.scss */
+/* line 260, sass/_detailView.scss */
 .rtl #detailView .property.location .property-value {
   background-position: left .5em;
+}
+/* line 264, sass/_detailView.scss */
+.rtl #detailView .message-btn {
+  right: inherit;
+  left: 2rem;
 }
 
 /* line 1, sass/_menuView.scss */

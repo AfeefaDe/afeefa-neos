@@ -203,9 +203,10 @@ qx.Class.define("SearchView", {
       };
       that.createResult('certified', that.getWording('search.label.certified'), that.getWording('search.sublabel.certified'), action );
 
-      that.createSectionHeader( that.getWording('search.label.activity') );
-      
-      if( APP.getUserDevice() == 'mobile') showNewEntryResult();
+      if( APP.getUserDevice() == 'mobile') {
+        that.createSectionHeader( that.getWording('search.label.activity') );
+        showNewEntryResult();
+      }
 
       that.createSectionHeader( that.getWording('search.label.help') );
       
@@ -596,6 +597,7 @@ qx.Class.define("SearchView", {
     changeLanguage: function(){
         var that = this;
 
+        if( APP.getDetailView().isActive() ) return;
         if(that.isActive()) that.load( that.inputField.val() );
     }
   }

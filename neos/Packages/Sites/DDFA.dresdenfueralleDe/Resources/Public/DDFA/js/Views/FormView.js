@@ -96,8 +96,8 @@ qx.Class.define("FormView", {
                 that.loadUIVocab(type);
             });
 
-
             that.view.addClass('active');
+            that.isActive(true);
         },
 
         loadUIVocab: function(type){
@@ -395,6 +395,7 @@ qx.Class.define("FormView", {
             that.reset();
             that.setCurrentForm(null);
             that.view.removeClass('active');
+            that.isActive(false);
         },
 
         changeLanguage: function () {

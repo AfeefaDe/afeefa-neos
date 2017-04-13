@@ -256,7 +256,14 @@
 }
 
 .rtl {
-	#detailView .property.location .property-value {
-  	background-position: left .5em;
+	#detailView {
+		.property.location .property-value {
+	  	background-position: left .5em;
+		}
+
+		.message-btn {
+			right: inherit;
+			left: 2rem;
+		}
 	}
 }

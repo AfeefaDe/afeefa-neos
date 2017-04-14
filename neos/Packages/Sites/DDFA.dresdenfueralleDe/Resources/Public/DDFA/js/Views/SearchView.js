@@ -222,9 +222,10 @@ qx.Class.define("SearchView", {
 
       that.view.addClass('active-search');
 
-      const entries = _.filter(APP.getData().entries, function(entry){
-        return !entry.external;
-      });
+      // const entries = _.filter(APP.getData().entries, function(entry){
+      //   return entry.external;
+      // });
+      const entries = APP.getData().entries;
 
       var entriesFiltered;
 
@@ -446,7 +447,7 @@ qx.Class.define("SearchView", {
       
       // action
       var action = function(){
-        if(entry.location.length > 0)
+        if( entry.location.length > 0 && entry.location[0].lat )
           APP.getMapView().selectMarkerFromLink(entry.entryId);
         else
           APP.getDetailView().load(entry);

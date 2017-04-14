@@ -161,7 +161,8 @@ qx.Class.define("DetailView", {
 			var that = this;
 			
 			// set URL (except entry is from external data source)
-			if(!record.external) window.location.hash = record.entryId;
+			// if(!record.external) window.location.hash = record.entryId;
+			window.location.hash = record.entryId;
 
 			if(that.record) {
 				that.reset();

@@ -156,32 +156,161 @@ qx.Class.define("DataManager", {
             });
         },
 
-        getWifiNodes: function (cb) {
+        fetchExternalData: function (sourceKey, cb) {
             var that = this;
 
+            var sources = {
+                freifunk: {
+                    sourceUrl: 'externalDataFiles/freifunk-nodes.json',
+                    mapping: {
+                        name: function(record){
+                            return "Wifi Hotspot (Freifunk)";
+                        },
+                        type: function(record){
+                            return 0;
+                        },
+                        entryId: function(record, i){
+                            return 'freifunk-'+i;
+                        },
+                        category: function(record){
+                            return {
+                                "name":"general"
+                            };
+                        },
+                        subCategory: function(record){
+                            return 'wifi';
+                        },
+                        certified: function(record){
+                            return false;
+                        },
+                        descriptionShort: function(record){
+                            return APP.getLM().resolve("freifunk.descriptionShort");
+                        },
+                        image: function(record){
+                            return "https://freifunk.net/wp-content/uploads/2013/07/spenden.png";
+                        },
+                        imageType: function(record){
+                            return 'image';
+                        },
+                        web: function(record){
+                            return "http://www.freifunk-dresden.de/topology/google-maps.html";
+                        },
+                        facebook: function(record){
+                            return "https://www.facebook.com/FreifunkDresden";
+                        },
+                        location: function(record){
+                            return [{
+                                "arrival":"",
+                                "city":"Dresden",
+                                "lat":record.position.lat,
+                                "lon":record.position.long,
+                                // "placename":"...",
+                                // "street":"...",
+                                // "zip":"..."
+                            }];
+                        }
+                    }
+                },
+                facebookEvents: {
+                    sourceUrl: 'https://backend.afeefa.de/api/v1/facebook_events?token=MapCat_050615',
+                    mapping: {
+                        name: function(record){
+                            return record.name;
+                        },
+                        type: function(record){
+                            return 2;
+                        },
+                        entryId: function(record,i){
+                            return record.id;
+                        },
+                        category: function(record){
+                            return {
+                                "name":"external-event"
+                            };
+                        },
+                        subCategory: function(record){
+                            return 'fb-event';
+                        },
+                        certified: function(record){
+                            return false;
+                        },
+                        description: function(record){
+                            return 'Veranstalter: ' + record.owner + '\n\n' + record.description;
+                        },
+                        descriptionShort: function(record){
+                            return null;
+                        },
+                        image: function(record){
+                            return null;
+                        },
+                        imageType: function(record){
+                            return null;
+                        },
+                        web: function(record){
+                            return record.link_to_owner;
+                        },
+                        facebook: function(record){
+                            return record.link_to_event;
+                        },
+                        location: function(record){
+                            return [{
+                                "arrival":"",
+                                "city": record.place.location? record.place.location.city : null,
+                                "lat": record.place.location? record.place.location.latitude : null,
+                                "lon": record.place.location? record.place.location.longitude : null,
+                                "placename": record.place.name? record.place.name : null,
+                                "street": record.place.location? record.place.location.street : null,
+                                "zip": record.place.location? record.place.location.zip : null
+                            }];
+                        },
+                        dateFrom: function(record){
+                            return record.start_time.substr( 0, record.start_time.indexOf('T') );
+                        },
+                        timeFrom: function(record){
+                            function n(n){
+                                return n > 9 ? "" + n: "0" + n;
+                            }
+
+                            date = new Date(record.start_time);
+                            return n(date.getHours()) + ':' + n(date.getMinutes());
+                        },
+                        dateTo: function(record){
+                            return record.end_time.substr( 0, record.end_time.indexOf('T') );
+                        },
+                        timeTo: function(record){
+                            function n(n){
+                                return n > 9 ? "" + n: "0" + n;
+                            }
+
+                            date = new Date(record.start_time);
+                            return n(date.getHours()) + ':' + n(date.getMinutes());
+                        }
+                    }
+                }
+            };
+
             $.ajax({
-                url: "externalDataFiles/freifunk-nodes.json",
-                // url: "http://api.freifunk-dresden.de/afeefa.json",
+                url: sources[sourceKey].sourceUrl,
                 type: 'GET',
                 dataType: 'json'
             })
-            .done(function (data) {
-                var wifiNodes = _.filter(data.nodes, function (node) {
-
-                    // filter out dead access points
-                    if (!node.status.online) return false;
-
-                    return true;
-                });
-
-                that.integrateExternalData(
-                    wifiNodes,
-                    {
-                        name:"Wifi Hotspot (Freifunk)"
-                        // lat: {value:"position.lat", type:"var"}
-                    }
-                );
-                // cb(wifiNodes);
+            .done(function (dataFromServer) {
+                
+                var data;
+                if( sourceKey == 'freifunk' ) {
+                    
+                    // filter
+                    data = _.filter(dataFromServer.nodes, function (record) {
+                        // filter out dead access points
+                        if (!record.status.online) return false;
+                        return true;
+                    });
+                }
+                else if( sourceKey == 'facebookEvents' ){
+                    data = dataFromServer;
+                }
+                
+                that.integrateExternalData(data, sources[sourceKey].mapping);
                 cb();
             })
             .fail(function (a) {
@@ -196,33 +325,33 @@ qx.Class.define("DataManager", {
             var currentAppData = APP.getData();
                     
             var rows = [];
-            _.each(data, function(row){
+            _.each(data, function(record, i){
                 var newEntry = {
                     external:true,
-                    // "name": row.name,
-                    "name":mapping? mapping.name : 'mapping missing',
-                    "entry_id": 0,
-                    "type": 3,
-                    "subCategory": 'wifi',
-                    "category": {
+                    name: mapping.name? mapping.name(record) : 'mapping missing',
+                    entryId: mapping.entryId? mapping.entryId(record, i) : 0,
+                    type: mapping.type? mapping.type(record) : 0,
+                    category: mapping.category? mapping.category(record) : {
                         "name":"general",
                     },
-                    "certified":false,
-                    "descriptionShort":APP.getLM().resolve("freifunk.descriptionShort"),
-                    image:"https://freifunk.net/wp-content/uploads/2013/07/spenden.png",
-                    imageType:"image",
-                    web:"http://www.freifunk-dresden.de/topology/google-maps.html",
-                    facebook:"https://www.facebook.com/FreifunkDresden",
-                    location:[{
-                        "arrival":"",
-                        "city":"Dresden",
-                        "lat":row.position.lat,
-                        "lon":row.position.long,
-                        // "placename":"...",
-                        // "street":"...",
-                        // "zip":"..."
-                    }]
+                    subCategory: mapping.subCategory? mapping.subCategory(record) : null,
+                    certified: mapping.certified? mapping.certified(record) : false,
+                    description: mapping.description? mapping.description(record) : null,
+                    descriptionShort: mapping.descriptionShort? mapping.descriptionShort(record) : null,
+                    image: mapping.image? mapping.image(record) : null,
+                    imageType: mapping.imageType? mapping.imageType(record) : null,
+                    web: mapping.web? mapping.web(record) : null,
+                    facebook: mapping.facebook? mapping.facebook(record) : null,
+                    location: mapping.location? mapping.location(record) : null,
+                    dateFrom: mapping.dateFrom? mapping.dateFrom(record) : null,
+                    dateTo: mapping.dateTo? mapping.dateTo(record) : null,
+                    timeFrom: mapping.timeFrom? mapping.timeFrom(record) : null,
+                    timeTo: mapping.timeTo? mapping.timeTo(record) : null
                 };
+
+                if(newEntry.dateFrom == newEntry.dateTo) newEntry.dateTo = null;
+                if(newEntry.timeFrom == newEntry.timeTo) newEntry.timeTo = null;
+
                 rows.push(newEntry);
             });
 
@@ -232,6 +361,39 @@ qx.Class.define("DataManager", {
             
             APP.setData(currentAppData);
         },
+
+        // getWifiNodes: function (cb) {
+        //     var that = this;
+
+        //     $.ajax({
+        //         url: "externalDataFiles/freifunk-nodes.json",
+        //         // url: "http://api.freifunk-dresden.de/afeefa.json",
+        //         type: 'GET',
+        //         dataType: 'json'
+        //     })
+        //     .done(function (data) {
+        //         var wifiNodes = _.filter(data.nodes, function (node) {
+
+        //             // filter out dead access points
+        //             if (!node.status.online) return false;
+
+        //             return true;
+        //         });
+
+        //         that.integrateExternalData(
+        //             wifiNodes,
+        //             {
+        //                 name:"Wifi Hotspot (Freifunk)"
+        //                 // lat: {value:"position.lat", type:"var"}
+        //             }
+        //         );
+        //         // cb(wifiNodes);
+        //         cb();
+        //     })
+        //     .fail(function (a) {
+        //         console.debug(a);
+        //     });
+        // },
 
         addMarketEntry: function (data, cb) {
 

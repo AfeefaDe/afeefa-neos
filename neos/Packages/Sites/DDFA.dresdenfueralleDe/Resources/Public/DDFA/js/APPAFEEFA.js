@@ -223,9 +223,14 @@ qx.Class.define("APPAFEEFA", {
 				that.say('fetchedNewData');
 				that.say('fetchedAllBasicData');
 
-				that.getDataManager().getWifiNodes(function(data){
+				that.getDataManager().fetchExternalData('freifunk', function(){
 					that.say('fetchedNewData');
-					that.say('fetchedAllData');
+					// that.say('fetchedAllData');
+
+					that.getDataManager().fetchExternalData('facebookEvents', function(){
+						that.say('fetchedNewData');
+						that.say('fetchedAllData');
+					});
 				});
 			});
 			

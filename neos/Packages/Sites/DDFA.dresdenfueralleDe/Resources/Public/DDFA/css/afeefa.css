@@ -2768,7 +2768,7 @@ template {
  * Remove the gray background color from active links in IE 10.
  */
 /* line 89, ../../materialize/sass/components/_normalize.scss */
-a, #includeView .content-container .content span.locationLink, #includeView .content-container .content span.searchLink {
+a, #includeView .scroll-container .content span.locationLink, #includeView .scroll-container .content span.searchLink {
   background-color: transparent;
 }
 
@@ -2777,10 +2777,10 @@ a, #includeView .content-container .content span.locationLink, #includeView .con
  * active/hover state.
  */
 /* line 98, ../../materialize/sass/components/_normalize.scss */
-a:active, #includeView .content-container .content span.locationLink:active, #includeView .content-container .content span.searchLink:active,
+a:active, #includeView .scroll-container .content span.locationLink:active, #includeView .scroll-container .content span.searchLink:active,
 a:hover,
-#includeView .content-container .content span.locationLink:hover,
-#includeView .content-container .content span.searchLink:hover {
+#includeView .scroll-container .content span.locationLink:hover,
+#includeView .scroll-container .content span.searchLink:hover {
   outline: 0;
 }
 
@@ -3136,7 +3136,7 @@ ul:not(.browser-default) li {
 }
 
 /* line 31, ../../materialize/sass/components/_global.scss */
-a, #includeView .content-container .content span.locationLink, #includeView .content-container .content span.searchLink {
+a, #includeView .scroll-container .content span.locationLink, #includeView .scroll-container .content span.searchLink {
   color: #039be5;
   text-decoration: none;
   -webkit-tap-highlight-color: transparent;
@@ -3265,7 +3265,7 @@ video.responsive-video {
   height: 30px;
 }
 /* line 153, ../../materialize/sass/components/_global.scss */
-.pagination li a, .pagination li #includeView .content-container .content span.locationLink, #includeView .content-container .content .pagination li span.locationLink, .pagination li #includeView .content-container .content span.searchLink, #includeView .content-container .content .pagination li span.searchLink {
+.pagination li a, .pagination li #includeView .scroll-container .content span.locationLink, #includeView .scroll-container .content .pagination li span.locationLink, .pagination li #includeView .scroll-container .content span.searchLink, #includeView .scroll-container .content .pagination li span.searchLink {
   color: #444;
   display: inline-block;
   font-size: 1.2rem;
@@ -3273,7 +3273,7 @@ video.responsive-video {
   line-height: 30px;
 }
 /* line 161, ../../materialize/sass/components/_global.scss */
-.pagination li.active a, .pagination li.active #includeView .content-container .content span.locationLink, #includeView .content-container .content .pagination li.active span.locationLink, .pagination li.active #includeView .content-container .content span.searchLink, #includeView .content-container .content .pagination li.active span.searchLink {
+.pagination li.active a, .pagination li.active #includeView .scroll-container .content span.locationLink, #includeView .scroll-container .content .pagination li.active span.locationLink, .pagination li.active #includeView .scroll-container .content span.searchLink, #includeView .scroll-container .content .pagination li.active span.searchLink {
   color: #fff;
 }
 /* line 163, ../../materialize/sass/components/_global.scss */
@@ -3281,7 +3281,7 @@ video.responsive-video {
   background-color: #ee6e73;
 }
 /* line 165, ../../materialize/sass/components/_global.scss */
-.pagination li.disabled a, .pagination li.disabled #includeView .content-container .content span.locationLink, #includeView .content-container .content .pagination li.disabled span.locationLink, .pagination li.disabled #includeView .content-container .content span.searchLink, #includeView .content-container .content .pagination li.disabled span.searchLink {
+.pagination li.disabled a, .pagination li.disabled #includeView .scroll-container .content span.locationLink, #includeView .scroll-container .content .pagination li.disabled span.locationLink, .pagination li.disabled #includeView .scroll-container .content span.searchLink, #includeView .scroll-container .content .pagination li.disabled span.searchLink {
   cursor: default;
   color: #999;
 }
@@ -3704,13 +3704,13 @@ td, th {
   color: #fff;
 }
 /* line 558, ../../materialize/sass/components/_global.scss */
-.collection a.collection-item, .collection #includeView .content-container .content span.collection-item.locationLink, #includeView .content-container .content .collection span.collection-item.locationLink, .collection #includeView .content-container .content span.collection-item.searchLink, #includeView .content-container .content .collection span.collection-item.searchLink {
+.collection a.collection-item, .collection #includeView .scroll-container .content span.collection-item.locationLink, #includeView .scroll-container .content .collection span.collection-item.locationLink, .collection #includeView .scroll-container .content span.collection-item.searchLink, #includeView .scroll-container .content .collection span.collection-item.searchLink {
   display: block;
   transition: .25s;
   color: #26a69a;
 }
 /* line 563, ../../materialize/sass/components/_global.scss */
-.collection a.collection-item:not(.active):hover, .collection #includeView .content-container .content span.collection-item.locationLink:not(.active):hover, #includeView .content-container .content .collection span.collection-item.locationLink:not(.active):hover, .collection #includeView .content-container .content span.collection-item.searchLink:not(.active):hover, #includeView .content-container .content .collection span.collection-item.searchLink:not(.active):hover {
+.collection a.collection-item:not(.active):hover, .collection #includeView .scroll-container .content span.collection-item.locationLink:not(.active):hover, #includeView .scroll-container .content .collection span.collection-item.locationLink:not(.active):hover, .collection #includeView .scroll-container .content span.collection-item.searchLink:not(.active):hover, #includeView .scroll-container .content .collection span.collection-item.searchLink:not(.active):hover {
   background-color: #ddd;
 }
 /* line 570, ../../materialize/sass/components/_global.scss */
@@ -3932,7 +3932,7 @@ span.badge[data-badge-caption]::after {
 }
 
 /* line 29, ../../materialize/sass/components/_badges.scss */
-nav ul a span.badge, nav ul #includeView .content-container .content span.locationLink span.badge, #includeView .content-container .content nav ul span.locationLink span.badge, nav ul #includeView .content-container .content span.searchLink span.badge, #includeView .content-container .content nav ul span.searchLink span.badge {
+nav ul a span.badge, nav ul #includeView .scroll-container .content span.locationLink span.badge, #includeView .scroll-container .content nav ul span.locationLink span.badge, nav ul #includeView .scroll-container .content span.searchLink span.badge, #includeView .scroll-container .content nav ul span.searchLink span.badge {
   display: inline-block;
   float: none;
   margin-left: 4px;
@@ -4898,7 +4898,7 @@ nav.nav-extended .nav-content {
   line-height: normal;
 }
 /* line 23, ../../materialize/sass/components/_navbar.scss */
-nav a, nav #includeView .content-container .content span.locationLink, #includeView .content-container .content nav span.locationLink, nav #includeView .content-container .content span.searchLink, #includeView .content-container .content nav span.searchLink {
+nav a, nav #includeView .scroll-container .content span.locationLink, #includeView .scroll-container .content nav span.locationLink, nav #includeView .scroll-container .content span.searchLink, #includeView .scroll-container .content nav span.searchLink {
   color: #fff;
 }
 /* line 25, ../../materialize/sass/components/_navbar.scss */
@@ -4917,7 +4917,7 @@ nav .nav-wrapper {
 }
 @media only screen and (min-width: 993px) {
   /* line 40, ../../materialize/sass/components/_navbar.scss */
-  nav a.button-collapse, nav #includeView .content-container .content span.button-collapse.locationLink, #includeView .content-container .content nav span.button-collapse.locationLink, nav #includeView .content-container .content span.button-collapse.searchLink, #includeView .content-container .content nav span.button-collapse.searchLink {
+  nav a.button-collapse, nav #includeView .scroll-container .content span.button-collapse.locationLink, #includeView .scroll-container .content nav span.button-collapse.locationLink, nav #includeView .scroll-container .content span.button-collapse.searchLink, #includeView .scroll-container .content nav span.button-collapse.searchLink {
     display: none;
   }
 }
@@ -5002,7 +5002,7 @@ nav ul li.active {
   background-color: rgba(0, 0, 0, 0.1);
 }
 /* line 124, ../../materialize/sass/components/_navbar.scss */
-nav ul a, nav ul #includeView .content-container .content span.locationLink, #includeView .content-container .content nav ul span.locationLink, nav ul #includeView .content-container .content span.searchLink, #includeView .content-container .content nav ul span.searchLink {
+nav ul a, nav ul #includeView .scroll-container .content span.locationLink, #includeView .scroll-container .content nav ul span.locationLink, nav ul #includeView .scroll-container .content span.searchLink, #includeView .scroll-container .content nav ul span.searchLink {
   transition: background-color .3s;
   font-size: 1rem;
   color: #fff;
@@ -5011,18 +5011,18 @@ nav ul a, nav ul #includeView .content-container .content span.locationLink, #in
   cursor: pointer;
 }
 /* line 132, ../../materialize/sass/components/_navbar.scss */
-nav ul a.btn, nav ul a.btn-large, nav ul #includeView .content-container .content span.btn-large.locationLink, #includeView .content-container .content nav ul span.btn-large.locationLink, nav ul #includeView .content-container .content span.btn-large.searchLink, #includeView .content-container .content nav ul span.btn-large.searchLink, nav ul #includeView .content-container .content span.btn.locationLink, #includeView .content-container .content nav ul span.btn.locationLink, nav ul #includeView .content-container .content span.btn.searchLink, #includeView .content-container .content nav ul span.btn.searchLink, nav ul a.btn-large, nav ul #includeView .content-container .content span.btn-large.locationLink, #includeView .content-container .content nav ul span.btn-large.locationLink, nav ul #includeView .content-container .content span.btn-large.searchLink, #includeView .content-container .content nav ul span.btn-large.searchLink, nav ul a.btn-flat, nav ul #includeView .content-container .content span.btn-flat.locationLink, #includeView .content-container .content nav ul span.btn-flat.locationLink, nav ul #includeView .content-container .content span.btn-flat.searchLink, #includeView .content-container .content nav ul span.btn-flat.searchLink, nav ul a.btn-floating, nav ul #includeView .content-container .content span.btn-floating.locationLink, #includeView .content-container .content nav ul span.btn-floating.locationLink, nav ul #includeView .content-container .content span.btn-floating.searchLink, #includeView .content-container .content nav ul span.btn-floating.searchLink {
+nav ul a.btn, nav ul a.btn-large, nav ul #includeView .scroll-container .content span.btn-large.locationLink, #includeView .scroll-container .content nav ul span.btn-large.locationLink, nav ul #includeView .scroll-container .content span.btn-large.searchLink, #includeView .scroll-container .content nav ul span.btn-large.searchLink, nav ul #includeView .scroll-container .content span.btn.locationLink, #includeView .scroll-container .content nav ul span.btn.locationLink, nav ul #includeView .scroll-container .content span.btn.searchLink, #includeView .scroll-container .content nav ul span.btn.searchLink, nav ul a.btn-large, nav ul #includeView .scroll-container .content span.btn-large.locationLink, #includeView .scroll-container .content nav ul span.btn-large.locationLink, nav ul #includeView .scroll-container .content span.btn-large.searchLink, #includeView .scroll-container .content nav ul span.btn-large.searchLink, nav ul a.btn-flat, nav ul #includeView .scroll-container .content span.btn-flat.locationLink, #includeView .scroll-container .content nav ul span.btn-flat.locationLink, nav ul #includeView .scroll-container .content span.btn-flat.searchLink, #includeView .scroll-container .content nav ul span.btn-flat.searchLink, nav ul a.btn-floating, nav ul #includeView .scroll-container .content span.btn-floating.locationLink, #includeView .scroll-container .content nav ul span.btn-floating.locationLink, nav ul #includeView .scroll-container .content span.btn-floating.searchLink, #includeView .scroll-container .content nav ul span.btn-floating.searchLink {
   margin-top: -2px;
   margin-left: 15px;
   margin-right: 15px;
 }
 /* line 137, ../../materialize/sass/components/_navbar.scss */
-nav ul a.btn > .material-icons, nav ul a.btn-large > .material-icons, nav ul #includeView .content-container .content span.btn-large.locationLink > .material-icons, #includeView .content-container .content nav ul span.btn-large.locationLink > .material-icons, nav ul #includeView .content-container .content span.btn-large.searchLink > .material-icons, #includeView .content-container .content nav ul span.btn-large.searchLink > .material-icons, nav ul #includeView .content-container .content span.btn.locationLink > .material-icons, #includeView .content-container .content nav ul span.btn.locationLink > .material-icons, nav ul #includeView .content-container .content span.btn.searchLink > .material-icons, #includeView .content-container .content nav ul span.btn.searchLink > .material-icons, nav ul a.btn-large > .material-icons, nav ul #includeView .content-container .content span.btn-large.locationLink > .material-icons, #includeView .content-container .content nav ul span.btn-large.locationLink > .material-icons, nav ul #includeView .content-container .content span.btn-large.searchLink > .material-icons, #includeView .content-container .content nav ul span.btn-large.searchLink > .material-icons, nav ul a.btn-flat > .material-icons, nav ul #includeView .content-container .content span.btn-flat.locationLink > .material-icons, #includeView .content-container .content nav ul span.btn-flat.locationLink > .material-icons, nav ul #includeView .content-container .content span.btn-flat.searchLink > .material-icons, #includeView .content-container .content nav ul span.btn-flat.searchLink > .material-icons, nav ul a.btn-floating > .material-icons, nav ul #includeView .content-container .content span.btn-floating.locationLink > .material-icons, #includeView .content-container .content nav ul span.btn-floating.locationLink > .material-icons, nav ul #includeView .content-container .content span.btn-floating.searchLink > .material-icons, #includeView .content-container .content nav ul span.btn-floating.searchLink > .material-icons {
+nav ul a.btn > .material-icons, nav ul a.btn-large > .material-icons, nav ul #includeView .scroll-container .content span.btn-large.locationLink > .material-icons, #includeView .scroll-container .content nav ul span.btn-large.locationLink > .material-icons, nav ul #includeView .scroll-container .content span.btn-large.searchLink > .material-icons, #includeView .scroll-container .content nav ul span.btn-large.searchLink > .material-icons, nav ul #includeView .scroll-container .content span.btn.locationLink > .material-icons, #includeView .scroll-container .content nav ul span.btn.locationLink > .material-icons, nav ul #includeView .scroll-container .content span.btn.searchLink > .material-icons, #includeView .scroll-container .content nav ul span.btn.searchLink > .material-icons, nav ul a.btn-large > .material-icons, nav ul #includeView .scroll-container .content span.btn-large.locationLink > .material-icons, #includeView .scroll-container .content nav ul span.btn-large.locationLink > .material-icons, nav ul #includeView .scroll-container .content span.btn-large.searchLink > .material-icons, #includeView .scroll-container .content nav ul span.btn-large.searchLink > .material-icons, nav ul a.btn-flat > .material-icons, nav ul #includeView .scroll-container .content span.btn-flat.locationLink > .material-icons, #includeView .scroll-container .content nav ul span.btn-flat.locationLink > .material-icons, nav ul #includeView .scroll-container .content span.btn-flat.searchLink > .material-icons, #includeView .scroll-container .content nav ul span.btn-flat.searchLink > .material-icons, nav ul a.btn-floating > .material-icons, nav ul #includeView .scroll-container .content span.btn-floating.locationLink > .material-icons, #includeView .scroll-container .content nav ul span.btn-floating.locationLink > .material-icons, nav ul #includeView .scroll-container .content span.btn-floating.searchLink > .material-icons, #includeView .scroll-container .content nav ul span.btn-floating.searchLink > .material-icons {
   height: inherit;
   line-height: inherit;
 }
 /* line 143, ../../materialize/sass/components/_navbar.scss */
-nav ul a:hover, nav ul #includeView .content-container .content span.locationLink:hover, #includeView .content-container .content nav ul span.locationLink:hover, nav ul #includeView .content-container .content span.searchLink:hover, #includeView .content-container .content nav ul span.searchLink:hover {
+nav ul a:hover, nav ul #includeView .scroll-container .content span.locationLink:hover, #includeView .scroll-container .content nav ul span.locationLink:hover, nav ul #includeView .scroll-container .content span.searchLink:hover, #includeView .scroll-container .content nav ul span.searchLink:hover {
   background-color: rgba(0, 0, 0, 0.1);
 }
 /* line 148, ../../materialize/sass/components/_navbar.scss */
@@ -5083,7 +5083,7 @@ nav .input-field label.active i {
   }
 
   /* line 202, ../../materialize/sass/components/_navbar.scss */
-  nav, nav .nav-wrapper i, nav a.button-collapse, nav #includeView .content-container .content span.button-collapse.locationLink, #includeView .content-container .content nav span.button-collapse.locationLink, nav #includeView .content-container .content span.button-collapse.searchLink, #includeView .content-container .content nav span.button-collapse.searchLink, nav a.button-collapse i, nav #includeView .content-container .content span.button-collapse.locationLink i, #includeView .content-container .content nav span.button-collapse.locationLink i, nav #includeView .content-container .content span.button-collapse.searchLink i, #includeView .content-container .content nav span.button-collapse.searchLink i {
+  nav, nav .nav-wrapper i, nav a.button-collapse, nav #includeView .scroll-container .content span.button-collapse.locationLink, #includeView .scroll-container .content nav span.button-collapse.locationLink, nav #includeView .scroll-container .content span.button-collapse.searchLink, #includeView .scroll-container .content nav span.button-collapse.searchLink, nav a.button-collapse i, nav #includeView .scroll-container .content span.button-collapse.locationLink i, #includeView .scroll-container .content nav span.button-collapse.locationLink i, nav #includeView .scroll-container .content span.button-collapse.searchLink i, #includeView .scroll-container .content nav span.button-collapse.searchLink i {
     height: 64px;
     line-height: 64px;
   }
@@ -5124,7 +5124,7 @@ nav .input-field label.active i {
   font-weight: 700;
 }
 /* line 2, ../../materialize/sass/components/_typography.scss */
-a, #includeView .content-container .content span.locationLink, #includeView .content-container .content span.searchLink {
+a, #includeView .scroll-container .content span.locationLink, #includeView .scroll-container .content span.searchLink {
   text-decoration: none;
 }
 
@@ -5161,7 +5161,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* line 31, ../../materialize/sass/components/_typography.scss */
-h1 a, h1 #includeView .content-container .content span.locationLink, #includeView .content-container .content h1 span.locationLink, h1 #includeView .content-container .content span.searchLink, #includeView .content-container .content h1 span.searchLink, h2 a, h2 #includeView .content-container .content span.locationLink, #includeView .content-container .content h2 span.locationLink, h2 #includeView .content-container .content span.searchLink, #includeView .content-container .content h2 span.searchLink, h3 a, h3 #includeView .content-container .content span.locationLink, #includeView .content-container .content h3 span.locationLink, h3 #includeView .content-container .content span.searchLink, #includeView .content-container .content h3 span.searchLink, h4 a, h4 #includeView .content-container .content span.locationLink, #includeView .content-container .content h4 span.locationLink, h4 #includeView .content-container .content span.searchLink, #includeView .content-container .content h4 span.searchLink, h5 a, h5 #includeView .content-container .content span.locationLink, #includeView .content-container .content h5 span.locationLink, h5 #includeView .content-container .content span.searchLink, #includeView .content-container .content h5 span.searchLink, h6 a, h6 #includeView .content-container .content span.locationLink, #includeView .content-container .content h6 span.locationLink, h6 #includeView .content-container .content span.searchLink, #includeView .content-container .content h6 span.searchLink {
+h1 a, h1 #includeView .scroll-container .content span.locationLink, #includeView .scroll-container .content h1 span.locationLink, h1 #includeView .scroll-container .content span.searchLink, #includeView .scroll-container .content h1 span.searchLink, h2 a, h2 #includeView .scroll-container .content span.locationLink, #includeView .scroll-container .content h2 span.locationLink, h2 #includeView .scroll-container .content span.searchLink, #includeView .scroll-container .content h2 span.searchLink, h3 a, h3 #includeView .scroll-container .content span.locationLink, #includeView .scroll-container .content h3 span.locationLink, h3 #includeView .scroll-container .content span.searchLink, #includeView .scroll-container .content h3 span.searchLink, h4 a, h4 #includeView .scroll-container .content span.locationLink, #includeView .scroll-container .content h4 span.locationLink, h4 #includeView .scroll-container .content span.searchLink, #includeView .scroll-container .content h4 span.searchLink, h5 a, h5 #includeView .scroll-container .content span.locationLink, #includeView .scroll-container .content h5 span.locationLink, h5 #includeView .scroll-container .content span.searchLink, #includeView .scroll-container .content h5 span.searchLink, h6 a, h6 #includeView .scroll-container .content span.locationLink, #includeView .scroll-container .content h6 span.locationLink, h6 #includeView .scroll-container .content span.searchLink, #includeView .scroll-container .content h6 span.searchLink {
   font-weight: inherit;
 }
 
@@ -5542,14 +5542,14 @@ small {
   padding: 16px 24px;
 }
 /* line 166, ../../materialize/sass/components/_cards.scss */
-.card .card-action a:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating), .card .card-action #includeView .content-container .content span.locationLink:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating), #includeView .content-container .content .card .card-action span.locationLink:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating), .card .card-action #includeView .content-container .content span.searchLink:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating), #includeView .content-container .content .card .card-action span.searchLink:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating) {
+.card .card-action a:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating), .card .card-action #includeView .scroll-container .content span.locationLink:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating), #includeView .scroll-container .content .card .card-action span.locationLink:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating), .card .card-action #includeView .scroll-container .content span.searchLink:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating), #includeView .scroll-container .content .card .card-action span.searchLink:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating) {
   color: #ffab40;
   margin-right: 24px;
   transition: color .3s ease;
   text-transform: uppercase;
 }
 /* line 172, ../../materialize/sass/components/_cards.scss */
-.card .card-action a:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating):hover, .card .card-action #includeView .content-container .content span.locationLink:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating):hover, #includeView .content-container .content .card .card-action span.locationLink:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating):hover, .card .card-action #includeView .content-container .content span.searchLink:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating):hover, #includeView .content-container .content .card .card-action span.searchLink:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating):hover {
+.card .card-action a:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating):hover, .card .card-action #includeView .scroll-container .content span.locationLink:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating):hover, #includeView .scroll-container .content .card .card-action span.locationLink:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating):hover, .card .card-action #includeView .scroll-container .content span.searchLink:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating):hover, #includeView .scroll-container .content .card .card-action span.searchLink:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating):hover {
   color: #ffd8a6;
 }
 /* line 176, ../../materialize/sass/components/_cards.scss */
@@ -5668,26 +5668,26 @@ small {
   background-color: transparent;
 }
 /* line 5, ../../materialize/sass/components/_tabs.scss */
-.tabs.tabs-transparent .tab a, .tabs.tabs-transparent .tab #includeView .content-container .content span.locationLink, #includeView .content-container .content .tabs.tabs-transparent .tab span.locationLink, .tabs.tabs-transparent .tab #includeView .content-container .content span.searchLink, #includeView .content-container .content .tabs.tabs-transparent .tab span.searchLink,
+.tabs.tabs-transparent .tab a, .tabs.tabs-transparent .tab #includeView .scroll-container .content span.locationLink, #includeView .scroll-container .content .tabs.tabs-transparent .tab span.locationLink, .tabs.tabs-transparent .tab #includeView .scroll-container .content span.searchLink, #includeView .scroll-container .content .tabs.tabs-transparent .tab span.searchLink,
 .tabs.tabs-transparent .tab.disabled a,
-.tabs.tabs-transparent .tab.disabled #includeView .content-container .content span.locationLink,
-#includeView .content-container .content .tabs.tabs-transparent .tab.disabled span.locationLink,
-.tabs.tabs-transparent .tab.disabled #includeView .content-container .content span.searchLink,
-#includeView .content-container .content .tabs.tabs-transparent .tab.disabled span.searchLink,
+.tabs.tabs-transparent .tab.disabled #includeView .scroll-container .content span.locationLink,
+#includeView .scroll-container .content .tabs.tabs-transparent .tab.disabled span.locationLink,
+.tabs.tabs-transparent .tab.disabled #includeView .scroll-container .content span.searchLink,
+#includeView .scroll-container .content .tabs.tabs-transparent .tab.disabled span.searchLink,
 .tabs.tabs-transparent .tab.disabled a:hover,
-.tabs.tabs-transparent .tab.disabled #includeView .content-container .content span.locationLink:hover,
-#includeView .content-container .content .tabs.tabs-transparent .tab.disabled span.locationLink:hover,
-.tabs.tabs-transparent .tab.disabled #includeView .content-container .content span.searchLink:hover,
-#includeView .content-container .content .tabs.tabs-transparent .tab.disabled span.searchLink:hover {
+.tabs.tabs-transparent .tab.disabled #includeView .scroll-container .content span.locationLink:hover,
+#includeView .scroll-container .content .tabs.tabs-transparent .tab.disabled span.locationLink:hover,
+.tabs.tabs-transparent .tab.disabled #includeView .scroll-container .content span.searchLink:hover,
+#includeView .scroll-container .content .tabs.tabs-transparent .tab.disabled span.searchLink:hover {
   color: rgba(255, 255, 255, 0.7);
 }
 /* line 11, ../../materialize/sass/components/_tabs.scss */
-.tabs.tabs-transparent .tab a:hover, .tabs.tabs-transparent .tab #includeView .content-container .content span.locationLink:hover, #includeView .content-container .content .tabs.tabs-transparent .tab span.locationLink:hover, .tabs.tabs-transparent .tab #includeView .content-container .content span.searchLink:hover, #includeView .content-container .content .tabs.tabs-transparent .tab span.searchLink:hover,
+.tabs.tabs-transparent .tab a:hover, .tabs.tabs-transparent .tab #includeView .scroll-container .content span.locationLink:hover, #includeView .scroll-container .content .tabs.tabs-transparent .tab span.locationLink:hover, .tabs.tabs-transparent .tab #includeView .scroll-container .content span.searchLink:hover, #includeView .scroll-container .content .tabs.tabs-transparent .tab span.searchLink:hover,
 .tabs.tabs-transparent .tab a.active,
-.tabs.tabs-transparent .tab #includeView .content-container .content span.active.locationLink,
-#includeView .content-container .content .tabs.tabs-transparent .tab span.active.locationLink,
-.tabs.tabs-transparent .tab #includeView .content-container .content span.active.searchLink,
-#includeView .content-container .content .tabs.tabs-transparent .tab span.active.searchLink {
+.tabs.tabs-transparent .tab #includeView .scroll-container .content span.active.locationLink,
+#includeView .scroll-container .content .tabs.tabs-transparent .tab span.active.locationLink,
+.tabs.tabs-transparent .tab #includeView .scroll-container .content span.active.searchLink,
+#includeView .scroll-container .content .tabs.tabs-transparent .tab span.active.searchLink {
   color: #fff;
 }
 /* line 16, ../../materialize/sass/components/_tabs.scss */
@@ -5716,7 +5716,7 @@ small {
   text-transform: uppercase;
 }
 /* line 50, ../../materialize/sass/components/_tabs.scss */
-.tabs .tab a, .tabs .tab #includeView .content-container .content span.locationLink, #includeView .content-container .content .tabs .tab span.locationLink, .tabs .tab #includeView .content-container .content span.searchLink, #includeView .content-container .content .tabs .tab span.searchLink {
+.tabs .tab a, .tabs .tab #includeView .scroll-container .content span.locationLink, #includeView .scroll-container .content .tabs .tab span.locationLink, .tabs .tab #includeView .scroll-container .content span.searchLink, #includeView .scroll-container .content .tabs .tab span.searchLink {
   color: rgba(238, 110, 115, 0.7);
   display: block;
   width: 100%;
@@ -5728,12 +5728,12 @@ small {
   transition: color .28s ease;
 }
 /* line 51, ../../materialize/sass/components/_tabs.scss */
-.tabs .tab a:hover, .tabs .tab #includeView .content-container .content span.locationLink:hover, #includeView .content-container .content .tabs .tab span.locationLink:hover, .tabs .tab #includeView .content-container .content span.searchLink:hover, #includeView .content-container .content .tabs .tab span.searchLink:hover, .tabs .tab a.active, .tabs .tab #includeView .content-container .content span.active.locationLink, #includeView .content-container .content .tabs .tab span.active.locationLink, .tabs .tab #includeView .content-container .content span.active.searchLink, #includeView .content-container .content .tabs .tab span.active.searchLink {
+.tabs .tab a:hover, .tabs .tab #includeView .scroll-container .content span.locationLink:hover, #includeView .scroll-container .content .tabs .tab span.locationLink:hover, .tabs .tab #includeView .scroll-container .content span.searchLink:hover, #includeView .scroll-container .content .tabs .tab span.searchLink:hover, .tabs .tab a.active, .tabs .tab #includeView .scroll-container .content span.active.locationLink, #includeView .scroll-container .content .tabs .tab span.active.locationLink, .tabs .tab #includeView .scroll-container .content span.active.searchLink, #includeView .scroll-container .content .tabs .tab span.active.searchLink {
   background-color: transparent;
   color: #ee6e73;
 }
 /* line 68, ../../materialize/sass/components/_tabs.scss */
-.tabs .tab.disabled a, .tabs .tab.disabled #includeView .content-container .content span.locationLink, #includeView .content-container .content .tabs .tab.disabled span.locationLink, .tabs .tab.disabled #includeView .content-container .content span.searchLink, #includeView .content-container .content .tabs .tab.disabled span.searchLink, .tabs .tab.disabled a:hover, .tabs .tab.disabled #includeView .content-container .content span.locationLink:hover, #includeView .content-container .content .tabs .tab.disabled span.locationLink:hover, .tabs .tab.disabled #includeView .content-container .content span.searchLink:hover, #includeView .content-container .content .tabs .tab.disabled span.searchLink:hover {
+.tabs .tab.disabled a, .tabs .tab.disabled #includeView .scroll-container .content span.locationLink, #includeView .scroll-container .content .tabs .tab.disabled span.locationLink, .tabs .tab.disabled #includeView .scroll-container .content span.searchLink, #includeView .scroll-container .content .tabs .tab.disabled span.searchLink, .tabs .tab.disabled a:hover, .tabs .tab.disabled #includeView .scroll-container .content span.locationLink:hover, #includeView .scroll-container .content .tabs .tab.disabled span.locationLink:hover, .tabs .tab.disabled #includeView .scroll-container .content span.searchLink:hover, #includeView .scroll-container .content .tabs .tab.disabled span.searchLink:hover {
   color: rgba(238, 110, 115, 0.7);
   cursor: default;
 }
@@ -5759,7 +5759,7 @@ small {
     flex-grow: 1;
   }
   /* line 94, ../../materialize/sass/components/_tabs.scss */
-  .tabs .tab a, .tabs .tab #includeView .content-container .content span.locationLink, #includeView .content-container .content .tabs .tab span.locationLink, .tabs .tab #includeView .content-container .content span.searchLink, #includeView .content-container .content .tabs .tab span.searchLink {
+  .tabs .tab a, .tabs .tab #includeView .scroll-container .content span.locationLink, #includeView .scroll-container .content .tabs .tab span.locationLink, .tabs .tab #includeView .scroll-container .content span.searchLink, #includeView .scroll-container .content .tabs .tab span.searchLink {
     padding: 0 12px;
   }
 }
@@ -5991,7 +5991,7 @@ button.btn-floating {
   height: 56px;
 }
 /* line 174, ../../materialize/sass/components/_buttons.scss */
-.fixed-action-btn.toolbar.active > a i, #includeView .content-container .content .fixed-action-btn.toolbar.active > span.locationLink i, #includeView .content-container .content .fixed-action-btn.toolbar.active > span.searchLink i {
+.fixed-action-btn.toolbar.active > a i, #includeView .scroll-container .content .fixed-action-btn.toolbar.active > span.locationLink i, #includeView .scroll-container .content .fixed-action-btn.toolbar.active > span.searchLink i {
   opacity: 0;
 }
 /* line 182, ../../materialize/sass/components/_buttons.scss */
@@ -6009,7 +6009,7 @@ button.btn-floating {
   transition: none;
 }
 /* line 194, ../../materialize/sass/components/_buttons.scss */
-.fixed-action-btn.toolbar ul li a, .fixed-action-btn.toolbar ul li #includeView .content-container .content span.locationLink, #includeView .content-container .content .fixed-action-btn.toolbar ul li span.locationLink, .fixed-action-btn.toolbar ul li #includeView .content-container .content span.searchLink, #includeView .content-container .content .fixed-action-btn.toolbar ul li span.searchLink {
+.fixed-action-btn.toolbar ul li a, .fixed-action-btn.toolbar ul li #includeView .scroll-container .content span.locationLink, #includeView .scroll-container .content .fixed-action-btn.toolbar ul li span.locationLink, .fixed-action-btn.toolbar ul li #includeView .scroll-container .content span.searchLink, #includeView .scroll-container .content .fixed-action-btn.toolbar ul li span.searchLink {
   display: block;
   overflow: hidden;
   position: relative;
@@ -6022,7 +6022,7 @@ button.btn-floating {
   z-index: 1;
 }
 /* line 206, ../../materialize/sass/components/_buttons.scss */
-.fixed-action-btn.toolbar ul li a i, .fixed-action-btn.toolbar ul li #includeView .content-container .content span.locationLink i, #includeView .content-container .content .fixed-action-btn.toolbar ul li span.locationLink i, .fixed-action-btn.toolbar ul li #includeView .content-container .content span.searchLink i, #includeView .content-container .content .fixed-action-btn.toolbar ul li span.searchLink i {
+.fixed-action-btn.toolbar ul li a i, .fixed-action-btn.toolbar ul li #includeView .scroll-container .content span.locationLink i, #includeView .scroll-container .content .fixed-action-btn.toolbar ul li span.locationLink i, .fixed-action-btn.toolbar ul li #includeView .scroll-container .content span.searchLink i, #includeView .scroll-container .content .fixed-action-btn.toolbar ul li span.searchLink i {
   line-height: inherit;
 }
 /* line 221, ../../materialize/sass/components/_buttons.scss */
@@ -6040,7 +6040,7 @@ button.btn-floating {
   margin-bottom: 15px;
 }
 /* line 234, ../../materialize/sass/components/_buttons.scss */
-.fixed-action-btn ul a.btn-floating, .fixed-action-btn ul #includeView .content-container .content span.btn-floating.locationLink, #includeView .content-container .content .fixed-action-btn ul span.btn-floating.locationLink, .fixed-action-btn ul #includeView .content-container .content span.btn-floating.searchLink, #includeView .content-container .content .fixed-action-btn ul span.btn-floating.searchLink {
+.fixed-action-btn ul a.btn-floating, .fixed-action-btn ul #includeView .scroll-container .content span.btn-floating.locationLink, #includeView .scroll-container .content .fixed-action-btn ul span.btn-floating.locationLink, .fixed-action-btn ul #includeView .scroll-container .content span.btn-floating.searchLink, #includeView .scroll-container .content .fixed-action-btn ul span.btn-floating.searchLink {
   opacity: 0;
 }
 /* line 239, ../../materialize/sass/components/_buttons.scss */
@@ -6137,7 +6137,7 @@ button.btn-floating {
   height: 1px;
 }
 /* line 37, ../../materialize/sass/components/_dropdown.scss */
-.dropdown-content li > a, .dropdown-content #includeView .content-container .content li > span.locationLink, #includeView .content-container .content .dropdown-content li > span.locationLink, .dropdown-content #includeView .content-container .content li > span.searchLink, #includeView .content-container .content .dropdown-content li > span.searchLink, .dropdown-content li > span {
+.dropdown-content li > a, .dropdown-content #includeView .scroll-container .content li > span.locationLink, #includeView .scroll-container .content .dropdown-content li > span.locationLink, .dropdown-content #includeView .scroll-container .content li > span.searchLink, #includeView .scroll-container .content .dropdown-content li > span.searchLink, .dropdown-content li > span {
   font-size: 16px;
   color: #26a69a;
   display: block;
@@ -6151,7 +6151,7 @@ button.btn-floating {
   height: 18px;
 }
 /* line 52, ../../materialize/sass/components/_dropdown.scss */
-.dropdown-content li > a > i, .dropdown-content #includeView .content-container .content li > span.locationLink > i, #includeView .content-container .content .dropdown-content li > span.locationLink > i, .dropdown-content #includeView .content-container .content li > span.searchLink > i, #includeView .content-container .content .dropdown-content li > span.searchLink > i {
+.dropdown-content li > a > i, .dropdown-content #includeView .scroll-container .content li > span.locationLink > i, #includeView .scroll-container .content .dropdown-content li > span.locationLink > i, .dropdown-content #includeView .scroll-container .content li > span.searchLink > i, #includeView .scroll-container .content .dropdown-content li > span.searchLink > i {
   height: inherit;
   line-height: inherit;
   float: left;
@@ -6455,12 +6455,12 @@ button.btn-floating {
   background-color: #fff;
 }
 /* line 62, ../../materialize/sass/components/_collapsible.scss */
-.side-nav .collapsible-body li a, .side-nav .collapsible-body li #includeView .content-container .content span.locationLink, #includeView .content-container .content .side-nav .collapsible-body li span.locationLink, .side-nav .collapsible-body li #includeView .content-container .content span.searchLink, #includeView .content-container .content .side-nav .collapsible-body li span.searchLink,
+.side-nav .collapsible-body li a, .side-nav .collapsible-body li #includeView .scroll-container .content span.locationLink, #includeView .scroll-container .content .side-nav .collapsible-body li span.locationLink, .side-nav .collapsible-body li #includeView .scroll-container .content span.searchLink, #includeView .scroll-container .content .side-nav .collapsible-body li span.searchLink,
 .side-nav.fixed .collapsible-body li a,
-.side-nav.fixed .collapsible-body li #includeView .content-container .content span.locationLink,
-#includeView .content-container .content .side-nav.fixed .collapsible-body li span.locationLink,
-.side-nav.fixed .collapsible-body li #includeView .content-container .content span.searchLink,
-#includeView .content-container .content .side-nav.fixed .collapsible-body li span.searchLink {
+.side-nav.fixed .collapsible-body li #includeView .scroll-container .content span.locationLink,
+#includeView .scroll-container .content .side-nav.fixed .collapsible-body li span.locationLink,
+.side-nav.fixed .collapsible-body li #includeView .scroll-container .content span.searchLink,
+#includeView .scroll-container .content .side-nav.fixed .collapsible-body li span.searchLink {
   padding: 0 23.5px 0 31px;
 }
 
@@ -7882,7 +7882,7 @@ input[type=range]:focus::-ms-fill-upper {
   padding: 2px 0;
 }
 /* line 12, ../../materialize/sass/components/_table_of_contents.scss */
-.table-of-contents a, .table-of-contents #includeView .content-container .content span.locationLink, #includeView .content-container .content .table-of-contents span.locationLink, .table-of-contents #includeView .content-container .content span.searchLink, #includeView .content-container .content .table-of-contents span.searchLink {
+.table-of-contents a, .table-of-contents #includeView .scroll-container .content span.locationLink, #includeView .scroll-container .content .table-of-contents span.locationLink, .table-of-contents #includeView .scroll-container .content span.searchLink, #includeView .scroll-container .content .table-of-contents span.searchLink {
   display: inline-block;
   font-weight: 300;
   color: #757575;
@@ -7893,13 +7893,13 @@ input[type=range]:focus::-ms-fill-upper {
   display: inline-block;
 }
 /* line 22, ../../materialize/sass/components/_table_of_contents.scss */
-.table-of-contents a:hover, .table-of-contents #includeView .content-container .content span.locationLink:hover, #includeView .content-container .content .table-of-contents span.locationLink:hover, .table-of-contents #includeView .content-container .content span.searchLink:hover, #includeView .content-container .content .table-of-contents span.searchLink:hover {
+.table-of-contents a:hover, .table-of-contents #includeView .scroll-container .content span.locationLink:hover, #includeView .scroll-container .content .table-of-contents span.locationLink:hover, .table-of-contents #includeView .scroll-container .content span.searchLink:hover, #includeView .scroll-container .content .table-of-contents span.searchLink:hover {
   color: #a8a8a8;
   padding-left: 19px;
   border-left: 1px solid #ee6e73;
 }
 /* line 27, ../../materialize/sass/components/_table_of_contents.scss */
-.table-of-contents a.active, .table-of-contents #includeView .content-container .content span.active.locationLink, #includeView .content-container .content .table-of-contents span.active.locationLink, .table-of-contents #includeView .content-container .content span.active.searchLink, #includeView .content-container .content .table-of-contents span.active.searchLink {
+.table-of-contents a.active, .table-of-contents #includeView .scroll-container .content span.active.locationLink, #includeView .scroll-container .content .table-of-contents span.active.locationLink, .table-of-contents #includeView .scroll-container .content span.active.searchLink, #includeView .scroll-container .content .table-of-contents span.active.searchLink {
   font-weight: 500;
   padding-left: 18px;
   border-left: 2px solid #ee6e73;
@@ -7945,7 +7945,7 @@ input[type=range]:focus::-ms-fill-upper {
   background-color: rgba(0, 0, 0, 0.05);
 }
 /* line 41, ../../materialize/sass/components/_sideNav.scss */
-.side-nav li > a, .side-nav #includeView .content-container .content li > span.locationLink, #includeView .content-container .content .side-nav li > span.locationLink, .side-nav #includeView .content-container .content li > span.searchLink, #includeView .content-container .content .side-nav li > span.searchLink {
+.side-nav li > a, .side-nav #includeView .scroll-container .content li > span.locationLink, #includeView .scroll-container .content .side-nav li > span.locationLink, .side-nav #includeView .scroll-container .content li > span.searchLink, #includeView .scroll-container .content .side-nav li > span.searchLink {
   color: rgba(0, 0, 0, 0.87);
   display: block;
   font-size: 14px;
@@ -7955,31 +7955,31 @@ input[type=range]:focus::-ms-fill-upper {
   padding: 0 32px;
 }
 /* line 50, ../../materialize/sass/components/_sideNav.scss */
-.side-nav li > a:hover, .side-nav #includeView .content-container .content li > span.locationLink:hover, #includeView .content-container .content .side-nav li > span.locationLink:hover, .side-nav #includeView .content-container .content li > span.searchLink:hover, #includeView .content-container .content .side-nav li > span.searchLink:hover {
+.side-nav li > a:hover, .side-nav #includeView .scroll-container .content li > span.locationLink:hover, #includeView .scroll-container .content .side-nav li > span.locationLink:hover, .side-nav #includeView .scroll-container .content li > span.searchLink:hover, #includeView .scroll-container .content .side-nav li > span.searchLink:hover {
   background-color: rgba(0, 0, 0, 0.05);
 }
 /* line 52, ../../materialize/sass/components/_sideNav.scss */
-.side-nav li > a.btn, .side-nav li > a.btn-large, .side-nav #includeView .content-container .content li > span.btn-large.locationLink, #includeView .content-container .content .side-nav li > span.btn-large.locationLink, .side-nav #includeView .content-container .content li > span.btn-large.searchLink, #includeView .content-container .content .side-nav li > span.btn-large.searchLink, .side-nav #includeView .content-container .content li > span.btn.locationLink, #includeView .content-container .content .side-nav li > span.btn.locationLink, .side-nav #includeView .content-container .content li > span.btn.searchLink, #includeView .content-container .content .side-nav li > span.btn.searchLink, .side-nav li > a.btn-large, .side-nav #includeView .content-container .content li > span.btn-large.locationLink, #includeView .content-container .content .side-nav li > span.btn-large.locationLink, .side-nav #includeView .content-container .content li > span.btn-large.searchLink, #includeView .content-container .content .side-nav li > span.btn-large.searchLink, .side-nav li > a.btn-flat, .side-nav #includeView .content-container .content li > span.btn-flat.locationLink, #includeView .content-container .content .side-nav li > span.btn-flat.locationLink, .side-nav #includeView .content-container .content li > span.btn-flat.searchLink, #includeView .content-container .content .side-nav li > span.btn-flat.searchLink, .side-nav li > a.btn-floating, .side-nav #includeView .content-container .content li > span.btn-floating.locationLink, #includeView .content-container .content .side-nav li > span.btn-floating.locationLink, .side-nav #includeView .content-container .content li > span.btn-floating.searchLink, #includeView .content-container .content .side-nav li > span.btn-floating.searchLink {
+.side-nav li > a.btn, .side-nav li > a.btn-large, .side-nav #includeView .scroll-container .content li > span.btn-large.locationLink, #includeView .scroll-container .content .side-nav li > span.btn-large.locationLink, .side-nav #includeView .scroll-container .content li > span.btn-large.searchLink, #includeView .scroll-container .content .side-nav li > span.btn-large.searchLink, .side-nav #includeView .scroll-container .content li > span.btn.locationLink, #includeView .scroll-container .content .side-nav li > span.btn.locationLink, .side-nav #includeView .scroll-container .content li > span.btn.searchLink, #includeView .scroll-container .content .side-nav li > span.btn.searchLink, .side-nav li > a.btn-large, .side-nav #includeView .scroll-container .content li > span.btn-large.locationLink, #includeView .scroll-container .content .side-nav li > span.btn-large.locationLink, .side-nav #includeView .scroll-container .content li > span.btn-large.searchLink, #includeView .scroll-container .content .side-nav li > span.btn-large.searchLink, .side-nav li > a.btn-flat, .side-nav #includeView .scroll-container .content li > span.btn-flat.locationLink, #includeView .scroll-container .content .side-nav li > span.btn-flat.locationLink, .side-nav #includeView .scroll-container .content li > span.btn-flat.searchLink, #includeView .scroll-container .content .side-nav li > span.btn-flat.searchLink, .side-nav li > a.btn-floating, .side-nav #includeView .scroll-container .content li > span.btn-floating.locationLink, #includeView .scroll-container .content .side-nav li > span.btn-floating.locationLink, .side-nav #includeView .scroll-container .content li > span.btn-floating.searchLink, #includeView .scroll-container .content .side-nav li > span.btn-floating.searchLink {
   margin: 10px 15px;
 }
 /* line 56, ../../materialize/sass/components/_sideNav.scss */
-.side-nav li > a.btn, .side-nav li > a.btn-large, .side-nav #includeView .content-container .content li > span.btn-large.locationLink, #includeView .content-container .content .side-nav li > span.btn-large.locationLink, .side-nav #includeView .content-container .content li > span.btn-large.searchLink, #includeView .content-container .content .side-nav li > span.btn-large.searchLink, .side-nav #includeView .content-container .content li > span.btn.locationLink, #includeView .content-container .content .side-nav li > span.btn.locationLink, .side-nav #includeView .content-container .content li > span.btn.searchLink, #includeView .content-container .content .side-nav li > span.btn.searchLink, .side-nav li > a.btn-large, .side-nav #includeView .content-container .content li > span.btn-large.locationLink, #includeView .content-container .content .side-nav li > span.btn-large.locationLink, .side-nav #includeView .content-container .content li > span.btn-large.searchLink, #includeView .content-container .content .side-nav li > span.btn-large.searchLink, .side-nav li > a.btn-floating, .side-nav #includeView .content-container .content li > span.btn-floating.locationLink, #includeView .content-container .content .side-nav li > span.btn-floating.locationLink, .side-nav #includeView .content-container .content li > span.btn-floating.searchLink, #includeView .content-container .content .side-nav li > span.btn-floating.searchLink {
+.side-nav li > a.btn, .side-nav li > a.btn-large, .side-nav #includeView .scroll-container .content li > span.btn-large.locationLink, #includeView .scroll-container .content .side-nav li > span.btn-large.locationLink, .side-nav #includeView .scroll-container .content li > span.btn-large.searchLink, #includeView .scroll-container .content .side-nav li > span.btn-large.searchLink, .side-nav #includeView .scroll-container .content li > span.btn.locationLink, #includeView .scroll-container .content .side-nav li > span.btn.locationLink, .side-nav #includeView .scroll-container .content li > span.btn.searchLink, #includeView .scroll-container .content .side-nav li > span.btn.searchLink, .side-nav li > a.btn-large, .side-nav #includeView .scroll-container .content li > span.btn-large.locationLink, #includeView .scroll-container .content .side-nav li > span.btn-large.locationLink, .side-nav #includeView .scroll-container .content li > span.btn-large.searchLink, #includeView .scroll-container .content .side-nav li > span.btn-large.searchLink, .side-nav li > a.btn-floating, .side-nav #includeView .scroll-container .content li > span.btn-floating.locationLink, #includeView .scroll-container .content .side-nav li > span.btn-floating.locationLink, .side-nav #includeView .scroll-container .content li > span.btn-floating.searchLink, #includeView .scroll-container .content .side-nav li > span.btn-floating.searchLink {
   color: #fff;
 }
 /* line 59, ../../materialize/sass/components/_sideNav.scss */
-.side-nav li > a.btn-flat, .side-nav #includeView .content-container .content li > span.btn-flat.locationLink, #includeView .content-container .content .side-nav li > span.btn-flat.locationLink, .side-nav #includeView .content-container .content li > span.btn-flat.searchLink, #includeView .content-container .content .side-nav li > span.btn-flat.searchLink {
+.side-nav li > a.btn-flat, .side-nav #includeView .scroll-container .content li > span.btn-flat.locationLink, #includeView .scroll-container .content .side-nav li > span.btn-flat.locationLink, .side-nav #includeView .scroll-container .content li > span.btn-flat.searchLink, #includeView .scroll-container .content .side-nav li > span.btn-flat.searchLink {
   color: #343434;
 }
 /* line 61, ../../materialize/sass/components/_sideNav.scss */
-.side-nav li > a.btn:hover, .side-nav li > a.btn-large:hover, .side-nav #includeView .content-container .content li > span.btn-large.locationLink:hover, #includeView .content-container .content .side-nav li > span.btn-large.locationLink:hover, .side-nav #includeView .content-container .content li > span.btn-large.searchLink:hover, #includeView .content-container .content .side-nav li > span.btn-large.searchLink:hover, .side-nav #includeView .content-container .content li > span.btn.locationLink:hover, #includeView .content-container .content .side-nav li > span.btn.locationLink:hover, .side-nav #includeView .content-container .content li > span.btn.searchLink:hover, #includeView .content-container .content .side-nav li > span.btn.searchLink:hover, .side-nav li > a.btn-large:hover, .side-nav #includeView .content-container .content li > span.btn-large.locationLink:hover, #includeView .content-container .content .side-nav li > span.btn-large.locationLink:hover, .side-nav #includeView .content-container .content li > span.btn-large.searchLink:hover, #includeView .content-container .content .side-nav li > span.btn-large.searchLink:hover {
+.side-nav li > a.btn:hover, .side-nav li > a.btn-large:hover, .side-nav #includeView .scroll-container .content li > span.btn-large.locationLink:hover, #includeView .scroll-container .content .side-nav li > span.btn-large.locationLink:hover, .side-nav #includeView .scroll-container .content li > span.btn-large.searchLink:hover, #includeView .scroll-container .content .side-nav li > span.btn-large.searchLink:hover, .side-nav #includeView .scroll-container .content li > span.btn.locationLink:hover, #includeView .scroll-container .content .side-nav li > span.btn.locationLink:hover, .side-nav #includeView .scroll-container .content li > span.btn.searchLink:hover, #includeView .scroll-container .content .side-nav li > span.btn.searchLink:hover, .side-nav li > a.btn-large:hover, .side-nav #includeView .scroll-container .content li > span.btn-large.locationLink:hover, #includeView .scroll-container .content .side-nav li > span.btn-large.locationLink:hover, .side-nav #includeView .scroll-container .content li > span.btn-large.searchLink:hover, #includeView .scroll-container .content .side-nav li > span.btn-large.searchLink:hover {
   background-color: #2bbbad;
 }
 /* line 63, ../../materialize/sass/components/_sideNav.scss */
-.side-nav li > a.btn-floating:hover, .side-nav #includeView .content-container .content li > span.btn-floating.locationLink:hover, #includeView .content-container .content .side-nav li > span.btn-floating.locationLink:hover, .side-nav #includeView .content-container .content li > span.btn-floating.searchLink:hover, #includeView .content-container .content .side-nav li > span.btn-floating.searchLink:hover {
+.side-nav li > a.btn-floating:hover, .side-nav #includeView .scroll-container .content li > span.btn-floating.locationLink:hover, #includeView .scroll-container .content .side-nav li > span.btn-floating.locationLink:hover, .side-nav #includeView .scroll-container .content li > span.btn-floating.searchLink:hover, #includeView .scroll-container .content .side-nav li > span.btn-floating.searchLink:hover {
   background-color: #26a69a;
 }
 /* line 65, ../../materialize/sass/components/_sideNav.scss */
-.side-nav li > a > i, .side-nav #includeView .content-container .content li > span.locationLink > i, #includeView .content-container .content .side-nav li > span.locationLink > i, .side-nav #includeView .content-container .content li > span.searchLink > i, #includeView .content-container .content .side-nav li > span.searchLink > i, .side-nav li > a > [class^="mdi-"], .side-nav #includeView .content-container .content li > span.locationLink > [class^="mdi-"], #includeView .content-container .content .side-nav li > span.locationLink > [class^="mdi-"], .side-nav #includeView .content-container .content li > span.searchLink > [class^="mdi-"], #includeView .content-container .content .side-nav li > span.searchLink > [class^="mdi-"], .side-nav li > a li > a > [class*="mdi-"], .side-nav #includeView .content-container .content li > span.locationLink li > a > [class*="mdi-"], #includeView .content-container .content .side-nav li > span.locationLink li > a > [class*="mdi-"], .side-nav #includeView .content-container .content li > span.searchLink li > a > [class*="mdi-"], #includeView .content-container .content .side-nav li > span.searchLink li > a > [class*="mdi-"], .side-nav li > a #includeView .content-container .content li > span.locationLink > [class*="mdi-"], #includeView .content-container .content .side-nav li > a li > span.locationLink > [class*="mdi-"], .side-nav #includeView .content-container .content li > span.locationLink li > span.locationLink > [class*="mdi-"], #includeView .content-container .content .side-nav li > span.locationLink li > span.locationLink > [class*="mdi-"], .side-nav #includeView .content-container .content li > span.searchLink li > span.locationLink > [class*="mdi-"], #includeView .content-container .content .side-nav li > span.searchLink li > span.locationLink > [class*="mdi-"], .side-nav li > a #includeView .content-container .content li > span.searchLink > [class*="mdi-"], #includeView .content-container .content .side-nav li > a li > span.searchLink > [class*="mdi-"], .side-nav #includeView .content-container .content li > span.locationLink li > span.searchLink > [class*="mdi-"], #includeView .content-container .content .side-nav li > span.locationLink li > span.searchLink > [class*="mdi-"], .side-nav #includeView .content-container .content li > span.searchLink li > span.searchLink > [class*="mdi-"], #includeView .content-container .content .side-nav li > span.searchLink li > span.searchLink > [class*="mdi-"], .side-nav li > a > i.material-icons, .side-nav #includeView .content-container .content li > span.locationLink > i.material-icons, #includeView .content-container .content .side-nav li > span.locationLink > i.material-icons, .side-nav #includeView .content-container .content li > span.searchLink > i.material-icons, #includeView .content-container .content .side-nav li > span.searchLink > i.material-icons {
+.side-nav li > a > i, .side-nav #includeView .scroll-container .content li > span.locationLink > i, #includeView .scroll-container .content .side-nav li > span.locationLink > i, .side-nav #includeView .scroll-container .content li > span.searchLink > i, #includeView .scroll-container .content .side-nav li > span.searchLink > i, .side-nav li > a > [class^="mdi-"], .side-nav #includeView .scroll-container .content li > span.locationLink > [class^="mdi-"], #includeView .scroll-container .content .side-nav li > span.locationLink > [class^="mdi-"], .side-nav #includeView .scroll-container .content li > span.searchLink > [class^="mdi-"], #includeView .scroll-container .content .side-nav li > span.searchLink > [class^="mdi-"], .side-nav li > a li > a > [class*="mdi-"], .side-nav #includeView .scroll-container .content li > span.locationLink li > a > [class*="mdi-"], #includeView .scroll-container .content .side-nav li > span.locationLink li > a > [class*="mdi-"], .side-nav #includeView .scroll-container .content li > span.searchLink li > a > [class*="mdi-"], #includeView .scroll-container .content .side-nav li > span.searchLink li > a > [class*="mdi-"], .side-nav li > a #includeView .scroll-container .content li > span.locationLink > [class*="mdi-"], #includeView .scroll-container .content .side-nav li > a li > span.locationLink > [class*="mdi-"], .side-nav #includeView .scroll-container .content li > span.locationLink li > span.locationLink > [class*="mdi-"], #includeView .scroll-container .content .side-nav li > span.locationLink li > span.locationLink > [class*="mdi-"], .side-nav #includeView .scroll-container .content li > span.searchLink li > span.locationLink > [class*="mdi-"], #includeView .scroll-container .content .side-nav li > span.searchLink li > span.locationLink > [class*="mdi-"], .side-nav li > a #includeView .scroll-container .content li > span.searchLink > [class*="mdi-"], #includeView .scroll-container .content .side-nav li > a li > span.searchLink > [class*="mdi-"], .side-nav #includeView .scroll-container .content li > span.locationLink li > span.searchLink > [class*="mdi-"], #includeView .scroll-container .content .side-nav li > span.locationLink li > span.searchLink > [class*="mdi-"], .side-nav #includeView .scroll-container .content li > span.searchLink li > span.searchLink > [class*="mdi-"], #includeView .scroll-container .content .side-nav li > span.searchLink li > span.searchLink > [class*="mdi-"], .side-nav li > a > i.material-icons, .side-nav #includeView .scroll-container .content li > span.locationLink > i.material-icons, #includeView .scroll-container .content .side-nav li > span.locationLink > i.material-icons, .side-nav #includeView .scroll-container .content li > span.searchLink > i.material-icons, #includeView .scroll-container .content .side-nav li > span.searchLink > i.material-icons {
   float: left;
   height: 48px;
   line-height: 48px;
@@ -8011,12 +8011,12 @@ input[type=range]:focus::-ms-fill-upper {
   margin-bottom: 8px;
 }
 /* line 100, ../../materialize/sass/components/_sideNav.scss */
-.side-nav .userView > a, .side-nav #includeView .content-container .content .userView > span.locationLink, #includeView .content-container .content .side-nav .userView > span.locationLink, .side-nav #includeView .content-container .content .userView > span.searchLink, #includeView .content-container .content .side-nav .userView > span.searchLink {
+.side-nav .userView > a, .side-nav #includeView .scroll-container .content .userView > span.locationLink, #includeView .scroll-container .content .side-nav .userView > span.locationLink, .side-nav #includeView .scroll-container .content .userView > span.searchLink, #includeView .scroll-container .content .side-nav .userView > span.searchLink {
   height: auto;
   padding: 0;
 }
 /* line 101, ../../materialize/sass/components/_sideNav.scss */
-.side-nav .userView > a:hover, .side-nav #includeView .content-container .content .userView > span.locationLink:hover, #includeView .content-container .content .side-nav .userView > span.locationLink:hover, .side-nav #includeView .content-container .content .userView > span.searchLink:hover, #includeView .content-container .content .side-nav .userView > span.searchLink:hover {
+.side-nav .userView > a:hover, .side-nav #includeView .scroll-container .content .userView > span.locationLink:hover, #includeView .scroll-container .content .side-nav .userView > span.locationLink:hover, .side-nav #includeView .scroll-container .content .userView > span.searchLink:hover, #includeView .scroll-container .content .side-nav .userView > span.searchLink:hover {
   background-color: transparent;
 }
 /* line 106, ../../materialize/sass/components/_sideNav.scss */
@@ -8086,7 +8086,7 @@ input[type=range]:focus::-ms-fill-upper {
     transform: translateX(105%);
   }
   /* line 178, ../../materialize/sass/components/_sideNav.scss */
-  .side-nav a, .side-nav #includeView .content-container .content span.locationLink, #includeView .content-container .content .side-nav span.locationLink, .side-nav #includeView .content-container .content span.searchLink, #includeView .content-container .content .side-nav span.searchLink {
+  .side-nav a, .side-nav #includeView .scroll-container .content span.locationLink, #includeView .scroll-container .content .side-nav span.locationLink, .side-nav #includeView .scroll-container .content span.searchLink, #includeView .scroll-container .content .side-nav span.searchLink {
     padding: 0 16px;
   }
   /* line 182, ../../materialize/sass/components/_sideNav.scss */
@@ -8100,12 +8100,12 @@ input[type=range]:focus::-ms-fill-upper {
   background-color: #ee6e73;
 }
 /* line 192, ../../materialize/sass/components/_sideNav.scss */
-.side-nav .collapsible-body > ul:not(.collapsible) > li.active a, .side-nav .collapsible-body > ul:not(.collapsible) > li.active #includeView .content-container .content span.locationLink, #includeView .content-container .content .side-nav .collapsible-body > ul:not(.collapsible) > li.active span.locationLink, .side-nav .collapsible-body > ul:not(.collapsible) > li.active #includeView .content-container .content span.searchLink, #includeView .content-container .content .side-nav .collapsible-body > ul:not(.collapsible) > li.active span.searchLink,
+.side-nav .collapsible-body > ul:not(.collapsible) > li.active a, .side-nav .collapsible-body > ul:not(.collapsible) > li.active #includeView .scroll-container .content span.locationLink, #includeView .scroll-container .content .side-nav .collapsible-body > ul:not(.collapsible) > li.active span.locationLink, .side-nav .collapsible-body > ul:not(.collapsible) > li.active #includeView .scroll-container .content span.searchLink, #includeView .scroll-container .content .side-nav .collapsible-body > ul:not(.collapsible) > li.active span.searchLink,
 .side-nav.fixed .collapsible-body > ul:not(.collapsible) > li.active a,
-.side-nav.fixed .collapsible-body > ul:not(.collapsible) > li.active #includeView .content-container .content span.locationLink,
-#includeView .content-container .content .side-nav.fixed .collapsible-body > ul:not(.collapsible) > li.active span.locationLink,
-.side-nav.fixed .collapsible-body > ul:not(.collapsible) > li.active #includeView .content-container .content span.searchLink,
-#includeView .content-container .content .side-nav.fixed .collapsible-body > ul:not(.collapsible) > li.active span.searchLink {
+.side-nav.fixed .collapsible-body > ul:not(.collapsible) > li.active #includeView .scroll-container .content span.locationLink,
+#includeView .scroll-container .content .side-nav.fixed .collapsible-body > ul:not(.collapsible) > li.active span.locationLink,
+.side-nav.fixed .collapsible-body > ul:not(.collapsible) > li.active #includeView .scroll-container .content span.searchLink,
+#includeView .scroll-container .content .side-nav.fixed .collapsible-body > ul:not(.collapsible) > li.active span.searchLink {
   color: #fff;
 }
 
@@ -9891,7 +9891,7 @@ template {
  * Remove the gray background color from active links in IE 10.
  */
 /* line 89, sass/_normalize.scss */
-a, #includeView .content-container .content span.locationLink, #includeView .content-container .content span.searchLink {
+a, #includeView .scroll-container .content span.locationLink, #includeView .scroll-container .content span.searchLink {
   background-color: transparent;
 }
 
@@ -9899,10 +9899,10 @@ a, #includeView .content-container .content span.locationLink, #includeView .con
  * Improve readability when focused and also mouse hovered in all browsers.
  */
 /* line 97, sass/_normalize.scss */
-a:active, #includeView .content-container .content span.locationLink:active, #includeView .content-container .content span.searchLink:active,
+a:active, #includeView .scroll-container .content span.locationLink:active, #includeView .scroll-container .content span.searchLink:active,
 a:hover,
-#includeView .content-container .content span.locationLink:hover,
-#includeView .content-container .content span.searchLink:hover {
+#includeView .scroll-container .content span.locationLink:hover,
+#includeView .scroll-container .content span.searchLink:hover {
   outline: 0;
 }
 
@@ -10376,15 +10376,15 @@ textarea {
   }
 
   /* line 150, sass/_main.scss */
-  a, #includeView .content-container .content span.locationLink, #includeView .content-container .content span.searchLink,
+  a, #includeView .scroll-container .content span.locationLink, #includeView .scroll-container .content span.searchLink,
   a:visited,
-  #includeView .content-container .content span.locationLink:visited,
-  #includeView .content-container .content span.searchLink:visited {
+  #includeView .scroll-container .content span.locationLink:visited,
+  #includeView .scroll-container .content span.searchLink:visited {
     text-decoration: underline;
   }
 
   /* line 155, sass/_main.scss */
-  a[href]:after, #includeView .content-container .content span[href].locationLink:after, #includeView .content-container .content span[href].searchLink:after {
+  a[href]:after, #includeView .scroll-container .content span[href].locationLink:after, #includeView .scroll-container .content span[href].searchLink:after {
     content: " (" attr(href) ")";
   }
 
@@ -10394,10 +10394,10 @@ textarea {
   }
 
   /* line 163, sass/_main.scss */
-  a[href^="#"]:after, #includeView .content-container .content span[href^="#"].locationLink:after, #includeView .content-container .content span[href^="#"].searchLink:after,
+  a[href^="#"]:after, #includeView .scroll-container .content span[href^="#"].locationLink:after, #includeView .scroll-container .content span[href^="#"].searchLink:after,
   a[href^="javascript:"]:after,
-  #includeView .content-container .content span[href^="javascript:"].locationLink:after,
-  #includeView .content-container .content span[href^="javascript:"].searchLink:after {
+  #includeView .scroll-container .content span[href^="javascript:"].locationLink:after,
+  #includeView .scroll-container .content span[href^="javascript:"].searchLink:after {
     content: "";
   }
 
@@ -10484,7 +10484,7 @@ body {
 }
 
 /* line 110, sass/_afeefa-styles.scss */
-a:link, a:visited, #includeView .content-container .content span.locationLink:visited, #includeView .content-container .content span.searchLink:visited, a:hover, #includeView .content-container .content span.locationLink:hover, #includeView .content-container .content span.searchLink:hover, a:active, #includeView .content-container .content span.locationLink:active, #includeView .content-container .content span.searchLink:active, #includeView .content-container .content span.locationLink:link, #includeView .content-container .content span.searchLink:link {
+a:link, a:visited, #includeView .scroll-container .content span.locationLink:visited, #includeView .scroll-container .content span.searchLink:visited, a:hover, #includeView .scroll-container .content span.locationLink:hover, #includeView .scroll-container .content span.searchLink:hover, a:active, #includeView .scroll-container .content span.locationLink:active, #includeView .scroll-container .content span.searchLink:active, #includeView .scroll-container .content span.locationLink:link, #includeView .scroll-container .content span.searchLink:link {
   color: #333;
   text-decoration: underline;
 }
@@ -12474,9 +12474,12 @@ body.phone #mapView.shy {
   z-index: 20;
   width: 30em;
   height: 100%;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+  flex-direction: column;
   visibility: hidden;
   background-color: #f2f2f2;
-  /*color: $black;*/
   -moz-box-shadow: 0px 0px 2px #333;
   -webkit-box-shadow: 0px 0px 2px #333;
   box-shadow: 0px 0px 2px #333;
@@ -12489,26 +12492,13 @@ body.phone #mapView.shy {
   /* IMAGE PROPERTY */
   /* OTHER PROPERTIES */
   /* overwrite for POIs */
-  display: -webkit-flex;
-  display: flex;
-  -webkit-flex-direction: column;
-  flex-direction: column;
 }
-/* line 17, sass/_goBackLayout.scss */
+/* line 19, sass/_goBackLayout.scss */
 #detailView.active {
   visibility: visible;
   opacity: 1;
 }
-/* line 22, sass/_goBackLayout.scss */
-#detailView .scroll-container {
-  -webkit-flex-grow: 1;
-  flex-grow: 1;
-  overflow-y: auto;
-  padding-bottom: 1em;
-  overflow-x: hidden;
-  position: relative;
-}
-/* line 31, sass/_goBackLayout.scss */
+/* line 25, sass/_goBackLayout.scss */
 #detailView .heading {
   min-height: 4em;
   -webkit-flex-shrink: 0;
@@ -12569,11 +12559,11 @@ body.phone #mapView.shy {
   background-color: #333333;
   border-color: #333333;
 }
-/* line 40, sass/_goBackLayout.scss */
+/* line 34, sass/_goBackLayout.scss */
 #detailView .heading.cat-general {
   background-color: #999999 !important;
 }
-/* line 44, sass/_goBackLayout.scss */
+/* line 38, sass/_goBackLayout.scss */
 #detailView .heading h1 {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -12584,7 +12574,16 @@ body.phone #mapView.shy {
   font-size: 1.1rem;
   line-height: 1.1rem;
 }
-/* line 55, sass/_goBackLayout.scss */
+/* line 49, sass/_goBackLayout.scss */
+#detailView .scroll-container {
+  -webkit-flex-grow: 1;
+  flex-grow: 1;
+  overflow-y: auto;
+  padding-bottom: 1em;
+  overflow-x: hidden;
+  position: relative;
+}
+/* line 57, sass/_goBackLayout.scss */
 #detailView .back-btn {
   position: absolute;
   top: 1.5em;
@@ -12601,7 +12600,7 @@ body.phone #mapView.shy {
   background-position: center center;
   background-repeat: no-repeat;
 }
-/* line 68, sass/_goBackLayout.scss */
+/* line 70, sass/_goBackLayout.scss */
 #detailView .back-btn:hover {
   opacity: 1;
 }
@@ -13204,7 +13203,7 @@ body.phone #mapView.shy {
   text-transform: uppercase;
 }
 /* line 146, sass/_detailView.scss */
-#detailView .property .property-text a, #detailView .property .property-text #includeView .content-container .content span.locationLink, #includeView .content-container .content #detailView .property .property-text span.locationLink, #detailView .property .property-text #includeView .content-container .content span.searchLink, #includeView .content-container .content #detailView .property .property-text span.searchLink {
+#detailView .property .property-text a, #detailView .property .property-text #includeView .scroll-container .content span.locationLink, #includeView .scroll-container .content #detailView .property .property-text span.locationLink, #detailView .property .property-text #includeView .scroll-container .content span.searchLink, #includeView .scroll-container .content #detailView .property .property-text span.searchLink {
   width: 100%;
   display: inline-block;
   overflow: hidden;
@@ -13239,12 +13238,12 @@ body.phone #mapView.shy {
   display: none;
 }
 
-/* line 194, sass/_detailView.scss */
+/* line 191, sass/_detailView.scss */
 .tablet #detailViewMobile {
   width: 30%;
 }
 
-/* line 199, sass/_detailView.scss */
+/* line 196, sass/_detailView.scss */
 #detailViewMobile {
   position: absolute;
   top: 0;
@@ -13252,9 +13251,12 @@ body.phone #mapView.shy {
   z-index: 20;
   width: 30em;
   height: 100%;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+  flex-direction: column;
   visibility: hidden;
   background-color: #f2f2f2;
-  /*color: $black;*/
   -moz-box-shadow: 0px 0px 2px #333;
   -webkit-box-shadow: 0px 0px 2px #333;
   box-shadow: 0px 0px 2px #333;
@@ -13281,21 +13283,12 @@ body.phone #mapView.shy {
   -webkit-box-shadow: 0px 0px 2px #333;
   box-shadow: 0px 0px 2px #333;
 }
-/* line 17, sass/_goBackLayout.scss */
+/* line 19, sass/_goBackLayout.scss */
 #detailViewMobile.active {
   visibility: visible;
   opacity: 1;
 }
-/* line 22, sass/_goBackLayout.scss */
-#detailViewMobile .scroll-container {
-  -webkit-flex-grow: 1;
-  flex-grow: 1;
-  overflow-y: auto;
-  padding-bottom: 1em;
-  overflow-x: hidden;
-  position: relative;
-}
-/* line 31, sass/_goBackLayout.scss */
+/* line 25, sass/_goBackLayout.scss */
 #detailViewMobile .heading {
   min-height: 4em;
   -webkit-flex-shrink: 0;
@@ -13356,11 +13349,11 @@ body.phone #mapView.shy {
   background-color: #333333;
   border-color: #333333;
 }
-/* line 40, sass/_goBackLayout.scss */
+/* line 34, sass/_goBackLayout.scss */
 #detailViewMobile .heading.cat-general {
   background-color: #999999 !important;
 }
-/* line 44, sass/_goBackLayout.scss */
+/* line 38, sass/_goBackLayout.scss */
 #detailViewMobile .heading h1 {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -13371,7 +13364,16 @@ body.phone #mapView.shy {
   font-size: 1.1rem;
   line-height: 1.1rem;
 }
-/* line 55, sass/_goBackLayout.scss */
+/* line 49, sass/_goBackLayout.scss */
+#detailViewMobile .scroll-container {
+  -webkit-flex-grow: 1;
+  flex-grow: 1;
+  overflow-y: auto;
+  padding-bottom: 1em;
+  overflow-x: hidden;
+  position: relative;
+}
+/* line 57, sass/_goBackLayout.scss */
 #detailViewMobile .back-btn {
   position: absolute;
   top: 1.5em;
@@ -13388,7 +13390,7 @@ body.phone #mapView.shy {
   background-position: center center;
   background-repeat: no-repeat;
 }
-/* line 68, sass/_goBackLayout.scss */
+/* line 70, sass/_goBackLayout.scss */
 #detailViewMobile .back-btn:hover {
   opacity: 1;
 }
@@ -13991,7 +13993,7 @@ body.phone #mapView.shy {
   text-transform: uppercase;
 }
 /* line 146, sass/_detailView.scss */
-#detailViewMobile .property .property-text a, #detailViewMobile .property .property-text #includeView .content-container .content span.locationLink, #includeView .content-container .content #detailViewMobile .property .property-text span.locationLink, #detailViewMobile .property .property-text #includeView .content-container .content span.searchLink, #includeView .content-container .content #detailViewMobile .property .property-text span.searchLink {
+#detailViewMobile .property .property-text a, #detailViewMobile .property .property-text #includeView .scroll-container .content span.locationLink, #includeView .scroll-container .content #detailViewMobile .property .property-text span.locationLink, #detailViewMobile .property .property-text #includeView .scroll-container .content span.searchLink, #includeView .scroll-container .content #detailViewMobile .property .property-text span.searchLink {
   width: 100%;
   display: inline-block;
   overflow: hidden;
@@ -14025,55 +14027,55 @@ body.phone #mapView.shy {
 #detailViewMobile.type-3 .property.category .property-value {
   display: none;
 }
-/* line 213, sass/_detailView.scss */
+/* line 210, sass/_detailView.scss */
 #detailViewMobile .message-btn {
   position: fixed;
   bottom: 2rem;
 }
-/* line 218, sass/_detailView.scss */
+/* line 215, sass/_detailView.scss */
 #detailViewMobile.active {
   bottom: 0;
 }
-/* line 221, sass/_detailView.scss */
+/* line 218, sass/_detailView.scss */
 #detailViewMobile.active badge-certificate {
   display: none;
 }
-/* line 225, sass/_detailView.scss */
+/* line 222, sass/_detailView.scss */
 #detailViewMobile.active .message-btn {
   display: none !important;
 }
-/* line 230, sass/_detailView.scss */
+/* line 227, sass/_detailView.scss */
 #detailViewMobile.active-large {
   bottom: 0;
   height: 100%;
   visibility: visible;
   opacity: 1;
 }
-/* line 237, sass/_detailView.scss */
+/* line 234, sass/_detailView.scss */
 #detailViewMobile.active-large .heading h1 {
   overflow: inherit;
   text-overflow: inherit;
   white-space: inherit;
 }
-/* line 244, sass/_detailView.scss */
+/* line 241, sass/_detailView.scss */
 #detailViewMobile .scroll-container {
   height: calc(100% - 4em);
   overflow-y: auto;
   padding-bottom: 1em;
   position: relative;
 }
-/* line 251, sass/_detailView.scss */
+/* line 248, sass/_detailView.scss */
 #detailViewMobile .heading h1 {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
-/* line 260, sass/_detailView.scss */
+/* line 257, sass/_detailView.scss */
 .rtl #detailView .property.location .property-value {
   background-position: left .5em;
 }
-/* line 264, sass/_detailView.scss */
+/* line 261, sass/_detailView.scss */
 .rtl #detailView .message-btn {
   right: inherit;
   left: 2rem;
@@ -14092,17 +14094,17 @@ body.phone #mapView.shy {
   padding: 2em 0;
 }
 /* line 12, sass/_menuView.scss */
-#menuView a#logo, #menuView #includeView .content-container .content span#logo.locationLink, #includeView .content-container .content #menuView span#logo.locationLink, #menuView #includeView .content-container .content span#logo.searchLink, #includeView .content-container .content #menuView span#logo.searchLink, #menuView a#dfa-logo, #menuView #includeView .content-container .content span#dfa-logo.locationLink, #includeView .content-container .content #menuView span#dfa-logo.locationLink, #menuView #includeView .content-container .content span#dfa-logo.searchLink, #includeView .content-container .content #menuView span#dfa-logo.searchLink {
+#menuView a#logo, #menuView #includeView .scroll-container .content span#logo.locationLink, #includeView .scroll-container .content #menuView span#logo.locationLink, #menuView #includeView .scroll-container .content span#logo.searchLink, #includeView .scroll-container .content #menuView span#logo.searchLink, #menuView a#dfa-logo, #menuView #includeView .scroll-container .content span#dfa-logo.locationLink, #includeView .scroll-container .content #menuView span#dfa-logo.locationLink, #menuView #includeView .scroll-container .content span#dfa-logo.searchLink, #includeView .scroll-container .content #menuView span#dfa-logo.searchLink {
   width: 50%;
   display: block;
   margin: 0 auto 3em auto;
 }
 /* line 17, sass/_menuView.scss */
-#menuView a#logo img, #menuView #includeView .content-container .content span#logo.locationLink img, #includeView .content-container .content #menuView span#logo.locationLink img, #menuView #includeView .content-container .content span#logo.searchLink img, #includeView .content-container .content #menuView span#logo.searchLink img, #menuView a#dfa-logo img, #menuView #includeView .content-container .content span#dfa-logo.locationLink img, #includeView .content-container .content #menuView span#dfa-logo.locationLink img, #menuView #includeView .content-container .content span#dfa-logo.searchLink img, #includeView .content-container .content #menuView span#dfa-logo.searchLink img {
+#menuView a#logo img, #menuView #includeView .scroll-container .content span#logo.locationLink img, #includeView .scroll-container .content #menuView span#logo.locationLink img, #menuView #includeView .scroll-container .content span#logo.searchLink img, #includeView .scroll-container .content #menuView span#logo.searchLink img, #menuView a#dfa-logo img, #menuView #includeView .scroll-container .content span#dfa-logo.locationLink img, #includeView .scroll-container .content #menuView span#dfa-logo.locationLink img, #menuView #includeView .scroll-container .content span#dfa-logo.searchLink img, #includeView .scroll-container .content #menuView span#dfa-logo.searchLink img {
   width: 100%;
 }
 /* line 20, sass/_menuView.scss */
-#menuView a#dfa-logo, #menuView #includeView .content-container .content span#dfa-logo.locationLink, #includeView .content-container .content #menuView span#dfa-logo.locationLink, #menuView #includeView .content-container .content span#dfa-logo.searchLink, #includeView .content-container .content #menuView span#dfa-logo.searchLink {
+#menuView a#dfa-logo, #menuView #includeView .scroll-container .content span#dfa-logo.locationLink, #includeView .scroll-container .content #menuView span#dfa-logo.locationLink, #menuView #includeView .scroll-container .content span#dfa-logo.searchLink, #includeView .scroll-container .content #menuView span#dfa-logo.searchLink {
   width: 60%;
   margin: 3em auto 0 auto;
 }
@@ -14123,7 +14125,7 @@ body.phone #mapView.shy {
   background-color: rgba(0, 0, 0, 0.6);
 }
 /* line 36, sass/_menuView.scss */
-#menuView .item a, #menuView .item #includeView .content-container .content span.locationLink, #includeView .content-container .content #menuView .item span.locationLink, #menuView .item #includeView .content-container .content span.searchLink, #includeView .content-container .content #menuView .item span.searchLink, #menuView .item span {
+#menuView .item a, #menuView .item #includeView .scroll-container .content span.locationLink, #includeView .scroll-container .content #menuView .item span.locationLink, #menuView .item #includeView .scroll-container .content span.searchLink, #includeView .scroll-container .content #menuView .item span.searchLink, #menuView .item span {
   line-height: 2em;
   color: #f2f2f2;
   font-weight: 100;
@@ -15689,9 +15691,12 @@ body.phone #menuView .menu-btn {
   z-index: 20;
   width: 30em;
   height: 100%;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+  flex-direction: column;
   visibility: hidden;
   background-color: #f2f2f2;
-  /*color: $black;*/
   -moz-box-shadow: 0px 0px 2px #333;
   -webkit-box-shadow: 0px 0px 2px #333;
   box-shadow: 0px 0px 2px #333;
@@ -15712,21 +15717,12 @@ body.phone #menuView .menu-btn {
   /* HEADING */
   /* type specific overwrites */
 }
-/* line 17, sass/_goBackLayout.scss */
+/* line 19, sass/_goBackLayout.scss */
 #formView.active {
   visibility: visible;
   opacity: 1;
 }
-/* line 22, sass/_goBackLayout.scss */
-#formView .scroll-container {
-  -webkit-flex-grow: 1;
-  flex-grow: 1;
-  overflow-y: auto;
-  padding-bottom: 1em;
-  overflow-x: hidden;
-  position: relative;
-}
-/* line 31, sass/_goBackLayout.scss */
+/* line 25, sass/_goBackLayout.scss */
 #formView .heading {
   min-height: 4em;
   -webkit-flex-shrink: 0;
@@ -15787,11 +15783,11 @@ body.phone #menuView .menu-btn {
   background-color: #333333;
   border-color: #333333;
 }
-/* line 40, sass/_goBackLayout.scss */
+/* line 34, sass/_goBackLayout.scss */
 #formView .heading.cat-general {
   background-color: #999999 !important;
 }
-/* line 44, sass/_goBackLayout.scss */
+/* line 38, sass/_goBackLayout.scss */
 #formView .heading h1 {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -15802,7 +15798,16 @@ body.phone #menuView .menu-btn {
   font-size: 1.1rem;
   line-height: 1.1rem;
 }
-/* line 55, sass/_goBackLayout.scss */
+/* line 49, sass/_goBackLayout.scss */
+#formView .scroll-container {
+  -webkit-flex-grow: 1;
+  flex-grow: 1;
+  overflow-y: auto;
+  padding-bottom: 1em;
+  overflow-x: hidden;
+  position: relative;
+}
+/* line 57, sass/_goBackLayout.scss */
 #formView .back-btn {
   position: absolute;
   top: 1.5em;
@@ -15819,7 +15824,7 @@ body.phone #menuView .menu-btn {
   background-position: center center;
   background-repeat: no-repeat;
 }
-/* line 68, sass/_goBackLayout.scss */
+/* line 70, sass/_goBackLayout.scss */
 #formView .back-btn:hover {
   opacity: 1;
 }
@@ -16019,84 +16024,158 @@ body.phone #menuView .menu-btn {
 
 /* line 3, sass/_includeView.scss */
 #includeView {
-  -moz-transition: box-shadow 150ms;
-  -o-transition: box-shadow 150ms;
-  -webkit-transition: box-shadow 150ms;
-  transition: box-shadow 150ms;
-  -moz-box-shadow: 0px 0px 4px #000;
-  -webkit-box-shadow: 0px 0px 4px #000;
-  box-shadow: 0px 0px 4px #000;
-  -moz-transition: opacity 200ms;
-  -o-transition: opacity 200ms;
-  -webkit-transition: opacity 200ms;
-  transition: opacity 200ms;
   position: absolute;
-  left: 15%;
-  top: 12%;
-  visibility: hidden;
-  opacity: 0;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  width: 70%;
-  max-height: 80%;
-  background-color: #f2f2f2;
-  color: #333333;
+  top: 0;
+  left: 0;
+  z-index: 20;
+  width: 30em;
+  height: 100%;
   display: -webkit-flex;
   display: flex;
   -webkit-flex-direction: column;
   flex-direction: column;
+  visibility: hidden;
+  background-color: #f2f2f2;
+  -moz-box-shadow: 0px 0px 2px #333;
+  -webkit-box-shadow: 0px 0px 2px #333;
+  box-shadow: 0px 0px 2px #333;
+  opacity: 0;
+  -moz-transition: opacity 200ms;
+  -o-transition: opacity 200ms;
+  -webkit-transition: opacity 200ms;
+  transition: opacity 200ms;
+  /* HEADING */
+  width: 50vw;
 }
-/* line 25, sass/_includeView.scss */
+/* line 19, sass/_goBackLayout.scss */
 #includeView.active {
   visibility: visible;
   opacity: 1;
 }
-/* line 30, sass/_includeView.scss */
-#includeView.min {
-  top: auto;
-  left: 3em;
-  bottom: 3em;
+/* line 25, sass/_goBackLayout.scss */
+#includeView .heading {
+  min-height: 4em;
+  -webkit-flex-shrink: 0;
+  flex-shrink: 0;
+  color: #f2f2f2;
+  background-color: #333333;
+  position: relative;
+  /* TODO find a solution to avoid setting the border on elements that dont need that and dont provide a parameter for it */
+  /* Main categories */
 }
-/* line 34, sass/_includeView.scss */
-#includeView.min .header {
+/* line 47, sass/_infoVisSystem.scss */
+#includeView .heading.cat-general {
+  background-color: #999999;
+  border-color: #999999;
+}
+/* line 52, sass/_infoVisSystem.scss */
+#includeView .heading.cat-language {
+  background-color: #e4b100;
+  border-color: #e4b100;
+}
+/* line 57, sass/_infoVisSystem.scss */
+#includeView .heading.cat-medic {
+  background-color: #a21c15;
+  border-color: #a21c15;
+}
+/* line 62, sass/_infoVisSystem.scss */
+#includeView .heading.cat-jobs {
+  background-color: #085272;
+  border-color: #085272;
+}
+/* line 67, sass/_infoVisSystem.scss */
+#includeView .heading.cat-consultation {
+  background-color: #5e6823;
+  border-color: #5e6823;
+}
+/* line 72, sass/_infoVisSystem.scss */
+#includeView .heading.cat-leisure {
+  background-color: #318b86;
+  border-color: #318b86;
+}
+/* line 77, sass/_infoVisSystem.scss */
+#includeView .heading.cat-community {
+  background-color: #693e75;
+  border-color: #693e75;
+}
+/* line 82, sass/_infoVisSystem.scss */
+#includeView .heading.cat-donation {
+  background-color: #ca7311;
+  border-color: #ca7311;
+}
+/* line 87, sass/_infoVisSystem.scss */
+#includeView .heading.cat-eventseries {
+  background-color: #318b86;
+  border-color: #318b86;
+}
+/* line 92, sass/_infoVisSystem.scss */
+#includeView .heading.cat-external-event {
+  background-color: #333333;
+  border-color: #333333;
+}
+/* line 34, sass/_goBackLayout.scss */
+#includeView .heading.cat-general {
+  background-color: #999999 !important;
+}
+/* line 38, sass/_goBackLayout.scss */
+#includeView .heading h1 {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 1.5em 3em 1.4em 5em;
+  font-weight: 300;
+  font-size: 1.1rem;
+  line-height: 1.1rem;
+}
+/* line 49, sass/_goBackLayout.scss */
+#includeView .scroll-container {
+  -webkit-flex-grow: 1;
+  flex-grow: 1;
+  overflow-y: auto;
+  padding-bottom: 1em;
+  overflow-x: hidden;
+  position: relative;
+}
+/* line 57, sass/_goBackLayout.scss */
+#includeView .back-btn {
+  position: absolute;
+  top: 1.5em;
+  left: 2em;
+  width: 1.5em;
+  height: 1.5em;
   cursor: pointer;
+  opacity: .8;
+  background-image: url("../img/icon_201.svg");
+  -moz-background-size: 100%;
+  -o-background-size: 100%;
+  -webkit-background-size: 100%;
+  background-size: 100%;
+  background-position: center center;
+  background-repeat: no-repeat;
 }
-/* line 35, sass/_includeView.scss */
-#includeView.min h1 {
-  padding-top: 1rem !important;
-  cursor: pointer;
+/* line 70, sass/_goBackLayout.scss */
+#includeView .back-btn:hover {
+  opacity: 1;
 }
-/* line 36, sass/_includeView.scss */
-#includeView.min p.subheading {
-  display: none;
-}
-/* line 37, sass/_includeView.scss */
-#includeView.min .content {
-  display: none;
-}
-/* line 38, sass/_includeView.scss */
-#includeView.min .closeBtn {
-  display: none;
-}
-/* line 41, sass/_includeView.scss */
+/* line 9, sass/_includeView.scss */
 #includeView.imprint {
   direction: ltr;
 }
-/* line 45, sass/_includeView.scss */
-#includeView a, #includeView .content-container .content span.locationLink, #includeView .content-container .content span.searchLink {
+/* line 13, sass/_includeView.scss */
+#includeView a, #includeView .scroll-container .content span.locationLink, #includeView .scroll-container .content span.searchLink {
   color: #333333;
   text-decoration: none;
   border-bottom: 1px #333333 dotted;
 }
 /* line 35, sass/_afeefa-styles.scss */
-#includeView a:visited, #includeView .content-container .content span.locationLink:visited, #includeView .content-container .content span.searchLink:visited, #includeView a:active, #includeView .content-container .content span.locationLink:active, #includeView .content-container .content span.searchLink:active {
+#includeView a:visited, #includeView .scroll-container .content span.locationLink:visited, #includeView .scroll-container .content span.searchLink:visited, #includeView a:active, #includeView .scroll-container .content span.locationLink:active, #includeView .scroll-container .content span.searchLink:active {
   color: #333333;
   text-decoration: none;
   border-bottom: 1px #333333 dotted;
 }
 /* line 41, sass/_afeefa-styles.scss */
-#includeView a:hover, #includeView .content-container .content span.locationLink:hover, #includeView .content-container .content span.searchLink:hover {
+#includeView a:hover, #includeView .scroll-container .content span.locationLink:hover, #includeView .scroll-container .content span.searchLink:hover {
   -moz-transition: background-color 300ms;
   -o-transition: background-color 300ms;
   -webkit-transition: background-color 300ms;
@@ -16105,85 +16184,17 @@ body.phone #menuView .menu-btn {
   background-color: #333333;
   text-decoration: none;
 }
-/* line 49, sass/_includeView.scss */
-#includeView .closeBtn {
-  position: absolute;
-  top: 1em;
-  right: 1em;
-  width: 1.5em;
-  height: 1.5em;
-  cursor: pointer;
-  background-image: url("../img/icon_34.svg");
-  -moz-background-size: 100%;
-  -o-background-size: 100%;
-  -webkit-background-size: 100%;
-  background-size: 100%;
-  background-position: center center;
-  background-repeat: no-repeat;
-  -moz-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  -webkit-transform: rotate(45deg);
-  transform: rotate(45deg);
+/* line 17, sass/_includeView.scss */
+#includeView .scroll-container {
+  padding: 2rem;
 }
-/* line 63, sass/_includeView.scss */
-#includeView .btn, #includeView .btn-large {
-  width: 3em;
-  height: 3em;
-  -moz-border-radius: 2em;
-  -webkit-border-radius: 2em;
-  border-radius: 2em;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  -moz-transition: box-shadow 150ms;
-  -o-transition: box-shadow 150ms;
-  -webkit-transition: box-shadow 150ms;
-  transition: box-shadow 150ms;
-  -moz-box-shadow: 0px 0px 2px #000;
-  -webkit-box-shadow: 0px 0px 2px #000;
-  box-shadow: 0px 0px 2px #000;
-  -moz-background-size: 50%;
-  -o-background-size: 50%;
-  -webkit-background-size: 50%;
-  background-size: 50%;
-  background-position: center center;
-  background-repeat: no-repeat;
-  cursor: pointer;
-  background-color: rgba(0, 0, 0, 0.8);
-}
-/* line 63, sass/_afeefa-styles.scss */
-#includeView .btn:hover, #includeView .btn-large:hover {
-  -moz-box-shadow: 0px 0px 5px #111;
-  -webkit-box-shadow: 0px 0px 5px #111;
-  box-shadow: 0px 0px 5px #111;
-}
-/* line 68, sass/_includeView.scss */
-#includeView .btn.plusBtn, #includeView .plusBtn.btn-large {
-  width: 1em;
-  height: 1em;
-  -moz-border-radius: 2em;
-  -webkit-border-radius: 2em;
-  border-radius: 2em;
-  background-image: url("../img/icon_34.svg");
-  -moz-background-size: 30%;
-  -o-background-size: 30%;
-  -webkit-background-size: 30%;
-  background-size: 30%;
-}
-/* line 77, sass/_includeView.scss */
-#includeView .content-container {
-  display: -webkit-flex;
-  display: flex;
-  -webkit-flex-direction: column;
-  flex-direction: column;
-}
-/* line 81, sass/_includeView.scss */
-#includeView .content-container .header {
+/* line 21, sass/_includeView.scss */
+#includeView .scroll-container .header {
   background-color: #333333;
   padding: 0 3rem;
 }
-/* line 85, sass/_includeView.scss */
-#includeView .content-container .header h1 {
+/* line 25, sass/_includeView.scss */
+#includeView .scroll-container .header h1 {
   font-weight: 300;
   margin: 0;
   padding: 5rem 0 1rem 0;
@@ -16197,23 +16208,23 @@ body.phone #menuView .menu-btn {
   -webkit-transition: padding 500ms;
   transition: padding 500ms;
 }
-/* line 96, sass/_includeView.scss */
-#includeView .content-container .header p.subheading {
+/* line 36, sass/_includeView.scss */
+#includeView .scroll-container .header p.subheading {
   color: #f2f2f2;
   margin: 0;
   position: relative;
   top: -0.5em;
 }
-/* line 104, sass/_includeView.scss */
-#includeView .content-container .header.min h1 {
+/* line 44, sass/_includeView.scss */
+#includeView .scroll-container .header.min h1 {
   padding-top: 1rem;
 }
-/* line 106, sass/_includeView.scss */
-#includeView .content-container .header.min p.subheading {
+/* line 46, sass/_includeView.scss */
+#includeView .scroll-container .header.min p.subheading {
   display: none;
 }
-/* line 110, sass/_includeView.scss */
-#includeView .content-container .content {
+/* line 50, sass/_includeView.scss */
+#includeView .scroll-container .content {
   -webkit-flex-grow: 1;
   flex-grow: 1;
   width: 100%;
@@ -16221,56 +16232,57 @@ body.phone #menuView .menu-btn {
   position: relative;
   line-height: 2em;
 }
-/* line 120, sass/_includeView.scss */
-#includeView .content-container .content h2 {
+/* line 60, sass/_includeView.scss */
+#includeView .scroll-container .content h2 {
   font-weight: 100;
+  font-size: 2rem;
   line-height: 1.3em;
   margin-top: 2em;
   text-transform: uppercase;
 }
-/* line 126, sass/_includeView.scss */
-#includeView .content-container .content h2 a, #includeView .content-container .content h2 span.locationLink, #includeView .content-container .content h2 span.searchLink, #includeView .content-container .content h2 a:visited, #includeView .content-container .content h2 span.locationLink:visited, #includeView .content-container .content h2 span.searchLink:visited, #includeView .content-container .content h2 a:active, #includeView .content-container .content h2 span.locationLink:active, #includeView .content-container .content h2 span.searchLink:active, #includeView .content-container .content h2 a:hover, #includeView .content-container .content h2 span.locationLink:hover, #includeView .content-container .content h2 span.searchLink:hover {
+/* line 67, sass/_includeView.scss */
+#includeView .scroll-container .content h2 a, #includeView .scroll-container .content h2 span.locationLink, #includeView .scroll-container .content h2 span.searchLink, #includeView .scroll-container .content h2 a:visited, #includeView .scroll-container .content h2 span.locationLink:visited, #includeView .scroll-container .content h2 span.searchLink:visited, #includeView .scroll-container .content h2 a:active, #includeView .scroll-container .content h2 span.locationLink:active, #includeView .scroll-container .content h2 span.searchLink:active, #includeView .scroll-container .content h2 a:hover, #includeView .scroll-container .content h2 span.locationLink:hover, #includeView .scroll-container .content h2 span.searchLink:hover {
   text-decoration: none;
   border: none;
   background: none;
   color: #333333;
 }
-/* line 134, sass/_includeView.scss */
-#includeView .content-container .content h3 {
+/* line 75, sass/_includeView.scss */
+#includeView .scroll-container .content h3 {
   font-size: 1.2em;
   font-weight: 100;
   line-height: 1em;
   margin-top: 1.5em;
   margin-bottom: 1.5em;
 }
-/* line 142, sass/_includeView.scss */
-#includeView .content-container .content p {
+/* line 83, sass/_includeView.scss */
+#includeView .scroll-container .content p {
   text-align: justify;
   font-weight: 300;
   line-height: 1.3em;
 }
-/* line 148, sass/_includeView.scss */
-#includeView .content-container .content table {
+/* line 89, sass/_includeView.scss */
+#includeView .scroll-container .content table {
   font-weight: 300;
 }
-/* line 151, sass/_includeView.scss */
-#includeView .content-container .content table td {
+/* line 92, sass/_includeView.scss */
+#includeView .scroll-container .content table td {
   padding: .3em 0 .3em 1em;
 }
-/* line 153, sass/_includeView.scss */
-#includeView .content-container .content table td:first-child {
+/* line 94, sass/_includeView.scss */
+#includeView .scroll-container .content table td:first-child {
   padding-left: 0em;
 }
-/* line 157, sass/_includeView.scss */
-#includeView .content-container .content hr {
+/* line 98, sass/_includeView.scss */
+#includeView .scroll-container .content hr {
   border-color: #ccc;
 }
-/* line 161, sass/_includeView.scss */
-#includeView .content-container .content .no-top-margin {
+/* line 102, sass/_includeView.scss */
+#includeView .scroll-container .content .no-top-margin {
   margin-top: 0;
 }
-/* line 165, sass/_includeView.scss */
-#includeView .content-container .content span.locationLink, #includeView .content-container .content span.searchLink {
+/* line 106, sass/_includeView.scss */
+#includeView .scroll-container .content span.locationLink, #includeView .scroll-container .content span.searchLink {
   display: inline-block;
   cursor: pointer;
   text-indent: 1em;
@@ -16282,62 +16294,62 @@ body.phone #menuView .menu-btn {
   background-position: 0 2px;
   background-repeat: no-repeat;
 }
-/* line 176, sass/_includeView.scss */
-#includeView .content-container .content span.locationLink:hover, #includeView .content-container .content span.searchLink:hover {
+/* line 117, sass/_includeView.scss */
+#includeView .scroll-container .content span.locationLink:hover, #includeView .scroll-container .content span.searchLink:hover {
   background-image: url("../img/icon_36.svg");
 }
-/* line 182, sass/_includeView.scss */
-#includeView .content-container .content p.figure-caption {
+/* line 123, sass/_includeView.scss */
+#includeView .scroll-container .content p.figure-caption {
   margin-top: 0;
   padding: .3em;
   font-weight: 100;
   font-style: italic;
   font-size: .8em;
 }
-/* line 190, sass/_includeView.scss */
-#includeView .content-container .content .media-list-item {
+/* line 131, sass/_includeView.scss */
+#includeView .scroll-container .content .media-list-item {
   display: -webkit-flex;
   display: flex;
   -webkit-align-items: flex-start;
   align-items: flex-start;
   margin-bottom: 1em;
 }
-/* line 196, sass/_includeView.scss */
-#includeView .content-container .content .media-list-item img {
+/* line 137, sass/_includeView.scss */
+#includeView .scroll-container .content .media-list-item img {
   width: 30%;
   margin-right: 1em;
 }
-/* line 201, sass/_includeView.scss */
-#includeView .content-container .content .media-list-item p {
+/* line 142, sass/_includeView.scss */
+#includeView .scroll-container .content .media-list-item p {
   -webkit-flex-grow: 1;
   flex-grow: 1;
   margin-top: 0;
 }
-/* line 205, sass/_includeView.scss */
-#includeView .content-container .content .media-list-item p span.heading {
+/* line 146, sass/_includeView.scss */
+#includeView .scroll-container .content .media-list-item p span.heading {
   font-weight: bold;
   display: block;
   margin-bottom: .5em;
 }
-/* line 216, sass/_includeView.scss */
+/* line 157, sass/_includeView.scss */
 #includeView .float-right-in-text {
   float: right;
   padding: 1em 0 1em 1em;
 }
-/* line 221, sass/_includeView.scss */
+/* line 162, sass/_includeView.scss */
 #includeView .float-left-in-text {
   float: left;
   padding: 1em 1em 1em 0;
 }
-/* line 226, sass/_includeView.scss */
+/* line 167, sass/_includeView.scss */
 #includeView .chapters {
   margin-top: 2rem;
 }
-/* line 230, sass/_includeView.scss */
+/* line 171, sass/_includeView.scss */
 #includeView .chaptersReal {
   /*@include flex-shrink(0);*/
 }
-/* line 234, sass/_includeView.scss */
+/* line 175, sass/_includeView.scss */
 #includeView .entity-shape {
   /* orga */
   /* market entry */
@@ -16747,36 +16759,36 @@ body.phone #menuView .menu-btn {
   -webkit-background-size: 50%;
   background-size: 50%;
 }
-/* line 247, sass/_includeView.scss */
+/* line 188, sass/_includeView.scss */
 #includeView .entity-bunch {
   padding-left: 3.5em;
   padding-top: .5em;
   min-height: 3em;
   background-size: 3em !important;
 }
-/* line 253, sass/_includeView.scss */
+/* line 194, sass/_includeView.scss */
 #includeView .entity-bunch.type-0 {
   background: url("../img/cluster_orga.svg") left center no-repeat;
 }
-/* line 256, sass/_includeView.scss */
+/* line 197, sass/_includeView.scss */
 #includeView .entity-bunch.type-1 {
   background: url("../img/cluster_event.svg") left center no-repeat;
 }
-/* line 259, sass/_includeView.scss */
+/* line 200, sass/_includeView.scss */
 #includeView .entity-bunch.type-2 {
   background: url("../img/cluster_market.svg") left center no-repeat;
 }
-/* line 262, sass/_includeView.scss */
+/* line 203, sass/_includeView.scss */
 #includeView .entity-bunch.refugee-guide {
   background: url("../img/icon_53.svg") left center no-repeat;
 }
 
-/* line 279, sass/_includeView.scss */
+/* line 220, sass/_includeView.scss */
 body.tablet #includeView .content {
   overflow: scroll;
 }
 
-/* line 288, sass/_includeView.scss */
+/* line 229, sass/_includeView.scss */
 body.mobile #includeView {
   width: 100%;
   height: 100%;
@@ -16785,37 +16797,37 @@ body.mobile #includeView {
   left: 0;
   top: 0;
 }
-/* line 296, sass/_includeView.scss */
+/* line 237, sass/_includeView.scss */
 body.mobile #includeView.min {
   /*.header { cursor: pointer; }*/
   height: 1em;
 }
-/* line 299, sass/_includeView.scss */
+/* line 240, sass/_includeView.scss */
 body.mobile #includeView.min h1 {
   padding-top: 1rem !important;
   cursor: pointer;
 }
-/* line 300, sass/_includeView.scss */
+/* line 241, sass/_includeView.scss */
 body.mobile #includeView.min p.subheading {
   display: none;
 }
-/* line 301, sass/_includeView.scss */
+/* line 242, sass/_includeView.scss */
 body.mobile #includeView.min .content {
   display: none;
 }
-/* line 302, sass/_includeView.scss */
+/* line 243, sass/_includeView.scss */
 body.mobile #includeView.min .closeBtn {
   display: none;
 }
-/* line 306, sass/_includeView.scss */
+/* line 247, sass/_includeView.scss */
 body.mobile #includeView .header h1 {
   padding-top: 1rem !important;
 }
-/* line 307, sass/_includeView.scss */
+/* line 248, sass/_includeView.scss */
 body.mobile #includeView .header p.subheading {
   display: none !important;
 }
-/* line 309, sass/_includeView.scss */
+/* line 250, sass/_includeView.scss */
 body.mobile #includeView .content {
   overflow: scroll;
 }
@@ -16885,7 +16897,7 @@ body.mobile #includeView .content {
   padding-top: .3em;
 }
 /* line 23, sass/_footerView.scss */
-.desktop #footer a, .desktop #footer #includeView .content-container .content span.locationLink, #includeView .content-container .content .desktop #footer span.locationLink, .desktop #footer #includeView .content-container .content span.searchLink, #includeView .content-container .content .desktop #footer span.searchLink {
+.desktop #footer a, .desktop #footer #includeView .scroll-container .content span.locationLink, #includeView .scroll-container .content .desktop #footer span.locationLink, .desktop #footer #includeView .scroll-container .content span.searchLink, #includeView .scroll-container .content .desktop #footer span.searchLink {
   color: #f2f2f2;
   text-decoration: none;
 }
@@ -16900,7 +16912,7 @@ body.mobile #includeView .content {
   display: none;
 }
 /* line 38, sass/_footerView.scss */
-.desktop #footer .facebook a, .desktop #footer .facebook #includeView .content-container .content span.locationLink, #includeView .content-container .content .desktop #footer .facebook span.locationLink, .desktop #footer .facebook #includeView .content-container .content span.searchLink, #includeView .content-container .content .desktop #footer .facebook span.searchLink {
+.desktop #footer .facebook a, .desktop #footer .facebook #includeView .scroll-container .content span.locationLink, #includeView .scroll-container .content .desktop #footer .facebook span.locationLink, .desktop #footer .facebook #includeView .scroll-container .content span.searchLink, #includeView .scroll-container .content .desktop #footer .facebook span.searchLink {
   display: inline-block;
   width: 1.3em;
   height: 1.3em;
@@ -16913,7 +16925,7 @@ body.mobile #includeView .content {
   opacity: .6;
 }
 /* line 47, sass/_footerView.scss */
-.desktop #footer .facebook a:hover, .desktop #footer .facebook #includeView .content-container .content span.locationLink:hover, #includeView .content-container .content .desktop #footer .facebook span.locationLink:hover, .desktop #footer .facebook #includeView .content-container .content span.searchLink:hover, #includeView .content-container .content .desktop #footer .facebook span.searchLink:hover {
+.desktop #footer .facebook a:hover, .desktop #footer .facebook #includeView .scroll-container .content span.locationLink:hover, #includeView .scroll-container .content .desktop #footer .facebook span.locationLink:hover, .desktop #footer .facebook #includeView .scroll-container .content span.searchLink:hover, #includeView .scroll-container .content .desktop #footer .facebook span.searchLink:hover {
   opacity: 1;
 }
 

@@ -38,7 +38,7 @@ qx.Class.define("SearchView", {
       that.refugeeBtn = $("<div />")
         .addClass('button refugee-btn')
         .click(function(){
-          APP.getIncludeView().load( APP.getIncludeView().getIncludes().refugeeGuide );
+          APP.getIncludeView().load( 'refugeeGuide' );
         });
      
       that.searchBar.append(that.refugeeBtn);

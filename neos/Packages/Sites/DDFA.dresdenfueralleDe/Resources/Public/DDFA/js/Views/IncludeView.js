@@ -12,17 +12,27 @@ qx.Class.define("IncludeView", {
 	construct: function(){
 		var that = this;
 
-		that.setViewId('includeView');
-		that.setIncludes({
-			refugeeGuide: 'refugeeGuide',
-			supporterGuide: 'supporterGuide',
-			imprint: 'imprint',
-			press: 'press',
-			about: 'about',
-			intro: 'intro',
-			entryFormGuide: 'entryFormGuide'
-		});
 		that.setBaseUrl( '_Resources/Static/Packages/DDFA.dresdenfueralleDe/DDFA/inc/' );
+		
+		that.setIncludes({
+			refugeeGuide: {
+				url: that.getBaseUrl() + 'refugeeGuide',
+				translatable: true
+			},
+			supporterGuide: {
+				url: that.getBaseUrl() + 'supporterGuide',
+				translatable: true
+			},
+			imprint: {
+				url: 'https://about.afeefa.de/impressum/ article .entry-content'
+			},
+			press: {
+				url: that.getBaseUrl() + 'press.html',
+			}
+		});
+		
+		that.setViewId('includeView');
+		that.setLoadable(true);
 	},
 
 	members : {
@@ -34,17 +44,25 @@ qx.Class.define("IncludeView", {
 			that.view = $("<div />");
 			that.view.attr('id', that.getViewId());
 
-			// content container
-			that.contentContainer  = $("<div />");
-			that.contentContainer.addClass('content-container');
-			that.view.append(that.contentContainer);
+			// heading
+			that.headingContainer = $("<div />").addClass('heading');
+			that.heading = $("<h1 />");
+			that.headingContainer.append(that.heading);
+			that.view.append(that.headingContainer);
 
-			that.closeBtn = $("<div />").addClass('closeBtn').append('');
-			that.view.append(that.closeBtn);
+			// back button
+			that.createBackBtn(function(){
+				that.close();
+			});
+
+			// scrollable content container
+			that.scrollContainer  = $("<div />");
+			that.scrollContainer.addClass('scroll-container');
+			that.view.append(that.scrollContainer);
 
 			$('#main-container').append(that.view);
 
-			// if( APP.getUserDevice() == 'desktop') that.contentContainer.perfectScrollbar();
+			if( APP.getUserDevice() == 'desktop') that.scrollContainer.perfectScrollbar();
 
 			that.setViewState(0);
 
@@ -57,67 +75,75 @@ qx.Class.define("IncludeView", {
 
 			that.reset();
 			
-			that.showCurtain(true);
+			// that.showCurtain(true);
+			that.loading(true);
 
 			that.setIncludeKey(includeKey);
 
 			that.view.addClass('active');
 			that.view.addClass(includeKey);
 			that.setViewState(1);
-			that.minimize(false);
+			// that.minimize(false);
 
 			that.say('includeViewOpened');
-			
-				
-			that.contentContainer.load( that.getBaseUrl() + that.getIncludes()[includeKey] + '_' + APP.getLM().getCurrentLang() + ".html", function( response, status, xhr ) {
 
-				if ( status == "error" ) {
+			if( that.getIncludes()[includeKey].translatable ) {
+				that.scrollContainer.load( that.getIncludes()[includeKey].url + '_' + APP.getLM().getCurrentLang() + ".html", function( response, status, xhr ) {
 
-					that.contentContainer.load( that.getBaseUrl() + that.getIncludes()[includeKey] + '_en.html', function( response, status, xhr ) {
-						
-						if ( status == "error" ) {
+					if ( status == "error" ) {
 
-							that.contentContainer.load( that.getBaseUrl() + that.getIncludes()[includeKey] + '_de.html', function( response, status, xhr ) {
-								loadComplete();
-							});
+						that.scrollContainer.load( that.getIncludes()[includeKey].url + '_en.html', function( response, status, xhr ) {
+							
+							if ( status == "error" ) {
 
-						}
+								that.scrollContainer.load( that.getIncludes()[includeKey].url + '_de.html', function( response, status, xhr ) {
+									loadComplete();
+								});
 
-						loadComplete();
+							}
 
-					});
+							loadComplete();
 
-				}
+						});
 
-				loadComplete();
+					}
 
-			});
+					loadComplete();
+
+				});
+			} else {
+				that.scrollContainer.load( that.getIncludes()[includeKey].url, function( response, status, xhr ) {
+					loadComplete();
+				});
+			}
 
 			function loadComplete(){
 
-				const headerEl = that.contentContainer.find('.header');
-				const contentEl = that.contentContainer.find('.content');
+				that.loading(false);
+
+				const headerEl = that.scrollContainer.find('.header');
+				const contentEl = that.scrollContainer.find('.content');
 				
 				// TODO remove this workaround
 				// fix nested flexbox issue in firefox
 				contentEl.outerHeight( that.view.outerHeight() - headerEl.outerHeight() );
 
 				// scrolling
-				if( APP.getUserDevice() == 'desktop') {
-					contentEl
-						.perfectScrollbar()
-						.on('ps-scroll-down', function() {
-							headerEl.addClass('min');
-							$(this).perfectScrollbar('update');
-						})
-						.on('ps-y-reach-start', function() {
-							headerEl.removeClass('min');
-						});
-				}
+				// if( APP.getUserDevice() == 'desktop') {
+				// 	contentEl
+				// 		.perfectScrollbar()
+				// 		.on('ps-scroll-down', function() {
+				// 			headerEl.addClass('min');
+				// 			$(this).perfectScrollbar('update');
+				// 		})
+				// 		.on('ps-y-reach-start', function() {
+				// 			headerEl.removeClass('min');
+				// 		});
+				// }
 
 				// minimizing
 				headerEl.click(function(){
-					if(that.getViewState() == 2) that.minimize(false);
+					// if(that.getViewState() == 2) that.minimize(false);
 				});
 
 				// mobile language selection
@@ -174,7 +200,7 @@ qx.Class.define("IncludeView", {
 			that.setIncludeKey(null);
 
 			// that.view.find('h1').remove();
-			that.contentContainer.empty();
+			that.scrollContainer.empty();
 		},
 
 		minimize: function(bool){
@@ -201,21 +227,22 @@ qx.Class.define("IncludeView", {
 			// call superclass
 			this.base(arguments);
 			
-			that.view.click(function(){
-				that.say('includeViewClicked', {viewState: that.getViewState()} );
-			});
-
-			that.closeBtn.click(function(){
-				that.close();
-				that.say('includeViewClosed');
-			});
+			// that.view.click(function(){
+			// 	that.say('includeViewClicked', {viewState: that.getViewState()} );
+			// });
 
 			that.listen('detailViewOpened', function(){
-				that.minimize(true);
+				// that.minimize(true);
+				that.hide();
+			});
+
+			that.listen('detailViewClosed', function(){
+				// that.minimize(false);
+				that.show();
 			});
 
 			that.listen('searchResultsLoaded', function(){
-				that.minimize(true);
+				// that.minimize(true);
 			});
 
 			// that.listen('detailViewMobileMaximized', function(){
@@ -226,14 +253,9 @@ qx.Class.define("IncludeView", {
 			//     that.minimize(true);
 			// });
 
-			that.listen('detailViewClosed', function(){
-				that.minimize(false);
-			});
-
-			that.listen('searchFieldFocused', function(){
-				that.close();
-			});
-
+			// that.listen('searchFieldFocused', function(){
+			// 	that.close();
+			// });
 
 			// that.menuBtn.click(function(){
 			//     $('#main-container').addClass('shifted-left');
@@ -256,7 +278,7 @@ qx.Class.define("IncludeView", {
 			that.setViewState(0);
 			that.setIncludeKey(null);
 
-			that.showCurtain(false);
+			// that.showCurtain(false);
 
 			that.say('includeViewClosed');
 		},

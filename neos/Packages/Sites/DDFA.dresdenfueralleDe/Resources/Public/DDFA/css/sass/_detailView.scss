@@ -185,9 +185,6 @@
 #detailView {
 	
 	@include detailViewBasic;
-
-	@include display-flex;
-	@include flex-direction(column);
 }
 
 .tablet {

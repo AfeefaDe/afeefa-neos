@@ -120,12 +120,12 @@ qx.Class.define("MenuView", {
 
             that.pressBtn.click(function(){
                 that.close();
-                APP.getIncludeView().load( APP.getIncludeView().getIncludes().press );
+                APP.getIncludeView().load('press');
             });
 
             that.imprintBtn.click(function(){
                 that.close();
-                APP.getIncludeView().load( APP.getIncludeView().getIncludes().imprint );
+                APP.getIncludeView().load('imprint');
             });
 
             that.listen('curtainclicked', function(){

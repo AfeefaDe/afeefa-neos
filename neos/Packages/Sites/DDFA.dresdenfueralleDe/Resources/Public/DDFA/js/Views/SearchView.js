@@ -454,7 +454,11 @@ qx.Class.define("SearchView", {
       };
 
       // create entry
-      var tooltip = entry.descriptionShort? (entry.descriptionShort.substring(0,150) + '...') : null;
+      var tooltip;
+      if(entry.descriptionShort) tooltip = entry.descriptionShort;
+      if(!tooltip && entry.description) tooltip = entry.description;
+      if(tooltip) tooltip = tooltip.substring(0,150) + '...';
+
       that.createResult( iconClass, label, subLabel, action, (entry.location.length > 0), tooltip );
     },
 

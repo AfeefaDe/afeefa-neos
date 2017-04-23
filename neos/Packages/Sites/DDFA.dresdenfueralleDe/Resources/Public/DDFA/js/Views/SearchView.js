@@ -158,14 +158,14 @@ qx.Class.define("SearchView", {
       if( APP.getUserDevice() == 'desktop') showNewEntryResult();
 
       // highlights
-      that.createSectionHeader( that.getWording('search.label.highlights') );
+      // that.createSectionHeader( that.getWording('search.label.highlights') );
 
       // iwgr
-      var action = function(){
-        APP.getLegendView().setFilter( {tags: 'iwgr'} );
-        window.location.hash = 'iwgr';
-      };
-      that.createResult('iwgr', that.getWording('search.label.iwgr'), that.getWording('search.sublabel.iwgr'), action );
+      // var action = function(){
+      //   APP.getLegendView().setFilter( {tags: 'iwgr'} );
+      //   window.location.hash = 'iwgr';
+      // };
+      // that.createResult('iwgr', that.getWording('search.label.iwgr'), that.getWording('search.sublabel.iwgr'), action );
 
 
       // upcoming events

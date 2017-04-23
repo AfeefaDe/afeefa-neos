@@ -231,6 +231,9 @@ qx.Class.define("DataManager", {
                         subCategory: function(record){
                             return 'fb-event';
                         },
+                        tags: function(record){
+                            return 'fbevent';
+                        },
                         certified: function(record){
                             return false;
                         },
@@ -247,20 +250,20 @@ qx.Class.define("DataManager", {
                             return null;
                         },
                         web: function(record){
-                            return record.link_to_owner;
+                            return record.link_to_event;
                         },
                         facebook: function(record){
-                            return record.link_to_event;
+                            return record.link_to_owner;
                         },
                         location: function(record){
                             return [{
-                                "arrival":"",
-                                "city": record.place.location? record.place.location.city : null,
-                                "lat": record.place.location? record.place.location.latitude : null,
-                                "lon": record.place.location? record.place.location.longitude : null,
-                                "placename": record.place.name? record.place.name : null,
-                                "street": record.place.location? record.place.location.street : null,
-                                "zip": record.place.location? record.place.location.zip : null
+                                "arrival": null,
+                                "city": (record.place && record.place.location)? record.place.location.city : null,
+                                "lat": (record.place && record.place.location)? record.place.location.latitude : null,
+                                "lon": (record.place && record.place.location)? record.place.location.longitude : null,
+                                "placename": (record.place && record.place.name)? record.place.name : null,
+                                "street": (record.place && record.place.location)? record.place.location.street : null,
+                                "zip": (record.place && record.place.location)? record.place.location.zip : null
                             }];
                         },
                         dateFrom: function(record){
@@ -335,6 +338,7 @@ qx.Class.define("DataManager", {
                         "name":"general",
                     },
                     subCategory: mapping.subCategory? mapping.subCategory(record) : null,
+                    tags: mapping.tags? mapping.tags(record) : null,
                     certified: mapping.certified? mapping.certified(record) : false,
                     description: mapping.description? mapping.description(record) : null,
                     descriptionShort: mapping.descriptionShort? mapping.descriptionShort(record) : null,

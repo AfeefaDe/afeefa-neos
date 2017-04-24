@@ -15,7 +15,7 @@ qx.Class.define("MapView", {
 
 		that.setViewId('mapView');
 
-		that.setLoadable(true);
+		// that.setLoadable(true);
 		that.setUserLocation(null);
 		that.setSelectedMarker(null);
 		that.setEntryMarkerLookup([]);
@@ -87,8 +87,6 @@ qx.Class.define("MapView", {
 				// call View.render() --> calls MapView.addEvents() --> calls View.addEvents()
 				this.base(arguments);
 				
-				that.loading(true);
-
 				// initial actions
 				// that.locate( APP.getUserDevice() == 'mobile' );
 		},
@@ -204,7 +202,6 @@ qx.Class.define("MapView", {
 
 			that.addMarkers(entries);
 			// that.loadFromUrl({setView: true});
-			that.loading(false);
 		},
 
 		addMarkers: function(entries) {
@@ -416,8 +413,6 @@ qx.Class.define("MapView", {
 
 		changeLanguage: function() {
 			var that = this;
-
-				that.loading(true);
 		},
 	 //  addMarkersGeoJSON: function(markers, color) {
 		

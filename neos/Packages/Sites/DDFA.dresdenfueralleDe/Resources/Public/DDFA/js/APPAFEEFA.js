@@ -212,7 +212,32 @@ qx.Class.define("APPAFEEFA", {
 
 			// fetch other data (e.g. that takes a long time loading)
 			that.getDataManager().fetchAllData();
+			
+			that.addEvents();
 		},
+
+		addEvents: function(){
+            var that = this;
+
+            that.listen('languageChanged', function(){
+                that.loading(true);
+            });
+
+            that.listen('fetchedNewData', function(){
+				that.loading(false);
+			});
+        },
+
+		loading: function( bool ){
+            var that = this;
+
+            if (bool) {
+                $('body').addClass('loading');
+            }
+            else {
+                $('body').removeClass('loading');
+            }
+        },
 
 		detectAfeefaArea: function(){
 			var that = this;

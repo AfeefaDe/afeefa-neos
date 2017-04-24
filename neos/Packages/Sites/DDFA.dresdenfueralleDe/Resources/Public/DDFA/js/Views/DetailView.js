@@ -10,7 +10,7 @@ qx.Class.define("DetailView", {
 		var that = this;
 
 		that.setViewId('detailView');
-		that.setLoadable(true);
+		// that.setLoadable(true);
 
 		that.record = null;
 	},
@@ -328,8 +328,6 @@ qx.Class.define("DetailView", {
 
 			});
 
-			that.loading(false);
-
 			// show DetailView
 			that.view.addClass('active');
       that.isActive(true);
@@ -405,15 +403,6 @@ qx.Class.define("DetailView", {
 
 		changeLanguage: function(){
 			var that = this;
-
-			that.loading(true);
-
-			// request that.record's entryId in current locale
-			// var recordRelocalized;
-			// recordRelocalized = 
-
-			// load new record
-			// that.load(recordRelocalized);
 		},
 
 		addEvents: function() {
@@ -443,7 +432,6 @@ qx.Class.define("DetailView", {
 			    that.reset();
 			    that.load(newRecord);
 				}
-				that.loading(false);
 			});
 
 			that.listen('includeViewOpened', function(){

@@ -369,7 +369,6 @@ qx.Class.define("LegendView", {
 			  }, function(e) {
 			  	// only react if view is really active
           // firefox fires mouseleave while transition (bug), so additionally check current css state
-		  		console.log($(this).css('right'));
 		  		if( that.view.hasClass('active') && ($(this).css('right') == '0px') ) that.close();
 			  }
 			);

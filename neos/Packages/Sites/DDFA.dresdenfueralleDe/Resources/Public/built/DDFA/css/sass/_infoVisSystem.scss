@@ -88,6 +88,11 @@
 		background-color: rgba($turquoise,$alpha_background);
 		border-color: rgba($turquoise, $alpha_border);
 	}
+
+	&.cat-external-event {
+		background-color: rgba($black,$alpha_background);
+		border-color: rgba($black, $alpha_border);
+	}
 }
 
 @mixin categorySymbols {
@@ -107,6 +112,7 @@
 	&.cat-community { background-image: url("../img/icon_02.svg"); @include background-size(85%); }
 	&.cat-donation { background-image: url("../img/icon_12.svg"); }
 	&.cat-eventseries { background-image: url("../img/icon_192.svg"); }
+	&.cat-external-event { background-image: url("../img/icon_192.svg"); }
 	
 	/* Sub categories */
 
@@ -170,6 +176,7 @@
 	&.subcat-furniture { background-image: url("../img/icon_144.svg"); }
 	
 	&.subcat-iwgr { background-image: url("../img/icon_194.svg"); @include background-size(85%); }
+	&.subcat-fb-event { background-image: url("../img/icon_196.svg"); @include background-size(85%); }
 
 	
 	/* POIs */

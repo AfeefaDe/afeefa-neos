@@ -2,41 +2,9 @@
 
 #includeView {
 	
-	@include shadow($height: 2);
-	@include transition(opacity 200ms);
+	@include goBackLayout;
 
-	position: absolute;
-	left: 15%;
-	top: 12%;
-
-	visibility: hidden;
-	opacity: 0;
-
-	@include box-sizing(border-box);
-	width: 70%;
-	max-height: 80%;
-
-	background-color: $white;
-	color: $black;
-
-	@include display-flex;
-	@include flex-direction(column);
-	
-	&.active {
-		visibility: visible;
-		opacity: 1;
-	}
-
-	&.min {
-    top: auto;
-		left: 3em;
-    bottom: 3em;
-		.header { cursor: pointer; }
-		h1 { padding-top: 1rem !important; cursor: pointer; }
-		p.subheading { display: none; }
-		.content { display: none; }
-		.closeBtn { display: none; }
-	}
+	width: 50vw;
 
 	&.imprint {
 		direction: ltr;
@@ -46,38 +14,10 @@
 		@include textLink;
 	}
 
-	.closeBtn {
-		position: absolute;
-		top: 1em;
-		right: 1em;
-		width: 1.5em;
-		height: 1.5em;
-		cursor: pointer;
-		background-image: url("../img/icon_34.svg");
-		@include background-size(100%);
-		background-position: center center;
-		background-repeat: no-repeat;
-		@include transform(rotate(45deg));
-	}
-
-	.btn {
-		@include circleBtn;
+	.scroll-container {
 		
-		background-color: $black_alpha;
+		padding: 2rem;
 
-		&.plusBtn {
-			width: 1em;
-			height: 1em;
-			@include border-radius(2em);
-
-			background-image: url("../img/icon_34.svg");
-			@include background-size(30%);
-		}
-	}
-	.content-container {
-		@include display-flex;
-		@include flex-direction(column);
-		
 		.header {
 			background-color: $black;
 			padding: 0 3rem;
@@ -119,6 +59,7 @@
 
 			h2 {
 				font-weight: 100;
+				font-size: 2rem;
 				line-height: 1.3em;
 				margin-top: 2em;
 				text-transform: uppercase;

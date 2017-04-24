@@ -11,28 +11,6 @@ qx.Class.define("DataManager", {
 
     members: {
 
-        fetchAllData: function (cb) {
-            var that = this;
-
-            var currentAppData = APP.getData();
-
-            that.getAllEntries(function (data) {
-
-                // store entries in APP
-                currentAppData.entries = data.marketentries;
-
-                APP.setData(currentAppData);
-                that.say('fetchedNewData');
-
-                that.getWifiNodes(function(data){
-                    that.say('fetchedNewData');
-                });
-
-                console.debug('fetchedAllData in ' + APP.getLM().getCurrentLang(), data);
-                cb();  // finished, so callback
-            });
-        },
-
         fetchInitialData: function (cb) {
             var that = this;
 
@@ -52,6 +30,37 @@ qx.Class.define("DataManager", {
                 });
             });
 
+        },
+
+        fetchAllData: function (cb) {
+            var that = this;
+
+            var currentAppData = APP.getData();
+
+            that.getAllEntries(function (data) {
+
+                // store entries in APP
+                currentAppData.entries = data.marketentries;
+
+                currentAppData.entries = _.sortBy(currentAppData.entries, 'name');
+
+                APP.setData(currentAppData);
+                that.say('fetchedNewData');
+
+                that.fetchExternalData('freifunk', function(){
+                    that.say('fetchedNewData');
+                    that.say('fetchedAllData');
+
+                    console.debug('fetchedAllData in ' + APP.getLM().getCurrentLang(), data);
+                    if(cb) cb();  // finished, so callback
+                    
+                    // that.fetchExternalData('facebookEvents', function(){
+                    //  that.say('fetchedNewData');
+                    //  that.say('fetchedAllData');
+                    // });
+                });
+
+            });
         },
 
         getAllCategories: function (cb) {
@@ -317,7 +326,7 @@ qx.Class.define("DataManager", {
                 cb();
             })
             .fail(function (a) {
-                console.debug(a);
+                // console.debug(a);
             });
         },
 

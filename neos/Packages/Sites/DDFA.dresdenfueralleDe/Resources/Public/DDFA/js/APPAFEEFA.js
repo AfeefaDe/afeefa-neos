@@ -211,29 +211,7 @@ qx.Class.define("APPAFEEFA", {
 			});
 
 			// fetch other data (e.g. that takes a long time loading)
-			that.getDataManager().getAllEntries(function(data){
-				var currentAppData = that.getData();
-
-				// store entries in APP
-				currentAppData.entries = data.marketentries;
-
-				currentAppData.entries = _.sortBy(currentAppData.entries, 'name');
-				
-				that.setData(currentAppData);
-				that.say('fetchedNewData');
-				that.say('fetchedAllBasicData');
-
-				that.getDataManager().fetchExternalData('freifunk', function(){
-					that.say('fetchedNewData');
-					// that.say('fetchedAllData');
-
-					that.getDataManager().fetchExternalData('facebookEvents', function(){
-						that.say('fetchedNewData');
-						that.say('fetchedAllData');
-					});
-				});
-			});
-			
+			that.getDataManager().fetchAllData();
 		},
 
 		detectAfeefaArea: function(){

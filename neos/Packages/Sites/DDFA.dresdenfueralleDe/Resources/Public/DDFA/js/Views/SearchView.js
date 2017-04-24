@@ -456,7 +456,7 @@ qx.Class.define("SearchView", {
       // create entry
       var tooltip;
       if(entry.descriptionShort) tooltip = entry.descriptionShort;
-      if(!tooltip && entry.description) tooltip = entry.description;
+      // if(!tooltip && entry.description) tooltip = entry.description;
       if(tooltip) tooltip = tooltip.substring(0,150) + '...';
 
       that.createResult( iconClass, label, subLabel, action, (entry.location.length > 0), tooltip );
@@ -519,9 +519,9 @@ qx.Class.define("SearchView", {
         that.close();
       });
 
-      that.listen('fetchedAllData', function(){
+      that.listen('fetchedNewData', function(){
         if( APP.getDetailView().isActive() ) that.hide();
-        else that.load();
+        else that.load(that.inputField.val());
       });
 
       that.listen('filterSet', function(){

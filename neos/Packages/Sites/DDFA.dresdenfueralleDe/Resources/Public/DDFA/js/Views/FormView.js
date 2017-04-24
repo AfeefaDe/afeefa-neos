@@ -94,6 +94,7 @@ qx.Class.define("FormView", {
 
                 that.parseForm(type, options);
                 that.loadUIVocab(type);
+                that.scrollContainer.perfectScrollbar('update');
             });
 
             that.view.addClass('active');

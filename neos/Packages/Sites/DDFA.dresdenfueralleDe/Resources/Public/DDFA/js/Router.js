@@ -200,7 +200,7 @@ qx.Class.define("Router", {
 						// open search view
 						else {
 							if( !sessionStorage.getItem("languageFrozen") ){
-								APP.getSearchView().hide();
+								// APP.getSearchView().hide();
 								APP.getLanguageView().open(function(){
 									APP.getSearchView().show();
 								});

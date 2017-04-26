@@ -222,7 +222,7 @@ qx.Class.define("View", {
                                 );
                             }
                         })
-                        .on("mouseleave.popper mouseout.popper", function(){
+                        .on("mouseleave.popper", function(){
                             if( thePopper ) thePopper.destroy();
                             thePopper = undefined;
                         });

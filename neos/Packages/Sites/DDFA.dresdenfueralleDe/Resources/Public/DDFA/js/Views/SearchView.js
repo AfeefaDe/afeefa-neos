@@ -502,19 +502,6 @@ qx.Class.define("SearchView", {
         if( !that.isActive() ) that.load();
       });
 
-      // that.listen('mapclicked', function(){
-      //   that.close();
-      // });
-
-      that.listen('searchResultsLoaded', function(){
-        // if( APP.getUserDevice() == 'mobile') that.beShy(true);
-      });
-
-      // that.listen('curtainclicked', function(){
-      //   that.showCurtain(false);
-      //   that.close();
-      // });
-
       that.listen('includeViewOpened', function(){
         that.close();
       });

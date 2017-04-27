@@ -28,7 +28,10 @@ qx.Class.define("IncludeView", {
 			},
 			press: {
 				url: that.getBaseUrl() + 'press.html',
-			}
+			},
+			about: {
+				url: 'https://about.afeefa.de article .entry-content'
+			},
 		});
 		
 		that.setViewId('includeView');
@@ -76,7 +79,7 @@ qx.Class.define("IncludeView", {
 			that.reset();
 			
 			// that.showCurtain(true);
-			that.loading(true);
+			APP.loading(true);
 
 			that.setIncludeKey(includeKey);
 
@@ -119,7 +122,7 @@ qx.Class.define("IncludeView", {
 
 			function loadComplete(){
 
-				that.loading(false);
+				APP.loading(false);
 
 				const headerEl = that.scrollContainer.find('.header');
 				const contentEl = that.scrollContainer.find('.content');

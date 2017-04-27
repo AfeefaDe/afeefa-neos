@@ -30,12 +30,12 @@
 @mixin textLink {
 	color: $black;
 	text-decoration: none;
-  	border-bottom: 1px $black dotted;
+	border-bottom: 1px $black dotted;
 	
 	&:visited, &:active {
 		color: $black;
 		text-decoration: none;
-	  	border-bottom: 1px $black dotted;
+	  border-bottom: 1px $black dotted;
 	}
 
 	&:hover {
@@ -63,6 +63,10 @@
 	&:hover {
 		@include box-shadow(0px 0px 5px #111);
 	}
+}
+
+.margin-top {
+	margin-top: 1rem;
 }
 
 .close-btn {
@@ -103,17 +107,6 @@ body {
 
 	background-color: $black !important;
 
-}
-
-a {
-
-	&:link {
-        color: #333;
-        text-decoration: underline;
-    }
-    &:visited, &:hover, &:active{
-        @extend a:link;
-    }
 }
 
 b,

@@ -18,7 +18,7 @@ qx.Class.define("MessageView", {
 			that.view = $("<div />");
 			that.view.attr('id', that.getViewId());
 
-			that.title = $('<h2 />');
+			that.title = $('<h3 />');
 			that.content = $("<p />");
 			that.actions = $("<div />");
 
@@ -44,14 +44,13 @@ qx.Class.define("MessageView", {
 					actions: 
 						[
 							{
-								label: 'Zur 3-Minuten-Umfrage 🙂',
-								externalLink: 'https://afeefade.typeform.com/to/csN7YQ',
-								cssClass: 'block'
+								label: 'Zur 3-Minuten-Umfrage',
+								externalLink: 'https://afeefade.typeform.com/to/csN7YQ'
 							},
 							{
 								label: 'Nicht jetzt',
 								close: true,
-								cssClass: 'btn-secondary margin-top'
+								cssClass: 'margin-top'
 							}
 						]
 				},
@@ -118,7 +117,7 @@ qx.Class.define("MessageView", {
 				
 				if(action.externalLink){
 					btn = $('<a />')
-						.addClass('button')
+						.addClass('btn')
 						.attr('target', '_blank')
 						.attr('href', action.externalLink)
 						.append(action.label)
@@ -129,6 +128,7 @@ qx.Class.define("MessageView", {
 				}
 				else if(action.close){
 					btn = $('<button />')
+						.addClass('btn btn-flat')
 						.append(action.label)
 						.click(function(){
 							that.close();

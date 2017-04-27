@@ -15362,10 +15362,10 @@ body.phone #menuView .menu-btn {
   -webkit-border-radius: 2em;
   border-radius: 2em;
   background-image: url("../img/btn-locate-white.svg");
-  -moz-background-size: 65%;
-  -o-background-size: 65%;
-  -webkit-background-size: 65%;
-  background-size: 65%;
+  -moz-background-size: 60%;
+  -o-background-size: 60%;
+  -webkit-background-size: 60%;
+  background-size: 60%;
 }
 
 /* line 24, sass/_plusView.scss */

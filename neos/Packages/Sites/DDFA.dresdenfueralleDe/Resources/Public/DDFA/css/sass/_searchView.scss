@@ -180,7 +180,6 @@
 			@include flex(1);
 			@include display-flex;
 			@include flex-direction(column);
-			padding-right: 1em;
 
 			span {
 				line-height: 1.5em;
@@ -318,7 +317,6 @@
 			#map-area { display: none; }
 		}
   }	
-	
 }
 
 .rtl {
@@ -327,10 +325,12 @@
 			padding-right: 0 !important;
 			padding-left: 1em !important;
 		}
+	}
+}
 
-		#search-bar {
-			left: 0;
-			right: 2rem;
-		}
+.desktop {
+	#search-bar {
+		left: 0;
+		right: 2rem;
 	}
 }

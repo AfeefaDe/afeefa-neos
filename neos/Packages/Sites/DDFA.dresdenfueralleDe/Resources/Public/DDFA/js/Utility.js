@@ -11,7 +11,10 @@ qx.Class.define("Utility", {
 
 	members : {
 
-		buildTimeString: function( record ){
+		buildTimeString: function( record, options ){
+			
+			if(options === undefined) options = {};
+
 			var times = '';
 			
 			var dateFrom = record.dateFrom? convertTime(record.dateFrom) : record.dateFrom;
@@ -24,6 +27,7 @@ qx.Class.define("Utility", {
 			var vocabTimeFrom = APP.getLM().resolve('prop.timeFrom');
 			var vocabTimeTo = APP.getLM().resolve('prop.timeTo');
 			var vocabTimeAt = APP.getLM().resolve('prop.timeAt');
+			var vocabUntil = APP.getLM().resolve('prop.until');
 
 
 			if( dateFrom && timeFrom && dateTo && timeTo){
@@ -37,7 +41,8 @@ qx.Class.define("Utility", {
 				times += dateFrom + ' ' +vocabTimeAt+ ' ' + timeFrom;
 			}
 			else if( dateFrom && dateTo){
-				times += vocabDateFrom + ' ' + dateFrom + ' ' +vocabDateTo+ ' ' + dateTo;
+				if(options.short) times += vocabUntil+ ' ' + dateTo;
+				else times += vocabDateFrom + ' ' + dateFrom + ' ' +vocabDateTo+ ' ' + dateTo;
 			}
 			else if( dateFrom ){
 				times += dateFrom;

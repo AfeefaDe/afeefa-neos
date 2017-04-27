@@ -427,6 +427,8 @@ qx.Class.define("MapView", {
 		selectMarker: function( marker, entry, options ){
 			var that = this;
 
+			if(options === undefined) options = {};
+
 			that.deselectMarker();
 			that.setSelectedMarker(marker);
 
@@ -437,16 +439,19 @@ qx.Class.define("MapView", {
 				marker.openPopup();
 			}
 
-			APP.getDetailView().load(entry);
+			if(!options.preventDetailView) APP.getDetailView().load(entry);
 		},
 
-		selectMarkerFromLink: function( entryId ) {
+		selectMarkerFromLink: function( entryId, options ) {
 			var that = this;
+
+			if(options === undefined) options = {};
 
 			var lookup = that.lookupEntryById( entryId );
 				
 			if(lookup && lookup.marker){
-					APP.getMapView().selectMarker(lookup.marker, lookup.entry, {setView: true});
+					options.setView = true;
+					APP.getMapView().selectMarker(lookup.marker, lookup.entry, options);
 			}
 
 		},

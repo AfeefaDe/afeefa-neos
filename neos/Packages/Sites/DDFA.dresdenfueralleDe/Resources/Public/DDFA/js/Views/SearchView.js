@@ -148,15 +148,6 @@ qx.Class.define("SearchView", {
     loadDashboard: function(){
       var that = this;
 
-      // add new entry
-      var showNewEntryResult = function(){
-        var action = function(){
-          APP.getFormView().load( 'newEntry' );
-        };
-        that.createResult('add-entry', that.getWording('search.label.addentry'), that.getWording('search.sublabel.addentry'), action );
-      }
-      if( APP.getUserDevice() == 'desktop') showNewEntryResult();
-
       // highlights
       // that.createSectionHeader( that.getWording('search.label.highlights') );
 
@@ -203,10 +194,13 @@ qx.Class.define("SearchView", {
       };
       that.createResult('certified', that.getWording('search.label.certified'), that.getWording('search.sublabel.certified'), action );
 
-      if( APP.getUserDevice() == 'mobile') {
-        that.createSectionHeader( that.getWording('search.label.activity') );
-        showNewEntryResult();
-      }
+      that.createSectionHeader( that.getWording('search.label.activity') );
+     
+      // add new entry
+      var action = function(){
+        APP.getFormView().load( 'newEntry' );
+      };
+      that.createResult('add-entry', that.getWording('search.label.addentry'), that.getWording('search.sublabel.addentry'), action );
 
       that.createSectionHeader( that.getWording('search.label.help') );
       
@@ -215,6 +209,12 @@ qx.Class.define("SearchView", {
         APP.getIntroView().start();
       };
       that.createResult('start-intro', that.getWording('search.label.intro'), that.getWording('search.sublabel.intro'), action );
+
+      // about afeefa
+      var action = function(){
+        APP.getIncludeView().load('about');
+      };
+      that.createResult('about', that.getWording('search.label.about'), that.getWording('search.sublabel.about'), action );
     },
 
     loadResults: function( query ) {
@@ -366,13 +366,19 @@ qx.Class.define("SearchView", {
     },
 
     // generic function to create a single result
-    createResult: function( iconClass, label, subLabel, action, locationSymbol, tooltip ) {
+    createResult: function( iconClass, label, subLabel, action, locationSymbol, tooltip, action_secondary ) {
       var that = this;
       
       const resultEl = $("<div />")
         .addClass('result')
         .click(function(){
           action();
+        })
+        .on('contextmenu', function(e){
+          if(action_secondary) {
+            e.preventDefault();
+            action_secondary();
+          }
         });
       that.results.append(resultEl);
 
@@ -440,10 +446,18 @@ qx.Class.define("SearchView", {
       iconClass += ' type-' + entry.type;
       if( entry.subCategory ) iconClass += ' subcat-' + entry.subCategory;
       
-      // label
+      // title
       var label = entry.name;
+      // sub category
       var subLabel = entry.subCategory ? that.getWording('cat.' + entry.subCategory) : that.getWording('cat.' + categoryName);
-      if( entry.type == 2 && entry.dateFrom ) subLabel += ' | ' + APP.getUtility().buildTimeString(entry);
+      // time
+      if( entry.type == 2 && entry.dateFrom ) subLabel += ' | ' + APP.getUtility().buildTimeString(entry, {short: true});
+      // place
+      if( entry.location.length > 0 && entry.location[0].placename ){
+        var placename = entry.location[0].placename;
+        if(placename.length > 50) placename = placename.substring(0,50) + '...';
+        subLabel += ' | @' + placename;
+      }
       
       // action
       var action = function(){
@@ -453,13 +467,18 @@ qx.Class.define("SearchView", {
           APP.getDetailView().load(entry);
       };
 
+      var action_secondary = function(){
+        if( entry.location.length > 0 && entry.location[0].lat )
+          APP.getMapView().selectMarkerFromLink(entry.entryId, {preventDetailView: true});
+      };
+
       // create entry
       var tooltip;
       if(entry.descriptionShort) tooltip = entry.descriptionShort;
       // if(!tooltip && entry.description) tooltip = entry.description;
       if(tooltip) tooltip = tooltip.substring(0,150) + '...';
 
-      that.createResult( iconClass, label, subLabel, action, (entry.location.length > 0), tooltip );
+      that.createResult( iconClass, label, subLabel, action, (entry.location.length > 0), tooltip, action_secondary );
     },
 
     setSearchTag: function(cssClass, wording){

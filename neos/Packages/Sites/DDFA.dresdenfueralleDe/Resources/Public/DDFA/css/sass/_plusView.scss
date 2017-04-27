@@ -9,25 +9,13 @@
 		
 		background-color: $black_alpha;
 
-		&.feedbackBtn {
+		&.locateBtn {
 			width: 3.5em;
 			height: 3.5em;
 			@include border-radius(2em);
 
-			background-image: url("../img/icon_50.svg");
-			@include background-size(53%);
-		}
-
-		&.locateBtn {
-			position: relative;
-			width: 2.5em;
-			height: 2.5em;
-			left: .5em;
-			bottom: .7em;
-			background-color: $white_alpha;
-			background-image: url('../img/btn-locate.svg');
-			@include background-size(70%);
-			@include shadow(2);
+			background-image: url("../img/btn-locate-white.svg");
+			@include background-size(65%);
 		}
 	}
 }

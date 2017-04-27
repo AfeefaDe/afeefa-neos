@@ -43,36 +43,13 @@ qx.Class.define("PlusView", {
         'desktop'
       );
 
-			// feedback button
-			that.feedbackBtn = $("<div />")
-				.addClass('button feedbackBtn');
-			that.view.append(that.feedbackBtn);
-
-			that.createTooltip(
-        that.feedbackBtn,
-        function(){
-          return that.getWording('button.feedback');
-        }(),
-        'hover',
-        'left',
-        'desktop'
-      );
-
 			$('#main-container').append(that.view);
 
 			this.base(arguments);
-
-			// that.load();
 		},
 
 		load: function(){
 			var that = this;
-		},
-
-		show: function(){
-			var that = this;
-
-		  that.showCurtain(true);
 		},
 
 		addEvents: function(){
@@ -80,17 +57,6 @@ qx.Class.define("PlusView", {
 
 			// call superclass
 			this.base(arguments);
-			
-			that.feedbackBtn.click(function(){
-				that.close();
-		   	APP.getFormView().load( 'feedback' );
-			});
-		},
-
-		close: function(){
-			var that = this;
-
-			that.showCurtain(false);  
 		},
 
 		changeLanguage: function(){

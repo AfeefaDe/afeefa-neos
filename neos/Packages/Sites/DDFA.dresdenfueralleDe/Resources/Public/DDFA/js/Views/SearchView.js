@@ -69,7 +69,6 @@ qx.Class.define("SearchView", {
 
       // search tags
       that.searchTag = $("<span />")
-        .addClass("search-tag")
         .click(function(){
           if( APP.getUserDevice() == 'mobile') that.maximize();
           // that.inputField.trigger( "input" );
@@ -201,6 +200,11 @@ qx.Class.define("SearchView", {
         APP.getFormView().load( 'newEntry' );
       };
       that.createResult('add-entry', that.getWording('search.label.addentry'), that.getWording('search.sublabel.addentry'), action );
+
+      var action = function(){
+        APP.getFormView().load( 'feedback' );
+      };
+      that.createResult('feedback', that.getWording('form.heading.feedback'), that.getWording('search.sublabel.feedback'), action );
 
       that.createSectionHeader( that.getWording('search.label.help') );
       
@@ -486,8 +490,8 @@ qx.Class.define("SearchView", {
 
       that.searchTag
         .empty()
-        .addClass("active")
-        .addClass(cssClass)
+        .removeClass()        
+        .addClass("search-tag active " + cssClass)
         .append(wording);
 
       that.inputField.hide();

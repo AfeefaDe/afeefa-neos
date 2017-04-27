@@ -11830,9 +11830,8 @@ body.phone #mapView.shy {
   left: 2rem;
   width: calc(100% - 4rem);
   height: calc(100% - 7rem);
-  padding-top: 2rem;
 }
-/* line 117, sass/_searchView.scss */
+/* line 116, sass/_searchView.scss */
 #searchView #results .result {
   margin-bottom: 1rem;
   color: #f2f2f2;
@@ -11844,29 +11843,29 @@ body.phone #mapView.shy {
   display: -webkit-flex;
   display: flex;
 }
-/* line 125, sass/_searchView.scss */
+/* line 124, sass/_searchView.scss */
 #searchView #results .result:hover {
   background-color: #333333;
 }
-/* line 130, sass/_searchView.scss */
+/* line 129, sass/_searchView.scss */
 #searchView #results .section-header {
   text-transform: uppercase;
   color: #999999;
   margin: 2em 0.8em 1em;
 }
-/* line 135, sass/_searchView.scss */
+/* line 134, sass/_searchView.scss */
 #searchView #results .section-header.with-action {
   cursor: pointer;
 }
-/* line 138, sass/_searchView.scss */
+/* line 137, sass/_searchView.scss */
 #searchView #results .section-header.with-action:hover {
   color: #DDDDDD;
 }
-/* line 143, sass/_searchView.scss */
+/* line 142, sass/_searchView.scss */
 #searchView #results .section-header:first-child {
   margin: 0 1em 1em;
 }
-/* line 147, sass/_searchView.scss */
+/* line 146, sass/_searchView.scss */
 #searchView #results .icon {
   /* orga */
   /* market entry */
@@ -12272,31 +12271,35 @@ body.phone #mapView.shy {
   -webkit-background-size: 50%;
   background-size: 50%;
 }
-/* line 155, sass/_searchView.scss */
+/* line 154, sass/_searchView.scss */
 #searchView #results .icon.add-entry {
   background-image: url("../img/icon_34.svg");
 }
-/* line 158, sass/_searchView.scss */
+/* line 157, sass/_searchView.scss */
 #searchView #results .icon.support-wanted {
   background-image: url("../img/icon_56.svg");
 }
-/* line 161, sass/_searchView.scss */
+/* line 160, sass/_searchView.scss */
 #searchView #results .icon.for-children {
   background-image: url("../img/icon_124.svg");
 }
-/* line 164, sass/_searchView.scss */
+/* line 163, sass/_searchView.scss */
 #searchView #results .icon.for-women {
   background-image: url("../img/icon_156.svg");
 }
-/* line 167, sass/_searchView.scss */
+/* line 166, sass/_searchView.scss */
 #searchView #results .icon.certified {
   background-image: url("../img/icon_169.svg");
 }
-/* line 170, sass/_searchView.scss */
+/* line 169, sass/_searchView.scss */
 #searchView #results .icon.start-intro {
   background-image: url("../img/icon_32.svg");
 }
-/* line 173, sass/_searchView.scss */
+/* line 172, sass/_searchView.scss */
+#searchView #results .icon.feedback {
+  background-image: url("../img/icon_50.svg");
+}
+/* line 175, sass/_searchView.scss */
 #searchView #results .icon.iwgr {
   background-image: url("../img/icon_194.svg");
   -moz-background-size: 100%;
@@ -12304,7 +12307,7 @@ body.phone #mapView.shy {
   -webkit-background-size: 100%;
   background-size: 100%;
 }
-/* line 179, sass/_searchView.scss */
+/* line 181, sass/_searchView.scss */
 #searchView #results .labels {
   -webkit-flex: 1;
   flex: 1;
@@ -12313,41 +12316,41 @@ body.phone #mapView.shy {
   -webkit-flex-direction: column;
   flex-direction: column;
 }
-/* line 184, sass/_searchView.scss */
+/* line 186, sass/_searchView.scss */
 #searchView #results .labels span {
   line-height: 1.5em;
   cursor: pointer;
 }
-/* line 189, sass/_searchView.scss */
+/* line 191, sass/_searchView.scss */
 #searchView #results .labels .sub-label {
   color: #999999;
   font-size: .8em;
 }
-/* line 197, sass/_searchView.scss */
+/* line 199, sass/_searchView.scss */
 #searchView.active-search #search-bar input {
   width: calc(100% - 6em);
 }
-/* line 201, sass/_searchView.scss */
+/* line 203, sass/_searchView.scss */
 #searchView.active-search .cancel-btn {
   display: block !important;
 }
-/* line 205, sass/_searchView.scss */
+/* line 207, sass/_searchView.scss */
 #searchView.active-search .refugee-btn {
   display: none;
 }
 
-/* line 215, sass/_searchView.scss */
+/* line 217, sass/_searchView.scss */
 .tablet #searchView.active #results {
   overflow: scroll;
 }
 
-/* line 227, sass/_searchView.scss */
+/* line 229, sass/_searchView.scss */
 .mobile #searchView {
   width: 100%;
   background: none;
   height: 3rem;
 }
-/* line 233, sass/_searchView.scss */
+/* line 235, sass/_searchView.scss */
 .mobile #searchView #search-bar {
   width: 100%;
   top: 0;
@@ -12357,39 +12360,39 @@ body.phone #mapView.shy {
   border-radius: 0;
   height: 3rem !important;
 }
-/* line 241, sass/_searchView.scss */
+/* line 243, sass/_searchView.scss */
 .mobile #searchView #search-bar input {
   left: 4rem;
   width: calc(100% - 10rem);
 }
-/* line 246, sass/_searchView.scss */
+/* line 248, sass/_searchView.scss */
 .mobile #searchView #search-bar .search-tag {
   left: 4em;
   top: calc( (3em - 1.5em) / 2 );
   width: calc(100% - 10rem);
 }
-/* line 252, sass/_searchView.scss */
+/* line 254, sass/_searchView.scss */
 .mobile #searchView #search-bar .btn, .mobile #searchView #search-bar .btn-large {
   height: 3rem;
 }
-/* line 256, sass/_searchView.scss */
+/* line 258, sass/_searchView.scss */
 .mobile #searchView #search-bar .menu-btn {
   top: 0;
   left: 1rem;
   background-image: url("../img/icon_38.svg");
 }
-/* line 262, sass/_searchView.scss */
+/* line 264, sass/_searchView.scss */
 .mobile #searchView #search-bar .refugee-btn {
   right: 4rem;
 }
-/* line 266, sass/_searchView.scss */
+/* line 268, sass/_searchView.scss */
 .mobile #searchView #search-bar .filter-btn {
   display: block;
   top: 0;
   right: 1rem;
   background-image: url("../img/icon_94.svg");
 }
-/* line 274, sass/_searchView.scss */
+/* line 276, sass/_searchView.scss */
 .mobile #searchView #results {
   top: 3rem;
   left: 0;
@@ -12397,24 +12400,24 @@ body.phone #mapView.shy {
   width: 100%;
   height: calc(100% - 3rem);
 }
-/* line 282, sass/_searchView.scss */
+/* line 284, sass/_searchView.scss */
 .mobile #searchView input {
   height: 3rem !important;
   line-height: 3rem !important;
 }
-/* line 287, sass/_searchView.scss */
+/* line 289, sass/_searchView.scss */
 .mobile #searchView .cancel-btn {
   right: 3em !important;
 }
-/* line 291, sass/_searchView.scss */
+/* line 293, sass/_searchView.scss */
 .mobile #searchView.active {
   height: 100%;
 }
-/* line 294, sass/_searchView.scss */
+/* line 296, sass/_searchView.scss */
 .mobile #searchView.active #search-bar {
   background-color: #222222;
 }
-/* line 298, sass/_searchView.scss */
+/* line 300, sass/_searchView.scss */
 .mobile #searchView.active #results {
   background-color: #222222;
   height: calc(100vh - 6rem);
@@ -12423,7 +12426,7 @@ body.phone #mapView.shy {
   -webkit-box-shadow: 0px 0px 2px #000;
   box-shadow: 0px 0px 2px #000;
 }
-/* line 305, sass/_searchView.scss */
+/* line 307, sass/_searchView.scss */
 .mobile #searchView.active #map-area {
   height: 3rem;
   position: absolute;
@@ -12431,26 +12434,26 @@ body.phone #mapView.shy {
   width: 100%;
   background-color: rgba(0, 0, 0, 0.4);
 }
-/* line 314, sass/_searchView.scss */
+/* line 316, sass/_searchView.scss */
 .mobile #searchView.minimized {
   height: 3em;
 }
-/* line 316, sass/_searchView.scss */
+/* line 318, sass/_searchView.scss */
 .mobile #searchView.minimized #results {
   display: none;
 }
-/* line 317, sass/_searchView.scss */
+/* line 319, sass/_searchView.scss */
 .mobile #searchView.minimized #map-area {
   display: none;
 }
 
-/* line 324, sass/_searchView.scss */
+/* line 326, sass/_searchView.scss */
 .rtl #searchView .labels {
   padding-right: 0 !important;
   padding-left: 1em !important;
 }
 
-/* line 332, sass/_searchView.scss */
+/* line 334, sass/_searchView.scss */
 .desktop #search-bar {
   left: 0;
   right: 2rem;

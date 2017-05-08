@@ -16,7 +16,7 @@ abstract class DDConst
 
     const MEDIA_IMAGE = "typo3_media_image";
 
-    const ME_SUPPLEMENT_PROPS = ["offer", "dateFrom", "dateTo", "timeFrom", "timeTo", "area", "name", "description", "mail", "web", "facebook", "phone", "subCategory", "speakerPublic", "speakerPrivate", "image", "imageType", "supportWanted", "category", "spokenLanguages", "forChildren","certified"];
+    const ME_SUPPLEMENT_PROPS = ["offer", "dateFrom", "dateTo", "timeFrom", "timeTo", "area", "name", "description", "mail", "web", "facebook", "phone", "subCategory", "speakerPublic", "speakerPrivate", "image", "imageType", "supportWanted", "category", "spokenLanguages", "forChildren"];
 
     const L_HYDRATE_PROPS = ["street", "city", "placename", "openingHours", "arrival"];
 
